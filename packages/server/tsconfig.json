@@ -1,0 +1,8 @@
+{
+    "extends": "../types/tsconfig.settings.json",
+    "compilerOptions": {
+    "outDir": "dist",
+    "rootDir": "src",
+    "types": ["node"]
+    }
+}
