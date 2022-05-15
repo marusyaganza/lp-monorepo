@@ -1,0 +1,67 @@
+@font-face {
+    font-family: 'Kalam';
+    font-weight: bold;
+    src: local('Kalam Bold'),
+    url('../fonts/Kalam-Bold.woff2') format('woff2'),
+    url('../fonts/Kalam-Bold.woff') format('woff'),
+    url('../fonts/Kalam-Bold.ttf') format('ttf');
+    unicode-range: U+0020-007F;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Kalam';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Kalam'),
+    url('../fonts/Kalam-Regular.woff2') format('woff2'),
+    url('../fonts/Kalam-Regular.woff') format('woff'),
+    url('../fonts/Kalam-Regular.ttf') format('ttf');
+    unicode-range: U+0020-007F;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Kalam';
+    font-style: italic;
+    src: local('Kalam italic'),
+    url('../fonts/Kalam-Light.woff2') format('woff2'),
+    url('../fonts/Kalam-Light.woff') format('woff'),
+    url('../fonts/Kalam-Light.ttf') format('ttf');
+    unicode-range: U+0020-007F, U+0250—02AF;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'LibreBaskerville';
+    font-weight: bold;
+    src: local('LibreBaskerville Bold'),
+    url('../fonts/LibreBaskerville-Bold.woff2') format('woff2'),
+    url('../fonts/LibreBaskerville-Bold.woff') format('woff'),
+    url('../fonts/LibreBaskerville-Bold.ttf') format('ttf');
+    unicode-range: U+0020-007F;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'LibreBaskerville';
+    font-style: normal;
+    font-weight: 400;
+    src: local('LibreBaskerville'),
+    url('../fonts/LibreBaskerville-Regular.woff2') format('woff2'),
+    url('../fonts/LibreBaskerville-Regular.woff') format('woff'),
+    url('../fonts/LibreBaskerville-Regular.ttf') format('ttf');
+    unicode-range: U+0020-007F;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'LibreBaskerville';
+    font-style: italic;
+    src: local('LibreBaskerville Italic'),
+    url('../fonts/LibreBaskerville-Italic.woff2') format('woff2'),
+    url('../fonts/LibreBaskerville-Italic.woff') format('woff'),
+    url('../fonts/LibreBaskerville-Italic.ttf') format('ttf');
+    unicode-range: U+0020-007F;
+    font-display: swap;
+}
+
+:root {
+    --font-libreBaskerville: 'LibreBaskerville', serif;
+    --font-kalam: 'Kalam', serif;
+}

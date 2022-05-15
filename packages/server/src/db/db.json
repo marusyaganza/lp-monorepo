@@ -1,0 +1,43 @@
+{
+  "users": [
+    {
+      "email": "member@member.com",
+      "password": "password",
+      "role": "ADMIN",
+      "verified": false,
+      "avatar": "http",
+      "createdAt": 1571213104370,
+      "id": "Z2hlvDmLOSRZGebC_Z_aA",
+      "name": "Test",
+      "words": []
+    }
+  ],
+  "words": [
+    {
+      "userId": "Z2hlvDmLOSRZGebC_Z_aA",
+      "name": "egalitarian",
+      "defs": [
+        "a person who believes that everyone is equal and should have the same rights and opportunities"
+      ],
+      "particle": "noun",
+      "examples": [
+        "He described himself as ‘an egalitarian’."
+      ],
+      "createdAt": 1652607929132,
+      "id": "DzOlEXTD39XQUnZELKXWG"
+    },
+    {
+      "user": "Z2hlvDmLOSRZGebC_Z_aA",
+      "name": "egalitarian",
+      "defs": [
+        "a person who believes that everyone is equal and should have the same rights and opportunities"
+      ],
+      "particle": "noun",
+      "examples": [
+        "He described himself as ‘an egalitarian’."
+      ],
+      "createdAt": 1652608309387,
+      "id": "BEqcqBjgV1D_i6zsqCIc7"
+    }
+  ]
+}

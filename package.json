@@ -1,0 +1,13 @@
+{
+  "name": "lp-monorepo",
+  "version": "0.0.0",
+  "description": "monorepo",
+  "main": "index.js",
+  "repository": "/",
+  "author": "marusyaganza",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ]
+}
