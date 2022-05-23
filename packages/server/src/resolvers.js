@@ -4,8 +4,7 @@ const {AuthenticationError} = require('apollo-server');
 const resolvers = {
     Query: {
         user(_, __, {models, user}) {
-            // return  models.User.findOne();
-            return user;
+         return user;
         },
         words: authenticated((_, {user}, {models}) => {
             // console.log('user', user);

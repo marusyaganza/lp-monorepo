@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`mutations login with correct password 1`] = `
+Object {
+  "data": Object {
+    "login": Object {
+      "email": "member@member.com",
+      "id": "1",
+      "name": "Test",
+      "token": "token",
+    },
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;
+
+exports[`mutations login with incorrect password 1`] = `
+Object {
+  "data": null,
+  "errors": Array [
+    [GraphQLError: email or password is incorrect],
+  ],
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;
+
+exports[`mutations signUp 1`] = `
+Object {
+  "data": Object {
+    "signUp": Object {
+      "email": "test@test.com",
+      "id": "2",
+      "name": "Hello World",
+      "token": "token",
+    },
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;

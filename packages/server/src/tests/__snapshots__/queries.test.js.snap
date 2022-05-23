@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`queries user 1`] = `
+Object {
+  "data": Object {
+    "user": Object {
+      "email": "member@member.com",
+      "id": "1",
+      "name": "Test",
+      "role": "MEMBER",
+    },
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;
+
+exports[`queries word 1`] = `
+Object {
+  "data": Object {
+    "words": Array [
+      Object {
+        "defs": Array [
+          "a person who believes that everyone is equal and should have the same rights and opportunities",
+        ],
+        "id": "0",
+        "particle": "noun",
+      },
+    ],
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;
