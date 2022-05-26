@@ -1,0 +1,11 @@
+{
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-prettier",
+    "stylelint-order",
+    "stylelint-high-performance-animation",
+    "stylelint-a11y"
+  ],
+  "files": ["**/*.css"],
+  "ignoreFiles": ["**/*.js", "**/*.svg", "**/*.html", "**/*.tsx"]
+}
