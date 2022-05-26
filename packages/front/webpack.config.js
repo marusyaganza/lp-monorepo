@@ -1,12 +1,12 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const path = require('path');
+const { merge } = require('webpack-merge')
 
-module.exports = {
-    mode: 'development',
+const modeConfig = env =>
+  require(`./build-utils/webpack.${env}`);
+
+module.exports = ({mode='production'}) => {
+    return merge({
     entry: './index.tsx',
-    output: {
-        path: path.resolve(__dirname, 'dist'),
-      },
       resolve: {
         extensions: ['.ts', '.tsx', '.js', '.jsx']
       },
@@ -28,12 +28,5 @@ module.exports = {
           { test: /\.css$/, use: ['style-loader', 'css-loader']},
                ]
       },
-      devServer: {
-        static: {
-          directory: path.join(__dirname, 'public'),
-        },
-        compress: true,
-        port: 9000,
-      },
       plugins: [new HtmlWebpackPlugin({ template: './index.html' })],
-  };
+  }, modeConfig(mode))};
