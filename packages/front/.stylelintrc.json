@@ -6,6 +6,10 @@
     "stylelint-high-performance-animation",
     "stylelint-a11y"
   ],
+  "rules": {
+    "selector-class-pattern": null,
+    "custom-property-pattern": null
+  },
   "files": ["**/*.css"],
   "ignoreFiles": ["**/*.js", "**/*.svg", "**/*.html", "**/*.tsx"]
 }
