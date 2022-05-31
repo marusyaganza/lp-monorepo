@@ -1,5 +1,8 @@
-.heading {
-  color: red;
-}
+@import '../../ui/src/assets/styles/colors.css';
+@import '../../ui/src/assets/styles/fonts.css';
 
-/* my new very long comment  */
+
+body {
+  margin: 0;
+  padding: 0;
+}

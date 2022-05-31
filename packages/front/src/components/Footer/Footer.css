@@ -1,0 +1,22 @@
+.footer {
+    height: 60px;
+    flex: 0 0 auto;
+    padding: 0 3em;
+    margin: 40px 0 0 0;
+    background: var(--purple-darker);
+    color: var(--yellow-base);
+    font-family: var(--font-kalam);
+    font-size: var(--font-size-xxs);
+}
+.contactInfo {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.contactLink {
+    text-decoration: none;
+    color: var(--yellow-base);
+}
