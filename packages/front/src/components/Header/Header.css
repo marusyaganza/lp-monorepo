@@ -28,11 +28,6 @@
     list-style: none;
 }
 
-.headerLink:hover, .activeLink:hover {
-    background: var(--purple-lightest);
-    color: var(--yellow-lightest);
-}
-
 .activeLink {
     background: var(--purple-dark);
     color: var(--yellow-lightest);
@@ -42,5 +37,9 @@
     color: inherit;
     padding: 9px;
     text-decoration: none;
+}
 
+.headerLink:hover, .activeLink:hover {
+    background: var(--purple-lightest);
+    color: var(--yellow-lightest);
 }
