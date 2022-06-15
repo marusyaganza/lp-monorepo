@@ -11,5 +11,5 @@
     "custom-property-pattern": null
   },
   "files": ["**/*.css"],
-  "ignoreFiles": ["**/*.js", "**/*.svg", "**/*.html", "**/*.tsx"]
+  "ignoreFiles": ["**/*.js", "**/*.svg", "**/*.html", "**/*.tsx", "**/*.ts"]
 }

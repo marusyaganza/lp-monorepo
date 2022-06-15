@@ -13,7 +13,6 @@ export const AppContext: React.Context<Context> = createContext({} as Context);
 export const AppProvider = ({ children }: PropsWithChildren<unknown>) => {
   const { userId, token, login, logout } = useAuth();
 
-  console.log('id in context', userId);
   const value: Context = {
     login,
     logout,
