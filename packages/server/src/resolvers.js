@@ -6,9 +6,9 @@ const resolvers = {
         user(_, __, {models, user}) {
          return user;
         },
-        words: authenticated((_, {user}, {models}) => {
+        words: authenticated((_, __, {models, user}) => {
             // console.log('user', user);
-            return models.Word.findMany({user});
+            return models.Word.findMany({user: user.id});
             })
     },
     Mutation: {

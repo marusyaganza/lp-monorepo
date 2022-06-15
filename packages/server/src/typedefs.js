@@ -62,7 +62,7 @@ input LoginInput {
 
 type Query {
     user: User!
-    words(user: ID!): [Word]!,
+    words: [Word]!,
 }
 
 type Mutation {

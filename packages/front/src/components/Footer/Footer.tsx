@@ -2,6 +2,7 @@ import React from 'react';
 import './Footer.css';
 
 export const Footer = () => {
+  // TODO move it to design system
   return (
     <footer className="footer">
       <address className="contactInfo">

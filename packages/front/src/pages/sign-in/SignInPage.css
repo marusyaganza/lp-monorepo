@@ -1,0 +1,25 @@
+.singInPageContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    flex-direction: column;
+    font-family: var(--font-libreBaskerville);
+}
+
+.signInForm {
+    display: flex;
+    flex-direction: column;
+    min-width: 500px;
+    gap: 40px;
+}
+
+.singInButton {
+    width: 200px;
+    align-self: center;
+}
+
+.loginError {
+    color: var(--notification-danger-dark);
+    font-size: var(--font-size-m);
+}
