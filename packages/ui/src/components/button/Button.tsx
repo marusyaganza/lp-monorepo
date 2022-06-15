@@ -1,13 +1,15 @@
-import React, {PropsWithChildren} from 'react';
+import React, {HTMLAttributes, PropsWithChildren} from 'react';
 import  './Button.css';
 
-type ButtonProps = {
+interface ButtonProps {
     color?: 'primary' | 'secodary';
     size?: 'S' | 'M' | 'L';
+    className?: string,
+    type?: 'submit'| 'button' | 'reset'
 }
 
-export const Button = ({children, color, size}: PropsWithChildren<ButtonProps>) => {
+export const Button = ({children, color, size, type='button', className, ...rest}: PropsWithChildren<ButtonProps> & HTMLAttributes<HTMLButtonElement>) => {
  return (
-     <button className='button'>{children}</button>
+     <button type={type} className={`button ${className}`} {...rest}>{children}</button>
  )
 };

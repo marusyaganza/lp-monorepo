@@ -2,7 +2,7 @@
   "users": [
     {
       "email": "member@member.com",
-      "password": "password",
+      "password": "Password123!",
       "role": "ADMIN",
       "verified": false,
       "avatar": "http",
@@ -13,7 +13,7 @@
     },
     {
       "email": "me@test.com",
-      "password": "123Test25",
+      "password": "123Test25!",
       "name": "John Doe",
       "createdAt": 1652636040237,
       "id": "JG7MxQtfYykJQt9AB1lpZ",
