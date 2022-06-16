@@ -8,16 +8,18 @@ import './Form.css';
 
 interface FormProps extends FormHTMLAttributes<HTMLFormElement>{
     className?: string,
-    fields: InputProps[],
     buttonText?: string,
-    onFormSubmit: (values: Record<string, string>) => void 
+    fields: InputProps[],
+    onFormSubmit: (values: Record<string, string>) => void;
+    isLoading?: boolean;
 }
 
-export const Form = ({className, children, fields, onFormSubmit, buttonText, ...rest} : PropsWithChildren<FormProps>) => {
+export const Form = ({className, children, fields, onFormSubmit, buttonText, isLoading, ...rest} : PropsWithChildren<FormProps>) => {
   
   
   
   const [errors, setErrors] = useState<string[]>([]);
+
   const submitHandler = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
     //TODO what is correct type for this? That contains all fields names?
@@ -29,11 +31,20 @@ export const Form = ({className, children, fields, onFormSubmit, buttonText, ...
       // TODO fix this type problem
       // @ts-ignore
       const value = evt?.target?.[name]?.value || ''
+
       if (!validate(value, field.validators || [])) {
           errorsArr.push(name);
         }
+
+      if (name === 'repeatPassword' && values.password !== value) {
+        errorsArr.push('repeatPassword');
+      }
+
+      if(name !== 'repeatPassword') {
         values[name] = value;
+      }
       });
+      
 
       if (!errorsArr.length) {
         onFormSubmit(values);
@@ -58,7 +69,7 @@ export const Form = ({className, children, fields, onFormSubmit, buttonText, ...
       return (
         <form onSubmit={submitHandler} className={`${className}`} {...rest}>
           {renderFields()}
-            <Button type="submit" className='submitButton'>
+            <Button type="submit" className='submitButton' disabled={isLoading}>
               {buttonText || 'Submit'}
             </Button>
         </form>

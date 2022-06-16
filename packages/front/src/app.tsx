@@ -22,6 +22,7 @@ const GamePage = lazy(() => import('./pages/games/game/GamePage'));
 const SearchPage = lazy(() => import('./pages/search/SearchPage'));
 const NotFoundPage = lazy(() => import('./pages/notFound/NotFoundPage'));
 const SignInPage = lazy(() => import('./pages/sign-in/SignInPage'));
+const SignUpPage = lazy(() => import('./pages/sign-up/SignUpPage'));
 
 const httpLink = createHttpLink({
   uri: 'http://localhost:4000/graphql'
@@ -29,17 +30,19 @@ const httpLink = createHttpLink({
 
 const token = getUserData()?.token;
 
-const authLink = setContext((_, { headers }) => {
-  return {
-    headers: {
-      ...headers,
-      authorization: token ? `Bearer ${token}` : ''
-    }
-  };
-});
+const createAuthLink = (tkn: string | undefined) => {
+  return setContext((_, { headers }) => {
+    return {
+      headers: {
+        ...headers,
+        authorization: tkn ? `Bearer ${tkn}` : ''
+      }
+    };
+  }).concat(httpLink);
+};
 
 const client = new ApolloClient({
-  link: authLink.concat(httpLink),
+  link: createAuthLink(token),
   cache: new InMemoryCache()
 });
 
@@ -73,6 +76,14 @@ export const App = () => {
                   </Suspense>
                 }
                 path="sign-in"
+              />
+              <Route
+                element={
+                  <Suspense fallback={<Spinner />}>
+                    <SignUpPage />
+                  </Suspense>
+                }
+                path="sign-up"
               />
               <Route path="words">
                 <Route

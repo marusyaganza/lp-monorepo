@@ -1,9 +1,13 @@
 import React from 'react';
 import  './Spinner.css';
 
-export const Spinner = () => {
+interface SpinnerProps  {
+  className?: string; 
+}
+
+export const Spinner = ({className}: SpinnerProps) => {
   return (
-    <div className='spinnerBox'>
+    <div className={`spinnerBox ${className}`}>
       <p className='altText' role="alert">
         Loading...
       </p>

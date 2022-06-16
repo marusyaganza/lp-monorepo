@@ -5,7 +5,8 @@ interface ButtonProps {
     color?: 'primary' | 'secodary';
     size?: 'S' | 'M' | 'L';
     className?: string,
-    type?: 'submit'| 'button' | 'reset'
+    type?: 'submit'| 'button' | 'reset',
+    disabled?: boolean
 }
 
 export const Button = ({children, color, size, type='button', className, ...rest}: PropsWithChildren<ButtonProps> & HTMLAttributes<HTMLButtonElement>) => {
