@@ -3,15 +3,12 @@ import { NavLink } from 'react-router-dom';
 import { Button } from '../../../../ui/src/components/button/Button';
 import { AppContext } from '../../app-context/appContext';
 
+import { LinkType } from '../../../../types/common-types';
+
 import './Header.css';
 
-export type Link = {
-  url: string;
-  text: string;
-};
-
 export type HeaderProps = {
-  navLinks: Link[];
+  navLinks: LinkType[];
 };
 
 export const Header = ({ navLinks }: HeaderProps) => {

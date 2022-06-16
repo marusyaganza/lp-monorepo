@@ -1,36 +1,10 @@
-import React, { useContext, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
 
-import { useMutation } from '@apollo/client';
-
-import { Spinner } from '../../../../ui/src/components/Spinner/Spinner';
-import { Form } from '../../../../ui/src/components/form/Form';
 import { LOGIN } from '../../gql/mutations';
-import { AppContext } from '../../app-context/appContext';
-import './SignInPage.css';
 import { validators } from '../../../../ui/src/utils/validators';
+import { AuthForm } from '../../components/AuthForm/AuthForm';
 
 const SignInPage = () => {
-  const navigate = useNavigate();
-  const [signIn, { data, loading, error }] = useMutation(LOGIN);
-  const { login, userId } = useContext(AppContext);
-
-  const submitHandler = (values: Record<string, string>) => {
-    signIn({ variables: { input: values } });
-  };
-
-  useEffect(() => {
-    if (data) {
-      login(data.login.id, data.login.token);
-    }
-  }, [data]);
-
-  useEffect(() => {
-    if (userId) {
-      navigate('/');
-    }
-  }, [userId]);
-
   const fields = [
     {
       name: 'email',
@@ -51,17 +25,13 @@ const SignInPage = () => {
   ];
 
   return (
-    <>
-      <main className="singInPageContainer">
-        {error && <p className="loginError">{error.message}</p>}
-        {loading && <Spinner />}
-        <Form
-          className="signInForm"
-          onFormSubmit={submitHandler}
-          fields={fields}
-        />
-      </main>
-    </>
+    <AuthForm
+      query={LOGIN}
+      fields={fields}
+      link={{ text: 'Do not have an account? Sign up', url: '/sign-up' }}
+      formHeading="Sign in"
+      formId="login"
+    />
   );
 };
 
