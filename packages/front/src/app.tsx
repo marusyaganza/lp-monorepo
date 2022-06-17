@@ -1,16 +1,18 @@
 import React, { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Spinner } from '../../ui/src/components/Spinner/Spinner';
-import { AppProvider } from './app-context/appContext';
-import { setContext } from '@apollo/client/link/context';
 import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
   createHttpLink
 } from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+
+import { Spinner } from '../../ui/src/components/Spinner/Spinner';
+import { AppProvider } from './app-context/appContext';
 
 import { getUserData } from './util/getUserData';
+import ErrorBoundary from './components/error-boundary/error-boundary';
 
 import './app.css';
 
@@ -48,91 +50,93 @@ const client = new ApolloClient({
 
 export const App = () => {
   return (
-    <AppProvider>
-      <ApolloProvider client={client}>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/">
-              <Route
-                element={
-                  <Suspense fallback={<Spinner />}>
-                    <HomePage />
-                  </Suspense>
-                }
-                index
-              />
-              <Route
-                element={
-                  <Suspense fallback={<Spinner />}>
-                    <SearchPage />
-                  </Suspense>
-                }
-                path="search"
-              />
-              <Route
-                element={
-                  <Suspense fallback={<Spinner />}>
-                    <SignInPage />
-                  </Suspense>
-                }
-                path="sign-in"
-              />
-              <Route
-                element={
-                  <Suspense fallback={<Spinner />}>
-                    <SignUpPage />
-                  </Suspense>
-                }
-                path="sign-up"
-              />
-              <Route path="words">
+    <ErrorBoundary>
+      <AppProvider>
+        <ApolloProvider client={client}>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/">
                 <Route
-                  index
                   element={
                     <Suspense fallback={<Spinner />}>
-                      <WordsPage />
+                      <HomePage />
                     </Suspense>
                   }
+                  index
                 />
                 <Route
-                  path=":wordId"
                   element={
                     <Suspense fallback={<Spinner />}>
-                      <WordPage />
+                      <SearchPage />
+                    </Suspense>
+                  }
+                  path="search"
+                />
+                <Route
+                  element={
+                    <Suspense fallback={<Spinner />}>
+                      <SignInPage />
+                    </Suspense>
+                  }
+                  path="sign-in"
+                />
+                <Route
+                  element={
+                    <Suspense fallback={<Spinner />}>
+                      <SignUpPage />
+                    </Suspense>
+                  }
+                  path="sign-up"
+                />
+                <Route path="words">
+                  <Route
+                    index
+                    element={
+                      <Suspense fallback={<Spinner />}>
+                        <WordsPage />
+                      </Suspense>
+                    }
+                  />
+                  <Route
+                    path=":wordId"
+                    element={
+                      <Suspense fallback={<Spinner />}>
+                        <WordPage />
+                      </Suspense>
+                    }
+                  />
+                </Route>
+                <Route path="games">
+                  <Route
+                    index
+                    element={
+                      <Suspense fallback={<Spinner />}>
+                        <GamesPage />
+                      </Suspense>
+                    }
+                  />
+                  <Route
+                    path=":gameId"
+                    element={
+                      <Suspense fallback={<Spinner />}>
+                        <GamePage />
+                      </Suspense>
+                    }
+                  />
+                </Route>
+                <Route
+                  path="*"
+                  element={
+                    <Suspense fallback={<Spinner />}>
+                      <NotFoundPage />
                     </Suspense>
                   }
                 />
               </Route>
-              <Route path="games">
-                <Route
-                  index
-                  element={
-                    <Suspense fallback={<Spinner />}>
-                      <GamesPage />
-                    </Suspense>
-                  }
-                />
-                <Route
-                  path=":gameId"
-                  element={
-                    <Suspense fallback={<Spinner />}>
-                      <GamePage />
-                    </Suspense>
-                  }
-                />
-              </Route>
-              <Route
-                path="*"
-                element={
-                  <Suspense fallback={<Spinner />}>
-                    <NotFoundPage />
-                  </Suspense>
-                }
-              />
-            </Route>
-          </Routes>
-        </BrowserRouter>
-      </ApolloProvider>
-    </AppProvider>
+            </Routes>
+          </BrowserRouter>
+        </ApolloProvider>
+      </AppProvider>
+    </ErrorBoundary>
   );
 };

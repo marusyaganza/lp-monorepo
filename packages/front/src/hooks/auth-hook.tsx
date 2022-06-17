@@ -9,7 +9,7 @@ export type loginFuncType = (
 
 export type logoutFuncType = () => void;
 
-let logoutTimer: number | undefined;
+let logoutTimer: NodeJS.Timeout | undefined;
 
 const TOKEN_EXPIRATION_PERIOD =
   new Date().getTime() + 1000 * 60 * 60 * 24 * 365;
