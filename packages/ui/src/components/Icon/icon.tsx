@@ -1,10 +1,13 @@
 import React from 'react';
+// @ts-ignore
 import sprite from './sprite.svg';
+
+export type IconIdType = 'edit' | 'search' | 'error' | 'reload';
 
 type IconProps = {
   width?: number,
   height?: number,
-  id: 'edit' | 'search',
+  id: IconIdType,
   className?: string,
   tooltip?: string
 }
