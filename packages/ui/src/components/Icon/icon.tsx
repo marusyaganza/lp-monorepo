@@ -2,7 +2,7 @@ import React from 'react';
 // @ts-ignore
 import sprite from './sprite.svg';
 
-export type IconIdType = 'edit' | 'search' | 'error' | 'reload';
+export type IconIdType = 'edit' | 'search' | 'error' | 'reload' | 'book' | 'play';
 
 type IconProps = {
   width?: number,

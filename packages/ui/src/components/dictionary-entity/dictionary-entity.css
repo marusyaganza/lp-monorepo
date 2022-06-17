@@ -1,0 +1,6 @@
+.info {
+    display: inline;
+    margin-right: 5px;
+    color: var(--purple-lighter);
+    font-style: italic;
+}
