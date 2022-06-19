@@ -18,14 +18,16 @@ type User {
 
 type Word {
     id: ID!,
+    name: String!
     defs: [String]!,
     particle: String!,
     imgUrl: String,
     audioUrl: String,
-    tags: [String]!,
+    tags: [String],
     additionalInfo: String,
     examples: [String],
-    user: User
+    transcription: String,
+    user: ID!
 }
 
 type AuthUser {
@@ -62,7 +64,7 @@ input LoginInput {
 
 type Query {
     user: User!
-    words: [Word]!,
+    words: [Word]!
 }
 
 type Mutation {
