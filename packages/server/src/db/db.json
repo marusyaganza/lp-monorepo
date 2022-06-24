@@ -147,6 +147,46 @@
       ],
       "createdAt": 1652634364376,
       "id": "ZNj_8cCpO2T6r-GT3HmGT"
+    },
+    {
+      "lang": "SPANISH",
+      "name": "ser",
+      "defs": [
+        "to be"
+      ],
+      "particle": "verb",
+      "isIrregularVerb": true,
+      "conjugation": {
+        "yo": "soy",
+        "tu": "eres",
+        "el": "es",
+        "nosotros": "somos",
+        "vosotros": "sois",
+        "ellos": "son"
+      },
+      "user": "Z2hlvDmLOSRZGebC_Z_aA",
+      "createdAt": 1655732601682,
+      "id": "YuFsWzet3uXStwbizdvPN"
+    },
+    {
+      "lang": "SPANISH",
+      "name": "quirer",
+      "defs": [
+        "to want"
+      ],
+      "particle": "verb",
+      "isIrregularVerb": true,
+      "conjugation": {
+        "yo": "quiero",
+        "tu": "quieres",
+        "el": "quiere",
+        "nosotros": "queremos",
+        "vosotros": "queréis",
+        "ellos": "quieren"
+      },
+      "user": "Z2hlvDmLOSRZGebC_Z_aA",
+      "createdAt": 1655732601682,
+      "id": "YuFsWzet3uXStwbizdvPY"
     }
   ]
 }

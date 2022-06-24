@@ -1,4 +1,4 @@
-import React, {HTMLAttributes, PropsWithChildren} from 'react';
+import React, {HTMLAttributes, PropsWithChildren, MouseEventHandler} from 'react';
 import  './Button.css';
 
 interface ButtonProps {
@@ -6,11 +6,13 @@ interface ButtonProps {
     size?: 'S' | 'M' | 'L';
     className?: string,
     type?: 'submit'| 'button' | 'reset',
-    disabled?: boolean
+    disabled?: boolean,
+    kind?: 'primary' | 'secondary'
+    onClick?: MouseEventHandler
 }
 
-export const Button = ({children, color, size, type='button', className, ...rest}: PropsWithChildren<ButtonProps> & HTMLAttributes<HTMLButtonElement>) => {
+export const Button = ({children, color, size, kind='primary', type='button', className, ...rest}: PropsWithChildren<ButtonProps> & HTMLAttributes<HTMLButtonElement>) => {
  return (
-     <button type={type} className={`button ${className}`} {...rest}>{children}</button>
+     <button type={type} className={`${kind} ${className}`} {...rest}>{children}</button>
  )
 };

@@ -8,6 +8,11 @@ enum Role {
     GUEST
 }
 
+enum Language {
+    ENGLISH,
+    SPANISH
+}
+
 type User {
     email: String!
     name: String!
@@ -16,9 +21,20 @@ type User {
     role: Role
 }
 
+type Conjugation {
+    yo: String!
+    tu: String!
+    el: String!
+    nosotros: String!
+    vosotros: String!
+    ellos: String!
+}
+
 type Word {
     id: ID!,
+    lang: Language!
     name: String!
+    user: ID!,
     defs: [String]!,
     particle: String!,
     imgUrl: String,
@@ -27,7 +43,8 @@ type Word {
     additionalInfo: String,
     examples: [String],
     transcription: String,
-    user: ID!
+    isIrregularVerb: Boolean,
+    conjugation: Conjugation
 }
 
 type AuthUser {
@@ -39,16 +56,28 @@ type AuthUser {
     id: ID!
   }
 
+input ConjugationInput {
+    yo: String!
+    tu: String!
+    el: String!
+    nosotros: String!
+    vosotros: String!
+    ellos: String!
+}
+
 input NewWordInput {
-    user: ID!
+    lang: Language!
     name: String!
-    defs: [String]!
-    particle: String!
-    imgUrl: String
-    audioUrl: String
-    tags: [String]
-    additionalInfo: String
-    examples: [String]
+    defs: [String]!,
+    particle: String!,
+    imgUrl: String,
+    audioUrl: String,
+    tags: [String],
+    additionalInfo: String,
+    examples: [String],
+    transcription: String,
+    isIrregularVerb: Boolean,
+    conjugation: ConjugationInput
 }
 
 input SignUpInput {
@@ -65,6 +94,7 @@ input LoginInput {
 type Query {
     user: User!
     words: [Word]!
+    irregularVerbs: [Word]!
 }
 
 type Mutation {

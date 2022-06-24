@@ -1,0 +1,30 @@
+.flipCardContainer {
+    /* transition: all .32s ease-in-out!important; */
+    /* transition: transform .24s ease,opacity .12s linear!important; */
+    /* transform: rotateX(180deg) translateY(-5%) scale(1.1)!important; */
+    border-radius: 2px;
+    padding: 20px;
+    cursor: pointer;
+    perspective: 1000px;
+}
+
+.sideB {
+    transform: rotateY(180deg);
+}
+
+.sideA, .sideB {
+    backface-visibility: hidden;
+    position: absolute;
+}
+
+.flipCardContent {
+    position: relative;
+    padding: 40px;
+    box-shadow: 0 0.3125rem 1.25rem 0 rgb(0 0 0 / 16%);
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.flipCardContainer.isFlipped .flipCardContent {
+    transform: rotateY(180deg);
+}

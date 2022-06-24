@@ -21,6 +21,9 @@ const WordsPage = lazy(() => import('./pages/words/WordsPage'));
 const WordPage = lazy(() => import('./pages/words/word/WordPage'));
 const GamesPage = lazy(() => import('./pages/games/GamesPage'));
 const GamePage = lazy(() => import('./pages/games/game/GamePage'));
+const ConjugationPage = lazy(
+  () => import('./pages/conjugation/ConjugationPage')
+);
 const SearchPage = lazy(() => import('./pages/search/SearchPage'));
 const NotFoundPage = lazy(() => import('./pages/notFound/NotFoundPage'));
 const SignInPage = lazy(() => import('./pages/sign-in/SignInPage'));
@@ -71,6 +74,14 @@ export const App = () => {
                     </Suspense>
                   }
                   path="search"
+                />
+                <Route
+                  element={
+                    <Suspense fallback={<Spinner />}>
+                      <ConjugationPage />
+                    </Suspense>
+                  }
+                  path="conjugation"
                 />
                 <Route
                   element={

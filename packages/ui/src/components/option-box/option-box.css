@@ -1,0 +1,46 @@
+.optionBox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0;
+    font-family: var(--font-libreBaskerville);
+}
+.optionInput {
+    position: absolute;
+    opacity: 0;
+}
+
+.optionInput:focus {
+    border: 2px dotted var(--yellow-base);
+}
+
+.option {
+    position: relative;
+    display: block;
+    padding: 5px;
+    border: 1px solid var(--gray-lightest);
+    border-radius: 2px;
+    cursor: pointer;
+    font-size: var(--font-size-xs);
+    transition: all 0.2s ease;
+}
+
+.option:hover {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 5px 5px rgba(0, 0, 0, 0.22);
+}
+
+.checked {
+    border: 1px solid var(--yellow-base);
+
+    /* TODO  create variable for this */
+    background-color: rgba(255, 231, 114, 0.3);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 5px 5px rgba(0, 0, 0, 0.22);
+}
+
+.box {
+    margin: 10px;
+}
+.error {
+    border: 1px solid var(--notification-danger-lighter);
+    color: var(--notification-danger);
+}

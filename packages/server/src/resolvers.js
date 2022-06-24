@@ -7,14 +7,16 @@ const resolvers = {
          return user;
         },
         words: authenticated((_, __, {models, user}) => {
-            // console.log('user', user);
             return models.Word.findMany({user: user.id});
-            })
+            }),
+        irregularVerbs: authenticated((_, __, {models, user}) => {
+            return models.Word.findMany({user: user.id, isIrregularVerb: true});
+            }) 
     },
     Mutation: {
         saveWord: authorized('ADMIN', (_, {input}, {models, user}) => {
             // console.log('input', input, user);
-            const word = models.Word.createOne({...input })
+            const word = models.Word.createOne({...input, user: user.id })
             return word
         }),
         signUp(_, {input}, {models, createToken }) {

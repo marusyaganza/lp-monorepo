@@ -3,6 +3,15 @@ export type LinkType = {
     text: string;
   };
 
+  export type ConjugationType = {
+    yo: string;
+    tu: string;
+    el: string;
+    nosotros: string;
+    vosotros: string;
+    ellos: string;
+};
+
   export type WordType = {
     id: string,
     name: string,
@@ -16,4 +25,6 @@ export type LinkType = {
     tags?: string[],
     additionalInfo?: string,
     examples?: string[],
+    isIrregularVerb: boolean,
+    conjugation: ConjugationType
   }

@@ -10,6 +10,7 @@ interface FormProps extends FormHTMLAttributes<HTMLFormElement>{
     className?: string,
     buttonText?: string,
     fields: InputProps[],
+    // validate?: (values: Record<string, string>) => string[]
     onFormSubmit: (values: Record<string, string>) => void;
     isLoading?: boolean;
 }

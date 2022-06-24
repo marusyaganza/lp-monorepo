@@ -16,3 +16,25 @@ export const WORDS_QUERY = gql`
     }
   }
 `;
+
+export const IRREGULAR_SPANISH_VERBS = gql`
+  query IrregularverbsQuery {
+    irregularVerbs {
+      conjugation {
+        yo
+        tu
+        el
+        nosotros
+        vosotros
+        ellos
+      }
+      isIrregularVerb
+      particle
+      defs
+      user
+      name
+      lang
+      id
+    }
+  }
+`;

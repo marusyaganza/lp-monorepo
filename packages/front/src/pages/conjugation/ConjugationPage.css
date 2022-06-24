@@ -1,0 +1,30 @@
+.verbsContainer {
+    display: flex;
+    gap: 10px;
+}
+
+.hint {
+    margin: 40px auto;
+    height: 180px;
+    width: 500px;
+    /* width: 50%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pronoun {
+    color: var(--purple-base);
+    padding-right: 20px;
+    /* margin: 0 10px; */
+}
+
+.verb {
+    display: flex;
+    justify-content: space-between;
+    /* width: 100%; */
+    /* align-items: center; */
+}
+.task {
+    width: 500px;
+}
