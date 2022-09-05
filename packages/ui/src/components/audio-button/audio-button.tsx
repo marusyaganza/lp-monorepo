@@ -1,21 +1,33 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import './audio-button.css';
 import { Icon } from '../Icon/icon';
 
 interface AudioButtonProps {
-  src: string, buttonText: string, buttonSize: number, autoplay?: boolean 
-};
+  src: string;
+  buttonText: string;
+  buttonSize: number;
+  autoplay?: boolean;
+}
 
-export const AudioButton = ({ src, buttonText, buttonSize, autoplay }: AudioButtonProps) => {
-  const audioElement = new Audio(src);
-  const play = () => {
-    audioElement.play();
-  };
+export const AudioButton = ({
+  src,
+  buttonText,
+  buttonSize,
+  autoplay
+}: AudioButtonProps) => {
+  const play = useMemo(
+    () => () => {
+      const audioElement = new Audio(src);
+      audioElement.play();
+    },
+    [src]
+  );
+
   useEffect(() => {
     if (autoplay) {
       play();
     }
-  }, [src]);
+  }, [src, autoplay, play]);
 
   return (
     <button
@@ -25,12 +37,7 @@ export const AudioButton = ({ src, buttonText, buttonSize, autoplay }: AudioButt
       aria-label="play audio."
     >
       <span className="buttonText">{buttonText}</span>
-      <Icon
-        className="icon"
-        id="play"
-        height={buttonSize}
-        width={buttonSize}
-      />
+      <Icon className="icon" id="play" height={buttonSize} width={buttonSize} />
     </button>
   );
 };

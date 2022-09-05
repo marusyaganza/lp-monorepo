@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { Button } from '../../../../ui/src/components/button/Button';
 import { AppContext } from '../../app-context/appContext';
 
-import { LinkType } from '../../../../types/common-types';
+import { LinkType } from '../../../../types/src/common-types';
 
 import './Header.css';
 

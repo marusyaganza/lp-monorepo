@@ -8,7 +8,7 @@ import { DocumentNode, useMutation } from '@apollo/client';
 import { Spinner } from '../../../../ui/src/components/Spinner/Spinner';
 import { AppContext } from '../../app-context/appContext';
 
-import { LinkType } from '../../../../types/common-types';
+import { LinkType } from '../../../../types/src/common-types';
 
 import './AuthForm.css';
 

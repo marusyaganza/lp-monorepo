@@ -10,7 +10,7 @@ interface ErrorDisplayProps {
   subHeading: string;
   buttonHandler: MouseEventHandler;
   buttonText: string;
-  theme: 'red' | 'base';
+  theme?: 'red' | 'base';
 }
 
 export const ErrorDisplay = ({
@@ -19,7 +19,7 @@ export const ErrorDisplay = ({
   subHeading,
   buttonHandler,
   buttonText,
-  theme
+  theme = 'base'
 }: ErrorDisplayProps) => {
   return (
     <div className="infoContainer">

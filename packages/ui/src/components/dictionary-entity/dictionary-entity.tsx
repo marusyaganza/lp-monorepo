@@ -8,13 +8,12 @@ interface DictionaryEntityProps {
   className?: string;
 }
 
-export const DictionaryEntity = ({ text, className }: DictionaryEntityProps) => {
+export const DictionaryEntity = ({
+  text,
+  className
+}: DictionaryEntityProps) => {
   const decorateWord = (word: string) => {
-    return (
-      <i className={className}>
-        {word}
-      </i>
-    );
+    return <i className={className}>{word}</i>;
   };
 
   const counstuctPhrase = (string: string) => {

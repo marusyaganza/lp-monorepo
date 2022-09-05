@@ -6,5 +6,9 @@
   "license": "MIT",
   "devDependencies": {
     "typescript": "^4.6.2"
+  },
+  "scripts": {
+    "clean": "rimraf dist *.tsbuildinfo",
+    "ts": "tsc -b ."
   }
 }

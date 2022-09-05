@@ -1,6 +1,6 @@
 .word {
     padding: 15px;
-    border: 1px solid rgba(32, 7, 114, 0.2);
+    border: 1px solid rgb(32 7 114 / 20%);
     margin: 10px 20px;
     border-radius: 3px;
     box-shadow: 0 3px 0 var(--gray-lightest);
@@ -24,13 +24,16 @@
     margin-right: 5px;
     color: var(--yellow-darker);
 }
+
 .name {
     color: var(--purple-darker);
     font-weight: bold;
 }
+
 .examples {
     font-family: var(--font-kalam);
 }
+
 .examplesTitle {
     font-size: var(--font-size-s);
 }
@@ -54,23 +57,27 @@
     display: flex;
     align-items: baseline;
 }
+
 .defItem {
     margin: 10px 0;
     line-height: 1.5rem;
 }
+
 .top {
     display: flex;
     width: 100%;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
     justify-content: space-between;
 }
+
 .top header {
     padding: 10px 0;
 }
+
 .audio {
     font-size: var(--font-size-xs);
 }
+
 .transcription {
     color: var(--gray-darkest);
     font-style: italic;
