@@ -15,7 +15,8 @@
     "eslint": "lerna run eslint",
     "ready": "lerna run ready",
     "clean": "lerna run clean",
-    "test": "lerna run test --stream"
+    "test": "lerna run test --stream",
+    "release": "yarn lerna version --conventional-commits"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",
