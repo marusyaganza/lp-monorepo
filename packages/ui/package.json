@@ -7,7 +7,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "start-storybook -p 6006",
+    "storybook": "start-storybook -p 6006",
     "stylelint": "stylelint src",
     "eslint": "eslint src",
     "ready": "yarn eslint --fix && yarn stylelint --fix",
