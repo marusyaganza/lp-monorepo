@@ -3,3 +3,5 @@ nodemon.json
 public
 dist
 tsconfig.tsbuildinfo
+temp
+storybook-static

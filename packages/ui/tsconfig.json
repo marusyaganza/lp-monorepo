@@ -3,8 +3,10 @@
   "compilerOptions": {
       "outDir": "./dist/",
       "jsx": "react",
-      "typeRoots": ["./src/@types", "./node_modules/@types"]
+      "typeRoots": ["./src/@types", "./node_modules/@types"],
+      "rootDir": "src",
+      "composite": true
     },
-    "include": ["./src/", "index.ts"]
+    "include": ["src"]
   }
   
