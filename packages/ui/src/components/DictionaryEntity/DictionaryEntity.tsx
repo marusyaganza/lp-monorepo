@@ -1,9 +1,9 @@
 import React from 'react';
 import { cleanString, isSuff } from './helpers';
 import { CLOSING, OPENING } from './constants';
-import './dictionary-entity.css';
+import './DictionaryEntity.css';
 
-interface DictionaryEntityProps {
+export interface DictionaryEntityProps {
   text: string;
   className?: string;
 }

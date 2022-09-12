@@ -15,7 +15,14 @@
     height: 50px;
 }
 
-.button:hover {
+.button:hover:not(.disabled) {
     color: var(--white);
     background: var(--purple-base);
+}
+
+.disabled {
+    color: var(--gray-darkest);
+    border: 3px solid var(--gray-darkest);
+    background-color: var(--gray-lightest);
+    cursor:not-allowed;
 }

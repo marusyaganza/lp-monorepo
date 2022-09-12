@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from './Button';
+import { Button, ButtonProps } from './Button';
 
 export default {
   title: 'Button',
@@ -9,4 +9,6 @@ export default {
   // },
 };
 
-export const Btn = () => <Button>First button</Button>;
+export const Btn = (args: ButtonProps) => (
+  <Button {...args}>First button</Button>
+);

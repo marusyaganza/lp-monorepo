@@ -16,6 +16,7 @@
     "ts": "tsc -b ."
   },
   "dependencies": {
+    "@lp/types": "^1.0.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "webpack": "^5.71.0"

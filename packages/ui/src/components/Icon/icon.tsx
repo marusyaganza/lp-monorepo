@@ -11,7 +11,7 @@ export type IconIdType =
   | 'book'
   | 'play';
 
-type IconProps = {
+export type IconProps = {
   width?: number;
   height?: number;
   id: IconIdType;

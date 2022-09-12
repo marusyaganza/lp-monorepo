@@ -17,6 +17,8 @@
   "license": "ISC",
   "dependencies": {
     "@apollo/client": "^3.6.6",
+    "@lp/types": "^1.0.1",
+    "@lp/ui": "^0.0.1",
     "graphql": "^16.5.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",

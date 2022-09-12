@@ -1,18 +1,18 @@
 import React, { useEffect, useMemo } from 'react';
-import './audio-button.css';
+import './AudioButton.css';
 import { Icon } from '../Icon/icon';
 
-interface AudioButtonProps {
+export interface AudioButtonProps {
   src: string;
   buttonText: string;
-  buttonSize: number;
+  buttonSize?: number;
   autoplay?: boolean;
 }
 
 export const AudioButton = ({
   src,
   buttonText,
-  buttonSize,
+  buttonSize = 20,
   autoplay
 }: AudioButtonProps) => {
   const play = useMemo(

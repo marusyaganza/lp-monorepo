@@ -12,6 +12,7 @@
   ],
   "scripts": {
     "start": "lerna run start --stream",
+    "storybook": "lerna run storybook --scope '@lp/ui' --stream",
     "eslint": "lerna run eslint",
     "ready": "lerna run ready",
     "clean": "lerna run clean",

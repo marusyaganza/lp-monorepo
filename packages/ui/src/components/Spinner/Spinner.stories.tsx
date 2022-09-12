@@ -1,9 +1,9 @@
 import React from 'react';
-import { Spinner } from './Spinner';
+import { Spinner as SpinnerComponent } from './Spinner';
 
 export default {
   title: 'Spinner',
-  component: Spinner
+  component: SpinnerComponent
 };
 
-export const Btn = () => <Spinner />;
+export const Spinner = () => <SpinnerComponent />;

@@ -1,12 +1,12 @@
 import React from 'react';
-import { AudioButton } from '../audio-button/audio-button';
+import { AudioButton } from '../AudioButton/AudioButton';
 import { Icon } from '../Icon/icon';
-import { DictionaryEntity } from '../dictionary-entity/dictionary-entity';
-import { WordType } from '../../../../types/src/common-types';
+import { DictionaryEntity } from '../DictionaryEntity/DictionaryEntity';
+import { WordType } from '@lp/types';
 
-import './word-card.css';
+import './WordCard.css';
 
-interface WordCardProps {
+export interface WordCardProps {
   word: WordType;
 }
 

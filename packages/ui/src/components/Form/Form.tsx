@@ -2,11 +2,11 @@
 import React, { FormHTMLAttributes, FormEvent, useState } from 'react';
 
 import { Input, InputProps } from '../Input/Input';
-import { Button } from '../button/Button';
+import { Button } from '../Button/Button';
 import { validate } from '../../utils/validators';
 import './Form.css';
 
-interface FormProps extends FormHTMLAttributes<HTMLFormElement> {
+export interface FormProps extends FormHTMLAttributes<HTMLFormElement> {
   className?: string;
   buttonText?: string;
   fields: InputProps[];

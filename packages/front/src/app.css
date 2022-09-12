@@ -1,5 +1,5 @@
-@import '../../ui/src/assets/styles/colors.css';
-@import '../../ui/src/assets/styles/fonts.css';
+@import '@lp/ui/src/assets/styles/colors.css';
+@import '@lp/ui/src/assets/styles/fonts.css';
 
 
 body {
