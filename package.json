@@ -18,7 +18,6 @@
     "clean": "lerna run clean",
     "test": "lerna run test --stream",
     "release": "yarn lerna version --conventional-commits",
-    "ts": "lerna run ts --scope '@lp/{ui,types}'",
     "api-docs": "sh api-docs.sh"
   },
   "devDependencies": {
