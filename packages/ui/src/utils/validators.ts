@@ -35,7 +35,12 @@ export const validators = {
     val
   })
 };
-
+/**
+ * @public
+ * @param value - value to validate
+ * @param validators - array of validators
+ * @returns true if valid and false othervise
+ */
 export const validate: validateFuncType = (value, validators) => {
   let isValid = true;
   validators.forEach(validator => {

@@ -19,13 +19,13 @@
     "test": "lerna run test --stream",
     "release": "yarn lerna version --conventional-commits",
     "ts": "lerna run ts --scope '@lp/{ui,types}'",
-    "api-extract": "lerna run api-report --scope '@lp/{ui,types}' --stream",
-    "api-report": "yarn ts && yarn api-extract"
+    "api-docs": "sh api-docs.sh"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.1.0",
     "@commitlint/config-lerna-scopes": "^17.0.2",
+    "@microsoft/api-documenter": "^7.19.12",
     "@microsoft/api-extractor": "^7.30.0",
     "@typescript-eslint/eslint-plugin": "^5.26.0",
     "@typescript-eslint/parser": "^5.26.0",
