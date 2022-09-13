@@ -2,10 +2,26 @@
 
 [Home](./index.md) &gt; [@lp/ui](./ui.md) &gt; [validate](./ui.validate.md)
 
-## validate variable
+## validate() function
+
+Validates form values
 
 <b>Signature:</b>
 
 ```typescript
-validate: validateFuncType
+export declare function validate(value: string, validators: validatorType[]): boolean;
 ```
+
+## Parameters
+
+|  Parameter | Type | Description |
+|  --- | --- | --- |
+|  value | string | value to validate |
+|  validators | [validatorType](./ui.validatortype.md)<!-- -->\[\] | array of validators |
+
+<b>Returns:</b>
+
+boolean
+
+true if valid and false othervise
+

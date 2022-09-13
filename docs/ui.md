@@ -20,13 +20,20 @@ Happy learning
 
 |  Enumeration | Description |
 |  --- | --- |
-|  [Validator](./ui.validator.md) |  |
-|  [ValidatorWithArgs](./ui.validatorwithargs.md) |  |
+|  [Validator](./ui.validator.md) | Validators that don't accept arguments |
+|  [ValidatorWithArgs](./ui.validatorwithargs.md) | Validators that accept arguments |
+
+## Functions
+
+|  Function | Description |
+|  --- | --- |
+|  [validate(value, validators)](./ui.validate.md) | Validates form values |
 
 ## Interfaces
 
 |  Interface | Description |
 |  --- | --- |
+|  [AudioButtonProps](./ui.audiobuttonprops.md) | AudioButton Props |
 |  [ButtonProps](./ui.buttonprops.md) |  |
 |  [DictionaryEntityProps](./ui.dictionaryentityprops.md) |  |
 |  [FormProps](./ui.formprops.md) |  |
@@ -38,14 +45,14 @@ Happy learning
 
 |  Variable | Description |
 |  --- | --- |
+|  [AudioButton](./ui.audiobutton.md) | Special type of button that plays audio when you click on it |
 |  [Button](./ui.button.md) |  |
 |  [DictionaryEntity](./ui.dictionaryentity.md) |  |
 |  [Form](./ui.form.md) |  |
 |  [Icon](./ui.icon.md) |  |
 |  [Input](./ui.input.md) |  |
 |  [Spinner](./ui.spinner.md) |  |
-|  [validate](./ui.validate.md) |  |
-|  [validators](./ui.validators.md) |  |
+|  [validators](./ui.validators.md) | List of all validators available |
 |  [WordCard](./ui.wordcard.md) |  |
 
 ## Type Aliases
@@ -54,10 +61,5 @@ Happy learning
 |  --- | --- |
 |  [IconIdType](./ui.iconidtype.md) |  |
 |  [IconProps](./ui.iconprops.md) |  |
-|  [validateFuncType](./ui.validatefunctype.md) |  |
-|  [validatorFabricType](./ui.validatorfabrictype.md) |  |
-|  [validatorType](./ui.validatortype.md) |  |
-|  [validatorWithArgsFabricType](./ui.validatorwithargsfabrictype.md) |  |
-|  [validatorWithArgsType](./ui.validatorwithargstype.md) |  |
-|  [validatorWithoutArgsType](./ui.validatorwithoutargstype.md) |  |
+|  [validatorType](./ui.validatortype.md) | Validator that can be used to validate form values |
 

@@ -12,6 +12,17 @@ import { InputHTMLAttributes } from 'react';
 import { PropsWithChildren } from 'react';
 import { WordType } from '@lp/types';
 
+// @public
+export const AudioButton: ({ src, buttonText, buttonSize, autoplay }: AudioButtonProps) => JSX.Element;
+
+// @public
+export interface AudioButtonProps {
+    autoplay?: boolean;
+    buttonSize?: number;
+    buttonText?: string;
+    src: string;
+}
+
 // @public (undocumented)
 export const Button: ({ children, type, className, disabled, ...rest }: PropsWithChildren<ButtonProps> & HTMLAttributes<HTMLButtonElement>) => JSX.Element;
 
@@ -94,29 +105,20 @@ export interface SpinnerProps {
     className?: string;
 }
 
-// @public (undocumented)
-export const validate: validateFuncType;
+// @public
+export function validate(value: string, validators: validatorType[]): boolean;
 
-// @public (undocumented)
-export type validateFuncType = (value: string, validators: validatorType[]) => boolean;
-
-// @public (undocumented)
+// @public
 export enum Validator {
-    // (undocumented)
     EMAIL = "EMAIL",
-    // (undocumented)
     PASSWORD = "PASSWORD",
-    // (undocumented)
     REQUIRE = "REQUIRE"
 }
 
-// @public (undocumented)
-export type validatorFabricType = () => validatorWithoutArgsType;
-
-// @public (undocumented)
+// @public
 export const validators: {
-    EMAIL: () => validatorWithoutArgsType;
-    PASSWORD: () => validatorWithoutArgsType;
+    EMAIL: () => _validatorWithoutArgsType;
+    PASSWORD: () => _validatorWithoutArgsType;
     REQUIRE: () => {
         type: Validator;
     };
@@ -130,30 +132,16 @@ export const validators: {
     };
 };
 
-// @public (undocumented)
-export type validatorType = validatorWithArgsType | validatorWithoutArgsType;
+// Warning: (ae-forgotten-export) The symbol "_validatorWithArgsType" needs to be exported by the entry point index.d.ts
+//
+// @public
+export type validatorType = _validatorWithArgsType | _validatorWithoutArgsType;
 
-// @public (undocumented)
+// @public
 export enum ValidatorWithArgs {
-    // (undocumented)
     MAXLENGTH = "MAXLENGTH",
-    // (undocumented)
     MINLENGTH = "MINLENGTH"
 }
-
-// @public (undocumented)
-export type validatorWithArgsFabricType = (value: number) => validatorWithArgsType;
-
-// @public (undocumented)
-export type validatorWithArgsType = {
-    type: ValidatorWithArgs;
-    val: number;
-};
-
-// @public (undocumented)
-export type validatorWithoutArgsType = {
-    type: Validator;
-};
 
 // @public (undocumented)
 export const WordCard: ({ word }: WordCardProps) => JSX.Element;
@@ -163,5 +151,9 @@ export interface WordCardProps {
     // (undocumented)
     word: WordType;
 }
+
+// Warnings were encountered during analysis:
+//
+// dist/utils/validators.d.ts:32:5 - (ae-forgotten-export) The symbol "_validatorWithoutArgsType" needs to be exported by the entry point index.d.ts
 
 ```

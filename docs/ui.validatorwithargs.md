@@ -4,6 +4,8 @@
 
 ## ValidatorWithArgs enum
 
+Validators that accept arguments
+
 <b>Signature:</b>
 
 ```typescript
@@ -14,6 +16,6 @@ export declare enum ValidatorWithArgs
 
 |  Member | Value | Description |
 |  --- | --- | --- |
-|  MAXLENGTH | <code>&quot;MAXLENGTH&quot;</code> |  |
-|  MINLENGTH | <code>&quot;MINLENGTH&quot;</code> |  |
+|  MAXLENGTH | <code>&quot;MAXLENGTH&quot;</code> | lenght if value is &lt;<!-- -->= |
+|  MINLENGTH | <code>&quot;MINLENGTH&quot;</code> | lenght if value is &gt;<!-- -->= |
 

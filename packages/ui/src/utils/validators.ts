@@ -1,30 +1,34 @@
+/** Validators that don't accept arguments */
 export enum Validator {
+  /**the value can't be emply */
   REQUIRE = 'REQUIRE',
+  /**the value is email */
   EMAIL = 'EMAIL',
+  /**the value contains at least one capital letter, one special symbol and one mumber */
   PASSWORD = 'PASSWORD'
 }
 
+/** Validators that accept arguments */
 export enum ValidatorWithArgs {
+  /**lenght if value is >= */
   MINLENGTH = 'MINLENGTH',
+  /**lenght if value is <= */
   MAXLENGTH = 'MAXLENGTH'
 }
+/**@internal */
+type _validatorWithArgsType = { type: ValidatorWithArgs; val: number };
+/**@internal */
+type _validatorWithoutArgsType = { type: Validator };
 
-export type validatorWithArgsType = { type: ValidatorWithArgs; val: number };
-export type validatorWithoutArgsType = { type: Validator };
-export type validatorType = validatorWithArgsType | validatorWithoutArgsType;
+/**Validator that can be used to validate form values */
+export type validatorType = _validatorWithArgsType | _validatorWithoutArgsType;
 
-export type validatorFabricType = () => validatorWithoutArgsType;
-export type validatorWithArgsFabricType = (
-  value: number
-) => validatorWithArgsType;
-export type validateFuncType = (
-  value: string,
-  validators: validatorType[]
-) => boolean;
-
+/**
+ * List of all validators available
+ */
 export const validators = {
-  EMAIL: (): validatorWithoutArgsType => ({ type: Validator.EMAIL }),
-  PASSWORD: (): validatorWithoutArgsType => ({ type: Validator.PASSWORD }),
+  EMAIL: (): _validatorWithoutArgsType => ({ type: Validator.EMAIL }),
+  PASSWORD: (): _validatorWithoutArgsType => ({ type: Validator.PASSWORD }),
   REQUIRE: () => ({ type: Validator.REQUIRE }),
   MINLENGTH: (val: number) => ({
     type: ValidatorWithArgs.MINLENGTH,
@@ -36,12 +40,12 @@ export const validators = {
   })
 };
 /**
- * @public
+ * Validates form values
  * @param value - value to validate
  * @param validators - array of validators
  * @returns true if valid and false othervise
  */
-export const validate: validateFuncType = (value, validators) => {
+export function validate(value: string, validators: validatorType[]) {
   let isValid = true;
   validators.forEach(validator => {
     if (validator.type === Validator.REQUIRE) {
@@ -62,4 +66,4 @@ export const validate: validateFuncType = (value, validators) => {
     }
   });
   return isValid;
-};
+}

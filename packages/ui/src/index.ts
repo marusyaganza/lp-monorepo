@@ -21,7 +21,7 @@
  *
  * @packageDocumentation
  */
-
+export * from './components/AudioButton/AudioButton';
 export * from './components/Spinner/Spinner';
 export * from './components/Button/Button';
 export * from './components/DictionaryEntity/DictionaryEntity';

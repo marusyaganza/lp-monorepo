@@ -4,12 +4,14 @@
 
 ## validators variable
 
+List of all validators available
+
 <b>Signature:</b>
 
 ```typescript
 validators: {
-    EMAIL: () => validatorWithoutArgsType;
-    PASSWORD: () => validatorWithoutArgsType;
+    EMAIL: () => _validatorWithoutArgsType;
+    PASSWORD: () => _validatorWithoutArgsType;
     REQUIRE: () => {
         type: Validator;
     };

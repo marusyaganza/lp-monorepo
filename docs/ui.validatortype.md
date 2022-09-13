@@ -4,10 +4,10 @@
 
 ## validatorType type
 
+Validator that can be used to validate form values
+
 <b>Signature:</b>
 
 ```typescript
-export declare type validatorType = validatorWithArgsType | validatorWithoutArgsType;
+export declare type validatorType = _validatorWithArgsType | _validatorWithoutArgsType;
 ```
-<b>References:</b> [validatorWithArgsType](./ui.validatorwithargstype.md)<!-- -->, [validatorWithoutArgsType](./ui.validatorwithoutargstype.md)
-

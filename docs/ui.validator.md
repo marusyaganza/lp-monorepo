@@ -4,6 +4,8 @@
 
 ## Validator enum
 
+Validators that don't accept arguments
+
 <b>Signature:</b>
 
 ```typescript
@@ -14,7 +16,7 @@ export declare enum Validator
 
 |  Member | Value | Description |
 |  --- | --- | --- |
-|  EMAIL | <code>&quot;EMAIL&quot;</code> |  |
-|  PASSWORD | <code>&quot;PASSWORD&quot;</code> |  |
-|  REQUIRE | <code>&quot;REQUIRE&quot;</code> |  |
+|  EMAIL | <code>&quot;EMAIL&quot;</code> | the value is email |
+|  PASSWORD | <code>&quot;PASSWORD&quot;</code> | the value contains at least one capital letter, one special symbol and one mumber |
+|  REQUIRE | <code>&quot;REQUIRE&quot;</code> | the value can't be emply |
 
