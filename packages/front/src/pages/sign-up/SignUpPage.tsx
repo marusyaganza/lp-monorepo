@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { SIGN_UP } from '../../gql/mutations';
-import { validators } from '../../../../ui/src/utils/validators';
+import { validators } from '@lp/ui';
 import { AuthForm } from '../../components/AuthForm/AuthForm';
 
 const SignUpPage = () => {

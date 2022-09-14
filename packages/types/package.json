@@ -1,10 +1,16 @@
 {
   "name": "@lp/types",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "types",
-  "main": "index.js",
+  "main": "src/index.ts",
+  "types": "dist/index.d.ts",
   "license": "MIT",
   "devDependencies": {
     "typescript": "^4.6.2"
+  },
+  "scripts": {
+    "clean": "rimraf dist *.tsbuildinfo",
+    "ts": "tsc -b .",
+    "api-report": "yarn api-extractor run --local"
   }
 }

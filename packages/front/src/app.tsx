@@ -8,9 +8,9 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
-import { Spinner } from '../../ui/src/components/Spinner/Spinner';
-import { AppProvider } from './app-context/appContext';
+import { Spinner } from '@lp/ui';
 
+import { AppProvider } from './app-context/appContext';
 import { getUserData } from './util/getUserData';
 import ErrorBoundary from './components/error-boundary/error-boundary';
 

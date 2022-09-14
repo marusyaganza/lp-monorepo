@@ -1,8 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useQuery } from '@apollo/client';
-import { Spinner } from '../../../../ui/src/components/Spinner/Spinner';
-import { WordType } from '../../../../types/common-types';
-import { WordCard } from '../../../../ui/src/components/word-card/word-card';
+
+import { Spinner } from '@lp/ui';
+import { WordType } from '@lp/types';
+import { WordCard } from '@lp/ui';
+
 import { PageLayout } from '../../components/PageLayout/PageLayout';
 import { WORDS_QUERY } from '../../gql/queries';
 

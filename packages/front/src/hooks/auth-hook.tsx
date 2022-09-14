@@ -62,7 +62,9 @@ export const useAuth = () => {
       const remainingTime = tokenExpDate.getTime() - new Date().getTime();
       logoutTimer = setTimeout(logout, remainingTime);
     } else {
-      clearTimeout(logoutTimer);
+      if (logoutTimer) {
+        clearTimeout(logoutTimer);
+      }
     }
   }, [token, tokenExpDate, logout]);
 

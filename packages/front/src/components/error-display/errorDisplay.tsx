@@ -1,6 +1,7 @@
 import React, { MouseEventHandler } from 'react';
-import { Button } from '../../../../ui/src/components/button/Button';
-import { Icon, IconIdType } from '../../../../ui/src/components/Icon/icon';
+
+import { Button } from '@lp/ui';
+import { Icon, IconIdType } from '@lp/ui';
 
 import './error-display.css';
 
@@ -10,7 +11,7 @@ interface ErrorDisplayProps {
   subHeading: string;
   buttonHandler: MouseEventHandler;
   buttonText: string;
-  theme: 'red' | 'base';
+  theme?: 'red' | 'base';
 }
 
 export const ErrorDisplay = ({
@@ -19,7 +20,7 @@ export const ErrorDisplay = ({
   subHeading,
   buttonHandler,
   buttonText,
-  theme
+  theme = 'base'
 }: ErrorDisplayProps) => {
   return (
     <div className="infoContainer">
@@ -30,7 +31,7 @@ export const ErrorDisplay = ({
         </h1>
         <h2 className="subheading">{subHeading}</h2>
         <div className="buttonContainer">
-          <Button size="L" onClick={buttonHandler}>
+          <Button onClick={buttonHandler}>
             {buttonText} <Icon id="reload" width={16} height={16} />
           </Button>
         </div>

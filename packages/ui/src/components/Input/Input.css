@@ -23,6 +23,7 @@
     color: var(--notification-danger);
     visibility: visible;
 }
+
 .errorText {
     width: 100%;
     color: var(--notification-danger);
@@ -30,6 +31,7 @@
     text-align: center;
     transition: opacity 1s ease;
 }
+
 .errorTextActive {
     opacity: 1;
 }

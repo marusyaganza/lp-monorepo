@@ -8,6 +8,7 @@
 .info {
     margin: 100px auto;
 }
+
 .mainHeading {
     font-size: var(--font-size-xxxl);
     display: flex;
@@ -21,6 +22,7 @@
     color: var(--purple-darkest);
     text-align: center;
 }
+
 .buttonContainer {
     display: flex;
     justify-content: center;

@@ -1,14 +1,13 @@
 import React, { useContext, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { Form } from '../../../../ui/src/components/form/Form';
-import { InputProps } from '../../../../ui/src/components/Input/Input';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { DocumentNode, useMutation } from '@apollo/client';
 
-import { Spinner } from '../../../../ui/src/components/Spinner/Spinner';
-import { AppContext } from '../../app-context/appContext';
+import { Form } from '@lp/ui';
+import { InputProps } from '@lp/ui';
+import { Spinner } from '@lp/ui';
+import { LinkType } from '@lp/types';
 
-import { LinkType } from '../../../../types/common-types';
+import { AppContext } from '../../app-context/appContext';
 
 import './AuthForm.css';
 
@@ -65,5 +64,3 @@ export const AuthForm = ({
     </main>
   );
 };
-
-AuthForm;

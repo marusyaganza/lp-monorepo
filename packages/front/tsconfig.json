@@ -1,16 +1,10 @@
 {
-  "compilerOptions": {
+  "extends": "../tsconfig.settings",
+    "compilerOptions": {
     "outDir": "./dist/",
-    "sourceMap": true,
-    "strictNullChecks": true,
-    "strict": true,
-    "module": "es2020",
     "jsx": "react",
-    "target": "es6",
-    "allowJs": true,
-    "allowSyntheticDefaultImports": true,
-    "moduleResolution": "node",
     "typeRoots": ["./src/@types", "./node_modules/@types"]
   },
-  "include": ["./src/"]
+  "include": ["./src/"],
+  "exclude": ["**/node_modules/**"]
 }
