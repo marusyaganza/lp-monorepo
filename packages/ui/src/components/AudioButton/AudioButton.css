@@ -1,0 +1,24 @@
+.playButton {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+}
+
+.buttonText {
+    margin-right: 2px;
+    font-family: var(--font-libreBaskerville);
+    font-size: var(--font-size-xs);
+    font-style: italic;
+}
+
+.playButton:hover {
+    color: var(--purple-lighter);
+}
+
+.icon {
+    vertical-align: bottom;
+}

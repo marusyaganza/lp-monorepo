@@ -1,5 +1,5 @@
 @font-face {
-    font-family: 'Kalam';
+    font-family: Kalam;
     font-weight: bold;
     src: local('Kalam Bold'),
     url('../fonts/Kalam-Bold.woff2') format('woff2'),
@@ -9,7 +9,7 @@
     font-display: swap;
 }
 @font-face {
-    font-family: 'Kalam';
+    font-family: Kalam;
     font-style: normal;
     font-weight: 400;
     src: local('Kalam'),
@@ -20,17 +20,17 @@
     font-display: swap;
 }
 @font-face {
-    font-family: 'Kalam';
+    font-family: Kalam;
     font-style: italic;
     src: local('Kalam italic'),
     url('../fonts/Kalam-Light.woff2') format('woff2'),
     url('../fonts/Kalam-Light.woff') format('woff'),
     url('../fonts/Kalam-Light.ttf') format('ttf');
-    unicode-range: U+0020-007F, U+0250—02AF;
+    unicode-range: U+0020-007F, u+0250—02af;
     font-display: swap;
 }
 @font-face {
-    font-family: 'LibreBaskerville';
+    font-family: LibreBaskerville;
     font-weight: bold;
     src: local('LibreBaskerville Bold'),
     url('../fonts/LibreBaskerville-Bold.woff2') format('woff2'),
@@ -40,7 +40,7 @@
     font-display: swap;
 }
 @font-face {
-    font-family: 'LibreBaskerville';
+    font-family: LibreBaskerville;
     font-style: normal;
     font-weight: 400;
     src: local('LibreBaskerville'),
@@ -51,7 +51,7 @@
     font-display: swap;
 }
 @font-face {
-    font-family: 'LibreBaskerville';
+    font-family: LibreBaskerville;
     font-style: italic;
     src: local('LibreBaskerville Italic'),
     url('../fonts/LibreBaskerville-Italic.woff2') format('woff2'),

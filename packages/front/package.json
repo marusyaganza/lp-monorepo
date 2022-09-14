@@ -1,18 +1,28 @@
 {
-  "name": "front",
-  "version": "1.0.0",
+  "name": "@lp/front",
+  "version": "1.0.2",
   "description": "frontend",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --env mode=development",
+    "start": "webpack-dev-server --env mode=development",
     "prod": "webpack --env mode=production",
-    "serve": "http-server"
+    "stylelint": "stylelint src",
+    "eslint": "eslint src",
+    "ready": "yarn eslint --fix && yarn stylelint --fix",
+    "serve": "http-server",
+    "clean": "rimraf dist *.tsbuildinfo public",
+    "ts": "tsc -b ."
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0"
+    "@apollo/client": "^3.6.6",
+    "@lp/types": "^1.0.2",
+    "@lp/ui": "^0.0.2",
+    "graphql": "^16.5.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-router-dom": "^6.3.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.9",
@@ -21,6 +31,9 @@
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.1",
     "css-minimizer-webpack-plugin": "^4.0.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.30.0",
+    "eslint-plugin-react-hooks": "^4.5.0",
     "html-webpack-plugin": "^5.5.0",
     "http-server": "^14.1.0",
     "mini-css-extract-plugin": "^2.6.0",

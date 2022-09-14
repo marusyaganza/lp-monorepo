@@ -2,7 +2,7 @@
   "users": [
     {
       "email": "member@member.com",
-      "password": "password",
+      "password": "Password123!",
       "role": "ADMIN",
       "verified": false,
       "avatar": "http",
@@ -13,7 +13,7 @@
     },
     {
       "email": "me@test.com",
-      "password": "123Test25",
+      "password": "123Test25!",
       "name": "John Doe",
       "createdAt": 1652636040237,
       "id": "JG7MxQtfYykJQt9AB1lpZ",
@@ -32,6 +32,8 @@
     {
       "userId": "Z2hlvDmLOSRZGebC_Z_aA",
       "name": "egalitarian",
+      "audioUrl": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/e/ega/egali/egalitarian__gb_1.mp3",
+      "transcription": "iˌɡælɪˈteəriən",
       "defs": [
         "a person who believes that everyone is equal and should have the same rights and opportunities"
       ],

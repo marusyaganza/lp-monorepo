@@ -1,15 +1,31 @@
 import React from 'react';
+// TODO fix this type problem
+// @ts-ignore
 import sprite from './sprite.svg';
 
-type IconProps = {
-  width?: number,
-  height?: number,
-  id: 'edit' | 'search',
-  className?: string,
-  tooltip?: string
-}
+export type IconIdType =
+  | 'edit'
+  | 'search'
+  | 'error'
+  | 'reload'
+  | 'book'
+  | 'play';
 
-export const Icon = ({ width=18, height=18, id, tooltip, className }: IconProps) => {
+export type IconProps = {
+  width?: number;
+  height?: number;
+  id: IconIdType;
+  className?: string;
+  tooltip?: string;
+};
+
+export const Icon = ({
+  width = 18,
+  height = 18,
+  id,
+  tooltip,
+  className
+}: IconProps) => {
   const img = `${sprite}#${id}`;
   return (
     <svg

@@ -1,0 +1,88 @@
+.word {
+    padding: 15px;
+    border: 1px solid rgb(32 7 114 / 20%);
+    margin: 10px 20px;
+    border-radius: 3px;
+    box-shadow: 0 3px 0 var(--gray-lightest);
+    font-family: var(--font-libreBaskerville);
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.wordHeader {
+    display: flex;
+    align-items: baseline;
+}
+
+.particle {
+    margin: 0 10px;
+    font-style: italic;
+}
+
+.textIcon {
+    margin-right: 5px;
+    color: var(--yellow-darker);
+}
+
+.name {
+    color: var(--purple-darker);
+    font-weight: bold;
+}
+
+.examples {
+    font-family: var(--font-kalam);
+}
+
+.examplesTitle {
+    font-size: var(--font-size-s);
+}
+
+.examplesList {
+    padding: 0 10px;
+    margin: 0 50px;
+}
+
+.examplesListInfo {
+    color: var(--purple-base);
+    font-weight: bold;
+}
+
+.exampleItem {
+    padding: 5px;
+    color: var(--gray-darkest);
+}
+
+.defListItem {
+    display: flex;
+    align-items: baseline;
+}
+
+.defItem {
+    margin: 10px 0;
+    line-height: 1.5rem;
+}
+
+.top {
+    display: flex;
+    width: 100%;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+.top header {
+    padding: 10px 0;
+}
+
+.audio {
+    font-size: var(--font-size-xs);
+}
+
+.transcription {
+    color: var(--gray-darkest);
+    font-style: italic;
+}
+
+.image {
+    align-self: center;
+}

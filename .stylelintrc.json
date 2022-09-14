@@ -1,0 +1,15 @@
+{
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-prettier",
+    "stylelint-order",
+    "stylelint-high-performance-animation",
+    "stylelint-a11y"
+  ],
+  "rules": {
+    "selector-class-pattern": null,
+    "custom-property-pattern": null
+  },
+  "files": ["**/*.css"],
+  "ignoreFiles": ["**/*.js", "**/*.svg", "**/*.html", "**/*.tsx", "**/*.ts", "**/*.ttf", "**/*.woff", "**/*.woff2"]
+}
