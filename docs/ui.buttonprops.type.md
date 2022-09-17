@@ -4,6 +4,8 @@
 
 ## ButtonProps.type property
 
+Native HTML 'type' property
+
 <b>Signature:</b>
 
 ```typescript

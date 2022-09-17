@@ -14,7 +14,12 @@ export interface ButtonProps
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [className?](./ui.buttonprops.classname.md) |  | string | <i>(Optional)</i> |
-|  [disabled?](./ui.buttonprops.disabled.md) |  | boolean | <i>(Optional)</i> |
-|  [type?](./ui.buttonprops.type.md) |  | 'submit' \| 'button' \| 'reset' | <i>(Optional)</i> |
+|  [className?](./ui.buttonprops.classname.md) |  | string | <i>(Optional)</i> Additional styling |
+|  [disabled?](./ui.buttonprops.disabled.md) |  | boolean | <i>(Optional)</i> Native HTML 'disabled' property |
+|  [iconHeight?](./ui.buttonprops.iconheight.md) |  | number | <i>(Optional)</i> Height of the icon in px |
+|  [iconId?](./ui.buttonprops.iconid.md) |  | [IconIdType](./ui.iconidtype.md) | <i>(Optional)</i> Id of the icon |
+|  [iconWidth?](./ui.buttonprops.iconwidth.md) |  | number | <i>(Optional)</i> Width of the icon in px |
+|  [size?](./ui.buttonprops.size.md) |  | 'S' \| 'L' | <i>(Optional)</i> Defines font size of button and its paddings |
+|  [type?](./ui.buttonprops.type.md) |  | 'submit' \| 'button' \| 'reset' | <i>(Optional)</i> Native HTML 'type' property |
+|  [variant?](./ui.buttonprops.variant.md) |  | [ButtonVariantType](./ui.buttonvarianttype.md) | <i>(Optional)</i> Defines the look of button |
 

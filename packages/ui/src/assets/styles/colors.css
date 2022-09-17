@@ -19,11 +19,11 @@
   --primary-500: #200772;
 
   /* secondary */
-  --secondaary-100: #ffe773;
-  --secondaary-200: #ffde40;
-  --secondaary-300: #ffd300;
-  --secondaary-400: #ffbf00;
-  --secondaary-500: #fda50f;
+  --secondary-100: #ffe773;
+  --secondary-200: #ffde40;
+  --secondary-300: #ffd300;
+  --secondary-400: #ffbf00;
+  --secondary-500: #fda50f;
 
 /* status colors */
   --error-100: #c66;

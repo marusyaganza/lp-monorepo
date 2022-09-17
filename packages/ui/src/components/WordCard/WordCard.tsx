@@ -42,11 +42,7 @@ export const WordCard = ({ word }: WordCardProps) => {
     return (
       <section className="audio">
         {audioUrl ? (
-          <AudioButton
-            buttonText={`[${transcription}]`}
-            src={audioUrl}
-            buttonSize={18}
-          />
+          <AudioButton buttonText={`[${transcription}]`} src={audioUrl} />
         ) : (
           <div className="transcription">[{transcription}]</div>
         )}

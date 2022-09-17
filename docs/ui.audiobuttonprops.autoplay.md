@@ -4,7 +4,7 @@
 
 ## AudioButtonProps.autoplay property
 
-If it set to true, audio file will play when AudioButton component is rendered
+Size of the audio icon in pixels
 
 <b>Signature:</b>
 

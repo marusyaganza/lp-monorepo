@@ -4,6 +4,8 @@
 
 ## ButtonProps.className property
 
+Additional styling
+
 <b>Signature:</b>
 
 ```typescript

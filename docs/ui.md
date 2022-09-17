@@ -53,7 +53,7 @@ Happy learning
 |  Variable | Description |
 |  --- | --- |
 |  [AudioButton](./ui.audiobutton.md) | Special type of button that plays audio when you click on it |
-|  [Button](./ui.button.md) |  |
+|  [Button](./ui.button.md) | Button component |
 |  [DictionaryEntity](./ui.dictionaryentity.md) |  |
 |  [ErrorDisplay](./ui.errordisplay.md) |  |
 |  [Footer](./ui.footer.md) |  |
@@ -69,6 +69,7 @@ Happy learning
 
 |  Type Alias | Description |
 |  --- | --- |
+|  [ButtonVariantType](./ui.buttonvarianttype.md) | All supported variants of button |
 |  [HeaderProps](./ui.headerprops.md) |  |
 |  [IconIdType](./ui.iconidtype.md) |  |
 |  [IconProps](./ui.iconprops.md) |  |

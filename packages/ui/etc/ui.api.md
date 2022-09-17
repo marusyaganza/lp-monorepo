@@ -17,28 +17,32 @@ import { default as React_2 } from 'react';
 import { WordType } from '@lp/types';
 
 // @public
-export const AudioButton: ({ src, buttonText, buttonSize, autoplay }: AudioButtonProps) => JSX.Element;
+export const AudioButton: ({ src, buttonText, autoplay, ...rest }: AudioButtonProps) => JSX.Element;
 
 // @public
-export interface AudioButtonProps {
+export interface AudioButtonProps extends ButtonProps {
     autoplay?: boolean;
-    buttonSize?: number;
     buttonText?: string;
     src: string;
 }
 
-// @public (undocumented)
-export const Button: ({ children, type, className, disabled, ...rest }: PropsWithChildren<ButtonProps> & HTMLAttributes<HTMLButtonElement>) => JSX.Element;
+// @public
+export const Button: ({ children, type, className, disabled, variant, size, iconId, iconHeight, iconWidth, ...rest }: PropsWithChildren<ButtonProps> & HTMLAttributes<HTMLButtonElement>) => JSX.Element;
 
 // @public (undocumented)
 export interface ButtonProps {
-    // (undocumented)
     className?: string;
-    // (undocumented)
     disabled?: boolean;
-    // (undocumented)
+    iconHeight?: number;
+    iconId?: IconIdType;
+    iconWidth?: number;
+    size?: 'S' | 'L';
     type?: 'submit' | 'button' | 'reset';
+    variant?: ButtonVariantType;
 }
+
+// @public
+export type ButtonVariantType = 'primary' | 'secondary' | 'ternary' | 'danger' | 'success' | 'iconWithText' | 'icon';
 
 // @public (undocumented)
 export const DictionaryEntity: ({ text, className }: DictionaryEntityProps) => JSX.Element;

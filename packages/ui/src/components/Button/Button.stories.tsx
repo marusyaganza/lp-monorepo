@@ -1,14 +1,76 @@
 import React from 'react';
-import { Button, ButtonProps } from './Button';
+import { Button, ButtonProps, ButtonVariantType } from './Button';
+import { IconIdType } from '../Icon/icon';
+
+import '../../assets/styles/common-styles.css';
 
 export default {
   title: 'Button',
-  component: Button
-  // argTypes: {
-  //   backgroundColor: { control: 'color' },
-  // },
+  component: Button,
+  argTypes: {
+    iconHeight: {
+      control: 'number',
+      defaultValue: 20,
+      min: 1,
+      max: 100,
+      step: 1
+    },
+    iconWidth: {
+      control: 'number',
+      defaultValue: 20,
+      min: 1,
+      max: 100,
+      step: 1
+    }
+  }
 };
 
-export const Btn = (args: ButtonProps) => (
-  <Button {...args}>First button</Button>
-);
+const buttons: ButtonVariantType[] = [
+  'primary',
+  'secondary',
+  'ternary',
+  'danger',
+  'success'
+];
+
+const ids: IconIdType[] = ['edit', 'search', 'error', 'reload', 'book', 'play'];
+
+export const DefaultButtons = (args: ButtonProps) => {
+  return buttons.map(btn => (
+    <div key={btn} className="presentationBox">
+      <Button {...args} variant={btn}>
+        {btn}
+      </Button>
+    </div>
+  ));
+};
+
+export const DisabledButtons = () => {
+  return buttons.map(btn => (
+    <div key={btn} className="presentationBox">
+      <Button variant={btn} disabled>
+        {btn}
+      </Button>
+    </div>
+  ));
+};
+
+export const ButtonsWithIcon = () => {
+  return ids.map(id => (
+    <div key={id} className="presentationBox">
+      <Button variant="iconWithText" iconId={id}>
+        {id}
+      </Button>
+    </div>
+  ));
+};
+
+export const IconButtons = (args: ButtonProps) => {
+  return ids.map(id => (
+    <div key={id} className="presentationBox">
+      <Button {...args} variant="icon" iconId={id}>
+        {id}
+      </Button>
+    </div>
+  ));
+};

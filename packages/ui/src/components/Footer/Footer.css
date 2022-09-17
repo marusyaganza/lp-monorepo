@@ -4,7 +4,7 @@
     padding: 0 3em;
     margin: 40px 0 0;
     background: var(--primary-500);
-    color: var(--secondaary-300);
+    color: var(--secondary-300);
     font-family: var(--font-kalam);
     font-size: var(--font-size-xxs);
 }
@@ -19,5 +19,5 @@
 
 .contactLink {
     text-decoration: none;
-    color: var(--secondaary-300);
+    color: var(--secondary-300);
 }

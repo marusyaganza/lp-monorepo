@@ -6,7 +6,7 @@
     justify-content: space-between;
     margin: 0;
     background: var(--primary-500);
-    color: var(--secondaary-300);
+    color: var(--secondary-300);
     font-family: var(--font-kalam);
     font-size: var(--font-size-xxs);
     text-transform: uppercase;
@@ -30,7 +30,7 @@
 
 .activeLink {
     background: var(--primary-400);
-    color: var(--secondaary-100);
+    color: var(--secondary-100);
 }
 
 .headerLink, .activeLink {
@@ -41,5 +41,5 @@
 
 .headerLink:hover, .activeLink:hover {
     background: var(--primary-100);
-    color: var(--secondaary-100);
+    color: var(--secondary-100);
 }

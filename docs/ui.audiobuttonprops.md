@@ -9,15 +9,15 @@ AudioButton Props
 <b>Signature:</b>
 
 ```typescript
-export interface AudioButtonProps 
+export interface AudioButtonProps extends ButtonProps 
 ```
+<b>Extends:</b> [ButtonProps](./ui.buttonprops.md)
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [autoplay?](./ui.audiobuttonprops.autoplay.md) |  | boolean | <i>(Optional)</i> If it set to true, audio file will play when AudioButton component is rendered |
-|  [buttonSize?](./ui.audiobuttonprops.buttonsize.md) |  | number | <i>(Optional)</i> Size of the audio icon in pixels |
+|  [autoplay?](./ui.audiobuttonprops.autoplay.md) |  | boolean | <i>(Optional)</i> Size of the audio icon in pixels |
 |  [buttonText?](./ui.audiobuttonprops.buttontext.md) |  | string | <i>(Optional)</i> Text that comes before the audio icon |
 |  [src](./ui.audiobuttonprops.src.md) |  | string | path to the audio file that plays on click |
 

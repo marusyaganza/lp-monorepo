@@ -5,6 +5,10 @@ const clickHandler = () => {
   window.location.reload();
 };
 
+/**
+ * @internal
+ */
+
 interface State {
   hasError: boolean;
 }
