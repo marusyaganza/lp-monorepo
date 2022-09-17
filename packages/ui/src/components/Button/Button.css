@@ -3,12 +3,12 @@
 
 .button {
     font-family: var(--font-libreBaskerville);
-    color: var(--purple-base);
+    color: var(--primary-300);
     transition:0.3s ease all;
     font-size: var(--font-size-xs);
     box-shadow: 0 2px 10px rgb(0 0 0 / 16%), 0 3px 6px rgb(0 0 0 / 10%);
     border-radius: 2px;
-    border: 3px solid var(--purple-base);
+    border: 3px solid var(--primary-300);
     padding: 8px 35px;
     background: inherit;
     cursor: pointer;
@@ -16,13 +16,13 @@
 }
 
 .button:hover:not(.disabled) {
-    color: var(--white);
-    background: var(--purple-base);
+    color: var(--text-inverted);
+    background: var(--primary-300);
 }
 
 .disabled {
-    color: var(--gray-darkest);
-    border: 3px solid var(--gray-darkest);
-    background-color: var(--gray-lightest);
+    color: var(--neutral-700);
+    border: 3px solid var(--neutral-700);
+    background-color: var(--neutral-200);
     cursor:not-allowed;
 }

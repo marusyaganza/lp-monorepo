@@ -18,8 +18,8 @@
 
 .subheading {
     padding: 30px;
-    border-bottom: 1px solid var(--gray-lighter);
-    color: var(--purple-darkest);
+    border-bottom: 1px solid var(--neutral-300);
+    color: var(--neutral-800);
     text-align: center;
 }
 
@@ -34,5 +34,5 @@
 }
 
 .base {
-    color: var(--purple-darker);
+    color: var(--primary-500);
 }

@@ -1,6 +1,6 @@
 .info {
     display: inline;
     margin-right: 5px;
-    color: var(--purple-lighter);
+    color: var(--primary-200);
     font-style: italic;
 }

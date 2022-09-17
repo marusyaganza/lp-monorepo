@@ -15,7 +15,7 @@
 }
 
 .errorMessage {
-    color: var(--notification-danger-dark);
+    color: var(--error-300);
     font-size: var(--font-size-m);
 }
 
