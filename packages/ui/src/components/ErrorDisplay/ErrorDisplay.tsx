@@ -1,11 +1,11 @@
 import React, { MouseEventHandler } from 'react';
 
-import { Button } from '@lp/ui';
-import { Icon, IconIdType } from '@lp/ui';
+import { Button } from '../Button/Button';
+import { Icon, IconIdType } from '../Icon/icon';
 
-import './error-display.css';
+import './ErrorDisplay.css';
 
-interface ErrorDisplayProps {
+export interface ErrorDisplayProps {
   heading: string;
   headingIcon?: IconIdType;
   subHeading: string;

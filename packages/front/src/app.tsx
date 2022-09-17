@@ -12,7 +12,7 @@ import { Spinner } from '@lp/ui';
 
 import { AppProvider } from './app-context/appContext';
 import { getUserData } from './util/getUserData';
-import ErrorBoundary from './components/error-boundary/error-boundary';
+import { ErrorBoundary } from '@lp/ui';
 
 import './app.css';
 

@@ -1,14 +1,14 @@
 import React, { PropsWithChildren, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { Header } from '../Header/Header';
-import { Footer } from '../Footer/Footer';
+import { Header } from '@lp/ui';
+import { Footer } from '@lp/ui';
 import { navLinks } from '../../../constants/navLinks';
 import { AppContext } from '../../app-context/appContext';
 import './PageLayout.css';
 
 export const PageLayout = ({ children }: PropsWithChildren<unknown>) => {
-  const { userId } = useContext(AppContext);
+  const { userId, logout } = useContext(AppContext);
   const navigate = useNavigate();
   useEffect(() => {
     if (!userId) {
@@ -19,7 +19,7 @@ export const PageLayout = ({ children }: PropsWithChildren<unknown>) => {
   return (
     <>
       <div className="page">
-        <Header navLinks={navLinks} />
+        <Header onLogout={logout} navLinks={navLinks} />
         <main className="main">{children}</main>
         <Footer />
       </div>

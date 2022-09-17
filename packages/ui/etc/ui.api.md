@@ -6,10 +6,14 @@
 
 /// <reference types="react" />
 
+import { ErrorInfo } from 'react';
 import { FormHTMLAttributes } from 'react';
 import { HTMLAttributes } from 'react';
 import { InputHTMLAttributes } from 'react';
+import { LinkType } from '@lp/types';
+import { MouseEventHandler } from 'react';
 import { PropsWithChildren } from 'react';
+import { default as React_2 } from 'react';
 import { WordType } from '@lp/types';
 
 // @public
@@ -47,6 +51,43 @@ export interface DictionaryEntityProps {
     text: string;
 }
 
+// Warning: (ae-forgotten-export) The symbol "State" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export class ErrorBoundary extends React_2.Component<PropsWithChildren<unknown>, State> {
+    constructor(props: PropsWithChildren<unknown>);
+    // (undocumented)
+    componentDidCatch(error: Error, errorInfo: ErrorInfo): void;
+    // (undocumented)
+    static getDerivedStateFromError(): {
+        hasError: boolean;
+    };
+    // (undocumented)
+    render(): string | number | boolean | React_2.ReactFragment | JSX.Element | null | undefined;
+}
+
+// @public (undocumented)
+export const ErrorDisplay: ({ heading, headingIcon, subHeading, buttonHandler, buttonText, theme }: ErrorDisplayProps) => JSX.Element;
+
+// @public (undocumented)
+export interface ErrorDisplayProps {
+    // (undocumented)
+    buttonHandler: MouseEventHandler;
+    // (undocumented)
+    buttonText: string;
+    // (undocumented)
+    heading: string;
+    // (undocumented)
+    headingIcon?: IconIdType;
+    // (undocumented)
+    subHeading: string;
+    // (undocumented)
+    theme?: 'red' | 'base';
+}
+
+// @public (undocumented)
+export const Footer: () => JSX.Element;
+
 // @public (undocumented)
 export const Form: ({ className, fields, onFormSubmit, buttonText, isLoading, ...rest }: FormProps) => JSX.Element;
 
@@ -63,6 +104,15 @@ export interface FormProps extends FormHTMLAttributes<HTMLFormElement> {
     // (undocumented)
     onFormSubmit: (values: Record<string, string>) => void;
 }
+
+// @public (undocumented)
+export const Header: ({ navLinks, onLogout }: HeaderProps) => JSX.Element;
+
+// @public (undocumented)
+export type HeaderProps = {
+    navLinks: LinkType[];
+    onLogout?: () => void;
+};
 
 // @public (undocumented)
 export const Icon: ({ width, height, id, tooltip, className }: IconProps) => JSX.Element;

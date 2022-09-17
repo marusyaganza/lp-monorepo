@@ -22,6 +22,10 @@
  * @packageDocumentation
  */
 export * from './components/AudioButton/AudioButton';
+export * from './components/Footer/Footer';
+export * from './components/Header/Header';
+export * from './components/ErrorDisplay/ErrorDisplay';
+export * from './components/ErrorBoundary/ErrorBoundary';
 export * from './components/Spinner/Spinner';
 export * from './components/Button/Button';
 export * from './components/DictionaryEntity/DictionaryEntity';

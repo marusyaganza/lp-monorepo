@@ -1,20 +1,18 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { AppContext } from '../../app-context/appContext';
 
-import { Button } from '@lp/ui';
-import { LinkType } from '../../../../types/src/common-types';
+import { Button } from '../Button/Button';
+import { LinkType } from '@lp/types';
 
 import './Header.css';
 
 export type HeaderProps = {
   navLinks: LinkType[];
+  onLogout?: () => void;
 };
 
-export const Header = ({ navLinks }: HeaderProps) => {
+export const Header = ({ navLinks, onLogout }: HeaderProps) => {
   // TODO replace it to design system and use renderLinks function to render of Navlinks
-
-  const { logout } = useContext(AppContext);
 
   return (
     <header className="header">
@@ -35,7 +33,7 @@ export const Header = ({ navLinks }: HeaderProps) => {
         })}
       </ul>
       {/* TODO: design normal button for logout */}
-      <Button onClick={logout}>Logout</Button>
+      {onLogout && <Button onClick={onLogout}>Logout</Button>}
     </header>
   );
 };

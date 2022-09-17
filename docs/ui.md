@@ -16,6 +16,12 @@ This package is using storybook for live premiew. Learn more on <a href="" targe
 
 Happy learning
 
+## Classes
+
+|  Class | Description |
+|  --- | --- |
+|  [ErrorBoundary](./ui.errorboundary.md) |  |
+
 ## Enumerations
 
 |  Enumeration | Description |
@@ -36,6 +42,7 @@ Happy learning
 |  [AudioButtonProps](./ui.audiobuttonprops.md) | AudioButton Props |
 |  [ButtonProps](./ui.buttonprops.md) |  |
 |  [DictionaryEntityProps](./ui.dictionaryentityprops.md) |  |
+|  [ErrorDisplayProps](./ui.errordisplayprops.md) |  |
 |  [FormProps](./ui.formprops.md) |  |
 |  [InputProps](./ui.inputprops.md) |  |
 |  [SpinnerProps](./ui.spinnerprops.md) |  |
@@ -48,7 +55,10 @@ Happy learning
 |  [AudioButton](./ui.audiobutton.md) | Special type of button that plays audio when you click on it |
 |  [Button](./ui.button.md) |  |
 |  [DictionaryEntity](./ui.dictionaryentity.md) |  |
+|  [ErrorDisplay](./ui.errordisplay.md) |  |
+|  [Footer](./ui.footer.md) |  |
 |  [Form](./ui.form.md) |  |
+|  [Header](./ui.header.md) |  |
 |  [Icon](./ui.icon.md) |  |
 |  [Input](./ui.input.md) |  |
 |  [Spinner](./ui.spinner.md) |  |
@@ -59,6 +69,7 @@ Happy learning
 
 |  Type Alias | Description |
 |  --- | --- |
+|  [HeaderProps](./ui.headerprops.md) |  |
 |  [IconIdType](./ui.iconidtype.md) |  |
 |  [IconProps](./ui.iconprops.md) |  |
 |  [validatorType](./ui.validatortype.md) | Validator that can be used to validate form values |
