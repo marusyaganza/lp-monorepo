@@ -60,7 +60,7 @@ Happy learning
 |  [Form](./ui.form.md) |  |
 |  [Header](./ui.header.md) |  |
 |  [Icon](./ui.icon.md) |  |
-|  [Input](./ui.input.md) |  |
+|  [Input](./ui.input.md) | Default text input component |
 |  [Spinner](./ui.spinner.md) |  |
 |  [validators](./ui.validators.md) | List of all validators available |
 |  [WordCard](./ui.wordcard.md) |  |

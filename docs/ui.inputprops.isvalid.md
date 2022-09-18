@@ -4,6 +4,8 @@
 
 ## InputProps.isValid property
 
+defines if input has valid value
+
 <b>Signature:</b>
 
 ```typescript

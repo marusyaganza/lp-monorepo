@@ -133,20 +133,15 @@ export type IconProps = {
     tooltip?: string;
 };
 
-// @public (undocumented)
+// @public
 export const Input: ({ name, label, errorText, isValid, className, ...rest }: InputProps) => JSX.Element;
 
 // @public (undocumented)
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-    // (undocumented)
     errorText?: string;
-    // (undocumented)
     isValid?: boolean;
-    // (undocumented)
     label: string;
-    // (undocumented)
     name: string;
-    // (undocumented)
     validators?: validatorType[];
 }
 

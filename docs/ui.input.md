@@ -4,6 +4,8 @@
 
 ## Input variable
 
+Default text input component
+
 <b>Signature:</b>
 
 ```typescript

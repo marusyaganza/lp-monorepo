@@ -4,6 +4,8 @@
 
 ## InputProps.label property
 
+input's label
+
 <b>Signature:</b>
 
 ```typescript
