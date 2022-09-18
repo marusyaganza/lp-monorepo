@@ -1,7 +1,5 @@
 import React from 'react';
-// TODO fix this type problem
-// @ts-ignore
-import sprite from './sprite.svg';
+import sprite from '../../assets/icons/sprite.svg';
 
 export type IconIdType =
   | 'edit'

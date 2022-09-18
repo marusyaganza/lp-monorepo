@@ -7,6 +7,7 @@
     display: flex;
     flex-direction: column;
     font-family: var(--font-libreBaskerville);
+    width: 300px;
 }
 
 .input {
@@ -30,6 +31,7 @@
 }
 
 .errorText {
+    min-height: 26px;
     width: 100%;
     color: var(--error-200);
     opacity: 0;

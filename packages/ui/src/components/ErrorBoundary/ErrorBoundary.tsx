@@ -28,9 +28,9 @@ export class ErrorBoundary extends React.Component<
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     // TODO configure dev and production, maybe add logging here
-    if (process.env.mode === 'development') {
-      console.error('err', JSON.stringify({ error, errorInfo }));
-    }
+    // if (process.env.mode === 'development') {
+    console.error('err', JSON.stringify({ error, errorInfo }));
+    // }
   }
 
   render() {

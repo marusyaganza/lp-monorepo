@@ -20,19 +20,23 @@ export const ErrorDisplay = ({
   subHeading,
   buttonHandler,
   buttonText,
-  theme = 'base'
+  theme = 'red'
 }: ErrorDisplayProps) => {
   return (
     <div className="infoContainer">
-      <article className="info">
+      <article>
         <h1 className={`mainHeading ${theme}`}>
           {heading}
           {headingIcon && <Icon id={headingIcon} width={100} height={50} />}
         </h1>
         <h2 className="subheading">{subHeading}</h2>
         <div className="buttonContainer">
-          <Button onClick={buttonHandler}>
-            {buttonText} <Icon id="reload" width={16} height={16} />
+          <Button
+            onClick={buttonHandler}
+            variant="iconWithText"
+            iconId="reload"
+          >
+            {buttonText}
           </Button>
         </div>
       </article>

@@ -21,7 +21,8 @@ const users = [
     avatar: 'http',
     createdAt: 1571213104370,
     id: '1',
-    name: 'Test'
+    firstName: 'User',
+    lastName: 'Test'
   }
 ];
 

@@ -5,8 +5,9 @@ Object {
   "data": Object {
     "login": Object {
       "email": "member@member.com",
+      "firstName": "User",
       "id": "1",
-      "name": "Test",
+      "lastName": "Test",
       "token": "token",
     },
   },
@@ -40,8 +41,9 @@ Object {
   "data": Object {
     "signUp": Object {
       "email": "test@test.com",
+      "firstName": "Hello World",
       "id": "2",
-      "name": "Hello World",
+      "lastName": "Hello World",
       "token": "token",
     },
   },

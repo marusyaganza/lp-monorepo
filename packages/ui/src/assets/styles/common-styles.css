@@ -7,6 +7,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: var(--font-libreBaskerville);
+    box-sizing: border-box;
   }
 
   input {
@@ -21,6 +22,9 @@ body {
 
   .presentationBox {
     margin: 50px;
-    box-sizing: border-box;
     width: 350px;
+}
+
+.presentationContent {
+  padding: 50px;
 }

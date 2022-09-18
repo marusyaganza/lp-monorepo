@@ -31,7 +31,7 @@ export const Input = ({
 }: InputProps) => {
   return (
     <div
-      className={cn(className, 'inputContainer', isValid ? 'incorrect' : '')}
+      className={cn(className, 'inputContainer', isValid ? '' : 'incorrect')}
     >
       <label htmlFor={name} className="label">
         {label}

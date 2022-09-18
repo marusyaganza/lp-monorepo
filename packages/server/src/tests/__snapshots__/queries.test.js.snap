@@ -5,8 +5,9 @@ Object {
   "data": Object {
     "user": Object {
       "email": "member@member.com",
+      "firstName": "User",
       "id": "1",
-      "name": "Test",
+      "lastName": "Test",
       "role": "MEMBER",
     },
   },
@@ -29,6 +30,7 @@ Object {
           "a person who believes that everyone is equal and should have the same rights and opportunities",
         ],
         "id": "0",
+        "name": "egalitarian",
         "particle": "noun",
       },
     ],

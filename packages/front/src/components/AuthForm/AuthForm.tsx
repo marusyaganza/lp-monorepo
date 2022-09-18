@@ -1,3 +1,4 @@
+//TODO deside what to do with this component
 import React, { useContext, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { DocumentNode, useMutation } from '@apollo/client';
