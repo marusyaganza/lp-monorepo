@@ -17,7 +17,7 @@ export interface AudioButtonProps extends ButtonProps
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [autoplay?](./ui.audiobuttonprops.autoplay.md) |  | boolean | <i>(Optional)</i> Size of the audio icon in pixels |
+|  [autoplay?](./ui.audiobuttonprops.autoplay.md) |  | boolean | <i>(Optional)</i> If it set to true, audio file will play when AudioButton component is rendered |
 |  [buttonText?](./ui.audiobuttonprops.buttontext.md) |  | string | <i>(Optional)</i> Text that comes before the audio icon |
 |  [src](./ui.audiobuttonprops.src.md) |  | string | path to the audio file that plays on click |
 
