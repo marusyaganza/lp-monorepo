@@ -8,7 +8,7 @@ export interface AudioButtonProps extends ButtonProps {
   src: string;
   /** Text that comes before the audio icon*/
   buttonText?: string;
-  /**Size of the audio icon in pixels */
+  /**If it set to true, audio file will play when AudioButton component is rendered */
   autoplay?: boolean;
 }
 

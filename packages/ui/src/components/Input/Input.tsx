@@ -11,7 +11,7 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
   /**array of validators */
   validators?: validatorType[];
-  /**test that is shown if input is invalid */
+  /**text that is shown if input is invalid */
   errorText?: string;
   /**defines if input has valid value */
   isValid?: boolean;
