@@ -8,7 +8,7 @@
     "prod": "webpack --env mode=production",
     "stylelint": "stylelint src",
     "eslint": "eslint src",
-    "ready": "yarn eslint --fix && yarn stylelint --fix",
+    "ready": "yarn eslint --fix && yarn stylelint",
     "serve": "http-server",
     "clean": "rimraf dist *.tsbuildinfo public",
     "ts": "tsc -b ."

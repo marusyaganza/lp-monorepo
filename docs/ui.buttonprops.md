@@ -19,6 +19,7 @@ export interface ButtonProps
 |  [iconHeight?](./ui.buttonprops.iconheight.md) |  | number | <i>(Optional)</i> Height of the icon in px |
 |  [iconId?](./ui.buttonprops.iconid.md) |  | [IconIdType](./ui.iconidtype.md) | <i>(Optional)</i> Id of the icon |
 |  [iconWidth?](./ui.buttonprops.iconwidth.md) |  | number | <i>(Optional)</i> Width of the icon in px |
+|  [isLoading?](./ui.buttonprops.isloading.md) |  | boolean | <i>(Optional)</i> Displays spinner instead of buttonText and disabled |
 |  [size?](./ui.buttonprops.size.md) |  | 'S' \| 'L' | <i>(Optional)</i> Defines font size of button and its paddings |
 |  [type?](./ui.buttonprops.type.md) |  | 'submit' \| 'button' \| 'reset' | <i>(Optional)</i> Native HTML 'type' property |
 |  [variant?](./ui.buttonprops.variant.md) |  | [ButtonVariantType](./ui.buttonvarianttype.md) | <i>(Optional)</i> Defines the look of button |

@@ -27,7 +27,7 @@ export interface AudioButtonProps extends ButtonProps {
 }
 
 // @public
-export const Button: ({ children, type, className, disabled, variant, size, iconId, iconHeight, iconWidth, ...rest }: PropsWithChildren<ButtonProps> & HTMLAttributes<HTMLButtonElement>) => JSX.Element;
+export const Button: ({ children, type, className, disabled, variant, size, iconId, iconHeight, iconWidth, isLoading, ...rest }: PropsWithChildren<ButtonProps> & HTMLAttributes<HTMLButtonElement>) => JSX.Element;
 
 // @public (undocumented)
 export interface ButtonProps {
@@ -36,6 +36,7 @@ export interface ButtonProps {
     iconHeight?: number;
     iconId?: IconIdType;
     iconWidth?: number;
+    isLoading?: boolean;
     size?: 'S' | 'L';
     type?: 'submit' | 'button' | 'reset';
     variant?: ButtonVariantType;
@@ -122,7 +123,7 @@ export type HeaderProps = {
 export const Icon: ({ width, height, id, tooltip, className }: IconProps) => JSX.Element;
 
 // @public (undocumented)
-export type IconIdType = 'edit' | 'search' | 'error' | 'reload' | 'book' | 'play';
+export type IconIdType = 'edit' | 'search' | 'error' | 'reload' | 'book' | 'play' | 'maintenance' | 'success' | 'close';
 
 // @public (undocumented)
 export type IconProps = {
@@ -145,13 +146,30 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     validators?: validatorType[];
 }
 
+// @public
+const Notification_2: ({ variant, text, subText, onClose, className }: NotificationProps) => JSX.Element;
+export { Notification_2 as Notification }
+
 // @public (undocumented)
-export const Spinner: ({ className }: SpinnerProps) => JSX.Element;
+export interface NotificationProps {
+    className?: string;
+    onClose?: () => void;
+    subText?: string;
+    text: string;
+    variant?: 'success' | 'error';
+}
+
+// @public (undocumented)
+export const Spinner: ({ className, variant, size }: SpinnerProps) => JSX.Element;
 
 // @public (undocumented)
 export interface SpinnerProps {
     // (undocumented)
     className?: string;
+    // (undocumented)
+    size?: 'S' | 'L';
+    // (undocumented)
+    variant?: 'primary' | 'secondary';
 }
 
 // @public

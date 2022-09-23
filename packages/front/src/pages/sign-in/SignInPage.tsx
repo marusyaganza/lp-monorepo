@@ -8,9 +8,8 @@ import { Form } from '@lp/ui';
 import { useMutation } from '@apollo/client';
 import { AppContext } from '../../app-context/appContext';
 import { routes } from '../../../constants/routes';
-import { Spinner } from '@lp/ui';
-
 import llustration from '../../assets/img/login.svg';
+
 import './SignInPage.css';
 
 const SignInPage = () => {
@@ -34,7 +33,7 @@ const SignInPage = () => {
   ];
 
   const [authFunc, { data, loading, error }] = useMutation(LOGIN);
-  const { login } = useContext(AppContext);
+  const { login, setNotification } = useContext(AppContext);
 
   const submitHandler = (values: Record<string, string>) => {
     authFunc({ variables: { input: values } });
@@ -46,6 +45,16 @@ const SignInPage = () => {
       login(fetchedData.id, fetchedData.token);
     }
   }, [data, login]);
+
+  useEffect(() => {
+    if (error) {
+      setNotification({
+        variant: 'error',
+        text: 'Error',
+        subText: error?.message
+      });
+    }
+  }, [error, setNotification]);
 
   return (
     <AuthPageLayout>
@@ -69,10 +78,6 @@ const SignInPage = () => {
         </div>
         <div>
           <img src={llustration} alt="Sign in" />
-          {/* temporary, romove this when notification component is ready */}
-          <p className="errorMessage">{error?.message}</p>
-          {/* temporary, spinner will be placed on a backdrop component */}
-          {loading && <Spinner className="loader" />}
         </div>
       </div>
     </AuthPageLayout>

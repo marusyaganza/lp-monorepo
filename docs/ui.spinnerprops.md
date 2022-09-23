@@ -15,4 +15,6 @@ export interface SpinnerProps
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
 |  [className?](./ui.spinnerprops.classname.md) |  | string | <i>(Optional)</i> |
+|  [size?](./ui.spinnerprops.size.md) |  | 'S' \| 'L' | <i>(Optional)</i> |
+|  [variant?](./ui.spinnerprops.variant.md) |  | 'primary' \| 'secondary' | <i>(Optional)</i> |
 

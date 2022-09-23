@@ -4,6 +4,7 @@ import React, { FormHTMLAttributes, FormEvent, useState } from 'react';
 import { Input, InputProps } from '../Input/Input';
 import { Button } from '../Button/Button';
 import { validate } from '../../utils/validators';
+import { cn } from '../../utils/classnames';
 
 export interface FormProps extends FormHTMLAttributes<HTMLFormElement> {
   className?: string;
@@ -17,7 +18,7 @@ export const Form = ({
   className,
   fields,
   onFormSubmit,
-  buttonText,
+  buttonText = 'Submit',
   isLoading,
   ...rest
 }: FormProps) => {
@@ -68,10 +69,10 @@ export const Form = ({
   };
 
   return (
-    <form onSubmit={submitHandler} className={`${className}`} {...rest}>
+    <form onSubmit={submitHandler} className={cn(className)} {...rest}>
       {renderFields()}
-      <Button type="submit" disabled={isLoading}>
-        {buttonText || 'Submit'}
+      <Button type="submit" isLoading={isLoading}>
+        {buttonText}
       </Button>
     </form>
   );

@@ -13,7 +13,7 @@ export const ErrorDisplayDefault = () => (
       subHeading="Something went wrong"
       heading="Some error"
       buttonText="reload"
-      headingIcon="error"
+      headingIcon="maintenance"
       buttonHandler={() => {
         console.log('clicked!');
       }}

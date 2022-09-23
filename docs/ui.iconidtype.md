@@ -7,5 +7,5 @@
 <b>Signature:</b>
 
 ```typescript
-export declare type IconIdType = 'edit' | 'search' | 'error' | 'reload' | 'book' | 'play';
+export declare type IconIdType = 'edit' | 'search' | 'error' | 'reload' | 'book' | 'play' | 'maintenance' | 'success' | 'close';
 ```

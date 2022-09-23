@@ -13,8 +13,6 @@
 .spinnerBox {
     position: relative;
     display: flex;
-    width: 300px;
-    height: 300px;
     align-items: center;
     justify-content: center;
     margin: 0 auto;
@@ -23,17 +21,39 @@
 
 .pulseContainer {
     display: flex;
-    width: 120px;
     align-items: center;
     justify-content: space-between;
 }
 
 .pulseBubble {
+    animation: none;
+    border-radius: 50%;
+}
+
+.primarySpinner > .pulseBubble {
+    background-color: var(--primary-300);
+}
+
+.secondarySpinner > .pulseBubble {
+    background-color: var(--secondary-300);
+}
+
+.pulseContainer.sizeS {
+    width: 60px;
+}
+
+.pulseContainer.sizeL {
+    width: 120px;
+}
+
+.pulseContainer.sizeL > .pulseBubble {
     width: 20px;
     height: 20px;
-    animation: none;
-    background-color: var(--primary-300);
-    border-radius: 50%;
+}
+
+.pulseContainer.sizeS > .pulseBubble {
+    width: 10px;
+    height: 10px;
 }
 
 .pulseBubble1 {

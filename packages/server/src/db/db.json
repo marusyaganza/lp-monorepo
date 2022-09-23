@@ -39,6 +39,16 @@
       "role": "MEMBER",
       "createdAt": 1663527279858,
       "id": "RLTOaqnTrzAvrrCYVUUTE"
+    },
+    {
+      "email": "third_chance3@test.com",
+      "password": "Password!123",
+      "firstName": "New",
+      "lastName": "Chance",
+      "primaryLanguage": "Hungarian",
+      "role": "MEMBER",
+      "createdAt": 1663943409837,
+      "id": "_nIM_LDirwpc94iR8omwb"
     }
   ],
   "words": [

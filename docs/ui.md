@@ -45,6 +45,7 @@ Happy learning
 |  [ErrorDisplayProps](./ui.errordisplayprops.md) |  |
 |  [FormProps](./ui.formprops.md) |  |
 |  [InputProps](./ui.inputprops.md) |  |
+|  [NotificationProps](./ui.notificationprops.md) |  |
 |  [SpinnerProps](./ui.spinnerprops.md) |  |
 |  [WordCardProps](./ui.wordcardprops.md) |  |
 
@@ -61,6 +62,7 @@ Happy learning
 |  [Header](./ui.header.md) |  |
 |  [Icon](./ui.icon.md) |  |
 |  [Input](./ui.input.md) | Default text input component |
+|  [Notification\_2](./ui.notification_2.md) | Notification component |
 |  [Spinner](./ui.spinner.md) |  |
 |  [validators](./ui.validators.md) | List of all validators available |
 |  [WordCard](./ui.wordcard.md) |  |

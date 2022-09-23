@@ -1,6 +1,7 @@
 import React, { HTMLAttributes, PropsWithChildren } from 'react';
 import { cn } from '../../utils/classnames';
 import { Icon, IconIdType } from '../Icon/icon';
+import { Spinner } from '../Spinner/Spinner';
 import './Button.css';
 
 /**All supported variants of button */
@@ -30,6 +31,8 @@ export interface ButtonProps {
   iconHeight?: number;
   /**Width of the icon in px */
   iconWidth?: number;
+  /**Displays spinner instead of buttonText and disabled */
+  isLoading?: boolean;
 }
 /**
  *
@@ -45,18 +48,43 @@ export const Button = ({
   iconId,
   iconHeight = 20,
   iconWidth = 20,
+  isLoading,
   ...rest
 }: PropsWithChildren<ButtonProps> & HTMLAttributes<HTMLButtonElement>) => {
-  console.log(children);
   const isIconButton = iconId && variant === 'icon';
+  let iconButtonStyle;
+  if (isIconButton && (iconHeight || iconWidth)) {
+    const size = Math.max(iconHeight, iconWidth);
+    iconButtonStyle = { height: size, width: size };
+  }
   return (
     <button
+      style={iconButtonStyle}
       type={type}
-      disabled={disabled}
-      className={cn(className, 'button', variant, `size${size}`)}
+      disabled={disabled || isLoading}
+      className={cn(
+        className,
+        'button',
+        variant,
+        `size${size}`,
+        disabled ? 'disabled' : ''
+      )}
       {...rest}
     >
-      <span hidden={isIconButton}>{children}</span>
+      {isLoading && !isIconButton && (
+        <Spinner
+          className="formSpinner"
+          size="S"
+          variant={
+            variant === 'secondary' || variant === 'ternary'
+              ? 'primary'
+              : 'secondary'
+          }
+        />
+      )}
+      <div className={cn(isLoading ? 'loadingButtonText' : '')}>
+        <span hidden={isIconButton}>{children}</span>
+      </div>
       {iconId && <Icon height={iconHeight} width={iconWidth} id={iconId} />}
     </button>
   );

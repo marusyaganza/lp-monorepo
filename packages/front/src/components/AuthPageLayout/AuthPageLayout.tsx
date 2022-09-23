@@ -2,6 +2,7 @@ import React, { useContext, useEffect, PropsWithChildren } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { AppContext } from '../../app-context/appContext';
+import { Notification } from '../Notification/Notification';
 
 import './AuthPageLayout.css';
 
@@ -17,6 +18,7 @@ export const AuthPageLayout = ({ children }: PropsWithChildren<unknown>) => {
 
   return (
     <div className="authPageContent">
+      <Notification />
       <main className="authFormContainer">{children}</main>
     </div>
   );

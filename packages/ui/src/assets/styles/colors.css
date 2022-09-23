@@ -27,9 +27,11 @@
 
 /* status colors */
   --error-100: #c66;
+  --error-100-rgb: 204, 102, 102;
   --error-200: #bf3030;
   --error-300: #aa2a2a;
   --success-100: #367B48;
+  --success-100-rgb: 118, 190, 118;
   --success-200: #3e7c3e;
   --success-300: #145114;
 }

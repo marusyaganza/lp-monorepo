@@ -34,3 +34,4 @@ export * from './components/Icon/icon';
 export * from './components/Input/Input';
 export * from './components/WordCard/WordCard';
 export * from './utils/validators';
+export * from './components/Notification/Notification';

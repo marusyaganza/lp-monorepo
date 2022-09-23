@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, ButtonProps, ButtonVariantType } from './Button';
-import { IconIdType } from '../Icon/icon';
+import { ids } from '../Icon/Icon.stories';
 
 import '../../assets/styles/common-styles.css';
 
@@ -33,8 +33,6 @@ const buttons: ButtonVariantType[] = [
   'success'
 ];
 
-const ids: IconIdType[] = ['edit', 'search', 'error', 'reload', 'book', 'play'];
-
 export const DefaultButtons = (args: ButtonProps) => {
   return buttons.map(btn => (
     <div key={btn} className="presentationBox">
@@ -49,6 +47,16 @@ export const DisabledButtons = () => {
   return buttons.map(btn => (
     <div key={btn} className="presentationBox">
       <Button variant={btn} disabled>
+        {btn}
+      </Button>
+    </div>
+  ));
+};
+
+export const LoadingButtons = (args: ButtonProps) => {
+  return buttons.map(btn => (
+    <div key={btn} className="presentationBox">
+      <Button isLoading {...args} variant={btn}>
         {btn}
       </Button>
     </div>
