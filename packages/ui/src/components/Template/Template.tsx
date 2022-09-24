@@ -1,7 +1,7 @@
 import React from 'react';
 import { cn } from '../../utils/classnames';
 
-import './Template.css';
+import styles from './Template.module.css';
 
 export interface TemplateProps {
   /**Template prop */
@@ -11,5 +11,5 @@ export interface TemplateProps {
 }
 /**Component description goes here */
 export const Template = ({ prop, className }: TemplateProps) => {
-  return <div className={cn(className)}>Template {prop}</div>;
+  return <div className={cn(className, styles.template)}>Template {prop}</div>;
 };

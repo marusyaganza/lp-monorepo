@@ -24,8 +24,7 @@ module.exports = ({ mode = 'production' }) => {
           {
             test: /\.(woff|woff2|ttf)$/i,
             type: 'asset/resource'
-          },
-          { test: /\.css$/, use: ['style-loader', 'css-loader'] }
+          }
         ]
       },
       plugins: [new HtmlWebpackPlugin({ template: './index.html' })]

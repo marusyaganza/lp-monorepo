@@ -3,7 +3,7 @@ import { cn } from '../../utils/classnames';
 import { Button } from '../Button/Button';
 import { Icon } from '../Icon/icon';
 
-import './Notification.css';
+import styles from './Notification.module.css';
 
 //TODO: animate this component
 export interface NotificationProps {
@@ -27,23 +27,22 @@ export const Notification = ({
   className
 }: NotificationProps) => {
   return (
-    <div className={cn(className, 'notificationContainer')}>
+    <div className={cn(className, styles.notificationContainer)}>
       <div
         className={cn(
-          'notificationContent',
-          `${variant}Notification`
-          // className
+          styles.notificationContent,
+          styles[`${variant}Notification`]
         )}
       >
-        <h3 className="notificationText">
-          <Icon id={variant} className={`${variant}Icon`} />
+        <h3 className={styles.notificationText}>
+          <Icon id={variant} className={styles[`${variant}Icon`]} />
           {text}
         </h3>
-        <p className="notificationSubText">{subText}</p>
+        <p className={styles.notificationSubText}>{subText}</p>
         <Button
           onClick={onClose}
           variant="icon"
-          className={cn('notificationCloseButton')}
+          className={styles.notificationCloseButton}
           iconId="close"
           iconHeight={28}
           iconWidth={17}

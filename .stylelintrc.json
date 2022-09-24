@@ -8,7 +8,8 @@
   ],
   "rules": {
     "selector-class-pattern": null,
-    "custom-property-pattern": null
+    "custom-property-pattern": null,
+    "color-function-notation": "legacy"
   },
   "files": ["**/*.css"],
   "ignoreFiles": ["**/*.js", "**/*.svg", "**/*.html", "**/*.tsx", "**/*.ts", "**/*.ttf", "**/*.woff", "**/*.woff2", "**/*.json"]
