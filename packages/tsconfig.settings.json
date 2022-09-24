@@ -7,7 +7,7 @@
     "target": "ES2018",
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
-    "noUnusedLocals": true,
+    "noUnusedLocals": false,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "declaration": true,

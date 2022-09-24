@@ -1,7 +1,5 @@
 import React from 'react';
-// TODO fix this type problem
-// @ts-ignore
-import sprite from './sprite.svg';
+import sprite from '../../assets/icons/sprite.svg';
 
 export type IconIdType =
   | 'edit'
@@ -9,7 +7,10 @@ export type IconIdType =
   | 'error'
   | 'reload'
   | 'book'
-  | 'play';
+  | 'play'
+  | 'maintenance'
+  | 'success'
+  | 'close';
 
 export type IconProps = {
   width?: number;
@@ -19,13 +20,7 @@ export type IconProps = {
   tooltip?: string;
 };
 
-export const Icon = ({
-  width = 18,
-  height = 18,
-  id,
-  tooltip,
-  className
-}: IconProps) => {
+export const Icon = ({ width, height, id, tooltip, className }: IconProps) => {
   const img = `${sprite}#${id}`;
   return (
     <svg

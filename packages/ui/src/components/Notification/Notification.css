@@ -1,0 +1,79 @@
+@import '../../assets/styles/colors.css';
+@import '../../assets/styles/font-sizes.css';
+@import '../../assets/styles/fonts.css';
+@import '../../assets/styles/effects.css';
+
+.notificationContainer {
+    min-width: 400px;
+    background-color: var(--text-inverted);
+    box-shadow: var(--primary-box-shadow);
+    font-family: var(--font-libreBaskerville);
+    position: relative;
+    border-radius: var(--primary-border-radius);
+}
+
+.notificationContent {
+    padding: 12px 25px;
+    border-radius: var(--primary-border-radius);
+}
+
+.successNotification {
+    background: rgb(var(--success-100-rgb), .25);
+    border: 1px solid var(--success-200);
+    color: var(--success-300);
+}
+
+.errorNotification {
+    background: rgb(var(--error-100-rgb), .25);
+    border: 1px solid var(--error-300);
+    color: var(--error-300);
+    /* min-width: 400px; */
+}
+
+.errorIcon {
+    color: var(--error-300);
+    width: 25px;
+    height: 20px;
+}
+
+.successIcon {
+    width: 18px;
+    height: 20px;
+}
+
+.notificationText {
+    font-size: var(--font-size-s);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.notificationSubText {
+    font-size: var(--font-size-xs);
+    margin: 0;
+    margin-top: 10px;
+}
+
+.errorNotification > .notificationText {
+    color: var(--neutral-700);
+}
+
+.errorNotification > .notificationSubText {
+    color: var(--neutral-700);
+}
+
+.notificationCloseButton {
+    position: absolute;
+    top: 14px;
+    right: 20px;
+}
+
+.successNotification > .notificationCloseButton {
+    color: var(--success-300);
+}
+
+.errorNotification > .notificationCloseButton {
+    color: var(--error-300);
+}

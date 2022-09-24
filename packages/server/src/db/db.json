@@ -1,36 +1,59 @@
 {
   "users": [
     {
-      "email": "member@member.com",
-      "password": "Password123!",
+      "email": "third_chance@test.com",
+      "password": "Password!123",
+      "firstName": "Third",
+      "lastName": "Chance",
+      "primaryLanguage": "English",
       "role": "ADMIN",
-      "verified": false,
-      "avatar": "http",
-      "createdAt": 1571213104370,
-      "id": "Z2hlvDmLOSRZGebC_Z_aA",
-      "name": "Test",
-      "words": []
+      "createdAt": 1663525342553,
+      "id": "WKDveZ0VO2dSKqIeU5HnJ"
     },
     {
-      "email": "me@test.com",
+      "email": "member2@member.com",
+      "password": "Password123!",
+      "firstName": "New",
+      "lastName": "Member",
+      "primaryLanguage": "Polish",
+      "role": "MEMBER",
+      "createdAt": 1663525507063,
+      "id": "q0XYjn1q95jzG8_dLCdWu"
+    },
+    {
+      "email": "me3@test.com",
       "password": "123Test25!",
-      "name": "John Doe",
-      "createdAt": 1652636040237,
-      "id": "JG7MxQtfYykJQt9AB1lpZ",
-      "role": "MEMBER"
+      "firstName": "Jane",
+      "lastName": "Doe",
+      "primaryLanguage": "Hungarian",
+      "role": "MEMBER",
+      "createdAt": 1663526817183,
+      "id": "6OcRcZflFFtOF8sS0btkk"
     },
     {
-      "email": "me2@test.com",
-      "password": "123Test25",
-      "name": "Jane Doe",
-      "createdAt": 1652636259630,
-      "id": "r039exmEjZRLk13s3GT62",
-      "role": "MEMBER"
+      "email": "new@test.com",
+      "password": "123Test!25",
+      "firstName": "New",
+      "lastName": "User",
+      "primaryLanguage": "English",
+      "role": "MEMBER",
+      "createdAt": 1663527279858,
+      "id": "RLTOaqnTrzAvrrCYVUUTE"
+    },
+    {
+      "email": "third_chance3@test.com",
+      "password": "Password!123",
+      "firstName": "New",
+      "lastName": "Chance",
+      "primaryLanguage": "Hungarian",
+      "role": "MEMBER",
+      "createdAt": 1663943409837,
+      "id": "_nIM_LDirwpc94iR8omwb"
     }
   ],
   "words": [
     {
-      "userId": "Z2hlvDmLOSRZGebC_Z_aA",
+      "userId": "WKDveZ0VO2dSKqIeU5HnJ",
       "name": "egalitarian",
       "audioUrl": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/e/ega/egali/egalitarian__gb_1.mp3",
       "transcription": "iˌɡælɪˈteəriən",
@@ -45,7 +68,7 @@
       "id": "DzOlEXTD39XQUnZELKXWG"
     },
     {
-      "user": "Z2hlvDmLOSRZGebC_Z_aA",
+      "user": "WKDveZ0VO2dSKqIeU5HnJ",
       "name": "egalitarian",
       "defs": [
         "a person who believes that everyone is equal and should have the same rights and opportunities"
@@ -58,7 +81,7 @@
       "id": "BEqcqBjgV1D_i6zsqCIc7"
     },
     {
-      "user": "Z2hlvDmLOSRZGebC_Z_aA",
+      "user": "WKDveZ0VO2dSKqIeU5HnJ",
       "name": "egalitarian",
       "defs": [
         "a person who believes that everyone is equal and should have the same rights and opportunities"
@@ -71,7 +94,7 @@
       "id": "rDlA84J5Mi0gppS42iIeM"
     },
     {
-      "user": "Z2hlvDmLOSRZGebC_Z_aA",
+      "user": "WKDveZ0VO2dSKqIeU5HnJ",
       "name": "egalitarian",
       "defs": [
         "a person who believes that everyone is equal and should have the same rights and opportunities"
@@ -84,7 +107,7 @@
       "id": "18lsQ2U7oK572AIyitP2-"
     },
     {
-      "user": "Z2hlvDmLOSRZGebC_Z_aA",
+      "user": "WKDveZ0VO2dSKqIeU5HnJ",
       "name": "egalitarian",
       "defs": [
         "a person who believes that everyone is equal and should have the same rights and opportunities"
@@ -97,7 +120,7 @@
       "id": "qTqmLBH9q-RMaQ1pqv0Pd"
     },
     {
-      "user": "Z2hlvDmLOSRZGebC_Z_aA",
+      "user": "WKDveZ0VO2dSKqIeU5HnJ",
       "name": "egalitarian",
       "defs": [
         "a person who believes that everyone is equal and should have the same rights and opportunities"
@@ -110,7 +133,7 @@
       "id": "vlSe4J1KIBDW3jc5Ss5lN"
     },
     {
-      "user": "Z2hlvDmLOSRZGebC_Z_aA",
+      "user": "WKDveZ0VO2dSKqIeU5HnJ",
       "name": "egalitarian",
       "defs": [
         "a person who believes that everyone is equal and should have the same rights and opportunities"
@@ -123,7 +146,7 @@
       "id": "n4p9HiUqfr8drzF7YySRD"
     },
     {
-      "user": "Z2hlvDmLOSRZGebC_Z_aA",
+      "user": "WKDveZ0VO2dSKqIeU5HnJ",
       "name": "egalitarian",
       "defs": [
         "a person who believes that everyone is equal and should have the same rights and opportunities"
@@ -136,7 +159,7 @@
       "id": "MUS3RKn1HIrm0gz69UWR3"
     },
     {
-      "user": "Z2hlvDmLOSRZGebC_Z_aA",
+      "user": "WKDveZ0VO2dSKqIeU5HnJ",
       "name": "egalitarian",
       "defs": [
         "a person who believes that everyone is equal and should have the same rights and opportunities"

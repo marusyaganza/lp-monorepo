@@ -12,7 +12,9 @@ import { Spinner } from '@lp/ui';
 
 import { AppProvider } from './app-context/appContext';
 import { getUserData } from './util/getUserData';
-import ErrorBoundary from './components/error-boundary/error-boundary';
+import { ErrorBoundary } from '@lp/ui';
+
+import { routes } from '../constants/routes';
 
 import './app.css';
 
@@ -70,7 +72,7 @@ export const App = () => {
                       <SearchPage />
                     </Suspense>
                   }
-                  path="search"
+                  path={routes.search}
                 />
                 <Route
                   element={
@@ -78,7 +80,7 @@ export const App = () => {
                       <SignInPage />
                     </Suspense>
                   }
-                  path="sign-in"
+                  path={routes.signIn}
                 />
                 <Route
                   element={
@@ -86,9 +88,9 @@ export const App = () => {
                       <SignUpPage />
                     </Suspense>
                   }
-                  path="sign-up"
+                  path={routes.signUp}
                 />
-                <Route path="words">
+                <Route path={routes.words}>
                   <Route
                     index
                     element={
@@ -106,7 +108,7 @@ export const App = () => {
                     }
                   />
                 </Route>
-                <Route path="games">
+                <Route path={routes.games}>
                   <Route
                     index
                     element={

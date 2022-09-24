@@ -1,17 +1,24 @@
 import React from 'react';
+import { cn } from '../../utils/classnames';
 import './Spinner.css';
 
 export interface SpinnerProps {
   className?: string;
+  variant?: 'primary' | 'secondary';
+  size?: 'S' | 'L';
 }
 
-export const Spinner = ({ className }: SpinnerProps) => {
+export const Spinner = ({
+  className,
+  variant = 'primary',
+  size = 'L'
+}: SpinnerProps) => {
   return (
-    <div className={`spinnerBox ${className}`}>
+    <div className={cn('spinnerBox', className)}>
       <p className="altText" role="alert">
         Loading...
       </p>
-      <div className="pulseContainer">
+      <div className={cn('pulseContainer', `${variant}Spinner`, `size${size}`)}>
         <div className="pulseBubble pulseBubble1" />
         <div className="pulseBubble pulseBubble2" />
         <div className="pulseBubble pulseBubble3" />

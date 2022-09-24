@@ -6,6 +6,7 @@ const wordQuery = gql`
   {
     words {
       id
+      name
       defs
       particle
     }
@@ -15,7 +16,8 @@ const wordQuery = gql`
 const userQuery = gql`
   {
     user {
-      name
+      firstName
+      lastName
       email
       id
       role

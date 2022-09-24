@@ -15,9 +15,9 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement>
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [errorText?](./ui.inputprops.errortext.md) |  | string | <i>(Optional)</i> |
-|  [isValid?](./ui.inputprops.isvalid.md) |  | boolean | <i>(Optional)</i> |
-|  [label](./ui.inputprops.label.md) |  | string |  |
-|  [name](./ui.inputprops.name.md) |  | string |  |
-|  [validators?](./ui.inputprops.validators.md) |  | [validatorType](./ui.validatortype.md)<!-- -->\[\] | <i>(Optional)</i> |
+|  [errorText?](./ui.inputprops.errortext.md) |  | string | <i>(Optional)</i> text that is shown if input is invalid |
+|  [isValid?](./ui.inputprops.isvalid.md) |  | boolean | <i>(Optional)</i> defines if input has valid value |
+|  [label](./ui.inputprops.label.md) |  | string | input's label |
+|  [name](./ui.inputprops.name.md) |  | string | name attribute of native HTML input element |
+|  [validators?](./ui.inputprops.validators.md) |  | [validatorType](./ui.validatortype.md)<!-- -->\[\] | <i>(Optional)</i> array of validators |
 

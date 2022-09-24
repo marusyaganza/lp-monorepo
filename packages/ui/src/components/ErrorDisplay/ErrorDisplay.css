@@ -5,10 +5,6 @@
     font-family: var(--font-libreBaskerville);
 }
 
-.info {
-    margin: 100px auto;
-}
-
 .mainHeading {
     font-size: var(--font-size-xxxl);
     display: flex;
@@ -18,8 +14,8 @@
 
 .subheading {
     padding: 30px;
-    border-bottom: 1px solid var(--gray-lighter);
-    color: var(--purple-darkest);
+    border-bottom: 1px solid var(--neutral-300);
+    color: var(--neutral-800);
     text-align: center;
 }
 
@@ -30,9 +26,9 @@
 }
 
 .red {
-    color: var(--notification-danger);
+    color: var(--error-200);
 }
 
 .base {
-    color: var(--purple-darker);
+    color: var(--primary-500);
 }

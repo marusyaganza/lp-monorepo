@@ -4,6 +4,8 @@
 
 ## InputProps.name property
 
+name attribute of native HTML input element
+
 <b>Signature:</b>
 
 ```typescript

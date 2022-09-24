@@ -5,8 +5,8 @@
     align-items: center;
     justify-content: space-between;
     margin: 0;
-    background: var(--purple-darker);
-    color: var(--yellow-base);
+    background: var(--primary-500);
+    color: var(--secondary-300);
     font-family: var(--font-kalam);
     font-size: var(--font-size-xxs);
     text-transform: uppercase;
@@ -29,8 +29,8 @@
 }
 
 .activeLink {
-    background: var(--purple-dark);
-    color: var(--yellow-lightest);
+    background: var(--primary-400);
+    color: var(--secondary-100);
 }
 
 .headerLink, .activeLink {
@@ -40,6 +40,6 @@
 }
 
 .headerLink:hover, .activeLink:hover {
-    background: var(--purple-lightest);
-    color: var(--yellow-lightest);
+    background: var(--primary-100);
+    color: var(--secondary-100);
 }

@@ -1,15 +1,22 @@
 import React, { ErrorInfo, PropsWithChildren } from 'react';
-import { ErrorDisplay } from '../error-display/errorDisplay';
+import { ErrorDisplay } from '../ErrorDisplay/ErrorDisplay';
 
 const clickHandler = () => {
   window.location.reload();
 };
 
+/**
+ * @internal
+ */
+
 interface State {
   hasError: boolean;
 }
 
-class ErrorBoundary extends React.Component<PropsWithChildren<unknown>, State> {
+export class ErrorBoundary extends React.Component<
+  PropsWithChildren<unknown>,
+  State
+> {
   constructor(props: PropsWithChildren<unknown>) {
     super(props);
     this.state = { hasError: false };
@@ -43,4 +50,4 @@ class ErrorBoundary extends React.Component<PropsWithChildren<unknown>, State> {
   }
 }
 
-export default ErrorBoundary;
+// export default ErrorBoundary;

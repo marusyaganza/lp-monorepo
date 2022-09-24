@@ -6,35 +6,44 @@
 
 /// <reference types="react" />
 
+import { ErrorInfo } from 'react';
 import { FormHTMLAttributes } from 'react';
 import { HTMLAttributes } from 'react';
 import { InputHTMLAttributes } from 'react';
+import { LinkType } from '@lp/types';
+import { MouseEventHandler } from 'react';
 import { PropsWithChildren } from 'react';
+import { default as React_2 } from 'react';
 import { WordType } from '@lp/types';
 
 // @public
-export const AudioButton: ({ src, buttonText, buttonSize, autoplay }: AudioButtonProps) => JSX.Element;
+export const AudioButton: ({ src, buttonText, autoplay, ...rest }: AudioButtonProps) => JSX.Element;
 
 // @public
-export interface AudioButtonProps {
+export interface AudioButtonProps extends ButtonProps {
     autoplay?: boolean;
-    buttonSize?: number;
     buttonText?: string;
     src: string;
 }
 
-// @public (undocumented)
-export const Button: ({ children, type, className, disabled, ...rest }: PropsWithChildren<ButtonProps> & HTMLAttributes<HTMLButtonElement>) => JSX.Element;
+// @public
+export const Button: ({ children, type, className, disabled, variant, size, iconId, iconHeight, iconWidth, isLoading, ...rest }: PropsWithChildren<ButtonProps> & HTMLAttributes<HTMLButtonElement>) => JSX.Element;
 
 // @public (undocumented)
 export interface ButtonProps {
-    // (undocumented)
     className?: string;
-    // (undocumented)
     disabled?: boolean;
-    // (undocumented)
+    iconHeight?: number;
+    iconId?: IconIdType;
+    iconWidth?: number;
+    isLoading?: boolean;
+    size?: 'S' | 'L';
     type?: 'submit' | 'button' | 'reset';
+    variant?: ButtonVariantType;
 }
+
+// @public
+export type ButtonVariantType = 'primary' | 'secondary' | 'ternary' | 'danger' | 'success' | 'iconWithText' | 'icon';
 
 // @public (undocumented)
 export const DictionaryEntity: ({ text, className }: DictionaryEntityProps) => JSX.Element;
@@ -46,6 +55,43 @@ export interface DictionaryEntityProps {
     // (undocumented)
     text: string;
 }
+
+// Warning: (ae-forgotten-export) The symbol "State" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export class ErrorBoundary extends React_2.Component<PropsWithChildren<unknown>, State> {
+    constructor(props: PropsWithChildren<unknown>);
+    // (undocumented)
+    componentDidCatch(error: Error, errorInfo: ErrorInfo): void;
+    // (undocumented)
+    static getDerivedStateFromError(): {
+        hasError: boolean;
+    };
+    // (undocumented)
+    render(): string | number | boolean | React_2.ReactFragment | JSX.Element | null | undefined;
+}
+
+// @public (undocumented)
+export const ErrorDisplay: ({ heading, headingIcon, subHeading, buttonHandler, buttonText, theme }: ErrorDisplayProps) => JSX.Element;
+
+// @public (undocumented)
+export interface ErrorDisplayProps {
+    // (undocumented)
+    buttonHandler: MouseEventHandler;
+    // (undocumented)
+    buttonText: string;
+    // (undocumented)
+    heading: string;
+    // (undocumented)
+    headingIcon?: IconIdType;
+    // (undocumented)
+    subHeading: string;
+    // (undocumented)
+    theme?: 'red' | 'base';
+}
+
+// @public (undocumented)
+export const Footer: () => JSX.Element;
 
 // @public (undocumented)
 export const Form: ({ className, fields, onFormSubmit, buttonText, isLoading, ...rest }: FormProps) => JSX.Element;
@@ -65,10 +111,19 @@ export interface FormProps extends FormHTMLAttributes<HTMLFormElement> {
 }
 
 // @public (undocumented)
+export const Header: ({ navLinks, onLogout }: HeaderProps) => JSX.Element;
+
+// @public (undocumented)
+export type HeaderProps = {
+    navLinks: LinkType[];
+    onLogout?: () => void;
+};
+
+// @public (undocumented)
 export const Icon: ({ width, height, id, tooltip, className }: IconProps) => JSX.Element;
 
 // @public (undocumented)
-export type IconIdType = 'edit' | 'search' | 'error' | 'reload' | 'book' | 'play';
+export type IconIdType = 'edit' | 'search' | 'error' | 'reload' | 'book' | 'play' | 'maintenance' | 'success' | 'close';
 
 // @public (undocumented)
 export type IconProps = {
@@ -79,30 +134,42 @@ export type IconProps = {
     tooltip?: string;
 };
 
-// @public (undocumented)
+// @public
 export const Input: ({ name, label, errorText, isValid, className, ...rest }: InputProps) => JSX.Element;
 
 // @public (undocumented)
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-    // (undocumented)
     errorText?: string;
-    // (undocumented)
     isValid?: boolean;
-    // (undocumented)
     label: string;
-    // (undocumented)
     name: string;
-    // (undocumented)
     validators?: validatorType[];
 }
 
+// @public
+const Notification_2: ({ variant, text, subText, onClose, className }: NotificationProps) => JSX.Element;
+export { Notification_2 as Notification }
+
 // @public (undocumented)
-export const Spinner: ({ className }: SpinnerProps) => JSX.Element;
+export interface NotificationProps {
+    className?: string;
+    onClose?: () => void;
+    subText?: string;
+    text: string;
+    variant?: 'success' | 'error';
+}
+
+// @public (undocumented)
+export const Spinner: ({ className, variant, size }: SpinnerProps) => JSX.Element;
 
 // @public (undocumented)
 export interface SpinnerProps {
     // (undocumented)
     className?: string;
+    // (undocumented)
+    size?: 'S' | 'L';
+    // (undocumented)
+    variant?: 'primary' | 'secondary';
 }
 
 // @public

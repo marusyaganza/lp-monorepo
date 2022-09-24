@@ -4,6 +4,8 @@
 
 ## ButtonProps.disabled property
 
+Native HTML 'disabled' property
+
 <b>Signature:</b>
 
 ```typescript

@@ -22,6 +22,10 @@
  * @packageDocumentation
  */
 export * from './components/AudioButton/AudioButton';
+export * from './components/Footer/Footer';
+export * from './components/Header/Header';
+export * from './components/ErrorDisplay/ErrorDisplay';
+export * from './components/ErrorBoundary/ErrorBoundary';
 export * from './components/Spinner/Spinner';
 export * from './components/Button/Button';
 export * from './components/DictionaryEntity/DictionaryEntity';
@@ -30,3 +34,4 @@ export * from './components/Icon/icon';
 export * from './components/Input/Input';
 export * from './components/WordCard/WordCard';
 export * from './utils/validators';
+export * from './components/Notification/Notification';

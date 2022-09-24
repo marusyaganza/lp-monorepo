@@ -16,7 +16,7 @@
 }
 
 .playButton:hover {
-    color: var(--purple-lighter);
+    color: var(--primary-200);
 }
 
 .icon {

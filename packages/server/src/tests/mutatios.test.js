@@ -1,10 +1,11 @@
 const gql = require('graphql-tag');
 const createTestServer = require('./helpers');
-const { words, users } = require('./mocks/data');
+const { users } = require('./mocks/data');
 
 const loginData = { email: 'test@test.com', password: 'password' };
 const signUpData = {
-  name: 'User',
+  firstName: 'User',
+  lastName: 'Test',
   email: 'test@test.com',
   password: 'password',
   role: 'MEMBER'
@@ -15,7 +16,8 @@ const loginMutation = gql`
     login(input: { email: "member@member.com", password: "password" }) {
       id
       email
-      name
+      firstName
+      lastName
       token
     }
   }
@@ -23,11 +25,17 @@ const loginMutation = gql`
 const signUpMutation = gql`
   mutation {
     signUp(
-      input: { name: "User", email: "test@test.com", password: "password" }
+      input: {
+        firstName: "User"
+        lastName: "Test"
+        email: "test@test.com"
+        password: "password"
+      }
     ) {
       id
       email
-      name
+      firstName
+      lastName
       token
     }
   }

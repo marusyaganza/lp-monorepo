@@ -4,6 +4,8 @@
 
 ## InputProps.errorText property
 
+text that is shown if input is invalid
+
 <b>Signature:</b>
 
 ```typescript

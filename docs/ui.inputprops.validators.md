@@ -4,6 +4,8 @@
 
 ## InputProps.validators property
 
+array of validators
+
 <b>Signature:</b>
 
 ```typescript

@@ -16,6 +16,12 @@ This package is using storybook for live premiew. Learn more on <a href="" targe
 
 Happy learning
 
+## Classes
+
+|  Class | Description |
+|  --- | --- |
+|  [ErrorBoundary](./ui.errorboundary.md) |  |
+
 ## Enumerations
 
 |  Enumeration | Description |
@@ -36,8 +42,10 @@ Happy learning
 |  [AudioButtonProps](./ui.audiobuttonprops.md) | AudioButton Props |
 |  [ButtonProps](./ui.buttonprops.md) |  |
 |  [DictionaryEntityProps](./ui.dictionaryentityprops.md) |  |
+|  [ErrorDisplayProps](./ui.errordisplayprops.md) |  |
 |  [FormProps](./ui.formprops.md) |  |
 |  [InputProps](./ui.inputprops.md) |  |
+|  [NotificationProps](./ui.notificationprops.md) |  |
 |  [SpinnerProps](./ui.spinnerprops.md) |  |
 |  [WordCardProps](./ui.wordcardprops.md) |  |
 
@@ -46,11 +54,15 @@ Happy learning
 |  Variable | Description |
 |  --- | --- |
 |  [AudioButton](./ui.audiobutton.md) | Special type of button that plays audio when you click on it |
-|  [Button](./ui.button.md) |  |
+|  [Button](./ui.button.md) | Button component |
 |  [DictionaryEntity](./ui.dictionaryentity.md) |  |
+|  [ErrorDisplay](./ui.errordisplay.md) |  |
+|  [Footer](./ui.footer.md) |  |
 |  [Form](./ui.form.md) |  |
+|  [Header](./ui.header.md) |  |
 |  [Icon](./ui.icon.md) |  |
-|  [Input](./ui.input.md) |  |
+|  [Input](./ui.input.md) | Default text input component |
+|  [Notification\_2](./ui.notification_2.md) | Notification component |
 |  [Spinner](./ui.spinner.md) |  |
 |  [validators](./ui.validators.md) | List of all validators available |
 |  [WordCard](./ui.wordcard.md) |  |
@@ -59,6 +71,8 @@ Happy learning
 
 |  Type Alias | Description |
 |  --- | --- |
+|  [ButtonVariantType](./ui.buttonvarianttype.md) | All supported variants of button |
+|  [HeaderProps](./ui.headerprops.md) |  |
 |  [IconIdType](./ui.iconidtype.md) |  |
 |  [IconProps](./ui.iconprops.md) |  |
 |  [validatorType](./ui.validatortype.md) | Validator that can be used to validate form values |

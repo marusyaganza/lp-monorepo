@@ -1,29 +1,91 @@
 import React, { HTMLAttributes, PropsWithChildren } from 'react';
+import { cn } from '../../utils/classnames';
+import { Icon, IconIdType } from '../Icon/icon';
+import { Spinner } from '../Spinner/Spinner';
 import './Button.css';
 
-export interface ButtonProps {
-  // TODO: implement those props
-  // color?: 'primary' | 'secodary';
-  // size?: 'S' | 'M' | 'L';
-  className?: string;
-  type?: 'submit' | 'button' | 'reset';
-  disabled?: boolean;
-}
+/**All supported variants of button */
+export type ButtonVariantType =
+  | 'primary'
+  | 'secondary'
+  | 'ternary'
+  | 'danger'
+  | 'success'
+  | 'iconWithText'
+  | 'icon';
 
+export interface ButtonProps {
+  /**Defines the look of button */
+  variant?: ButtonVariantType;
+  /**Defines font size of button and its paddings */
+  size?: 'S' | 'L';
+  /**Additional styling */
+  className?: string;
+  /**Native HTML 'type' property */
+  type?: 'submit' | 'button' | 'reset';
+  /**Native HTML 'disabled' property */
+  disabled?: boolean;
+  /**Id of the icon */
+  iconId?: IconIdType;
+  /**Height of the icon in px */
+  iconHeight?: number;
+  /**Width of the icon in px */
+  iconWidth?: number;
+  /**Displays spinner instead of buttonText and disabled */
+  isLoading?: boolean;
+}
+/**
+ *
+ * Button component
+ */
 export const Button = ({
   children,
   type = 'button',
   className,
   disabled,
+  variant = 'primary',
+  size = 'S',
+  iconId,
+  iconHeight = 20,
+  iconWidth = 20,
+  isLoading,
   ...rest
 }: PropsWithChildren<ButtonProps> & HTMLAttributes<HTMLButtonElement>) => {
+  const isIconButton = iconId && variant === 'icon';
+  let iconButtonStyle;
+  if (isIconButton && (iconHeight || iconWidth)) {
+    const size = Math.max(iconHeight, iconWidth);
+    iconButtonStyle = { height: size, width: size };
+  }
   return (
     <button
+      style={iconButtonStyle}
       type={type}
-      className={`button ${className || ''} ${disabled ? 'disabled' : ''}`}
+      disabled={disabled || isLoading}
+      className={cn(
+        className,
+        'button',
+        variant,
+        `size${size}`,
+        disabled ? 'disabled' : ''
+      )}
       {...rest}
     >
-      {children}
+      {isLoading && !isIconButton && (
+        <Spinner
+          className="formSpinner"
+          size="S"
+          variant={
+            variant === 'secondary' || variant === 'ternary'
+              ? 'primary'
+              : 'secondary'
+          }
+        />
+      )}
+      <div className={cn(isLoading ? 'loadingButtonText' : '')}>
+        <span hidden={isIconButton}>{children}</span>
+      </div>
+      {iconId && <Icon height={iconHeight} width={iconWidth} id={iconId} />}
     </button>
   );
 };

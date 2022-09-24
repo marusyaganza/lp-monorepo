@@ -1,16 +1,13 @@
 import React, { useEffect, useMemo } from 'react';
 import './AudioButton.css';
-import { Icon } from '../Icon/icon';
+import { Button, ButtonProps } from '../Button/Button';
 
 /**AudioButton Props */
-//TODO add different props for icon size and text size
-export interface AudioButtonProps {
+export interface AudioButtonProps extends ButtonProps {
   /**path to the audio file that plays on click */
   src: string;
   /** Text that comes before the audio icon*/
   buttonText?: string;
-  /**Size of the audio icon in pixels */
-  buttonSize?: number;
   /**If it set to true, audio file will play when AudioButton component is rendered */
   autoplay?: boolean;
 }
@@ -19,8 +16,8 @@ export interface AudioButtonProps {
 export const AudioButton = ({
   src,
   buttonText,
-  buttonSize = 20,
-  autoplay
+  autoplay,
+  ...rest
 }: AudioButtonProps) => {
   const play = useMemo(
     () => () => {
@@ -36,15 +33,18 @@ export const AudioButton = ({
     }
   }, [src, autoplay, play]);
 
+  const buttonVariant = buttonText ? 'iconWithText' : 'icon';
+
   return (
-    <button
-      className="playButton"
+    <Button
       type="button"
       onClick={play}
+      variant={buttonVariant}
       aria-label="play audio."
+      iconId="play"
+      {...rest}
     >
-      {buttonText && <span className="buttonText">{buttonText}</span>}
-      <Icon className="icon" id="play" height={buttonSize} width={buttonSize} />
-    </button>
+      {buttonText}
+    </Button>
   );
 };

@@ -1,6 +1,6 @@
 .draggable {
     padding: 5px;
-    border: 1px solid var(--gray-dark);
+    border: 1px solid var(--neutral-500);
     border-radius: 2px;
 }
 
@@ -8,5 +8,5 @@
     display: inline-block;
     width: 100px;
     height: 30px;
-    background: var(--gray-lightest);
+    background: var(--neutral-200);
 }

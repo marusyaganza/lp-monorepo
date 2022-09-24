@@ -9,5 +9,5 @@ Special type of button that plays audio when you click on it
 <b>Signature:</b>
 
 ```typescript
-AudioButton: ({ src, buttonText, buttonSize, autoplay }: AudioButtonProps) => JSX.Element
+AudioButton: ({ src, buttonText, autoplay, ...rest }: AudioButtonProps) => JSX.Element
 ```

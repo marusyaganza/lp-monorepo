@@ -9,7 +9,8 @@ const typeDefs = gql`
 
   type User {
     email: String!
-    name: String!
+    firstName: String!
+    lastName: String!
     # words: [Word]!
     id: ID
     role: Role
@@ -31,7 +32,8 @@ const typeDefs = gql`
 
   type AuthUser {
     email: String!
-    name: String!
+    firstName: String!
+    lastName: String!
     createdAt: String!
     role: Role!
     token: String!
@@ -53,7 +55,9 @@ const typeDefs = gql`
   input SignUpInput {
     email: String!
     password: String!
-    name: String!
+    firstName: String!
+    lastName: String!
+    primaryLanguage: String
   }
 
   input LoginInput {

@@ -1,0 +1,34 @@
+.link {
+    color: var(--text);
+}
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    margin-top: 20px;
+}
+
+.mainContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form {
+    display: flex;
+    gap: 40px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.heading {
+    margin: 40px 0;
+    font-size: var(--font-size-l);
+    align-self: flex-start;
+}
+
+.text {
+    margin: 40px 0;
+}

@@ -1,17 +1,29 @@
 import React from 'react';
-import { Input } from './Input';
+import { Input, InputProps } from './Input';
 
 export default {
   title: 'Input',
-  component: Input
+  component: Input,
+  argTypes: {
+    name: {
+      control: { type: 'text' },
+      defaultValue: 'text'
+    },
+    label: {
+      control: { type: 'text' },
+      defaultValue: 'Text Input'
+    },
+    errorText: {
+      control: { type: 'text' },
+      defaultValue: 'Text is requierd'
+    }
+  }
 };
 
-const props = {
-  name: 'TextInput',
-  label: 'Text input',
-  errorText: 'Text is requierd'
+export const DefaultInput = (args: InputProps) => {
+  return (
+    <div className="presentationBox">
+      <Input {...args} />
+    </div>
+  );
 };
-
-export const InputError = () => <Input {...props} isValid={false} />;
-
-export const InputComponent = () => <Input {...props} />;

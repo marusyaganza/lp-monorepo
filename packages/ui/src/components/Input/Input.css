@@ -1,37 +1,55 @@
-
-.input {
-    height: 50px;
-    border-radius: 2px;
-    border: 3px solid var(--purple-base);
-    padding: 0 15px;
-}
-
-.label {
-    padding: 5px 0;
-}
+@import '../../assets/styles/colors.css';
+@import '../../assets/styles/font-sizes.css';
+@import '../../assets/styles/fonts.css';
+@import '../../assets/styles/effects.css';
 
 .inputContainer {
     display: flex;
     flex-direction: column;
     font-family: var(--font-libreBaskerville);
-    color: var(--purple-darker);
-    font-size: var(--font-size-xs);
+    width: 300px;
 }
 
-.error {
-    border: 1px solid var(--notification-danger-lighter);
-    color: var(--notification-danger);
-    visibility: visible;
+.input {
+    border: 1px solid var(--neutral-600);
+    background-color: var(--neutral-100);
+    padding: 10px 20px;
+    font-size: var(--font-size-xs);
+    box-shadow: var(--primary-box-shadow);
+    font-family: var(--font-libreBaskerville);
+}
+
+.input:focus  {
+    border-bottom: 2px solid var(--primary-300);
+    outline: none;
+}
+
+.label {
+    padding: 4px 0;
+    font-size: var(--font-size-xxs);
+    color: var(--neutral-800);
 }
 
 .errorText {
+    min-height: 26px;
     width: 100%;
-    color: var(--notification-danger);
+    color: var(--error-200);
     opacity: 0;
     text-align: center;
     transition: opacity 1s ease;
+    font-size: var(--font-size-xxs);
+    padding: 4px 0;
+    margin: 0;
 }
 
-.errorTextActive {
+.incorrect > .input{
+    border-bottom: 2px solid var(--error-200);
+}
+
+.incorrect >.label {
+    color: var(--error-200);
+}
+
+.incorrect > .errorText {
     opacity: 1;
 }

@@ -7,7 +7,17 @@ export default {
   component: Icon
 };
 
-const ids: IconIdType[] = ['edit', 'search', 'error', 'reload', 'book', 'play'];
+export const ids: IconIdType[] = [
+  'edit',
+  'search',
+  'error',
+  'reload',
+  'book',
+  'play',
+  'maintenance',
+  'success',
+  'close'
+];
 
 export const Icons = () =>
   ids.map(id => {

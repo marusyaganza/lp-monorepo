@@ -7,5 +7,5 @@
 <b>Signature:</b>
 
 ```typescript
-Spinner: ({ className }: SpinnerProps) => JSX.Element
+Spinner: ({ className, variant, size }: SpinnerProps) => JSX.Element
 ```

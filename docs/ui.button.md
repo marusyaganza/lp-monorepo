@@ -4,8 +4,10 @@
 
 ## Button variable
 
+Button component
+
 <b>Signature:</b>
 
 ```typescript
-Button: ({ children, type, className, disabled, ...rest }: PropsWithChildren<ButtonProps> & HTMLAttributes<HTMLButtonElement>) => JSX.Element
+Button: ({ children, type, className, disabled, variant, size, iconId, iconHeight, iconWidth, isLoading, ...rest }: PropsWithChildren<ButtonProps> & HTMLAttributes<HTMLButtonElement>) => JSX.Element
 ```
