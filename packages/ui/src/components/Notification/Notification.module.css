@@ -27,7 +27,6 @@
     background: rgb(var(--error-100-rgb), .25);
     border: 1px solid var(--error-300);
     color: var(--error-300);
-    /* min-width: 400px; */
 }
 
 .errorIcon {

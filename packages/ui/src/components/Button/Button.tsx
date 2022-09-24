@@ -2,7 +2,7 @@ import React, { HTMLAttributes, PropsWithChildren } from 'react';
 import { cn } from '../../utils/classnames';
 import { Icon, IconIdType } from '../Icon/icon';
 import { Spinner } from '../Spinner/Spinner';
-import './Button.css';
+import styles from './Button.module.css';
 
 /**All supported variants of button */
 export type ButtonVariantType =
@@ -64,16 +64,16 @@ export const Button = ({
       disabled={disabled || isLoading}
       className={cn(
         className,
-        'button',
-        variant,
-        `size${size}`,
-        disabled ? 'disabled' : ''
+        styles.button,
+        styles[variant],
+        styles[`size${size}`],
+        disabled ? styles.disabled : ''
       )}
       {...rest}
     >
       {isLoading && !isIconButton && (
         <Spinner
-          className="formSpinner"
+          className={styles.formSpinner}
           size="S"
           variant={
             variant === 'secondary' || variant === 'ternary'
@@ -82,7 +82,7 @@ export const Button = ({
           }
         />
       )}
-      <div className={cn(isLoading ? 'loadingButtonText' : '')}>
+      <div className={cn(isLoading ? styles.loadingButtonText : '')}>
         <span hidden={isIconButton}>{children}</span>
       </div>
       {iconId && <Icon height={iconHeight} width={iconWidth} id={iconId} />}

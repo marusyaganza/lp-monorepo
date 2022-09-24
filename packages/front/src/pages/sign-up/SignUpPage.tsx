@@ -9,7 +9,7 @@ import { useMutation } from '@apollo/client';
 import { AppContext } from '../../app-context/appContext';
 import { routes } from '../../../constants/routes';
 
-import './SignUpPage.css';
+import styles from './SignUpPage.module.css';
 
 const SignUpPage = () => {
   const fields = [
@@ -89,18 +89,18 @@ const SignUpPage = () => {
 
   return (
     <AuthPageLayout>
-      <h2 className="singUpFormHeading">Sign in</h2>
+      <h2 className={styles.formHeading}>Sign up</h2>
       <Form
         id="signUp"
         isLoading={loading}
-        className="singUpForm"
+        className={styles.form}
         onFormSubmit={submitHandler}
         fields={fields}
         buttonText="Sign in"
       />
-      <p className="text">
+      <p className={styles.text}>
         already have account?{' '}
-        <Link className="link" to={`/${routes.signIn}`}>
+        <Link className={styles.link} to={`/${routes.signIn}`}>
           Sign in
         </Link>
       </p>

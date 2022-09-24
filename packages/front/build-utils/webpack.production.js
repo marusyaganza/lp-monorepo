@@ -13,8 +13,38 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/i,
-        use: [MiniCssExtractPlugin.loader, 'css-loader']
+        test: /\.css$/,
+        exclude: /\.module\.css$/,
+        use: [
+          { loader: MiniCssExtractPlugin.loader },
+          {
+            loader: require.resolve('css-loader'),
+            options: {
+              importLoaders: 1,
+              sourceMap: false,
+              modules: {
+                mode: 'icss'
+              }
+            }
+          }
+        ],
+        sideEffects: true
+      },
+      {
+        test: /\.module\.css$/,
+        use: [
+          { loader: MiniCssExtractPlugin.loader },
+          {
+            loader: require.resolve('css-loader'),
+            options: {
+              importLoaders: 1,
+              sourceMap: false,
+              modules: {
+                mode: 'local'
+              }
+            }
+          }
+        ]
       }
     ]
   },

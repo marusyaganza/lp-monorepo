@@ -1,6 +1,6 @@
 .word {
     padding: 15px;
-    border: 1px solid rgb(32 7 114 / 20%);
+    border: 1px solid rgb(32, 7, 114, 20%);
     margin: 10px 20px;
     border-radius: 3px;
     box-shadow: 0 3px 0 var(--neutral-200);
