@@ -4,26 +4,34 @@ import { NavLink } from 'react-router-dom';
 import { Button } from '../Button/Button';
 import { LinkType } from '@lp/types';
 
-import './Header.css';
+import styles from './Header.module.css';
+import logo from '../../assets/img/HeaderLogo.svg';
 
 export type HeaderProps = {
+  /**array with all header nav links */
   navLinks: LinkType[];
+  /**Header button onClick handler */
   onLogout?: () => void;
 };
 
+/**Header component */
 export const Header = ({ navLinks, onLogout }: HeaderProps) => {
-  // TODO replace it to design system and use renderLinks function to render of Navlinks
 
   return (
-    <header className="header">
-      <ul className="navItems">
+    <header className={styles.header}>
+      <div className={styles.navigation}>
+         <NavLink className={styles.logo} to='/'>
+          <span className={styles.hiddenText}>Language power logo</span>
+          <img src={logo} />
+          </NavLink>
+      <ul className={styles.navItems}>
         {navLinks.map(link => {
           return (
-            <li key={link.text} className="navItem">
+            <li key={link.text} className={styles.navItem}>
               <NavLink
                 to={link.url}
                 className={({ isActive }) =>
-                  isActive ? 'activeLink' : 'headerLink'
+                  isActive ? styles.activeLink : styles.headerLink
                 }
               >
                 {link.text}
@@ -32,8 +40,8 @@ export const Header = ({ navLinks, onLogout }: HeaderProps) => {
           );
         })}
       </ul>
-      {/* TODO: design normal button for logout */}
-      {onLogout && <Button onClick={onLogout}>Logout</Button>}
+      </div>
+      {onLogout && <Button className={styles.headerButton} variant='secondary' onClick={onLogout}>Sign out</Button>}
     </header>
   );
 };
