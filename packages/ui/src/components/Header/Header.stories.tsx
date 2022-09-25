@@ -13,14 +13,12 @@ export default {
   }
 };
 
-export const navLinks = [
+const navLinks = [
   { url: '/search', text: 'Search' },
   { url: '/words', text: 'Words' },
   { url: '/games', text: 'Games' }
 ];
 
 export const HeaderDefault = (args: HeaderProps) => {
-  return (
-      <Header {...args} navLinks={navLinks} />
-  );
+  return <Header {...args} navLinks={navLinks} />;
 };

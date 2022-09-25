@@ -59,7 +59,7 @@ Happy learning
 |  [ErrorDisplay](./ui.errordisplay.md) |  |
 |  [Footer](./ui.footer.md) |  |
 |  [Form](./ui.form.md) |  |
-|  [Header](./ui.header.md) |  |
+|  [Header](./ui.header.md) | Header component |
 |  [Icon](./ui.icon.md) |  |
 |  [Input](./ui.input.md) | Default text input component |
 |  [Notification\_2](./ui.notification_2.md) | Notification component |

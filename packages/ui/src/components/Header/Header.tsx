@@ -16,32 +16,39 @@ export type HeaderProps = {
 
 /**Header component */
 export const Header = ({ navLinks, onLogout }: HeaderProps) => {
-
   return (
     <header className={styles.header}>
       <div className={styles.navigation}>
-         <NavLink className={styles.logo} to='/'>
+        <NavLink className={styles.logo} to="/">
           <span className={styles.hiddenText}>Language power logo</span>
-          <img src={logo} />
-          </NavLink>
-      <ul className={styles.navItems}>
-        {navLinks.map(link => {
-          return (
-            <li key={link.text} className={styles.navItem}>
-              <NavLink
-                to={link.url}
-                className={({ isActive }) =>
-                  isActive ? styles.activeLink : styles.headerLink
-                }
-              >
-                {link.text}
-              </NavLink>
-            </li>
-          );
-        })}
-      </ul>
+          <img alt="logo" src={logo} />
+        </NavLink>
+        <ul className={styles.navItems}>
+          {navLinks.map(link => {
+            return (
+              <li key={link.text} className={styles.navItem}>
+                <NavLink
+                  to={link.url}
+                  className={({ isActive }) =>
+                    isActive ? styles.activeLink : styles.headerLink
+                  }
+                >
+                  {link.text}
+                </NavLink>
+              </li>
+            );
+          })}
+        </ul>
       </div>
-      {onLogout && <Button className={styles.headerButton} variant='secondary' onClick={onLogout}>Sign out</Button>}
+      {onLogout && (
+        <Button
+          className={styles.headerButton}
+          variant="secondary"
+          onClick={onLogout}
+        >
+          Sign out
+        </Button>
+      )}
     </header>
   );
 };

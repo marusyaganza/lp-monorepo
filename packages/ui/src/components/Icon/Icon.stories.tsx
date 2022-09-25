@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon, IconIdType } from './icon';
+import { Icon, _iconIds } from './icon';
 import '../../assets/styles/common-styles.css';
 
 export default {
@@ -7,20 +7,8 @@ export default {
   component: Icon
 };
 
-export const ids: IconIdType[] = [
-  'edit',
-  'search',
-  'error',
-  'reload',
-  'book',
-  'play',
-  'maintenance',
-  'success',
-  'close'
-];
-
 export const Icons = () =>
-  ids.map(id => {
+  _iconIds.map(id => {
     return (
       <div key={id} className="presentationBox">
         <p>{id}</p>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, ButtonProps, ButtonVariantType } from './Button';
-import { ids } from '../Icon/Icon.stories';
+import { _iconIds } from '../Icon/icon';
 
 import '../../assets/styles/common-styles.css';
 
@@ -64,7 +64,7 @@ export const LoadingButtons = (args: ButtonProps) => {
 };
 
 export const ButtonsWithIcon = () => {
-  return ids.map(id => (
+  return _iconIds.map(id => (
     <div key={id} className="presentationBox">
       <Button variant="iconWithText" iconId={id}>
         {id}
@@ -74,7 +74,7 @@ export const ButtonsWithIcon = () => {
 };
 
 export const IconButtons = (args: ButtonProps) => {
-  return ids.map(id => (
+  return _iconIds.map(id => (
     <div key={id} className="presentationBox">
       <Button {...args} variant="icon" iconId={id}>
         {id}

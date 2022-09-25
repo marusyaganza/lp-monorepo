@@ -1,5 +1,4 @@
 import React, { useEffect, useMemo } from 'react';
-import './AudioButton.css';
 import { Button, ButtonProps } from '../Button/Button';
 
 /**AudioButton Props */
