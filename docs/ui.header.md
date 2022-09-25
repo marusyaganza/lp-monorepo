@@ -4,6 +4,8 @@
 
 ## Header variable
 
+Header component
+
 <b>Signature:</b>
 
 ```typescript

@@ -20,6 +20,19 @@ export type IconProps = {
   tooltip?: string;
 };
 
+/**@internal */
+export const _iconIds: IconIdType[] = [
+  'edit',
+  'search',
+  'error',
+  'reload',
+  'book',
+  'play',
+  'maintenance',
+  'success',
+  'close'
+];
+
 export const Icon = ({ width, height, id, tooltip, className }: IconProps) => {
   const img = `${sprite}#${id}`;
   return (

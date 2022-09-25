@@ -19,5 +19,7 @@ export default {
 };
 
 export const StandartButton = (args: AudioButtonProps) => (
-  <AudioButton {...args} />
+  <div className="presentationBox">
+    <AudioButton {...args} />
+  </div>
 );

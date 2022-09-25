@@ -110,7 +110,7 @@ export interface FormProps extends FormHTMLAttributes<HTMLFormElement> {
     onFormSubmit: (values: Record<string, string>) => void;
 }
 
-// @public (undocumented)
+// @public
 export const Header: ({ navLinks, onLogout }: HeaderProps) => JSX.Element;
 
 // @public (undocumented)
@@ -121,6 +121,9 @@ export type HeaderProps = {
 
 // @public (undocumented)
 export const Icon: ({ width, height, id, tooltip, className }: IconProps) => JSX.Element;
+
+// @internal (undocumented)
+export const _iconIds: IconIdType[];
 
 // @public (undocumented)
 export type IconIdType = 'edit' | 'search' | 'error' | 'reload' | 'book' | 'play' | 'maintenance' | 'success' | 'close';

@@ -6,4 +6,8 @@ export default {
   component: SpinnerComponent
 };
 
-export const Spinner = (args: SpinnerProps) => <SpinnerComponent {...args} />;
+export const Spinner = (args: SpinnerProps) => (
+  <div className="presentationBox">
+    <SpinnerComponent {...args} />
+  </div>
+);
