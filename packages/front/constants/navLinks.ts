@@ -1,6 +1,7 @@
+import {routes} from './routes';
+
 export const navLinks = [
-  { url: '/', text: 'Home' },
-  { url: '/search', text: 'Search' },
-  { url: '/words', text: 'Words' },
-  { url: '/games', text: 'Games' }
+  { url: `/${routes.search}`, text: 'Search' },
+  { url: `/${routes.words}`, text: 'Words' },
+  { url: `/${routes.games}`, text: 'Games' }
 ];
