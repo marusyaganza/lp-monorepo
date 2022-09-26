@@ -1,11 +1,11 @@
 import React from 'react';
+import { useSpring, animated } from 'react-spring';
 import { cn } from '../../utils/classnames';
 import { Button } from '../Button/Button';
 import { Icon } from '../Icon/icon';
 
 import styles from './Notification.module.css';
 
-//TODO: animate this component
 export interface NotificationProps {
   /**Main text */
   text: string;
@@ -26,8 +26,15 @@ export const Notification = ({
   onClose,
   className
 }: NotificationProps) => {
+  const animation = useSpring({
+    from: { opacity: 0, transform: `translateY(-200%)` },
+    to: { opacity: 1, transform: `translateY(0)` }
+  });
   return (
-    <div className={cn(className, styles.notificationContainer)}>
+    <animated.div
+      style={animation}
+      className={cn(className, styles.notificationContainer)}
+    >
       <div
         className={cn(
           styles.notificationContent,
@@ -50,6 +57,6 @@ export const Notification = ({
           Close
         </Button>
       </div>
-    </div>
+    </animated.div>
   );
 };

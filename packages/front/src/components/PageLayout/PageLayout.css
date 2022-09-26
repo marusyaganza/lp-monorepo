@@ -3,10 +3,12 @@
     flex-direction: column;
     justify-content: space-between;
     min-height: 100vh;
+    align-items: center;
 }
 
 .main {
     height: 100%;
+    align-self: flex-start;
     padding: 0 60px;
     flex-grow: 8;
     font-family: var(--font-libreBaskerville);
