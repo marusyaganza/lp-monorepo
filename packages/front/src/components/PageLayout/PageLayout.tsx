@@ -19,8 +19,8 @@ export const PageLayout = ({ children }: PropsWithChildren<unknown>) => {
 
   return (
     <>
-      <Notification />
       <div className="page">
+        <Notification />
         <Header onLogout={logout} navLinks={navLinks} />
         <main className="main">{children}</main>
         <Footer />
