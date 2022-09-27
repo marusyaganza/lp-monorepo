@@ -13,7 +13,8 @@
     "eslint": "eslint src",
     "ready": "yarn eslint --fix && yarn stylelint --fix",
     "build-storybook": "build-storybook",
-    "clean": "rimraf dist *.tsbuildinfo"
+    "clean": "rimraf dist *.tsbuildinfo",
+    "new-component": "plop"
   },
   "dependencies": {
     "@lp/types": "^1.0.2",
@@ -25,6 +26,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.17.9",
+    "plop": "^3.1.1",
     "@react-spring/types": "^9.5.5",
     "@storybook/addon-actions": "^6.4.22",
     "@storybook/addon-essentials": "^6.4.22",
