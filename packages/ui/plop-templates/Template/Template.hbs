@@ -1,0 +1,15 @@
+import React from 'react';
+import { cn } from '../../utils/classnames';
+
+import styles from './{{pascalCase name}}.module.css';
+
+export interface {{pascalCase name}}Props {
+  /**{{pascalCase name}} prop */
+  prop: string;
+  /**additional styling */
+  className?: string;
+}
+/**Component description goes here */
+export const {{pascalCase name}} = ({ prop, className }: {{pascalCase name}}Props) => {
+  return <div className={cn(className, styles.template)}>{{pascalCase name}} {prop}</div>;
+};

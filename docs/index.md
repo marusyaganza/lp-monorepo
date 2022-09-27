@@ -9,5 +9,4 @@
 |  Package | Description |
 |  --- | --- |
 |  [@lp/types](./types.md) |  |
-|  [@lp/ui](./ui.md) | <p><img src="" align="right" /></p><p><h3>Design system for Language Power project</h3></p><p><code>@shlack/ui</code> is a package containing common ui component and utilities for LP app. This a relaunch of language learning app <b>Language Power</b> which you can learn more about by visiting <a href="https://github.com/marusyaganza/language-power" target="_blank"> the repo on GitHub </a></p><p>This package is using storybook for live premiew. Learn more on <a href="" target="_blank">Preview link will be added soon</a></p> |
 

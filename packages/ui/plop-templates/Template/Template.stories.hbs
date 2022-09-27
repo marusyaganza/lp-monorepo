@@ -1,0 +1,22 @@
+import React from 'react';
+import { {{pascalCase name}}, {{pascalCase name}}Props } from './{{pascalCase name}}';
+import '../../assets/styles/common-styles.css';
+
+export default {
+  title: '{{pascalCase name}}',
+  component: {{pascalCase name}},
+  argTypes: {
+    prop: {
+      control: { type: 'text' },
+      defaultValue: 'prop text'
+    }
+  }
+};
+
+export const {{pascalCase name}}Default = (args: {{pascalCase name}}Props) => {
+  return (
+    <div className="presentationBox">
+      <{{pascalCase name}} {...args} />
+    </div>
+  );
+};
