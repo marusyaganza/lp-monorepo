@@ -1,41 +1,49 @@
 import React from 'react';
+import { WordType } from '@lp/types';
+import { cn } from '../../utils/classnames';
 import { AudioButton } from '../AudioButton/AudioButton';
 import { Icon } from '../Icon/icon';
 import { DictionaryEntity } from '../DictionaryEntity/DictionaryEntity';
-import { WordType } from '@lp/types';
+import { Button } from '../Button/Button';
 
-import './WordCard.css';
+import styles from './WordCard.module.css';
 
 export interface WordCardProps {
+  /**Word to display */
   word: WordType;
+  /**additional styling */
+  className?: string;
+  /**edit button callback, if not provides, button will not be displayed */
+  onEdit?: () => void;
+  /**delete button callback, if not provides, button will not be displayed */
+  onDelete?: () => void;
+  /**short variant does not include word forms, examples and image */
+  variant?: 'short' | 'full';
 }
 
-export const WordCard = ({ word }: WordCardProps) => {
-  const { name, defs, particle, transcription, examples, audioUrl, imgUrl } =
-    word;
+/**Component that displays word */
+export const WordCard = ({
+  word,
+  className,
+  onEdit,
+  onDelete,
+  variant = 'full'
+}: WordCardProps) => {
+  const {
+    name,
+    particle,
+    audioUrl,
+    transcription,
+    level,
+    isOffensive,
+    defs,
+    stems,
+    imgUrl
+  } = word;
 
-  const renderExamples = (ex: string[] | undefined) => {
-    if (!ex || !ex.length) return null;
-    const listItems = ex.map(item => {
-      return (
-        <li className="examplesItem" key={item}>
-          <DictionaryEntity className="examplesListInfo" text={item} />
-        </li>
-      );
-    });
-    return (
-      <section className="examples">
-        <details>
-          <summary className="examplesTitle">Examples</summary>
-          <ol className="examplesList">{listItems}</ol>
-        </details>
-      </section>
-    );
-  };
-  const renderAudio = (
-    transcription: string | undefined,
-    audioUrl: string | undefined
-  ) => {
+  const isFull = variant === 'full';
+
+  const renderAudio = () => {
     if (!audioUrl && !transcription) {
       return null;
     }
@@ -49,46 +57,114 @@ export const WordCard = ({ word }: WordCardProps) => {
       </section>
     );
   };
-  const renderDefs = (defsArr: string[]) => {
-    if (!defsArr || !defsArr.length) return null;
-    const list = defsArr.map(def => {
-      return (
-        <li className="defListItem" key={def}>
-          <i className="textIcon">
-            <Icon width={14} height={16} id="book" />
-          </i>
-          <p className="defItem">
-            <DictionaryEntity text={def} />
-          </p>
-        </li>
-      );
-    });
-    return <ul className="defsList">{list}</ul>;
+
+  const renderExamples = (examples?: string[]) => (
+    <ul>
+      {examples?.map(example => (
+        <p key={example} className={styles.example}>
+          <DictionaryEntity text={example} />
+        </p>
+      ))}
+    </ul>
+  );
+
+  const renderDefinition = () => {
+    return (
+      <ul>
+        {defs.map(d => {
+          return (
+            <div key={d.def}>
+              <p className={styles.definition}>
+                <Icon
+                  className={styles.defIcon}
+                  width={30}
+                  height={20}
+                  id="book"
+                ></Icon>
+                <DictionaryEntity text={d.def} />
+              </p>
+              {isFull && renderExamples(d.examples)}
+            </div>
+          );
+        })}
+      </ul>
+    );
   };
 
-  return (
-    <article className="word">
-      <div>
-        <div className="top">
-          <header className="wordHeader">
-            <span className="name">{name}</span>
-            <span className="particle">{particle}</span>
-            {renderAudio(transcription, audioUrl)}
-          </header>
-          <div className="controlsContainer"></div>
-        </div>
-        {renderDefs(defs)}
-        {renderExamples(examples)}
-      </div>
-      {imgUrl && (
-        <img
-          className="image"
-          src={imgUrl}
-          alt={name}
-          width={150}
-          height={150}
-        />
+  const renderButtons = () => (
+    <div className={styles.buttons}>
+      {onEdit && (
+        <Button
+          className={styles.editButton}
+          variant="icon"
+          iconId="edit"
+          iconHeight={35}
+          iconWidth={30}
+          onClick={onEdit}
+        >
+          edit
+        </Button>
       )}
+      {onDelete && (
+        <Button
+          className={styles.deleteButton}
+          variant="icon"
+          iconId="delete"
+          iconHeight={35}
+          iconWidth={30}
+          onClick={onDelete}
+        >
+          delete
+        </Button>
+      )}
+    </div>
+  );
+
+  const renderHeader = () => (
+    <header className={styles.header}>
+      <h3 className={styles.wordName}>{name}</h3>
+      <span className={styles.particle}>{particle}</span>
+      {renderAudio()}
+      {level && <span className={styles.level}>{level}</span>}
+      {isOffensive && (
+        <span className={styles.offensive}>
+          <Icon width={20} height={23} id="fire" />
+          offensive
+        </span>
+      )}
+    </header>
+  );
+
+  if (isFull) {
+    return (
+      <article className={cn(className, styles.wordContainer)}>
+        {renderButtons()}
+        <div className={styles.word}>
+          {renderHeader()}
+          {renderDefinition()}
+          {stems?.length && (
+            <section className={styles.stems}>
+              <i>Word forms:</i> {stems.join(', ')}{' '}
+            </section>
+          )}
+        </div>
+        {imgUrl && (
+          <img
+            className={styles.illustration}
+            src={imgUrl}
+            alt={`${name} illustration`}
+          />
+        )}
+      </article>
+    );
+  }
+
+  return (
+    <article className={cn(className, styles.wordContainer)}>
+      <div className={styles.word}>
+        {renderHeader()}
+        {renderDefinition()}
+      </div>
     </article>
   );
 };

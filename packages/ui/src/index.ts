@@ -5,7 +5,7 @@
  *
  * <h3>Design system for Language Power project</h3>
  *
- * `@shlack/ui` is a package containing common ui component and utilities
+ * `@lp/ui` is a package containing common ui component and utilities
  * for LP app. This a relaunch of language learning app
  * <b>Language Power</b> which you can learn more about by visiting
  * <a href="https://github.com/marusyaganza/language-power" target="_blank">
@@ -35,3 +35,4 @@ export * from './components/Input/Input';
 export * from './components/WordCard/WordCard';
 export * from './utils/validators';
 export * from './components/Notification/Notification';
+export * from './components/CardWrapper/CardWrapper';

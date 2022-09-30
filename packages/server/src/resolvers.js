@@ -1,5 +1,5 @@
 const { authenticated, authorized } = require('./auth');
-const { AuthenticationError } = require('apollo-server');
+const { AuthenticationError, UserInputError } = require('apollo-server');
 
 const resolvers = {
   Query: {
@@ -8,6 +8,13 @@ const resolvers = {
     },
     words: authenticated((_, __, { models, user }) => {
       return models.Word.findMany({ user: user.id });
+    }),
+    word: authenticated((_, { id }, { models, user }) => {
+      const word = models.Word.findOne({ user: user.id, id });
+      if (!word) {
+        throw new UserInputError(`word with id ${id} is not found`);
+      }
+      return word;
     })
   },
   Mutation: {

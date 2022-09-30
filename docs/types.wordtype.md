@@ -4,21 +4,27 @@
 
 ## WordType type
 
+word entity
+
 <b>Signature:</b>
 
 ```typescript
 export declare type WordType = {
     id: string;
-    name: string;
-    defs: string[];
-    particle: string;
-    user: string;
     uuid?: string;
+    name: string;
+    defs: DefinitionType[];
+    particle: string;
+    isOffensive: boolean;
+    stems: string[];
+    user: string;
+    level?: LevelType;
     transcription?: string;
     imgUrl?: string;
     audioUrl?: string;
-    tags?: string[];
+    tags?: TagType[];
     additionalInfo?: string;
-    examples?: string[];
 };
 ```
+<b>References:</b> [DefinitionType](./types.definitiontype.md)<!-- -->, [LevelType](./types.leveltype.md)<!-- -->, [TagType](./types.tagtype.md)
+

@@ -4,6 +4,16 @@
 
 ## types package
 
+<img src="" align="right" />
+
+<h3>Common types for Language Power project</h3>
+
+`types/ui` is a package containing common types for LP app
+
+## Remarks
+
+Happy coding
+
 ## Enumerations
 
 |  Enumeration | Description |
@@ -14,8 +24,10 @@
 
 |  Type Alias | Description |
 |  --- | --- |
+|  [DefinitionType](./types.definitiontype.md) |  |
+|  [LevelType](./types.leveltype.md) |  |
 |  [LinkType](./types.linktype.md) |  |
+|  [TagType](./types.tagtype.md) |  |
 |  [User](./types.user.md) |  |
-|  [Word](./types.word.md) |  |
-|  [WordType](./types.wordtype.md) |  |
+|  [WordType](./types.wordtype.md) | word entity |
 

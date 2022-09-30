@@ -5,6 +5,15 @@
 ```ts
 
 // @public (undocumented)
+export type DefinitionType = {
+    def: string;
+    examples?: string[];
+};
+
+// @public (undocumented)
+export type LevelType = 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2';
+
+// @public (undocumented)
 export type LinkType = {
     url: string;
     text: string;
@@ -21,43 +30,35 @@ export enum Role {
 }
 
 // @public (undocumented)
+export type TagType = {
+    color: string;
+    text: string;
+};
+
+// @public (undocumented)
 export type User = {
     email: string;
     name: string;
-    words: [Word];
     id: string;
     role: Role;
 };
 
-// @public (undocumented)
-export type Word = {
-    id: string;
-    defs: [string];
-    particle: string;
-    imgUrl: string;
-    audioUrl: string;
-    tags: [string];
-    additionalInfo: string;
-    examples: [string];
-    user: User;
-};
-
-// @public (undocumented)
+// @public
 export type WordType = {
     id: string;
-    name: string;
-    defs: string[];
-    particle: string;
-    user: string;
     uuid?: string;
+    name: string;
+    defs: DefinitionType[];
+    particle: string;
+    isOffensive: boolean;
+    stems: string[];
+    user: string;
+    level?: LevelType;
     transcription?: string;
     imgUrl?: string;
     audioUrl?: string;
-    tags?: string[];
+    tags?: TagType[];
     additionalInfo?: string;
-    examples?: string[];
 };
-
-// (No @packageDocumentation comment for this package)
 
 ```

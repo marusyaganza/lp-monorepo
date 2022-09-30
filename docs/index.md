@@ -8,5 +8,5 @@
 
 |  Package | Description |
 |  --- | --- |
-|  [@lp/types](./types.md) |  |
+|  [@lp/types](./types.md) | <p><img src="" align="right" /></p><p><h3>Common types for Language Power project</h3></p><p><code>types/ui</code> is a package containing common types for LP app</p> |
 
