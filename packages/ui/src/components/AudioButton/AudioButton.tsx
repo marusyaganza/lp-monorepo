@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { SyntheticEvent, useEffect, useMemo } from 'react';
 import { Button, ButtonProps } from '../Button/Button';
 
 /**AudioButton Props */
@@ -19,7 +19,8 @@ export const AudioButton = ({
   ...rest
 }: AudioButtonProps) => {
   const play = useMemo(
-    () => () => {
+    () => (e?: SyntheticEvent) => {
+      e?.stopPropagation();
       const audioElement = new Audio(src);
       audioElement.play();
     },

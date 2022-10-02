@@ -8,7 +8,7 @@
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "noUnusedLocals": false,
-    "noUnusedParameters": true,
+    "noUnusedParameters": false,
     "noImplicitReturns": true,
     "declaration": true,
     "moduleResolution": "node",

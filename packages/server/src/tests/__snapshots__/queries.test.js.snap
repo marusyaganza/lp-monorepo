@@ -21,17 +21,72 @@ Object {
 }
 `;
 
-exports[`queries word 1`] = `
+exports[`queries word by id 1`] = `
+Object {
+  "data": Object {
+    "word": Object {
+      "additionalInfo": "Hello World",
+      "audioUrl": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/e/ega/egali/egalitarian__gb_1.mp3",
+      "defs": Array [
+        Object {
+          "def": "a person who believes that everyone is equal and should have the same rights and opportunities",
+          "examples": Array [
+            "He described himself as ‘an {it}egalitarian{/it}’.",
+          ],
+        },
+        Object {
+          "def": "aiming for equal wealth, status, etc., for all people",
+          "examples": Array [
+            "He is a committed {it}egalitarian{/it}",
+            "Even in the {it}egalitarian{/it} Nordic country, Marin felt hergender and age sometimes received too much emphasis. Kostya Manenkov And Karl Ritter, USA TODAY, 21 Aug. 2022",
+          ],
+        },
+      ],
+      "id": "mockid",
+      "imgUrl": "Hello World",
+      "isOffensive": false,
+      "level": "C1",
+      "name": "egalitarian",
+      "particle": "noun",
+      "stems": Array [
+        "egalitarian",
+        "egalitarianism",
+        "egalitarians",
+      ],
+      "transcription": "iˌɡælɪˈteəriən",
+      "user": "1",
+    },
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;
+
+exports[`queries words 1`] = `
 Object {
   "data": Object {
     "words": Array [
       Object {
+        "audioUrl": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/e/ega/egali/egalitarian__gb_1.mp3",
         "defs": Array [
-          "a person who believes that everyone is equal and should have the same rights and opportunities",
+          Object {
+            "def": "a person who believes that everyone is equal and should have the same rights and opportunities",
+          },
+          Object {
+            "def": "aiming for equal wealth, status, etc., for all people",
+          },
         ],
-        "id": "0",
+        "id": "mockid",
+        "isOffensive": false,
+        "level": "C1",
         "name": "egalitarian",
         "particle": "noun",
+        "transcription": "iˌɡælɪˈteəriən",
       },
     ],
   },

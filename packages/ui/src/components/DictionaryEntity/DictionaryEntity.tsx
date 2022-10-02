@@ -1,7 +1,8 @@
 import React from 'react';
 import { cleanString, isSuff } from './helpers';
 import { CLOSING, OPENING } from './constants';
-import './DictionaryEntity.css';
+import { cn } from '../../utils/classnames';
+import styles from './DictionaryEntity.module.css';
 
 export interface DictionaryEntityProps {
   text: string;
@@ -13,7 +14,11 @@ export const DictionaryEntity = ({
   className
 }: DictionaryEntityProps) => {
   const decorateWord = (word: string) => {
-    return <i className={className}>{word}</i>;
+    return (
+      <i key={word} className={cn(styles.info, className)}>
+        {word}
+      </i>
+    );
   };
 
   const counstuctPhrase = (string: string) => {

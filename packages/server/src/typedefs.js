@@ -7,6 +7,15 @@ const typeDefs = gql`
     GUEST
   }
 
+  enum Level {
+    A1
+    A2
+    B1
+    B2
+    C1
+    C2
+  }
+
   type User {
     email: String!
     firstName: String!
@@ -16,18 +25,31 @@ const typeDefs = gql`
     role: Role
   }
 
+  type WordDefinition {
+    def: String!
+    examples: [String]
+  }
+
+  type WordTag {
+    color: String!
+    text: String!
+  }
+
   type Word {
     id: ID!
+    uuid: ID
     name: String!
-    defs: [String]!
+    defs: [WordDefinition]!
     particle: String!
     imgUrl: String
     audioUrl: String
-    tags: [String]
     additionalInfo: String
-    examples: [String]
     transcription: String
     user: ID!
+    isOffensive: Boolean
+    stems: [String]
+    tags: [WordTag]
+    level: Level
   }
 
   type AuthUser {
@@ -68,6 +90,7 @@ const typeDefs = gql`
   type Query {
     user: User!
     words: [Word]!
+    word(id: ID!): Word!
   }
 
   type Mutation {

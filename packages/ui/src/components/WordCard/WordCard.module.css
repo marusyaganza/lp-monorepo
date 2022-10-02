@@ -1,0 +1,95 @@
+@import '../../assets/styles/colors.css';
+@import '../../assets/styles/font-sizes.css';
+@import '../../assets/styles/fonts.css';
+@import '../../assets/styles/effects.css';
+
+.wordContainer {
+    display: flex;
+    align-items: center;
+    padding: 60px 50px;
+    border: 1px solid var(--neutral-300);
+    box-shadow: var(--primary-box-shadow);
+    border-radius: var(--primary-border-radius);
+    font-size: var(--font-size-s);
+    font-family: var(--font-libreBaskerville);
+    position: relative;
+}
+
+.word {
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.wordName {
+    color: var(--primary-500);
+    margin: 0;
+}
+
+.particle {
+    font-style: italic;
+}
+
+.level {
+    opacity: 0.5;
+    font-family: var(--font-kalam);
+    background: var(--secondary-400);
+    color: var(--primary-500);
+    padding: 5px;
+}
+
+.example {
+    font-family: var(--font-kalam);
+    background: var(--neutral-100);
+    padding: 10px  40px;
+    margin: 40px;
+}
+
+.definition {
+    display: flex;
+    gap: 10px;
+    margin: 0;
+    margin: 45px 0;
+}
+
+.defIcon {
+    padding-top: 5px;
+    flex-shrink: 0;
+    color: var(--secondary-500);
+}
+
+.offensive {
+    color: var(--error-200);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.illustration {
+    max-width: 280px;
+}
+
+.buttons {
+    display: flex;
+    gap: 40px;
+    position: absolute;
+    top: 60px;
+    right: 80px
+}
+
+.deleteButton {
+    color: var(--error-300);
+}
+
+.editButton {
+    color: var(--primary-500);
+}
+
+.stems {
+    margin-top: 5px;
+}

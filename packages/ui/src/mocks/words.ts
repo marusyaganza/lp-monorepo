@@ -1,8 +1,12 @@
-const words = [
+import { WordType } from '@lp/types';
+import egalitarianImg from './egalitarian.svg';
+
+export const words: WordType[] = [
   {
     uuid: '74046e79-e4c9-4b52-ac96-cb7ae98fb601',
     id: 'mockid',
     name: 'egalitarian',
+    imgUrl: egalitarianImg,
     isOffensive: false,
     defs: [
       {
@@ -23,22 +27,22 @@ const words = [
     audioUrl:
       'https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/e/ega/egali/egalitarian__gb_1.mp3',
     transcription: 'iˌɡælɪˈteəriən',
-    user: '1'
-  }
-];
-
-const users = [
+    user: '0'
+  },
   {
-    email: 'member@member.com',
-    password: 'password',
-    role: 'MEMBER',
-    verified: false,
-    avatar: 'http',
-    createdAt: 1571213104370,
-    id: '1',
-    firstName: 'User',
-    lastName: 'Test'
+    uuid: '74046e79-e4c9-4b52-ac96-cb7ae98fb601',
+    id: 'mockid',
+    name: 'pussy',
+    isOffensive: true,
+    defs: [
+      {
+        def: '{it}informal + offensive{/it} {bc} a woman\u0027s sex organs {it}also{/it} {bc} sexual intercourse with a woman'
+      }
+    ],
+    particle: 'noun',
+    level: 'C2',
+    stems: ['pussy', 'pussies'],
+    transcription: '\u02c8p\u028asi',
+    user: '0'
   }
 ];
-
-module.exports = { words, users };
