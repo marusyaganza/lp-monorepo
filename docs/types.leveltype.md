@@ -4,6 +4,8 @@
 
 ## LevelType type
 
+CEFR levels
+
 <b>Signature:</b>
 
 ```typescript

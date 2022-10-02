@@ -15,10 +15,9 @@ import styles from './WordsPage.module.css';
 
 const WordsPage = () => {
   const [fetchWords, { loading, error, data }] = useLazyQuery(WORDS_QUERY);
-  const { setNotification, userId } = useContext(AppContext);
+  const { setNotification } = useContext(AppContext);
 
   useEffect(() => {
-    // console.log('')
     fetchWords();
   }, []);
 

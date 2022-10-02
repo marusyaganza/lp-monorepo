@@ -4,6 +4,8 @@
 
 ## DefinitionType type
 
+word definition with examples
+
 <b>Signature:</b>
 
 ```typescript

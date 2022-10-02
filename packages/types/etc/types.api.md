@@ -4,13 +4,13 @@
 
 ```ts
 
-// @public (undocumented)
+// @public
 export type DefinitionType = {
     def: string;
     examples?: string[];
 };
 
-// @public (undocumented)
+// @public
 export type LevelType = 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2';
 
 // @public (undocumented)

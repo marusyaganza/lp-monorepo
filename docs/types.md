@@ -24,8 +24,8 @@ Happy coding
 
 |  Type Alias | Description |
 |  --- | --- |
-|  [DefinitionType](./types.definitiontype.md) |  |
-|  [LevelType](./types.leveltype.md) |  |
+|  [DefinitionType](./types.definitiontype.md) | word definition with examples |
+|  [LevelType](./types.leveltype.md) | CEFR levels |
 |  [LinkType](./types.linktype.md) |  |
 |  [TagType](./types.tagtype.md) |  |
 |  [User](./types.user.md) |  |
