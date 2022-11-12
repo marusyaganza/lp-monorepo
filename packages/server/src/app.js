@@ -1,8 +1,11 @@
 const { ApolloServer } = require('apollo-server');
+const { initDb } = require('./db/mongo');
 const typeDefs = require('./typedefs');
 const resolvers = require('./resolvers');
 const { createToken, getUserFromToken } = require('./auth');
 const { models, db } = require('./db');
+
+initDb();
 const server = new ApolloServer({
   typeDefs,
   resolvers,
