@@ -5,12 +5,13 @@ const { JWT_SECTET } = process.env;
 
 const createToken = ({ id, role }) => jwt.sign({ id, role }, JWT_SECTET);
 
+/**retrieve user data from the token */
 const getUserFromToken = token => {
   try {
     const user = jwt.verify(token, JWT_SECTET);
     return models.User.findOne({ id: user.id });
   } catch (e) {
-    console.log(e);
+    console.log('error', e);
     return null;
   }
 };
