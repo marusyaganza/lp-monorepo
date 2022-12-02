@@ -19,6 +19,7 @@ import './app.css';
 const HomePage = lazy(() => import('./pages/home/HomePage'));
 const WordsPage = lazy(() => import('./pages/words/WordsPage'));
 const WordPage = lazy(() => import('./pages/words/word/WordPage'));
+const NewWordPage = lazy(() => import('./pages/NewWordPage/NewWordPage'));
 const GamesPage = lazy(() => import('./pages/games/GamesPage'));
 const GamePage = lazy(() => import('./pages/games/game/GamePage'));
 const SearchPage = lazy(() => import('./pages/search/SearchPage'));

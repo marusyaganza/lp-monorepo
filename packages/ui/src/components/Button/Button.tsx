@@ -37,6 +37,8 @@ export interface ButtonProps {
   onClick?: MouseEventHandler<HTMLButtonElement>;
   /** Determines if the button has action button style */
   isActionButton?: boolean;
+  /**shape of the icon button */
+  shape?: 'circle' | 'rectangular';
 }
 /**
  *
@@ -54,6 +56,7 @@ export const Button = ({
   iconWidth = 16,
   isLoading,
   isActionButton,
+  shape = 'circle',
   ...rest
 }: PropsWithChildren<ButtonProps>) => {
   const isIconButton = iconId && variant === 'icon';
@@ -61,6 +64,7 @@ export const Button = ({
   let iconButtonStyle;
 
   if (isIconButton && (iconHeight || iconWidth)) {
+  if (isIconButton && (iconHeight || iconWidth) && shape === 'circle') {
     const size = Math.max(iconHeight, iconWidth);
     iconButtonStyle = { height: size, width: size };
   }

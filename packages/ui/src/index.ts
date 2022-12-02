@@ -41,3 +41,6 @@ export * from './components/LanguageSelector/LanguageSelector';
 export * from './components/HeaderV2/HeaderV2';
 export * from './components/UserMenu/UserMenu';
 export * from './components/SearchField/SearchField';
+export * from './components/ArrayInput/ArrayInput';
+export * from './components/DefinitionInput/DefinitionInput';
+export * from './components/InputWithButton/InputWithButton';
