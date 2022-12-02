@@ -2,3 +2,9 @@ node_modules
 nodemon.json
 public
 dist
+tsconfig.tsbuildinfo
+temp
+storybook-static
+resourses
+.vscode
+.env
