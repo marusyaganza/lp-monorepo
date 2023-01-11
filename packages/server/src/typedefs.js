@@ -62,16 +62,36 @@ const typeDefs = gql`
     id: ID!
   }
 
+  input DefsInput {
+    def: String!
+    examples: [String]
+  }
+
   input NewWordInput {
-    user: ID!
+    uuid: ID
     name: String!
-    defs: [String]!
+    defs: [DefsInput]!
     particle: String!
     imgUrl: String
     audioUrl: String
-    tags: [String]
     additionalInfo: String
-    examples: [String]
+    transcription: String
+    isOffensive: Boolean
+    stems: [String]
+    level: Level
+  }
+
+  input UpdateWordInput {
+    id: ID!
+    defs: [DefsInput]
+    particle: String
+    imgUrl: String
+    audioUrl: String
+    additionalInfo: String
+    transcription: String
+    isOffensive: Boolean
+    stems: [String]
+    level: Level
   }
 
   input SignUpInput {
@@ -95,6 +115,8 @@ const typeDefs = gql`
 
   type Mutation {
     saveWord(input: NewWordInput!): Word!
+    updateWord(input: UpdateWordInput!): Word!
+    deleteWord(id: ID!): String!
     signUp(input: SignUpInput): AuthUser!
     login(input: LoginInput): AuthUser!
   }

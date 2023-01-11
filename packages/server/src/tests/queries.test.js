@@ -89,12 +89,16 @@ describe('queries', () => {
   });
 
   test('user', async () => {
-    const findOne = jest.fn(() => users[0]);
+    const findOneUser = jest.fn(() => users[0]);
+    const findOneWord = jest.fn(() => words[0]);
     const { query } = createTestServer({
-      user: users[0],
+      user: { id: '1', role: 'MEMBER' },
       models: {
         Word: {
-          findOne
+          findOne: findOneWord
+        },
+        User: {
+          findOne: findOneUser
         }
       }
     });
