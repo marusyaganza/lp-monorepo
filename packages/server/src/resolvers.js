@@ -1,5 +1,8 @@
 const { authenticated, authorized } = require('./auth');
-const { AuthenticationError, UserInputError } = require('apollo-server');
+const {
+  AuthenticationError,
+  UserInputError
+} = require('./apollo-custom-errors');
 
 const resolvers = {
   Query: {

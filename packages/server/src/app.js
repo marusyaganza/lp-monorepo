@@ -1,4 +1,5 @@
-const { ApolloServer } = require('apollo-server');
+const { ApolloServer } = require('@apollo/server');
+const { startStandaloneServer } = require('@apollo/server/standalone');
 const { initDb } = require('./db/mongo/initDB');
 const typeDefs = require('./typedefs');
 const resolvers = require('./resolvers');
@@ -8,22 +9,18 @@ const { createToken, getUserFromToken } = require('./auth');
 // Uncomment this to use mock db
 // const { models, db } = require('./db');
 
-initDb(models => {
+initDb(async models => {
   const server = new ApolloServer({
     typeDefs,
-    resolvers,
+    resolvers
+  });
+  const { url } = await startStandaloneServer(server, {
     context({ req }) {
       const token = req?.headers?.authorization?.split(' ')[1];
       const user = token ? getUserFromToken(token) : null;
       return { models, user, createToken };
-    }
+    },
+    listen: { port: 4000 }
   });
-  server
-    .listen(4000)
-    .then(({ url }) => {
-      console.log(`🚀 Server ready at ${url}`);
-    })
-    .catch(err => {
-      console.log(err);
-    });
+  console.log(`🚀 Server ready at ${url}`);
 });

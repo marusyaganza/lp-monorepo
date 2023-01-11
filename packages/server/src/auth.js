@@ -1,4 +1,4 @@
-const { AuthenticationError } = require('apollo-server');
+const { AuthenticationError } = require('./apollo-custom-errors');
 const jwt = require('jsonwebtoken');
 const { JWT_SECTET } = process.env;
 
