@@ -1,0 +1,4 @@
+JWT_SECTET=secret
+MONGO_PASSWORD=password
+MONGO_USERNAME=username
+SALT_NUMBER=1

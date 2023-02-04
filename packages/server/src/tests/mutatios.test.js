@@ -1,4 +1,3 @@
-const gql = require('graphql-tag');
 const createTestServer = require('./helpers');
 const { users } = require('./mocks/data');
 
@@ -11,7 +10,7 @@ const signUpData = {
   role: 'MEMBER'
 };
 
-const loginMutation = gql`
+const loginMutation = `
   mutation {
     login(input: { email: "member@member.com", password: "password" }) {
       id
@@ -22,7 +21,7 @@ const loginMutation = gql`
     }
   }
 `;
-const signUpMutation = gql`
+const signUpMutation = `
   mutation {
     signUp(
       input: {

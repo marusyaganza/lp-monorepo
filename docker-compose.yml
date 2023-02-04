@@ -4,8 +4,8 @@ services:
     image: "mongo"
     volumes:
       - data:/data/db
-    env_file:
-      - ./.env
+    # env_file:
+    #   - ./.env
   lp-server:
     build: ./packages/server
     ports:
