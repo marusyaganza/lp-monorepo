@@ -1,8 +1,10 @@
 const { authenticated, authorized } = require('./auth');
 const {
   AuthenticationError,
-  UserInputError
-} = require('./apollo-custom-errors');
+  UserInputError,
+  OperationResolutionError
+} = require('./utils/apolloCustomErrors');
+const { hashPassword, validatePassword } = require('./utils/authUtils');
 
 const resolvers = {
   Query: {
@@ -55,13 +57,21 @@ const resolvers = {
         );
       }
       const role = 'MEMBER';
-      const user = await models.User.createOne({ ...input, role });
+      const hashedPassword = await hashPassword(input.password);
+      if (!hashedPassword) {
+        throw new OperationResolutionError(`sign up operation failed`);
+      }
+      const user = await models.User.createOne({
+        ...input,
+        password: hashedPassword,
+        role
+      });
       const token = createToken(user);
       return { ...user, token };
     },
     login: async (_, { input }, { models, createToken }) => {
       const user = await models.User.findOne({ email: input.email });
-      if (user?.password !== input.password) {
+      if (!validatePassword(input.password, user?.password)) {
         throw new AuthenticationError(`email or password is incorrect`);
       }
       const token = createToken(user);

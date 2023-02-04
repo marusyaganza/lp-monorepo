@@ -12,5 +12,15 @@ class UserInputError extends GraphQLError {
   }
 }
 
+class OperationResolutionError extends GraphQLError {
+  constructor(errorMessage, extensions) {
+    super(errorMessage, {
+      ...extensions,
+      code: 'OPERATION_RESOLUTION_FAILURE'
+    });
+  }
+}
+
 exports.AuthenticationError = AuthenticationError;
 exports.UserInputError = UserInputError;
+exports.OperationResolutionError = OperationResolutionError;
