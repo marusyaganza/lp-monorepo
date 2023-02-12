@@ -1,11 +1,10 @@
 import React, { useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 
-import { SIGN_UP } from '../../gql/mutations';
 import { validators } from '@lp/ui';
 import { AuthPageLayout } from '../../components/AuthPageLayout/AuthPageLayout';
 import { Form } from '@lp/ui';
-import { useMutation } from '@apollo/client';
+import { useSignUpMutation, SignUpInput } from '../../generated/graphql';
 import { AppContext } from '../../app-context/appContext';
 import { routes } from '../../../constants/routes';
 
@@ -63,10 +62,10 @@ const SignUpPage = () => {
     }
   ];
 
-  const [authFunc, { data, loading, error }] = useMutation(SIGN_UP);
+  const [authFunc, { data, loading, error }] = useSignUpMutation();
   const { login, setNotification } = useContext(AppContext);
 
-  const submitHandler = (values: Record<string, string>) => {
+  const submitHandler = (values: SignUpInput) => {
     authFunc({ variables: { input: values } });
   };
 

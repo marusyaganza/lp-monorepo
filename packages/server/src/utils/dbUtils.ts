@@ -1,13 +1,14 @@
 const { ObjectId } = require('mongodb');
+import { DbData } from 'db';
 
-function formatIds(data) {
+export function formatIds<T extends DbData>(data: T): T {
   if (data?._id) {
     return { ...data, id: data._id };
   }
   return data;
 }
 
-function formatFilter(data) {
+export function formatFilter<T extends DbData>(data: T): T {
   const filters = { ...data };
   if (data?.id) {
     filters._id = ObjectId(data.id);
@@ -18,6 +19,3 @@ function formatFilter(data) {
   }
   return filters;
 }
-
-exports.formatIds = formatIds;
-exports.formatFilter = formatFilter;

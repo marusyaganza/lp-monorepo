@@ -10,7 +10,8 @@ export interface FormProps extends FormHTMLAttributes<HTMLFormElement> {
   className?: string;
   buttonText?: string;
   fields: InputProps[];
-  onFormSubmit: (values: Record<string, string>) => void;
+  // TODO: make it generic
+  onFormSubmit: (values: any) => void;
   isLoading?: boolean;
 }
 

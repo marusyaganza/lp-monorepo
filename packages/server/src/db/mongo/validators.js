@@ -1,4 +1,4 @@
-const wordsValidator = {
+export const wordsValidator = {
   $jsonSchema: {
     bsonType: 'object',
     required: ['name', 'user', 'particle', 'defs'],
@@ -71,7 +71,7 @@ const wordsValidator = {
   }
 };
 
-const userValidator = {
+export const userValidator = {
   $jsonSchema: {
     bsonType: 'object',
     required: ['email', 'password', 'firstName', 'lastName'],

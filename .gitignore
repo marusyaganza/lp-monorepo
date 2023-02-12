@@ -6,5 +6,6 @@ tsconfig.tsbuildinfo
 temp
 storybook-static
 resourses
+generated
 .vscode
 .env

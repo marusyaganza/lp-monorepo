@@ -14,7 +14,8 @@
     "ready": "yarn eslint --fix && yarn stylelint --fix",
     "build-storybook": "build-storybook",
     "clean": "rimraf dist *.tsbuildinfo",
-    "new-component": "plop"
+    "new-component": "plop",
+    "codegen": "graphql-codegen --config codegen.yml"
   },
   "dependencies": {
     "@lp/types": "^1.0.2",
@@ -25,6 +26,8 @@
     "webpack": "^5.71.0"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^3.0.0",
+    "@graphql-codegen/typescript": "^3.0.0",
     "@babel/core": "^7.17.9",
     "@react-spring/types": "^9.5.5",
     "@storybook/addon-actions": "^6.5.12",

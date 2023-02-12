@@ -1,7 +1,10 @@
-const { formatIds, formatFilter } = require('../../utils/dbUtils');
+import { formatIds, formatFilter } from '../../utils/dbUtils';
+
+import { Table, ModelType, DbData } from '..';
+
 const { ObjectId } = require('mongodb');
 
-function createModel(db, table) {
+function createModel<T extends DbData>(db: any, table: Table): ModelType<T> {
   async function findOne(filter = {}) {
     const collection = await db.collection(table);
     const result = await collection.findOne(formatFilter(filter));
@@ -10,15 +13,15 @@ function createModel(db, table) {
   }
 
   async function findMany(filter = {}) {
-    const result = await db.collection(table).find(formatFilter(filter));
-    const data = [];
+    const result: T[] = await db.collection(table).find(formatFilter(filter));
+    const data: T[] = [];
     await result.forEach(doc => {
       data.push(formatIds(doc));
     });
     return data;
   }
 
-  async function createOne(fields) {
+  async function createOne(fields: Partial<T>) {
     const data = { ...fields, createdAt: Date.now() };
     if (fields?.user) {
       data.user = ObjectId(fields.user);
@@ -28,42 +31,34 @@ function createModel(db, table) {
     return formatIds(result.ops[0]);
   }
 
-  async function updateOne(fields) {
+  async function updateOne(fields: Partial<T>) {
     const data = { ...fields };
-    delete data.id;
-    delete data.user;
+    delete data?.id;
+    delete data?.user;
     const result = await db
       .collection(table)
       .updateOne(
         { _id: ObjectId(fields.id), user: ObjectId(fields.user) },
         { $set: { ...data } }
       );
-    return result?.result;
+    const isOk = result?.result?.ok ? true : false;
+    const modifiedCount = result?.result?.nModified;
+    return { ok: isOk, modifiedCount };
   }
 
-  async function deleteOne(filter) {
-    console.log('filter', filter);
+  async function deleteOne(filter: Partial<T>) {
     const result = await db.collection(table).deleteOne(formatFilter(filter));
-    return result?.result;
-  }
-
-  async function createMany(entries) {
-    const formattedEntries = entries.map(entry => ({
-      ...entry,
-      createdAt: Date.now()
-    }));
-    const result = await db.collection(table).insertMany(formattedEntries);
-    return result.ops.map(formatIds);
+    const isOk = result?.result?.ok ? true : false;
+    return { ok: isOk };
   }
 
   return {
     findOne,
     findMany,
     createOne,
-    createMany,
     updateOne,
     deleteOne
   };
 }
 
-module.exports = createModel;
+export default createModel;
