@@ -40,7 +40,7 @@ const SignInPage = () => {
   useEffect(() => {
     if (data) {
       const fetchedData = data.login;
-      login(fetchedData.id, fetchedData.token);
+      login(fetchedData?.id, fetchedData.token);
     }
   }, [data, login]);
 

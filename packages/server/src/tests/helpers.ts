@@ -2,9 +2,9 @@ import { ApolloServer } from '@apollo/server';
 import { resolvers, ResolverContext } from '../resolvers';
 const { readFileSync } = require('fs');
 
-const typeDefs = readFileSync(require.resolve('../schema.graphql')).toString(
-  'utf-8'
-);
+const typeDefs = readFileSync(
+  require.resolve('../../../shared/schema.graphql')
+).toString('utf-8');
 
 const createTestServer = (context: ResolverContext) => {
   const server = new ApolloServer({

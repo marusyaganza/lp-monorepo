@@ -34,7 +34,7 @@ export const MutationResolvers: MutationResolversType<ResolverContext> = {
   ),
   deleteWord: authorized(Role.Member, async (_, { id }, { models, user }) => {
     const result = await models.Word.deleteOne({ id, user: user?.id });
-    if (!result.ok || result.n !== 1) {
+    if (!result.ok) {
       throw new UserInputError(`deleting word with id ${id} failed`);
     }
     return `word with id ${id} was deleted`;
@@ -67,7 +67,6 @@ export const MutationResolvers: MutationResolversType<ResolverContext> = {
     return { ...user, token };
   },
   login: async (_, { input }, { models, createToken, validatePassword }) => {
-    console.log('input', input);
     const user = await models.User.findOne({ email: input?.email });
     if (!user || !validatePassword(input?.password, user?.password)) {
       throw new AuthenticationError(`email or password is incorrect`);

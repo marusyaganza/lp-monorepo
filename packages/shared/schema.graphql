@@ -54,8 +54,8 @@ type AuthUser {
   firstName: String!
   lastName: String!
   createdAt: String!
-  id: ID
-  role: Role
+  id: ID!
+  role: Role!
   token: String!
 }
 

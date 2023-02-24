@@ -37,7 +37,7 @@ const WordsPage = () => {
       {data && (
         <ul className={styles.wordList}>
           {/* TODO: refactor this part */}
-          {data?.words?.map(word => {
+          {data?.words?.map((word: any) => {
             if (word) {
               return (
                 <li className={styles.wordListItem} key={word?.id}>

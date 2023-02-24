@@ -1,3 +1,4 @@
+import 'graphql-import-node';
 import { ApolloServer } from '@apollo/server';
 import { startStandaloneServer } from '@apollo/server/standalone';
 import { initDb } from './db/mongo/initDB';
@@ -9,16 +10,10 @@ import {
   validatePassword
 } from './auth';
 import { ModelsType } from 'db';
-
+const typeDefs = require('../../shared/schema.graphql');
 // TODO add a mechanism for switching between mock db and dev db
 // Uncomment this to use mock db
 // const { models, db } = require('./db');
-
-const { readFileSync } = require('fs');
-
-const typeDefs = readFileSync(require.resolve('./schema.graphql')).toString(
-  'utf-8'
-);
 
 initDb(async (models: ModelsType) => {
   const server = new ApolloServer({

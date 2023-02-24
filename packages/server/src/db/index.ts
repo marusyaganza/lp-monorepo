@@ -9,9 +9,9 @@ type DeleteResult = {
   ok: boolean;
 };
 
-type FindOneFunc<T> = (filter: Partial<F>) => Promise<T>;
+type FindOneFunc<T> = (filter: Partial<T>) => Promise<T>;
 type FindManyFunc<T> = (filter: Partial<T>) => Promise<T[]>;
-type CreateOneFunc<T> = (filter: Partial<F>) => Promise<T>;
+type CreateOneFunc<T> = (filter: Partial<T>) => Promise<T>;
 type UpdateOneFunc<T> = (filter: Partial<T>) => Promise<UpdateResult>;
 type DeleteOneFunc<T> = (filter: Partial<T>) => Promise<DeleteResult>;
 

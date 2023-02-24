@@ -1,4 +1,5 @@
 JWT_SECTET=secret
 MONGO_PASSWORD=password
 MONGO_USERNAME=username
+MONGO_CONNECTION=mongodb://db_address:27017
 SALT_NUMBER=1

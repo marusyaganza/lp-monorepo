@@ -1,6 +1,7 @@
 {
-    "extends": "../tsconfig.settings.json",
+  "extends": "../shared/tsconfig.settings",
     "compilerOptions": {
+        "sourceMap": true,
         "outDir": "dist",
         "module": "CommonJS",
         "baseUrl": "./src",

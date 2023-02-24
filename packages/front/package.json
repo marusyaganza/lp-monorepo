@@ -4,15 +4,17 @@
   "description": "frontend",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --env mode=development",
+    "dev": "webpack-dev-server --env mode=development",
     "prod": "webpack --env mode=production",
     "stylelint": "stylelint src",
     "eslint": "eslint src",
     "ready": "yarn eslint --fix && yarn stylelint --fix",
     "serve": "http-server",
-    "clean": "rimraf dist *.tsbuildinfo public",
+    "clean": "rimraf dist src/generated *.tsbuildinfo public",
     "ts": "tsc -b .",
-    "codegen": "graphql-codegen --config codegen.yml"
+    "codegen": "graphql-codegen --config codegen.yml",
+    "codegen:watch": "graphql-codegen --config codegen.ts -w",
+    "start": "yarn concurrently 'yarn dev' 'yarn codegen:watch'"
   },
   "author": "",
   "license": "ISC",
@@ -34,6 +36,7 @@
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.5",
     "compression-webpack-plugin": "^10.0.0",
+    "concurrently": "^7.6.0",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.1",
     "css-minimizer-webpack-plugin": "^4.0.0",
