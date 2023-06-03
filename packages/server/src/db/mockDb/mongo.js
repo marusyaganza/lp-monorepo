@@ -8,7 +8,6 @@ console.log('env', process.env.MONGO_USERNAME, process.env.MONGO_PASSWORD);
 // const connectStr = process.env.MONGO_CONNECTION || "mongodb://host.docker.intermal:27017";
 // const connectStr = process.env.MONGO_CONNECTION || 'mongodb://localhost:27017';
 const connectStr = process.env.MONGO_CONNECTION || 'mongodb://lp-db:27017';
-// console.log('connectStr', connectStr);
 async function initDb() {
   try {
     const client = new MongoClient(
@@ -80,10 +79,8 @@ async function initDb() {
     //     }
     //   }
     // });
-    // console.log('data', data);
     // words = db.collection('words');
     const users = await db.collection('users');
-    // console.log('users', users);
     if (users) {
       await users.drop();
     }

@@ -1,16 +1,16 @@
 import React from 'react';
-import { WordType } from '@lp/types';
 import { cn } from '../../utils/classnames';
 import { AudioButton } from '../AudioButton/AudioButton';
 import { Icon } from '../Icon/icon';
 import { DictionaryEntity } from '../DictionaryEntity/DictionaryEntity';
 import { Button } from '../Button/Button';
+import { Word, WordDefinition } from '../../generated/graphql';
 
 import styles from './WordCard.module.css';
 
 export interface WordCardProps {
   /**Word to display */
-  word: WordType;
+  word: Omit<Word, 'user'>;
   /**additional styling */
   className?: string;
   /**edit button callback, if not provides, button will not be displayed */
@@ -58,13 +58,18 @@ export const WordCard = ({
     );
   };
 
-  const renderExamples = (examples?: string[]) => (
+  const renderExamples = (examples: WordDefinition['examples']) => (
     <ul>
-      {examples?.map(example => (
-        <p key={example} className={styles.example}>
-          <DictionaryEntity text={example} />
-        </p>
-      ))}
+      {examples?.map(example => {
+        if (example) {
+          return (
+            <p key={example} className={styles.example}>
+              <DictionaryEntity text={example} />
+            </p>
+          );
+        }
+        return;
+      })}
     </ul>
   );
 
@@ -72,20 +77,23 @@ export const WordCard = ({
     return (
       <ul>
         {defs.map(d => {
-          return (
-            <div key={d.def}>
-              <p className={styles.definition}>
-                <Icon
-                  className={styles.defIcon}
-                  width={30}
-                  height={20}
-                  id="book"
-                ></Icon>
-                <DictionaryEntity text={d.def} />
-              </p>
-              {isFull && renderExamples(d.examples)}
-            </div>
-          );
+          if (d?.def) {
+            return (
+              <div key={d.def}>
+                <p className={styles.definition}>
+                  <Icon
+                    className={styles.defIcon}
+                    width={30}
+                    height={20}
+                    id="book"
+                  ></Icon>
+                  <DictionaryEntity text={d.def} />
+                </p>
+                {isFull && renderExamples(d.examples)}
+              </div>
+            );
+          }
+          return;
         })}
       </ul>
     );

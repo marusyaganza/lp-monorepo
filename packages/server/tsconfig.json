@@ -1,8 +1,19 @@
 {
-    "extends": "../tsconfig.settings.json",
+  "extends": "../shared/tsconfig.settings",
     "compilerOptions": {
-    "outDir": "dist",
-    "rootDir": "src",
-    "typeRoots": ["./src/@types", "./node_modules/@types"]
-    }
+        "sourceMap": true,
+        "outDir": "dist",
+        "module": "CommonJS",
+        "baseUrl": "./src",
+        "moduleResolution": "node",
+        "lib": ["ES2020", "DOM"],
+        "noImplicitAny": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noUncheckedIndexedAccess": true,
+        "useUnknownInCatchVariables": true,
+        "typeRoots": ["node_modules/@types", "src/@types"],
+    },
+    "include": ["src"],
+    "exclude": ["**/node_modules", "**/tests"],
 }

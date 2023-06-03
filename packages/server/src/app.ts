@@ -1,26 +1,32 @@
-import { Http2ServerRequest } from 'http2';
+import 'graphql-import-node';
+import { ApolloServer } from '@apollo/server';
+import { startStandaloneServer } from '@apollo/server/standalone';
+import { initDb } from './db/mongo/initDB';
+import { resolvers, ResolverContext } from './resolvers';
+import {
+  createToken,
+  getUserFromToken,
+  hashPassword,
+  validatePassword
+} from './auth';
+import { ModelsType } from 'db';
+const typeDefs = require('../../shared/schema.graphql');
+// TODO add a mechanism for switching between mock db and dev db
+// Uncomment this to use mock db
+// const { models, db } = require('./db');
 
-const { ApolloServer } = require('apollo-server');
-const typeDefs = require('./typedefs');
-const resolvers = require('./resolvers');
-const { createToken, getUserFromToken } = require('./auth');
-const { models, db } = require('./db');
-
-const server = new ApolloServer({
-  typeDefs,
-  resolvers,
-  context({ req }: { req: Http2ServerRequest }) {
-    const token = req.headers.authorization;
-    const user = token ? getUserFromToken(token) : null;
-    return { models, db, user, createToken };
-  }
-});
-
-server
-  .listen(4000)
-  .then(({ url }: { url: string }) => {
-    console.log(`🚀 Server ready at ${url}`);
-  })
-  .catch((err: string) => {
-    console.log(err);
+initDb(async (models: ModelsType) => {
+  const server = new ApolloServer({
+    typeDefs,
+    resolvers
   });
+  const { url } = await startStandaloneServer(server, {
+    context: async function ({ req }): Promise<ResolverContext> {
+      const token = req?.headers?.authorization?.split(' ')[1];
+      const user = token ? getUserFromToken(token) : undefined;
+      return { models, user, createToken, validatePassword, hashPassword };
+    },
+    listen: { port: 4000 }
+  });
+  console.log(`🚀 Server ready at ${url}`);
+});

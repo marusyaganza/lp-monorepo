@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, PropsWithChildren } from 'react';
+import React, { MouseEventHandler, PropsWithChildren } from 'react';
 import { cn } from '../../utils/classnames';
 import { Icon, IconIdType } from '../Icon/icon';
 import { Spinner } from '../Spinner/Spinner';
@@ -33,6 +33,8 @@ export interface ButtonProps {
   iconWidth?: number;
   /**Displays spinner instead of buttonText and disabled */
   isLoading?: boolean;
+  /**onClick handler */
+  onClick?: MouseEventHandler<HTMLButtonElement>;
 }
 /**
  *
@@ -50,7 +52,7 @@ export const Button = ({
   iconWidth = 20,
   isLoading,
   ...rest
-}: PropsWithChildren<ButtonProps> & HTMLAttributes<HTMLButtonElement>) => {
+}: PropsWithChildren<ButtonProps>) => {
   const isIconButton = iconId && variant === 'icon';
   let iconButtonStyle;
   if (isIconButton && (iconHeight || iconWidth)) {

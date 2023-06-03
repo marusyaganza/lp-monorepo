@@ -1,5 +1,5 @@
-const createTestServer = require('./helpers');
-const { words, users } = require('./mocks/data');
+import { createTestServer } from './helpers';
+import { words, users } from './mocks/data';
 const wordsQuery = `
   {
     words {

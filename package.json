@@ -13,10 +13,13 @@
   "scripts": {
     "start": "lerna run start --stream",
     "storybook": "lerna run storybook --scope '@lp/ui' --stream",
+    "prod": "lerna run prod --scope '@lp/front' --stream",
     "eslint": "lerna run eslint",
     "ready": "lerna run ready",
     "clean": "lerna run clean",
     "test": "lerna run test --stream",
+    "codegen": "lerna run codegen --stream",
+    "codegen:watch": "lerna run codegen:watch --stream",
     "release": "yarn lerna version --conventional-commits",
     "api-docs": "sh api-docs.sh"
   },

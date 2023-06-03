@@ -1,0 +1,21 @@
+FROM node:14
+
+WORKDIR /app
+
+COPY package.json /app
+
+COPY lerna.json /app
+
+COPY packages/shared /app/packages/shared
+
+COPY packages/front /app/packages/front
+
+COPY packages/ui /app/packages/ui
+
+COPY packages/types /app/packages/types
+
+RUN yarn
+
+EXPOSE 8080
+
+CMD ["yarn", "start"]

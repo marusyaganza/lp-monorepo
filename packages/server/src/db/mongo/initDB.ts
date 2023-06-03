@@ -1,7 +1,8 @@
+import createModel from './models';
+import { userValidator, wordsValidator } from './validators';
+import { Table, ModelsType, UserModel } from '../';
+import { Word } from 'generated/graphql';
 const { MongoClient } = require('mongodb');
-const createModel = require('./models');
-const { userValidator, wordsValidator } = require('./validators');
-
 const collections = [
   { name: 'words', validator: wordsValidator },
   { name: 'users', validator: userValidator }
@@ -9,12 +10,14 @@ const collections = [
 
 const connectStr = process.env.MONGO_CONNECTION || 'mongodb://lp-db:27017';
 
-let _db;
-function initDb(callback) {
+// temporary untill transition to mongoose
+let _db: any;
+
+export function initDb(callback: (model: ModelsType) => void) {
   const client = new MongoClient(connectStr, { useUnifiedTopology: true });
   client
     .connect()
-    .then(client => {
+    .then((client: any) => {
       _db = client.db('lp');
       // add schema validator
       collections.forEach(collection => {
@@ -25,7 +28,7 @@ function initDb(callback) {
               listCollections: 1.0,
               filter: { name: collection.name }
             })
-            .then(cl => {
+            .then((cl: any) => {
               const existingValidator =
                 cl?.cursor?.firstBatch?.[0]?.options.validator;
               // assign a new validator
@@ -40,23 +43,20 @@ function initDb(callback) {
         }
       });
 
-      const models = {
-        Word: createModel(_db, 'words'),
-        User: createModel(_db, 'users')
+      const models: ModelsType = {
+        Word: createModel<Word>(_db, Table.WORD),
+        User: createModel<UserModel>(_db, Table.USER)
       };
       callback(models);
     })
-    .catch(err => {
+    .catch((err: string) => {
       console.log('mongo err', err);
     });
 }
 
-const getDB = () => {
+export const getDB = () => {
   if (_db) {
     return _db;
   }
   throw 'No database found!';
 };
-
-exports.initDb = initDb;
-exports.getDB = getDB;

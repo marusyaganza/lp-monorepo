@@ -20,6 +20,7 @@ module.exports = {
   rules: {
     'prettier/prettier': 'error',
     '@typescript-eslint/no-var-requires': 'off',
-    '@typescript-eslint/ban-ts-comment': 'warn'
+    '@typescript-eslint/ban-ts-comment': 'warn',
+    '@typescript-eslint/no-explicit-any': 'warn'
   }
 };

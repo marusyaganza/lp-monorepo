@@ -1,5 +1,4 @@
 // const custom = require('../webpack.development.js');
-// console.log('custom', custom);
 module.exports = {
   // webpackFinal: async (config) => {
   //   return { ...config, module: { ...config.module, rules: [...config.module.rules,  ...custom().module.rules] } };

@@ -1,11 +1,10 @@
 import React, { useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 
-import { LOGIN } from '../../gql/mutations';
 import { validators } from '@lp/ui';
 import { AuthPageLayout } from '../../components/AuthPageLayout/AuthPageLayout';
 import { Form } from '@lp/ui';
-import { useMutation } from '@apollo/client';
+import { useLoginMutation, LoginInput } from '../../generated/graphql';
 import { AppContext } from '../../app-context/appContext';
 import { routes } from '../../../constants/routes';
 import llustration from '../../assets/img/login.svg';
@@ -31,17 +30,17 @@ const SignInPage = () => {
     }
   ];
 
-  const [authFunc, { data, loading, error }] = useMutation(LOGIN);
+  const [authFunc, { data, loading, error }] = useLoginMutation();
   const { login, setNotification } = useContext(AppContext);
 
-  const submitHandler = (values: Record<string, string>) => {
+  const submitHandler = (values: LoginInput) => {
     authFunc({ variables: { input: values } });
   };
 
   useEffect(() => {
     if (data) {
       const fetchedData = data.login;
-      login(fetchedData.id, fetchedData.token);
+      login(fetchedData?.id, fetchedData.token);
     }
   }, [data, login]);
 

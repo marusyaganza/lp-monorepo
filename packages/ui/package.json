@@ -8,16 +8,20 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "storybook": "start-storybook -p 6006",
+    "dev": "start-storybook -p 6006",
     "stylelint": "stylelint src",
     "eslint": "eslint src",
     "ready": "yarn eslint --fix && yarn stylelint --fix",
     "build-storybook": "build-storybook",
-    "clean": "rimraf dist *.tsbuildinfo",
-    "new-component": "plop"
+    "clean": "rimraf dist generated *.tsbuildinfo",
+    "new-component": "plop",
+    "codegen": "graphql-codegen --config codegen.yml",
+    "codegen:watch": "graphql-codegen --config codegen.yml",
+    "storybook": "yarn concurrently 'yarn dev' 'yarn codegen:watch'"
   },
   "dependencies": {
     "@lp/types": "^1.0.2",
+    "concurrently": "^7.6.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.3.0",
@@ -26,6 +30,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.17.9",
+    "@graphql-codegen/cli": "^3.0.0",
+    "@graphql-codegen/typescript": "^3.0.0",
     "@react-spring/types": "^9.5.5",
     "@storybook/addon-actions": "^6.5.12",
     "@storybook/addon-essentials": "^6.5.12",
