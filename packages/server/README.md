@@ -6,6 +6,10 @@ To run mongodb database
 
 `docker run --name lp-db --rm -d -v data:/data/db -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=mongoadmin -e MONGO_INITDB_ROOT_PASSWORD=secret mongo`
 
+To run test DB
+
+`docker run --name test-db --rm -d -v /data/test-db -p 27017:27017 mongo`
+
 To run mongodb database in the network
 
 `docker run --name lp-db --rm -d --network lp-network mongo`

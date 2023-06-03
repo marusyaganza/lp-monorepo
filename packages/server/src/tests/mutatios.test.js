@@ -1,5 +1,5 @@
-const createTestServer = require('./helpers');
-const { users } = require('./mocks/data');
+import  {createTestServer} from './helpers';
+import { users } from './mocks/data';
 
 const loginData = { email: 'test@test.com', password: 'password' };
 const signUpData = {
