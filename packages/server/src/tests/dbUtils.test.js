@@ -1,5 +1,3 @@
-const mongoDb = require('mongodb');
-
 jest.mock('mongodb', () => {
   return {
     ObjectId: jest.fn(id => `mock_object_id_${id}`)

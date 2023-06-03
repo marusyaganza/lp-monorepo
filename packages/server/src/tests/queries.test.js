@@ -1,4 +1,4 @@
-import  {createTestServer} from './helpers';
+import { createTestServer } from './helpers';
 import { words, users } from './mocks/data';
 const wordsQuery = `
   {

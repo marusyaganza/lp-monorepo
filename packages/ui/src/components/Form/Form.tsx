@@ -1,15 +1,18 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import React, { FormHTMLAttributes, FormEvent, useState } from 'react';
+import React, { FormEvent, useState } from 'react';
 
 import { Input, InputProps } from '../Input/Input';
 import { Button } from '../Button/Button';
 import { validate } from '../../utils/validators';
 import { cn } from '../../utils/classnames';
 
-export interface FormProps extends FormHTMLAttributes<HTMLFormElement> {
+export interface FormProps {
+  /**additional styling */
   className?: string;
   buttonText?: string;
   fields: InputProps[];
+  /**native html id property */
+  id?: string;
   // TODO: make it generic
   onFormSubmit: (values: any) => void;
   isLoading?: boolean;

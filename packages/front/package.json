@@ -5,16 +5,16 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --env mode=development",
-    "prod": "webpack --env mode=production",
+    "codegen": "graphql-codegen --config codegen.yml",
+    "prod": "yarn codegen && webpack --env mode=production",
     "stylelint": "stylelint src",
     "eslint": "eslint src",
-    "ready": "yarn eslint --fix && yarn stylelint --fix",
+    "ready": "yarn codegen && yarn eslint --fix && yarn stylelint --fix",
     "serve": "http-server",
     "clean": "rimraf dist src/generated *.tsbuildinfo public",
     "ts": "tsc -b .",
-    "codegen": "graphql-codegen --config codegen.yml",
     "codegen:watch": "graphql-codegen --config codegen.ts -w",
-    "start": "yarn concurrently 'yarn dev' 'yarn codegen:watch'"
+    "start": "yarn dev"
   },
   "author": "",
   "license": "ISC",

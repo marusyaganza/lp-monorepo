@@ -81,7 +81,6 @@ export const dbWords = [
     ],
     particle: 'noun',
     level: 'C1',
-    isOffensive: false,
     stems: ['egalitarian', 'egalitarianism', 'egalitarians'],
     audioUrl:
       'https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/e/ega/egali/egalitarian__gb_1.mp3',

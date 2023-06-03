@@ -39,14 +39,13 @@ export const createTestServer = (context: ResolverContext) => {
   return { mutate, query };
 };
 
-export const initDb = async() => {
+export const initDb = async () => {
   let _db;
   let client;
   try {
-    client = new MongoClient(
-      'mongodb://localhost:27017',
-      { useUnifiedTopology: true,}
-    );
+    client = new MongoClient('mongodb://localhost:27017', {
+      useUnifiedTopology: true
+    });
     await client.connect();
     _db = await client.db('test-db');
   } catch (err) {

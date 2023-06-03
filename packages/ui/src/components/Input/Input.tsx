@@ -1,10 +1,10 @@
-import React, { InputHTMLAttributes } from 'react';
+import React from 'react';
 import { validatorType } from '../../utils/validators';
 import { cn } from '../../utils/classnames';
 
 import './Input.css';
 
-export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+export interface InputProps {
   /**name attribute of native HTML input element */
   name: string;
   /**input's label */
@@ -15,6 +15,10 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   errorText?: string;
   /**defines if input has valid value */
   isValid?: boolean;
+  /** defines if the input is focused by default => native html attribute*/
+  autoFocus?: boolean;
+  /**additional styling */
+  className?: string;
 }
 //TODO
 // required fields style
