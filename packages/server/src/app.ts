@@ -1,7 +1,7 @@
 import 'graphql-import-node';
 import { ApolloServer } from '@apollo/server';
 import { startStandaloneServer } from '@apollo/server/standalone';
-import { initDb } from './db/mongo/initDB';
+import { initDB } from './db/mongoose/initDB';
 import { resolvers, ResolverContext } from './resolvers';
 import {
   createToken,
@@ -15,14 +15,15 @@ const typeDefs = require('../../shared/schema.graphql');
 // Uncomment this to use mock db
 // const { models, db } = require('./db');
 
-initDb(async (models: ModelsType) => {
-  const server = new ApolloServer({
-    typeDefs,
-    resolvers
-  });
+const server = new ApolloServer({
+  typeDefs,
+  resolvers
+});
+
+initDB(async (models: ModelsType) => {
   const { url } = await startStandaloneServer(server, {
     context: async function ({ req }): Promise<ResolverContext> {
-      const token = req?.headers?.authorization?.split(' ')[1];
+      const token = req?.headers?.authorization?.split(' ').pop();
       const user = token ? getUserFromToken(token) : undefined;
       return { models, user, createToken, validatePassword, hashPassword };
     },

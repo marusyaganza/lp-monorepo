@@ -88,7 +88,7 @@ async function initDb() {
     // await words.insertOne(data.words[0]);
     await users.insertMany(data.users);
     const user = await users.find().toArray();
-    console.log('users', user);
+    // console.log('users', user);
 
     // const word = await words.find({ id: 'mockid' }).toArray();
     // console.log('word', word);

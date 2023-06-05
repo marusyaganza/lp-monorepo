@@ -56,6 +56,7 @@ function createModel<T extends DbData>(db: any, table: Table): ModelType<T> {
     findOne,
     findMany,
     createOne,
+    // @ts-ignore
     updateOne,
     deleteOne
   };

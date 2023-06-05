@@ -55,7 +55,8 @@ export const createToken: CreateTokenFuncType = ({ id, role }) => {
   if (!JWT_SECTET) {
     return;
   }
-  return jwt.sign({ id, role }, JWT_SECTET);
+  const token = jwt.sign({ id, role }, JWT_SECTET);
+  return token;
 };
 
 /**retrieve user data from the token */

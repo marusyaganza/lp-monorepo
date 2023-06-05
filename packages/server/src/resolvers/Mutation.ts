@@ -14,22 +14,26 @@ export const MutationResolvers: MutationResolversType<ResolverContext> = {
   saveWord: authorized(
     Role.Member,
     async (_, { input }, { models, user }: ResolverContext) => {
-      const word = await models.Word.createOne({ ...input, user: user?.id });
+      if (!user?.id) {
+        throw new OperationResolutionError(
+          `creating word with name ${input.name} failed`
+        );
+      }
+      const word = await models.Word.createOne({ ...input, user: user.id });
       return word;
     }
   ),
   updateWord: authorized(
     Role.Member,
     async (_, { input }, { models, user }) => {
-      const result = await models.Word.updateOne({ ...input, user: user?.id });
-      if (!result.ok) {
+      const { ok, value } = await models.Word.updateOne({
+        ...input,
+        user: user?.id
+      });
+      if (!ok) {
         throw new UserInputError(`updating word with id ${input.id} failed`);
       }
-      const word = await models.Word.findOne({
-        user: user?.id,
-        id: input.id
-      });
-      return word;
+      return value;
     }
   ),
   deleteWord: authorized(Role.Member, async (_, { id }, { models, user }) => {
@@ -39,6 +43,7 @@ export const MutationResolvers: MutationResolversType<ResolverContext> = {
     }
     return `word with id ${id} was deleted`;
   }),
+  // @ts-ignore
   signUp: async (_, { input }, { models, createToken, hashPassword }) => {
     const existing = await models.User.findOne({ email: input?.email });
     if (existing) {
@@ -57,7 +62,9 @@ export const MutationResolvers: MutationResolversType<ResolverContext> = {
       role
     });
     const userInfo = {
+      // @ts-ignore
       id: user.id,
+      // @ts-ignore
       role: user.role
     } as UserTokenInfo;
     const token = createToken(userInfo);

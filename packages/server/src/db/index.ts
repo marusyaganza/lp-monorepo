@@ -1,18 +1,21 @@
 import { User, Word, SignUpInput, Maybe, AuthUser } from 'generated/graphql';
 
-type UpdateResult = {
+type UpdateResult<T> = {
   ok: boolean;
-  modifiedCount: number;
+  value: T;
 };
 
 type DeleteResult = {
   ok: boolean;
 };
 
-type FindOneFunc<T> = (filter: Partial<T>) => Promise<T>;
-type FindManyFunc<T> = (filter: Partial<T>) => Promise<T[]>;
-type CreateOneFunc<T> = (filter: Partial<T>) => Promise<T>;
-type UpdateOneFunc<T> = (filter: Partial<T>) => Promise<UpdateResult>;
+type FindOneFunc<T> = (filter: Partial<T>) => Promise<T | null>;
+type FindManyFunc<T> = (filter: Partial<T>) => Promise<T[] | null>;
+type CreateOneFunc<T> = (filter: Partial<T>) => Promise<T | null>;
+type UpdateOneFunc<T> = (
+  filter: Partial<T>,
+  id?: string
+) => Promise<UpdateResult<T | null>>;
 type DeleteOneFunc<T> = (filter: Partial<T>) => Promise<DeleteResult>;
 
 export type ModelType<T> = {

@@ -20,6 +20,7 @@ type User {
   createdAt: String!
   id: ID
   role: Role
+  primaryLanguage: String
 }
 
 type WordDefinition {
@@ -41,7 +42,7 @@ type Word {
   imgUrl: String
   audioUrl: String
   additionalInfo: String
-  transcription: String
+  transcription: [String]
   user: ID!
   isOffensive: Boolean
   stems: [String]
@@ -72,7 +73,7 @@ input NewWordInput {
   imgUrl: String
   audioUrl: String
   additionalInfo: String
-  transcription: String
+  transcription: [String]
   isOffensive: Boolean
   stems: [String]
   level: Level
