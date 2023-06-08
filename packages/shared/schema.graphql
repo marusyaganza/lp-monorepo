@@ -37,6 +37,7 @@ type Word {
   id: ID!
   uuid: ID
   name: String!
+  createdAt: String!
   defs: [WordDefinition]!
   particle: String!
   imgUrl: String
@@ -65,6 +66,11 @@ input DefsInput {
   examples: [String]
 }
 
+input WordTagInput {
+  color: String!
+  text: String!
+}
+
 input NewWordInput {
   uuid: ID
   name: String!
@@ -77,6 +83,7 @@ input NewWordInput {
   isOffensive: Boolean
   stems: [String]
   level: Level
+  tags: [WordTagInput]
 }
 
 input UpdateWordInput {
@@ -115,6 +122,6 @@ type Mutation {
   saveWord(input: NewWordInput!): Word!
   updateWord(input: UpdateWordInput!): Word!
   deleteWord(id: ID!): String!
-  signUp(input: SignUpInput): AuthUser!
-  login(input: LoginInput): AuthUser!
+  signUp(input: SignUpInput!): AuthUser!
+  login(input: LoginInput!): AuthUser!
 }

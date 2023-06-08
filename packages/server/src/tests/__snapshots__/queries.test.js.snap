@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`queries user 1`] = `
-Object {
-  "body": Object {
+{
+  "body": {
     "kind": "single",
-    "singleResult": Object {
-      "data": Object {
-        "user": Object {
+    "singleResult": {
+      "data": {
+        "user": {
           "email": "member@member.com",
           "firstName": "User",
           "id": "1",
@@ -17,7 +17,7 @@ Object {
       "errors": undefined,
     },
   },
-  "http": Object {
+  "http": {
     "headers": Map {
       "cache-control" => "no-store",
     },
@@ -27,24 +27,24 @@ Object {
 `;
 
 exports[`queries word by id 1`] = `
-Object {
-  "body": Object {
+{
+  "body": {
     "kind": "single",
-    "singleResult": Object {
-      "data": Object {
-        "word": Object {
+    "singleResult": {
+      "data": {
+        "word": {
           "additionalInfo": null,
           "audioUrl": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/e/ega/egali/egalitarian__gb_1.mp3",
-          "defs": Array [
-            Object {
+          "defs": [
+            {
               "def": "a person who believes that everyone is equal and should have the same rights and opportunities",
-              "examples": Array [
+              "examples": [
                 "He described himself as ‘an {it}egalitarian{/it}’.",
               ],
             },
-            Object {
+            {
               "def": "aiming for equal wealth, status, etc., for all people",
-              "examples": Array [
+              "examples": [
                 "He is a committed {it}egalitarian{/it}",
                 "Even in the {it}egalitarian{/it} Nordic country, Marin felt hergender and age sometimes received too much emphasis. Kostya Manenkov And Karl Ritter, USA TODAY, 21 Aug. 2022",
               ],
@@ -56,19 +56,21 @@ Object {
           "level": "C1",
           "name": "egalitarian",
           "particle": "noun",
-          "stems": Array [
+          "stems": [
             "egalitarian",
             "egalitarianism",
             "egalitarians",
           ],
-          "transcription": "iˌɡælɪˈteəriən",
+          "transcription": [
+            "iˌɡælɪˈteəriən",
+          ],
           "user": "1",
         },
       },
       "errors": undefined,
     },
   },
-  "http": Object {
+  "http": {
     "headers": Map {
       "cache-control" => "no-store",
     },
@@ -78,19 +80,19 @@ Object {
 `;
 
 exports[`queries words 1`] = `
-Object {
-  "body": Object {
+{
+  "body": {
     "kind": "single",
-    "singleResult": Object {
-      "data": Object {
-        "words": Array [
-          Object {
+    "singleResult": {
+      "data": {
+        "words": [
+          {
             "audioUrl": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/e/ega/egali/egalitarian__gb_1.mp3",
-            "defs": Array [
-              Object {
+            "defs": [
+              {
                 "def": "a person who believes that everyone is equal and should have the same rights and opportunities",
               },
-              Object {
+              {
                 "def": "aiming for equal wealth, status, etc., for all people",
               },
             ],
@@ -99,14 +101,16 @@ Object {
             "level": "C1",
             "name": "egalitarian",
             "particle": "noun",
-            "transcription": "iˌɡælɪˈteəriən",
+            "transcription": [
+              "iˌɡælɪˈteəriən",
+            ],
           },
         ],
       },
       "errors": undefined,
     },
   },
-  "http": Object {
+  "http": {
     "headers": Map {
       "cache-control" => "no-store",
     },

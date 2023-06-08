@@ -22,7 +22,7 @@ export const words = [
     stems: ['egalitarian', 'egalitarianism', 'egalitarians'],
     audioUrl:
       'https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/e/ega/egali/egalitarian__gb_1.mp3',
-    transcription: 'iˌɡælɪˈteəriən',
+    transcription: ['iˌɡælɪˈteəriən'],
     user: '1'
   }
 ];
@@ -84,7 +84,7 @@ export const dbWords = [
     stems: ['egalitarian', 'egalitarianism', 'egalitarians'],
     audioUrl:
       'https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/e/ega/egali/egalitarian__gb_1.mp3',
-    transcription: 'iˌɡælɪˈteəriən',
+    transcription: ['iˌɡælɪˈteəriən'],
     user: '63fe782ee6b6423093c312d4'
   },
   {

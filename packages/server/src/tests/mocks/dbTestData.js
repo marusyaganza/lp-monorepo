@@ -1,0 +1,87 @@
+export const testData = {
+  createUserInput: {
+    email: 'test@test.com',
+    password: 'password1',
+    firstName: 'Test',
+    lastName: 'User1',
+    primaryLanguage: 'English',
+    role: 'MEMBER'
+  },
+  createUserInput2: {
+    email: 'test2@test.com',
+    password: 'password2',
+    firstName: 'Test',
+    lastName: 'User2',
+    primaryLanguage: 'Spanish',
+    role: 'MEMBER'
+  },
+  updateUserInput: {
+    firstName: 'Test3',
+    primaryLanguage: 'French'
+  },
+  createWordInput: {
+    uuid: '74046e79-e4c9-4b52-ac96-cb7ae98fb601',
+    name: 'egalitarian',
+    isOffensive: false,
+    defs: [
+      {
+        def: 'a person who believes that everyone is equal and should have the same rights and opportunities',
+        examples: ['He described himself as ‘an {it}egalitarian{/it}’.']
+      },
+      {
+        def: 'aiming for equal wealth, status, etc., for all people',
+        examples: [
+          'He is a committed {it}egalitarian{/it}',
+          'Even in the {it}egalitarian{/it} Nordic country, Marin felt hergender and age sometimes received too much emphasis. Kostya Manenkov And Karl Ritter, USA TODAY, 21 Aug. 2022'
+        ]
+      }
+    ],
+    particle: 'noun',
+    level: 'C1',
+    stems: ['egalitarian', 'egalitarianism', 'egalitarians'],
+    audioUrl: 'mock.mp3',
+    transcription: 'iˌɡælɪˈteəriən',
+    imgUrl: 'mock.jpeg',
+    additionalInfo: 'additional info',
+    tags: [{ color: 'pink', text: 'academic' }]
+  },
+  createWordInput2: {
+    particle: 'noun',
+    name: 'rubber',
+    stems: ['rubber', 'rubbers', 'burn rubber'],
+    uuid: '59e03286-73c9-43e6-b1eb-4407a6c06b1e',
+    defs: [
+      {
+        def: '{bc} a strong substance that stretches and that is made out of chemicals or from the juice of a tropical tree'
+      },
+      {
+        def: '{it}British{/it}'
+      },
+      {
+        def: '{b}{it}rubbers{/it}{/b} {it}US{/it}, {it}informal + old-fashioned{/it} {bc} shoes or boots that are made of rubber and that fit over your regular shoes to keep them dry'
+      }
+    ]
+  },
+  updateWordInput: {
+    additionalInfo: 'very useful information',
+    audioUrl: 'mock.mp3',
+    level: 'B2',
+    defs: [
+      {
+        def: '{bc} a strong substance that stretches and that is made out of chemicals or from the juice of a tropical tree',
+        examples: ['a rubber plantation', 'a rubber tree']
+      },
+      {
+        def: '{b}{it}rubbers{/it}{/b} {it}US{/it}, {it}informal + old-fashioned{/it} {bc} shoes or boots that are made of rubber and that fit over your regular shoes to keep them dry'
+      }
+    ],
+    imgUrl: 'mock.jpeg'
+  },
+  updateWordInput2: {
+    additionalInfo: 'very important information',
+    audioUrl: 'mock.mp3',
+    level: 'B2',
+    name: 'rubber1',
+    uuid: 'invaliduuid'
+  }
+};

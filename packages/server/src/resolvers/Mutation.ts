@@ -14,12 +14,17 @@ export const MutationResolvers: MutationResolversType<ResolverContext> = {
   saveWord: authorized(
     Role.Member,
     async (_, { input }, { models, user }: ResolverContext) => {
-      if (!user?.id) {
-        throw new OperationResolutionError(
-          `creating word with name ${input.name} failed`
+      //TODO fix this check
+      const existing = await models.Word.findOne({
+        user: user?.id,
+        uuid: input?.uuid
+      });
+      if (existing) {
+        throw new UserInputError(
+          `word with uuid ${input?.uuid} is already added`
         );
       }
-      const word = await models.Word.createOne({ ...input, user: user.id });
+      const word = await models.Word.createOne({ ...input, user: user?.id });
       return word;
     }
   ),
@@ -75,7 +80,11 @@ export const MutationResolvers: MutationResolversType<ResolverContext> = {
   },
   login: async (_, { input }, { models, createToken, validatePassword }) => {
     const user = await models.User.findOne({ email: input?.email });
-    if (!user || !validatePassword(input?.password, user?.password)) {
+    const isValidPassword = await validatePassword(
+      input?.password,
+      user?.password
+    );
+    if (!user || !isValidPassword) {
       throw new AuthenticationError(`email or password is incorrect`);
     }
     const userInfo = {

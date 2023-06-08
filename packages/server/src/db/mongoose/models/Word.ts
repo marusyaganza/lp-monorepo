@@ -1,30 +1,36 @@
 import { Word } from '../Word';
-import { User } from '../User';
 import { Word as WordType } from '../../../generated/graphql';
 import { ModelType } from '../../';
+import { formatFilter, formatData } from '../helpers';
+// import { UserInputError } from '../../../utils/apolloCustomErrors';
 
 export const WordModel: ModelType<WordType> = {
+  // @ts-ignore
   async findOne(filter = {}) {
-    const word = await Word.findById(filter.id);
-    if (filter.user !== word?.user) {
+    if (!filter?.user) {
       return null;
     }
-    return word;
+    const word = await Word.findOne(formatFilter(filter));
+    return formatData(word);
   },
 
+  // @ts-ignore
   async findMany(filter = {}) {
-    const word = await Word.find(filter);
-    return word;
+    if (!filter?.user) {
+      return [];
+    }
+    const words = await Word.find(formatFilter(filter));
+    return words;
   },
 
+  // @ts-ignore
   async createOne(fields) {
     const createdAt = Date.now();
-    const user = await User.findById(fields.user);
-    console.log('user', user);
     const word = await Word.create({ ...fields, createdAt });
-    return word;
+    return formatData(word);
   },
 
+  // @ts-ignore
   async updateOne(fields) {
     const update = { ...fields };
     delete update.id;
@@ -32,21 +38,20 @@ export const WordModel: ModelType<WordType> = {
     const { ok, value } = await Word.findOneAndUpdate(
       { _id: fields.id, user: fields.user },
       update,
-      { rawResult: true }
+      { rawResult: true, new: true }
     );
-    return { ok: Boolean(ok), value };
+    const isOk = ok == 1 && value !== null;
+    return { ok: isOk, value: formatData(value) };
   },
 
   async deleteOne(filter) {
-    const word = await Word.findById(filter.id);
     let result = { ok: false };
-    if (word && filter.user === word?.user) {
-      const { deletedCount, acknowledged } = await Word.deleteOne({
-        _id: filter.id
-      });
-      if (acknowledged && deletedCount == 1) {
-        result.ok = true;
-      }
+    const { deletedCount, acknowledged } = await Word.deleteOne({
+      _id: filter.id,
+      user: filter.user
+    });
+    if (acknowledged && deletedCount == 1) {
+      result.ok = true;
     }
     return result;
   }

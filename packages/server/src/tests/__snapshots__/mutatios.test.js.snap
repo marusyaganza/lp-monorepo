@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`mutations login with correct password 1`] = `
-Object {
-  "body": Object {
+{
+  "body": {
     "kind": "single",
-    "singleResult": Object {
-      "data": Object {
-        "login": Object {
+    "singleResult": {
+      "data": {
+        "login": {
           "email": "member@member.com",
           "firstName": "User",
           "id": "1",
@@ -17,7 +17,7 @@ Object {
       "errors": undefined,
     },
   },
-  "http": Object {
+  "http": {
     "headers": Map {
       "cache-control" => "no-store",
     },
@@ -27,31 +27,31 @@ Object {
 `;
 
 exports[`mutations login with incorrect password 1`] = `
-Object {
-  "body": Object {
+{
+  "body": {
     "kind": "single",
-    "singleResult": Object {
+    "singleResult": {
       "data": null,
-      "errors": Array [
-        Object {
-          "extensions": Object {
+      "errors": [
+        {
+          "extensions": {
             "code": "INTERNAL_SERVER_ERROR",
           },
-          "locations": Array [
-            Object {
+          "locations": [
+            {
               "column": 5,
               "line": 3,
             },
           ],
           "message": "email or password is incorrect",
-          "path": Array [
+          "path": [
             "login",
           ],
         },
       ],
     },
   },
-  "http": Object {
+  "http": {
     "headers": Map {
       "cache-control" => "no-store",
     },
@@ -61,31 +61,31 @@ Object {
 `;
 
 exports[`mutations login with invalid email 1`] = `
-Object {
-  "body": Object {
+{
+  "body": {
     "kind": "single",
-    "singleResult": Object {
+    "singleResult": {
       "data": null,
-      "errors": Array [
-        Object {
-          "extensions": Object {
+      "errors": [
+        {
+          "extensions": {
             "code": "INTERNAL_SERVER_ERROR",
           },
-          "locations": Array [
-            Object {
+          "locations": [
+            {
               "column": 5,
               "line": 3,
             },
           ],
           "message": "email or password is incorrect",
-          "path": Array [
+          "path": [
             "login",
           ],
         },
       ],
     },
   },
-  "http": Object {
+  "http": {
     "headers": Map {
       "cache-control" => "no-store",
     },
@@ -95,32 +95,23 @@ Object {
 `;
 
 exports[`mutations signUp 1`] = `
-Object {
-  "body": Object {
+{
+  "body": {
     "kind": "single",
-    "singleResult": Object {
-      "data": null,
-      "errors": Array [
-        Object {
-          "extensions": Object {
-            "code": "INTERNAL_SERVER_ERROR",
-          },
-          "locations": Array [
-            Object {
-              "column": 7,
-              "line": 13,
-            },
-          ],
-          "message": "Cannot return null for non-nullable field AuthUser.firstName.",
-          "path": Array [
-            "signUp",
-            "firstName",
-          ],
+    "singleResult": {
+      "data": {
+        "signUp": {
+          "email": "test@test.com",
+          "firstName": "User",
+          "id": "2",
+          "lastName": "Test",
+          "token": "token",
         },
-      ],
+      },
+      "errors": undefined,
     },
   },
-  "http": Object {
+  "http": {
     "headers": Map {
       "cache-control" => "no-store",
     },

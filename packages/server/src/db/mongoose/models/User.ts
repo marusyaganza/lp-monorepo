@@ -1,60 +1,49 @@
-import { Types, Document } from 'mongoose';
 import { User } from '../User';
 import { User as UserType } from '../../../generated/graphql';
 import { ModelType } from '../../';
-
-type DocumentType =
-  | (Document<unknown, {}, UserType> &
-      Omit<
-        UserType & {
-          _id: Types.ObjectId;
-        },
-        never
-      >)
-  | null;
-
-function formatData(data: DocumentType) {
-  if (!data) {
-    return null;
-  }
-  return data.toObject({ getters: true });
-}
+import { formatData, formatFilter } from '../helpers';
 
 export const UserModel: ModelType<UserType> = {
+  // @ts-ignore
   async findOne(filter = {}) {
-    const user = await User.findById(filter.id);
+    const user = await User.findOne(formatFilter(filter));
     return formatData(user);
   },
 
   //TODO check this method when admin auth is ready
   async findMany(filter = {}) {
-    const users = await User.find(filter);
+    const users = await User.find(formatFilter(filter));
     return users;
   },
 
+  // @ts-ignore
   async createOne(fields) {
     const createdAt = Date.now();
-    const user = new User({ ...fields, createdAt });
-    await user.save();
-    // const user = await User.create({...fields, createdAt});
-    // console.log('user', user.toObject({ getters: true }));
+    const user = await User.create({ ...fields, createdAt });
     return formatData(user);
   },
 
   //TODO check this method when GQL for this is ready
+  // @ts-ignore
   async updateOne(fields) {
     const update = { ...fields };
     delete update.id;
     const { ok, value } = await User.findByIdAndUpdate(fields.id, update, {
-      rawResult: true
+      rawResult: true,
+      new: true
     });
-    return { ok: Boolean(ok), value };
+    return { ok: Boolean(ok), value: formatData(value) };
   },
 
   //TODO check this method when admin auth is ready
   async deleteOne(filter) {
-    const result = await User.deleteOne(filter);
-    console.log('result', result);
-    return { ok: true };
+    let result = { ok: false };
+    const { deletedCount, acknowledged } = await User.deleteOne(
+      formatFilter(filter)
+    );
+    if (acknowledged && deletedCount == 1) {
+      result.ok = true;
+    }
+    return result;
   }
 };
