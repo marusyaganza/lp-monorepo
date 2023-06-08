@@ -95,7 +95,7 @@ const SignUpPage = () => {
         className={styles.form}
         onFormSubmit={submitHandler}
         fields={fields}
-        buttonText="Sign in"
+        buttonText="Sign up"
       />
       <p className={styles.text}>
         already have account?{' '}

@@ -1,7 +1,6 @@
 import { createTestServer } from './helpers';
 import { users } from './mocks/data';
 
-const loginData = { email: 'test@test.com', password: 'password' };
 const signUpData = {
   firstName: 'User',
   lastName: 'Test',

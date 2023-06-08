@@ -45,7 +45,7 @@ export const WordModel: ModelType<WordType> = {
   },
 
   async deleteOne(filter) {
-    let result = { ok: false };
+    const result = { ok: false };
     const { deletedCount, acknowledged } = await Word.deleteOne({
       _id: filter.id,
       user: filter.user

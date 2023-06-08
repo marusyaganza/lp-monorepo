@@ -37,7 +37,7 @@ export const UserModel: ModelType<UserType> = {
 
   //TODO check this method when admin auth is ready
   async deleteOne(filter) {
-    let result = { ok: false };
+    const result = { ok: false };
     const { deletedCount, acknowledged } = await User.deleteOne(
       formatFilter(filter)
     );

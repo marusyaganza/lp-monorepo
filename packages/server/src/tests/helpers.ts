@@ -1,8 +1,7 @@
 import { ApolloServer } from '@apollo/server';
 import { resolvers, ResolverContext } from '../resolvers';
-const { readFileSync } = require('fs');
-const { MongoClient } = require('mongodb');
-import { connect, disconnect, connection } from 'mongoose';
+import { readFileSync } from 'fs';
+import { connect, connection } from 'mongoose';
 
 const typeDefs = readFileSync(
   require.resolve('../../../shared/schema.graphql')
@@ -38,21 +37,6 @@ export const createTestServer = (context: ResolverContext) => {
     );
   }
   return { mutate, query };
-};
-
-export const initDb = async () => {
-  let _db;
-  let client;
-  try {
-    client = new MongoClient('mongodb://localhost:27017', {
-      useUnifiedTopology: true
-    });
-    await client.connect();
-    _db = await client.db('test-db');
-  } catch (err) {
-    console.log('mongo err, make sure you run the DB', err);
-  }
-  return _db;
 };
 
 export async function connectToDb() {

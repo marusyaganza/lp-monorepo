@@ -49,7 +49,7 @@ describe('User', () => {
       ...testData.updateUserInput,
       id: user.id
     });
-    expect(result.ok).toBeTruthy;
+    expect(result.ok).toBe(true);
     const searchTResult = await UserModel.findOne({ id: user.id });
     expect(result.value).toEqual(searchTResult);
     expect(searchTResult).toMatchSnapshot(snapshotConfig);

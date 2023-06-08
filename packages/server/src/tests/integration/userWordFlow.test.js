@@ -5,8 +5,6 @@ import {
   disconnectFromDb
 } from '../helpers';
 import { models } from '../../db/mongoose/models';
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
 import { testData } from '../mocks/dbTestData';
 import { queries } from '../mocks/gqlQueries';
 import { mutations } from '../mocks/gqlMutations';
@@ -40,7 +38,7 @@ const serverContext = {
   models
 };
 
-const { mutate, query } = createTestServer(serverContext);
+const { mutate } = createTestServer(serverContext);
 const mockUser = { id: '6480560e8cad1841ed6b4011', role: 'MEMBER' };
 
 /**
@@ -115,7 +113,7 @@ describe('User', () => {
   });
 
   test('can save a word', async () => {
-    const { mutate, query } = createTestServer({
+    const { mutate } = createTestServer({
       ...serverContext,
       user: mockUser
     });

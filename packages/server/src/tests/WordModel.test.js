@@ -56,7 +56,7 @@ describe('WordModel', () => {
     expect(result).toMatchSnapshot(snapshotConfig);
   });
 
-  test('findOne should return null if user id is not provided ', async () => {
+  test('findOne should return null if user id is not provided', async () => {
     const word = await WordModel.createOne({
       ...testData.createWordInput,
       user: mockUser.id
@@ -107,7 +107,7 @@ describe('WordModel', () => {
       id: word.id
     });
 
-    expect(result.ok).toBeTruthy;
+    expect(result.ok).toBe(true);
     expect(result.value).toMatchSnapshot(snapshotConfig);
 
     const searchTResult = await WordModel.findOne({

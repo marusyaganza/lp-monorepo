@@ -1,3 +1,4 @@
+// TODO rewrite this file to use with mongoose
 jest.mock('mongodb', () => {
   return {
     ObjectId: jest.fn(id => `mock_object_id_${id}`)

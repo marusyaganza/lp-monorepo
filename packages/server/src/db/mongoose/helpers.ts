@@ -3,7 +3,7 @@ import { User, Word } from '../../generated/graphql';
 import { DbData } from 'db';
 
 type DocumentType =
-  | (Document<unknown, {}, User | Word> &
+  | (Document<unknown, Record<string, any>, User | Word> &
       Omit<
         | User
         | (Word & {
