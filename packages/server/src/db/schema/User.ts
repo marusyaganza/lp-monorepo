@@ -1,10 +1,8 @@
 import { Schema, model } from 'mongoose';
-import { User as UserCoreType, Role } from 'generated/graphql';
+import { User as UserCoreType } from 'generated/graphql';
 
 export interface UserType extends UserCoreType {
   password: string;
-  id: string;
-  role: Role;
   primaryLanguage?: string;
 }
 

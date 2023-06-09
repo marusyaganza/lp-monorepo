@@ -1,10 +1,5 @@
 import { User, UserType } from '../schema/User';
-import {
-  AuthUser,
-  SignUpInput,
-  Role
-  // User as UserCorType
-} from '../../generated/graphql';
+import { AuthUser, SignUpInput, Role } from '../../generated/graphql';
 import { formatData, formatFilter } from '../helpers';
 
 export interface UserModelType {

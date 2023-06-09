@@ -36,6 +36,7 @@ describe('User', () => {
     expect(result2).not.toBeNull();
     expect(result).toMatchSnapshot(snapshotConfig);
   });
+
   test('findMany', async () => {
     await UserModel.createOne(testData.createUserInput);
     await UserModel.createOne(testData.createUserInput);
