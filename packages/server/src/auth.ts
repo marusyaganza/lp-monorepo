@@ -14,6 +14,7 @@ export const ERROR_MESSAGES = {
   NOT_AUTHORIZED: 'You do not have permission to perform this operation'
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type ResolverFunc = ResolverFn<any, any, ResolverContext, any>;
 export type CreateTokenFuncType = (user: UserTokenInfo) => string | undefined;
 export type HashPasswordFuncType = (password?: string) => Promise<string>;

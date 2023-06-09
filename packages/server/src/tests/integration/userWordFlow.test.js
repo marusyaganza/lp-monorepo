@@ -4,7 +4,7 @@ import {
   dropDb,
   disconnectFromDb
 } from '../helpers';
-import { models } from '../../db/mongoose/models';
+import { models } from '../../db/models';
 import { testData } from '../mocks/dbTestData';
 import { queries } from '../mocks/gqlQueries';
 import { mutations } from '../mocks/gqlMutations';

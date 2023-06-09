@@ -1,10 +1,23 @@
-import { User } from '../User';
-import { User as UserType } from '../../../generated/graphql';
-import { ModelType } from '../../';
+import { User, UserType } from '../schema/User';
+import {
+  AuthUser,
+  SignUpInput,
+  Role
+  // User as UserCorType
+} from '../../generated/graphql';
 import { formatData, formatFilter } from '../helpers';
 
-export const UserModel: ModelType<UserType> = {
-  // @ts-ignore
+export interface UserModelType {
+  findOne: (filter: Partial<UserType>) => Promise<UserType | null>;
+  findMany: (filter: Partial<UserType>) => Promise<UserType[] | null>;
+  createOne: (fields: SignUpInput & { role: Role }) => Promise<AuthUser | null>;
+  updateOne: (
+    fields: Partial<UserType>
+  ) => Promise<{ ok: boolean; value: UserType | null }>;
+  deleteOne: (filter: { id: string }) => Promise<{ ok: boolean }>;
+}
+
+export const UserModel: UserModelType = {
   async findOne(filter = {}) {
     const user = await User.findOne(formatFilter(filter));
     return formatData(user);
@@ -16,7 +29,6 @@ export const UserModel: ModelType<UserType> = {
     return users;
   },
 
-  // @ts-ignore
   async createOne(fields) {
     const createdAt = Date.now();
     const user = await User.create({ ...fields, createdAt });
@@ -24,7 +36,6 @@ export const UserModel: ModelType<UserType> = {
   },
 
   //TODO check this method when GQL for this is ready
-  // @ts-ignore
   async updateOne(fields) {
     const update = { ...fields };
     delete update.id;

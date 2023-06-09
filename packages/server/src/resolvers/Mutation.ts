@@ -5,29 +5,26 @@ import {
   OperationResolutionError
 } from '../utils/apolloCustomErrors';
 import {
+  AuthUser,
   MutationResolvers as MutationResolversType,
   Role
 } from '../generated/graphql';
 import { ResolverContext } from './index';
 
 export const MutationResolvers: MutationResolversType<ResolverContext> = {
-  saveWord: authorized(
-    Role.Member,
-    async (_, { input }, { models, user }: ResolverContext) => {
-      //TODO fix this check
-      const existing = await models.Word.findOne({
-        user: user?.id,
-        uuid: input?.uuid
-      });
-      if (existing) {
-        throw new UserInputError(
-          `word with uuid ${input?.uuid} is already added`
-        );
-      }
-      const word = await models.Word.createOne({ ...input, user: user?.id });
-      return word;
+  saveWord: authorized(Role.Member, async (_, { input }, { models, user }) => {
+    const existing = await models.Word.findOne({
+      user: user?.id,
+      uuid: input?.uuid
+    });
+    if (existing) {
+      throw new UserInputError(
+        `word with uuid ${input?.uuid} is already added`
+      );
     }
-  ),
+    const word = await models.Word.createOne({ ...input, user: user?.id });
+    return word;
+  }),
   updateWord: authorized(
     Role.Member,
     async (_, { input }, { models, user }) => {
@@ -48,7 +45,6 @@ export const MutationResolvers: MutationResolversType<ResolverContext> = {
     }
     return `word with id ${id} was deleted`;
   }),
-  // @ts-ignore
   signUp: async (_, { input }, { models, createToken, hashPassword }) => {
     const existing = await models.User.findOne({ email: input?.email });
     if (existing) {
@@ -66,10 +62,11 @@ export const MutationResolvers: MutationResolversType<ResolverContext> = {
       password: hashedPassword,
       role
     });
+    if (!user) {
+      throw new OperationResolutionError(`sign up operation failed`);
+    }
     const userInfo = {
-      // @ts-ignore
       id: user.id,
-      // @ts-ignore
       role: user.role
     } as UserTokenInfo;
     const token = createToken(userInfo);
@@ -80,11 +77,14 @@ export const MutationResolvers: MutationResolversType<ResolverContext> = {
   },
   login: async (_, { input }, { models, createToken, validatePassword }) => {
     const user = await models.User.findOne({ email: input?.email });
+    if (!user) {
+      throw new AuthenticationError(`email or password is incorrect`);
+    }
     const isValidPassword = await validatePassword(
-      input?.password,
-      user?.password
+      input.password,
+      user.password
     );
-    if (!user || !isValidPassword) {
+    if (!isValidPassword) {
       throw new AuthenticationError(`email or password is incorrect`);
     }
     const userInfo = {
@@ -96,6 +96,16 @@ export const MutationResolvers: MutationResolversType<ResolverContext> = {
     if (!token) {
       throw new OperationResolutionError(`sign up operation failed`);
     }
-    return { ...user, token };
+    // TODO find a way to simplify this
+    const result: AuthUser = {
+      token,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      createdAt: user.createdAt,
+      id: user.id,
+      role: user.role,
+      email: user.email
+    };
+    return result;
   }
 };

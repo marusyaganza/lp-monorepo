@@ -7,7 +7,7 @@ import {
   ValidatePasswordFuncType,
   HashPasswordFuncType
 } from '../auth';
-import { ModelsType } from 'db';
+import { ModelsType } from '../db/models';
 
 export interface ResolverContext {
   models: ModelsType;

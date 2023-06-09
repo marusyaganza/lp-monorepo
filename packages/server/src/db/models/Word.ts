@@ -1,12 +1,22 @@
-import { Word } from '../Word';
-import { Word as WordType } from '../../../generated/graphql';
-import { ModelType } from '../../';
+import { Word } from '../schema/Word';
+import { Word as WordType, NewWordInput } from '../../generated/graphql';
 import { formatFilter, formatData } from '../helpers';
-// import { UserInputError } from '../../../utils/apolloCustomErrors';
 
-export const WordModel: ModelType<WordType> = {
-  // @ts-ignore
-  async findOne(filter = {}) {
+export interface WordModelType {
+  findOne: (filter: Partial<WordType>) => Promise<WordType | null>;
+  findMany: (filter: Partial<WordType>) => Promise<WordType[] | null>;
+  createOne: (fields: NewWordInput) => Promise<WordType | null>;
+  updateOne: (
+    fields: Partial<WordType> & Pick<WordType, 'id' | 'user'>
+  ) => Promise<{ ok: boolean; value: WordType | null }>;
+  deleteOne: (filter: {
+    id: string;
+    user?: string;
+  }) => Promise<{ ok: boolean }>;
+}
+
+export const WordModel: WordModelType = {
+  async findOne(filter) {
     if (!filter?.user) {
       return null;
     }
@@ -14,8 +24,7 @@ export const WordModel: ModelType<WordType> = {
     return formatData(word);
   },
 
-  // @ts-ignore
-  async findMany(filter = {}) {
+  async findMany(filter) {
     if (!filter?.user) {
       return [];
     }
@@ -23,18 +32,14 @@ export const WordModel: ModelType<WordType> = {
     return words;
   },
 
-  // @ts-ignore
   async createOne(fields) {
     const createdAt = Date.now();
     const word = await Word.create({ ...fields, createdAt });
     return formatData(word);
   },
 
-  // @ts-ignore
   async updateOne(fields) {
     const update = { ...fields };
-    delete update.id;
-    delete update.user;
     const { ok, value } = await Word.findOneAndUpdate(
       { _id: fields.id, user: fields.user },
       update,

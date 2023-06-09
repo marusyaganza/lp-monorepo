@@ -1,21 +1,19 @@
 import { connect } from 'mongoose';
-import { ModelsType } from '..';
-import { models } from './models';
+import { models, ModelsType } from './models';
 
 const connectStr = process.env.MONGO_CONNECTION || 'mongodb://lp-db:27017';
 
-type initDBType = (
+type initDBFuncType = (
   cb: (model: ModelsType) => void,
   connectString?: string
 ) => void;
 
-export const initDB: initDBType = async function (
+export const initDB: initDBFuncType = async function (
   cb,
   connectString = connectStr
 ) {
   connect(connectString)
     .then(() => {
-      // @ts-ignore
       cb(models);
     })
     .catch(err => console.log(err));

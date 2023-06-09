@@ -1,4 +1,4 @@
-import { WordModel } from '../db/mongoose/models/Word';
+import { WordModel } from '../db/models/Word';
 import { connectToDb, disconnectFromDb, dropDb } from './helpers';
 import { testData } from './mocks/dbTestData';
 

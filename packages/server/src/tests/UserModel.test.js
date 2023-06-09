@@ -1,4 +1,4 @@
-import { UserModel } from '../db/mongoose/models/User';
+import { UserModel } from '../db/models/User';
 import { connectToDb, disconnectFromDb, dropDb } from './helpers';
 import { testData } from './mocks/dbTestData';
 
