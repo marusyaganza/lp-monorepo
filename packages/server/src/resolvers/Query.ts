@@ -6,10 +6,14 @@ import { ResolverContext } from './index';
 export const QueryResolvers: QueryResolversType<ResolverContext> = {
   user: async (_, __, { models, user }) => {
     const result = await models.User.findOne({ id: user?.id });
+    if (!result) {
+      throw new UserInputError(`user is not found`);
+    }
     return result;
   },
   words: authenticated(async (_, __, { models, user }) => {
-    return await models.Word.findMany({ user: user?.id });
+    const words = await models.Word.findMany({ user: user?.id });
+    return words;
   }),
   word: authenticated(async (_, { id }, { models, user }) => {
     const word = await models.Word.findOne({

@@ -1,7 +1,6 @@
 import { createTestServer } from './helpers';
 import { users } from './mocks/data';
 
-const loginData = { email: 'test@test.com', password: 'password' };
 const signUpData = {
   firstName: 'User',
   lastName: 'Test',
@@ -82,9 +81,11 @@ describe('mutations', () => {
   });
 
   test('login with invalid email', async () => {
+    const validatePassword = jest.fn(() => true);
     const findOne = jest.fn(() => null);
     const { mutate } = createTestServer({
       createToken,
+      validatePassword,
       models: {
         User: {
           findOne
@@ -98,7 +99,7 @@ describe('mutations', () => {
   test('signUp', async () => {
     const findOne = jest.fn(() => null);
     const hashPassword = jest.fn(pass => `mock_hash_${pass}`);
-    const createOne = jest.fn(() => ({ ...loginData, id: '2' }));
+    const createOne = jest.fn(() => ({ ...signUpData, id: '2' }));
     const { mutate } = createTestServer({
       createToken,
       hashPassword,

@@ -1,25 +1,16 @@
-jest.mock('mongodb', () => {
-  return {
-    ObjectId: jest.fn(id => `mock_object_id_${id}`)
-  };
-});
+import { formatData, formatFilter } from '../db/helpers';
 
-import { formatIds, formatFilter } from '../utils/dbUtils';
+const mockToObjectFn = jest.fn();
 
 const testData = [
   {
-    name: 'formatIds',
-    module: formatIds,
+    name: 'formatData',
+    module: formatData,
     tests: [
-      {
-        desc: 'with valid arguments',
-        arguments: { _id: 'id_1' },
-        result: { _id: 'id_1', id: 'id_1' }
-      },
       {
         desc: 'with empty arguments',
         arguments: undefined,
-        result: undefined
+        result: null
       }
     ]
   },
@@ -30,24 +21,40 @@ const testData = [
       {
         desc: 'with valid arguments',
         arguments: { id: 'id_1', user: 'user' },
-        result: { _id: 'mock_object_id_id_1', user: 'mock_object_id_user' }
+        result: { _id: 'id_1', user: 'user' }
       },
       {
-        desc: 'with empty arguments',
+        desc: 'without id prop',
         arguments: { name: 'name' },
         result: { name: 'name' }
+      },
+      {
+        desc: 'with empty args',
+        arguments: undefined,
+        result: undefined
       }
     ]
   }
 ];
 
 testData.forEach(testModule => {
-  describe(`dbUtils ${testModule.name}`, () => {
+  describe(`db helpers ${testModule.name}`, () => {
     testModule.tests.forEach(testCase => {
       test(`${testCase.desc}`, () => {
         const result = testModule.module(testCase.arguments);
         expect(result).toEqual(testCase.result);
       });
+    });
+  });
+});
+
+describe('db helpers formatData', () => {
+  test('with valid args', () => {
+    const data = { toObject: mockToObjectFn };
+    formatData(data);
+    expect(mockToObjectFn).toHaveBeenCalledWith({
+      getters: true,
+      versionKey: false
     });
   });
 });

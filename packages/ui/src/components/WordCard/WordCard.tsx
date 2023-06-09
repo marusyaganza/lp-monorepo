@@ -44,13 +44,13 @@ export const WordCard = ({
   const isFull = variant === 'full';
 
   const renderAudio = () => {
-    if (!audioUrl && !transcription) {
+    if (!audioUrl && !transcription?.length) {
       return null;
     }
     return (
       <section className="audio">
         {audioUrl ? (
-          <AudioButton buttonText={`[${transcription}]`} src={audioUrl} />
+          <AudioButton buttonText={`[${transcription?.[0]}]`} src={audioUrl} />
         ) : (
           <div className="transcription">[{transcription}]</div>
         )}

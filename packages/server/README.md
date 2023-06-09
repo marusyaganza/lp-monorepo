@@ -33,3 +33,7 @@
 ## Read mongo logs
 
 `docker logs lp-db`
+
+## Run DB for local development
+
+`docker run --name dev-db --rm -d -v /data/dev-db -p 27017:27017 mongo`
