@@ -1,5 +1,7 @@
 import { createTestServer } from './helpers';
 import { words, users } from './mocks/data';
+import { Language } from '../generated/graphql';
+import { searchWord } from '../dictionary';
 const wordsQuery = `
   {
     words {
@@ -47,6 +49,32 @@ const userQuery = `
       email
       id
       role
+    }
+  }
+`;
+
+const searchQuery = `
+  query SearchWords($input: WordSearchInput!) {
+    searchWord(input: $input) {
+      ... on Suggestions {
+        suggestions
+      }
+      ... on DictionaryWord {
+        uuid
+        transcription
+        stems
+        particle
+        name
+        isOffensive
+        imgUrl
+        defs {
+          examples
+          def
+        }
+        audioUrl
+        additionalInfo
+        imgDesc
+      }
     }
   }
 `;
@@ -103,6 +131,87 @@ describe('queries', () => {
     });
 
     const res = await query({ query: userQuery });
+    expect(res).toMatchSnapshot();
+  });
+  test('searchWord', async () => {
+    const searchWord = jest.fn(() => words);
+    const { query } = createTestServer({
+      user: { id: '1' },
+      searchWord
+    });
+    await query({
+      query: searchQuery,
+      variables: {
+        input: {
+          search: 'word',
+          language: Language.English
+        }
+      }
+    });
+    expect(searchWord).toHaveBeenCalledWith('word', Language.English);
+  });
+  test('searchWord spanish lang, mocks enabled', async () => {
+    const { query } = createTestServer({
+      user: { id: '1' },
+      searchWord
+    });
+    const res = await query({
+      query: searchQuery,
+      variables: {
+        input: {
+          search: 'idioma',
+          language: Language.Spanish
+        }
+      }
+    });
+    expect(res).toMatchSnapshot();
+  });
+  test('searchWord english lang, mocks enabled', async () => {
+    const { query } = createTestServer({
+      user: { id: '1' },
+      searchWord
+    });
+    const res = await query({
+      query: searchQuery,
+      variables: {
+        input: {
+          search: 'rubber',
+          language: Language.English
+        }
+      }
+    });
+    expect(res).toMatchSnapshot();
+  });
+  test('searchWord spanish lang, mocks enabled returns suggestion', async () => {
+    const { query } = createTestServer({
+      user: { id: '1' },
+      searchWord
+    });
+    const res = await query({
+      query: searchQuery,
+      variables: {
+        input: {
+          search: 'unbelievableWordThatDoNotExist',
+          language: Language.Spanish
+        }
+      }
+    });
+    expect(res).toMatchSnapshot();
+  });
+  test('searchWord english lang, mocks enabled returns suggestion', async () => {
+    const { query } = createTestServer({
+      user: { id: '1' },
+      searchWord
+    });
+    const res = await query({
+      query: searchQuery,
+      variables: {
+        input: {
+          search: 'unbelievableWordThatDoNotExist',
+          language: Language.English
+        }
+      }
+    });
     expect(res).toMatchSnapshot();
   });
 });

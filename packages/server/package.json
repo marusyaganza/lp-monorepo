@@ -11,6 +11,7 @@
     "eslint": "eslint src",
     "ts": "tsc --watch --preserveWatchOutput",
     "test": "jest --detectOpenHandles",
+    "coverage": "jest --coverage",
     "test:watch": "jest --watch --detectOpenHandles",
     "ready": "yarn codegen && yarn eslint --fix && yarn test",
     "watch": "nodemon --watch './**/*.{ts,js}' --exec 'node --experimental-specifier-resolution=node --loader ts-node/esm' src/app.ts",
@@ -44,5 +45,9 @@
     "nodemon": "^2.0.15",
     "ts-node": "^10.7.0",
     "typescript": "^4.9.5"
+  },
+  "volta": {
+    "node": "18.16.0",
+    "yarn": "1.22.19"
   }
 }

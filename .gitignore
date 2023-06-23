@@ -7,5 +7,6 @@ temp
 storybook-static
 resourses
 generated
+coverage
 .vscode
 .env

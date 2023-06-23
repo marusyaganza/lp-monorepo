@@ -1,5 +1,372 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`queries searchWord english lang, mocks enabled 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": {
+        "searchWord": [
+          {
+            "additionalInfo": null,
+            "audioUrl": "mock_audio_endpoint/en/us/mp3/r/rubber01.mp3",
+            "defs": [
+              {
+                "def": "{dx}see also {dxt|foam rubber||}{/dx}",
+                "examples": [
+                  "tires made of {it}rubber{/it}",
+                ],
+              },
+              {
+                "def": "{bc}{sx|eraser||}",
+                "examples": null,
+              },
+              {
+                "def": "{bc}shoes or boots that are made of rubber and that fit over your regular shoes to keep them dry {dx}compare {dxt|galoshes||}{/dx}",
+                "examples": null,
+              },
+              {
+                "def": "{bc}{sx|condom||}",
+                "examples": null,
+              },
+              {
+                "def": "{bc}a flat piece of hard, white rubber on which the pitcher stands while pitching",
+                "examples": null,
+              },
+            ],
+            "imgDesc": null,
+            "imgUrl": null,
+            "isOffensive": false,
+            "name": "rubber",
+            "particle": "noun",
+            "stems": [
+              "rubber",
+              "rubbers",
+              "burn rubber",
+            ],
+            "transcription": "rub*ber",
+            "uuid": "59e03286-73c9-43e6-b1eb-4407a6c06b1e",
+          },
+          {
+            "additionalInfo": null,
+            "audioUrl": null,
+            "defs": [
+              {
+                "def": "{bc}a contest that consists of a series of games and that is won by the player or team that wins the most games (such as two games out of three) ",
+                "examples": [
+                  "Let's play a {it}rubber{/it} of bridge.",
+                ],
+              },
+              {
+                "def": "{bc}a game that decides who will be the winner of a series of games",
+                "examples": null,
+              },
+            ],
+            "imgDesc": null,
+            "imgUrl": null,
+            "isOffensive": false,
+            "name": "rubber",
+            "particle": "noun",
+            "stems": [
+              "rubber",
+              "caoutchouc",
+              "india rubber",
+              "rubbers",
+              "rubber game",
+            ],
+            "transcription": "rubber",
+            "uuid": "31c81e56-7a47-40ee-b6b3-63407105feb4",
+          },
+          {
+            "additionalInfo": null,
+            "audioUrl": "mock_audio_endpoint/en/us/mp3/c/condom01.mp3",
+            "defs": [
+              {
+                "def": "{bc}a thin rubber covering that a man wears on his penis during sex in order to prevent a woman from becoming pregnant or to prevent the spread of diseases ",
+                "examples": null,
+              },
+            ],
+            "imgDesc": null,
+            "imgUrl": null,
+            "isOffensive": false,
+            "name": "condom",
+            "particle": "noun",
+            "stems": [
+              "condom",
+              "condoms",
+              "rubber",
+              "sheath",
+            ],
+            "transcription": "con*dom",
+            "uuid": "79b4d0fe-8d9d-4bd0-879c-366078d586d6",
+          },
+          {
+            "additionalInfo": null,
+            "audioUrl": "mock_audio_endpoint/en/us/mp3/e/eraser01.mp3",
+            "defs": [
+              {
+                "def": "{dx}see picture at {dxt|office||}{/dx}",
+                "examples": null,
+              },
+            ],
+            "imgDesc": null,
+            "imgUrl": null,
+            "isOffensive": false,
+            "name": "eraser",
+            "particle": "noun",
+            "stems": [
+              "eraser",
+              "erasers",
+              "rubber",
+            ],
+            "transcription": "eras*er",
+            "uuid": "eb991c0d-a218-4812-930d-9ea376c44445",
+          },
+          {
+            "additionalInfo": null,
+            "audioUrl": null,
+            "defs": [
+              {
+                "def": "{dx}see picture at {dxt|office||}{/dx}",
+                "examples": null,
+              },
+            ],
+            "imgDesc": null,
+            "imgUrl": null,
+            "isOffensive": false,
+            "name": "rubber band",
+            "particle": "noun",
+            "stems": [
+              "rubber band",
+              "rubber bands",
+              "elastic",
+              "elastic band",
+            ],
+            "transcription": "rubber band",
+            "uuid": "0634ec1c-dc66-465f-b390-fb945313d066",
+          },
+          {
+            "additionalInfo": null,
+            "audioUrl": null,
+            "defs": [
+              {
+                "def": "{bc}a tall boot that is made out of rubber and that keeps your feet and lower legs dry ",
+                "examples": null,
+              },
+            ],
+            "imgDesc": null,
+            "imgUrl": null,
+            "isOffensive": false,
+            "name": "rubber boot",
+            "particle": "noun",
+            "stems": [
+              "rubber boot",
+              "rubber boots",
+              "wellington",
+            ],
+            "transcription": "rubber boot",
+            "uuid": "48d907a0-a8fb-4ca3-bc75-57a70d908166",
+          },
+          {
+            "additionalInfo": null,
+            "audioUrl": null,
+            "defs": [
+              {
+                "def": "{bc}a bullet that is made out of rubber so that it hurts but does not kill people and that is used by the police and military to control a crowd",
+                "examples": null,
+              },
+            ],
+            "imgDesc": null,
+            "imgUrl": null,
+            "isOffensive": false,
+            "name": "rubber bullet",
+            "particle": "noun",
+            "stems": [
+              "rubber bullet",
+              "rubber bullets",
+            ],
+            "transcription": "rubber bullet",
+            "uuid": "dbdc0d78-3e16-4dc3-afd5-2e72bf8b6a55",
+          },
+          {
+            "additionalInfo": null,
+            "audioUrl": null,
+            "defs": [
+              {
+                "def": "{bc}a thick, stretchy glue that contains rubber",
+                "examples": null,
+              },
+            ],
+            "imgDesc": null,
+            "imgUrl": null,
+            "isOffensive": false,
+            "name": "rubber cement",
+            "particle": "noun",
+            "stems": [
+              "rubber cement",
+              "rubber cements",
+            ],
+            "transcription": "rubber cement",
+            "uuid": "eb1c2aba-f3df-46d5-936b-626e499998b1",
+          },
+          {
+            "additionalInfo": null,
+            "audioUrl": null,
+            "defs": [
+              {
+                "def": "{bc}a plant with large, shiny, dark green leaves that is often grown indoors",
+                "examples": null,
+              },
+            ],
+            "imgDesc": null,
+            "imgUrl": null,
+            "isOffensive": false,
+            "name": "rubber plant",
+            "particle": "noun",
+            "stems": [
+              "rubber plant",
+              "rubber plants",
+            ],
+            "transcription": "rubber plant",
+            "uuid": "39f6a4ec-4959-4d6f-876a-39b8f780c8cd",
+          },
+          {
+            "additionalInfo": null,
+            "audioUrl": null,
+            "defs": [
+              {
+                "def": "{bc}a small tool that consists of a handle attached to a piece of carved rubber and that is dipped in ink and then pressed on paper to print a date, name, symbol, etc.",
+                "examples": null,
+              },
+              {
+                "def": "{bc}a person or organization that automatically approves everything that someone does or decides ",
+                "examples": [
+                  "The legislature has been nothing more than a {it}rubber stamp{/it} for the President.",
+                ],
+              },
+            ],
+            "imgDesc": null,
+            "imgUrl": null,
+            "isOffensive": false,
+            "name": "rubber stamp",
+            "particle": "noun",
+            "stems": [
+              "rubber stamp",
+              "rubber stamps",
+              "rubber-stamp",
+            ],
+            "transcription": "rubber stamp",
+            "uuid": "3d83c22d-0913-4b18-8462-a4064a7d8fd2",
+          },
+        ],
+      },
+      "errors": undefined,
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`queries searchWord english lang, mocks enabled returns suggestion 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": {
+        "searchWord": [
+          {
+            "suggestions": [
+              "Mocking is enabled. You can query words from the list: egalitarian, rubber, pussy, heart, wheel voluminous",
+            ],
+          },
+        ],
+      },
+      "errors": undefined,
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`queries searchWord spanish lang, mocks enabled 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": {
+        "searchWord": [
+          {
+            "additionalInfo": null,
+            "audioUrl": "mock_audio_endpoint/es/me/mp3/i/idiom01sp.mp3",
+            "defs": [
+              {
+                "def": "{bc}{a_link|language} ",
+                "examples": [
+                  "el idioma inglés",
+                ],
+              },
+            ],
+            "imgDesc": null,
+            "imgUrl": null,
+            "isOffensive": false,
+            "name": "idioma",
+            "particle": "masculine noun",
+            "stems": [
+              "idioma",
+            ],
+            "transcription": "idioma",
+            "uuid": "63882a81-032e-4dc1-9c22-bb683cb1bad9",
+          },
+        ],
+      },
+      "errors": undefined,
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`queries searchWord spanish lang, mocks enabled returns suggestion 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": {
+        "searchWord": [
+          {
+            "suggestions": [
+              "Mocking is enabled. You can query words from the list: idioma",
+            ],
+          },
+        ],
+      },
+      "errors": undefined,
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
 exports[`queries user 1`] = `
 {
   "body": {
@@ -61,9 +428,7 @@ exports[`queries word by id 1`] = `
             "egalitarianism",
             "egalitarians",
           ],
-          "transcription": [
-            "iˌɡælɪˈteəriən",
-          ],
+          "transcription": "iˌɡælɪˈteəriən",
           "user": "1",
         },
       },
@@ -101,9 +466,7 @@ exports[`queries words 1`] = `
             "level": "C1",
             "name": "egalitarian",
             "particle": "noun",
-            "transcription": [
-              "iˌɡælɪˈteəriən",
-            ],
+            "transcription": "iˌɡælɪˈteəriən",
           },
         ],
       },
