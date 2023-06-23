@@ -55,7 +55,10 @@ const SearchPage = () => {
       {containsSuggestions &&
         // TODO refactor rendering suggestions
         // @ts-ignore
-        data?.searchWord?.map(el => <p>{el?.suggestions?.join(', ')}</p>)}
+        data?.searchWord?.map(el => (
+          // @ts-ignore
+          <p key={el?.suggestions?.[0]}>{el?.suggestions?.join(', ')}</p>
+        ))}
       {data?.searchWord && !containsSuggestions && (
         <ul className={styles.wordList}>
           {/* TODO: refactor this part */}
