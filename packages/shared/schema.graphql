@@ -13,6 +13,11 @@ enum Level {
   C2
 }
 
+enum Language {
+  ENGLISH
+  SPANISH
+}
+
 type User {
   email: String!
   firstName: String!
@@ -41,14 +46,29 @@ type Word {
   defs: [WordDefinition]!
   particle: String!
   imgUrl: String
+  imgDesc: String
   audioUrl: String
   additionalInfo: String
-  transcription: [String]
+  transcription: String
   user: ID!
   isOffensive: Boolean
   stems: [String]
   tags: [WordTag]
   level: Level
+}
+
+type DictionaryWord {
+  uuid: ID!
+  name: String!
+  defs: [WordDefinition]!
+  particle: String!
+  imgUrl: String
+  imgDesc: String
+  audioUrl: String
+  additionalInfo: String
+  transcription: String
+  isOffensive: Boolean
+  stems: [String]
 }
 
 type AuthUser {
@@ -60,6 +80,12 @@ type AuthUser {
   role: Role!
   token: String!
 }
+
+type Suggestions {
+  suggestions: [String]
+}
+
+union SearchResult = DictionaryWord | Suggestions
 
 input DefsInput {
   def: String!
@@ -79,7 +105,7 @@ input NewWordInput {
   imgUrl: String
   audioUrl: String
   additionalInfo: String
-  transcription: [String]
+  transcription: String
   isOffensive: Boolean
   stems: [String]
   level: Level
@@ -112,10 +138,16 @@ input LoginInput {
   password: String!
 }
 
+input WordSearchInput {
+  search: String!
+  language: Language
+}
+
 type Query {
   user: User!
   words: [Word]!
   word(id: ID!): Word!
+  searchWord(input: WordSearchInput!): [SearchResult]!
 }
 
 type Mutation {

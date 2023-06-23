@@ -24,5 +24,9 @@ export const QueryResolvers: QueryResolversType<ResolverContext> = {
       throw new UserInputError(`word with id ${id} is not found`);
     }
     return word;
+  }),
+  searchWord: authenticated(async (_, { input }, { searchWord }) => {
+    const searchResult = await searchWord(input?.search, input?.language);
+    return searchResult;
   })
 };

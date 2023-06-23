@@ -1,5 +1,5 @@
 import { Schema, model } from 'mongoose';
-import { Word as WordCoreType } from 'generated/graphql';
+import { Word as WordCoreType } from '../../generated/graphql';
 
 const tagsSchema = new Schema(
   {
@@ -27,7 +27,7 @@ const wordSchema = new Schema<WordCoreType>({
   defs: [defSchema],
   user: { type: String, required: true },
   audioUrl: String,
-  transcription: [String],
+  transcription: String,
   imgUrl: String,
   isOffensive: Boolean,
   level: { type: String, enum: ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'] },

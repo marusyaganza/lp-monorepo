@@ -10,6 +10,8 @@ import {
   validatePassword
 } from './auth';
 import { ModelsType } from './db/models';
+import { searchWord } from './dictionary';
+
 const typeDefs = require('../../shared/schema.graphql');
 
 const server = new ApolloServer({
@@ -22,7 +24,14 @@ initDB(async (models: ModelsType) => {
     context: async function ({ req }): Promise<ResolverContext> {
       const token = req?.headers?.authorization?.split(' ').pop();
       const user = token ? getUserFromToken(token) : undefined;
-      return { models, user, createToken, validatePassword, hashPassword };
+      return {
+        models,
+        user,
+        createToken,
+        validatePassword,
+        hashPassword,
+        searchWord
+      };
     },
     listen: { port: 4000 }
   });

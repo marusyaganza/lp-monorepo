@@ -22,7 +22,7 @@ export const words = [
     stems: ['egalitarian', 'egalitarianism', 'egalitarians'],
     audioUrl:
       'https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/e/ega/egali/egalitarian__gb_1.mp3',
-    transcription: ['iˌɡælɪˈteəriən'],
+    transcription: 'iˌɡælɪˈteəriən',
     user: '1'
   }
 ];
@@ -84,7 +84,7 @@ export const dbWords = [
     stems: ['egalitarian', 'egalitarianism', 'egalitarians'],
     audioUrl:
       'https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/e/ega/egali/egalitarian__gb_1.mp3',
-    transcription: ['iˌɡælɪˈteəriən'],
+    transcription: 'iˌɡælɪˈteəriən',
     user: '63fe782ee6b6423093c312d4'
   },
   {
@@ -114,4 +114,28 @@ export const userCreateInput = {
   role: 'MEMBER',
   firstName: 'User',
   lastName: 'Test'
+};
+
+export const dictionaryWord = {
+  uuid: '74046e79-e4c9-4b52-ac96-cb7ae98fb601',
+  name: 'egalitarian',
+  isOffensive: false,
+  defs: [
+    {
+      def: 'a person who believes that everyone is equal and should have the same rights and opportunities',
+      examples: ['He described himself as ‘an {it}egalitarian{/it}’.']
+    },
+    {
+      def: 'aiming for equal wealth, status, etc., for all people',
+      examples: [
+        'He is a committed {it}egalitarian{/it}',
+        'Even in the {it}egalitarian{/it} Nordic country, Marin felt hergender and age sometimes received too much emphasis. Kostya Manenkov And Karl Ritter, USA TODAY, 21 Aug. 2022'
+      ]
+    }
+  ],
+  particle: 'noun',
+  stems: ['egalitarian', 'egalitarianism', 'egalitarians'],
+  audioUrl:
+    'https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/e/ega/egali/egalitarian__gb_1.mp3',
+  transcription: 'iˌɡælɪˈteəriən'
 };
