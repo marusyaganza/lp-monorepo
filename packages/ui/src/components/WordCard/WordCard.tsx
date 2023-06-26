@@ -38,7 +38,8 @@ export const WordCard = ({
     isOffensive,
     defs,
     stems,
-    imgUrl
+    imgUrl,
+    imgDesc
   } = word;
 
   const isFull = variant === 'full';
@@ -87,7 +88,7 @@ export const WordCard = ({
                     height={20}
                     id="book"
                   ></Icon>
-                  <DictionaryEntity text={d.def} />
+                  <DictionaryEntity className={styles.defText} text={d.def} />
                 </p>
                 {isFull && renderExamples(d.examples)}
               </div>
@@ -151,17 +152,25 @@ export const WordCard = ({
           {renderHeader()}
           {renderDefinition()}
           {stems?.length && (
-            <section className={styles.stems}>
-              <i>Word forms:</i> {stems.join(', ')}{' '}
+            <section>
+              <p className={styles.stems}>
+                <span className={styles.stemsHeading}>Word forms: </span>
+                {stems.join(', ')}
+              </p>
             </section>
           )}
         </div>
         {imgUrl && (
-          <img
-            className={styles.illustration}
-            src={imgUrl}
-            alt={`${name} illustration`}
-          />
+          <figure className={styles.illustration}>
+            <img
+              className={styles.picture}
+              src={imgUrl}
+              alt={`${name} illustration`}
+            />
+            {imgDesc && (
+              <figcaption>{<DictionaryEntity text={imgDesc} />}</figcaption>
+            )}
+          </figure>
         )}
       </article>
     );

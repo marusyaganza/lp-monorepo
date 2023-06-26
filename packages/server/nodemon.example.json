@@ -1,17 +1,22 @@
 {
-    "verbose": true,
-    "ignore": ["src"],
-    "execMap": {
-      "js": "node"
-    },
-    "watch": ["dist", "../shared/schema.graphql"],
-    "ext": "ts,js,json,html,graphql",
-    "env": {
-        "NODE_ENV": "development",
-        "JWT_SECTET": "",
-        "MONGO_PASSWORD": "",
-        "MONGO_USERNAME": "",
-        "SALT_NUMBER": 0,
-        "MONGO_CONNECTION": "mongodb://lp-db:27017"
-    }
+  "verbose": true,
+  "ignore": ["src"],
+  "execMap": {
+    "js": "node"
+  },
+  "watch": ["dist", "../shared/schema.graphql"],
+  "ext": "ts,js,json,html,graphql",
+  "env": {
+    "NODE_ENV": "development",
+    "JWT_SECTET": "",
+    "MONGO_PASSWORD": "",
+    "MONGO_USERNAME": "",
+    "SALT_NUMBER": 0,
+    "MONGO_CONNECTION": "mongodb://lp-db:27017",
+    "DICTIONARY_API_KEY": "key",
+    "DICTIONARY_API_URI": "url1",
+    "AUDIO_ENDPOINT": "url2",
+    "IMG_ENDPOINT": "url3",
+    "USE_MOCKS": "true"
+  }
 }

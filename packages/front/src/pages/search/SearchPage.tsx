@@ -4,7 +4,7 @@ import { Button, Spinner } from '@lp/ui';
 import { PageLayout } from '../../components/PageLayout/PageLayout';
 import { useSearchWordsLazyQuery, Language } from '../../generated/graphql';
 import { WordCard } from '@lp/ui';
-import styles from '../words/WordsPage.module.css';
+import styles from './SearchPage.module.css';
 
 const SearchPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -60,13 +60,13 @@ const SearchPage = () => {
           <p key={el?.suggestions?.[0]}>{el?.suggestions?.join(', ')}</p>
         ))}
       {data?.searchWord && !containsSuggestions && (
-        <ul className={styles.wordList}>
+        <ul className={styles.list}>
           {/* TODO: refactor this part */}
           {data?.searchWord?.map((word: any) => {
             if (word) {
               return (
-                <li className={styles.wordListItem} key={word?.id}>
-                  <WordCard className={styles.wordCard} word={word} />
+                <li className={styles.listItem} key={word?.id}>
+                  <WordCard word={word} />
                 </li>
               );
             }

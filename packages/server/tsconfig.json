@@ -6,7 +6,7 @@
         "module": "CommonJS",
         "baseUrl": "./src",
         "moduleResolution": "node",
-        "lib": ["ES2020", "DOM"],
+        "lib": ["ES2020", "DOM", "ES2021.String"],
         "noImplicitAny": true,
         "noUnusedLocals": true,
         "noUnusedParameters": true,

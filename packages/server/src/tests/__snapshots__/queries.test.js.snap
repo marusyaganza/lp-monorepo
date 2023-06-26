@@ -12,25 +12,25 @@ exports[`queries searchWord english lang, mocks enabled 1`] = `
             "audioUrl": "mock_audio_endpoint/en/us/mp3/r/rubber01.mp3",
             "defs": [
               {
-                "def": "{dx}see also {dxt|foam rubber||}{/dx}",
+                "def": "see also foam rubber",
                 "examples": [
-                  "tires made of {it}rubber{/it}",
+                  "tires made of <i>rubber</i>",
                 ],
               },
               {
-                "def": "{bc}{sx|eraser||}",
+                "def": "eraser",
                 "examples": null,
               },
               {
-                "def": "{bc}shoes or boots that are made of rubber and that fit over your regular shoes to keep them dry {dx}compare {dxt|galoshes||}{/dx}",
+                "def": "shoes or boots that are made of rubber and that fit over your regular shoes to keep them dry compare galoshes",
                 "examples": null,
               },
               {
-                "def": "{bc}{sx|condom||}",
+                "def": "condom",
                 "examples": null,
               },
               {
-                "def": "{bc}a flat piece of hard, white rubber on which the pitcher stands while pitching",
+                "def": "a flat piece of hard, white rubber on which the pitcher stands while pitching",
                 "examples": null,
               },
             ],
@@ -52,13 +52,13 @@ exports[`queries searchWord english lang, mocks enabled 1`] = `
             "audioUrl": null,
             "defs": [
               {
-                "def": "{bc}a contest that consists of a series of games and that is won by the player or team that wins the most games (such as two games out of three) ",
+                "def": "a contest that consists of a series of games and that is won by the player or team that wins the most games (such as two games out of three)",
                 "examples": [
-                  "Let's play a {it}rubber{/it} of bridge.",
+                  "Let's play a <i>rubber</i> of bridge.",
                 ],
               },
               {
-                "def": "{bc}a game that decides who will be the winner of a series of games",
+                "def": "a game that decides who will be the winner of a series of games",
                 "examples": null,
               },
             ],
@@ -82,7 +82,7 @@ exports[`queries searchWord english lang, mocks enabled 1`] = `
             "audioUrl": "mock_audio_endpoint/en/us/mp3/c/condom01.mp3",
             "defs": [
               {
-                "def": "{bc}a thin rubber covering that a man wears on his penis during sex in order to prevent a woman from becoming pregnant or to prevent the spread of diseases ",
+                "def": "a thin rubber covering that a man wears on his penis during sex in order to prevent a woman from becoming pregnant or to prevent the spread of diseases",
                 "examples": null,
               },
             ],
@@ -105,7 +105,7 @@ exports[`queries searchWord english lang, mocks enabled 1`] = `
             "audioUrl": "mock_audio_endpoint/en/us/mp3/e/eraser01.mp3",
             "defs": [
               {
-                "def": "{dx}see picture at {dxt|office||}{/dx}",
+                "def": "see picture at office",
                 "examples": null,
               },
             ],
@@ -127,7 +127,7 @@ exports[`queries searchWord english lang, mocks enabled 1`] = `
             "audioUrl": null,
             "defs": [
               {
-                "def": "{dx}see picture at {dxt|office||}{/dx}",
+                "def": "see picture at office",
                 "examples": null,
               },
             ],
@@ -150,7 +150,7 @@ exports[`queries searchWord english lang, mocks enabled 1`] = `
             "audioUrl": null,
             "defs": [
               {
-                "def": "{bc}a tall boot that is made out of rubber and that keeps your feet and lower legs dry ",
+                "def": "a tall boot that is made out of rubber and that keeps your feet and lower legs dry",
                 "examples": null,
               },
             ],
@@ -172,7 +172,7 @@ exports[`queries searchWord english lang, mocks enabled 1`] = `
             "audioUrl": null,
             "defs": [
               {
-                "def": "{bc}a bullet that is made out of rubber so that it hurts but does not kill people and that is used by the police and military to control a crowd",
+                "def": "a bullet that is made out of rubber so that it hurts but does not kill people and that is used by the police and military to control a crowd",
                 "examples": null,
               },
             ],
@@ -193,7 +193,7 @@ exports[`queries searchWord english lang, mocks enabled 1`] = `
             "audioUrl": null,
             "defs": [
               {
-                "def": "{bc}a thick, stretchy glue that contains rubber",
+                "def": "a thick, stretchy glue that contains rubber",
                 "examples": null,
               },
             ],
@@ -214,7 +214,7 @@ exports[`queries searchWord english lang, mocks enabled 1`] = `
             "audioUrl": null,
             "defs": [
               {
-                "def": "{bc}a plant with large, shiny, dark green leaves that is often grown indoors",
+                "def": "a plant with large, shiny, dark green leaves that is often grown indoors",
                 "examples": null,
               },
             ],
@@ -235,13 +235,13 @@ exports[`queries searchWord english lang, mocks enabled 1`] = `
             "audioUrl": null,
             "defs": [
               {
-                "def": "{bc}a small tool that consists of a handle attached to a piece of carved rubber and that is dipped in ink and then pressed on paper to print a date, name, symbol, etc.",
+                "def": "a small tool that consists of a handle attached to a piece of carved rubber and that is dipped in ink and then pressed on paper to print a date, name, symbol, etc.",
                 "examples": null,
               },
               {
-                "def": "{bc}a person or organization that automatically approves everything that someone does or decides ",
+                "def": "a person or organization that automatically approves everything that someone does or decides",
                 "examples": [
-                  "The legislature has been nothing more than a {it}rubber stamp{/it} for the President.",
+                  "The legislature has been nothing more than a <i>rubber stamp</i> for the President.",
                 ],
               },
             ],
@@ -281,7 +281,7 @@ exports[`queries searchWord english lang, mocks enabled returns suggestion 1`] =
         "searchWord": [
           {
             "suggestions": [
-              "Mocking is enabled. You can query words from the list: egalitarian, rubber, pussy, heart, wheel voluminous",
+              "Mocking is enabled. You can query words from the list: egalitarian, rubber, pussy, heart, wheel, voluminous, fowl",
             ],
           },
         ],
@@ -310,7 +310,7 @@ exports[`queries searchWord spanish lang, mocks enabled 1`] = `
             "audioUrl": "mock_audio_endpoint/es/me/mp3/i/idiom01sp.mp3",
             "defs": [
               {
-                "def": "{bc}{a_link|language} ",
+                "def": "language",
                 "examples": [
                   "el idioma inglés",
                 ],
@@ -350,7 +350,7 @@ exports[`queries searchWord spanish lang, mocks enabled returns suggestion 1`] =
         "searchWord": [
           {
             "suggestions": [
-              "Mocking is enabled. You can query words from the list: idioma",
+              "Mocking is enabled. You can query words from the list: idioma, hola, caerse",
             ],
           },
         ],
