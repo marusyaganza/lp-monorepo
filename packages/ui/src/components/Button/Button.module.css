@@ -114,6 +114,7 @@
 .iconWithText {
     display: flex;
     gap: 10px;
+    align-items: center;
     color: var(--text);
     background: var(--neutral-100);
     border: 1px solid var(--neutral-800);
