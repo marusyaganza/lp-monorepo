@@ -28,9 +28,14 @@ type User {
   primaryLanguage: String
 }
 
+type DefExample {
+  text: String!
+  translation: String
+}
+
 type WordDefinition {
   def: String!
-  examples: [String]
+  examples: [DefExample]
 }
 
 type WordTag {
@@ -55,6 +60,8 @@ type Word {
   stems: [String]
   tags: [WordTag]
   level: Level
+  shortDef: [String]!
+  language: Language!
 }
 
 type DictionaryWord {
@@ -69,6 +76,8 @@ type DictionaryWord {
   transcription: String
   isOffensive: Boolean
   stems: [String]
+  shortDef: [String]!
+  language: Language!
 }
 
 type AuthUser {
@@ -87,9 +96,14 @@ type Suggestions {
 
 union SearchResult = DictionaryWord | Suggestions
 
+input DefExampleInput {
+  text: String!
+  translation: String
+}
+
 input DefsInput {
   def: String!
-  examples: [String]
+  examples: [DefExampleInput]
 }
 
 input WordTagInput {
@@ -103,6 +117,7 @@ input NewWordInput {
   defs: [DefsInput]!
   particle: String!
   imgUrl: String
+  imgDesc: String
   audioUrl: String
   additionalInfo: String
   transcription: String
@@ -110,6 +125,8 @@ input NewWordInput {
   stems: [String]
   level: Level
   tags: [WordTagInput]
+  language: Language!
+  shortDef: [String]!
 }
 
 input UpdateWordInput {
@@ -145,7 +162,7 @@ input WordSearchInput {
 
 type Query {
   user: User!
-  words: [Word]!
+  words(language: Language): [Word]!
   word(id: ID!): Word!
   searchWord(input: WordSearchInput!): [SearchResult]!
 }

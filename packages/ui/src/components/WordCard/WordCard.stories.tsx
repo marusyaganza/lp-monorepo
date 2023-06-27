@@ -1,6 +1,6 @@
 import React from 'react';
 import { WordCard, WordCardProps } from './WordCard';
-import { words, wheel } from '../../mocks/words';
+import { words, wheel, spanishWords } from '../../mocks/words';
 import '../../assets/styles/common-styles.css';
 
 export default {
@@ -39,6 +39,16 @@ export const WordCardLong = (args: WordCardProps) => {
     <>
       <div className="page">
         <WordCard {...args} word={word} variant="short" />
+      </div>
+    </>
+  ));
+};
+
+export const WordCardSpanish = (args: WordCardProps) => {
+  return spanishWords.map(word => (
+    <>
+      <div className="page">
+        <WordCard {...args} word={word} variant="full" />
       </div>
     </>
   ));

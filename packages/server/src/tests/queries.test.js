@@ -26,7 +26,9 @@ const wordByIdQuery = `
       name
       defs {
         def
-        examples
+        examples {
+          text
+        }
       }
       particle
       imgUrl
@@ -68,12 +70,16 @@ const searchQuery = `
         isOffensive
         imgUrl
         defs {
-          examples
+          examples {
+            text
+            translation
+          }
           def
         }
         audioUrl
         additionalInfo
         imgDesc
+        shortDef
       }
     }
   }

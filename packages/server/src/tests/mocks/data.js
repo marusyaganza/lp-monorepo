@@ -7,13 +7,17 @@ export const words = [
     defs: [
       {
         def: 'a person who believes that everyone is equal and should have the same rights and opportunities',
-        examples: ['He described himself as ‘an {it}egalitarian{/it}’.']
+        examples: [
+          { text: 'He described himself as ‘an {it}egalitarian{/it}’.' }
+        ]
       },
       {
         def: 'aiming for equal wealth, status, etc., for all people',
         examples: [
-          'He is a committed {it}egalitarian{/it}',
-          'Even in the {it}egalitarian{/it} Nordic country, Marin felt hergender and age sometimes received too much emphasis. Kostya Manenkov And Karl Ritter, USA TODAY, 21 Aug. 2022'
+          { text: 'He is a committed {it}egalitarian{/it}' },
+          {
+            text: 'Even in the {it}egalitarian{/it} Nordic country, Marin felt hergender and age sometimes received too much emphasis. Kostya Manenkov And Karl Ritter, USA TODAY, 21 Aug. 2022'
+          }
         ]
       }
     ],
@@ -23,6 +27,7 @@ export const words = [
     audioUrl:
       'https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/e/ega/egali/egalitarian__gb_1.mp3',
     transcription: 'iˌɡælɪˈteəriən',
+    shortdef: ['aiming for equal wealth, status, etc., for all people'],
     user: '1'
   }
 ];
@@ -69,13 +74,17 @@ export const dbWords = [
     defs: [
       {
         def: 'a person who believes that everyone is equal and should have the same rights and opportunities',
-        examples: ['He described himself as ‘an {it}egalitarian{/it}’.']
+        examples: [
+          { text: 'He described himself as ‘an {it}egalitarian{/it}’.' }
+        ]
       },
       {
         def: 'aiming for equal wealth, status, etc., for all people',
         examples: [
-          'He is a committed {it}egalitarian{/it}',
-          'Even in the {it}egalitarian{/it} Nordic country, Marin felt hergender and age sometimes received too much emphasis. Kostya Manenkov And Karl Ritter, USA TODAY, 21 Aug. 2022'
+          { text: 'He is a committed {it}egalitarian{/it}' },
+          {
+            text: 'Even in the {it}egalitarian{/it} Nordic country, Marin felt hergender and age sometimes received too much emphasis. Kostya Manenkov And Karl Ritter, USA TODAY, 21 Aug. 2022'
+          }
         ]
       }
     ],
@@ -85,6 +94,7 @@ export const dbWords = [
     audioUrl:
       'https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/e/ega/egali/egalitarian__gb_1.mp3',
     transcription: 'iˌɡælɪˈteəriən',
+    shortdef: ['aiming for equal wealth, status, etc., for all people'],
     user: '63fe782ee6b6423093c312d4'
   },
   {
@@ -123,17 +133,20 @@ export const dictionaryWord = {
   defs: [
     {
       def: 'a person who believes that everyone is equal and should have the same rights and opportunities',
-      examples: ['He described himself as ‘an {it}egalitarian{/it}’.']
+      examples: [{ text: 'He described himself as ‘an {it}egalitarian{/it}’.' }]
     },
     {
       def: 'aiming for equal wealth, status, etc., for all people',
       examples: [
-        'He is a committed {it}egalitarian{/it}',
-        'Even in the {it}egalitarian{/it} Nordic country, Marin felt hergender and age sometimes received too much emphasis. Kostya Manenkov And Karl Ritter, USA TODAY, 21 Aug. 2022'
+        { text: 'He is a committed {it}egalitarian{/it}' },
+        {
+          text: 'Even in the {it}egalitarian{/it} Nordic country, Marin felt hergender and age sometimes received too much emphasis. Kostya Manenkov And Karl Ritter, USA TODAY, 21 Aug. 2022'
+        }
       ]
     }
   ],
   particle: 'noun',
+  shortdef: ['aiming for equal wealth, status, etc., for all people'],
   stems: ['egalitarian', 'egalitarianism', 'egalitarians'],
   audioUrl:
     'https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/e/ega/egali/egalitarian__gb_1.mp3',

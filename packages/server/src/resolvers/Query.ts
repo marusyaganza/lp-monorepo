@@ -1,6 +1,9 @@
 import { authenticated } from '../auth';
 import { UserInputError } from '../utils/apolloCustomErrors';
-import { QueryResolvers as QueryResolversType } from '../generated/graphql';
+import {
+  Language,
+  QueryResolvers as QueryResolversType
+} from '../generated/graphql';
 import { ResolverContext } from './index';
 
 export const QueryResolvers: QueryResolversType<ResolverContext> = {
@@ -11,10 +14,12 @@ export const QueryResolvers: QueryResolversType<ResolverContext> = {
     }
     return result;
   },
-  words: authenticated(async (_, __, { models, user }) => {
-    const words = await models.Word.findMany({ user: user?.id });
-    return words;
-  }),
+  words: authenticated(
+    async (_, { language = Language.English }, { models, user }) => {
+      const words = await models.Word.findMany({ user: user?.id, language });
+      return words;
+    }
+  ),
   word: authenticated(async (_, { id }, { models, user }) => {
     const word = await models.Word.findOne({
       user: user?.id,

@@ -14,7 +14,10 @@ exports[`queries searchWord english lang, mocks enabled 1`] = `
               {
                 "def": "see also foam rubber",
                 "examples": [
-                  "tires made of <i>rubber</i>",
+                  {
+                    "text": "tires made of <i>rubber</i>",
+                    "translation": null,
+                  },
                 ],
               },
               {
@@ -39,6 +42,11 @@ exports[`queries searchWord english lang, mocks enabled 1`] = `
             "isOffensive": false,
             "name": "rubber",
             "particle": "noun",
+            "shortDef": [
+              "a strong substance that stretches and that is made out of chemicals or from the juice of a tropical tree —often used before another noun",
+              "eraser",
+              "shoes or boots that are made of rubber and that fit over your regular shoes to keep them dry",
+            ],
             "stems": [
               "rubber",
               "rubbers",
@@ -54,7 +62,10 @@ exports[`queries searchWord english lang, mocks enabled 1`] = `
               {
                 "def": "a contest that consists of a series of games and that is won by the player or team that wins the most games (such as two games out of three)",
                 "examples": [
-                  "Let's play a <i>rubber</i> of bridge.",
+                  {
+                    "text": "Let's play a <i>rubber</i> of bridge.",
+                    "translation": null,
+                  },
                 ],
               },
               {
@@ -67,6 +78,10 @@ exports[`queries searchWord english lang, mocks enabled 1`] = `
             "isOffensive": false,
             "name": "rubber",
             "particle": "noun",
+            "shortDef": [
+              "a contest that consists of a series of games and that is won by the player or team that wins the most games (such as two games out of three)",
+              "a game that decides who will be the winner of a series of games—usually used before another noun",
+            ],
             "stems": [
               "rubber",
               "caoutchouc",
@@ -91,6 +106,9 @@ exports[`queries searchWord english lang, mocks enabled 1`] = `
             "isOffensive": false,
             "name": "condom",
             "particle": "noun",
+            "shortDef": [
+              "a thin rubber covering that a man wears on his penis during sex in order to prevent a woman from becoming pregnant or to prevent the spread of diseases —called also rubber, sheath",
+            ],
             "stems": [
               "condom",
               "condoms",
@@ -114,6 +132,9 @@ exports[`queries searchWord english lang, mocks enabled 1`] = `
             "isOffensive": false,
             "name": "eraser",
             "particle": "noun",
+            "shortDef": [
+              "a small piece of rubber or other material that is used to erase something you have written or drawn —called also (British) rubber",
+            ],
             "stems": [
               "eraser",
               "erasers",
@@ -136,6 +157,9 @@ exports[`queries searchWord english lang, mocks enabled 1`] = `
             "isOffensive": false,
             "name": "rubber band",
             "particle": "noun",
+            "shortDef": [
+              "a thin, flexible loop that is made of rubber and used to hold things together —called also (US) elastic, elastic band",
+            ],
             "stems": [
               "rubber band",
               "rubber bands",
@@ -159,6 +183,9 @@ exports[`queries searchWord english lang, mocks enabled 1`] = `
             "isOffensive": false,
             "name": "rubber boot",
             "particle": "noun",
+            "shortDef": [
+              "a tall boot that is made out of rubber and that keeps your feet and lower legs dry —called also (British) Wellington",
+            ],
             "stems": [
               "rubber boot",
               "rubber boots",
@@ -181,6 +208,9 @@ exports[`queries searchWord english lang, mocks enabled 1`] = `
             "isOffensive": false,
             "name": "rubber bullet",
             "particle": "noun",
+            "shortDef": [
+              "a bullet that is made out of rubber so that it hurts but does not kill people and that is used by the police and military to control a crowd",
+            ],
             "stems": [
               "rubber bullet",
               "rubber bullets",
@@ -202,6 +232,9 @@ exports[`queries searchWord english lang, mocks enabled 1`] = `
             "isOffensive": false,
             "name": "rubber cement",
             "particle": "noun",
+            "shortDef": [
+              "a thick, stretchy glue that contains rubber",
+            ],
             "stems": [
               "rubber cement",
               "rubber cements",
@@ -223,6 +256,9 @@ exports[`queries searchWord english lang, mocks enabled 1`] = `
             "isOffensive": false,
             "name": "rubber plant",
             "particle": "noun",
+            "shortDef": [
+              "a plant with large, shiny, dark green leaves that is often grown indoors",
+            ],
             "stems": [
               "rubber plant",
               "rubber plants",
@@ -241,7 +277,10 @@ exports[`queries searchWord english lang, mocks enabled 1`] = `
               {
                 "def": "a person or organization that automatically approves everything that someone does or decides",
                 "examples": [
-                  "The legislature has been nothing more than a <i>rubber stamp</i> for the President.",
+                  {
+                    "text": "The legislature has been nothing more than a <i>rubber stamp</i> for the President.",
+                    "translation": null,
+                  },
                 ],
               },
             ],
@@ -250,6 +289,10 @@ exports[`queries searchWord english lang, mocks enabled 1`] = `
             "isOffensive": false,
             "name": "rubber stamp",
             "particle": "noun",
+            "shortDef": [
+              "a small tool that consists of a handle attached to a piece of carved rubber and that is dipped in ink and then pressed on paper to print a date, name, symbol, etc.",
+              "a person or organization that automatically approves everything that someone does or decides",
+            ],
             "stems": [
               "rubber stamp",
               "rubber stamps",
@@ -312,7 +355,10 @@ exports[`queries searchWord spanish lang, mocks enabled 1`] = `
               {
                 "def": "language",
                 "examples": [
-                  "el idioma inglés",
+                  {
+                    "text": "el idioma inglés",
+                    "translation": "the English language",
+                  },
                 ],
               },
             ],
@@ -321,6 +367,9 @@ exports[`queries searchWord spanish lang, mocks enabled 1`] = `
             "isOffensive": false,
             "name": "idioma",
             "particle": "masculine noun",
+            "shortDef": [
+              "language",
+            ],
             "stems": [
               "idioma",
             ],
@@ -406,14 +455,20 @@ exports[`queries word by id 1`] = `
             {
               "def": "a person who believes that everyone is equal and should have the same rights and opportunities",
               "examples": [
-                "He described himself as ‘an {it}egalitarian{/it}’.",
+                {
+                  "text": "He described himself as ‘an {it}egalitarian{/it}’.",
+                },
               ],
             },
             {
               "def": "aiming for equal wealth, status, etc., for all people",
               "examples": [
-                "He is a committed {it}egalitarian{/it}",
-                "Even in the {it}egalitarian{/it} Nordic country, Marin felt hergender and age sometimes received too much emphasis. Kostya Manenkov And Karl Ritter, USA TODAY, 21 Aug. 2022",
+                {
+                  "text": "He is a committed {it}egalitarian{/it}",
+                },
+                {
+                  "text": "Even in the {it}egalitarian{/it} Nordic country, Marin felt hergender and age sometimes received too much emphasis. Kostya Manenkov And Karl Ritter, USA TODAY, 21 Aug. 2022",
+                },
               ],
             },
           ],
