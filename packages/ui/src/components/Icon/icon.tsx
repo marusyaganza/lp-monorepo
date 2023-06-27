@@ -12,7 +12,8 @@ export type IconIdType =
   | 'success'
   | 'close'
   | 'fire'
-  | 'delete';
+  | 'delete'
+  | 'add';
 
 export type IconProps = {
   width?: number;

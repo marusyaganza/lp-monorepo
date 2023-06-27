@@ -16,6 +16,8 @@ export interface WordCardProps {
   /**edit button callback, if not provides, button will not be displayed */
   onEdit?: () => void;
   /**delete button callback, if not provides, button will not be displayed */
+  onAdd?: () => void;
+  /**add button callback, if not provides, button will not be displayed */
   onDelete?: () => void;
   /**short variant does not include word forms, examples and image */
   variant?: 'short' | 'full';
@@ -27,6 +29,7 @@ export const WordCard = ({
   className,
   onEdit,
   onDelete,
+  onAdd,
   variant = 'full'
 }: WordCardProps) => {
   const {
@@ -145,6 +148,18 @@ export const WordCard = ({
           onClick={onDelete}
         >
           delete
+        </Button>
+      )}
+      {onAdd && (
+        <Button
+          className={styles.addButton}
+          variant="icon"
+          iconId="add"
+          iconHeight={35}
+          iconWidth={30}
+          onClick={onAdd}
+        >
+          Add word
         </Button>
       )}
     </div>

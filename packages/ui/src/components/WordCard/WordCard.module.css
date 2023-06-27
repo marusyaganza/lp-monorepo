@@ -94,6 +94,10 @@
     right: 80px
 }
 
+.addButton {
+    color: var(--primary-300);
+}
+
 .deleteButton {
     color: var(--error-300);
 }
