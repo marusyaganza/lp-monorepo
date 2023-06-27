@@ -23,20 +23,26 @@ export const testData = {
     uuid: '74046e79-e4c9-4b52-ac96-cb7ae98fb601',
     name: 'egalitarian',
     isOffensive: false,
+    shortDef: ['aiming for equal wealth, status, etc., for all people'],
     defs: [
       {
         def: 'a person who believes that everyone is equal and should have the same rights and opportunities',
-        examples: ['He described himself as ‘an {it}egalitarian{/it}’.']
+        examples: [
+          { text: 'He described himself as ‘an {it}egalitarian{/it}’.' }
+        ]
       },
       {
         def: 'aiming for equal wealth, status, etc., for all people',
         examples: [
-          'He is a committed {it}egalitarian{/it}',
-          'Even in the {it}egalitarian{/it} Nordic country, Marin felt hergender and age sometimes received too much emphasis. Kostya Manenkov And Karl Ritter, USA TODAY, 21 Aug. 2022'
+          { text: 'He is a committed {it}egalitarian{/it}' },
+          {
+            text: 'Even in the {it}egalitarian{/it} Nordic country, Marin felt hergender and age sometimes received too much emphasis. Kostya Manenkov And Karl Ritter, USA TODAY, 21 Aug. 2022'
+          }
         ]
       }
     ],
     particle: 'noun',
+    language: 'ENGLISH',
     level: 'C1',
     stems: ['egalitarian', 'egalitarianism', 'egalitarians'],
     audioUrl: 'mock.mp3',
@@ -47,7 +53,11 @@ export const testData = {
   },
   createWordInput2: {
     particle: 'noun',
+    language: 'ENGLISH',
     name: 'rubber',
+    shortDef: [
+      'a thin, flexible loop that is made of rubber and used to hold things together \u2014called also (US) elastic, elastic band'
+    ],
     stems: ['rubber', 'rubbers', 'burn rubber'],
     uuid: '59e03286-73c9-43e6-b1eb-4407a6c06b1e',
     defs: [
@@ -69,7 +79,7 @@ export const testData = {
     defs: [
       {
         def: '{bc} a strong substance that stretches and that is made out of chemicals or from the juice of a tropical tree',
-        examples: ['a rubber plantation', 'a rubber tree']
+        examples: [{ text: 'a rubber plantation' }, { text: 'a rubber tree' }]
       },
       {
         def: '{b}{it}rubbers{/it}{/b} {it}US{/it}, {it}informal + old-fashioned{/it} {bc} shoes or boots that are made of rubber and that fit over your regular shoes to keep them dry'

@@ -10,7 +10,7 @@ import styles from './WordCard.module.css';
 
 export interface WordCardProps {
   /**Word to display */
-  word: Omit<Word, 'user'>;
+  word: Word;
   /**additional styling */
   className?: string;
   /**edit button callback, if not provides, button will not be displayed */
@@ -39,7 +39,8 @@ export const WordCard = ({
     defs,
     stems,
     imgUrl,
-    imgDesc
+    imgDesc,
+    shortDef
   } = word;
 
   const isFull = variant === 'full';
@@ -64,8 +65,9 @@ export const WordCard = ({
       {examples?.map(example => {
         if (example) {
           return (
-            <p key={example} className={styles.example}>
-              <DictionaryEntity text={example} />
+            <p key={example.text} className={styles.example}>
+              <DictionaryEntity text={example.text} />
+              {example.translation && ` (${example.translation})`}
             </p>
           );
         }
@@ -74,27 +76,46 @@ export const WordCard = ({
     </ul>
   );
 
+  const renderDef = (def: string | null) => {
+    if (def) {
+      return (
+        <p className={styles.definition}>
+          <Icon
+            className={styles.defIcon}
+            width={30}
+            height={20}
+            id="book"
+          ></Icon>
+          <DictionaryEntity className={styles.defText} text={def} />
+        </p>
+      );
+    }
+    return;
+  };
+
   const renderDefinition = () => {
     return (
       <ul>
         {defs.map(d => {
           if (d?.def) {
             return (
-              <div key={d.def}>
-                <p className={styles.definition}>
-                  <Icon
-                    className={styles.defIcon}
-                    width={30}
-                    height={20}
-                    id="book"
-                  ></Icon>
-                  <DictionaryEntity className={styles.defText} text={d.def} />
-                </p>
-                {isFull && renderExamples(d.examples)}
-              </div>
+              <li key={d.def}>
+                {renderDef(d.def)}
+                {renderExamples(d.examples)}
+              </li>
             );
           }
           return;
+        })}
+      </ul>
+    );
+  };
+
+  const renderShortDefinition = () => {
+    return (
+      <ul>
+        {shortDef.map(d => {
+          return <li key={d}>{renderDef(d)}</li>;
         })}
       </ul>
     );
@@ -180,7 +201,7 @@ export const WordCard = ({
     <article className={cn(className, styles.wordContainer)}>
       <div className={styles.word}>
         {renderHeader()}
-        {renderDefinition()}
+        {isFull ? renderDefinition() : renderShortDefinition()}
       </div>
     </article>
   );

@@ -44,10 +44,13 @@ const saveWordMutation = `mutation($input: NewWordInput!) {
     imgUrl
     id
     defs {
-      examples
+      examples {
+        text
+      }
       def
     }
     audioUrl
+    shortDef
     additionalInfo
   }
 }`;
@@ -58,7 +61,9 @@ mutation($input: UpdateWordInput!) {
     additionalInfo
     audioUrl
     defs {
-      examples
+      examples {
+        text
+      }
       def
     }
     imgUrl
@@ -72,6 +77,7 @@ mutation($input: UpdateWordInput!) {
       color
     }
     transcription
+    shortDef
     user
     uuid
   }

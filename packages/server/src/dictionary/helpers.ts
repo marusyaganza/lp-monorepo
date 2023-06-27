@@ -162,7 +162,10 @@ export function getDefs(def: DefEntity[] | null | undefined) {
         };
         if (vis && Array.isArray(vis) && vis.length) {
           // @ts-ignore
-          rawResalt.examples = vis?.map(ex => formatDictionaryEntity(ex.t));
+          rawResalt.examples = vis?.map(ex => ({
+            text: formatDictionaryEntity(ex.t),
+            translation: ex.tr
+          }));
         }
         // TODO add test for this case
         // write each definition into array

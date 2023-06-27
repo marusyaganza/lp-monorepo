@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
 export const WORDS_QUERY = gql`
-  query Words {
-    words {
+  query Words($language: Language!) {
+    words(language: $language) {
       id
       name
       defs {
@@ -13,6 +13,7 @@ export const WORDS_QUERY = gql`
       transcription
       isOffensive
       level
+      shortDef
     }
   }
 `;
@@ -24,7 +25,10 @@ export const WORD_BY_ID_QUERY = gql`
       name
       defs {
         def
-        examples
+        examples {
+          text
+          translation
+        }
       }
       particle
       imgUrl
@@ -54,12 +58,17 @@ export const SEARCH_WORDS = gql`
         isOffensive
         imgUrl
         defs {
-          examples
+          examples {
+            text
+            translation
+          }
           def
         }
         audioUrl
         additionalInfo
         imgDesc
+        shortDef
+        language
       }
     }
   }

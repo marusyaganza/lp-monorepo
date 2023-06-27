@@ -1,5 +1,5 @@
 import { DictionaryWordType } from './types';
-import { DictionaryWord } from '../generated/graphql';
+import { DictionaryWord, Language } from '../generated/graphql';
 import {
   filterString,
   getAudioUrl,
@@ -12,7 +12,7 @@ import {
 export function formatDictionaryWord(
   word: DictionaryWordType
 ): DictionaryWord | undefined {
-  const { def, meta, hwi, art } = word;
+  const { def, meta, hwi, art, shortdef } = word;
   const { uuid, id, stems, offensive, lang } = meta;
   const metaData = {
     uuid,
@@ -25,9 +25,11 @@ export function formatDictionaryWord(
   const transcription = pronunciation?.mw || formatHw(hwi?.hw);
   const audio = pronunciation?.sound?.audio;
   const audioUrl = getAudioUrl(audio, lang);
+  const language = lang == 'es' ? Language.Spanish : Language.English;
   const imgUrl = getImgUrl(art?.artid);
   const imgDesc = formatDictionaryEntity(art?.capt);
   const particle = word?.fl;
+  const shortDef = shortdef || defs.map(def => def.def);
 
   if (!particle || !defs?.length) {
     return;
@@ -40,7 +42,9 @@ export function formatDictionaryWord(
     transcription,
     imgUrl,
     imgDesc,
-    audioUrl
+    audioUrl,
+    shortDef,
+    language
   };
 }
 

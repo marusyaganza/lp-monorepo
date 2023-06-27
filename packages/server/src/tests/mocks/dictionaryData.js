@@ -111,6 +111,8 @@ export const inputSpanish = [
 export const outputSpanish = [
   {
     audioUrl: 'mock_audio_endpoint/es/me/mp3/h/hola001sp.mp3',
+    language: 'SPANISH',
+    shortDef: ['hello!, hi!'],
     defs: [
       {
         def: 'def1'
@@ -127,13 +129,17 @@ export const outputSpanish = [
   },
   {
     audioUrl: 'mock_audio_endpoint/es/me/mp3/i/idiom01sp.mp3',
+    language: 'SPANISH',
+    shortDef: ['language'],
     defs: [
       {
         def: 'def1',
-        examples: ['ex1']
+        examples: [{ text: 'ex1', translation: 'tr1' }]
       }
     ],
     isOffensive: false,
+    imgDesc: undefined,
+    imgUrl: undefined,
     name: 'idioma',
     particle: 'masculine noun',
     stems: ['idioma'],
@@ -283,6 +289,8 @@ export const outputEnglish = [
       }
     ],
     isOffensive: true,
+    shortDef: ['def1'],
+    language: 'ENGLISH',
     imgDesc: 'image Descr',
     imgUrl: 'mock_img_endpoint/imageId.gif',
     name: 'pussy',
@@ -296,10 +304,13 @@ export const outputEnglish = [
     defs: [
       {
         def: 'def1',
-        examples: ['ex1']
+        examples: [{ text: 'ex1' }]
       }
     ],
+    shortDef: ['aiming for equal wealth, status, etc., for all people'],
+
     isOffensive: false,
+    language: 'ENGLISH',
     name: 'egalitarian',
     particle: 'adjective',
     stems: ['egalitarian', 'egalitarians', 'egalitarianism'],
@@ -440,9 +451,8 @@ export const dictionaryEntities = [
   {
     desc: '{inf}, {sup} and complex tag',
     arguments:
-      '{bc}an ion NH{inf}4{/inf}{sup}+{/sup} derived from {a_link|ammonia} by combination with a hydrogen ion',
-    result:
-      'an ion NH4+ derived from ammonia by combination with a hydrogen ion'
+      '{bc}an ion NH{inf}4{/inf}{sup}{/sup} derived from {a_link|ammonia} by combination with a hydrogen ion',
+    result: 'an ion NH4 derived from ammonia by combination with a hydrogen ion'
   },
   {
     desc: '{rdquo}, {ldquo}',

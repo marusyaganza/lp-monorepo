@@ -83,7 +83,17 @@ const testData = [
       {
         desc: 'with valid spanish word with examples',
         arguments: [inputSpanish[1].def],
-        result: [{ def: 'def1', examples: ['ex1'] }]
+        result: [
+          {
+            def: 'def1',
+            examples: [
+              {
+                text: 'ex1',
+                translation: 'tr1'
+              }
+            ]
+          }
+        ]
       },
       {
         desc: 'with empty object',

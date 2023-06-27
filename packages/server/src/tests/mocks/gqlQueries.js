@@ -18,9 +18,12 @@ const wordByIdQuery = `
   query Query($wordId: ID!) {
     word(id: $wordId) {
       name
+      shortDef
       defs {
         def
-        examples
+        examples {
+          text
+        }
       }
       particle
       imgUrl

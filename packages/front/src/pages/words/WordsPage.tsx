@@ -1,6 +1,6 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useWordsLazyQuery } from '../../generated/graphql';
+import { useWordsLazyQuery, Language } from '../../generated/graphql';
 import { Spinner } from '@lp/ui';
 import { WordCard } from '@lp/ui';
 import { CardWrapper } from '@lp/ui';
@@ -13,10 +13,15 @@ import styles from './WordsPage.module.css';
 const WordsPage = () => {
   const [fetchWords, { loading, error, data }] = useWordsLazyQuery();
   const { setNotification } = useContext(AppContext);
+  const [language, setLanguage] = useState<Language>(Language.English);
+
+  const handleLanguageChange = (e: any) => {
+    setLanguage(e.target.value);
+  };
 
   useEffect(() => {
-    fetchWords();
-  }, []);
+    fetchWords({ variables: { language } });
+  }, [language]);
 
   const navigate = useNavigate();
 
@@ -33,6 +38,10 @@ const WordsPage = () => {
   return (
     <PageLayout>
       <h1>Words</h1>
+      <select value={language} onChange={handleLanguageChange}>
+        <option value={Language.English}>{Language.English}</option>
+        <option value={Language.Spanish}>{Language.Spanish}</option>
+      </select>
       {loading && <Spinner />}
       {data && (
         <ul className={styles.wordList}>
