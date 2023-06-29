@@ -4,6 +4,7 @@
 @import '../../assets/styles/effects.css';
 
 .wordContainer {
+    width: 100%;
     display: flex;
     align-items: center;
     padding: 32px;

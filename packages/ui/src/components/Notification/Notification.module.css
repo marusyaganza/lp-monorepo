@@ -5,6 +5,8 @@
 
 .notificationContainer {
     min-width: 400px;
+    /* TODO create a variable for all z-inexes */
+    z-index: 1;
     background-color: var(--text-inverted);
     box-shadow: var(--primary-box-shadow);
     font-family: var(--font-libreBaskerville);

@@ -17,3 +17,17 @@ export const SIGN_UP = gql`
     }
   }
 `;
+
+export const SAVE_WORD = gql`
+  mutation SaveWord($input: NewWordInput!) {
+    saveWord(input: $input) {
+      name
+    }
+  }
+`;
+
+export const DELETE_WORD = gql`
+  mutation DeleteWord($deleteWordId: ID!) {
+    deleteWord(id: $deleteWordId)
+  }
+`;
