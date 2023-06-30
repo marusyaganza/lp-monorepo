@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { MouseEventHandler } from 'react';
 import { cn } from '../../utils/classnames';
 import { AudioButton } from '../AudioButton/AudioButton';
 import { Icon } from '../Icon/icon';
@@ -15,6 +15,8 @@ export interface WordCardProps {
   className?: string;
   /**edit button callback, if not provides, button will not be displayed */
   onEdit?: () => void;
+  /**add button callback, if not provides, button will not be displayed */
+  onAdd?: () => void;
   /**delete button callback, if not provides, button will not be displayed */
   onDelete?: () => void;
   /**short variant does not include word forms, examples and image */
@@ -27,6 +29,7 @@ export const WordCard = ({
   className,
   onEdit,
   onDelete,
+  onAdd,
   variant = 'full'
 }: WordCardProps) => {
   const {
@@ -44,6 +47,15 @@ export const WordCard = ({
   } = word;
 
   const isFull = variant === 'full';
+
+  const getOnClickHandler: (
+    handler: () => void
+  ) => MouseEventHandler<HTMLButtonElement> = (handler: () => void) => {
+    return function (e) {
+      e.stopPropagation();
+      handler();
+    };
+  };
 
   const renderAudio = () => {
     if (!audioUrl && !transcription) {
@@ -130,7 +142,7 @@ export const WordCard = ({
           iconId="edit"
           iconHeight={35}
           iconWidth={30}
-          onClick={onEdit}
+          onClick={getOnClickHandler(onEdit)}
         >
           edit
         </Button>
@@ -142,9 +154,21 @@ export const WordCard = ({
           iconId="delete"
           iconHeight={35}
           iconWidth={30}
-          onClick={onDelete}
+          onClick={getOnClickHandler(onDelete)}
         >
           delete
+        </Button>
+      )}
+      {onAdd && (
+        <Button
+          className={styles.addButton}
+          variant="icon"
+          iconId="add"
+          iconHeight={35}
+          iconWidth={30}
+          onClick={getOnClickHandler(onAdd)}
+        >
+          Add word
         </Button>
       )}
     </div>
@@ -199,6 +223,7 @@ export const WordCard = ({
 
   return (
     <article className={cn(className, styles.wordContainer)}>
+      {renderButtons()}
       <div className={styles.word}>
         {renderHeader()}
         {isFull ? renderDefinition() : renderShortDefinition()}

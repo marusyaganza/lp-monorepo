@@ -38,6 +38,7 @@ const wordSchema = new Schema<WordCoreType>({
   audioUrl: String,
   transcription: String,
   imgUrl: String,
+  imgDesc: String,
   isOffensive: Boolean,
   level: { type: String, enum: ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'] },
   language: { type: String, enum: Language },

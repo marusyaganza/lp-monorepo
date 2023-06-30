@@ -32,6 +32,7 @@ export const WORD_BY_ID_QUERY = gql`
       }
       particle
       imgUrl
+      imgDesc
       audioUrl
       additionalInfo
       transcription
