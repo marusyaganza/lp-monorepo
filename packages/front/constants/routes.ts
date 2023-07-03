@@ -3,5 +3,6 @@ export const routes = {
   signUp: 'sign-up',
   search: 'search',
   games: 'games',
-  words: 'words'
+  words: 'words',
+  profile: 'profile'
 };

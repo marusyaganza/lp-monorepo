@@ -74,3 +74,15 @@ export const SEARCH_WORDS = gql`
     }
   }
 `;
+export const USER = gql`
+  query User {
+    user {
+      createdAt
+      email
+      firstName
+      lastName
+      primaryLanguage
+      role
+    }
+  }
+`;

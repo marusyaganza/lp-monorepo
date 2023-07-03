@@ -7,9 +7,7 @@ import {
   createHttpLink
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-
-import { Spinner } from '@lp/ui';
-
+import { PageSpinner } from './components/PageSpinner/PageSpinner';
 import { AppProvider } from './app-context/appContext';
 import { getUserData } from './util/getUserData';
 import { ErrorBoundary } from '@lp/ui';
@@ -27,6 +25,7 @@ const SearchPage = lazy(() => import('./pages/search/SearchPage'));
 const NotFoundPage = lazy(() => import('./pages/notFound/NotFoundPage'));
 const SignInPage = lazy(() => import('./pages/sign-in/SignInPage'));
 const SignUpPage = lazy(() => import('./pages/sign-up/SignUpPage'));
+const ProfilePage = lazy(() => import('./pages/profile/ProfilePage'));
 
 const httpLink = createHttpLink({
   uri: 'http://localhost:4000/graphql'
@@ -45,11 +44,13 @@ const createAuthLink = (tkn: string | undefined) => {
   }).concat(httpLink);
 };
 
+// TODO clear cache when user logs out
 const client = new ApolloClient({
   link: createAuthLink(token),
   cache: new InMemoryCache()
 });
 
+//TODO refactor routes and reduce code duplication
 export const App = () => {
   return (
     <ErrorBoundary>
@@ -60,7 +61,7 @@ export const App = () => {
               <Route path="/">
                 <Route
                   element={
-                    <Suspense fallback={<Spinner />}>
+                    <Suspense fallback={<PageSpinner />}>
                       <HomePage />
                     </Suspense>
                   }
@@ -68,7 +69,7 @@ export const App = () => {
                 />
                 <Route
                   element={
-                    <Suspense fallback={<Spinner />}>
+                    <Suspense fallback={<PageSpinner />}>
                       <SearchPage />
                     </Suspense>
                   }
@@ -76,7 +77,7 @@ export const App = () => {
                 />
                 <Route
                   element={
-                    <Suspense fallback={<Spinner />}>
+                    <Suspense fallback={<PageSpinner />}>
                       <SignInPage />
                     </Suspense>
                   }
@@ -84,7 +85,15 @@ export const App = () => {
                 />
                 <Route
                   element={
-                    <Suspense fallback={<Spinner />}>
+                    <Suspense fallback={<PageSpinner />}>
+                      <ProfilePage />
+                    </Suspense>
+                  }
+                  path={routes.profile}
+                />
+                <Route
+                  element={
+                    <Suspense fallback={<PageSpinner />}>
                       <SignUpPage />
                     </Suspense>
                   }
@@ -94,7 +103,7 @@ export const App = () => {
                   <Route
                     index
                     element={
-                      <Suspense fallback={<Spinner />}>
+                      <Suspense fallback={<PageSpinner />}>
                         <WordsPage />
                       </Suspense>
                     }
@@ -102,7 +111,7 @@ export const App = () => {
                   <Route
                     path=":wordId"
                     element={
-                      <Suspense fallback={<Spinner />}>
+                      <Suspense fallback={<PageSpinner />}>
                         <WordPage />
                       </Suspense>
                     }
@@ -112,7 +121,7 @@ export const App = () => {
                   <Route
                     index
                     element={
-                      <Suspense fallback={<Spinner />}>
+                      <Suspense fallback={<PageSpinner />}>
                         <GamesPage />
                       </Suspense>
                     }
@@ -120,7 +129,7 @@ export const App = () => {
                   <Route
                     path=":gameId"
                     element={
-                      <Suspense fallback={<Spinner />}>
+                      <Suspense fallback={<PageSpinner />}>
                         <GamePage />
                       </Suspense>
                     }
@@ -129,7 +138,7 @@ export const App = () => {
                 <Route
                   path="*"
                   element={
-                    <Suspense fallback={<Spinner />}>
+                    <Suspense fallback={<PageSpinner />}>
                       <NotFoundPage />
                     </Suspense>
                   }
