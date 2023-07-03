@@ -1,12 +1,10 @@
-import React, { useEffect, useContext, useState } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   useWordsLazyQuery,
-  Language,
   Word,
   useDeleteWordMutation
 } from '../../generated/graphql';
-import { Spinner } from '@lp/ui';
 import { WordCard } from '@lp/ui';
 import { CardWrapper } from '@lp/ui';
 
@@ -18,15 +16,10 @@ import styles from './WordsPage.module.css';
 
 const WordsPage = () => {
   const [fetchWords, { loading, error, data }] = useWordsLazyQuery();
-  const { setNotification } = useContext(AppContext);
-  const [language, setLanguage] = useState<Language>(Language.English);
+  const { setNotification, language } = useContext(AppContext);
   const [deleteWordFunc, deleteWordData] = useDeleteWordMutation();
 
   // TODO ask 'are you sure' before deleting the word
-  const handleLanguageChange = (e: any) => {
-    setLanguage(e.target.value);
-  };
-
   useEffect(() => {
     fetchWords({ variables: { language } });
   }, [language]);
@@ -90,13 +83,8 @@ const WordsPage = () => {
   };
 
   return (
-    <PageLayout>
+    <PageLayout isLoading={loading}>
       <h1>Words</h1>
-      <select value={language} onChange={handleLanguageChange}>
-        <option value={Language.English}>{Language.English}</option>
-        <option value={Language.Spanish}>{Language.Spanish}</option>
-      </select>
-      {(loading || deleteWordData.loading) && <Spinner />}
       {data && (
         <ul className={styles.wordList}>
           {/* TODO: refactor this part */}

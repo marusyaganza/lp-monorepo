@@ -1,12 +1,11 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { AppContext } from '../../app-context/appContext';
 import { useSearchParams } from 'react-router-dom';
-import { Button, Spinner } from '@lp/ui';
+import { Button } from '@lp/ui';
 import { PageLayout } from '../../components/PageLayout/PageLayout';
 import { WORDS_QUERY } from '../../gql/queries';
 import {
   useSearchWordsLazyQuery,
-  Language,
   useSaveWordMutation,
   NewWordInput
 } from '../../generated/graphql';
@@ -31,14 +30,10 @@ function prepareData(data: NewWordInput) {
 
 const SearchPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [language, setLanguage] = useState<Language>(Language.English);
   const [saveWordFunc, saveWordData] = useSaveWordMutation();
-  const { setNotification } = useContext(AppContext);
+  const { setNotification, language } = useContext(AppContext);
   const [fetchSearchResult, { loading, error, data }] =
     useSearchWordsLazyQuery();
-  const handleLanguageChange = (e: any) => {
-    setLanguage(e.target.value);
-  };
 
   useEffect(() => {
     if (error) {
@@ -85,11 +80,12 @@ const SearchPage = () => {
       saveWordFunc({
         // @ts-ignore
         variables: { input: prepareData(word) },
+        // TODO after saving the word successfully, save its id in state to display saved word
+        // 'add' button as disabled
         refetchQueries: () => [
           {
             query: WORDS_QUERY,
             variables: {
-              // TODO store language in the localstorage and connect it to the app context
               language
             }
           }
@@ -103,13 +99,9 @@ const SearchPage = () => {
   );
 
   return (
-    <PageLayout>
+    <PageLayout isLoading={loading}>
       <h1>Search word: {searchParams.get('filter') || ''} </h1>
       <form onSubmit={handleSearch}>
-        <select value={language} onChange={handleLanguageChange}>
-          <option value={Language.English}>{Language.English}</option>
-          <option value={Language.Spanish}>{Language.Spanish}</option>
-        </select>
         <input
           value={searchParams.get('filter') || ''}
           onChange={event => {
@@ -121,7 +113,6 @@ const SearchPage = () => {
             }
           }}
         />
-        {(loading || saveWordData.loading) && <Spinner />}
         <Button type="submit" isLoading={loading}>
           Search
         </Button>

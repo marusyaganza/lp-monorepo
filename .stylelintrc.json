@@ -12,5 +12,17 @@
     "color-function-notation": "legacy"
   },
   "files": ["**/*.css"],
-  "ignoreFiles": ["**/*.js", "**/*.svg", "**/*.html", "**/*.tsx", "**/*.ts", "**/*.ttf", "**/*.woff", "**/*.woff2", "**/*.json", "generated"]
+  "ignoreFiles": [
+    "**/*.js",
+    "**/*.svg",
+    "**/*.png",
+    "**/*.html",
+    "**/*.tsx",
+    "**/*.ts",
+    "**/*.ttf",
+    "**/*.woff",
+    "**/*.woff2",
+    "**/*.json",
+    "generated"
+  ]
 }
