@@ -1,20 +1,24 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { AppContext } from '../../app-context/appContext';
 import { useSearchParams } from 'react-router-dom';
-import { Button } from '@lp/ui';
+import { Icon, SearchField } from '@lp/ui';
 import { PageLayout } from '../../components/PageLayout/PageLayout';
 import { WORDS_QUERY } from '../../gql/queries';
 import {
   useSearchWordsLazyQuery,
   useSaveWordMutation,
-  NewWordInput
+  NewWordInput,
+  Suggestions,
+  Word
 } from '../../generated/graphql';
-import { WordCard } from '@lp/ui';
+import { WordCard, Spinner } from '@lp/ui';
 import styles from './SearchPage.module.css';
 
 //TODO refactor this part
 //look for another approach of deleting __typedef property
-function prepareData(data: NewWordInput) {
+//perhaps create an utility function for finding and deleting all properties with the giving name
+//or executing a giving callback on all found properties
+function prepareData(data: Word): NewWordInput {
   const defs = data.defs.map(def => ({
     def: def?.def,
     examples: def?.examples?.map(ex => ({
@@ -23,8 +27,8 @@ function prepareData(data: NewWordInput) {
     }))
   }));
   const formattedData = { ...data };
-  // @ts-ignore
   delete formattedData.__typename;
+  // @ts-ignore
   return { ...formattedData, defs };
 }
 
@@ -34,6 +38,12 @@ const SearchPage = () => {
   const { setNotification, language } = useContext(AppContext);
   const [fetchSearchResult, { loading, error, data }] =
     useSearchWordsLazyQuery();
+  const [savedWords, setSavedWords] = useState<string[]>([]);
+  const containsSuggestions = useMemo(
+    () =>
+      data?.searchWord?.every(d => d?.__typename === 'Suggestions') && !loading,
+    [data, loading]
+  );
 
   useEffect(() => {
     if (error) {
@@ -56,32 +66,42 @@ const SearchPage = () => {
   }, [saveWordData.error]);
 
   useEffect(() => {
-    if (saveWordData.data) {
+    const { data } = saveWordData;
+    if (data) {
+      const { name, uuid } = data.saveWord;
       setNotification({
         variant: 'success',
         text: 'Word added',
-        subText: `${saveWordData?.data?.saveWord?.name} is added successfully. Go to the words page to review it`
+        subText: `${name} is added successfully. Go to the words page to review it`
       });
+      if (uuid) {
+        setSavedWords(prev => [...prev, uuid]);
+      }
     }
   }, [saveWordData.data]);
 
-  const handleSearch = (event: any) => {
-    event.preventDefault();
-    const search = searchParams.get('filter');
+  useEffect(() => {
+    const search = searchParams.get('search');
     if (search) {
+      fetchSearchResult({
+        variables: { input: { search, language } }
+      });
+    }
+  }, []);
+
+  const handleSearch = (search?: string) => {
+    if (search) {
+      setSearchParams({ search });
       fetchSearchResult({
         variables: { input: { search, language } }
       });
     }
   };
 
-  const getAddWordHandler = (word: NewWordInput) => {
+  const getAddWordHandler = (word: Word) => {
     return function () {
       saveWordFunc({
-        // @ts-ignore
         variables: { input: prepareData(word) },
-        // TODO after saving the word successfully, save its id in state to display saved word
-        // 'add' button as disabled
         refetchQueries: () => [
           {
             query: WORDS_QUERY,
@@ -94,51 +114,62 @@ const SearchPage = () => {
     };
   };
 
-  const containsSuggestions = data?.searchWord?.some(
-    d => d?.__typename === 'Suggestions'
-  );
+  const renderSuggestions = () => {
+    if (!containsSuggestions || !Array.isArray(data?.searchWord)) {
+      return;
+    }
+
+    const suggestions = data?.searchWord as Suggestions[];
+    return (
+      <article>
+        {suggestions?.map(el => (
+          <p className={styles.suggestion} key={el?.suggestions?.[0]}>
+            <Icon id="pointer" width={20} height={20} />
+            {el?.suggestions?.join(', ')}
+          </p>
+        ))}
+      </article>
+    );
+  };
+
+  const renderWords = () => {
+    if (containsSuggestions || !Array.isArray(data?.searchWord)) {
+      return;
+    }
+    const words = data?.searchWord as Word[];
+    return (
+      <ul className={styles.list}>
+        {words.map(word => {
+          return (
+            <li className={styles.listItem} key={word?.id}>
+              <WordCard
+                addButton={{
+                  callback: getAddWordHandler(word),
+                  isLoading: saveWordData.loading,
+                  isDisabled: savedWords.some(w => w === word?.uuid)
+                }}
+                word={word}
+              />
+            </li>
+          );
+        })}
+      </ul>
+    );
+  };
 
   return (
-    <PageLayout isLoading={loading}>
-      <h1>Search word: {searchParams.get('filter') || ''} </h1>
-      <form onSubmit={handleSearch}>
-        <input
-          value={searchParams.get('filter') || ''}
-          onChange={event => {
-            const filter = event.target.value;
-            if (filter) {
-              setSearchParams({ filter });
-            } else {
-              setSearchParams({});
-            }
-          }}
+    <PageLayout>
+      <div className={styles.content}>
+        <h1 className={styles.mainHeading}>Look up word</h1>
+        <SearchField
+          className={styles.search}
+          searchQuery={searchParams.get('search') || ''}
+          onSearch={handleSearch}
         />
-        <Button type="submit" isLoading={loading}>
-          Search
-        </Button>
-      </form>
-      {containsSuggestions &&
-        // TODO refactor rendering suggestions
-        // @ts-ignore
-        data?.searchWord?.map(el => (
-          // @ts-ignore
-          <p key={el?.suggestions?.[0]}>{el?.suggestions?.join(', ')}</p>
-        ))}
-      {data?.searchWord && !containsSuggestions && (
-        <ul className={styles.list}>
-          {/* TODO: refactor this part */}
-          {data?.searchWord?.map((word: any) => {
-            if (word) {
-              return (
-                <li className={styles.listItem} key={word?.id}>
-                  <WordCard onAdd={getAddWordHandler(word)} word={word} />
-                </li>
-              );
-            }
-            return;
-          })}
-        </ul>
-      )}
+        {loading && <Spinner />}
+        {renderSuggestions()}
+        {renderWords()}
+      </div>
     </PageLayout>
   );
 };

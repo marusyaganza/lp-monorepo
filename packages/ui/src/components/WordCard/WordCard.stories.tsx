@@ -56,14 +56,22 @@ export const WordCardSpanish = (args: WordCardProps) => {
 
 export const WordCardWithButtons = (args: WordCardProps) => {
   const callBacks = {
-    onAdd: () => {
-      console.log('added!');
+    addButton: {
+      callback: () => {
+        console.log('added!');
+      }
     },
-    onDelete: () => {
-      console.log('deleted!');
+    deleteButton: {
+      callback: () => {
+        {
+          console.log('deleted!');
+        }
+      }
     },
-    onEdit: () => {
-      console.log('edited!');
+    editButton: {
+      callback: () => {
+        console.log('edited!');
+      }
     }
   };
   return wheel.map(word => (

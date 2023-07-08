@@ -28,7 +28,7 @@ export default {
 const buttons: ButtonVariantType[] = [
   'primary',
   'secondary',
-  'ternary',
+  'tertiary',
   'danger',
   'success'
 ];
@@ -67,6 +67,40 @@ export const ButtonsWithIcon = () => {
   return _iconIds.map(id => (
     <div key={id} className="presentationBox">
       <Button variant="iconWithText" iconId={id}>
+        {id}
+      </Button>
+    </div>
+  ));
+};
+
+export const ActionButtons = (args: ButtonProps) => {
+  return _iconIds.map(id => (
+    <div key={id} className="presentationBox">
+      <Button
+        {...args}
+        className="presentationContentItem"
+        variant="primary"
+        isActionButton
+        iconId={id}
+      >
+        {id}
+      </Button>
+      <Button
+        {...args}
+        className="presentationContentItem"
+        variant="secondary"
+        isActionButton
+        iconId={id}
+      >
+        {id}
+      </Button>
+      <Button
+        {...args}
+        className="presentationContentItem"
+        variant="danger"
+        isActionButton
+        iconId={id}
+      >
         {id}
       </Button>
     </div>
