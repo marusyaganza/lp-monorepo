@@ -8,17 +8,23 @@ import { Word, WordDefinition } from '../../generated/graphql';
 
 import styles from './WordCard.module.css';
 
+export type ActionButtonType = {
+  callback: () => void;
+  isDisabled?: boolean;
+  isLoading?: boolean;
+};
+
 export interface WordCardProps {
   /**Word to display */
   word: Word;
   /**additional styling */
   className?: string;
-  /**edit button callback, if not provides, button will not be displayed */
-  onEdit?: () => void;
-  /**add button callback, if not provides, button will not be displayed */
-  onAdd?: () => void;
-  /**delete button callback, if not provides, button will not be displayed */
-  onDelete?: () => void;
+  /**edit button properties, if not provides, button will not be displayed */
+  editButton?: ActionButtonType;
+  /**add button properties, if not provides, button will not be displayed */
+  addButton?: ActionButtonType;
+  /**delete button properties, if not provides, button will not be displayed */
+  deleteButton?: ActionButtonType;
   /**short variant does not include word forms, examples and image */
   variant?: 'short' | 'full';
 }
@@ -27,9 +33,9 @@ export interface WordCardProps {
 export const WordCard = ({
   word,
   className,
-  onEdit,
-  onDelete,
-  onAdd,
+  editButton,
+  addButton,
+  deleteButton,
   variant = 'full'
 }: WordCardProps) => {
   const {
@@ -135,40 +141,43 @@ export const WordCard = ({
 
   const renderButtons = () => (
     <div className={styles.buttons}>
-      {onEdit && (
+      {editButton && (
         <Button
           className={styles.editButton}
-          variant="icon"
+          variant="primary"
+          isActionButton
           iconId="edit"
-          iconHeight={35}
-          iconWidth={30}
-          onClick={getOnClickHandler(onEdit)}
+          disabled={editButton?.isDisabled}
+          isLoading={editButton?.isLoading}
+          onClick={getOnClickHandler(editButton.callback)}
         >
           edit
         </Button>
       )}
-      {onDelete && (
+      {deleteButton && (
         <Button
           className={styles.deleteButton}
-          variant="icon"
-          iconId="delete"
-          iconHeight={35}
-          iconWidth={30}
-          onClick={getOnClickHandler(onDelete)}
+          variant="danger"
+          disabled={deleteButton?.isDisabled}
+          isLoading={deleteButton?.isLoading}
+          iconId="eraser"
+          isActionButton
+          onClick={getOnClickHandler(deleteButton.callback)}
         >
           delete
         </Button>
       )}
-      {onAdd && (
+      {addButton && (
         <Button
           className={styles.addButton}
-          variant="icon"
+          variant="secondary"
+          disabled={addButton.isDisabled}
+          isLoading={addButton?.isLoading}
           iconId="add"
-          iconHeight={35}
-          iconWidth={30}
-          onClick={getOnClickHandler(onAdd)}
+          isActionButton
+          onClick={getOnClickHandler(addButton.callback)}
         >
-          Add word
+          Save
         </Button>
       )}
     </div>
@@ -176,46 +185,48 @@ export const WordCard = ({
 
   const renderHeader = () => (
     <header className={styles.header}>
-      <h3 className={styles.wordName}>{name}</h3>
-      <span className={styles.particle}>{particle}</span>
-      {renderAudio()}
-      {level && <span className={styles.level}>{level}</span>}
-      {isOffensive && (
-        <span className={styles.offensive}>
-          <Icon width={20} height={23} id="fire" />
-          offensive
-        </span>
-      )}
+      <div className={styles.mainInfo}>
+        <h3 className={styles.wordName}>{name}</h3>
+        <span className={styles.particle}>{particle}</span>
+        {renderAudio()}
+        {level && <span className={styles.level}>{level}</span>}
+        {isOffensive && (
+          <span className={styles.offensive}>
+            <Icon width={20} height={23} id="fire" />
+            offensive
+          </span>
+        )}
+      </div>
+      {renderButtons()}
     </header>
   );
 
   if (isFull) {
     return (
       <article className={cn(className, styles.wordContainer)}>
-        {renderButtons()}
-        <div className={styles.word}>
-          {renderHeader()}
-          {renderDefinition()}
-          {stems?.length && (
-            <section>
-              <p className={styles.stems}>
-                <span className={styles.stemsHeading}>Word forms: </span>
-                {stems.join(', ')}
-              </p>
-            </section>
+        {renderHeader()}
+        <div className={styles.wordContent}>
+          <div className={styles.word}>{renderDefinition()}</div>
+          {imgUrl && (
+            <figure className={styles.illustration}>
+              <img
+                className={styles.picture}
+                src={imgUrl}
+                alt={`${name} illustration`}
+              />
+              {imgDesc && (
+                <figcaption>{<DictionaryEntity text={imgDesc} />}</figcaption>
+              )}
+            </figure>
           )}
         </div>
-        {imgUrl && (
-          <figure className={styles.illustration}>
-            <img
-              className={styles.picture}
-              src={imgUrl}
-              alt={`${name} illustration`}
-            />
-            {imgDesc && (
-              <figcaption>{<DictionaryEntity text={imgDesc} />}</figcaption>
-            )}
-          </figure>
+        {stems?.length && (
+          <section>
+            <p className={styles.stems}>
+              <span className={styles.stemsHeading}>Word forms: </span>
+              {stems.join(', ')}
+            </p>
+          </section>
         )}
       </article>
     );
@@ -223,7 +234,6 @@ export const WordCard = ({
 
   return (
     <article className={cn(className, styles.wordContainer)}>
-      {renderButtons()}
       <div className={styles.word}>
         {renderHeader()}
         {isFull ? renderDefinition() : renderShortDefinition()}

@@ -5,7 +5,7 @@ import './Spinner.css';
 export interface SpinnerProps {
   className?: string;
   variant?: 'primary' | 'secondary';
-  size?: 'S' | 'L';
+  size?: 'S' | 'M' | 'L';
 }
 
 export const Spinner = ({

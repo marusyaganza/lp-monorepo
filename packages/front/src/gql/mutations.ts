@@ -22,6 +22,7 @@ export const SAVE_WORD = gql`
   mutation SaveWord($input: NewWordInput!) {
     saveWord(input: $input) {
       name
+      uuid
     }
   }
 `;

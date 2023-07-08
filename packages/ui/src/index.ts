@@ -40,3 +40,4 @@ export * from './components/Select/Select';
 export * from './components/LanguageSelector/LanguageSelector';
 export * from './components/HeaderV2/HeaderV2';
 export * from './components/UserMenu/UserMenu';
+export * from './components/SearchField/SearchField';

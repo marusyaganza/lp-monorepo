@@ -1,14 +1,13 @@
 import React, { useEffect, useContext } from 'react';
 import { useLazyQuery } from '@apollo/client';
-
-import { Spinner } from '@lp/ui';
-import { WordCard } from '@lp/ui';
-
+import { Link, useParams } from 'react-router-dom';
+import { WordCard, Icon } from '@lp/ui';
+import { routes } from '../../../../constants/routes';
 import { PageLayout } from '../../../components/PageLayout/PageLayout';
 import { WORD_BY_ID_QUERY } from '../../../gql/queries';
 import { AppContext } from '../../../app-context/appContext';
 
-import { useParams } from 'react-router-dom';
+import styles from './WordPage.module.css';
 
 const WordPage = () => {
   const { wordId } = useParams();
@@ -19,7 +18,7 @@ const WordPage = () => {
     fetchWord({
       variables: { wordId }
     });
-  }, []);
+  }, [wordId]);
 
   useEffect(() => {
     if (error) {
@@ -31,11 +30,12 @@ const WordPage = () => {
     }
   }, [error, setNotification]);
   return (
-    <PageLayout>
-      {loading && <Spinner />}
-      {/* temporary heading */}
-      <h1>Word page: {wordId}</h1>
-      {data?.word && <WordCard word={data.word} />}
+    <PageLayout isLoading={loading}>
+      <Link className={styles.link} to={`/${routes.words}`}>
+        <Icon width={16} height={16} id="arrow-left" />
+        Back to vocabulary
+      </Link>
+      {data?.word && <WordCard className={styles.wordCard} word={data.word} />}
     </PageLayout>
   );
 };

@@ -82,36 +82,42 @@ const WordsPage = () => {
     };
   };
 
+  const renderWords = () => {
+    if (!Array.isArray(data?.words)) {
+      return;
+    }
+    const words = data?.words as Word[];
+    return (
+      <ul className={styles.wordList}>
+        {words.map(word => {
+          return (
+            <li className={styles.wordListItem} key={word?.id}>
+              <CardWrapper
+                onClick={() => {
+                  navigate(`/words/${word?.id}`);
+                }}
+              >
+                <WordCard
+                  variant="short"
+                  className={styles.wordCard}
+                  word={word}
+                  deleteButton={{
+                    callback: getDeleteWordHandler(word.id),
+                    isLoading: deleteWordData.loading
+                  }}
+                />
+              </CardWrapper>
+            </li>
+          );
+        })}
+      </ul>
+    );
+  };
+
   return (
     <PageLayout isLoading={loading}>
-      <h1>Words</h1>
-      {data && (
-        <ul className={styles.wordList}>
-          {/* TODO: refactor this part */}
-          {/* @ts-ignore */}
-          {data?.words?.map((word: Word) => {
-            if (word) {
-              return (
-                <li className={styles.wordListItem} key={word?.id}>
-                  <CardWrapper
-                    onClick={() => {
-                      navigate(`/words/${word?.id}`);
-                    }}
-                  >
-                    <WordCard
-                      variant="short"
-                      className={styles.wordCard}
-                      word={word}
-                      onDelete={getDeleteWordHandler(word.id)}
-                    />
-                  </CardWrapper>
-                </li>
-              );
-            }
-            return;
-          })}
-        </ul>
-      )}
+      <h1 className={styles.heading}>Vocabulary</h1>
+      {renderWords()}
     </PageLayout>
   );
 };

@@ -19,7 +19,10 @@ export type IconIdType =
   | 'brain'
   | 'explorer'
   | 'door'
-  | 'dragon';
+  | 'dragon'
+  | 'eraser'
+  | 'arrow-left'
+  | 'pointer';
 
 export type IconProps = {
   width?: number;
@@ -48,7 +51,10 @@ export const _iconIds: IconIdType[] = [
   'brain',
   'explorer',
   'door',
-  'dragon'
+  'dragon',
+  'eraser',
+  'arrow-left',
+  'pointer'
 ];
 
 export const Icon = ({ width, height, id, tooltip, className }: IconProps) => {

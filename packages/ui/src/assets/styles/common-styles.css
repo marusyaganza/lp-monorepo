@@ -4,29 +4,33 @@
 @import '../../assets/styles/effects.css';
 
 body {
-    margin: 0;
-    padding: 0!important;
-    font-family: var(--font-libreBaskerville);
-    box-sizing: border-box;
-  }
+  margin: 0;
+  padding: 0 !important;
+  font-family: var(--font-libreBaskerville);
+  box-sizing: border-box;
+}
 
-  input {
-    font-family: var(--font-libreBaskerville);
-  }
-  
-  ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
+input {
+  font-family: var(--font-libreBaskerville);
+}
 
-  .presentationBox {
-    margin: 50px;
-    width: 350px;
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.presentationBox {
+  margin: 50px;
+  width: 350px;
 }
 
 .presentationContent {
-  padding: 50px;
+  margin: 50px;
+}
+
+.presentationContentItem {
+  margin: 10px;
 }
 
 .page {

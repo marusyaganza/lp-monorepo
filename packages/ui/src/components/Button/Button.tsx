@@ -8,7 +8,7 @@ import styles from './Button.module.css';
 export type ButtonVariantType =
   | 'primary'
   | 'secondary'
-  | 'ternary'
+  | 'tertiary'
   | 'danger'
   | 'success'
   | 'iconWithText'
@@ -35,6 +35,8 @@ export interface ButtonProps {
   isLoading?: boolean;
   /**onClick handler */
   onClick?: MouseEventHandler<HTMLButtonElement>;
+  /** Determines if the button has action button style */
+  isActionButton?: boolean;
 }
 /**
  *
@@ -48,17 +50,21 @@ export const Button = ({
   variant = 'primary',
   size = 'S',
   iconId,
-  iconHeight = 20,
-  iconWidth = 20,
+  iconHeight = 16,
+  iconWidth = 16,
   isLoading,
+  isActionButton,
   ...rest
 }: PropsWithChildren<ButtonProps>) => {
   const isIconButton = iconId && variant === 'icon';
+
   let iconButtonStyle;
+
   if (isIconButton && (iconHeight || iconWidth)) {
     const size = Math.max(iconHeight, iconWidth);
     iconButtonStyle = { height: size, width: size };
   }
+
   return (
     <button
       style={iconButtonStyle}
@@ -69,16 +75,17 @@ export const Button = ({
         styles.button,
         styles[variant],
         styles[`size${size}`],
-        disabled ? styles.disabled : ''
+        disabled ? styles.disabled : '',
+        isActionButton ? styles.actionButton : ''
       )}
       {...rest}
     >
       {isLoading && !isIconButton && (
         <Spinner
           className={styles.formSpinner}
-          size="S"
+          size={isActionButton ? 'S' : 'M'}
           variant={
-            variant === 'secondary' || variant === 'ternary'
+            variant === 'secondary' || variant === 'tertiary'
               ? 'primary'
               : 'secondary'
           }
@@ -87,7 +94,9 @@ export const Button = ({
       <div className={cn(isLoading ? styles.loadingButtonText : '')}>
         <span hidden={isIconButton}>{children}</span>
       </div>
-      {iconId && <Icon height={iconHeight} width={iconWidth} id={iconId} />}
+      {iconId && !isLoading && (
+        <Icon height={iconHeight} width={iconWidth} id={iconId} />
+      )}
     </button>
   );
 };

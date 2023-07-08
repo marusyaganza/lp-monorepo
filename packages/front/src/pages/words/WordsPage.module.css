@@ -1,20 +1,26 @@
 .wordList {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    align-items: center;
-    margin: 60px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+  margin: 0 auto;
 }
 
 .wordListItem {
-    width: 100%;
+  width: 100%;
 }
 
 .link {
-    text-decoration: none;
-    color: inherit;
+  text-decoration: none;
+  color: inherit;
 }
 
 .wordCard:hover {
-    background: var(--neutral-100);
+  background: var(--neutral-100);
+}
+
+.heading {
+  margin: 40px auto;
+  font-size: var(--font-size-xl);
+  text-align: center;
 }
