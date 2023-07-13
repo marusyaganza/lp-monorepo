@@ -81,7 +81,7 @@ export const WordCard = ({
   const renderExamples = (examples: WordDefinition['examples']) => (
     <ul>
       {examples?.map(example => {
-        if (example) {
+        if (example && example?.text) {
           return (
             <p key={example.text} className={styles.example}>
               <DictionaryEntity text={example.text} />
@@ -210,6 +210,7 @@ export const WordCard = ({
           {imgUrl && (
             <figure className={styles.illustration}>
               <img
+                width={280}
                 className={styles.picture}
                 src={imgUrl}
                 alt={`${name} illustration`}
@@ -220,7 +221,7 @@ export const WordCard = ({
             </figure>
           )}
         </div>
-        {stems?.length && (
+        {!!stems?.length && (
           <section>
             <p className={styles.stems}>
               <span className={styles.stemsHeading}>Word forms: </span>

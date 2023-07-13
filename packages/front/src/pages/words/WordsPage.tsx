@@ -5,14 +5,14 @@ import {
   Word,
   useDeleteWordMutation
 } from '../../generated/graphql';
-import { WordCard } from '@lp/ui';
-import { CardWrapper } from '@lp/ui';
+import { WordCard, CardWrapper, Link } from '@lp/ui';
 
 import { PageLayout } from '../../components/PageLayout/PageLayout';
 import { AppContext } from '../../app-context/appContext';
 import { WORDS_QUERY } from '../../gql/queries';
 
 import styles from './WordsPage.module.css';
+import { routes } from '../../../constants/routes';
 
 const WordsPage = () => {
   const [fetchWords, { loading, error, data }] = useWordsLazyQuery();
@@ -94,7 +94,7 @@ const WordsPage = () => {
             <li className={styles.wordListItem} key={word?.id}>
               <CardWrapper
                 onClick={() => {
-                  navigate(`/words/${word?.id}`);
+                  navigate(`/words/review/${word?.id}`);
                 }}
               >
                 <WordCard
@@ -117,6 +117,12 @@ const WordsPage = () => {
   return (
     <PageLayout isLoading={loading}>
       <h1 className={styles.heading}>Vocabulary</h1>
+      <p className={styles.wordsInfo}>
+        {`You have ${data?.words.length || 0} words in your vocabulary`}{' '}
+        <Link className={styles.link} to={`/${routes.words}/new`}>
+          Add new
+        </Link>
+      </p>
       {renderWords()}
     </PageLayout>
   );

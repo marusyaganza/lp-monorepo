@@ -1,0 +1,9 @@
+.link {
+  margin: 50px 0;
+}
+
+.mainHeading {
+  font-size: var(--font-size-l);
+  margin: 0;
+  text-align: center;
+}

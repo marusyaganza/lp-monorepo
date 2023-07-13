@@ -13,10 +13,12 @@ import { ResolverContext } from './index';
 
 export const MutationResolvers: MutationResolversType<ResolverContext> = {
   saveWord: authorized(Role.Member, async (_, { input }, { models, user }) => {
-    const existing = await models.Word.findOne({
-      user: user?.id,
-      uuid: input?.uuid
-    });
+    const existing = input?.uuid
+      ? await models.Word.findOne({
+          user: user?.id,
+          uuid: input?.uuid
+        })
+      : null;
     if (existing) {
       throw new UserInputError(
         `word with uuid ${input?.uuid} is already added`

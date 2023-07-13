@@ -44,3 +44,5 @@ export * from './components/SearchField/SearchField';
 export * from './components/ArrayInput/ArrayInput';
 export * from './components/DefinitionInput/DefinitionInput';
 export * from './components/InputWithButton/InputWithButton';
+export * from './components/Link/Link';
+export * from './components/InputV2/InputV2';

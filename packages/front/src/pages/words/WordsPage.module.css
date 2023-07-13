@@ -24,3 +24,16 @@
   font-size: var(--font-size-xl);
   text-align: center;
 }
+
+.wordsInfo {
+  display: flex;
+  gap: 16px;
+  font-size: var(--font-size-m);
+  justify-content: center;
+  margin: 0;
+  margin-bottom: 40px;
+}
+
+.link {
+  font-size: var(--font-size-m);
+}

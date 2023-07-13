@@ -31,3 +31,9 @@
   font-style: italic;
   font-size: var(--font-size-m);
 }
+
+.headingContainer {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}

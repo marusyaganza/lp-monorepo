@@ -5,30 +5,36 @@ import React, {
   PropsWithChildren
 } from 'react';
 import { cn } from '../../utils/classnames';
-import { Button } from '../Button/Button';
 import { InputWithButton } from '../InputWithButton/InputWithButton';
 
 import styles from './ArrayInput.module.css';
 
 export interface ArrayInputProps {
-  /**ArrayInput prop */
+  /**InputWithButton name prop */
   name: string;
+  /**InputWithButton label prop */
   label?: string;
+  /**InputWithButton variant prop */
   variant?: 'dark' | 'purple';
   onChange: (value: string[]) => void;
+  initialValue?: string[];
   /**additional styling */
   className?: string;
 }
-/**Component description goes here */
+/**component ArrayInput */
 export const ArrayInput = ({
   name,
   label,
   className,
   onChange,
   variant = 'purple',
-  children
+  children,
+  initialValue,
+  ...rest
 }: PropsWithChildren<ArrayInputProps>) => {
-  const [values, setValues] = useState<string[]>(['']);
+  const [values, setValues] = useState<string[]>(
+    initialValue && initialValue.length ? initialValue : ['']
+  );
 
   const changeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
     const value = e?.target?.value;
@@ -64,7 +70,6 @@ export const ArrayInput = ({
         return (
           <div key={`${name}-${i}`}>
             <InputWithButton
-              fontStyle="secondary"
               label={`${label} ${i + 1}`}
               onButtonClick={
                 isLast ? addInputHandler : getRemoveInputHandler(i)
@@ -75,6 +80,7 @@ export const ArrayInput = ({
               name={`${name}-${i}`}
               onChange={changeHandler}
               buttonIconId={isLast ? 'plus' : 'minus'}
+              {...rest}
             />
             {children}
           </div>

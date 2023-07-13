@@ -10,17 +10,19 @@ export interface InputWithButtonProps {
   value: string;
   name: string;
   label?: string;
-  variant?: 'dark' | 'purple';
+  /**The color of the button */
+  variant?: 'dark' | 'purple' | 'withoutButton';
   onChange: (event: ChangeEvent<HTMLTextAreaElement>) => void;
-  onButtonClick: MouseEventHandler<HTMLButtonElement>;
+  onButtonClick?: MouseEventHandler<HTMLButtonElement>;
   buttonIconId?: IconIdType;
   buttonText?: string;
   fontStyle?: 'primary' | 'secondary';
   errorText?: string;
+  ignoreErrors?: boolean;
   /**additional styling */
   className?: string;
 }
-/**Component description goes here */
+/**Input with button */
 export const InputWithButton = ({
   value,
   name,
@@ -32,7 +34,8 @@ export const InputWithButton = ({
   buttonIconId = 'plus',
   buttonText,
   fontStyle = 'primary',
-  errorText
+  errorText,
+  ignoreErrors
 }: InputWithButtonProps) => {
   const isInValid = errorText?.length !== 0;
   return (
@@ -43,26 +46,30 @@ export const InputWithButton = ({
           <textarea
             className={cn(styles.input, styles[fontStyle])}
             name={name}
-            rows={value.length / 32 + 1}
+            rows={value?.length / 32 + 1 || 1}
             value={value}
             onChange={onChange}
           />
-          <Button
-            iconHeight={22}
-            iconWidth={20}
-            variant="icon"
-            className={cn(styles.button, styles[variant])}
-            iconId={buttonIconId}
-            shape="rectangular"
-            onClick={onButtonClick}
-          >
-            {buttonText}
-          </Button>
+          {variant !== 'withoutButton' && (
+            <Button
+              iconHeight={22}
+              iconWidth={20}
+              variant="icon"
+              className={cn(styles.button, styles[variant])}
+              iconId={buttonIconId}
+              shape="rectangular"
+              onClick={onButtonClick}
+            >
+              {buttonText}
+            </Button>
+          )}
         </div>
       </label>
-      <p aria-hidden={isInValid} role="status" className={styles.errorText}>
-        {errorText}
-      </p>
+      {!ignoreErrors && (
+        <p aria-hidden={isInValid} role="status" className={styles.errorText}>
+          {errorText}
+        </p>
+      )}
     </div>
   );
 };

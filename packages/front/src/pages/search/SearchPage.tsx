@@ -1,36 +1,19 @@
 import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { AppContext } from '../../app-context/appContext';
 import { useSearchParams } from 'react-router-dom';
-import { Icon, SearchField } from '@lp/ui';
+import { Icon, SearchField, Link } from '@lp/ui';
 import { PageLayout } from '../../components/PageLayout/PageLayout';
 import { WORDS_QUERY } from '../../gql/queries';
 import {
   useSearchWordsLazyQuery,
   useSaveWordMutation,
-  NewWordInput,
   Suggestions,
   Word
 } from '../../generated/graphql';
 import { WordCard, Spinner } from '@lp/ui';
 import styles from './SearchPage.module.css';
-
-//TODO refactor this part
-//look for another approach of deleting __typedef property
-//perhaps create an utility function for finding and deleting all properties with the giving name
-//or executing a giving callback on all found properties
-function prepareData(data: Word): NewWordInput {
-  const defs = data.defs.map(def => ({
-    def: def?.def,
-    examples: def?.examples?.map(ex => ({
-      text: ex?.text,
-      translation: ex?.translation
-    }))
-  }));
-  const formattedData = { ...data };
-  delete formattedData.__typename;
-  // @ts-ignore
-  return { ...formattedData, defs };
-}
+import { routes } from '../../../constants/routes';
+import { removeTypenames } from '../../util/wordUtils';
 
 const SearchPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -101,7 +84,7 @@ const SearchPage = () => {
   const getAddWordHandler = (word: Word) => {
     return function () {
       saveWordFunc({
-        variables: { input: prepareData(word) },
+        variables: { input: removeTypenames(word) },
         refetchQueries: () => [
           {
             query: WORDS_QUERY,
@@ -160,7 +143,16 @@ const SearchPage = () => {
   return (
     <PageLayout>
       <div className={styles.content}>
-        <h1 className={styles.mainHeading}>Look up word</h1>
+        <div className={styles.headingContainer}>
+          <h1 className={styles.mainHeading}>Look up word</h1>
+          <Link
+            variant="button"
+            className={styles.link}
+            to={`/${routes.words}/new`}
+          >
+            Add your own word
+          </Link>
+        </div>
         <SearchField
           className={styles.search}
           searchQuery={searchParams.get('search') || ''}

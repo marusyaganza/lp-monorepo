@@ -64,9 +64,10 @@ export const Button = ({
   let iconButtonStyle;
 
   if (isIconButton && (iconHeight || iconWidth)) {
-  if (isIconButton && (iconHeight || iconWidth) && shape === 'circle') {
-    const size = Math.max(iconHeight, iconWidth);
-    iconButtonStyle = { height: size, width: size };
+    if (isIconButton && (iconHeight || iconWidth) && shape === 'circle') {
+      const size = Math.max(iconHeight, iconWidth);
+      iconButtonStyle = { height: size, width: size };
+    }
   }
 
   return (

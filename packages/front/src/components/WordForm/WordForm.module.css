@@ -1,0 +1,16 @@
+.buttonContainer {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+}
+
+.formFields {
+  padding: 32px;
+}
+
+/* TODO use grid layout for the form fields */
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

@@ -32,3 +32,11 @@ export const DELETE_WORD = gql`
     deleteWord(id: $deleteWordId)
   }
 `;
+
+export const UPDATE_WORD = gql`
+  mutation UpdateWord($input: UpdateWordInput!) {
+    updateWord(input: $input) {
+      name
+    }
+  }
+`;

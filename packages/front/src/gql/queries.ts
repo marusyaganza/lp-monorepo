@@ -40,6 +40,7 @@ export const WORD_BY_ID_QUERY = gql`
       isOffensive
       stems
       level
+      shortDef
     }
   }
 `;

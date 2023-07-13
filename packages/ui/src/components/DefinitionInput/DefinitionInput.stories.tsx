@@ -25,3 +25,17 @@ export const DefinitionInputDefault = (args: DefinitionInputProps) => {
     </div>
   );
 };
+
+export const DefinitionInputWithTranslation = (args: DefinitionInputProps) => {
+  return (
+    <div className="presentationBox">
+      <DefinitionInput
+        {...args}
+        withTranslation
+        onChange={val => {
+          console.log(val);
+        }}
+      />
+    </div>
+  );
+};

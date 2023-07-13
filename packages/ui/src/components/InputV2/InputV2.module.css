@@ -34,13 +34,6 @@
   border: 1px solid var(--neutral-800);
 }
 
-.button {
-  color: var(--neutral-100);
-  border-radius: 0;
-  width: 44px;
-  height: 44px;
-}
-
 .inputWrapper {
   position: relative;
   width: 440px;
@@ -51,26 +44,6 @@
 .label {
   font-size: var(--font-size-xxs);
   color: var(--neutral-800);
-}
-
-.dark {
-  background: var(--neutral-800);
-}
-
-.purple {
-  background: var(--primary-300);
-}
-
-.purple:focus,
-.purple:active {
-  outline: none;
-  background: var(--primary-500);
-}
-
-.dark:focus,
-.dark:active {
-  outline: none;
-  background: var(--text);
 }
 
 .errorText {
