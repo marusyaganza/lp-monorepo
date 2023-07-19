@@ -1,6 +1,17 @@
-import { DefinitionInput, InputV2, ArrayInput } from '@lp/ui';
+import {
+  DefinitionInput,
+  InputV2,
+  ArrayInput,
+  Checkbox,
+  LevelSelector
+} from '@lp/ui';
 import { FormConfigType } from '../../components/WordForm/WordForm';
-import { NewWordInput, DefsInput, Language } from '../../generated/graphql';
+import {
+  NewWordInput,
+  DefsInput,
+  Language,
+  Level
+} from '../../generated/graphql';
 
 export const defaultInitialValues: NewWordInput = {
   name: '',
@@ -10,7 +21,10 @@ export const defaultInitialValues: NewWordInput = {
   transcription: '',
   audioUrl: '',
   language: Language.English,
-  shortDef: ['']
+  shortDef: [''],
+  stems: [''],
+  isOffensive: false,
+  level: Level.B1
 };
 
 export const formConfig: FormConfigType<NewWordInput>[] = [
@@ -18,10 +32,21 @@ export const formConfig: FormConfigType<NewWordInput>[] = [
   { Component: InputV2, name: 'particle' },
   { Component: DefinitionInput, name: 'defs' },
   { Component: ArrayInput, name: 'shortDef', label: 'short definition' },
-  { Component: InputV2, name: 'audioUrl', label: 'audio url' },
+  {
+    Component: InputV2,
+    name: 'audioUrl',
+    label: 'audio url'
+  },
   { Component: InputV2, name: 'transcription' },
   { Component: InputV2, name: 'imgUrl', label: 'image url' },
-  { Component: InputV2, name: 'imgDesc', label: 'image description' }
+  { Component: InputV2, name: 'imgDesc', label: 'image description' },
+  { Component: ArrayInput, name: 'stems', label: 'word form' },
+  {
+    Component: Checkbox,
+    name: 'isOffensive',
+    props: { variant: 'isOffensive' }
+  },
+  { Component: LevelSelector, name: 'level' }
 ];
 
 export const validators = {

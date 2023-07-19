@@ -1,0 +1,40 @@
+@import '../../assets/styles/colors.css';
+@import '../../assets/styles/font-sizes.css';
+@import '../../assets/styles/fonts.css';
+@import '../../assets/styles/effects.css';
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: var(--neutral-800);
+  position: relative;
+  z-index: 1;
+}
+
+.label > input[type='checkbox'] {
+  width: 25px;
+  height: 25px;
+  accent-color: var(--primary-300);
+}
+
+.hidden > input[type='checkbox'] {
+  position: absolute;
+  opacity: 0;
+  z-index: 0;
+}
+
+.label.isOffensive {
+  accent-color: var(--error-200);
+}
+
+.label.isOffensive:hover {
+  accent-color: var(--error-100);
+}
+
+.offensive {
+  color: var(--error-200);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}

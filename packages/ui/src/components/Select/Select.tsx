@@ -15,22 +15,13 @@ export interface SelectProps<T extends string> {
   className?: string;
   /**a handler that renders current value */
   renderValue?: (value?: T) => ReactNode;
-  /**Select change handler */
-  onChange: (value: T) => void;
 }
 
 export const Select = function <T extends string>({
   children,
   value,
-  onChange,
   renderValue
 }: PropsWithChildren<SelectProps<T>>) {
-  useEffect(() => {
-    if (value) {
-      onChange(value);
-    }
-  }, [value, onChange]);
-
   const [isOpen, setIsOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -56,6 +47,7 @@ export const Select = function <T extends string>({
   return (
     <div ref={ref} className={styles.container}>
       <button
+        type="button"
         className={styles.select}
         onClick={() => {
           setIsOpen(curr => !curr);

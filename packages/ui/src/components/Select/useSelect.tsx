@@ -11,19 +11,24 @@ export type SelectProps<T extends string> = PropsWithChildren<
   SelectPropsType<T>
 >;
 
-export function useSelect<T extends string>() {
+export function useSelect<T extends string>({
+  onChange
+}: {
+  onChange: (value: T) => void;
+}) {
   const [currentValue, setCurrentValue] = useState<T>();
 
-  const handleChange = useCallback((cb: (val: T) => void) => {
-    return function (val: T) {
+  const handleChange = useCallback(
+    (val?: T) => {
       if (val) {
-        if (cb) {
-          cb(val);
+        if (onChange) {
+          onChange(val);
         }
         setCurrentValue(val);
       }
-    };
-  }, []);
+    },
+    [onChange]
+  );
 
   return [
     {
@@ -31,19 +36,13 @@ export function useSelect<T extends string>() {
         return (
           <Option
             {...args}
-            onChange={setCurrentValue}
+            onChange={handleChange}
             isChecked={args.value === currentValue}
           />
         );
       },
       Select: (args: SelectProps<T>) => {
-        return (
-          <Select
-            {...args}
-            value={currentValue || args.value}
-            onChange={handleChange(args.onChange)}
-          />
-        );
+        return <Select {...args} value={currentValue || args.value} />;
       }
     }
   ];

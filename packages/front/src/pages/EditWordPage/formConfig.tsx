@@ -1,4 +1,10 @@
-import { DefinitionInput, InputV2, ArrayInput } from '@lp/ui';
+import {
+  DefinitionInput,
+  InputV2,
+  ArrayInput,
+  Checkbox,
+  LevelSelector
+} from '@lp/ui';
 import { FormConfigType } from '../../components/WordForm/WordForm';
 import { UpdateWordInput, DefsInput } from '../../generated/graphql';
 
@@ -10,7 +16,8 @@ export const defaultInitialValues: UpdateWordInputType = {
   particle: '',
   transcription: '',
   audioUrl: '',
-  shortDef: []
+  shortDef: [],
+  isOffensive: false
 };
 
 export const formConfig: FormConfigType<UpdateWordInputType>[] = [
@@ -20,7 +27,14 @@ export const formConfig: FormConfigType<UpdateWordInputType>[] = [
   { Component: InputV2, name: 'audioUrl', label: 'audio url' },
   { Component: InputV2, name: 'transcription' },
   { Component: InputV2, name: 'imgUrl', label: 'image url' },
-  { Component: InputV2, name: 'imgDesc', label: 'image description' }
+  { Component: InputV2, name: 'imgDesc', label: 'image description' },
+  {
+    Component: Checkbox,
+    name: 'isOffensive',
+    props: { variant: 'isOffensive' }
+  },
+  { Component: ArrayInput, name: 'stems' },
+  { Component: LevelSelector, name: 'level' }
 ];
 
 export const validators = {

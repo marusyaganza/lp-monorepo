@@ -4,7 +4,9 @@ import {
   DefinitionInputProps,
   InputV2Props,
   ArrayInputProps,
-  Link
+  Link,
+  CheckboxProps,
+  LevelSelectorProps
 } from '@lp/ui';
 import { useForm, FormValidators } from '../../hooks/useForm';
 import { Language } from '../../generated/graphql';
@@ -12,10 +14,23 @@ import { AppContext } from '../../app-context/appContext';
 import { routes } from '../../../constants/routes';
 import styles from './WordForm.module.css';
 
+type ComponentProps = InputV2Props &
+  DefinitionInputProps &
+  ArrayInputProps &
+  CheckboxProps &
+  LevelSelectorProps;
+
 export interface FormConfigType<T extends Record<string, unknown>> {
-  Component: FC<InputV2Props & DefinitionInputProps & ArrayInputProps>;
+  Component: FC<ComponentProps>;
   name: keyof T & string;
   label?: string;
+  props?: Partial<
+    | InputV2Props
+    | DefinitionInputProps
+    | ArrayInputProps
+    | CheckboxProps
+    | LevelSelectorProps
+  >;
 }
 
 export interface WordFormProps<T extends Record<string, unknown>> {
@@ -60,17 +75,22 @@ export function WordForm<T extends Record<string, unknown>>({
 
   const renderInputs = () => {
     return formConfig.map(field => {
-      const { Component, name, label } = field;
+      const { Component, name, label, props = {} } = field;
+      const value = values[name];
       return (
         <Component
           // @ts-ignore
-          initialValue={values[name]}
+          initialValue={value}
           key={name}
           withTranslation={name === 'defs' && language === Language.Spanish}
           name={name}
           label={label || name}
+          // @ts-ignore
+          isChecked={typeof value === 'boolean' && value}
+          // @ts-ignore
           onChange={getChangeHandler(name)}
           errorText={errors[name]}
+          {...props}
         />
       );
     });

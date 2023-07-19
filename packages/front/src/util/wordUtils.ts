@@ -4,10 +4,15 @@ type TypedData = {
   __typename?: string;
 };
 
+// TODO trim all string values
 export function removeTypenames<T>(obj: T & TypedData): T {
   if (Array.isArray(obj)) {
     // @ts-ignore
     return obj.map(removeTypenames);
+  }
+  if (typeof obj === 'string') {
+    // @ts-ignore
+    return obj?.trim();
   }
   if (obj === null || typeof obj !== 'object') {
     return obj;

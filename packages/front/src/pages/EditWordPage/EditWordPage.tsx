@@ -36,7 +36,10 @@ const EditWordPage = () => {
       transcription,
       particle,
       shortDef,
-      id
+      id,
+      isOffensive,
+      stems,
+      level
     } = removeTypenames(data.word);
     return {
       ...defaultInitialValues,
@@ -47,7 +50,10 @@ const EditWordPage = () => {
       transcription,
       particle,
       shortDef,
-      id
+      id,
+      isOffensive,
+      stems,
+      level
     };
   }, [data?.word, wordId]);
 

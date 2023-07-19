@@ -46,3 +46,5 @@ export * from './components/DefinitionInput/DefinitionInput';
 export * from './components/InputWithButton/InputWithButton';
 export * from './components/Link/Link';
 export * from './components/InputV2/InputV2';
+export * from './components/Checkbox/Checkbox';
+export * from './components/LevelSelector/LevelSelector';
