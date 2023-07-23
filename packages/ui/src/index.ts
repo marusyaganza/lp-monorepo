@@ -48,3 +48,4 @@ export * from './components/Link/Link';
 export * from './components/InputV2/InputV2';
 export * from './components/Checkbox/Checkbox';
 export * from './components/LevelSelector/LevelSelector';
+export * from './components/GameCard/GameCard';

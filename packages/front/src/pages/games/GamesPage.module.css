@@ -1,0 +1,10 @@
+.gamesList {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.pageTitle {
+  margin: 40px auto;
+  text-align: center;
+  font-size: var(--font-size-xl);
+}

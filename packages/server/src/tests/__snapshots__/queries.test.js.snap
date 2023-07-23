@@ -1,5 +1,62 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`queries games 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": {
+        "games": [
+          {
+            "desc": "Check if you can recall your words",
+            "id": "flash_cards",
+            "imgUrl": "flash_cards",
+            "name": "flash cards",
+          },
+          {
+            "desc": "Type the word that you hear",
+            "id": "audio",
+            "imgUrl": "audio",
+            "name": "audio",
+          },
+          {
+            "desc": "Match the word and its definition",
+            "id": "select_definition",
+            "imgUrl": "select_definition",
+            "name": "select definition",
+          },
+          {
+            "desc": "Match the definition and the word",
+            "id": "select_word",
+            "imgUrl": "select_word",
+            "name": "select word",
+          },
+          {
+            "desc": "Type the word that has the definition given",
+            "id": "select_word",
+            "imgUrl": "type_word",
+            "name": "type word",
+          },
+          {
+            "desc": "Match the word and all its definitions",
+            "id": "select_word",
+            "imgUrl": "find_defs",
+            "name": "find all definitions",
+          },
+        ],
+      },
+      "errors": undefined,
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
 exports[`queries searchWord english lang, mocks enabled 1`] = `
 {
   "body": {

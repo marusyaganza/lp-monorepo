@@ -9,6 +9,7 @@ import {
   hashPassword,
   validatePassword
 } from './auth';
+import { games } from './mocks/games';
 import { ModelsType } from './db/models';
 import { searchWord } from './dictionary';
 
@@ -30,7 +31,8 @@ initDB(async (models: ModelsType) => {
         createToken,
         validatePassword,
         hashPassword,
-        searchWord
+        searchWord,
+        games
       };
     },
     listen: { port: 4000 }
