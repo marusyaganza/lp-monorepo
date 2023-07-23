@@ -68,7 +68,6 @@ export function WordForm<T extends Record<string, unknown>>({
   const handleFormSubmit: FormEventHandler<HTMLFormElement> = e => {
     e.preventDefault();
     const { errors, isValid } = validate();
-    console.log(errors, isValid, values);
     if (isValid) {
       onSubmit(values);
     }

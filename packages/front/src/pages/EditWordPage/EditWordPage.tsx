@@ -69,7 +69,6 @@ const EditWordPage = () => {
   }, [updateWordData.data]);
 
   const handleFormSubmit = (values: UpdateWordInput) => {
-    console.log('values', values);
     const input = cleanDefs(values);
     updateWordFunc({
       variables: { input },
