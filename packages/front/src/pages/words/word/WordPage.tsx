@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from 'react';
 import { useLazyQuery } from '@apollo/client';
-import { Link, useParams } from 'react-router-dom';
-import { WordCard, Icon } from '@lp/ui';
+import { useParams, useNavigate } from 'react-router-dom';
+import { WordCard, Icon, Link } from '@lp/ui';
 import { routes } from '../../../../constants/routes';
 import { PageLayout } from '../../../components/PageLayout/PageLayout';
 import { WORD_BY_ID_QUERY } from '../../../gql/queries';
@@ -13,12 +13,17 @@ const WordPage = () => {
   const { wordId } = useParams();
   const { setNotification } = useContext(AppContext);
   const [fetchWord, { loading, error, data }] = useLazyQuery(WORD_BY_ID_QUERY);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchWord({
       variables: { wordId }
     });
   }, [wordId]);
+
+  const handleEdit = () => {
+    navigate(`/${routes.words}/edit/${wordId}`);
+  };
 
   useEffect(() => {
     if (error) {
@@ -35,7 +40,13 @@ const WordPage = () => {
         <Icon width={16} height={16} id="arrow-left" />
         Back to vocabulary
       </Link>
-      {data?.word && <WordCard className={styles.wordCard} word={data.word} />}
+      {data?.word && (
+        <WordCard
+          className={styles.wordCard}
+          word={data.word}
+          editButton={{ callback: handleEdit, isLoading: loading }}
+        />
+      )}
     </PageLayout>
   );
 };

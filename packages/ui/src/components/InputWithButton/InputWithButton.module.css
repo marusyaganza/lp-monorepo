@@ -1,0 +1,90 @@
+@import '../../assets/styles/colors.css';
+@import '../../assets/styles/font-sizes.css';
+@import '../../assets/styles/fonts.css';
+@import '../../assets/styles/effects.css';
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.input {
+  height: 100%;
+  width: 400px;
+  padding: 13px 16px;
+  resize: none;
+  background: var(--neutral-100);
+  font-size: var(--font-size-xs);
+  box-sizing: border-box;
+  border: 1px solid var(--neutral-600);
+  box-shadow: var(--secondary-box-shadow);
+}
+
+.secondary {
+  font-family: var(--font-kalam);
+  font-size: var(--font-size-s);
+  background: var(--neutral-200);
+  padding: 8px 16px;
+}
+
+.input:focus {
+  outline: none;
+  border: 1px solid var(--neutral-800);
+}
+
+.button {
+  color: var(--neutral-100);
+  border-radius: 0;
+  width: 44px;
+  height: 44px;
+}
+
+.inputWrapper {
+  position: relative;
+  width: 440px;
+  min-height: 40px;
+  display: flex;
+}
+
+.label {
+  font-size: var(--font-size-xxs);
+  color: var(--neutral-800);
+}
+
+.dark {
+  background: var(--neutral-800);
+}
+
+.purple {
+  background: var(--primary-300);
+}
+
+.purple:focus,
+.purple:active {
+  outline: none;
+  background: var(--primary-500);
+}
+
+.dark:focus,
+.dark:active {
+  outline: none;
+  background: var(--text);
+}
+
+.errorText {
+  min-height: 26px;
+  width: 400px;
+  color: var(--error-200);
+  opacity: 0;
+  text-align: center;
+  transition: opacity 1s ease;
+  font-size: var(--font-size-xxs);
+  padding: 4px 0;
+  margin: 0;
+}
+
+.incorrect > .errorText {
+  opacity: 1;
+}

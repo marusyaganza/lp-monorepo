@@ -1,0 +1,76 @@
+import React, { useContext, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Link, Icon } from '@lp/ui';
+import styles from './NewWordPage.module.css';
+
+import { PageLayout } from '../../components/PageLayout/PageLayout';
+import { WordForm } from '../../components/WordForm/WordForm';
+import { routes } from '../../../constants/routes';
+import { NewWordInput, useSaveWordMutation } from '../../generated/graphql';
+import { AppContext } from '../../app-context/appContext';
+import { WORDS_QUERY } from '../../gql/queries';
+import { defaultInitialValues, formConfig, validators } from './formConfig';
+import { cleanDefs } from '../../util/wordUtils';
+
+const NewWordPage = () => {
+  const [saveWordFunc, saveWordData] = useSaveWordMutation();
+  const { setNotification, language } = useContext(AppContext);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (saveWordData.error) {
+      setNotification({
+        variant: 'error',
+        text: 'Error',
+        subText: saveWordData?.error?.message || 'something went wrong'
+      });
+    }
+  }, [saveWordData.error]);
+
+  useEffect(() => {
+    const { data } = saveWordData;
+    if (data) {
+      const { name } = data.saveWord;
+      setNotification({
+        variant: 'success',
+        text: 'Word added',
+        subText: `${name} is added successfully. Go to the words page to review it`
+      });
+      navigate(`/${routes.words}`);
+      // TODO find a way to get rid of this hack
+      navigate(0);
+    }
+  }, [saveWordData.data]);
+
+  const handleFormSubmit = (values: NewWordInput) => {
+    const input = { ...cleanDefs(values), language };
+    saveWordFunc({
+      variables: { input },
+      refetchQueries: () => [
+        {
+          query: WORDS_QUERY,
+          variables: {
+            language
+          }
+        }
+      ]
+    });
+  };
+
+  return (
+    <PageLayout>
+      <Link className={styles.link} to={`/${routes.words}`}>
+        <Icon width={16} height={16} id="arrow-left" />
+        Back to vocabulary
+      </Link>
+      <h1 className={styles.mainHeading}>Add new word</h1>
+      <WordForm
+        initialValues={defaultInitialValues}
+        formConfig={formConfig}
+        validators={validators}
+        onSubmit={handleFormSubmit}
+      />
+    </PageLayout>
+  );
+};
+
+export default NewWordPage;

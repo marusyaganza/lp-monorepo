@@ -7,30 +7,25 @@ import React, {
 } from 'react';
 
 import styles from './Select.module.css';
+import { cn } from '../../utils/classnames';
 
 export interface SelectProps<T extends string> {
   /**currently selected value */
   value?: T;
   /**additional styling */
   className?: string;
+  /**aligh options to the right or to the left */
+  placement?: 'right' | 'left';
   /**a handler that renders current value */
   renderValue?: (value?: T) => ReactNode;
-  /**Select change handler */
-  onChange: (value: T) => void;
 }
 
 export const Select = function <T extends string>({
   children,
   value,
-  onChange,
-  renderValue
+  renderValue,
+  placement = 'right'
 }: PropsWithChildren<SelectProps<T>>) {
-  useEffect(() => {
-    if (value) {
-      onChange(value);
-    }
-  }, [value, onChange]);
-
   const [isOpen, setIsOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -56,6 +51,7 @@ export const Select = function <T extends string>({
   return (
     <div ref={ref} className={styles.container}>
       <button
+        type="button"
         className={styles.select}
         onClick={() => {
           setIsOpen(curr => !curr);
@@ -63,7 +59,9 @@ export const Select = function <T extends string>({
       >
         {renderValue ? renderValue(value) : value}
       </button>
-      {isOpen && <ul className={styles.options}>{children}</ul>}
+      {isOpen && (
+        <ul className={cn(styles.options, styles[placement])}>{children}</ul>
+      )}
     </div>
   );
 };

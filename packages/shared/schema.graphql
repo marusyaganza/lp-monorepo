@@ -134,12 +134,15 @@ input UpdateWordInput {
   defs: [DefsInput]
   particle: String
   imgUrl: String
+  imgDesc: String
   audioUrl: String
   additionalInfo: String
   transcription: String
   isOffensive: Boolean
   stems: [String]
   level: Level
+  tags: [WordTagInput]
+  shortDef: [String]
 }
 
 input SignUpInput {

@@ -33,7 +33,7 @@ export const LanguageSelector = ({
   onChange,
   value
 }: LanguageSelectorProps) => {
-  const [{ Select, Option }] = useSelect<Language>();
+  const [{ Select, Option }] = useSelect<Language>({ onChange });
   const renderOption = (lang: Language) => {
     return (
       <Option value={languages[lang].value} className={styles.option}>
@@ -61,11 +61,7 @@ export const LanguageSelector = ({
 
   return (
     <div className={cn(className, styles.container)}>
-      <Select
-        onChange={onChange}
-        value={value}
-        renderValue={renderCurrentValue}
-      >
+      <Select value={value} renderValue={renderCurrentValue} placement="right">
         {renderOption(Language.English)}
         {renderOption(Language.Spanish)}
       </Select>

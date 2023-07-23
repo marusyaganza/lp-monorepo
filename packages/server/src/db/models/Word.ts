@@ -34,7 +34,16 @@ export const WordModel: WordModelType = {
 
   async createOne(fields) {
     const createdAt = Date.now();
-    const word = await Word.create({ ...fields, createdAt });
+    const stems = fields?.stems?.length ? fields.stems : [fields.name];
+    const transcription = fields?.transcription || fields?.name;
+    const isOffensive = !!fields?.isOffensive;
+    const word = await Word.create({
+      ...fields,
+      createdAt,
+      stems,
+      isOffensive,
+      transcription
+    });
     return formatData(word);
   },
 
