@@ -22,6 +22,11 @@
   box-shadow: var(--secondary-box-shadow);
 }
 
+.input:disabled {
+  border: 1px solid var(--neutral-300);
+  color: var(--neutral-400);
+}
+
 .secondary {
   font-family: var(--font-kalam);
   font-size: var(--font-size-s);
@@ -44,6 +49,10 @@
 .label {
   font-size: var(--font-size-xxs);
   color: var(--neutral-800);
+}
+
+.label.disabled {
+  color: var(--neutral-500);
 }
 
 .errorText {

@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler } from 'react';
+import React, { ChangeEventHandler, useState } from 'react';
 import { cn } from '../../utils/classnames';
 import { Icon } from '../Icon/icon';
 import styles from './Checkbox.module.css';
@@ -7,7 +7,7 @@ export interface CheckboxProps {
   variant?: 'classic' | 'isOffensive' | 'hidden';
   label?: string;
   name?: string;
-  isChecked?: boolean;
+  initialValue?: boolean;
   onChange: (val: boolean) => void;
   /**additional styling */
   className?: string;
@@ -17,10 +17,11 @@ export const Checkbox = ({
   variant = 'classic',
   label,
   name,
-  isChecked,
+  initialValue,
   className,
   onChange
 }: CheckboxProps) => {
+  const [isChecked, setIsChecked] = useState(initialValue);
   const renderIsOffensive = () => {
     return (
       <span className={styles.offensive}>
@@ -30,7 +31,9 @@ export const Checkbox = ({
     );
   };
   const handleChange: ChangeEventHandler<HTMLInputElement> = e => {
-    onChange(e.target.checked);
+    const val = e.target.checked;
+    setIsChecked(val);
+    onChange(val);
   };
   return (
     <label className={cn(styles.label, styles[variant], className)}>

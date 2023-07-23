@@ -24,11 +24,11 @@
   z-index: 0;
 }
 
-.label.isOffensive {
+.label.isOffensive > input[type='checkbox'] {
   accent-color: var(--error-200);
 }
 
-.label.isOffensive:hover {
+.label.isOffensive > input[type='checkbox']:hover {
   accent-color: var(--error-100);
 }
 

@@ -115,7 +115,7 @@ export const DefinitionInput = ({
       {values.map((value, i) => {
         const isLast = i === values.length - 1;
         return (
-          <>
+          <div key={`definition ${i + 1}`}>
             <InputWithButton
               value={value.def}
               name="definition"
@@ -163,7 +163,7 @@ export const DefinitionInput = ({
                 </div>
               );
             })}
-          </>
+          </div>
         );
       })}
     </div>

@@ -11,6 +11,7 @@ export interface InputV2Props {
   fontStyle?: 'primary' | 'secondary';
   errorText?: string;
   ignoreErrors?: boolean;
+  isDisabled?: boolean;
   /**additional styling */
   className?: string;
 }
@@ -23,7 +24,8 @@ export const InputV2 = ({
   fontStyle = 'primary',
   errorText,
   ignoreErrors,
-  initialValue
+  initialValue,
+  isDisabled
 }: InputV2Props) => {
   const isInValid = errorText?.length !== 0;
   const [value, setValue] = useState(initialValue || '');
@@ -35,9 +37,14 @@ export const InputV2 = ({
   return (
     <div className={cn(className, isInValid ? styles.incorrect : '')}>
       <label className={styles.inputContainer}>
-        {label && <span className={styles.label}>{label}</span>}
+        {label && (
+          <span className={cn(styles.label, isDisabled ? styles.disabled : '')}>
+            {label}
+          </span>
+        )}
         <div className={styles.inputWrapper}>
           <textarea
+            disabled={isDisabled}
             className={cn(styles.input, styles[fontStyle])}
             name={name}
             rows={value?.length / 32 + 1 || 1}

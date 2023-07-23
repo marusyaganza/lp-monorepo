@@ -1,4 +1,10 @@
-import React, { FormEventHandler, useContext, useState, FC } from 'react';
+import React, {
+  FormEventHandler,
+  useContext,
+  useState,
+  useEffect,
+  FC
+} from 'react';
 import {
   Button,
   DefinitionInputProps,
@@ -20,10 +26,13 @@ type ComponentProps = InputV2Props &
   CheckboxProps &
   LevelSelectorProps;
 
+//TODO create separate interface for each field type and inherit it from base field interface
 export interface FormConfigType<T extends Record<string, unknown>> {
   Component: FC<ComponentProps>;
   name: keyof T & string;
   label?: string;
+  isDisabled?: boolean;
+  value?: string;
   props?: Partial<
     | InputV2Props
     | DefinitionInputProps
@@ -75,18 +84,17 @@ export function WordForm<T extends Record<string, unknown>>({
 
   const renderInputs = () => {
     return formConfig.map(field => {
-      const { Component, name, label, props = {} } = field;
-      const value = values[name];
+      const { Component, name, label, props = {}, isDisabled, value } = field;
+      const initialValue = values[name] || value;
       return (
         <Component
           // @ts-ignore
-          initialValue={value}
+          initialValue={initialValue}
           key={name}
           withTranslation={name === 'defs' && language === Language.Spanish}
           name={name}
           label={label || name}
-          // @ts-ignore
-          isChecked={typeof value === 'boolean' && value}
+          isDisabled={isDisabled}
           // @ts-ignore
           onChange={getChangeHandler(name)}
           errorText={errors[name]}
@@ -103,7 +111,7 @@ export function WordForm<T extends Record<string, unknown>>({
         <Link variant="button" to={`/${routes.words}`}>
           Cancel
         </Link>
-        <Button type="submit" isLoading={isLoading}>
+        <Button variant="secondary" type="submit" isLoading={isLoading}>
           Save
         </Button>
       </div>

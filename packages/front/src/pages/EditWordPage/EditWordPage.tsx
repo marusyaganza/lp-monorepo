@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { Link, Icon } from '@lp/ui';
 import { useLazyQuery } from '@apollo/client';
 import styles from './EditWordPage.module.css';
-import { defaultInitialValues, formConfig, validators } from './formConfig';
+import { getDefaultInitialValues, formConfig, validators } from './formConfig';
 
 import { PageLayout } from '../../components/PageLayout/PageLayout';
 import { WordForm } from '../../components/WordForm/WordForm';
@@ -24,38 +24,10 @@ const EditWordPage = () => {
 
   const navigate = useNavigate();
 
-  const initialValues: UpdateWordInput | undefined = useMemo(() => {
-    if (!data?.word) {
-      return;
-    }
-    const {
-      defs,
-      audioUrl = defaultInitialValues.audioUrl,
-      imgDesc,
-      imgUrl,
-      transcription,
-      particle,
-      shortDef,
-      id,
-      isOffensive,
-      stems,
-      level
-    } = removeTypenames(data.word);
-    return {
-      ...defaultInitialValues,
-      defs,
-      audioUrl,
-      imgDesc,
-      imgUrl,
-      transcription,
-      particle,
-      shortDef,
-      id,
-      isOffensive,
-      stems,
-      level
-    };
-  }, [data?.word, wordId]);
+  const initialValues: UpdateWordInput | undefined = useMemo(
+    () => getDefaultInitialValues(removeTypenames(data?.word)),
+    [data?.word, wordId]
+  );
 
   useEffect(() => {
     fetchWord({
@@ -123,7 +95,8 @@ const EditWordPage = () => {
         <WordForm
           validators={validators}
           initialValues={initialValues}
-          formConfig={formConfig}
+          // @ts-ignore
+          formConfig={formConfig(data.word)}
           isLoading={loading}
           onSubmit={handleFormSubmit}
         />

@@ -36,11 +36,12 @@ const NewWordPage = () => {
         subText: `${name} is added successfully. Go to the words page to review it`
       });
       navigate(`/${routes.words}`);
+      // TODO find a way to get rid of this hack
+      navigate(0);
     }
   }, [saveWordData.data]);
 
   const handleFormSubmit = (values: NewWordInput) => {
-    console.log('values', values);
     const input = { ...cleanDefs(values), language };
     saveWordFunc({
       variables: { input },

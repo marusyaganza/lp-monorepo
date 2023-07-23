@@ -6,6 +6,9 @@
 
 .formFields {
   padding: 32px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 32px;
 }
 
 /* TODO use grid layout for the form fields */

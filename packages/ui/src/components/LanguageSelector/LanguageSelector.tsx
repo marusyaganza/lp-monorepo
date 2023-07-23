@@ -61,7 +61,7 @@ export const LanguageSelector = ({
 
   return (
     <div className={cn(className, styles.container)}>
-      <Select value={value} renderValue={renderCurrentValue}>
+      <Select value={value} renderValue={renderCurrentValue} placement="right">
         {renderOption(Language.English)}
         {renderOption(Language.Spanish)}
       </Select>
