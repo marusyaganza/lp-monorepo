@@ -87,3 +87,14 @@ export const USER = gql`
     }
   }
 `;
+
+export const GAMES = gql`
+  query Games {
+    games {
+      desc
+      imgUrl
+      name
+      id
+    }
+  }
+`;

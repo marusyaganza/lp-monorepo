@@ -14,6 +14,9 @@ export const QueryResolvers: QueryResolversType<ResolverContext> = {
     }
     return result;
   },
+  games: async (_, __, { games }) => {
+    return games;
+  },
   words: authenticated(
     async (_, { language = Language.English }, { models, user }) => {
       const words = await models.Word.findMany({ user: user?.id, language });

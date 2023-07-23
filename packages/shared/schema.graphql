@@ -163,8 +163,16 @@ input WordSearchInput {
   language: Language
 }
 
+type GameConfig {
+  name: String!
+  desc: String!
+  imgUrl: String!
+  id: String!
+}
+
 type Query {
   user: User!
+  games: [GameConfig]!
   words(language: Language): [Word]!
   word(id: ID!): Word!
   searchWord(input: WordSearchInput!): [SearchResult]!

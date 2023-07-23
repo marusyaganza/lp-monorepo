@@ -2,6 +2,7 @@ import { createTestServer } from './helpers';
 import { words, users } from './mocks/data';
 import { Language } from '../generated/graphql';
 import { searchWord } from '../dictionary';
+import { games } from '../mocks/games';
 const wordsQuery = `
   {
     words {
@@ -84,6 +85,15 @@ const searchQuery = `
     }
   }
 `;
+
+const gamesQuery = `query Games {
+  games {
+    desc
+    imgUrl
+    name
+    id
+  }
+}`;
 
 describe('queries', () => {
   test('words', async () => {
@@ -218,6 +228,14 @@ describe('queries', () => {
         }
       }
     });
+    expect(res).toMatchSnapshot();
+  });
+
+  test('games', async () => {
+    const { query } = createTestServer({
+      games
+    });
+    const res = await query({ query: gamesQuery });
     expect(res).toMatchSnapshot();
   });
 });
