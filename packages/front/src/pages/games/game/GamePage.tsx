@@ -1,15 +1,10 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
-
-import { PageLayout } from '../../../components/PageLayout/PageLayout';
+// import { useParams } from 'react-router-dom';
+import { GameLayout } from '../../../components/GameLayout/GameLayout';
 
 const GamePage = () => {
-  const params = useParams();
-  return (
-    <PageLayout>
-      <h1>Game page: {params.gameId}</h1>
-    </PageLayout>
-  );
+  // const params = useParams();
+  return <GameLayout />;
 };
 
 export default GamePage;

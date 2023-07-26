@@ -38,4 +38,6 @@
   /** background colors */
   --background-primary: #c0b2ee;
   --background-danger: #ecc1c1;
+  --background-secondary: #ffecb3;
+  --background-success: #bbdfbb;
 }

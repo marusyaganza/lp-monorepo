@@ -49,3 +49,6 @@ export * from './components/InputV2/InputV2';
 export * from './components/Checkbox/Checkbox';
 export * from './components/LevelSelector/LevelSelector';
 export * from './components/GameCard/GameCard';
+export * from './components/GameFooter/GameFooter';
+export * from './components/OptionBox/OptionBox';
+export * from './components/Progress/Progress';
