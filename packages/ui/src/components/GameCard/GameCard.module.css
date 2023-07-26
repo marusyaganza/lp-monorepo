@@ -20,7 +20,6 @@
   box-shadow: var(--secondary-box-shadow);
   width: 200px;
   height: 164px;
-  border-radius: 20px;
   position: relative;
 }
 

@@ -1,0 +1,29 @@
+@import '../../assets/styles/colors.css';
+@import '../../assets/styles/font-sizes.css';
+@import '../../assets/styles/fonts.css';
+@import '../../assets/styles/effects.css';
+
+.container {
+  height: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  border-top: 3px solid rgba(0, 0, 0, 10%);
+}
+
+.resultContainer {
+  padding: 0 130px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.image {
+  width: 100px;
+}
+
+.message {
+  font-family: var(--font-kalam);
+  font-size: var(--font-size-m);
+  max-width: 130px;
+}
