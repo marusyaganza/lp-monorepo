@@ -18,6 +18,13 @@ enum Language {
   SPANISH
 }
 
+enum Game {
+  AUDIO
+  TYPE_WORD
+  SELECT_WORD
+  SELECT_DEF
+}
+
 type User {
   email: String!
   firstName: String!
@@ -43,6 +50,13 @@ type WordTag {
   text: String!
 }
 
+type WordStatistics {
+  lastTimePracticed: String
+  practicedTimes: Int
+  answeredCorrectly: Int
+  errorsCount: Int
+}
+
 type Word {
   id: ID!
   uuid: ID
@@ -62,6 +76,7 @@ type Word {
   level: Level
   shortDef: [String]!
   language: Language!
+  statistics: WordStatistics
 }
 
 type DictionaryWord {
@@ -95,6 +110,29 @@ type Suggestions {
 }
 
 union SearchResult = DictionaryWord | Suggestions
+
+type GameConfig {
+  name: String!
+  desc: String!
+  imgUrl: String!
+  id: String!
+  type: Game!
+  wordsPerGame: Int!
+  optionsPerGame: Int!
+}
+
+type GameQuestion {
+  question: [String!]
+  options: [String]
+  answer: String!
+  wordId: ID!
+}
+
+type GameData {
+  type: Game!
+  task: String!
+  questions: [GameQuestion!]
+}
 
 input DefExampleInput {
   text: String!
@@ -163,16 +201,27 @@ input WordSearchInput {
   language: Language
 }
 
-type GameConfig {
-  name: String!
-  desc: String!
-  imgUrl: String!
-  id: String!
+input GameDataInput {
+  gameType: Game!
+  language: Language
+}
+
+input WordStatisticsInput {
+  lastTimePracticed: String
+  practicedTimes: Int
+  answeredCorrectly: Int
+  errorsCount: Int
+}
+
+input UpdateStatisticsInput {
+  id: ID!
+  statistics: WordStatisticsInput
 }
 
 type Query {
   user: User!
   games: [GameConfig]!
+  game(input: GameDataInput!): GameData!
   words(language: Language): [Word]!
   word(id: ID!): Word!
   searchWord(input: WordSearchInput!): [SearchResult]!
@@ -181,6 +230,7 @@ type Query {
 type Mutation {
   saveWord(input: NewWordInput!): Word!
   updateWord(input: UpdateWordInput!): Word!
+  saveGameResult(input: [UpdateStatisticsInput!]): String!
   deleteWord(id: ID!): String!
   signUp(input: SignUpInput!): AuthUser!
   login(input: LoginInput!): AuthUser!

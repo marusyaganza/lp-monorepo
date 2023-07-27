@@ -9,6 +9,10 @@ export interface WordModelType {
   updateOne: (
     fields: Partial<WordType> & Pick<WordType, 'id' | 'user'>
   ) => Promise<{ ok: boolean; value: WordType | null }>;
+  updateMany: (
+    fields: Partial<WordType> & Pick<WordType, 'id'>[],
+    user?: string
+  ) => Promise<{ ok: boolean }>;
   deleteOne: (filter: {
     id: string;
     user?: string;
@@ -56,6 +60,21 @@ export const WordModel: WordModelType = {
     );
     const isOk = ok == 1 && value !== null;
     return { ok: isOk, value: formatData(value) };
+  },
+
+  async updateMany(data, user) {
+    let isOk = true;
+    data.forEach(async entry => {
+      const update = { ...entry };
+      const { ok, value } = await Word.findOneAndUpdate(
+        { _id: entry.id, user },
+        update,
+        { rawResult: true, new: true }
+      );
+      isOk = isOk && ok == 1 && value !== null;
+    });
+
+    return { ok: isOk };
   },
 
   async deleteOne(filter) {

@@ -1,5 +1,9 @@
 import { Schema, model } from 'mongoose';
-import { Word as WordCoreType, Language } from '../../generated/graphql';
+import {
+  Word as WordCoreType,
+  Language,
+  WordStatistics
+} from '../../generated/graphql';
 
 const tagsSchema = new Schema(
   {
@@ -28,6 +32,16 @@ const defSchema = new Schema(
   { _id: false }
 );
 
+const statisticsSchema = new Schema<WordStatistics>(
+  {
+    lastTimePracticed: String,
+    practicedTimes: Number,
+    answeredCorrectly: Number,
+    errorsCount: Number
+  },
+  { _id: false }
+);
+
 const wordSchema = new Schema<WordCoreType>({
   uuid: { type: String, immutable: true },
   name: { type: String, required: true, immutable: true },
@@ -45,7 +59,8 @@ const wordSchema = new Schema<WordCoreType>({
   particle: String,
   stems: [String],
   tags: [tagsSchema],
-  additionalInfo: String
+  additionalInfo: String,
+  statistics: statisticsSchema
 });
 
 export const Word = model<WordCoreType>('Word', wordSchema);

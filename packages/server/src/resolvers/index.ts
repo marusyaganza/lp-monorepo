@@ -9,6 +9,7 @@ import {
 } from '../auth';
 import { ModelsType } from '../db/models';
 import { SearchFuncType } from '../dictionary/searchWord';
+import { GenerateGameDataFuncType } from '../utils/generateGameData';
 
 export interface ResolverContext {
   models: ModelsType;
@@ -18,6 +19,7 @@ export interface ResolverContext {
   hashPassword: HashPasswordFuncType;
   searchWord: SearchFuncType;
   games: GameConfig[];
+  generateGameData: GenerateGameDataFuncType;
 }
 
 export const resolvers: Resolvers<ResolverContext> = {
