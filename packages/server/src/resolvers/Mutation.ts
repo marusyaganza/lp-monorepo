@@ -40,6 +40,16 @@ export const MutationResolvers: MutationResolversType<ResolverContext> = {
       return value;
     }
   ),
+  saveGameResult: authorized(
+    Role.Member,
+    async (_, { input }, { models, user }) => {
+      const { ok } = await models.Word.updateMany(input, user?.id);
+      if (!ok) {
+        throw new UserInputError(`saving training result failed`);
+      }
+      return 'Game result saved';
+    }
+  ),
   deleteWord: authorized(Role.Member, async (_, { id }, { models, user }) => {
     const result = await models.Word.deleteOne({ id, user: user?.id });
     if (!result.ok) {
