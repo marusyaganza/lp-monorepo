@@ -34,10 +34,9 @@ const defSchema = new Schema(
 
 const statisticsSchema = new Schema<WordStatistics>(
   {
-    lastTimePracticed: String,
+    lastTimePracticed: Number,
     practicedTimes: Number,
-    answeredCorrectly: Number,
-    errorsCount: Number
+    errorCount: Number
   },
   { _id: false }
 );

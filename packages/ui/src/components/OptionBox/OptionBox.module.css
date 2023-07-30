@@ -12,7 +12,6 @@
 .optionContainer {
   position: relative;
   z-index: 1;
-  height: 50px;
   width: 600px;
 }
 
@@ -38,12 +37,20 @@
   background: var(--background-secondary);
 }
 
-.hidden:checked + .option.success {
+.option.success {
   background: var(--background-success);
   border: 1px solid var(--success-300);
 }
 
-.hidden:checked + .option.error {
+.option.error {
   background: var(--background-danger);
   border: 1px solid var(--error-300);
+}
+
+.hidden:checked + .option.error {
+  background: var(--background-danger);
+}
+
+.hidden:checked + .option.success {
+  background: var(--background-success);
 }

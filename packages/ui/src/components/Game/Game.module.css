@@ -1,0 +1,29 @@
+@import '../../assets/styles/colors.css';
+@import '../../assets/styles/font-sizes.css';
+@import '../../assets/styles/fonts.css';
+@import '../../assets/styles/effects.css';
+
+.task {
+  text-align: center;
+  font-family: var(--font-kalam);
+  font-size: var(--font-size-l);
+}
+
+.question {
+  font-size: var(--font-size-m);
+}
+
+.answer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  margin: 40px auto;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

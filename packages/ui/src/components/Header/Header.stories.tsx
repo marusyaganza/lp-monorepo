@@ -1,6 +1,7 @@
 import React from 'react';
 import { Header, HeaderProps } from './Header';
 import '../../assets/styles/common-styles.css';
+import { withRouter } from 'storybook-addon-react-router-v6';
 
 export default {
   title: 'Header',
@@ -10,7 +11,8 @@ export default {
       control: { type: 'text' },
       defaultValue: 'prop text'
     }
-  }
+  },
+  decorators: [withRouter]
 };
 
 const navLinks = [

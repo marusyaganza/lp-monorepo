@@ -1,7 +1,8 @@
-import React, { useState, useCallback, ChangeEventHandler } from 'react';
+import React, { useCallback, ChangeEventHandler } from 'react';
 import { cn } from '../../utils/classnames';
 
 import styles from './OptionBox.module.css';
+import { DictionaryEntity } from '../DictionaryEntity/DictionaryEntity';
 
 export interface OptionBoxProps {
   options: string[];
@@ -11,7 +12,9 @@ export interface OptionBoxProps {
   value?: string;
   onChange: (val: string) => void;
   isDisabled?: boolean;
-  variant?: 'default' | 'success' | 'error';
+  variant?: 'initial' | 'success' | 'error';
+  correctOption?: string;
+  incorrectOption?: string;
 }
 /**Option box is a component based on HTML radio input */
 export const OptionBox = ({
@@ -20,14 +23,13 @@ export const OptionBox = ({
   onChange,
   value = '',
   isDisabled,
-  variant = 'default'
+  variant = 'initial',
+  correctOption,
+  incorrectOption
 }: OptionBoxProps) => {
-  const [currentValue, setCurrentValue] = useState(value);
-
   const handleChange: ChangeEventHandler<HTMLInputElement> = useCallback(
     e => {
       const val = e.target.value;
-      setCurrentValue(e.target.value);
       onChange(val);
     },
     [onChange]
@@ -36,6 +38,13 @@ export const OptionBox = ({
   return (
     <div className={cn(className, styles.container)}>
       {options.map(option => {
+        let style;
+        if (correctOption === option) {
+          style = 'success';
+        }
+        if (variant === 'error' && incorrectOption === option) {
+          style = 'error';
+        }
         return (
           <label key={option} className={styles.optionContainer}>
             <input
@@ -44,9 +53,11 @@ export const OptionBox = ({
               onChange={handleChange}
               type="radio"
               value={option}
-              checked={option === currentValue}
+              checked={option === value}
             />
-            <div className={cn(styles.option, styles[variant])}>{option}</div>
+            <div className={cn(styles.option, style && styles[style])}>
+              <DictionaryEntity text={option} />
+            </div>
           </label>
         );
       })}

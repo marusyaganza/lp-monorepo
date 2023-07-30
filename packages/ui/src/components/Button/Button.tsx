@@ -1,4 +1,4 @@
-import React, { MouseEventHandler, PropsWithChildren } from 'react';
+import React, { MouseEventHandler, PropsWithChildren, forwardRef } from 'react';
 import { cn } from '../../utils/classnames';
 import { Icon, IconIdType } from '../Icon/icon';
 import { Spinner } from '../Spinner/Spinner';
@@ -39,69 +39,81 @@ export interface ButtonProps {
   isActionButton?: boolean;
   /**shape of the icon button */
   shape?: 'circle' | 'rectangular';
+  autoFocus?: boolean;
 }
 /**
  *
  * Button component
  */
-export const Button = ({
-  children,
-  type = 'button',
-  className,
-  disabled,
-  variant = 'primary',
-  size = 'S',
-  iconId,
-  iconHeight = 16,
-  iconWidth = 16,
-  isLoading,
-  isActionButton,
-  shape = 'circle',
-  ...rest
-}: PropsWithChildren<ButtonProps>) => {
-  const isIconButton = iconId && variant === 'icon';
+export const Button = forwardRef<
+  HTMLButtonElement,
+  PropsWithChildren<ButtonProps>
+>(
+  (
+    {
+      children,
+      type = 'button',
+      className,
+      disabled,
+      variant = 'primary',
+      size = 'S',
+      iconId,
+      iconHeight = 16,
+      iconWidth = 16,
+      isLoading,
+      isActionButton,
+      shape = 'circle',
+      ...rest
+    },
+    ref
+  ) => {
+    const isIconButton = iconId && variant === 'icon';
 
-  let iconButtonStyle;
+    let iconButtonStyle;
 
-  if (isIconButton && (iconHeight || iconWidth)) {
-    if (isIconButton && (iconHeight || iconWidth) && shape === 'circle') {
-      const size = Math.max(iconHeight, iconWidth);
-      iconButtonStyle = { height: size, width: size };
+    if (isIconButton && (iconHeight || iconWidth)) {
+      if (isIconButton && (iconHeight || iconWidth) && shape === 'circle') {
+        const size = Math.max(iconHeight, iconWidth);
+        iconButtonStyle = { height: size, width: size };
+      }
     }
-  }
 
-  return (
-    <button
-      style={iconButtonStyle}
-      type={type}
-      disabled={disabled || isLoading}
-      className={cn(
-        className,
-        styles.button,
-        styles[variant],
-        styles[`size${size}`],
-        disabled ? styles.disabled : '',
-        isActionButton ? styles.actionButton : ''
-      )}
-      {...rest}
-    >
-      {isLoading && !isIconButton && (
-        <Spinner
-          className={styles.formSpinner}
-          size={isActionButton ? 'S' : 'M'}
-          variant={
-            variant === 'secondary' || variant === 'tertiary'
-              ? 'primary'
-              : 'secondary'
-          }
-        />
-      )}
-      <div className={cn(isLoading ? styles.loadingButtonText : '')}>
-        <span hidden={isIconButton}>{children}</span>
-      </div>
-      {iconId && !isLoading && (
-        <Icon height={iconHeight} width={iconWidth} id={iconId} />
-      )}
-    </button>
-  );
-};
+    return (
+      <button
+        ref={ref}
+        style={iconButtonStyle}
+        type={type}
+        disabled={disabled || isLoading}
+        className={cn(
+          className,
+          styles.button,
+          styles[variant],
+          styles[`size${size}`],
+          disabled ? styles.disabled : '',
+          isActionButton ? styles.actionButton : ''
+        )}
+        {...rest}
+      >
+        {isLoading && !isIconButton && (
+          <Spinner
+            className={styles.formSpinner}
+            size={isActionButton ? 'S' : 'M'}
+            variant={
+              variant === 'secondary' || variant === 'tertiary'
+                ? 'primary'
+                : 'secondary'
+            }
+          />
+        )}
+        <div className={cn(isLoading ? styles.loadingButtonText : '')}>
+          <span hidden={isIconButton}>{children}</span>
+        </div>
+        {iconId && !isLoading && (
+          <Icon height={iconHeight} width={iconWidth} id={iconId} />
+        )}
+      </button>
+    );
+  }
+);
+
+Button.displayName = 'Button';

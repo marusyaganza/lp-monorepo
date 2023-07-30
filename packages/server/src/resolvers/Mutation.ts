@@ -43,7 +43,7 @@ export const MutationResolvers: MutationResolversType<ResolverContext> = {
   saveGameResult: authorized(
     Role.Member,
     async (_, { input }, { models, user }) => {
-      const { ok } = await models.Word.updateMany(input, user?.id);
+      const { ok } = await models.Word.updateStatistics(input, user?.id);
       if (!ok) {
         throw new UserInputError(`saving training result failed`);
       }
