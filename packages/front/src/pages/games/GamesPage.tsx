@@ -33,7 +33,10 @@ const GamesPage = () => {
             }
             return (
               <li key={game.id}>
-                <GameCard game={game} linkUrl={`/${routes.games}/${game.id}`} />
+                <GameCard
+                  game={game}
+                  linkUrl={`/${routes.games}/${game.type?.toLocaleLowerCase()}`}
+                />
               </li>
             );
           })}

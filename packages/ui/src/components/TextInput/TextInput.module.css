@@ -1,0 +1,35 @@
+@import '../../assets/styles/colors.css';
+@import '../../assets/styles/font-sizes.css';
+@import '../../assets/styles/fonts.css';
+@import '../../assets/styles/effects.css';
+
+.inputWrapper {
+  height: 100%;
+  width: 400px;
+  display: flex;
+}
+
+.input {
+  width: 400px;
+  padding: 13px 16px;
+  background: var(--neutral-100);
+  font-size: var(--font-size-xs);
+  box-sizing: border-box;
+  border: 1px solid var(--neutral-600);
+  box-shadow: var(--secondary-box-shadow);
+}
+
+.input:focus {
+  outline: none;
+  border: 1px solid var(--neutral-800);
+}
+
+.error {
+  background: var(--background-danger);
+  border: 1px solid var(--error-300);
+}
+
+.success {
+  background: var(--background-success);
+  border: 1px solid var(--success-300);
+}

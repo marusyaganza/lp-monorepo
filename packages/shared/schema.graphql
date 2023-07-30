@@ -51,10 +51,9 @@ type WordTag {
 }
 
 type WordStatistics {
-  lastTimePracticed: String
+  lastTimePracticed: Int
   practicedTimes: Int
-  answeredCorrectly: Int
-  errorsCount: Int
+  errorCount: Int
 }
 
 type Word {
@@ -206,16 +205,9 @@ input GameDataInput {
   language: Language
 }
 
-input WordStatisticsInput {
-  lastTimePracticed: String
-  practicedTimes: Int
-  answeredCorrectly: Int
-  errorsCount: Int
-}
-
 input UpdateStatisticsInput {
   id: ID!
-  statistics: WordStatisticsInput
+  hasError: Boolean!
 }
 
 type Query {

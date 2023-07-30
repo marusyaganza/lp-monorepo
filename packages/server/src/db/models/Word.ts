@@ -1,5 +1,9 @@
 import { Word } from '../schema/Word';
-import { Word as WordType, NewWordInput } from '../../generated/graphql';
+import {
+  Word as WordType,
+  NewWordInput,
+  UpdateStatisticsInput
+} from '../../generated/graphql';
 import { formatFilter, formatData } from '../helpers';
 
 export interface WordModelType {
@@ -17,6 +21,10 @@ export interface WordModelType {
     id: string;
     user?: string;
   }) => Promise<{ ok: boolean }>;
+  updateStatistics: (
+    data: UpdateStatisticsInput[],
+    user?: string
+  ) => Promise<{ ok: boolean }>;
 }
 
 export const WordModel: WordModelType = {
@@ -62,6 +70,7 @@ export const WordModel: WordModelType = {
     return { ok: isOk, value: formatData(value) };
   },
 
+  // This method do not have a practical use for now
   async updateMany(data, user) {
     let isOk = true;
     data.forEach(async entry => {
@@ -74,6 +83,35 @@ export const WordModel: WordModelType = {
       isOk = isOk && ok == 1 && value !== null;
     });
 
+    return { ok: isOk };
+  },
+
+  async updateStatistics(data) {
+    let isOk = true;
+    data.forEach(async entry => {
+      try {
+        const word = await Word.findById(entry.id);
+        if (!word) {
+          isOk = false;
+          return;
+        }
+        const statistics = word?.statistics;
+        const newStatistics = {
+          practicedTimes: 1,
+          errorCount: entry.hasError ? 1 : 0,
+          lastTimePracticed: Date.now()
+        };
+        if (statistics?.practicedTimes && statistics?.errorCount) {
+          newStatistics.practicedTimes += statistics.practicedTimes;
+          newStatistics.errorCount += statistics.errorCount;
+        }
+        word.statistics = newStatistics;
+        await word.save();
+      } catch (err) {
+        console.error('saving statisticks failed', err);
+        isOk = false;
+      }
+    });
     return { ok: isOk };
   },
 

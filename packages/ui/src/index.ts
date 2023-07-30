@@ -52,3 +52,6 @@ export * from './components/GameCard/GameCard';
 export * from './components/GameFooter/GameFooter';
 export * from './components/OptionBox/OptionBox';
 export * from './components/Progress/Progress';
+export * from './components/Game/Game';
+export * from './components/TextInput/TextInput';
+export * from './components/GameResult/GameResult';

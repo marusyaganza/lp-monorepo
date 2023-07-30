@@ -40,3 +40,9 @@ export const UPDATE_WORD = gql`
     }
   }
 `;
+
+export const SAVE_GAME_RESULT = gql`
+  mutation SaveGameResult($input: [UpdateStatisticsInput!]) {
+    saveGameResult(input: $input)
+  }
+`;

@@ -95,6 +95,22 @@ export const GAMES = gql`
       imgUrl
       name
       id
+      type
+    }
+  }
+`;
+
+export const GAME = gql`
+  query Game($input: GameDataInput!) {
+    game(input: $input) {
+      questions {
+        wordId
+        question
+        options
+        answer
+      }
+      task
+      type
     }
   }
 `;
