@@ -36,7 +36,7 @@ export * from './components/WordCard/WordCard';
 export * from './utils/validators';
 export * from './components/Notification/Notification';
 export * from './components/CardWrapper/CardWrapper';
-export * from './components/Select/Select';
+export * from './components/Select/useSelect';
 export * from './components/LanguageSelector/LanguageSelector';
 export * from './components/HeaderV2/HeaderV2';
 export * from './components/UserMenu/UserMenu';

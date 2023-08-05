@@ -24,7 +24,9 @@ export type IconIdType =
   | 'arrow-left'
   | 'pointer'
   | 'plus'
-  | 'minus';
+  | 'minus'
+  | 'desc'
+  | 'asc';
 
 export type IconProps = {
   width?: number;
@@ -58,7 +60,9 @@ export const _iconIds: IconIdType[] = [
   'arrow-left',
   'pointer',
   'plus',
-  'minus'
+  'minus',
+  'asc',
+  'desc'
 ];
 
 export const Icon = ({ width, height, id, tooltip, className }: IconProps) => {

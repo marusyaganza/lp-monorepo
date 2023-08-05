@@ -7,7 +7,7 @@ import { GameConfig } from '../../generated/graphql';
 
 export interface GameCardProps {
   /**GameCard prop */
-  game: Omit<GameConfig, 'wordsPerGame' | 'optionsPerGame'>;
+  game: Omit<GameConfig, 'wordsPerGame' | 'optionsPerGame' | 'minWords'>;
   /**additional styling */
   linkUrl: string;
   className?: string;

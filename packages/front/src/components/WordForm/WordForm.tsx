@@ -1,10 +1,4 @@
-import React, {
-  FormEventHandler,
-  useContext,
-  useState,
-  useEffect,
-  FC
-} from 'react';
+import React, { FormEventHandler, useContext, useState, FC } from 'react';
 import {
   Button,
   DefinitionInputProps,
@@ -92,6 +86,7 @@ export function WordForm<T extends Record<string, unknown>>({
           key={name}
           withTranslation={name === 'defs' && language === Language.Spanish}
           name={name}
+          // @ts-ignore
           label={label || name}
           isDisabled={isDisabled}
           // @ts-ignore

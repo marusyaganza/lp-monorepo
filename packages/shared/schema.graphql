@@ -25,6 +25,12 @@ enum Game {
   SELECT_DEF
 }
 
+enum SortBy {
+  lastTimePracticed
+  practicedTimes
+  errorCount
+}
+
 type User {
   email: String!
   firstName: String!
@@ -118,6 +124,11 @@ type GameConfig {
   type: Game!
   wordsPerGame: Int!
   optionsPerGame: Int!
+  minWords: Int!
+}
+
+type GameQuestionAdditionalInfo {
+  audioUrl: String
 }
 
 type GameQuestion {
@@ -125,6 +136,7 @@ type GameQuestion {
   options: [String]
   answer: String!
   wordId: ID!
+  additionalInfo: GameQuestionAdditionalInfo
 }
 
 type GameData {
@@ -202,6 +214,8 @@ input WordSearchInput {
 
 input GameDataInput {
   gameType: Game!
+  sortBy: SortBy
+  isReverseOrder: Boolean
   language: Language
 }
 

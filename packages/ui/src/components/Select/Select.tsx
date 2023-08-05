@@ -18,13 +18,17 @@ export interface SelectProps<T extends string> {
   placement?: 'right' | 'left';
   /**a handler that renders current value */
   renderValue?: (value?: T) => ReactNode;
+  renderIcon?: () => ReactNode;
+  size?: 'S' | 'M';
 }
 
 export const Select = function <T extends string>({
   children,
   value,
   renderValue,
-  placement = 'right'
+  placement = 'right',
+  renderIcon,
+  size = 'S'
 }: PropsWithChildren<SelectProps<T>>) {
   const [isOpen, setIsOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -50,17 +54,29 @@ export const Select = function <T extends string>({
 
   return (
     <div ref={ref} className={styles.container}>
-      <button
-        type="button"
-        className={styles.select}
-        onClick={() => {
-          setIsOpen(curr => !curr);
-        }}
-      >
-        {renderValue ? renderValue(value) : value}
-      </button>
+      <div className={cn(styles.currentValue, styles[`size${size}`])}>
+        <button
+          type="button"
+          className={styles.select}
+          onClick={() => {
+            setIsOpen(curr => !curr);
+          }}
+        >
+          {renderValue ? renderValue(value) : value}
+        </button>
+        {renderIcon && renderIcon()}
+      </div>
+
       {isOpen && (
-        <ul className={cn(styles.options, styles[placement])}>{children}</ul>
+        <ul
+          className={cn(
+            styles.options,
+            styles[placement],
+            styles[`size${size}`]
+          )}
+        >
+          {children}
+        </ul>
       )}
     </div>
   );

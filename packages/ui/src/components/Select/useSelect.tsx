@@ -19,13 +19,11 @@ export function useSelect<T extends string>({
   const [currentValue, setCurrentValue] = useState<T>();
 
   const handleChange = useCallback(
-    (val?: T) => {
-      if (val) {
-        if (onChange) {
-          onChange(val);
-        }
-        setCurrentValue(val);
+    (val: T) => {
+      if (onChange) {
+        onChange(val);
       }
+      setCurrentValue(val);
     },
     [onChange]
   );

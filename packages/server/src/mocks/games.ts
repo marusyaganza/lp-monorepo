@@ -13,6 +13,7 @@ export const games: GameConfig[] = [
     id: 'audio',
     type: Game.Audio,
     wordsPerGame: 6,
+    minWords: 1,
     optionsPerGame: 0
   },
   {
@@ -22,6 +23,7 @@ export const games: GameConfig[] = [
     id: 'select_definition',
     type: Game.SelectDef,
     wordsPerGame: 6,
+    minWords: 5,
     optionsPerGame: 6
   },
   {
@@ -31,6 +33,7 @@ export const games: GameConfig[] = [
     id: 'select_word',
     type: Game.SelectWord,
     wordsPerGame: 6,
+    minWords: 5,
     optionsPerGame: 6
   },
   {
@@ -40,6 +43,7 @@ export const games: GameConfig[] = [
     id: 'type_word',
     type: Game.TypeWord,
     wordsPerGame: 6,
+    minWords: 1,
     optionsPerGame: 0
   }
   // {
