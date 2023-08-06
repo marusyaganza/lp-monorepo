@@ -4,7 +4,19 @@
 }
 
 .pageTitle {
-  margin: 40px auto;
+  margin: 0;
+  margin-top: 100px;
   text-align: center;
   font-size: var(--font-size-xl);
+}
+
+.selectValue {
+  padding: 8px;
+  width: 200px;
+  margin: 0;
+}
+
+/* temporary placement of the sorting controls */
+.temporary {
+  margin: 40px 79px;
 }

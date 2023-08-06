@@ -108,6 +108,9 @@ export const GAME = gql`
         question
         options
         answer
+        additionalInfo {
+          audioUrl
+        }
       }
       task
       type

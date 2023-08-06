@@ -2,13 +2,18 @@ import { Word } from '../schema/Word';
 import {
   Word as WordType,
   NewWordInput,
-  UpdateStatisticsInput
+  UpdateStatisticsInput,
+  GameDataInput,
+  Language
 } from '../../generated/graphql';
 import { formatFilter, formatData } from '../helpers';
 
 export interface WordModelType {
   findOne: (filter: Partial<WordType>) => Promise<WordType | null>;
   findMany: (filter: Partial<WordType>) => Promise<WordType[] | null>;
+  findManyAndSort: (
+    filter: Required<GameDataInput & { user?: string }>
+  ) => Promise<WordType[] | null>;
   createOne: (fields: NewWordInput) => Promise<WordType | null>;
   updateOne: (
     fields: Partial<WordType> & Pick<WordType, 'id' | 'user'>
@@ -41,6 +46,28 @@ export const WordModel: WordModelType = {
       return [];
     }
     const words = await Word.find(formatFilter(filter));
+    return words;
+  },
+
+  // Check if criteria is defined, if so => sort by criteria, else use natural sorting
+  async findManyAndSort(filter) {
+    const {
+      user,
+      language = Language.English,
+      sortBy,
+      isReverseOrder
+    } = filter;
+    if (!user) {
+      return [];
+    }
+    const orderNum = isReverseOrder ? -1 : 1;
+    let sort: Record<string, number> = { $natural: orderNum };
+    if (sortBy) {
+      const propName = `statistics.${sortBy}`;
+      sort = { [propName]: orderNum };
+    }
+    // @ts-ignore
+    const words = await Word.find({ user, language }).sort(sort);
     return words;
   },
 

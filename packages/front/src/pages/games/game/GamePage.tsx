@@ -1,9 +1,10 @@
 import React, { useMemo, useEffect, useContext, useReducer } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
 import {
   useGameLazyQuery,
   Game as GameType,
-  useSaveGameResultMutation
+  useSaveGameResultMutation,
+  SortBy
 } from '../../../generated/graphql';
 import { routes } from '../../../../constants/routes';
 import { GameFooter, Progress, GameResult, Button, Game } from '@lp/ui';
@@ -22,6 +23,20 @@ const GamePage = () => {
 
   const { setNotification, language, userId } = useContext(AppContext);
   const [state, dispatch] = useReducer(gameReducer, initialState);
+
+  const [searchParams] = useSearchParams();
+
+  const sortBy = useMemo(() => {
+    const param = searchParams.get('sortBy');
+    return Object.values(SortBy).includes(param as SortBy)
+      ? (param as SortBy)
+      : null;
+  }, [searchParams]);
+
+  const isReverseOrder = useMemo(
+    () => searchParams.get('isReverseOrder') === 'true',
+    [searchParams]
+  );
 
   const gameId = useMemo(() => params.gameId?.toUpperCase(), [params]);
   const questions = useMemo(
@@ -50,7 +65,14 @@ const GamePage = () => {
       );
       if (isExistingGame) {
         fetchGameData({
-          variables: { input: { gameType: gameId as GameType, language } }
+          variables: {
+            input: {
+              gameType: gameId as GameType,
+              language,
+              sortBy,
+              isReverseOrder
+            }
+          }
         });
       } else {
         setNotification({
@@ -147,6 +169,7 @@ const GamePage = () => {
             {data && !isCompleted && (
               <Game
                 currentResult={state.currentResult}
+                additionalInfo={questions?.[state.currentIndex]?.additionalInfo}
                 type={data.game.type}
                 onSubmit={handlerSubmit}
                 question={questions?.[state.currentIndex].question as string[]}

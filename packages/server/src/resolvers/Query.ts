@@ -42,24 +42,35 @@ export const QueryResolvers: QueryResolversType<ResolverContext> = {
   }),
   game: authenticated(
     async (_, { input }, { models, user, generateGameData, games }) => {
-      const { language = Language.English, gameType } = input;
+      const {
+        language = Language.English,
+        gameType,
+        sortBy,
+        isReverseOrder
+      } = input;
       const config = games.find(game => game.type === gameType);
 
       if (!config) {
         throw new OperationResolutionError(`game not found`);
       }
 
-      const wordsPerGame = config?.wordsPerGame;
+      const minWords = config?.minWords;
 
-      const words = await models.Word.findMany({ user: user?.id, language });
-
+      // @ts-ignore
+      const words = await models.Word.findManyAndSort({
+        // @ts-ignore
+        user: user?.id,
+        language,
+        sortBy,
+        isReverseOrder
+      });
       if (!words) {
         throw new OperationResolutionError(`words not found`);
       }
 
-      if (!wordsPerGame || words.length < wordsPerGame) {
+      if (!minWords || words.length < minWords) {
         throw new OperationResolutionError(
-          `not enough words to start a game. You have ${words.length} word. Words requited for the game: ${wordsPerGame}`
+          `not enough words to start a game. You have ${words.length} word. Words requited for the game: ${minWords}`
         );
       }
 

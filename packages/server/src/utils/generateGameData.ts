@@ -12,11 +12,21 @@ const tasks = {
   [Game.Audio]: "Type the word that you've heard",
   [Game.SelectDef]: 'Select a definition that means ',
   [Game.SelectWord]: 'Select a word that means ',
-  [Game.TypeWord]: 'Select a word that means '
+  [Game.TypeWord]: 'Type a word that means '
 };
 
 export function generateRandomNumber(limit: number) {
   return Math.floor(Math.random() * limit);
+}
+
+/**Replaces word's `name` in `def` with `[...]` block
+ * required to exclude the answer from the question
+ */
+export function prepareDef(def: string, name: string): string {
+  return def
+    .split(' ')
+    .filter(word => word !== name)
+    .join(' ');
 }
 
 export function generateOptions(
@@ -77,11 +87,14 @@ export const generateGameData: GenerateGameDataFuncType = (
   const words = wordsCandidates.slice(0, wordsPerGame);
   if (gameType === Game.TypeWord) {
     questions = words.map(word => {
-      const { name, shortDef, id } = word;
+      const { name, shortDef, id, audioUrl } = word;
       return {
         answer: name,
         wordId: id,
-        question: shortDef
+        question: shortDef,
+        additionalInfo: {
+          audioUrl
+        }
       };
     });
   }
@@ -99,23 +112,28 @@ export const generateGameData: GenerateGameDataFuncType = (
   //TODO create 'find all defs' game to train the words with multiple definitions
   if (gameType === Game.SelectDef) {
     questions = words.map(word => {
-      const { name, shortDef, id } = word;
+      const { name, shortDef, id, audioUrl } = word;
       const opts = generateOptions(data, optionsPerGame - 1, id);
-      const options = opts.map(opt => opt.shortDef[0]) as string[];
-      const answer = shortDef[0] as string;
+      const options = opts.map(opt =>
+        prepareDef(opt.shortDef[0] as string, name)
+      );
+      const answer = prepareDef(shortDef[0] as string, name);
       return {
         //TODO: filter the words so only ones with single definition will remain
         answer,
         question: [name],
         wordId: id,
-        options: insertAnswer(options, answer)
+        options: insertAnswer(options, answer),
+        additionalInfo: {
+          audioUrl
+        }
       };
     });
   }
 
   if (gameType === Game.SelectWord) {
     questions = words.map(word => {
-      const { name, shortDef, id } = word;
+      const { name, shortDef, id, audioUrl } = word;
       const opts = generateOptions(data, optionsPerGame - 1, id);
       const options = opts.map(opt => opt.name);
       const answer = name;
@@ -123,7 +141,10 @@ export const generateGameData: GenerateGameDataFuncType = (
         answer,
         question: shortDef,
         wordId: id,
-        options: insertAnswer(options, answer)
+        options: insertAnswer(options, answer),
+        additionalInfo: {
+          audioUrl
+        }
       };
     });
   }

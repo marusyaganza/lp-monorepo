@@ -9,7 +9,7 @@ export interface OptionProps<T extends string> {
   /**additional styling */
   className?: string;
   isChecked: boolean;
-  onChange: (value?: T) => void;
+  onChange: (value: T) => void;
 }
 
 /**Custom option component that based on HTML radio input */
@@ -22,9 +22,7 @@ export const Option = function <T extends string>({
 }: PropsWithChildren<OptionProps<T>>) {
   const handleCahnge: ChangeEventHandler<HTMLInputElement> = e => {
     const val = e?.target?.value as T;
-    if (val) {
-      onChange(val);
-    }
+    onChange(val);
   };
 
   return (

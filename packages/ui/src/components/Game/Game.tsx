@@ -6,7 +6,10 @@ import React, {
   useEffect
 } from 'react';
 import { cn } from '../../utils/classnames';
-import { GameData, Game as GameType } from '../../generated/graphql';
+import {
+  GameQuestionAdditionalInfo,
+  Game as GameType
+} from '../../generated/graphql';
 import { AudioButton } from '../AudioButton/AudioButton';
 import { Button } from '../Button/Button';
 import { TextInput } from '../TextInput/TextInput';
@@ -19,6 +22,7 @@ export interface GameProps {
   question: string[];
   options?: string[];
   type: GameType;
+  additionalInfo?: GameQuestionAdditionalInfo | null;
   onSubmit: (value: string) => void;
   /**additional styling */
   className?: string;
@@ -38,6 +42,7 @@ export const Game = ({
   type,
   onSubmit,
   currentResult,
+  additionalInfo,
   onNext
 }: GameProps) => {
   const [value, setValue] = useState('');
@@ -86,12 +91,18 @@ export const Game = ({
         </div>
       );
     }
+    const hasAudioButton =
+      additionalInfo?.audioUrl &&
+      (type === GameType.SelectDef || currentStage !== 'initial');
     return (
-      <div>
-        {question.map(entry => {
+      <div className={styles.questionContainer}>
+        {question.map((entry, i) => {
           return (
             <p key={entry} className={styles.question}>
               <DictionaryEntity text={entry} />
+              {hasAudioButton && i === 0 && (
+                <AudioButton src={additionalInfo?.audioUrl || ''} autoplay />
+              )}
             </p>
           );
         })}
