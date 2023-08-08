@@ -16,6 +16,7 @@ import { TextInput } from '../TextInput/TextInput';
 import styles from './Game.module.css';
 import { OptionBox } from '../OptionBox/OptionBox';
 import { DictionaryEntity } from '../DictionaryEntity/DictionaryEntity';
+import { Icon } from '../Icon/icon';
 
 export interface GameProps {
   task: string;
@@ -27,9 +28,9 @@ export interface GameProps {
   /**additional styling */
   className?: string;
   currentResult?: {
-    type: 'initial' | 'success' | 'error';
-    correctOption?: string;
-    incorrectOption?: string;
+    type?: 'initial' | 'success' | 'error';
+    correctAnswer?: string;
+    incorrectAnswer?: string;
   };
   onNext: () => void;
 }
@@ -91,24 +92,45 @@ export const Game = ({
         </div>
       );
     }
-    const hasAudioButton =
-      additionalInfo?.audioUrl &&
-      (type === GameType.SelectDef || currentStage !== 'initial');
+    if (question.length === 1) {
+      return <p className={styles.question}>{question[0]}</p>;
+    }
     return (
       <div className={styles.questionContainer}>
-        {question.map((entry, i) => {
+        {question.map(entry => {
           return (
             <p key={entry} className={styles.question}>
+              <Icon
+                className={styles.listIcon}
+                width={20}
+                height={20}
+                id="comet"
+              />
               <DictionaryEntity text={entry} />
-              {hasAudioButton && i === 0 && (
-                <AudioButton src={additionalInfo?.audioUrl || ''} autoplay />
-              )}
             </p>
           );
         })}
       </div>
     );
   };
+  const renderAudioButton = () => {
+    const hasAudioButton =
+      additionalInfo?.audioUrl &&
+      (type === GameType.SelectDef ||
+        (currentStage !== 'initial' && type !== GameType.Audio));
+    return (
+      hasAudioButton && (
+        <AudioButton
+          iconHeight={24}
+          iconWidth={24}
+          className={styles.additionalAudio}
+          src={additionalInfo?.audioUrl || ''}
+          autoplay
+        />
+      )
+    );
+  };
+
   const renderInput = () => {
     if (type === GameType.Audio || type === GameType.TypeWord) {
       return (
@@ -125,11 +147,12 @@ export const Game = ({
     if (options?.length) {
       return (
         <OptionBox
+          ref={inputRef}
           value={value}
           isDisabled={currentStage !== 'initial'}
           variant={currentStage}
-          correctOption={currentResult?.correctOption}
-          incorrectOption={currentResult?.incorrectOption}
+          correctOption={currentResult?.correctAnswer}
+          incorrectOption={currentResult?.incorrectAnswer}
           options={options}
           onChange={handleChange}
         />
@@ -138,22 +161,42 @@ export const Game = ({
     return <p>Game is not found</p>;
   };
 
-  return (
-    <article className={cn(styles.container, className)}>
-      <p className={styles.task}>{task}</p>
-      {renderQuestion()}
-      <form className={styles.answer} onSubmit={handleSubmit}>
-        {renderInput()}
-        {currentStage === 'initial' ? (
-          <Button disabled={!value} type="submit" variant="secondary">
-            Check
-          </Button>
-        ) : (
-          <Button ref={buttonRef} autoFocus onClick={handleNext}>
-            Continue
-          </Button>
+  const renderCorrectAnswer = () => {
+    const answeredCorrectly =
+      !currentResult?.incorrectAnswer || currentStage === 'initial';
+    return (
+      <span
+        className={cn(
+          styles.correctAnswer,
+          answeredCorrectly ? styles.hidden : ''
         )}
-      </form>
-    </article>
+      >
+        {!answeredCorrectly && currentResult?.correctAnswer}
+      </span>
+    );
+  };
+
+  return (
+    <div className={styles.gameContainer}>
+      {!options?.length && renderCorrectAnswer()}
+      <article className={cn(styles.container, className)}>
+        <p className={styles.task}>
+          {task} {renderAudioButton()}
+        </p>
+        {renderQuestion()}
+        <form className={styles.answer} onSubmit={handleSubmit}>
+          {renderInput()}
+          {currentStage === 'initial' ? (
+            <Button disabled={!value} type="submit" variant="secondary">
+              Check
+            </Button>
+          ) : (
+            <Button ref={buttonRef} autoFocus onClick={handleNext}>
+              Continue
+            </Button>
+          )}
+        </form>
+      </article>
+    </div>
   );
 };

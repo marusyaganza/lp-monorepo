@@ -6,6 +6,8 @@ import React, {
   PropsWithChildren
 } from 'react';
 
+import { Icon } from '../Icon/icon';
+
 import styles from './Select.module.css';
 import { cn } from '../../utils/classnames';
 
@@ -18,8 +20,8 @@ export interface SelectProps<T extends string> {
   placement?: 'right' | 'left';
   /**a handler that renders current value */
   renderValue?: (value?: T) => ReactNode;
-  renderIcon?: () => ReactNode;
   size?: 'S' | 'M';
+  variant?: 'withIcon';
 }
 
 export const Select = function <T extends string>({
@@ -27,8 +29,9 @@ export const Select = function <T extends string>({
   value,
   renderValue,
   placement = 'right',
-  renderIcon,
-  size = 'S'
+  variant,
+  size = 'S',
+  className
 }: PropsWithChildren<SelectProps<T>>) {
   const [isOpen, setIsOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -53,18 +56,20 @@ export const Select = function <T extends string>({
   }, [isOpen]);
 
   return (
-    <div ref={ref} className={styles.container}>
+    <div ref={ref} className={cn(styles.container, className)}>
       <div className={cn(styles.currentValue, styles[`size${size}`])}>
         <button
           type="button"
-          className={styles.select}
+          className={cn(styles.select, variant ? styles[variant] : '')}
           onClick={() => {
             setIsOpen(curr => !curr);
           }}
         >
           {renderValue ? renderValue(value) : value}
+          {variant === 'withIcon' && (
+            <Icon height={14} width={24} id={isOpen ? 'up' : 'down'} />
+          )}
         </button>
-        {renderIcon && renderIcon()}
       </div>
 
       {isOpen && (

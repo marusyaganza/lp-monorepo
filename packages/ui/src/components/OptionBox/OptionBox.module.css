@@ -13,6 +13,7 @@
   position: relative;
   z-index: 1;
   width: 600px;
+  border: 1px solid transparent;
 }
 
 .option {
@@ -23,8 +24,8 @@
   box-shadow: var(--secondary-box-shadow);
 }
 
-.option:focus-within {
-  border: 2px solid var(--neutral-800);
+.optionContainer:focus-within {
+  border: 1px solid var(--neutral-800);
 }
 
 .hidden {

@@ -46,11 +46,11 @@ const messages = {
 };
 
 /**Game footer - displays current game results */
-export const GameFooter = ({
-  variant = 'initial',
-  className
-}: GameFooterProps) => {
+export const GameFooter = ({ variant, className }: GameFooterProps) => {
   const message = useMemo(() => {
+    if (!variant) {
+      return '';
+    }
     const texts = messages[variant];
     const index = Math.floor(Math.random() * texts.length);
     return texts[index];
@@ -58,8 +58,10 @@ export const GameFooter = ({
   const renderContent = () => {
     return (
       <section className={styles.resultContainer}>
-        <img className={styles.image} src={images[variant]} alt={variant} />
-        <p className={styles.message}>{message}</p>
+        {variant && (
+          <img className={styles.image} src={images[variant]} alt={variant} />
+        )}
+        {variant && <p className={styles.message}>{message}</p>}
       </section>
     );
   };

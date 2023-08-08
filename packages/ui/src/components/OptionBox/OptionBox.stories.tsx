@@ -23,7 +23,7 @@ const options = [
 ];
 
 export const OptionBoxDefault = (args: OptionBoxProps) => {
-  const [value, setValue] = useState('heart');
+  const [value, setValue] = useState('');
   return (
     <div className="presentationBox">
       <OptionBox

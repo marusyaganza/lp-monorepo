@@ -29,7 +29,7 @@ export const TextInputDefault = (args: TextInputProps) => {
 export const TextInputError = (args: TextInputProps) => {
   return (
     <div className="presentationBox">
-      <TextInput {...args} variant="error" />
+      <TextInput {...args} variant="error" isDisabled value="wrong" />
     </div>
   );
 };
@@ -37,7 +37,7 @@ export const TextInputError = (args: TextInputProps) => {
 export const TextInputSuccess = (args: TextInputProps) => {
   return (
     <div className="presentationBox">
-      <TextInput {...args} variant="success" />
+      <TextInput {...args} variant="success" value="right" isDisabled />
     </div>
   );
 };

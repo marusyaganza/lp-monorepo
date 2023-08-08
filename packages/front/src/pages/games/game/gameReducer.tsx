@@ -8,9 +8,9 @@ export interface GameState {
   currentIndex: number;
   isCompleted: boolean;
   currentResult: {
-    type: 'initial' | 'success' | 'error';
-    correctOption?: string;
-    incorrectOption?: string;
+    type?: 'initial' | 'success' | 'error';
+    correctAnswer?: string;
+    incorrectAnswer?: string;
   };
   resultData: {
     id: string;
@@ -71,14 +71,14 @@ export function gameReducer(
     if (answer === correctAnswer) {
       newState.currentResult = {
         type: 'success',
-        correctOption: correctAnswer
+        correctAnswer: correctAnswer
       };
       newState.resultData.push({ id, hasError: false });
     } else {
       newState.currentResult = {
         type: 'error',
-        correctOption: correctAnswer,
-        incorrectOption: answer
+        correctAnswer: correctAnswer,
+        incorrectAnswer: answer
       };
       newState.result.errorCount++;
       newState.resultData.push({ id, hasError: true });
@@ -93,7 +93,7 @@ export function gameReducer(
     } else {
       newState.currentIndex = state.currentIndex + 1;
     }
-    newState.currentResult = { type: 'initial' };
+    newState.currentResult = {};
     return newState;
   }
   return state;

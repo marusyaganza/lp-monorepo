@@ -20,7 +20,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
       onChange(val);
     };
     return (
-      <div className={(styles.inputWrapper, styles[variant])}>
+      <div className={cn(styles.inputWrapper, styles[variant])}>
         <input
           ref={ref}
           type="text"

@@ -192,7 +192,7 @@ const GamePage = () => {
           </main>
           <GameFooter
             className={styles.footer}
-            variant={state.currentResult.type}
+            variant={!state.isCompleted ? state.currentResult.type : 'success'}
           />
         </div>
       )}

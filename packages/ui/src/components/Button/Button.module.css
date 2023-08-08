@@ -6,23 +6,16 @@
 .button {
   font-family: var(--font-libreBaskerville);
   transition: 0.3s ease background-color;
-  box-shadow: var(--primary-box-shadow);
+  box-shadow: var(--secondary-box-shadow);
   border-radius: var(--primary-border-radius);
-  border: 0;
+  border: 2px solid transparent;
   cursor: pointer;
   position: relative;
 }
 
-.button:focus {
-  outline-width: 1px;
-  outline-style: solid;
-  outline-offset: 4px;
-  filter: blur(0.5px);
-}
-
 .sizeS {
-  padding: 10px 40px;
-  font-size: var(--font-size-xs);
+  padding: 10px 32px;
+  font-size: var(--font-size-xxs);
 }
 
 .primary {
@@ -40,17 +33,19 @@
 }
 
 .primary:focus {
-  outline-color: var(--primary-100);
+  background: var(--primary-400);
+  border: 2px solid var(--neutral-800);
 }
 
 .secondary {
   color: var(--text);
   background: var(--secondary-300);
-  border: 1px solid var(--neutral-800);
+  border: 1px solid var(--secondary-400);
 }
 
 .secondary:hover {
   background: var(--secondary-100);
+  border: 1px solid var(--neutral-700);
 }
 
 .secondary:active {
@@ -58,13 +53,13 @@
 }
 
 .secondary:focus {
-  outline-color: var(--neutral-800);
+  border: 2px solid var(--neutral-800);
 }
 
 .tertiary {
   color: var(--text);
   background: var(--neutral-100);
-  border: 1px solid var(--neutral-800);
+  border: 1px solid var(--neutral-700);
 }
 
 .tertiary:hover {
@@ -73,7 +68,7 @@
 
 .tertiary:focus {
   outline: none;
-  border: 2px solid var(--neutral-800);
+  border: 2px solid var(--text);
 }
 
 .button.tertiary.disabled {
@@ -85,27 +80,26 @@
 .danger {
   color: var(--text-inverted);
   background: var(--error-200);
-  border: 1px solid var(--neutral-800);
+  border: 1px solid var(--neutral-600);
 }
 
 .danger:hover {
   background: var(--error-300);
-  color: var(--neutral-100);
+  /* color: var(--neutral-100); */
 }
 
 .danger:focus {
-  outline-color: var(--error-300);
+  border: 2px solid var(--neutral-800);
 }
 
 .success {
   color: var(--text-inverted);
   background: var(--success-200);
-  border: 1px solid var(--neutral-700);
+  border: 1px solid var(--text);
 }
 
 .success:focus {
-  background: var(--success-100);
-  outline-color: var(--success-300);
+  border: 2px solid var(--text);
 }
 
 .success:hover {
@@ -134,7 +128,7 @@
 }
 
 .iconWithText:focus {
-  border: 2px solid var(--neutral-800);
+  border: 3px solid var(--neutral-800);
   outline: none;
 }
 
@@ -147,18 +141,23 @@
   border: 0;
   box-shadow: none;
   background-color: transparent;
+  padding: 4px;
 }
 
 .icon:focus {
-  outline-color: var(--neutral-700);
+  border: 1px solid var(--neutral-800);
 }
 
 .button.disabled {
   color: var(--neutral-700);
-  border: 3px solid var(--neutral-700);
-  background-color: var(--neutral-500);
+  border: 1px solid var(--neutral-700);
+  background-color: var(--neutral-400);
   cursor: not-allowed;
   outline: none;
+}
+
+.button.primary.button.disabled {
+  background: var(--neutral-500);
 }
 
 .formSpinner {

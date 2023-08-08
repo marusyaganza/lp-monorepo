@@ -3,17 +3,28 @@
 @import '../../assets/styles/fonts.css';
 @import '../../assets/styles/effects.css';
 
+.gameContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+}
+
 .task {
   text-align: center;
   font-family: var(--font-kalam);
   font-size: var(--font-size-l);
+  margin: 0 24px;
+  position: relative;
 }
 
 .question {
-  font-size: var(--font-size-m);
+  font-size: var(--font-size-s);
+  max-width: 600px;
   display: flex;
-  gap: 10px;
+  gap: 12px;
   align-items: center;
+  margin: 0;
 }
 
 .answer {
@@ -21,7 +32,7 @@
   flex-direction: column;
   align-items: center;
   gap: 40px;
-  margin: 40px auto;
+  margin: 0;
 }
 
 .container {
@@ -29,8 +40,37 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 38px;
+  gap: 40px;
 }
 
 .questionContainer {
-  max-width: 800px;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.correctAnswer {
+  height: 38px;
+  box-sizing: border-box;
+  padding: 8px;
+  color: var(--success-300);
+  border: 1px dashed var(--success-200);
+  margin: 0;
+}
+
+.correctAnswer.hidden {
+  opacity: 0;
+}
+
+.additionalAudio {
+  position: absolute;
+  top: 6px;
+  right: -28px;
+}
+
+.listIcon {
+  color: var(--secondary-500);
+  flex-shrink: 0;
 }
