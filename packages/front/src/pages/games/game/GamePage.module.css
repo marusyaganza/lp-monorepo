@@ -8,7 +8,6 @@
   display: flex;
   align-items: center;
   gap: 32px;
-  /* padding: 64px; */
   height: 130px;
   justify-content: center;
 }
@@ -20,7 +19,6 @@
   align-items: center;
   justify-content: center;
   gap: 40px;
-  /* max-height: calc(100% - 240px); */
 }
 
 .task {
@@ -40,8 +38,4 @@
   align-items: center;
   gap: 40px;
   margin: 40px auto;
-}
-
-.footer {
-  /* margin-top: 64px; */
 }

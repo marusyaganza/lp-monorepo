@@ -85,7 +85,6 @@
 
 .danger:hover {
   background: var(--error-300);
-  /* color: var(--neutral-100); */
 }
 
 .danger:focus {
@@ -137,11 +136,10 @@
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  padding: 0;
+  padding: 4px;
   border: 0;
   box-shadow: none;
   background-color: transparent;
-  padding: 4px;
 }
 
 .icon:focus {
