@@ -33,7 +33,10 @@ export const LanguageSelector = ({
   onChange,
   value
 }: LanguageSelectorProps) => {
-  const [{ Select, Option }] = useSelect<Language>({ onChange });
+  const { Select, Option } = useSelect<Language>({
+    onChange,
+    initialValue: value
+  });
   const renderOption = (lang: Language) => {
     return (
       <Option value={languages[lang].value} className={styles.option}>

@@ -59,3 +59,20 @@ export const CheckboxHidden = (args: CheckboxProps) => {
     </div>
   );
 };
+
+export const CheckboxWithIcon = (args: CheckboxProps) => {
+  return (
+    <div className="presentationBox">
+      <Checkbox
+        {...args}
+        name="default"
+        variant="withIcon"
+        iconId="desc"
+        label="mock label"
+        onChange={val => {
+          console.log(val);
+        }}
+      />
+    </div>
+  );
+};

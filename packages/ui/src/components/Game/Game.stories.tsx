@@ -18,7 +18,11 @@ const games = [
       'a circular frame of hard material that may be solid, partly solid, or spoked and that is capable of turning on an axle',
       'a contrivance or apparatus having as its principal part a wheel: such as',
       'a chiefly medieval instrument of torture designed for mutilating a victim (as by stretching or disjointing)'
-    ]
+    ],
+    additionalInfo: {
+      audioUrl:
+        'https://media.merriam-webster.com/audio/prons/en/us/mp3/w/wheel001.mp3'
+    }
   },
   {
     task: 'Select a word that means',
@@ -28,7 +32,11 @@ const games = [
       'a contrivance or apparatus having as its principal part a wheel: such as',
       'a chiefly medieval instrument of torture designed for mutilating a victim (as by stretching or disjointing)'
     ],
-    options: ['forefront', 'name', 'apple', 'wheel', 'pear', 'steep']
+    options: ['forefront', 'name', 'apple', 'wheel', 'pear', 'steep'],
+    additionalInfo: {
+      audioUrl:
+        'https://media.merriam-webster.com/audio/prons/en/us/mp3/w/wheel001.mp3'
+    }
   },
   {
     task: 'Select a definition that means',
@@ -41,7 +49,11 @@ const games = [
       'a brief authoritative formula of religious belief',
       'a circular frame of hard material that may be solid, partly solid, or spoked and that is capable of turning on an axle',
       'a cat or kitten : pussycat—used especially by children or when talking to children'
-    ]
+    ],
+    additionalInfo: {
+      audioUrl:
+        'https://media.merriam-webster.com/audio/prons/en/us/mp3/w/wheel001.mp3'
+    }
   }
 ];
 
@@ -63,6 +75,42 @@ export const GameDefault = (args: GameProps) =>
         <Game
           {...args}
           {...game}
+          onSubmit={val => {
+            console.log(val);
+          }}
+        />
+      </div>
+    );
+  });
+
+export const GameSuccess = (args: GameProps) =>
+  games.map(game => {
+    return (
+      <div key={game.type} className="presentationBox" style={{ width: 600 }}>
+        <Game
+          {...args}
+          {...game}
+          currentResult={{ type: 'success', correctAnswer: 'wheel' }}
+          onSubmit={val => {
+            console.log(val);
+          }}
+        />
+      </div>
+    );
+  });
+
+export const GameError = (args: GameProps) =>
+  games.map(game => {
+    return (
+      <div key={game.type} className="presentationBox" style={{ width: 600 }}>
+        <Game
+          {...args}
+          {...game}
+          currentResult={{
+            type: 'error',
+            correctAnswer: 'wheel',
+            incorrectAnswer: 'flower'
+          }}
           onSubmit={val => {
             console.log(val);
           }}

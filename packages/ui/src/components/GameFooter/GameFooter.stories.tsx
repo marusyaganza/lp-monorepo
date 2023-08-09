@@ -21,6 +21,14 @@ export const GameFooterDefault = (args: GameFooterProps) => {
   );
 };
 
+export const GameFooterInitial = (args: GameFooterProps) => {
+  return (
+    <div className="footer">
+      <GameFooter {...args} variant="initial" />
+    </div>
+  );
+};
+
 export const GameFooterSuccess = (args: GameFooterProps) => {
   return (
     <div className="footer">

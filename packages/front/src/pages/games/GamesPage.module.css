@@ -5,9 +5,8 @@
 
 .pageTitle {
   margin: 0;
-  margin-top: 100px;
   text-align: center;
-  font-size: var(--font-size-xl);
+  font-size: var(--font-size-l);
 }
 
 .selectValue {
@@ -16,7 +15,17 @@
   margin: 0;
 }
 
-/* temporary placement of the sorting controls */
-.temporary {
-  margin: 40px 79px;
+.topContainer {
+  display: flex;
+  margin: 100px 70px;
+  justify-content: space-between;
+}
+
+.orderControls {
+  display: flex;
+  gap: 8px;
+}
+
+.select {
+  width: 250px;
 }

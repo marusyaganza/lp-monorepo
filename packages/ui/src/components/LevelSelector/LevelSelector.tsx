@@ -18,7 +18,7 @@ export const LevelSelector = ({
     }
     return <span className={styles.level}>{level} </span>;
   };
-  const [{ Select, Option }] = useSelect<Level>({ onChange });
+  const { Select, Option } = useSelect<Level>({ onChange, initialValue });
 
   const levels = Object.keys(Level) as Level[];
 
