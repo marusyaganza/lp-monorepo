@@ -21,7 +21,7 @@ const httpLink = createHttpLink({
 
 const token = getUserData()?.token;
 
-const createAuthLink = (tkn: string | undefined) => {
+export const createAuthLink = (tkn: string | undefined) => {
   return setContext((_, { headers }) => {
     return {
       headers: {
@@ -33,7 +33,7 @@ const createAuthLink = (tkn: string | undefined) => {
 };
 
 // TODO clear cache when user logs out
-const client = new ApolloClient({
+export const client = new ApolloClient({
   link: createAuthLink(token),
   cache: new InMemoryCache()
 });

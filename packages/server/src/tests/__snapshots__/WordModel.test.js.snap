@@ -37,6 +37,28 @@ exports[`WordModel createOne 1`] = `
   "shortDef": [
     "aiming for equal wealth, status, etc., for all people",
   ],
+  "statistics": {
+    "AUDIO": {
+      "errorCount": 0,
+      "lastTimePracticed": 0,
+      "practicedTimes": 0,
+    },
+    "SELECT_DEF": {
+      "errorCount": 0,
+      "lastTimePracticed": 0,
+      "practicedTimes": 0,
+    },
+    "SELECT_WORD": {
+      "errorCount": 0,
+      "lastTimePracticed": 0,
+      "practicedTimes": 0,
+    },
+    "TYPE_WORD": {
+      "errorCount": 0,
+      "lastTimePracticed": 0,
+      "practicedTimes": 0,
+    },
+  },
   "stems": [
     "egalitarian",
     "egalitarianism",
@@ -91,6 +113,28 @@ exports[`WordModel findOne 1`] = `
   "shortDef": [
     "aiming for equal wealth, status, etc., for all people",
   ],
+  "statistics": {
+    "AUDIO": {
+      "errorCount": 0,
+      "lastTimePracticed": 0,
+      "practicedTimes": 0,
+    },
+    "SELECT_DEF": {
+      "errorCount": 0,
+      "lastTimePracticed": 0,
+      "practicedTimes": 0,
+    },
+    "SELECT_WORD": {
+      "errorCount": 0,
+      "lastTimePracticed": 0,
+      "practicedTimes": 0,
+    },
+    "TYPE_WORD": {
+      "errorCount": 0,
+      "lastTimePracticed": 0,
+      "practicedTimes": 0,
+    },
+  },
   "stems": [
     "egalitarian",
     "egalitarianism",
@@ -141,6 +185,28 @@ exports[`WordModel updateOne 1`] = `
   "shortDef": [
     "aiming for equal wealth, status, etc., for all people",
   ],
+  "statistics": {
+    "AUDIO": {
+      "errorCount": 0,
+      "lastTimePracticed": 0,
+      "practicedTimes": 0,
+    },
+    "SELECT_DEF": {
+      "errorCount": 0,
+      "lastTimePracticed": 0,
+      "practicedTimes": 0,
+    },
+    "SELECT_WORD": {
+      "errorCount": 0,
+      "lastTimePracticed": 0,
+      "practicedTimes": 0,
+    },
+    "TYPE_WORD": {
+      "errorCount": 0,
+      "lastTimePracticed": 0,
+      "practicedTimes": 0,
+    },
+  },
   "stems": [
     "egalitarian",
     "egalitarianism",

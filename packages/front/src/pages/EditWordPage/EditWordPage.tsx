@@ -18,7 +18,11 @@ import { cleanDefs, removeTypenames } from '../../util/wordUtils';
 
 const EditWordPage = () => {
   const { wordId } = useParams();
-  const [updateWordFunc, updateWordData] = useUpdateWordMutation();
+  const [updateWordFunc, updateWordData] = useUpdateWordMutation({
+    update(cache) {
+      cache.evict({ fieldName: 'game' });
+    }
+  });
   const [fetchWord, { loading, error, data }] = useLazyQuery(WORD_BY_ID_QUERY);
   const { setNotification, language } = useContext(AppContext);
 

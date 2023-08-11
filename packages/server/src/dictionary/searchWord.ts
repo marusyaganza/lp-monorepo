@@ -1,4 +1,4 @@
-import { DictionaryWordType } from './types';
+import { DictionaryWordType } from './dictionaryTypes';
 import { Language, SearchResult } from '../generated/graphql';
 import { formatData } from './formatData';
 

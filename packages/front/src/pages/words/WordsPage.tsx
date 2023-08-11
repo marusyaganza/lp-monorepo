@@ -9,7 +9,6 @@ import { WordCard, CardWrapper, Link } from '@lp/ui';
 
 import { PageLayout } from '../../components/PageLayout/PageLayout';
 import { AppContext } from '../../app-context/appContext';
-import { WORDS_QUERY } from '../../gql/queries';
 
 import styles from './WordsPage.module.css';
 import { routes } from '../../../constants/routes';
@@ -17,7 +16,12 @@ import { routes } from '../../../constants/routes';
 const WordsPage = () => {
   const [fetchWords, { loading, error, data }] = useWordsLazyQuery();
   const { setNotification, language } = useContext(AppContext);
-  const [deleteWordFunc, deleteWordData] = useDeleteWordMutation();
+  const [deleteWordFunc, deleteWordData] = useDeleteWordMutation({
+    update(cache) {
+      cache.evict({ fieldName: 'game' });
+      cache.evict({ fieldName: 'words' });
+    }
+  });
 
   // TODO ask 'are you sure' before deleting the word
   useEffect(() => {
@@ -69,15 +73,7 @@ const WordsPage = () => {
   const getDeleteWordHandler = (id: string) => {
     return function () {
       deleteWordFunc({
-        variables: { deleteWordId: id },
-        refetchQueries: () => [
-          {
-            query: WORDS_QUERY,
-            variables: {
-              language
-            }
-          }
-        ]
+        variables: { deleteWordId: id }
       });
     };
   };

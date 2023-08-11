@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect } from 'react';
 import { getUserData } from '../util/getUserData';
-
+import { client } from '../app';
 export type loginFuncType = (
   id: string,
   tokenString: string,
@@ -26,7 +26,6 @@ export const useAuth = () => {
       const tokenExpirationDate =
         expirationDate || new Date(TOKEN_EXPIRATION_PERIOD);
       setTokenExpDate(tokenExpirationDate);
-
       localStorage.setItem(
         'userData',
         JSON.stringify({
@@ -44,6 +43,7 @@ export const useAuth = () => {
     setToken(null);
     setTokenExpDate(null);
     localStorage.removeItem('userData');
+    client.clearStore();
   }, []);
 
   useEffect(() => {

@@ -60,6 +60,7 @@ export const QueryResolvers: QueryResolversType<ResolverContext> = {
       const words = await models.Word.findManyAndSort({
         // @ts-ignore
         user: user?.id,
+        gameType,
         language,
         sortBy,
         isReverseOrder
