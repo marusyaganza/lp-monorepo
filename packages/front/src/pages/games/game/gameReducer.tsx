@@ -1,3 +1,5 @@
+import { Game } from '@lp/ui/src/generated/graphql';
+
 export enum GameAction {
   CHECK_ANSWER = 'CHECK_ANSWER',
   NEXT = 'NEXT',
@@ -15,6 +17,7 @@ export interface GameState {
   resultData: {
     id: string;
     hasError: boolean;
+    gameType: Game;
   }[];
   result: {
     errorCount: number;
@@ -39,6 +42,7 @@ type CheckAnswerAction = {
     correctAnswer: string;
     answer: string;
     id: string;
+    gameType: Game;
   };
 };
 
@@ -66,14 +70,14 @@ export function gameReducer(
     };
   }
   if (type === GameAction.CHECK_ANSWER) {
-    const { correctAnswer, answer, id } = action.payload;
+    const { correctAnswer, answer, id, gameType } = action.payload;
     const newState = { ...state };
     if (answer === correctAnswer) {
       newState.currentResult = {
         type: 'success',
         correctAnswer: correctAnswer
       };
-      newState.resultData.push({ id, hasError: false });
+      newState.resultData.push({ id, hasError: false, gameType });
     } else {
       newState.currentResult = {
         type: 'error',
@@ -81,7 +85,7 @@ export function gameReducer(
         incorrectAnswer: answer
       };
       newState.result.errorCount++;
-      newState.resultData.push({ id, hasError: true });
+      newState.resultData.push({ id, hasError: true, gameType });
     }
     return newState;
   }

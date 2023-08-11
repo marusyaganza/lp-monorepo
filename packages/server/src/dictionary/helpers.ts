@@ -1,4 +1,4 @@
-import { DefEntity } from './types';
+import { DefEntity } from './dictionaryTypes';
 import { DefsInput } from '../generated/graphql';
 import {
   TAGS,

@@ -3,7 +3,6 @@ import { AppContext } from '../../app-context/appContext';
 import { useSearchParams } from 'react-router-dom';
 import { Icon, SearchField, Link } from '@lp/ui';
 import { PageLayout } from '../../components/PageLayout/PageLayout';
-import { WORDS_QUERY } from '../../gql/queries';
 import {
   useSearchWordsLazyQuery,
   useSaveWordMutation,
@@ -17,7 +16,12 @@ import { removeTypenames } from '../../util/wordUtils';
 
 const SearchPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [saveWordFunc, saveWordData] = useSaveWordMutation();
+  const [saveWordFunc, saveWordData] = useSaveWordMutation({
+    update(cache) {
+      cache.evict({ fieldName: 'game' });
+      cache.evict({ fieldName: 'words' });
+    }
+  });
   const { setNotification, language } = useContext(AppContext);
   const [fetchSearchResult, { loading, error, data }] =
     useSearchWordsLazyQuery();
@@ -84,15 +88,7 @@ const SearchPage = () => {
   const getAddWordHandler = (word: Word) => {
     return function () {
       saveWordFunc({
-        variables: { input: removeTypenames(word) },
-        refetchQueries: () => [
-          {
-            query: WORDS_QUERY,
-            variables: {
-              language
-            }
-          }
-        ]
+        variables: { input: removeTypenames(word) }
       });
     };
   };

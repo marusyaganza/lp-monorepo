@@ -1,6 +1,12 @@
-import { Game, Word, GameData, GameConfig } from '../generated/graphql';
+import {
+  Game,
+  Word,
+  GameData,
+  GameConfig,
+  Language
+} from '../generated/graphql';
 import { OperationResolutionError } from './apolloCustomErrors';
-import { madeUpWord } from '../mocks/madeUpWord';
+import { madeUphWords } from '../mocks/madeUpWord';
 
 export type GenerateGameDataFuncType = (
   gameType: Game,
@@ -22,26 +28,41 @@ export function generateRandomNumber(limit: number) {
 /**Replaces word's `name` in `def` with `[...]` block
  * required to exclude the answer from the question
  */
-export function prepareDef(def: string, name: string): string {
+export function prepareDef(def?: string | null, name?: string | null): string {
+  if (!def || !name) {
+    return '';
+  }
   return def
     .split(' ')
-    .filter(word => word !== name)
+    .map(word =>
+      word === name || word.toLocaleLowerCase() === name ? '[...]' : word
+    )
     .join(' ');
 }
 
 export function generateOptions(
   data: Word[],
   count: number,
-  currentWordId: string
+  currentWordId: string,
+  language: Language
 ) {
-  const result = [];
-  if (data.length < count) {
-    result.push(madeUpWord);
+  const moreOptions = madeUphWords[language];
+  let optCandidates: Partial<Word>[] = data.filter(
+    word => word.id !== currentWordId
+  );
+  const result: Partial<Word>[] = [];
+
+  if (optCandidates.length + moreOptions.length < count) {
+    return [];
+  }
+  if (optCandidates.length < count) {
+    const opts = moreOptions.slice(0, count - optCandidates.length);
+    optCandidates = [...optCandidates, ...opts];
   }
   const randomIndexes: number[] = [];
   do {
-    const randomIndex = generateRandomNumber(data.length);
-    const randomWord = data[randomIndex];
+    const randomIndex = generateRandomNumber(optCandidates.length);
+    const randomWord = optCandidates[randomIndex];
     if (
       randomWord &&
       randomWord?.id !== currentWordId &&
@@ -68,13 +89,13 @@ export const generateGameData: GenerateGameDataFuncType = (
   config
 ) => {
   let questions;
-  const { optionsPerGame, wordsPerGame } = config;
+  const { optionsPerGame, wordsPerGame, minWords } = config;
 
   let wordsCandidates = data;
 
   if (gameType === Game.Audio) {
     wordsCandidates = data.filter(word => word.audioUrl);
-    if (wordsCandidates.length < wordsPerGame) {
+    if (wordsCandidates.length < minWords) {
       throw new OperationResolutionError(
         `Not enough words to start a game. You have ${wordsCandidates.length} words with audio. Words requited for the game: ${wordsPerGame}`
       );
@@ -112,12 +133,10 @@ export const generateGameData: GenerateGameDataFuncType = (
   //TODO create 'find all defs' game to train the words with multiple definitions
   if (gameType === Game.SelectDef) {
     questions = words.map(word => {
-      const { name, shortDef, id, audioUrl } = word;
-      const opts = generateOptions(data, optionsPerGame - 1, id);
-      const options = opts.map(opt =>
-        prepareDef(opt.shortDef[0] as string, name)
-      );
-      const answer = prepareDef(shortDef[0] as string, name);
+      const { name, shortDef, id, audioUrl, language } = word;
+      const opts = generateOptions(data, optionsPerGame - 1, id, language);
+      const options = opts.map(opt => prepareDef(opt?.shortDef?.[0], name));
+      const answer = prepareDef(shortDef[0], name);
       return {
         //TODO: filter the words so only ones with single definition will remain
         answer,
@@ -133,14 +152,22 @@ export const generateGameData: GenerateGameDataFuncType = (
 
   if (gameType === Game.SelectWord) {
     questions = words.map(word => {
-      const { name, shortDef, id, audioUrl } = word;
-      const opts = generateOptions(data, optionsPerGame - 1, id);
+      const { name, shortDef, id, audioUrl, language } = word;
+      const opts = generateOptions(data, optionsPerGame - 1, id, language);
+      if (!opts.length) {
+        if (wordsCandidates.length < minWords) {
+          throw new OperationResolutionError(
+            `Not enough words to start a game. You have ${wordsCandidates.length} words with audio. Words requited for the game: ${wordsPerGame}`
+          );
+        }
+      }
       const options = opts.map(opt => opt.name);
       const answer = name;
       return {
         answer,
         question: shortDef,
         wordId: id,
+        // @ts-ignore
         options: insertAnswer(options, answer),
         additionalInfo: {
           audioUrl

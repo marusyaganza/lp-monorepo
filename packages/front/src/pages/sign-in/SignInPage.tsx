@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
-
+import { createAuthLink } from '../../app';
 import { validators } from '@lp/ui';
 import { AuthPageLayout } from '../../components/AuthPageLayout/AuthPageLayout';
 import { Form } from '@lp/ui';
@@ -30,7 +30,7 @@ const SignInPage = () => {
     }
   ];
 
-  const [authFunc, { data, loading, error }] = useLoginMutation();
+  const [authFunc, { data, loading, error, client }] = useLoginMutation();
   const { login, setNotification } = useContext(AppContext);
 
   const submitHandler = (values: LoginInput) => {
@@ -39,8 +39,10 @@ const SignInPage = () => {
 
   useEffect(() => {
     if (data) {
-      const fetchedData = data.login;
-      login(fetchedData?.id, fetchedData.token);
+      const { id, token } = data.login;
+      login(id, token);
+      client.setLink(createAuthLink(token));
+      client.resetStore();
     }
   }, [data, login]);
 

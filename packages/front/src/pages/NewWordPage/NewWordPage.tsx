@@ -8,12 +8,16 @@ import { WordForm } from '../../components/WordForm/WordForm';
 import { routes } from '../../../constants/routes';
 import { NewWordInput, useSaveWordMutation } from '../../generated/graphql';
 import { AppContext } from '../../app-context/appContext';
-import { WORDS_QUERY } from '../../gql/queries';
 import { defaultInitialValues, formConfig, validators } from './formConfig';
 import { cleanDefs } from '../../util/wordUtils';
 
 const NewWordPage = () => {
-  const [saveWordFunc, saveWordData] = useSaveWordMutation();
+  const [saveWordFunc, saveWordData] = useSaveWordMutation({
+    update(cache) {
+      cache.evict({ fieldName: 'game' });
+      cache.evict({ fieldName: 'words' });
+    }
+  });
   const { setNotification, language } = useContext(AppContext);
   const navigate = useNavigate();
   useEffect(() => {
@@ -44,15 +48,7 @@ const NewWordPage = () => {
   const handleFormSubmit = (values: NewWordInput) => {
     const input = { ...cleanDefs(values), language };
     saveWordFunc({
-      variables: { input },
-      refetchQueries: () => [
-        {
-          query: WORDS_QUERY,
-          variables: {
-            language
-          }
-        }
-      ]
+      variables: { input }
     });
   };
 

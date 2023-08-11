@@ -4,9 +4,23 @@ import {
   NewWordInput,
   UpdateStatisticsInput,
   GameDataInput,
-  Language
+  Language,
+  Game
 } from '../../generated/graphql';
 import { formatFilter, formatData } from '../helpers';
+
+const STATISTICS_FIELD = {
+  lastTimePracticed: 0,
+  practicedTimes: 0,
+  errorCount: 0
+};
+
+const DEFAULT_STATISTICS = {
+  [Game.Audio]: STATISTICS_FIELD,
+  [Game.SelectDef]: STATISTICS_FIELD,
+  [Game.SelectWord]: STATISTICS_FIELD,
+  [Game.TypeWord]: STATISTICS_FIELD
+};
 
 export interface WordModelType {
   findOne: (filter: Partial<WordType>) => Promise<WordType | null>;
@@ -55,7 +69,8 @@ export const WordModel: WordModelType = {
       user,
       language = Language.English,
       sortBy,
-      isReverseOrder
+      isReverseOrder,
+      gameType
     } = filter;
     if (!user) {
       return [];
@@ -63,7 +78,7 @@ export const WordModel: WordModelType = {
     const orderNum = isReverseOrder ? -1 : 1;
     let sort: Record<string, number> = { $natural: orderNum };
     if (sortBy) {
-      const propName = `statistics.${sortBy}`;
+      const propName = `statistics.${gameType}.${sortBy}`;
       sort = { [propName]: orderNum };
     }
     // @ts-ignore
@@ -81,7 +96,8 @@ export const WordModel: WordModelType = {
       createdAt,
       stems,
       isOffensive,
-      transcription
+      transcription,
+      statistics: DEFAULT_STATISTICS
     });
     return formatData(word);
   },
@@ -122,17 +138,24 @@ export const WordModel: WordModelType = {
           isOk = false;
           return;
         }
-        const statistics = word?.statistics;
+        if (!word?.statistics) {
+          word.statistics = DEFAULT_STATISTICS;
+        }
         const newStatistics = {
           practicedTimes: 1,
           errorCount: entry.hasError ? 1 : 0,
           lastTimePracticed: Date.now()
         };
-        if (statistics?.practicedTimes && statistics?.errorCount) {
-          newStatistics.practicedTimes += statistics.practicedTimes;
-          newStatistics.errorCount += statistics.errorCount;
+        const gameType = entry.gameType;
+        const currentStatistics = word?.statistics?.[gameType];
+        if (
+          currentStatistics?.practicedTimes &&
+          currentStatistics?.errorCount
+        ) {
+          newStatistics.practicedTimes += currentStatistics.practicedTimes;
+          newStatistics.errorCount += currentStatistics.errorCount;
         }
-        word.statistics = newStatistics;
+        word.statistics[gameType] = newStatistics;
         await word.save();
       } catch (err) {
         console.error('saving statisticks failed', err);

@@ -1,4 +1,4 @@
-import { DictionaryWordType } from './types';
+import { DictionaryWordType } from './dictionaryTypes';
 import { DictionaryWord, Language } from '../generated/graphql';
 import {
   filterString,

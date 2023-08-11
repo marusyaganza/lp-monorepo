@@ -2,7 +2,9 @@ import { Schema, model } from 'mongoose';
 import {
   Word as WordCoreType,
   Language,
-  WordStatistics
+  WordStatisticsField,
+  WordStatistics,
+  Game
 } from '../../generated/graphql';
 
 const tagsSchema = new Schema(
@@ -32,11 +34,21 @@ const defSchema = new Schema(
   { _id: false }
 );
 
-const statisticsSchema = new Schema<WordStatistics>(
+const statisticsSchema = new Schema<WordStatisticsField>(
   {
     lastTimePracticed: Number,
     practicedTimes: Number,
     errorCount: Number
+  },
+  { _id: false }
+);
+
+const wordStatisticsSchema = new Schema<WordStatistics>(
+  {
+    [Game.Audio]: statisticsSchema,
+    [Game.SelectDef]: statisticsSchema,
+    [Game.SelectWord]: statisticsSchema,
+    [Game.TypeWord]: statisticsSchema
   },
   { _id: false }
 );
@@ -59,7 +71,7 @@ const wordSchema = new Schema<WordCoreType>({
   stems: [String],
   tags: [tagsSchema],
   additionalInfo: String,
-  statistics: statisticsSchema
+  statistics: wordStatisticsSchema
 });
 
 export const Word = model<WordCoreType>('Word', wordSchema);

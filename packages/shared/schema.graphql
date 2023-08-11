@@ -56,10 +56,17 @@ type WordTag {
   text: String!
 }
 
-type WordStatistics {
+type WordStatisticsField {
   lastTimePracticed: Int
   practicedTimes: Int
   errorCount: Int
+}
+
+type WordStatistics {
+  AUDIO: WordStatisticsField
+  TYPE_WORD: WordStatisticsField
+  SELECT_WORD: WordStatisticsField
+  SELECT_DEF: WordStatisticsField
 }
 
 type Word {
@@ -222,6 +229,7 @@ input GameDataInput {
 input UpdateStatisticsInput {
   id: ID!
   hasError: Boolean!
+  gameType: Game!
 }
 
 type Query {

@@ -23,7 +23,7 @@ export const games: GameConfig[] = [
     id: 'select_definition',
     type: Game.SelectDef,
     wordsPerGame: 6,
-    minWords: 5,
+    minWords: 1,
     optionsPerGame: 6
   },
   {
@@ -33,7 +33,7 @@ export const games: GameConfig[] = [
     id: 'select_word',
     type: Game.SelectWord,
     wordsPerGame: 6,
-    minWords: 5,
+    minWords: 1,
     optionsPerGame: 6
   },
   {
