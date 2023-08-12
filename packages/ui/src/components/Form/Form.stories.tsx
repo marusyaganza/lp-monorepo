@@ -35,7 +35,7 @@ const fields: InputProps[] = [
   },
   {
     name: 'email',
-    type: 'text',
+    type: 'email',
     autoComplete: 'username',
     required: true,
     label: 'Email',
@@ -70,7 +70,7 @@ const fields: InputProps[] = [
   }
 ];
 
-export const FromDefault = (args: FormProps) => {
+export const FromDefault = (args: FormProps<Record<string, string>>) => {
   return (
     <div className="presentationBox">
       <Form {...args} fields={fields} />

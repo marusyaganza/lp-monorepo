@@ -14,7 +14,7 @@ const SignInPage = () => {
   const fields: FormField[] = [
     {
       name: 'email',
-      type: 'text',
+      type: 'email',
       required: true,
       label: 'Email',
       autoComplete: 'username',

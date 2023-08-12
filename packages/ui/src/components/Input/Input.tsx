@@ -21,7 +21,7 @@ export interface InputProps extends HTMLAttributes<HTMLInputElement> {
   autoFocus?: boolean;
   /**additional styling */
   className?: string;
-  type?: 'text' | 'password';
+  type?: 'text' | 'password' | 'email';
   isDisabled?: boolean;
   autoComplete?: string;
   required?: boolean;

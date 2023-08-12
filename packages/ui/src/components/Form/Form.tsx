@@ -7,37 +7,37 @@ import { cn } from '../../utils/classnames';
 
 export type FormField = InputProps;
 
-export interface FormProps {
+export interface FormProps<T extends Record<string, string | null>> {
   /**additional styling */
   className?: string;
   buttonText?: string;
   fields: FormField[];
   /**native html id property */
   id?: string;
-  onFormSubmit: (values: Record<string, string>) => void;
+  onFormSubmit: (values: T) => void;
   isLoading?: boolean;
 }
 
-export const Form = ({
+export function Form<T extends Record<string, string | null>>({
   className,
   fields,
   onFormSubmit,
   buttonText = 'Submit',
   isLoading,
   ...rest
-}: FormProps) => {
+}: FormProps<T>) {
   const [errors, setErrors] = useState<string[]>([]);
 
   const submitHandler: FormEventHandler<HTMLFormElement> = evt => {
     evt.preventDefault();
-    const values: Record<string, string> = {};
+    const values: T = {} as T;
     const errorsArr: string[] = [];
 
     fields.forEach(field => {
-      const { name } = field;
+      const name: keyof T & string = field.name;
       const target = evt.target as HTMLFormElement;
-      const value = target[name]?.value || '';
-      if (!validate(value, field.validators || [])) {
+      const value = target[name].value! || '';
+      if (!value || !validate(value, field.validators || [])) {
         errorsArr.push(name);
       }
 
@@ -77,4 +77,4 @@ export const Form = ({
       </Button>
     </form>
   );
-};
+}

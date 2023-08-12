@@ -32,7 +32,7 @@ const SignUpPage = () => {
     },
     {
       name: 'email',
-      type: 'text',
+      type: 'email',
       required: true,
       label: 'Email',
       autoComplete: 'new-password',
