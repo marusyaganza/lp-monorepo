@@ -61,7 +61,7 @@ export function validate(value: string, validators: validatorType[]) {
       isValid = isValid && /^\S+@\S+\.\S+$/.test(value);
     }
     if (validator.type === Validator.PASSWORD) {
-      const regExp = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+      const regExp = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!?@#$%^&*]{6,16}$/;
       isValid = isValid && regExp.test(value);
     }
   });

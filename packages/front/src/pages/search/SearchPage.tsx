@@ -74,7 +74,7 @@ const SearchPage = () => {
         variables: { input: { search, language } }
       });
     }
-  }, []);
+  }, [language, fetchSearchResult, searchParams]);
 
   const handleSearch = (search?: string) => {
     if (search) {

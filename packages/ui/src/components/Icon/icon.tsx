@@ -29,7 +29,10 @@ export type IconIdType =
   | 'asc'
   | 'comet'
   | 'up'
-  | 'down';
+  | 'down'
+  | 'eye'
+  | 'eye-slashed'
+  | 'sun';
 
 export type IconProps = {
   width?: number;
@@ -68,7 +71,10 @@ export const _iconIds: IconIdType[] = [
   'desc',
   'comet',
   'up',
-  'down'
+  'down',
+  'eye',
+  'eye-slashed',
+  'sun'
 ];
 
 export const Icon = ({ width, height, id, tooltip, className }: IconProps) => {

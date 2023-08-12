@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { createAuthLink } from '../../app';
 import { validators } from '@lp/ui';
 import { AuthPageLayout } from '../../components/AuthPageLayout/AuthPageLayout';
-import { Form } from '@lp/ui';
+import { Form, FormField } from '@lp/ui';
 import { useLoginMutation, LoginInput } from '../../generated/graphql';
 import { AppContext } from '../../app-context/appContext';
 import { routes } from '../../../constants/routes';
@@ -11,12 +11,13 @@ import llustration from '../../assets/img/login.svg';
 import styles from './SignInPage.module.css';
 
 const SignInPage = () => {
-  const fields = [
+  const fields: FormField[] = [
     {
       name: 'email',
-      type: 'text',
+      type: 'email',
       required: true,
       label: 'Email',
+      autoComplete: 'username',
       validators: [validators.EMAIL()],
       errorText: 'email is required'
     },
@@ -25,6 +26,7 @@ const SignInPage = () => {
       type: 'password',
       required: true,
       label: 'Password',
+      autoComplete: 'current-password',
       validators: [validators.PASSWORD()],
       errorText: 'password is required'
     }

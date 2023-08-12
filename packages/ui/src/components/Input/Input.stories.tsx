@@ -27,3 +27,27 @@ export const DefaultInput = (args: InputProps) => {
     </div>
   );
 };
+
+export const InputDisabled = (args: InputProps) => {
+  return (
+    <div className="presentationBox">
+      <Input {...args} isDisabled />
+    </div>
+  );
+};
+
+export const PasswordInput = (args: InputProps) => {
+  return (
+    <div className="presentationBox">
+      <Input {...args} type="password" />
+    </div>
+  );
+};
+
+export const PasswordInputDisabled = (args: InputProps) => {
+  return (
+    <div className="presentationBox">
+      <Input {...args} type="password" isDisabled />
+    </div>
+  );
+};
