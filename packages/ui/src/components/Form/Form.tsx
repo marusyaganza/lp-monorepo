@@ -1,20 +1,20 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-import React, { FormEvent, useState } from 'react';
+import React, { FormEventHandler, useState } from 'react';
 
 import { Input, InputProps } from '../Input/Input';
 import { Button } from '../Button/Button';
 import { validate } from '../../utils/validators';
 import { cn } from '../../utils/classnames';
 
+export type FormField = InputProps;
+
 export interface FormProps {
   /**additional styling */
   className?: string;
   buttonText?: string;
-  fields: InputProps[];
+  fields: FormField[];
   /**native html id property */
   id?: string;
-  // TODO: make it generic
-  onFormSubmit: (values: any) => void;
+  onFormSubmit: (values: Record<string, string>) => void;
   isLoading?: boolean;
 }
 
@@ -28,18 +28,15 @@ export const Form = ({
 }: FormProps) => {
   const [errors, setErrors] = useState<string[]>([]);
 
-  const submitHandler = (evt: FormEvent<HTMLFormElement>) => {
+  const submitHandler: FormEventHandler<HTMLFormElement> = evt => {
     evt.preventDefault();
-    //TODO what is correct type for this? That contains all fields names?
     const values: Record<string, string> = {};
     const errorsArr: string[] = [];
 
     fields.forEach(field => {
       const { name } = field;
-      // TODO fix this type problem
-      // @ts-ignore
-      const value = evt?.target?.[name]?.value || '';
-
+      const target = evt.target as HTMLFormElement;
+      const value = target[name]?.value || '';
       if (!validate(value, field.validators || [])) {
         errorsArr.push(name);
       }

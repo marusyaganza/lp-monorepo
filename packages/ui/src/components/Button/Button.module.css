@@ -146,6 +146,10 @@
   border: 1px solid var(--neutral-800);
 }
 
+.icon.button.disabled {
+  border: 0;
+}
+
 .button.disabled {
   color: var(--neutral-700);
   border: 1px solid var(--neutral-700);

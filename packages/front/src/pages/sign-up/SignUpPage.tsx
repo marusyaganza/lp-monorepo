@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { validators } from '@lp/ui';
 import { AuthPageLayout } from '../../components/AuthPageLayout/AuthPageLayout';
-import { Form } from '@lp/ui';
+import { Form, FormField } from '@lp/ui';
 import { useSignUpMutation, SignUpInput } from '../../generated/graphql';
 import { AppContext } from '../../app-context/appContext';
 import { routes } from '../../../constants/routes';
@@ -11,12 +11,13 @@ import { routes } from '../../../constants/routes';
 import styles from './SignUpPage.module.css';
 
 const SignUpPage = () => {
-  const fields = [
+  const fields: FormField[] = [
     {
       name: 'firstName',
       type: 'text',
       required: true,
       label: 'First Name',
+      autoComplete: 'given-name',
       validators: [validators.MINLENGTH(2)],
       errorText: 'first name is required'
     },
@@ -25,6 +26,7 @@ const SignUpPage = () => {
       type: 'text',
       required: true,
       label: 'Last Name',
+      autoComplete: 'family-name',
       validators: [validators.MINLENGTH(2)],
       errorText: 'first name is required'
     },
@@ -33,6 +35,7 @@ const SignUpPage = () => {
       type: 'text',
       required: true,
       label: 'Email',
+      autoComplete: 'new-password',
       validators: [validators.EMAIL()],
       errorText: 'email is required'
     },
@@ -49,6 +52,7 @@ const SignUpPage = () => {
       type: 'password',
       required: true,
       label: 'Repeat password',
+      autoComplete: 'new-password',
       validators: [validators.PASSWORD()],
       errorText: "passwords don't match"
     },
