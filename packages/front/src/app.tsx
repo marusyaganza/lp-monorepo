@@ -8,18 +8,17 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { AppProvider } from './app-context/appContext';
-import { getUserData } from './util/getUserData';
+import { getStoredData } from './util/localStorageUtils';
 import { ErrorBoundary } from '@lp/ui';
 import { AppRoutes } from './routes';
 
 import './app.css';
 
-//TODO save url in the env variable
 const httpLink = createHttpLink({
-  uri: 'http://localhost:4000/graphql'
+  uri: process.env.GQL_URL
 });
 
-const token = getUserData()?.token;
+const token = getStoredData<'userData'>('userData')?.token;
 
 export const createAuthLink = (tkn: string | undefined) => {
   return setContext((_, { headers }) => {
@@ -32,7 +31,6 @@ export const createAuthLink = (tkn: string | undefined) => {
   }).concat(httpLink);
 };
 
-// TODO clear cache when user logs out
 export const client = new ApolloClient({
   link: createAuthLink(token),
   cache: new InMemoryCache()
