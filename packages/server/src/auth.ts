@@ -29,7 +29,7 @@ export const hashPassword: HashPasswordFuncType = async function (password) {
   if (!password) {
     return;
   }
-  const salt = process.env.SALT_NUMBER || '';
+  const salt = bcrypt.genSalt(10);
   let hashedPassword;
   try {
     hashedPassword = await bcrypt.hash(password, parseInt(salt));
@@ -56,7 +56,7 @@ export const createToken: CreateTokenFuncType = ({ id, role }) => {
   if (!JWT_SECTET) {
     return;
   }
-  const token = jwt.sign({ id, role }, JWT_SECTET);
+  const token = jwt.sign({ id, role }, JWT_SECTET, { expiresIn: '2d' });
   return token;
 };
 
@@ -75,8 +75,10 @@ export function getUserFromToken(token?: string): UserTokenInfo | undefined {
 }
 
 export function authenticated(next: ResolverFunc): ResolverFunc {
-  return (root, args, context, info) => {
-    if (!context?.user?.id) {
+  return async (root, args, context, info) => {
+    const id = context?.user?.id;
+    const existingUser = await context.models.User.findOne({ id });
+    if (!existingUser) {
       throw new AuthenticationError(ERROR_MESSAGES.NOT_AUTHENTICATED);
     }
     return next(root, args, context, info);
@@ -84,8 +86,10 @@ export function authenticated(next: ResolverFunc): ResolverFunc {
 }
 
 export function authorized(role: Role, next: ResolverFunc): ResolverFunc {
-  return (root, args, context, info) => {
-    if (!context?.user?.id || context?.user?.role !== role) {
+  return async (root, args, context, info) => {
+    const id = context?.user?.id;
+    const existingUser = await context.models.User.findOne({ id });
+    if (existingUser?.role !== role) {
       throw new AuthenticationError(ERROR_MESSAGES.NOT_AUTHORIZED);
     }
     return next(root, args, context, info);

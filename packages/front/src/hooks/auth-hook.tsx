@@ -1,5 +1,6 @@
 import { useState, useCallback, useEffect } from 'react';
-import { getUserData } from '../util/getUserData';
+import { getStoredData, storeData } from '../util/localStorageUtils';
+import { createAuthLink } from '../app';
 import { client } from '../app';
 export type loginFuncType = (
   id: string,
@@ -11,8 +12,8 @@ export type logoutFuncType = () => void;
 
 let logoutTimer: NodeJS.Timeout | undefined;
 
-const TOKEN_EXPIRATION_PERIOD =
-  new Date().getTime() + 1000 * 60 * 60 * 24 * 365;
+// token expires in 2 days
+const TOKEN_EXPIRATION_PERIOD = new Date().getTime() + 1000 * 60 * 60 * 2;
 
 export const useAuth = () => {
   const [userId, setUserId] = useState<string | null>();
@@ -26,14 +27,13 @@ export const useAuth = () => {
       const tokenExpirationDate =
         expirationDate || new Date(TOKEN_EXPIRATION_PERIOD);
       setTokenExpDate(tokenExpirationDate);
-      localStorage.setItem(
-        'userData',
-        JSON.stringify({
-          userId: id,
-          token: tokenString,
-          expiration: tokenExpirationDate.toISOString()
-        })
-      );
+      storeData('userData', {
+        userId: id,
+        token: tokenString,
+        expiration: tokenExpirationDate.toISOString()
+      });
+      client.setLink(createAuthLink(tokenString));
+      client.resetStore();
     },
     []
   );
@@ -42,12 +42,12 @@ export const useAuth = () => {
     setUserId(null);
     setToken(null);
     setTokenExpDate(null);
-    localStorage.removeItem('userData');
+    localStorage.clear();
     client.clearStore();
   }, []);
 
   useEffect(() => {
-    const storedData = getUserData();
+    const storedData = getStoredData<'userData'>('userData');
     if (storedData && new Date(storedData.expiration) > new Date()) {
       login(
         storedData.userId,

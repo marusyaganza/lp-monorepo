@@ -7,8 +7,7 @@ import React, {
 import { useAuth, loginFuncType, logoutFuncType } from '../hooks/auth-hook';
 import { NotificationProps } from '@lp/ui';
 import { Language } from '../generated/graphql';
-
-const LANGUAGE = 'language';
+import { getStoredData, storeData } from '../util/localStorageUtils';
 
 type Context = {
   login: loginFuncType;
@@ -31,19 +30,15 @@ export const AppProvider = ({ children }: PropsWithChildren<unknown>) => {
   >();
 
   useEffect(() => {
-    //TODO consider creating an util function to work with localStorage
-    const storedLanguage = localStorage.getItem(LANGUAGE);
-    let lang: Language = Language.English;
-    if (storedLanguage) {
-      lang = JSON.parse(storedLanguage) as Language;
-    }
+    const storedLanguage = getStoredData<'language'>('language');
+    const lang: Language = storedLanguage || Language.English;
     if (lang) {
       setLanguage(lang);
     }
   }, []);
 
   const saveLanguage = (lang: Language) => {
-    localStorage.setItem(LANGUAGE, JSON.stringify(lang));
+    storeData('language', lang);
     setLanguage(lang);
   };
 

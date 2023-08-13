@@ -11,6 +11,8 @@ import { GameCard, Spinner, useSelect, Checkbox, Icon } from '@lp/ui';
 import { routes } from '../../../constants/routes';
 import { PageLayout } from '../../components/PageLayout/PageLayout';
 import { AppContext } from '../../app-context/appContext';
+import { getStoredData, storeData } from '../../util/localStorageUtils';
+
 import styles from './GamesPage.module.css';
 
 const OPTIONS = {
@@ -32,7 +34,7 @@ const GamesPage = () => {
 
   const handleSortingParamChange = useCallback((val: string) => {
     setSortBy(val);
-    localStorage.setItem('sortBy', JSON.stringify(val));
+    storeData('sortBy', val);
   }, []);
 
   const { Select, Option, setValue } = useSelect<string>({
@@ -41,7 +43,7 @@ const GamesPage = () => {
   });
   const handleOrderChange = useCallback((value: boolean) => {
     setIsReverseOrder(value);
-    localStorage.setItem('isReverseOrder', JSON.stringify(value));
+    storeData('isReverseOrder', value);
   }, []);
 
   useEffect(() => {
@@ -55,15 +57,15 @@ const GamesPage = () => {
   }, [error]);
 
   useEffect(() => {
-    const storedSortBy = localStorage.getItem('sortBy');
-    const storedIsReverseOrder = localStorage.getItem('isReverseOrder');
+    const storedSortBy = getStoredData<'sortBy'>('sortBy');
+    const storedIsReverseOrder =
+      getStoredData<'isReverseOrder'>('isReverseOrder');
     if (storedSortBy) {
-      const val = JSON.parse(storedSortBy);
-      setSortBy(val);
-      setValue(val);
+      setSortBy(storedSortBy);
+      setValue(storedSortBy);
     }
     if (storedIsReverseOrder) {
-      setIsReverseOrder(storedIsReverseOrder === 'true');
+      setIsReverseOrder(storedIsReverseOrder);
     }
   }, []);
 

@@ -37,7 +37,7 @@ export function Form<T extends Record<string, string | null>>({
       const name: keyof T & string = field.name;
       const target = evt.target as HTMLFormElement;
       const value = target[name].value! || '';
-      if (!value || !validate(value, field.validators || [])) {
+      if (!validate(value, field.validators || [])) {
         errorsArr.push(name);
       }
 

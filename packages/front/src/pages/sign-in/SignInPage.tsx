@@ -1,6 +1,5 @@
 import React, { useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { createAuthLink } from '../../app';
 import { validators } from '@lp/ui';
 import { AuthPageLayout } from '../../components/AuthPageLayout/AuthPageLayout';
 import { Form, FormField } from '@lp/ui';
@@ -43,8 +42,6 @@ const SignInPage = () => {
     if (data) {
       const { id, token } = data.login;
       login(id, token);
-      client.setLink(createAuthLink(token));
-      client.resetStore();
     }
   }, [data, login]);
 
