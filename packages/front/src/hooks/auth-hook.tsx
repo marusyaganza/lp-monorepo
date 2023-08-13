@@ -1,5 +1,6 @@
 import { useState, useCallback, useEffect } from 'react';
 import { getStoredData, storeData } from '../util/localStorageUtils';
+import { createAuthLink } from '../app';
 import { client } from '../app';
 export type loginFuncType = (
   id: string,
@@ -31,6 +32,8 @@ export const useAuth = () => {
         token: tokenString,
         expiration: tokenExpirationDate.toISOString()
       });
+      client.setLink(createAuthLink(tokenString));
+      client.resetStore();
     },
     []
   );
