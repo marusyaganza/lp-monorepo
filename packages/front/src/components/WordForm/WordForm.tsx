@@ -11,7 +11,7 @@ import {
 import { useForm, FormValidators } from '../../hooks/useForm';
 import { Language } from '../../generated/graphql';
 import { AppContext } from '../../app-context/appContext';
-import { routes } from '../../../constants/routes';
+import { routes } from '../../constants/routes';
 import styles from './WordForm.module.css';
 
 type ComponentProps = InputV2Props &

@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+}
+
+.heading {
+  font-family: var(--font-kalam);
+  font-size: var(--font-size-xxl);
+  color: var(--neutral-800);
+  font-weight: normal;
+  margin: 0;
+}
+
+.image {
+  width: 600px;
+}

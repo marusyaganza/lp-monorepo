@@ -5,7 +5,7 @@ import styles from './NewWordPage.module.css';
 
 import { PageLayout } from '../../components/PageLayout/PageLayout';
 import { WordForm } from '../../components/WordForm/WordForm';
-import { routes } from '../../../constants/routes';
+import { routes } from '../../constants/routes';
 import { NewWordInput, useSaveWordMutation } from '../../generated/graphql';
 import { AppContext } from '../../app-context/appContext';
 import { defaultInitialValues, formConfig, validators } from './formConfig';

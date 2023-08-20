@@ -10,10 +10,8 @@ export default {
 export const ErrorDisplayDefault = () => (
   <div className="presentationContent">
     <ErrorDisplay
-      subHeading="Something went wrong"
       heading="Some error"
       buttonText="reload"
-      headingIcon="maintenance"
       buttonHandler={() => {
         console.log('clicked!');
       }}

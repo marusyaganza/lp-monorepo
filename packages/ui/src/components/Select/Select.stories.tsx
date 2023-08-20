@@ -12,7 +12,7 @@ export const SelectDefault = () => {
   const onChange = (value: string) => {
     console.log('value', value);
   };
-  const [{ Select, Option }] = useSelect({ onChange });
+  const { Select, Option } = useSelect({ onChange });
   return (
     <div className="presentationBox">
       <Select value="Option 1 value">

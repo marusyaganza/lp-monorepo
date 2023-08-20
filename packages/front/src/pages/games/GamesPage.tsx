@@ -8,7 +8,7 @@ import React, {
 import { Outlet } from 'react-router-dom';
 import { SortBy, useGamesQuery } from '../../generated/graphql';
 import { GameCard, Spinner, useSelect, Checkbox, Icon } from '@lp/ui';
-import { routes } from '../../../constants/routes';
+import { routes } from '../../constants/routes';
 import { PageLayout } from '../../components/PageLayout/PageLayout';
 import { AppContext } from '../../app-context/appContext';
 import { getStoredData, storeData } from '../../util/localStorageUtils';

@@ -1,6 +1,6 @@
 import { HeaderLinkType } from '@lp/ui';
 import { UserMenuItemType } from '@lp/ui';
-import { routes } from '../../../constants/routes';
+import { routes } from '../../constants/routes';
 
 export const navLinks: HeaderLinkType[] = [
   {

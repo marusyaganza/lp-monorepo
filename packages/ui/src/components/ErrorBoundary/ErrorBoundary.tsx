@@ -37,17 +37,12 @@ export class ErrorBoundary extends React.Component<
     if (this.state.hasError) {
       return (
         <ErrorDisplay
-          subHeading="Sometning went wrong"
-          heading="Error"
-          headingIcon="error"
+          heading="Something went wrong"
           buttonText="Reload"
           buttonHandler={clickHandler}
-          theme="red"
         />
       );
     }
     return this.props.children;
   }
 }
-
-// export default ErrorBoundary;

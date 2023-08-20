@@ -6,7 +6,7 @@ import { AuthPageLayout } from '../../components/AuthPageLayout/AuthPageLayout';
 import { Form, FormField } from '@lp/ui';
 import { useSignUpMutation, SignUpInput } from '../../generated/graphql';
 import { AppContext } from '../../app-context/appContext';
-import { routes } from '../../../constants/routes';
+import { routes } from '../../constants/routes';
 
 import styles from './SignUpPage.module.css';
 

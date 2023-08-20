@@ -1,35 +1,25 @@
 import React, { MouseEventHandler } from 'react';
 
 import { Button } from '../Button/Button';
-import { Icon, IconIdType } from '../Icon/icon';
-
-import './ErrorDisplay.css';
+import errorLogo from '../../assets/img/error-page-logo.svg';
+import styles from './ErrorDisplay.module.css';
 
 export interface ErrorDisplayProps {
   heading: string;
-  headingIcon?: IconIdType;
-  subHeading: string;
   buttonHandler: MouseEventHandler;
   buttonText: string;
-  theme?: 'red' | 'base';
 }
 
 export const ErrorDisplay = ({
   heading,
-  headingIcon,
-  subHeading,
   buttonHandler,
-  buttonText,
-  theme = 'red'
+  buttonText
 }: ErrorDisplayProps) => {
   return (
-    <div className="infoContainer">
-      <article>
-        <h1 className={`mainHeading ${theme}`}>
-          {heading}
-          {headingIcon && <Icon id={headingIcon} width={100} height={50} />}
-        </h1>
-        <h2 className="subheading">{subHeading}</h2>
+    <div className={styles.container}>
+      <article className={styles.content}>
+        <img className={styles.image} src={errorLogo} alt="" />
+        <h1 className={styles.heading}>{heading}</h1>
         <div className="buttonContainer">
           <Button
             onClick={buttonHandler}

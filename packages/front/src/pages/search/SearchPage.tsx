@@ -11,7 +11,7 @@ import {
 } from '../../generated/graphql';
 import { WordCard, Spinner } from '@lp/ui';
 import styles from './SearchPage.module.css';
-import { routes } from '../../../constants/routes';
+import { routes } from '../../constants/routes';
 import { removeTypenames } from '../../util/wordUtils';
 
 const SearchPage = () => {

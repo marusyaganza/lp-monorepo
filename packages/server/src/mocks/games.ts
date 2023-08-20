@@ -7,8 +7,8 @@ export const games: GameConfig[] = [
   //   id: 'flash_cards'
   // },
   {
-    name: 'audio',
-    desc: 'Type the word that you hear',
+    name: 'WordEcho',
+    desc: 'Listen, Type, Master. Sharpen language skills through auditory engagement.',
     imgUrl: 'audio',
     id: 'audio',
     type: Game.Audio,
@@ -17,8 +17,8 @@ export const games: GameConfig[] = [
     optionsPerGame: 0
   },
   {
-    name: 'select definition',
-    desc: 'Match the word and its definition',
+    name: 'LexiSense',
+    desc: 'Define & Conquer.Match words with their meanings intuitively.',
     imgUrl: 'select_definition',
     id: 'select_definition',
     type: Game.SelectDef,
@@ -27,8 +27,8 @@ export const games: GameConfig[] = [
     optionsPerGame: 6
   },
   {
-    name: 'select word',
-    desc: 'Match the definition and the word',
+    name: 'Definify: Match & Learn',
+    desc: 'Associate definitions with the right words. A captivating word puzzle adventure!',
     imgUrl: 'select_word',
     id: 'select_word',
     type: Game.SelectWord,
@@ -37,8 +37,8 @@ export const games: GameConfig[] = [
     optionsPerGame: 6
   },
   {
-    name: 'type word',
-    desc: 'Type the word that has the definition given',
+    name: 'WordRecall: Define & Type',
+    desc: 'Type words matching given definitions. Boost vocabulary in engaging rounds!',
     imgUrl: 'type_word',
     id: 'type_word',
     type: Game.TypeWord,

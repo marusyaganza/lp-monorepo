@@ -89,7 +89,7 @@ export const spanishWords: Word[] = [
     audioUrl: 'mock_audio_endpoint/es/me/mp3/i/idiom01sp.mp3',
     defs: [
       {
-        def: 'def1',
+        def: 'language',
         examples: [
           { text: 'el idioma ingl\u00e9s', translation: 'the English language' }
         ]
