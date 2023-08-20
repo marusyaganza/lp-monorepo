@@ -6,7 +6,7 @@ import {
   useSaveGameResultMutation,
   SortBy
 } from '../../../generated/graphql';
-import { routes } from '../../../../constants/routes';
+import { routes } from '../../../constants/routes';
 import { GameFooter, Progress, GameResult, Button, Game } from '@lp/ui';
 import { AppContext } from '../../../app-context/appContext';
 import { PageSpinner } from '../../../components/PageSpinner/PageSpinner';

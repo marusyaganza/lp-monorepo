@@ -2,7 +2,7 @@ import React, { lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import { withSuspense } from './helpers';
-import { routes } from '../../constants/routes';
+import { routes } from '../constants/routes';
 
 const WordsPage = lazy(() => import('../pages/words/WordsPage'));
 const SearchPage = lazy(() => import('../pages/search/SearchPage'));

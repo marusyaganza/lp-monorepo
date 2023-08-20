@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from 'react';
 import { useLazyQuery } from '@apollo/client';
 import { useParams, useNavigate } from 'react-router-dom';
 import { WordCard, Icon, Link } from '@lp/ui';
-import { routes } from '../../../../constants/routes';
+import { routes } from '../../../constants/routes';
 import { PageLayout } from '../../../components/PageLayout/PageLayout';
 import { WORD_BY_ID_QUERY } from '../../../gql/queries';
 import { AppContext } from '../../../app-context/appContext';

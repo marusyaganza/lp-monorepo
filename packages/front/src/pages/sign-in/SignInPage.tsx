@@ -5,7 +5,7 @@ import { AuthPageLayout } from '../../components/AuthPageLayout/AuthPageLayout';
 import { Form, FormField } from '@lp/ui';
 import { useLoginMutation, LoginInput } from '../../generated/graphql';
 import { AppContext } from '../../app-context/appContext';
-import { routes } from '../../../constants/routes';
+import { routes } from '../../constants/routes';
 import llustration from '../../assets/img/login.svg';
 import styles from './SignInPage.module.css';
 

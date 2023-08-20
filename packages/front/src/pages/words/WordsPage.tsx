@@ -11,7 +11,7 @@ import { PageLayout } from '../../components/PageLayout/PageLayout';
 import { AppContext } from '../../app-context/appContext';
 
 import styles from './WordsPage.module.css';
-import { routes } from '../../../constants/routes';
+import { routes } from '../../constants/routes';
 
 const WordsPage = () => {
   const [fetchWords, { loading, error, data }] = useWordsLazyQuery();

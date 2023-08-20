@@ -7,7 +7,7 @@ import { getDefaultInitialValues, formConfig, validators } from './formConfig';
 
 import { PageLayout } from '../../components/PageLayout/PageLayout';
 import { WordForm } from '../../components/WordForm/WordForm';
-import { routes } from '../../../constants/routes';
+import { routes } from '../../constants/routes';
 import {
   useUpdateWordMutation,
   UpdateWordInput
