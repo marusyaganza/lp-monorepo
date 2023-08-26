@@ -14,6 +14,8 @@
     "start": "lerna run start --stream",
     "storybook": "lerna run storybook --scope '@lp/ui' --stream",
     "prod": "lerna run prod --scope '@lp/front' --stream",
+    "build:server": "lerna run build --scope '@lp/server'",
+    "build:front": "yarn codegen && lerna run build --scope '@lp/front'",
     "eslint": "lerna run eslint",
     "ready": "lerna run ready",
     "clean": "lerna run clean",

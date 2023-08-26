@@ -1,0 +1,21 @@
+FROM node:18-alpine3.17
+
+WORKDIR /app
+
+COPY package.json /app
+
+COPY yarn.lock /app/
+
+COPY lerna.json /app
+
+COPY packages/server /app/packages/server
+
+COPY packages/shared /app/packages/shared
+
+RUN yarn
+
+RUN yarn build:server
+
+EXPOSE 4000
+
+CMD ["node", "packages/server/dist/app.js"]

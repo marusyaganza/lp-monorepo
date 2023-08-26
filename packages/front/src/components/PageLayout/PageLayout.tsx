@@ -15,10 +15,10 @@ export interface PageLayoutProps {
 }
 
 const footerLinks: LinkType[] = [
-  { text: 'Review words', url: routes.words },
-  { text: 'Look up words', url: routes.search },
-  { text: 'Practice', url: routes.games },
-  { text: 'Profile', url: routes.profile }
+  { text: 'Review words', url: `/${routes.words}` },
+  { text: 'Look up words', url: `/${routes.search}` },
+  { text: 'Practice', url: `/${routes.games}` },
+  { text: 'Profile', url: `/${routes.profile}` }
 ];
 
 export const PageLayout = ({

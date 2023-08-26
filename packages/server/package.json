@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon src/app.js --ignore 'src/db/db.json'",
     "copy": "cp -r ../shared/schema.graphql dist",
-    "build": "yarn codegen && tsc",
+    "build": "yarn codegen && tsc && yarn copy",
     "clean": "rimraf dist src/generated *.tsbuildinfo",
     "eslint": "eslint src",
     "ts": "tsc --watch --preserveWatchOutput",
