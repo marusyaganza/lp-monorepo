@@ -12,6 +12,8 @@ COPY packages/server /app/packages/server
 
 COPY packages/shared /app/packages/shared
 
+RUN yarn set version canary
+
 RUN yarn
 
 RUN yarn build:server
