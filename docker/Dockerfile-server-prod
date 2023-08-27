@@ -16,6 +16,8 @@ RUN yarn set version canary
 
 RUN yarn
 
+# RUN yarn workspaces focus @lp/server --production
+
 RUN yarn build:server
 
 EXPOSE 4000
