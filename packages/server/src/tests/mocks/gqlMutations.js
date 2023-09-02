@@ -12,6 +12,7 @@ const signUpMutation = `
       firstName
       lastName
       token
+      id
     }
   }
 `;

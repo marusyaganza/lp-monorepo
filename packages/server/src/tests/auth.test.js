@@ -16,7 +16,8 @@ import { Role } from '../generated/graphql';
 jest.mock('bcryptjs', () => {
   return {
     hash: jest.fn((pass, salt) => `mock_hash_${pass}_salt_${salt}`),
-    compare: jest.fn(() => false)
+    compare: jest.fn(() => false),
+    genSalt: jest.fn(() => 10)
   };
 });
 
@@ -30,6 +31,13 @@ jest.mock('jsonwebtoken', () => {
 });
 
 const mockUser = { id: '1', role: 'role' };
+const findOne = jest.fn(() => mockUser);
+
+const models = {
+  User: {
+    findOne
+  }
+};
 
 const testData = [
   {
@@ -79,27 +87,32 @@ describe('auth', () => {
     expect(bcrypt.compare).toHaveBeenCalledWith(...args);
     expect(result).toBe(false);
   });
+
   test('getUserFromToken with valid args', async () => {
     const token = 'token';
     const result = await getUserFromToken(token);
     expect(jwt.verify).toHaveBeenCalledWith('token', mockEnv.JWT_SECTET);
     expect(result).toBe('user');
   });
+
   test('getUserFromToken with empty args', async () => {
     const result = await getUserFromToken();
     expect(result).toBe(undefined);
   });
+
   test('authenticated with valid user', async () => {
     const next = jest.fn();
     const fn = await authenticated(next);
     const context = {
-      user: mockUser
+      user: mockUser,
+      models
     };
     const args = ['root', 'args', context, 'info'];
 
     fn(...args);
     expect(next).toHaveBeenCalledWith(...args);
   });
+
   test('authenticated with empty user', async () => {
     const next = jest.fn();
     const fn = await authenticated(next);
@@ -111,6 +124,7 @@ describe('auth', () => {
       fn(...args);
     }).toThrow(ERROR_MESSAGES.NOT_AUTHENTICATED);
   });
+
   test('authenticated without context', async () => {
     const next = jest.fn();
     const fn = await authenticated(next);
@@ -119,6 +133,7 @@ describe('auth', () => {
       fn(...args);
     }).toThrow(ERROR_MESSAGES.NOT_AUTHENTICATED);
   });
+
   test('authorized with valid user and role', async () => {
     const next = jest.fn();
     const fn = await authorized(Role.Admin, next);
@@ -133,6 +148,7 @@ describe('auth', () => {
     fn(...args);
     expect(next).toHaveBeenCalledWith(...args);
   });
+
   test('authorized with incorrect role', async () => {
     const next = jest.fn();
     const fn = await authorized(Role.Admin, next);
@@ -147,6 +163,7 @@ describe('auth', () => {
       fn(...args);
     }).toThrow(ERROR_MESSAGES.NOT_AUTHORIZED);
   });
+
   test('authorized with empty user', async () => {
     const next = jest.fn();
     const fn = await authorized(next);
@@ -158,6 +175,7 @@ describe('auth', () => {
       fn(...args);
     }).toThrow(ERROR_MESSAGES.NOT_AUTHORIZED);
   });
+
   test('authorized without context', async () => {
     const next = jest.fn();
     const fn = await authorized(next);

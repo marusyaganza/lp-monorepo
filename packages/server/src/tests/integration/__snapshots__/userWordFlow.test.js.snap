@@ -40,7 +40,7 @@ exports[`User can find a word by id 1`] = `
             "egalitarians",
           ],
           "transcription": "iˌɡælɪˈteəriən",
-          "user": "6480560e8cad1841ed6b4011",
+          "user": "mockUser",
         },
       },
       "errors": undefined,
@@ -176,7 +176,7 @@ exports[`User can save a word 1`] = `
             },
           ],
           "transcription": "iˌɡælɪˈteəriən",
-          "user": "6480560e8cad1841ed6b4011",
+          "user": "mockUser",
           "uuid": "74046e79-e4c9-4b52-ac96-cb7ae98fb601",
         },
       },
@@ -257,6 +257,7 @@ exports[`User can sign up 1`] = `
         "signUp": {
           "email": "test@test.com",
           "firstName": "User",
+          "id": "mock_id",
           "lastName": "Test",
           "token": "mock_token",
         },
@@ -319,11 +320,45 @@ exports[`User can update a word 1`] = `
             },
           ],
           "transcription": "iˌɡælɪˈteəriən",
-          "user": "6480560e8cad1841ed6b4011",
+          "user": "mockUser",
           "uuid": "74046e79-e4c9-4b52-ac96-cb7ae98fb601",
         },
       },
       "errors": undefined,
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`User cannot get the words list if user record in DB does not exist 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": null,
+      "errors": [
+        {
+          "extensions": {
+            "code": "INTERNAL_SERVER_ERROR",
+          },
+          "locations": [
+            {
+              "column": 5,
+              "line": 3,
+            },
+          ],
+          "message": "Login to perform this operation",
+          "path": [
+            "words",
+          ],
+        },
+      ],
     },
   },
   "http": {
@@ -421,6 +456,40 @@ exports[`User cannot save a word with the same uuid 1`] = `
             },
           ],
           "message": "word with uuid 74046e79-e4c9-4b52-ac96-cb7ae98fb601 is already added",
+          "path": [
+            "saveWord",
+          ],
+        },
+      ],
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`User nonexistent user cannot save a word 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": null,
+      "errors": [
+        {
+          "extensions": {
+            "code": "INTERNAL_SERVER_ERROR",
+          },
+          "locations": [
+            {
+              "column": 3,
+              "line": 2,
+            },
+          ],
+          "message": "You do not have permission to perform this operation",
           "path": [
             "saveWord",
           ],

@@ -95,16 +95,31 @@ const gamesQuery = `query Games {
   }
 }`;
 
+const findMany = jest.fn(() => words);
+const findOneUser = jest.fn(() => users[0]);
+const findOneWord = jest.fn(() => words[0]);
+
+const models = {
+  Word: {
+    findMany,
+    findOne: findOneWord
+  },
+  User: {
+    findOne: findOneUser
+  }
+};
+
 describe('queries', () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+  afterAll(() => {
+    jest.resetAllMocks();
+  });
   test('words', async () => {
-    const findMany = jest.fn(() => words);
     const { query } = createTestServer({
       user: { id: '1' },
-      models: {
-        Word: {
-          findMany
-        }
-      }
+      models
     });
 
     const res = await query({ query: wordsQuery });
@@ -113,14 +128,9 @@ describe('queries', () => {
   });
 
   test('word by id', async () => {
-    const findOne = jest.fn(() => words[0]);
     const { query } = createTestServer({
       user: { id: '1' },
-      models: {
-        Word: {
-          findOne
-        }
-      }
+      models
     });
 
     const res = await query({
@@ -128,32 +138,25 @@ describe('queries', () => {
       variables: { wordId: 'mockid' }
     });
     expect(res).toMatchSnapshot();
-    expect(findOne).toHaveBeenCalledTimes(1);
+    expect(findOneWord).toHaveBeenCalledTimes(1);
   });
 
   test('user', async () => {
-    const findOneUser = jest.fn(() => users[0]);
-    const findOneWord = jest.fn(() => words[0]);
     const { query } = createTestServer({
       user: { id: '1', role: 'MEMBER' },
-      models: {
-        Word: {
-          findOne: findOneWord
-        },
-        User: {
-          findOne: findOneUser
-        }
-      }
+      models
     });
 
     const res = await query({ query: userQuery });
     expect(res).toMatchSnapshot();
   });
+
   test('searchWord', async () => {
     const searchWord = jest.fn(() => words);
     const { query } = createTestServer({
       user: { id: '1' },
-      searchWord
+      searchWord,
+      models
     });
     await query({
       query: searchQuery,
@@ -166,10 +169,12 @@ describe('queries', () => {
     });
     expect(searchWord).toHaveBeenCalledWith('word', Language.English);
   });
+
   test('searchWord spanish lang, mocks enabled', async () => {
     const { query } = createTestServer({
       user: { id: '1' },
-      searchWord
+      searchWord,
+      models
     });
     const res = await query({
       query: searchQuery,
@@ -185,7 +190,8 @@ describe('queries', () => {
   test('searchWord english lang, mocks enabled', async () => {
     const { query } = createTestServer({
       user: { id: '1' },
-      searchWord
+      searchWord,
+      models
     });
     const res = await query({
       query: searchQuery,
@@ -201,7 +207,8 @@ describe('queries', () => {
   test('searchWord spanish lang, mocks enabled returns suggestion', async () => {
     const { query } = createTestServer({
       user: { id: '1' },
-      searchWord
+      searchWord,
+      models
     });
     const res = await query({
       query: searchQuery,
@@ -217,7 +224,8 @@ describe('queries', () => {
   test('searchWord english lang, mocks enabled returns suggestion', async () => {
     const { query } = createTestServer({
       user: { id: '1' },
-      searchWord
+      searchWord,
+      models
     });
     const res = await query({
       query: searchQuery,
