@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+ lp-server:
+    build: 
+      context: .
+      dockerfile: docker/Dockerfile-server-prod
+    ports:
+      - "4000:4000"
+    volumes:
+      - /app/node_modules
+    env_file:
+      - ./packages/server/.env

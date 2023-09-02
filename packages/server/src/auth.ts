@@ -60,7 +60,6 @@ export const createToken: CreateTokenFuncType = ({ id, role }) => {
   return token;
 };
 
-/**retrieve user data from the token */
 export function getUserFromToken(token?: string): UserTokenInfo | undefined {
   if (!token || !JWT_SECTET) {
     return;
@@ -77,7 +76,10 @@ export function getUserFromToken(token?: string): UserTokenInfo | undefined {
 export function authenticated(next: ResolverFunc): ResolverFunc {
   return async (root, args, context, info) => {
     const id = context?.user?.id;
-    const existingUser = await context.models.User.findOne({ id });
+    if (!id) {
+      throw new AuthenticationError(ERROR_MESSAGES.NOT_AUTHENTICATED);
+    }
+    const existingUser = await context?.models?.User?.findOne({ id });
     if (!existingUser) {
       throw new AuthenticationError(ERROR_MESSAGES.NOT_AUTHENTICATED);
     }
@@ -88,7 +90,10 @@ export function authenticated(next: ResolverFunc): ResolverFunc {
 export function authorized(role: Role, next: ResolverFunc): ResolverFunc {
   return async (root, args, context, info) => {
     const id = context?.user?.id;
-    const existingUser = await context.models.User.findOne({ id });
+    if (!id) {
+      throw new AuthenticationError(ERROR_MESSAGES.NOT_AUTHORIZED);
+    }
+    const existingUser = await context?.models?.User?.findOne({ id });
     if (existingUser?.role !== role) {
       throw new AuthenticationError(ERROR_MESSAGES.NOT_AUTHORIZED);
     }
