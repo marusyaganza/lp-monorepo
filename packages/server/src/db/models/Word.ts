@@ -118,12 +118,12 @@ export const WordModel: WordModelType = {
     let isOk = true;
     data.forEach(async entry => {
       const update = { ...entry };
-      const { ok, value } = await Word.findOneAndUpdate(
+      const result = await Word.findOneAndUpdate(
         { _id: entry.id, user },
         update,
         { rawResult: true, new: true }
       );
-      isOk = isOk && ok == 1 && value !== null;
+      isOk = isOk && result?.ok == 1 && result?.value !== null;
     });
 
     return { ok: isOk };

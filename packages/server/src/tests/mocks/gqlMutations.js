@@ -89,10 +89,17 @@ const deleteWordMutation = `mutation($deleteWordId: ID!) {
   deleteWord(id: $deleteWordId)
 }`;
 
+const saveGameResultMutation = `
+mutation SaveGameResult($input: [UpdateStatisticsInput!]) {
+  saveGameResult(input: $input)
+}
+`;
+
 export const mutations = {
   signUpMutation,
   loginMutation,
   saveWordMutation,
   updateWordMutation,
-  deleteWordMutation
+  deleteWordMutation,
+  saveGameResultMutation
 };

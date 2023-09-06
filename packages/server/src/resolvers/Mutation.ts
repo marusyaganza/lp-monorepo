@@ -30,21 +30,21 @@ export const MutationResolvers: MutationResolversType<ResolverContext> = {
   updateWord: authorized(
     Role.Member,
     async (_, { input }, { models, user }) => {
-      const { ok, value } = await models.Word.updateOne({
+      const result = await models.Word.updateOne({
         ...input,
         user: user?.id
       });
-      if (!ok) {
+      if (!result?.ok) {
         throw new UserInputError(`updating word with id ${input.id} failed`);
       }
-      return value;
+      return result?.value;
     }
   ),
   saveGameResult: authorized(
     Role.Member,
     async (_, { input }, { models, user }) => {
-      const { ok } = await models.Word.updateStatistics(input, user?.id);
-      if (!ok) {
+      const result = await models.Word.updateStatistics(input, user?.id);
+      if (!result?.ok) {
         throw new UserInputError(`saving training result failed`);
       }
       return 'Game result saved';
@@ -52,7 +52,7 @@ export const MutationResolvers: MutationResolversType<ResolverContext> = {
   ),
   deleteWord: authorized(Role.Member, async (_, { id }, { models, user }) => {
     const result = await models.Word.deleteOne({ id, user: user?.id });
-    if (!result.ok) {
+    if (!result?.ok) {
       throw new UserInputError(`deleting word with id ${id} failed`);
     }
     return `word with id ${id} was deleted`;

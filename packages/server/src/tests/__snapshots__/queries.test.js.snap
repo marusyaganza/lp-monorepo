@@ -45,6 +45,454 @@ exports[`queries games 1`] = `
 }
 `;
 
+exports[`queries generate game data if game is not found 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": null,
+      "errors": [
+        {
+          "extensions": {
+            "code": "INTERNAL_SERVER_ERROR",
+          },
+          "locations": [
+            {
+              "column": 3,
+              "line": 2,
+            },
+          ],
+          "message": "game not found",
+          "path": [
+            "game",
+          ],
+        },
+      ],
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`queries generate game data if user does not have enough words 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": null,
+      "errors": [
+        {
+          "extensions": {
+            "code": "INTERNAL_SERVER_ERROR",
+          },
+          "locations": [
+            {
+              "column": 3,
+              "line": 2,
+            },
+          ],
+          "message": "not enough words to start a game. You have 0 word. Words requited for the game: 1",
+          "path": [
+            "game",
+          ],
+        },
+      ],
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`queries generate game data if words do not exist 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": null,
+      "errors": [
+        {
+          "extensions": {
+            "code": "INTERNAL_SERVER_ERROR",
+          },
+          "locations": [
+            {
+              "column": 3,
+              "line": 2,
+            },
+          ],
+          "message": "words not found",
+          "path": [
+            "game",
+          ],
+        },
+      ],
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`queries get gamedata with walid user for Audio game and English 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": {
+        "game": {
+          "questions": [
+            {
+              "additionalInfo": null,
+              "answer": "wheel",
+              "options": null,
+              "question": [
+                "https://media.merriam-webster.com/audio/prons/en/us/mp3/w/wheel001.mp3",
+              ],
+              "wordId": "1",
+            },
+            {
+              "additionalInfo": null,
+              "answer": "wheel-thrown",
+              "options": null,
+              "question": [
+                "https://media.merriam-webster.com/audio/prons/en/us/mp3/number/9wheel01.mp3",
+              ],
+              "wordId": "7",
+            },
+            {
+              "additionalInfo": null,
+              "answer": "all-wheel",
+              "options": null,
+              "question": [
+                "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v.mp3",
+              ],
+              "wordId": "9",
+            },
+            {
+              "additionalInfo": null,
+              "answer": "all-wheel drive",
+              "options": null,
+              "question": [
+                "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v.mp3",
+              ],
+              "wordId": "10",
+            },
+          ],
+          "task": "Type the word that you've heard",
+          "type": "AUDIO",
+        },
+      },
+      "errors": undefined,
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`queries get gamedata with walid user for SelectDef game and English 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": {
+        "game": {
+          "questions": [
+            {
+              "additionalInfo": {
+                "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/w/wheel001.mp3",
+              },
+              "answer": "wheel",
+              "options": null,
+              "question": [
+                "a circular frame of hard material that may be solid, partly solid, or spoked and that is capable of turning on an axle",
+                "a contrivance or apparatus having as its principal part a wheel: such as",
+                "a chiefly medieval instrument of torture designed for mutilating a victim (as by stretching or disjointing)",
+              ],
+              "wordId": "1",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": null,
+              },
+              "answer": "wheel",
+              "options": null,
+              "question": [
+                "to turn on or as if on an axis : revolve",
+                "to change direction as if revolving on a pivot",
+                "to move or extend in a circle or curve",
+              ],
+              "wordId": "2",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": null,
+              },
+              "answer": "wheel and axle",
+              "options": null,
+              "question": [
+                "a mechanical device consisting of a grooved wheel turned by a cord or chain with a rigidly attached axle (as for winding up a weight) together with the supporting standards",
+              ],
+              "wordId": "3",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": null,
+              },
+              "answer": "wheel animal",
+              "options": null,
+              "question": [
+                "rotifer",
+              ],
+              "wordId": "4",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": null,
+              },
+              "answer": "wheel bug",
+              "options": null,
+              "question": [
+                "a large North American assassin bug (Arilus cristatus) that has a high serrated crest on its prothorax and preys on insects",
+              ],
+              "wordId": "5",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": null,
+              },
+              "answer": "wheel lock",
+              "options": null,
+              "question": [
+                "a gun's lock for a muzzle-loading firearm in which sparks are struck from a flint or a piece of pyrite by a revolving wheel",
+              ],
+              "wordId": "6",
+            },
+          ],
+          "task": "Type a word that means ",
+          "type": "TYPE_WORD",
+        },
+      },
+      "errors": undefined,
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`queries get gamedata with walid user for SelectWord game and English 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": {
+        "game": {
+          "questions": [
+            {
+              "additionalInfo": {
+                "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/w/wheel001.mp3",
+              },
+              "answer": "wheel",
+              "options": null,
+              "question": [
+                "a circular frame of hard material that may be solid, partly solid, or spoked and that is capable of turning on an axle",
+                "a contrivance or apparatus having as its principal part a wheel: such as",
+                "a chiefly medieval instrument of torture designed for mutilating a victim (as by stretching or disjointing)",
+              ],
+              "wordId": "1",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": null,
+              },
+              "answer": "wheel",
+              "options": null,
+              "question": [
+                "to turn on or as if on an axis : revolve",
+                "to change direction as if revolving on a pivot",
+                "to move or extend in a circle or curve",
+              ],
+              "wordId": "2",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": null,
+              },
+              "answer": "wheel and axle",
+              "options": null,
+              "question": [
+                "a mechanical device consisting of a grooved wheel turned by a cord or chain with a rigidly attached axle (as for winding up a weight) together with the supporting standards",
+              ],
+              "wordId": "3",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": null,
+              },
+              "answer": "wheel animal",
+              "options": null,
+              "question": [
+                "rotifer",
+              ],
+              "wordId": "4",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": null,
+              },
+              "answer": "wheel bug",
+              "options": null,
+              "question": [
+                "a large North American assassin bug (Arilus cristatus) that has a high serrated crest on its prothorax and preys on insects",
+              ],
+              "wordId": "5",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": null,
+              },
+              "answer": "wheel lock",
+              "options": null,
+              "question": [
+                "a gun's lock for a muzzle-loading firearm in which sparks are struck from a flint or a piece of pyrite by a revolving wheel",
+              ],
+              "wordId": "6",
+            },
+          ],
+          "task": "Type a word that means ",
+          "type": "TYPE_WORD",
+        },
+      },
+      "errors": undefined,
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`queries get gamedata with walid user for TypeWord game and English 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": {
+        "game": {
+          "questions": [
+            {
+              "additionalInfo": {
+                "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/w/wheel001.mp3",
+              },
+              "answer": "wheel",
+              "options": null,
+              "question": [
+                "a circular frame of hard material that may be solid, partly solid, or spoked and that is capable of turning on an axle",
+                "a contrivance or apparatus having as its principal part a wheel: such as",
+                "a chiefly medieval instrument of torture designed for mutilating a victim (as by stretching or disjointing)",
+              ],
+              "wordId": "1",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": null,
+              },
+              "answer": "wheel",
+              "options": null,
+              "question": [
+                "to turn on or as if on an axis : revolve",
+                "to change direction as if revolving on a pivot",
+                "to move or extend in a circle or curve",
+              ],
+              "wordId": "2",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": null,
+              },
+              "answer": "wheel and axle",
+              "options": null,
+              "question": [
+                "a mechanical device consisting of a grooved wheel turned by a cord or chain with a rigidly attached axle (as for winding up a weight) together with the supporting standards",
+              ],
+              "wordId": "3",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": null,
+              },
+              "answer": "wheel animal",
+              "options": null,
+              "question": [
+                "rotifer",
+              ],
+              "wordId": "4",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": null,
+              },
+              "answer": "wheel bug",
+              "options": null,
+              "question": [
+                "a large North American assassin bug (Arilus cristatus) that has a high serrated crest on its prothorax and preys on insects",
+              ],
+              "wordId": "5",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": null,
+              },
+              "answer": "wheel lock",
+              "options": null,
+              "question": [
+                "a gun's lock for a muzzle-loading firearm in which sparks are struck from a flint or a piece of pyrite by a revolving wheel",
+              ],
+              "wordId": "6",
+            },
+          ],
+          "task": "Type a word that means ",
+          "type": "TYPE_WORD",
+        },
+      },
+      "errors": undefined,
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
 exports[`queries searchWord english lang, mocks enabled 1`] = `
 {
   "body": {
@@ -461,7 +909,135 @@ exports[`queries searchWord spanish lang, mocks enabled returns suggestion 1`] =
 }
 `;
 
-exports[`queries user 1`] = `
+exports[`queries should not generate game data if user is not found 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": null,
+      "errors": [
+        {
+          "extensions": {
+            "code": "INTERNAL_SERVER_ERROR",
+          },
+          "locations": [
+            {
+              "column": 3,
+              "line": 2,
+            },
+          ],
+          "message": "Login to perform this operation",
+          "path": [
+            "game",
+          ],
+        },
+      ],
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`queries should not generate game data if user is undefined 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": null,
+      "errors": [
+        {
+          "extensions": {
+            "code": "INTERNAL_SERVER_ERROR",
+          },
+          "locations": [
+            {
+              "column": 3,
+              "line": 2,
+            },
+          ],
+          "message": "Login to perform this operation",
+          "path": [
+            "game",
+          ],
+        },
+      ],
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`queries user if user exist 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": {
+        "user": {
+          "email": "member@member.com",
+          "firstName": "User",
+          "id": "1",
+          "lastName": "Test",
+          "role": "MEMBER",
+        },
+      },
+      "errors": undefined,
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`queries user if user is not found 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": null,
+      "errors": [
+        {
+          "extensions": {
+            "code": "INTERNAL_SERVER_ERROR",
+          },
+          "locations": [
+            {
+              "column": 5,
+              "line": 3,
+            },
+          ],
+          "message": "user is not found",
+          "path": [
+            "user",
+          ],
+        },
+      ],
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`queries user if user is undefined 1`] = `
 {
   "body": {
     "kind": "single",
@@ -533,6 +1109,40 @@ exports[`queries word by id 1`] = `
         },
       },
       "errors": undefined,
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`queries word by id if word is not found 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": null,
+      "errors": [
+        {
+          "extensions": {
+            "code": "INTERNAL_SERVER_ERROR",
+          },
+          "locations": [
+            {
+              "column": 5,
+              "line": 3,
+            },
+          ],
+          "message": "word with id mockid is not found",
+          "path": [
+            "word",
+          ],
+        },
+      ],
     },
   },
   "http": {

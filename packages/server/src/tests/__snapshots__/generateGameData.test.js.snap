@@ -1,0 +1,977 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`generateGameData generateGameData if all the words are given with valid data for Audio Game 1`] = `
+{
+  "questions": [
+    {
+      "answer": "wheel",
+      "question": [
+        "https://media.merriam-webster.com/audio/prons/en/us/mp3/w/wheel001.mp3",
+      ],
+      "wordId": "1",
+    },
+    {
+      "answer": "wheel-thrown",
+      "question": [
+        "https://media.merriam-webster.com/audio/prons/en/us/mp3/number/9wheel01.mp3",
+      ],
+      "wordId": "7",
+    },
+    {
+      "answer": "all-wheel",
+      "question": [
+        "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v.mp3",
+      ],
+      "wordId": "9",
+    },
+    {
+      "answer": "all-wheel drive",
+      "question": [
+        "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v.mp3",
+      ],
+      "wordId": "10",
+    },
+  ],
+  "task": "Type the word that you've heard",
+  "type": "AUDIO",
+}
+`;
+
+exports[`generateGameData generateGameData if all the words are given with valid data for SelectDef Game 1`] = `
+{
+  "questions": [
+    {
+      "additionalInfo": {
+        "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/w/wheel001.mp3",
+      },
+      "answer": "a circular frame of hard material that may be solid, partly solid, or spoked and that is capable of turning on an axle",
+      "options": [
+        "to turn on or as if on an axis : revolve",
+        "a mechanical device consisting of a grooved [...] turned by a cord or chain with a rigidly attached axle (as for winding up a weight) together with the supporting standards",
+        "a large North American assassin bug (Arilus cristatus) that has a high serrated crest on its prothorax and preys on insects",
+        "a gun's lock for a muzzle-loading firearm in which sparks are struck from a flint or a piece of pyrite by a revolving [...]",
+        "made on a potter's [...]",
+        "a circular frame of hard material that may be solid, partly solid, or spoked and that is capable of turning on an axle",
+      ],
+      "question": [
+        "wheel",
+      ],
+      "wordId": "1",
+    },
+    {
+      "additionalInfo": {
+        "audioUrl": null,
+      },
+      "answer": "to turn on or as if on an axis : revolve",
+      "options": [
+        "a gun's lock for a muzzle-loading firearm in which sparks are struck from a flint or a piece of pyrite by a revolving [...]",
+        "an automobile drive mechanism that acts on all four wheels of the vehicle",
+        "to turn on or as if on an axis : revolve",
+        "acting especially independently on or by means of all four wheels of an automotive vehicle",
+        "a circular frame of hard material that may be solid, partly solid, or spoked and that is capable of turning on an axle",
+        "a mechanical device consisting of a grooved [...] turned by a cord or chain with a rigidly attached axle (as for winding up a weight) together with the supporting standards",
+      ],
+      "question": [
+        "wheel",
+      ],
+      "wordId": "2",
+    },
+    {
+      "additionalInfo": {
+        "audioUrl": null,
+      },
+      "answer": "a mechanical device consisting of a grooved wheel turned by a cord or chain with a rigidly attached axle (as for winding up a weight) together with the supporting standards",
+      "options": [
+        "a mechanical device consisting of a grooved wheel turned by a cord or chain with a rigidly attached axle (as for winding up a weight) together with the supporting standards",
+        "a gun's lock for a muzzle-loading firearm in which sparks are struck from a flint or a piece of pyrite by a revolving wheel",
+        "made on a potter's wheel",
+        "an automobile drive mechanism that acts on all four wheels of the vehicle",
+        "acting especially independently on or by means of all four wheels of an automotive vehicle",
+        "a circular frame of hard material that may be solid, partly solid, or spoked and that is capable of turning on an axle",
+      ],
+      "question": [
+        "wheel and axle",
+      ],
+      "wordId": "3",
+    },
+    {
+      "additionalInfo": {
+        "audioUrl": null,
+      },
+      "answer": "rotifer",
+      "options": [
+        "a large North American assassin bug (Arilus cristatus) that has a high serrated crest on its prothorax and preys on insects",
+        "a gun's lock for a muzzle-loading firearm in which sparks are struck from a flint or a piece of pyrite by a revolving wheel",
+        "made on a potter's wheel",
+        "an automobile drive mechanism that acts on all four wheels of the vehicle",
+        "acting especially independently on or by means of all four wheels of an automotive vehicle",
+        "rotifer",
+      ],
+      "question": [
+        "wheel animal",
+      ],
+      "wordId": "4",
+    },
+    {
+      "additionalInfo": {
+        "audioUrl": null,
+      },
+      "answer": "a large North American assassin bug (Arilus cristatus) that has a high serrated crest on its prothorax and preys on insects",
+      "options": [
+        "a circular frame of hard material that may be solid, partly solid, or spoked and that is capable of turning on an axle",
+        "to turn on or as if on an axis : revolve",
+        "rotifer",
+        "a gun's lock for a muzzle-loading firearm in which sparks are struck from a flint or a piece of pyrite by a revolving wheel",
+        "made on a potter's wheel",
+        "a large North American assassin bug (Arilus cristatus) that has a high serrated crest on its prothorax and preys on insects",
+      ],
+      "question": [
+        "wheel bug",
+      ],
+      "wordId": "5",
+    },
+    {
+      "additionalInfo": {
+        "audioUrl": null,
+      },
+      "answer": "a gun's lock for a muzzle-loading firearm in which sparks are struck from a flint or a piece of pyrite by a revolving wheel",
+      "options": [
+        "a large North American assassin bug (Arilus cristatus) that has a high serrated crest on its prothorax and preys on insects",
+        "an automobile drive mechanism that acts on all four wheels of the vehicle",
+        "a gun's lock for a muzzle-loading firearm in which sparks are struck from a flint or a piece of pyrite by a revolving wheel",
+        "acting especially independently on or by means of all four wheels of an automotive vehicle",
+        "a circular frame of hard material that may be solid, partly solid, or spoked and that is capable of turning on an axle",
+        "to turn on or as if on an axis : revolve",
+      ],
+      "question": [
+        "wheel lock",
+      ],
+      "wordId": "6",
+    },
+  ],
+  "task": "Select a definition that means ",
+  "type": "SELECT_DEF",
+}
+`;
+
+exports[`generateGameData generateGameData if all the words are given with valid data for SelectWord Game 1`] = `
+{
+  "questions": [
+    {
+      "additionalInfo": {
+        "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/w/wheel001.mp3",
+      },
+      "answer": "wheel",
+      "options": [
+        "wheel",
+        "wheel lock",
+        "wheel-thrown",
+        "all-wheel drive",
+        "all-wheel",
+        "wheel",
+      ],
+      "question": [
+        "a circular frame of hard material that may be solid, partly solid, or spoked and that is capable of turning on an axle",
+        "a contrivance or apparatus having as its principal part a wheel: such as",
+        "a chiefly medieval instrument of torture designed for mutilating a victim (as by stretching or disjointing)",
+      ],
+      "wordId": "1",
+    },
+    {
+      "additionalInfo": {
+        "audioUrl": null,
+      },
+      "answer": "wheel",
+      "options": [
+        "wheel bug",
+        "wheel lock",
+        "wheel-thrown",
+        "all-wheel drive",
+        "all-wheel",
+        "wheel",
+      ],
+      "question": [
+        "to turn on or as if on an axis : revolve",
+        "to change direction as if revolving on a pivot",
+        "to move or extend in a circle or curve",
+      ],
+      "wordId": "2",
+    },
+    {
+      "additionalInfo": {
+        "audioUrl": null,
+      },
+      "answer": "wheel and axle",
+      "options": [
+        "wheel",
+        "wheel",
+        "wheel bug",
+        "wheel lock",
+        "wheel-thrown",
+        "wheel and axle",
+      ],
+      "question": [
+        "a mechanical device consisting of a grooved wheel turned by a cord or chain with a rigidly attached axle (as for winding up a weight) together with the supporting standards",
+      ],
+      "wordId": "3",
+    },
+    {
+      "additionalInfo": {
+        "audioUrl": null,
+      },
+      "answer": "wheel animal",
+      "options": [
+        "wheel lock",
+        "all-wheel drive",
+        "wheel animal",
+        "all-wheel",
+        "wheel",
+        "wheel",
+      ],
+      "question": [
+        "rotifer",
+      ],
+      "wordId": "4",
+    },
+    {
+      "additionalInfo": {
+        "audioUrl": null,
+      },
+      "answer": "wheel bug",
+      "options": [
+        "wheel bug",
+        "wheel lock",
+        "wheel-thrown",
+        "all-wheel drive",
+        "all-wheel",
+        "wheel",
+      ],
+      "question": [
+        "a large North American assassin bug (Arilus cristatus) that has a high serrated crest on its prothorax and preys on insects",
+      ],
+      "wordId": "5",
+    },
+    {
+      "additionalInfo": {
+        "audioUrl": null,
+      },
+      "answer": "wheel lock",
+      "options": [
+        "wheel animal",
+        "wheel bug",
+        "wheel-thrown",
+        "all-wheel drive",
+        "all-wheel",
+        "wheel lock",
+      ],
+      "question": [
+        "a gun's lock for a muzzle-loading firearm in which sparks are struck from a flint or a piece of pyrite by a revolving wheel",
+      ],
+      "wordId": "6",
+    },
+  ],
+  "task": "Select a word that means ",
+  "type": "SELECT_WORD",
+}
+`;
+
+exports[`generateGameData generateGameData if all the words are given with valid data for TypeWord Game 1`] = `
+{
+  "questions": [
+    {
+      "additionalInfo": {
+        "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/w/wheel001.mp3",
+      },
+      "answer": "wheel",
+      "question": [
+        "a circular frame of hard material that may be solid, partly solid, or spoked and that is capable of turning on an axle",
+        "a contrivance or apparatus having as its principal part a wheel: such as",
+        "a chiefly medieval instrument of torture designed for mutilating a victim (as by stretching or disjointing)",
+      ],
+      "wordId": "1",
+    },
+    {
+      "additionalInfo": {
+        "audioUrl": null,
+      },
+      "answer": "wheel",
+      "question": [
+        "to turn on or as if on an axis : revolve",
+        "to change direction as if revolving on a pivot",
+        "to move or extend in a circle or curve",
+      ],
+      "wordId": "2",
+    },
+    {
+      "additionalInfo": {
+        "audioUrl": null,
+      },
+      "answer": "wheel and axle",
+      "question": [
+        "a mechanical device consisting of a grooved wheel turned by a cord or chain with a rigidly attached axle (as for winding up a weight) together with the supporting standards",
+      ],
+      "wordId": "3",
+    },
+    {
+      "additionalInfo": {
+        "audioUrl": null,
+      },
+      "answer": "wheel animal",
+      "question": [
+        "rotifer",
+      ],
+      "wordId": "4",
+    },
+    {
+      "additionalInfo": {
+        "audioUrl": null,
+      },
+      "answer": "wheel bug",
+      "question": [
+        "a large North American assassin bug (Arilus cristatus) that has a high serrated crest on its prothorax and preys on insects",
+      ],
+      "wordId": "5",
+    },
+    {
+      "additionalInfo": {
+        "audioUrl": null,
+      },
+      "answer": "wheel lock",
+      "question": [
+        "a gun's lock for a muzzle-loading firearm in which sparks are struck from a flint or a piece of pyrite by a revolving wheel",
+      ],
+      "wordId": "6",
+    },
+  ],
+  "task": "Type a word that means ",
+  "type": "TYPE_WORD",
+}
+`;
+
+exports[`generateGameData generateOptions with one word for English 1`] = `
+[
+  {
+    "name": "glitzephyr",
+    "shortDef": [
+      "a whimsical, fleeting moment when sunlight catches water droplets in the air, creating a shimmering and enchanting effect",
+    ],
+  },
+  {
+    "name": "flibberfazzle",
+    "shortDef": [
+      "to engage in a playful and creative activity that sparks joy and imagination. It involves letting go of inhibitions and embracing a carefree spirit to explore new ideas and possibilities",
+    ],
+  },
+  {
+    "name": "zephral",
+    "shortDef": [
+      "a gentle, soothing sensation experienced when a cool breeze rustles through leaves on a warm summer day",
+    ],
+  },
+  {
+    "additionalInfo": null,
+    "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/w/wheel001.mp3",
+    "defs": [
+      {
+        "def": "a circular frame of hard material that may be solid, partly solid, or spoked and that is capable of turning on an axle",
+        "examples": null,
+      },
+      {
+        "def": "see also behind the wheel",
+        "examples": [
+          {
+            "text": "… drivers are expected to keep their hands on the <i>wheel</i> and remain attentive …",
+            "translation": null,
+          },
+        ],
+      },
+      {
+        "def": "a recurring course, development, or action cycle",
+        "examples": null,
+      },
+      {
+        "def": "something (such as a round, flat cheese) resembling a wheel in shape",
+        "examples": null,
+      },
+      {
+        "def": "a rotation or turn usually about an axis or center",
+        "examples": null,
+      },
+      {
+        "def": "a person of importance especially in an organization",
+        "examples": [
+          {
+            "text": "a big <i>wheel</i>",
+            "translation": null,
+          },
+        ],
+      },
+      {
+        "def": "the refrain or burden of a song",
+        "examples": null,
+      },
+      {
+        "def": "a sports league",
+        "examples": null,
+      },
+      {
+        "def": "a wheeled vehicle",
+        "examples": null,
+      },
+      {
+        "def": "legs",
+        "examples": null,
+      },
+    ],
+    "id": "1",
+    "imgDesc": "wheel 1: <i>1</i> hub, <i>2</i> spoke, <i>3</i> felly, <i>4</i> tire",
+    "imgUrl": "https://merriam-webster.com/assets/mw/static/art/dict/wheel.gif",
+    "isOffensive": false,
+    "language": "ENGLISH",
+    "name": "wheel",
+    "particle": "noun",
+    "shortDef": [
+      "a circular frame of hard material that may be solid, partly solid, or spoked and that is capable of turning on an axle",
+      "a contrivance or apparatus having as its principal part a wheel: such as",
+      "a chiefly medieval instrument of torture designed for mutilating a victim (as by stretching or disjointing)",
+    ],
+    "stems": [
+      "wheel",
+      "wheelless",
+      "wheels",
+    ],
+    "transcription": "ˈ(h)wēl",
+    "uuid": "4e2c10d5-173d-4401-9b21-08e8a8656431",
+  },
+  {
+    "name": "quix",
+    "shortDef": [
+      "delightful feeling of anticipation and excitement that arises before embarking on a new adventure or journey.",
+    ],
+  },
+]
+`;
+
+exports[`generateGameData generateOptions with one word for Spanish 1`] = `
+[
+  {
+    "name": "trutamor",
+    "shortDef": [
+      "a term for a person who has an extraordinary love and knowledge of fruits, often seeking out rare and exotic varieties",
+    ],
+  },
+  {
+    "name": "danzaroma",
+    "shortDef": [
+      "the unique scent that lingers in the air after a lively dance session, evoking memories of joy and movement",
+    ],
+  },
+  {
+    "name": "sonrisanto",
+    "shortDef": [
+      "to a smile shared between strangers that brings a moment of warmth and connection, akin to a serendipitous encounter",
+    ],
+  },
+  {
+    "additionalInfo": null,
+    "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/w/wheel001.mp3",
+    "defs": [
+      {
+        "def": "a circular frame of hard material that may be solid, partly solid, or spoked and that is capable of turning on an axle",
+        "examples": null,
+      },
+      {
+        "def": "see also behind the wheel",
+        "examples": [
+          {
+            "text": "… drivers are expected to keep their hands on the <i>wheel</i> and remain attentive …",
+            "translation": null,
+          },
+        ],
+      },
+      {
+        "def": "a recurring course, development, or action cycle",
+        "examples": null,
+      },
+      {
+        "def": "something (such as a round, flat cheese) resembling a wheel in shape",
+        "examples": null,
+      },
+      {
+        "def": "a rotation or turn usually about an axis or center",
+        "examples": null,
+      },
+      {
+        "def": "a person of importance especially in an organization",
+        "examples": [
+          {
+            "text": "a big <i>wheel</i>",
+            "translation": null,
+          },
+        ],
+      },
+      {
+        "def": "the refrain or burden of a song",
+        "examples": null,
+      },
+      {
+        "def": "a sports league",
+        "examples": null,
+      },
+      {
+        "def": "a wheeled vehicle",
+        "examples": null,
+      },
+      {
+        "def": "legs",
+        "examples": null,
+      },
+    ],
+    "id": "1",
+    "imgDesc": "wheel 1: <i>1</i> hub, <i>2</i> spoke, <i>3</i> felly, <i>4</i> tire",
+    "imgUrl": "https://merriam-webster.com/assets/mw/static/art/dict/wheel.gif",
+    "isOffensive": false,
+    "language": "ENGLISH",
+    "name": "wheel",
+    "particle": "noun",
+    "shortDef": [
+      "a circular frame of hard material that may be solid, partly solid, or spoked and that is capable of turning on an axle",
+      "a contrivance or apparatus having as its principal part a wheel: such as",
+      "a chiefly medieval instrument of torture designed for mutilating a victim (as by stretching or disjointing)",
+    ],
+    "stems": [
+      "wheel",
+      "wheelless",
+      "wheels",
+    ],
+    "transcription": "ˈ(h)wēl",
+    "uuid": "4e2c10d5-173d-4401-9b21-08e8a8656431",
+  },
+  {
+    "name": "espirelar",
+    "shortDef": [
+      "to take a leisurely stroll through a park or natural setting, breathing deeply to refresh your spirit.",
+    ],
+  },
+]
+`;
+
+exports[`generateGameData generateOptions with sufficient data 1`] = `
+[
+  {
+    "additionalInfo": null,
+    "audioUrl": null,
+    "defs": [
+      {
+        "def": "to turn on or as if on an axis revolve",
+        "examples": null,
+      },
+      {
+        "def": "to change direction as if revolving on a pivot",
+        "examples": [
+          {
+            "text": "the battalion would have <i>wheeled</i> to the flank",
+            "translation": null,
+          },
+          {
+            "text": "her mind will <i>wheel</i> around to the other extreme",
+            "translation": null,
+          },
+          {
+            "text": "<i>wheeled</i> to face her opponent",
+            "translation": null,
+          },
+        ],
+      },
+      {
+        "def": "to move or extend in a circle or curve",
+        "examples": [
+          {
+            "text": "birds in <i>wheeling</i> flight",
+            "translation": null,
+          },
+          {
+            "text": "valleys where young cotton <i>wheeled</i> slowly in fanlike rows",
+            "translation": null,
+          },
+        ],
+      },
+      {
+        "def": "to travel on or as if on wheels or in a wheeled vehicle",
+        "examples": null,
+      },
+      {
+        "def": "to cause to turn on or as if on an axis rotate",
+        "examples": null,
+      },
+      {
+        "def": "to convey or move on or as if on wheels or in a wheeled vehicle",
+        "examples": [
+          {
+            "text": "<i>wheeled</i> the patient back to his room",
+            "translation": null,
+          },
+          {
+            "text": "<i>wheeled</i> the car into the driveway",
+            "translation": null,
+          },
+          {
+            "text": "<i>wheel</i> in the experts",
+            "translation": null,
+          },
+        ],
+      },
+      {
+        "def": "to cause to change direction as if revolving on a pivot",
+        "examples": null,
+      },
+      {
+        "def": "to make or perform in a circle or curve",
+        "examples": null,
+      },
+    ],
+    "id": "2",
+    "imgDesc": null,
+    "imgUrl": null,
+    "isOffensive": false,
+    "language": "ENGLISH",
+    "name": "wheel",
+    "particle": "verb",
+    "shortDef": [
+      "to turn on or as if on an axis : revolve",
+      "to change direction as if revolving on a pivot",
+      "to move or extend in a circle or curve",
+    ],
+    "stems": [
+      "wheel",
+      "wheel and deal",
+      "wheeled",
+      "wheeled and dealed",
+      "wheeling",
+      "wheeling and dealing",
+      "wheels",
+      "wheels and deals",
+    ],
+    "transcription": "wheel",
+    "uuid": "4f3397ab-ab4b-467a-be85-f22253666a84",
+  },
+  {
+    "additionalInfo": null,
+    "audioUrl": null,
+    "defs": [
+      {
+        "def": "a mechanical device consisting of a grooved wheel turned by a cord or chain with a rigidly attached axle (as for winding up a weight) together with the supporting standards",
+        "examples": null,
+      },
+    ],
+    "id": "3",
+    "imgDesc": null,
+    "imgUrl": null,
+    "isOffensive": false,
+    "language": "ENGLISH",
+    "name": "wheel and axle",
+    "particle": "noun",
+    "shortDef": [
+      "a mechanical device consisting of a grooved wheel turned by a cord or chain with a rigidly attached axle (as for winding up a weight) together with the supporting standards",
+    ],
+    "stems": [
+      "wheel and axle",
+      "wheel and axles",
+    ],
+    "transcription": "wheel and axle",
+    "uuid": "f65dcde8-88b5-4710-8b1a-7d9d0ff1445e",
+  },
+  {
+    "additionalInfo": null,
+    "audioUrl": null,
+    "defs": [
+      {
+        "def": "a large North American assassin bug (<i>Arilus cristatus</i>) that has a high serrated crest on its prothorax and preys on insects",
+        "examples": null,
+      },
+    ],
+    "id": "5",
+    "imgDesc": null,
+    "imgUrl": null,
+    "isOffensive": false,
+    "language": "ENGLISH",
+    "name": "wheel bug",
+    "particle": "noun",
+    "shortDef": [
+      "a large North American assassin bug (Arilus cristatus) that has a high serrated crest on its prothorax and preys on insects",
+    ],
+    "stems": [
+      "wheel bug",
+      "wheel bugs",
+    ],
+    "transcription": "wheel bug",
+    "uuid": "f9b7c27b-9126-4e0b-8668-162f034a3fed",
+  },
+  {
+    "additionalInfo": null,
+    "audioUrl": null,
+    "defs": [
+      {
+        "def": "a gun's lock for a muzzle-loading firearm in which sparks are struck from a flint or a piece of pyrite by a revolving wheel",
+        "examples": null,
+      },
+    ],
+    "id": "6",
+    "imgDesc": null,
+    "imgUrl": null,
+    "isOffensive": false,
+    "language": "ENGLISH",
+    "name": "wheel lock",
+    "particle": "noun",
+    "shortDef": [
+      "a gun's lock for a muzzle-loading firearm in which sparks are struck from a flint or a piece of pyrite by a revolving wheel",
+    ],
+    "stems": [
+      "wheel lock",
+      "wheel locks",
+    ],
+    "transcription": "wheel lock",
+    "uuid": "3919d4f6-4c50-4063-8162-9b10d1863754",
+  },
+  {
+    "additionalInfo": null,
+    "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/number/9wheel01.mp3",
+    "defs": [
+      {
+        "def": "made on a potter's wheel",
+        "examples": [
+          {
+            "text": "<i>wheel-thrown</i> pottery",
+            "translation": null,
+          },
+        ],
+      },
+    ],
+    "id": "7",
+    "imgDesc": null,
+    "imgUrl": null,
+    "isOffensive": false,
+    "language": "ENGLISH",
+    "name": "wheel-thrown",
+    "particle": "adjective",
+    "shortDef": [
+      "made on a potter's wheel",
+    ],
+    "stems": [
+      "wheel-thrown",
+    ],
+    "transcription": "ˈ(h)wēl-ˌthrōn",
+    "uuid": "b4b2f01c-7e82-45e0-98b9-1c9ab3052385",
+  },
+]
+`;
+
+exports[`generateGameData generateOptions with valid data for English 1`] = `
+[
+  {
+    "additionalInfo": null,
+    "audioUrl": null,
+    "defs": [
+      {
+        "def": "to turn on or as if on an axis revolve",
+        "examples": null,
+      },
+      {
+        "def": "to change direction as if revolving on a pivot",
+        "examples": [
+          {
+            "text": "the battalion would have <i>wheeled</i> to the flank",
+            "translation": null,
+          },
+          {
+            "text": "her mind will <i>wheel</i> around to the other extreme",
+            "translation": null,
+          },
+          {
+            "text": "<i>wheeled</i> to face her opponent",
+            "translation": null,
+          },
+        ],
+      },
+      {
+        "def": "to move or extend in a circle or curve",
+        "examples": [
+          {
+            "text": "birds in <i>wheeling</i> flight",
+            "translation": null,
+          },
+          {
+            "text": "valleys where young cotton <i>wheeled</i> slowly in fanlike rows",
+            "translation": null,
+          },
+        ],
+      },
+      {
+        "def": "to travel on or as if on wheels or in a wheeled vehicle",
+        "examples": null,
+      },
+      {
+        "def": "to cause to turn on or as if on an axis rotate",
+        "examples": null,
+      },
+      {
+        "def": "to convey or move on or as if on wheels or in a wheeled vehicle",
+        "examples": [
+          {
+            "text": "<i>wheeled</i> the patient back to his room",
+            "translation": null,
+          },
+          {
+            "text": "<i>wheeled</i> the car into the driveway",
+            "translation": null,
+          },
+          {
+            "text": "<i>wheel</i> in the experts",
+            "translation": null,
+          },
+        ],
+      },
+      {
+        "def": "to cause to change direction as if revolving on a pivot",
+        "examples": null,
+      },
+      {
+        "def": "to make or perform in a circle or curve",
+        "examples": null,
+      },
+    ],
+    "id": "2",
+    "imgDesc": null,
+    "imgUrl": null,
+    "isOffensive": false,
+    "language": "ENGLISH",
+    "name": "wheel",
+    "particle": "verb",
+    "shortDef": [
+      "to turn on or as if on an axis : revolve",
+      "to change direction as if revolving on a pivot",
+      "to move or extend in a circle or curve",
+    ],
+    "stems": [
+      "wheel",
+      "wheel and deal",
+      "wheeled",
+      "wheeled and dealed",
+      "wheeling",
+      "wheeling and dealing",
+      "wheels",
+      "wheels and deals",
+    ],
+    "transcription": "wheel",
+    "uuid": "4f3397ab-ab4b-467a-be85-f22253666a84",
+  },
+  {
+    "additionalInfo": null,
+    "audioUrl": null,
+    "defs": [
+      {
+        "def": "a mechanical device consisting of a grooved wheel turned by a cord or chain with a rigidly attached axle (as for winding up a weight) together with the supporting standards",
+        "examples": null,
+      },
+    ],
+    "id": "3",
+    "imgDesc": null,
+    "imgUrl": null,
+    "isOffensive": false,
+    "language": "ENGLISH",
+    "name": "wheel and axle",
+    "particle": "noun",
+    "shortDef": [
+      "a mechanical device consisting of a grooved wheel turned by a cord or chain with a rigidly attached axle (as for winding up a weight) together with the supporting standards",
+    ],
+    "stems": [
+      "wheel and axle",
+      "wheel and axles",
+    ],
+    "transcription": "wheel and axle",
+    "uuid": "f65dcde8-88b5-4710-8b1a-7d9d0ff1445e",
+  },
+  {
+    "additionalInfo": null,
+    "audioUrl": null,
+    "defs": [
+      {
+        "def": "a large North American assassin bug (<i>Arilus cristatus</i>) that has a high serrated crest on its prothorax and preys on insects",
+        "examples": null,
+      },
+    ],
+    "id": "5",
+    "imgDesc": null,
+    "imgUrl": null,
+    "isOffensive": false,
+    "language": "ENGLISH",
+    "name": "wheel bug",
+    "particle": "noun",
+    "shortDef": [
+      "a large North American assassin bug (Arilus cristatus) that has a high serrated crest on its prothorax and preys on insects",
+    ],
+    "stems": [
+      "wheel bug",
+      "wheel bugs",
+    ],
+    "transcription": "wheel bug",
+    "uuid": "f9b7c27b-9126-4e0b-8668-162f034a3fed",
+  },
+  {
+    "additionalInfo": null,
+    "audioUrl": null,
+    "defs": [
+      {
+        "def": "a gun's lock for a muzzle-loading firearm in which sparks are struck from a flint or a piece of pyrite by a revolving wheel",
+        "examples": null,
+      },
+    ],
+    "id": "6",
+    "imgDesc": null,
+    "imgUrl": null,
+    "isOffensive": false,
+    "language": "ENGLISH",
+    "name": "wheel lock",
+    "particle": "noun",
+    "shortDef": [
+      "a gun's lock for a muzzle-loading firearm in which sparks are struck from a flint or a piece of pyrite by a revolving wheel",
+    ],
+    "stems": [
+      "wheel lock",
+      "wheel locks",
+    ],
+    "transcription": "wheel lock",
+    "uuid": "3919d4f6-4c50-4063-8162-9b10d1863754",
+  },
+  {
+    "additionalInfo": null,
+    "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/number/9wheel01.mp3",
+    "defs": [
+      {
+        "def": "made on a potter's wheel",
+        "examples": [
+          {
+            "text": "<i>wheel-thrown</i> pottery",
+            "translation": null,
+          },
+        ],
+      },
+    ],
+    "id": "7",
+    "imgDesc": null,
+    "imgUrl": null,
+    "isOffensive": false,
+    "language": "ENGLISH",
+    "name": "wheel-thrown",
+    "particle": "adjective",
+    "shortDef": [
+      "made on a potter's wheel",
+    ],
+    "stems": [
+      "wheel-thrown",
+    ],
+    "transcription": "ˈ(h)wēl-ˌthrōn",
+    "uuid": "b4b2f01c-7e82-45e0-98b9-1c9ab3052385",
+  },
+]
+`;
