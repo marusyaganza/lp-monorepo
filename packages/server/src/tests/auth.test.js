@@ -1,5 +1,6 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+import { AuthenticationError } from '../utils/apolloCustomErrors';
 
 import {
   ERROR_MESSAGES,
@@ -16,7 +17,8 @@ import { Role } from '../generated/graphql';
 jest.mock('bcryptjs', () => {
   return {
     hash: jest.fn((pass, salt) => `mock_hash_${pass}_salt_${salt}`),
-    compare: jest.fn(() => false)
+    compare: jest.fn(() => false),
+    genSalt: jest.fn(() => 3)
   };
 });
 
@@ -29,7 +31,14 @@ jest.mock('jsonwebtoken', () => {
   };
 });
 
-const mockUser = { id: '1', role: 'role' };
+const mockUser = { id: '1', role: Role.Member };
+const findOne = jest.fn(() => mockUser);
+
+const models = {
+  User: {
+    findOne
+  }
+};
 
 const testData = [
   {
@@ -39,7 +48,7 @@ const testData = [
       {
         desc: 'with valid arguments',
         arguments: [mockUser],
-        result: 'mock_token_{"id":"1","role":"role"}_secret_JWT_secret'
+        result: 'mock_token_{"id":"1","role":"MEMBER"}_secret_JWT_secret'
       }
     ]
   },
@@ -73,69 +82,101 @@ testData.forEach(testModule => {
 });
 
 describe('auth', () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+  afterAll(() => {
+    jest.resetAllMocks();
+  });
+
   test('validatePassword', async () => {
     const args = ['arg1', 'arg2'];
     const result = await validatePassword(...args);
     expect(bcrypt.compare).toHaveBeenCalledWith(...args);
     expect(result).toBe(false);
   });
+
   test('getUserFromToken with valid args', async () => {
     const token = 'token';
     const result = await getUserFromToken(token);
     expect(jwt.verify).toHaveBeenCalledWith('token', mockEnv.JWT_SECTET);
     expect(result).toBe('user');
   });
+
   test('getUserFromToken with empty args', async () => {
     const result = await getUserFromToken();
     expect(result).toBe(undefined);
   });
+
   test('authenticated with valid user', async () => {
     const next = jest.fn();
-    const fn = await authenticated(next);
+    const fn = authenticated(next);
     const context = {
-      user: mockUser
+      user: mockUser,
+      models
     };
+
     const args = ['root', 'args', context, 'info'];
 
-    fn(...args);
+    await fn(...args);
+    expect(findOne).toHaveBeenCalledWith({ id: '1' });
     expect(next).toHaveBeenCalledWith(...args);
   });
+
   test('authenticated with empty user', async () => {
     const next = jest.fn();
-    const fn = await authenticated(next);
+    const fn = authenticated(next);
     const context = {
-      user: {}
+      user: {},
+      models
     };
     const args = ['root', 'args', context, 'info'];
-    expect(() => {
-      fn(...args);
-    }).toThrow(ERROR_MESSAGES.NOT_AUTHENTICATED);
+    let error;
+    try {
+      await fn(...args);
+    } catch (err) {
+      error = err;
+    }
+    expect(error).toEqual(
+      new AuthenticationError(ERROR_MESSAGES.NOT_AUTHENTICATED)
+    );
+    // TODO investigate why it stopped working
+    // expect(async () => {
+    //   await fn(...args);
+    // }).toThrow(new AuthenticationError(ERROR_MESSAGES.NOT_AUTHENTICATED));
   });
+
   test('authenticated without context', async () => {
     const next = jest.fn();
-    const fn = await authenticated(next);
+    const fn = authenticated(next);
     const args = ['root', 'args', null, 'info'];
-    expect(() => {
-      fn(...args);
-    }).toThrow(ERROR_MESSAGES.NOT_AUTHENTICATED);
+    let error;
+    try {
+      await fn(...args);
+    } catch (err) {
+      error = err;
+    }
+    expect(error).toEqual(
+      new AuthenticationError(ERROR_MESSAGES.NOT_AUTHENTICATED)
+    );
   });
+
   test('authorized with valid user and role', async () => {
     const next = jest.fn();
-    const fn = await authorized(Role.Admin, next);
+    const fn = authorized(Role.Member, next);
     const context = {
-      user: {
-        id: mockUser.id,
-        role: Role.Admin
-      }
+      user: mockUser,
+      models
     };
     const args = ['root', 'args', context, 'info'];
 
-    fn(...args);
+    await fn(...args);
     expect(next).toHaveBeenCalledWith(...args);
   });
+
   test('authorized with incorrect role', async () => {
     const next = jest.fn();
-    const fn = await authorized(Role.Admin, next);
+    const fn = authorized(Role.Admin, next);
     const context = {
       user: {
         id: mockUser.id,
@@ -143,27 +184,47 @@ describe('auth', () => {
       }
     };
     const args = ['root', 'args', context, 'info'];
-    expect(() => {
-      fn(...args);
-    }).toThrow(ERROR_MESSAGES.NOT_AUTHORIZED);
+    let error;
+    try {
+      await fn(...args);
+    } catch (err) {
+      error = err;
+    }
+    expect(error).toEqual(
+      new AuthenticationError(ERROR_MESSAGES.NOT_AUTHORIZED)
+    );
   });
+
   test('authorized with empty user', async () => {
     const next = jest.fn();
-    const fn = await authorized(next);
+    const fn = authorized(next);
     const context = {
       user: {}
     };
     const args = ['root', 'args', context, 'info'];
-    expect(() => {
-      fn(...args);
-    }).toThrow(ERROR_MESSAGES.NOT_AUTHORIZED);
+    let error;
+    try {
+      await fn(...args);
+    } catch (err) {
+      error = err;
+    }
+    expect(error).toEqual(
+      new AuthenticationError(ERROR_MESSAGES.NOT_AUTHORIZED)
+    );
   });
+
   test('authorized without context', async () => {
     const next = jest.fn();
-    const fn = await authorized(next);
+    const fn = authorized(next);
     const args = ['root', 'args', null, 'info'];
-    expect(() => {
-      fn(...args);
-    }).toThrow(ERROR_MESSAGES.NOT_AUTHORIZED);
+    let error;
+    try {
+      await fn(...args);
+    } catch (err) {
+      error = err;
+    }
+    expect(error).toEqual(
+      new AuthenticationError(ERROR_MESSAGES.NOT_AUTHORIZED)
+    );
   });
 });

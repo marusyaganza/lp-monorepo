@@ -53,7 +53,7 @@ export function generateOptions(
   const result: Partial<Word>[] = [];
 
   if (optCandidates.length + moreOptions.length < count) {
-    return [];
+    throw new OperationResolutionError(`Not enough words to generate options.`);
   }
   if (optCandidates.length < count) {
     const opts = moreOptions.slice(0, count - optCandidates.length);
@@ -95,11 +95,16 @@ export const generateGameData: GenerateGameDataFuncType = (
 
   if (gameType === Game.Audio) {
     wordsCandidates = data.filter(word => word.audioUrl);
-    if (wordsCandidates.length < minWords) {
-      throw new OperationResolutionError(
-        `Not enough words to start a game. You have ${wordsCandidates.length} words with audio. Words requited for the game: ${wordsPerGame}`
-      );
-    }
+  }
+
+  if (wordsCandidates.length < minWords) {
+    throw new OperationResolutionError(
+      `Not enough words to start a game. You have ${
+        wordsCandidates.length
+      } words${
+        gameType === Game.Audio ? ' with audio' : ''
+      }. Words requited for the game: ${minWords}`
+    );
   }
   //TODO uncomment this if I decide to implement find def game with words with single defs only
   // if (gameType === Game.SelectDef) {
@@ -154,13 +159,6 @@ export const generateGameData: GenerateGameDataFuncType = (
     questions = words.map(word => {
       const { name, shortDef, id, audioUrl, language } = word;
       const opts = generateOptions(data, optionsPerGame - 1, id, language);
-      if (!opts.length) {
-        if (wordsCandidates.length < minWords) {
-          throw new OperationResolutionError(
-            `Not enough words to start a game. You have ${wordsCandidates.length} words with audio. Words requited for the game: ${wordsPerGame}`
-          );
-        }
-      }
       const options = opts.map(opt => opt.name);
       const answer = name;
       return {

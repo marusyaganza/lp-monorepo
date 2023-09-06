@@ -1,6 +1,7 @@
 import { WordModel } from '../db/models/Word';
 import { connectToDb, disconnectFromDb, dropDb } from './helpers';
 import { testData } from './mocks/dbTestData';
+import { Game, SortBy } from '../generated/graphql';
 
 const snapshotConfig = {
   createdAt: expect.any(String),
@@ -89,6 +90,91 @@ describe('WordModel', () => {
     const result = await WordModel.findMany({ user: mockUser.id });
     expect(result).toHaveLength(2);
     expect(resultForUnknowUser).toHaveLength(0);
+  });
+
+  test('findManyAndSort with reverse order', async () => {
+    await WordModel.createOne({
+      ...testData.createWordInput,
+      user: mockUser.id
+    });
+    await WordModel.createOne({
+      ...testData.createWordInput2,
+      user: mockUser.id
+    });
+    await WordModel.createOne({
+      ...testData.createWordInput,
+      user: mockId
+    });
+
+    const resultForUnknowUser = await WordModel.findManyAndSort({});
+    const result = await WordModel.findManyAndSort({
+      user: mockUser.id,
+      isReverseOrder: true
+    });
+    expect(result).toHaveLength(2);
+    const index = result.findIndex(
+      item => item.uuid === testData.createWordInput.uuid
+    );
+    expect(index).toEqual(1);
+    expect(resultForUnknowUser).toHaveLength(0);
+  });
+
+  test('findManyAndSort based on game statistics', async () => {
+    await WordModel.createOne({
+      ...testData.createWordInput,
+      user: mockUser.id
+    });
+    const createdWord = await WordModel.createOne({
+      ...testData.createWordInput2,
+      user: mockUser.id
+    });
+
+    const updateResult = await WordModel.updateStatistics(
+      [{ id: createdWord.id, hasError: true, gameType: Game.Audio }],
+      mockUser.id
+    );
+
+    const result = await WordModel.findManyAndSort({
+      user: mockUser.id,
+      sortBy: SortBy.ErrorCount
+    });
+    expect(result).toHaveLength(2);
+    expect(updateResult).toEqual({ ok: true });
+    const index = result.findIndex(item => item.id === createdWord.id);
+    expect(index).toEqual(1);
+  });
+
+  test('UpdateStatistics 2 times', async () => {
+    await WordModel.createOne({
+      ...testData.createWordInput,
+      user: mockUser.id
+    });
+    const createdWord = await WordModel.createOne({
+      ...testData.createWordInput2,
+      user: mockUser.id
+    });
+
+    await WordModel.updateStatistics(
+      [{ id: createdWord.id, hasError: true, gameType: Game.Audio }],
+      mockUser.id
+    );
+
+    await WordModel.updateStatistics(
+      [{ id: createdWord.id, hasError: false, gameType: Game.Audio }],
+      mockUser.id
+    );
+
+    const result = await WordModel.findManyAndSort({
+      user: mockUser.id,
+      sortBy: SortBy.PracticedTimes
+    });
+
+    const index = result.findIndex(item => item.id === createdWord.id);
+    const regularWord = result[0];
+
+    expect(index).toEqual(1);
+    expect(regularWord.statistics.AUDIO.practicedTimes).toEqual(0);
+    expect(regularWord.statistics.AUDIO.errorCount).toEqual(0);
   });
 
   test('updateOne', async () => {
