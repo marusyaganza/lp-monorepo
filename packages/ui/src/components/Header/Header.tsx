@@ -2,10 +2,14 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 import { Button } from '../Button/Button';
-import { LinkType } from '@lp/types';
 
 import styles from './Header.module.css';
 import logo from '../../assets/img/HeaderLogo.svg';
+
+type LinkType = {
+  url: string;
+  text: string;
+};
 
 export type HeaderProps = {
   /**array with all header nav links */
