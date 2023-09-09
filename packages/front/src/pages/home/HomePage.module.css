@@ -49,7 +49,6 @@
 }
 
 .mainContent {
-  padding: 0 110px;
   display: flex;
   flex-direction: column;
   align-items: center;

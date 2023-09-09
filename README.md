@@ -11,5 +11,9 @@ open `localhost:8080` in your browser
 
 ## Production and deploy
 
-run `docker compose -f docker-compose-prod.yml up` to start a server on port `4000`
-run `yarn build:front` to build frontend. It generates files in `packages/front/public`
+run `docker compose -f docker-compose-prod.yml up -d` 
+to start the server on port `4000` and the frontend on `8080`in detached mode.
+
+run `docker compose down` to stop containers.
+
+run `yarn build:front` to build frontend. It generates files in `packages/front/public`.

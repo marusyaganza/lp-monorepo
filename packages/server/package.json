@@ -7,7 +7,7 @@
     "dev": "nodemon src/app.js --ignore 'src/db/db.json'",
     "copy": "cp -r ../shared/schema.graphql dist",
     "build": "yarn codegen && tsc && yarn copy",
-    "clean": "rimraf dist src/generated *.tsbuildinfo",
+    "clean": "rimraf dist src/generated *.tsbuildinfo node_modules",
     "eslint": "eslint src",
     "ts": "tsc --watch --preserveWatchOutput",
     "test": "jest --detectOpenHandles",
