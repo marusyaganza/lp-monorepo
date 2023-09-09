@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { validators } from '@lp/ui';
 import { AuthPageLayout } from '../../components/AuthPageLayout/AuthPageLayout';
@@ -67,7 +67,8 @@ const SignUpPage = () => {
   ];
 
   const [authFunc, { data, loading, error }] = useSignUpMutation();
-  const { login, setNotification } = useContext(AppContext);
+  const { login, setNotification, isDevEnv } = useContext(AppContext);
+  const navigate = useNavigate();
 
   const submitHandler = (values: SignUpInput) => {
     authFunc({ variables: { input: values } });
@@ -89,6 +90,12 @@ const SignUpPage = () => {
       });
     }
   }, [error, setNotification]);
+
+  useEffect(() => {
+    if (!isDevEnv) {
+      navigate('/sign-in');
+    }
+  }, [isDevEnv, navigate]);
 
   return (
     <AuthPageLayout>
