@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { validators } from '@lp/ui';
 import { AuthPageLayout } from '../../components/AuthPageLayout/AuthPageLayout';
@@ -31,8 +31,8 @@ const SignInPage = () => {
     }
   ];
 
-  const [authFunc, { data, loading, error, client }] = useLoginMutation();
-  const { login, setNotification } = useContext(AppContext);
+  const [authFunc, { data, loading, error }] = useLoginMutation();
+  const { login, setNotification, isDevEnv } = useContext(AppContext);
 
   const submitHandler = (values: LoginInput) => {
     authFunc({ variables: { input: values } });
@@ -68,12 +68,14 @@ const SignInPage = () => {
             fields={fields}
             buttonText="Sign in"
           />
-          <p className={styles.text}>
-            No account?{' '}
-            <Link className={styles.link} to={`/${routes.signUp}`}>
-              Sign up
-            </Link>
-          </p>
+          {isDevEnv && (
+            <p className={styles.text}>
+              No account?{' '}
+              <Link className={styles.link} to={`/${routes.signUp}`}>
+                Sign up
+              </Link>
+            </p>
+          )}
         </div>
         <div>
           <img src={llustration} alt="Sign in" />

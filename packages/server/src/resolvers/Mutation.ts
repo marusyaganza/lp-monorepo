@@ -50,6 +50,7 @@ export const MutationResolvers: MutationResolversType<ResolverContext> = {
       return 'Game result saved';
     }
   ),
+
   deleteWord: authorized(Role.Member, async (_, { id }, { models, user }) => {
     const result = await models.Word.deleteOne({ id, user: user?.id });
     if (!result?.ok) {
@@ -57,7 +58,13 @@ export const MutationResolvers: MutationResolversType<ResolverContext> = {
     }
     return `word with id ${id} was deleted`;
   }),
+
   signUp: async (_, { input }, { models, createToken, hashPassword }) => {
+    if (process?.env?.NODE_ENV === 'production') {
+      throw new OperationResolutionError(
+        `sign up operation is not available now. Sorry for inconvenience`
+      );
+    }
     const existing = await models.User.findOne({ email: input?.email });
     if (existing) {
       throw new AuthenticationError(

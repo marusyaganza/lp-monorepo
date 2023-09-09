@@ -2,7 +2,8 @@ import React, {
   createContext,
   PropsWithChildren,
   useState,
-  useEffect
+  useEffect,
+  useMemo
 } from 'react';
 import { useAuth, loginFuncType, logoutFuncType } from '../hooks/auth-hook';
 import { NotificationProps } from '@lp/ui';
@@ -17,6 +18,7 @@ type Context = {
   notification?: NotificationProps;
   setNotification: (notification?: NotificationProps) => void;
   language: Language;
+  isDevEnv?: boolean;
   saveLanguage: (lang: Language) => void;
 };
 
@@ -42,6 +44,8 @@ export const AppProvider = ({ children }: PropsWithChildren<unknown>) => {
     setLanguage(lang);
   };
 
+  const isDevEnv = useMemo(() => process?.env?.NODE_ENV !== 'production', []);
+
   const value: Context = {
     login,
     logout,
@@ -50,7 +54,8 @@ export const AppProvider = ({ children }: PropsWithChildren<unknown>) => {
     notification,
     setNotification,
     language,
-    saveLanguage
+    saveLanguage,
+    isDevEnv
   };
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };
