@@ -26,7 +26,6 @@ export const SearchField = ({
   const [value, setValue] = useState(searchQuery);
 
   const handleSearch = (e: FormEvent) => {
-    console.log('e', e.preventDefault);
     e.preventDefault();
     if (value) {
       onSearch(value);
