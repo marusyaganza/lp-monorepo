@@ -62,11 +62,11 @@ const HomePage = () => {
         <section className={styles.bottomContent}>
           <p>
             Ready to take the leap? Start your language-learning journey today
-            with our interactive word games. Whether you're brushing up on your
-            English proficiency or exploring the nuances of Spanish, we're here
-            to empower you every step of the way. Join our community of
-            enthusiastic learners and let's embark on this exciting voyage
-            together!
+            with our interactive word games. Whether you&lsquo;re brushing up on
+            your English proficiency or exploring the nuances of Spanish,
+            we&lsquo;re here to empower you every step of the way. Join our
+            community of enthusiastic learners and let&lsquo;s embark on this
+            exciting voyage together!
           </p>
           <Button
             onClick={() => {
