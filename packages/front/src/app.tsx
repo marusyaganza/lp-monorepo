@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { RouterProvider } from 'react-router-dom';
 import {
   ApolloClient,
   InMemoryCache,
@@ -9,8 +9,7 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import { AppProvider } from './app-context/appContext';
 import { getStoredData } from './util/localStorageUtils';
-import { ErrorBoundary } from '@lp/ui';
-import { AppRoutes } from './routes';
+import { router } from './routes';
 
 import './app.css';
 
@@ -38,14 +37,10 @@ export const client = new ApolloClient({
 
 export const App = () => {
   return (
-    <ErrorBoundary>
-      <AppProvider>
-        <ApolloProvider client={client}>
-          <BrowserRouter>
-            <AppRoutes />
-          </BrowserRouter>
-        </ApolloProvider>
-      </AppProvider>
-    </ErrorBoundary>
+    <AppProvider>
+      <ApolloProvider client={client}>
+        <RouterProvider router={router} />
+      </ApolloProvider>
+    </AppProvider>
   );
 };
