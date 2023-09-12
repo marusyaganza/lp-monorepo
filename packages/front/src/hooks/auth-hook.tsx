@@ -13,7 +13,7 @@ export type logoutFuncType = () => void;
 let logoutTimer: NodeJS.Timeout | undefined;
 
 // token expires in 2 days
-const TOKEN_EXPIRATION_PERIOD = new Date().getTime() + 1000 * 60 * 60 * 2;
+const TOKEN_EXPIRATION_PERIOD = new Date().getTime() + 1000 * 60 * 60 * 24 * 2;
 
 export const useAuth = () => {
   const [userId, setUserId] = useState<string | null>();
