@@ -13,7 +13,7 @@ export type logoutFuncType = () => void;
 let logoutTimer: NodeJS.Timeout | undefined;
 
 // token expires in 2 days
-const TOKEN_EXPIRATION_PERIOD = new Date().getTime() + 1000 * 60 * 60 * 2;
+const TOKEN_EXPIRATION_PERIOD = new Date().getTime() + 1000 * 60 * 60 * 24 * 2;
 
 export const useAuth = () => {
   const [userId, setUserId] = useState<string | null>();
@@ -38,13 +38,17 @@ export const useAuth = () => {
     []
   );
 
-  const logout: logoutFuncType = useCallback(() => {
+  const automaticLogout: logoutFuncType = useCallback(() => {
     setUserId(null);
     setToken(null);
     setTokenExpDate(null);
-    localStorage.clear();
     client.clearStore();
   }, []);
+
+  const logout: logoutFuncType = useCallback(() => {
+    automaticLogout();
+    localStorage.clear();
+  }, [automaticLogout]);
 
   useEffect(() => {
     const storedData = getStoredData<'userData'>('userData');
@@ -60,13 +64,13 @@ export const useAuth = () => {
   useEffect(() => {
     if (token && tokenExpDate) {
       const remainingTime = tokenExpDate.getTime() - new Date().getTime();
-      logoutTimer = setTimeout(logout, remainingTime);
+      logoutTimer = setTimeout(automaticLogout, remainingTime);
     } else {
       if (logoutTimer) {
         clearTimeout(logoutTimer);
       }
     }
-  }, [token, tokenExpDate, logout]);
+  }, [token, tokenExpDate, logout, automaticLogout]);
 
   return { userId, token, login, logout };
 };

@@ -5,7 +5,7 @@ import {
   Word,
   useDeleteWordMutation
 } from '../../generated/graphql';
-import { WordCard, CardWrapper, Link } from '@lp/ui';
+import { WordCard, CardWrapper, Link, Spinner } from '@lp/ui';
 
 import { PageLayout } from '../../components/PageLayout/PageLayout';
 import { AppContext } from '../../app-context/appContext';
@@ -111,7 +111,7 @@ const WordsPage = () => {
   };
 
   return (
-    <PageLayout isLoading={loading}>
+    <PageLayout>
       <h1 className={styles.heading}>Vocabulary</h1>
       <p className={styles.wordsInfo}>
         {`You have ${data?.words.length || 0} words in your vocabulary`}{' '}
@@ -119,6 +119,7 @@ const WordsPage = () => {
           Add new
         </Link>
       </p>
+      {loading && <Spinner />}
       {renderWords()}
     </PageLayout>
   );

@@ -10,6 +10,7 @@ export interface StoredData {
   language: Language;
   userData: UserDataType;
   isReverseOrder: boolean;
+  previousLocation: string;
   sortBy: SortBy | string;
 }
 

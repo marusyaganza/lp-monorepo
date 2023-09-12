@@ -8,12 +8,9 @@ export type IconIdType =
   | 'reload'
   | 'book'
   | 'play'
-  | 'maintenance'
   | 'success'
   | 'close'
   | 'fire'
-  | 'delete'
-  | 'add'
   | 'home'
   | 'dice'
   | 'brain'
@@ -51,12 +48,9 @@ export const _iconIds: IconIdType[] = [
   'reload',
   'book',
   'play',
-  'maintenance',
   'success',
   'close',
   'fire',
-  'delete',
-  'add',
   'home',
   'dice',
   'brain',

@@ -1,5 +1,9 @@
 import React, { lazy } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import {
+  Route,
+  createBrowserRouter,
+  createRoutesFromElements
+} from 'react-router-dom';
 
 import { withSuspense } from './helpers';
 import { routes } from '../constants/routes';
@@ -16,10 +20,11 @@ const NotFoundPage = lazy(() => import('../pages/notFound/NotFoundPage'));
 const SignInPage = lazy(() => import('../pages/sign-in/SignInPage'));
 const SignUpPage = lazy(() => import('../pages/sign-up/SignUpPage'));
 const ProfilePage = lazy(() => import('../pages/profile/ProfilePage'));
+const ErrorPage = lazy(() => import('../pages/error/ErrorPage'));
 
-export const AppRoutes = () => {
-  return (
-    <Routes>
+export const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/*" errorElement={<ErrorPage />}>
       <Route index element={withSuspense(HomePage)} />
       <Route path={routes.search} element={withSuspense(SearchPage)} />
       <Route path={routes.words}>
@@ -36,6 +41,6 @@ export const AppRoutes = () => {
       <Route path={routes.signUp} element={withSuspense(SignUpPage)} />
       <Route path={routes.profile} element={withSuspense(ProfilePage)} />
       <Route path="*" element={withSuspense(NotFoundPage)} />
-    </Routes>
-  );
-};
+    </Route>
+  )
+);

@@ -173,7 +173,7 @@ export const WordCard = ({
           variant="secondary"
           disabled={addButton.isDisabled}
           isLoading={addButton?.isLoading}
-          iconId="add"
+          iconId="plus"
           isActionButton
           onClick={getOnClickHandler(addButton.callback)}
         >

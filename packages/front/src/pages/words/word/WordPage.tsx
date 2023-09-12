@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from 'react';
 import { useLazyQuery } from '@apollo/client';
 import { useParams, useNavigate } from 'react-router-dom';
-import { WordCard, Icon, Link } from '@lp/ui';
+import { WordCard, Icon, Link, Spinner } from '@lp/ui';
 import { routes } from '../../../constants/routes';
 import { PageLayout } from '../../../components/PageLayout/PageLayout';
 import { WORD_BY_ID_QUERY } from '../../../gql/queries';
@@ -35,11 +35,12 @@ const WordPage = () => {
     }
   }, [error, setNotification]);
   return (
-    <PageLayout isLoading={loading}>
+    <PageLayout>
       <Link className={styles.link} to={`/${routes.words}`}>
         <Icon width={16} height={16} id="arrow-left" />
         Back to vocabulary
       </Link>
+      {loading && <Spinner />}
       {data?.word && (
         <WordCard
           className={styles.wordCard}

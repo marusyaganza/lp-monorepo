@@ -5,6 +5,7 @@ import { AppContext } from '../../app-context/appContext';
 import { Notification } from '../Notification/Notification';
 
 import './AuthPageLayout.css';
+import { getStoredData } from '../../util/localStorageUtils';
 
 export const AuthPageLayout = ({ children }: PropsWithChildren<unknown>) => {
   const navigate = useNavigate();
@@ -12,7 +13,10 @@ export const AuthPageLayout = ({ children }: PropsWithChildren<unknown>) => {
 
   useEffect(() => {
     if (userId) {
-      navigate('/');
+      const previousLocation =
+        (getStoredData('previousLocation') as string) || '/';
+      localStorage.removeItem('previousLocation');
+      navigate(previousLocation);
     }
   }, [userId, navigate]);
 
