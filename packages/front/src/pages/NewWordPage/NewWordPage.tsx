@@ -25,7 +25,8 @@ const NewWordPage = () => {
       setNotification({
         variant: 'error',
         text: 'Error',
-        subText: saveWordData?.error?.message || 'something went wrong'
+        subText: saveWordData?.error?.message || 'something went wrong',
+        sameLocation: true
       });
     }
   }, [saveWordData.error]);
@@ -37,11 +38,9 @@ const NewWordPage = () => {
       setNotification({
         variant: 'success',
         text: 'Word added',
-        subText: `${name} is added successfully. Go to the words page to review it`
+        subText: `${name} is added successfully.`
       });
       navigate(`/${routes.words}`);
-      // TODO find a way to get rid of this hack
-      navigate(0);
     }
   }, [saveWordData.data]);
 

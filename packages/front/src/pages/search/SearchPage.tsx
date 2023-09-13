@@ -37,7 +37,8 @@ const SearchPage = () => {
       setNotification({
         variant: 'error',
         text: 'Error',
-        subText: error?.message || 'something went wrong'
+        subText: error?.message || 'something went wrong',
+        sameLocation: true
       });
     }
   }, [error]);
@@ -47,7 +48,8 @@ const SearchPage = () => {
       setNotification({
         variant: 'error',
         text: 'Error',
-        subText: saveWordData?.error?.message || 'something went wrong'
+        subText: saveWordData?.error?.message || 'something went wrong',
+        sameLocation: true
       });
     }
   }, [saveWordData.error]);
@@ -59,7 +61,8 @@ const SearchPage = () => {
       setNotification({
         variant: 'success',
         text: 'Word added',
-        subText: `${name} is added successfully. Go to the words page to review it`
+        subText: `${name} is added successfully.`,
+        sameLocation: true
       });
       if (uuid) {
         setSavedWords(prev => [...prev, uuid]);
