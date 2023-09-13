@@ -41,11 +41,13 @@ export const Notification = ({
           styles[`${variant}Notification`]
         )}
       >
-        <h3 className={styles.notificationText}>
-          <Icon id={variant} className={styles[`${variant}Icon`]} />
-          {text}
-        </h3>
-        <p className={styles.notificationSubText}>{subText}</p>
+        <div>
+          <h3 className={styles.notificationText}>
+            <Icon id={variant} className={styles[`${variant}Icon`]} />
+            {text}
+          </h3>
+          <p className={styles.notificationSubText}>{subText}</p>
+        </div>
         <Button
           onClick={onClose}
           variant="icon"

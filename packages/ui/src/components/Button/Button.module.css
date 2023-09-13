@@ -216,7 +216,7 @@
 }
 
 .actionButton.danger {
-  background: var(--background-danger);
+  background: var(--background-danger-100);
   color: var(--neutral-800);
   border: 1px solid var(--neutral-800);
 }

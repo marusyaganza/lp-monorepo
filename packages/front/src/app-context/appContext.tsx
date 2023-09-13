@@ -6,9 +6,13 @@ import React, {
   useMemo
 } from 'react';
 import { useAuth, loginFuncType, logoutFuncType } from '../hooks/auth-hook';
-import { NotificationProps } from '@lp/ui';
+import { NotificationProps as CoreNotificationProps } from '@lp/ui';
 import { Language } from '../generated/graphql';
 import { getStoredData, storeData } from '../util/localStorageUtils';
+
+interface NotificationProps extends CoreNotificationProps {
+  sameLocation?: boolean;
+}
 
 type Context = {
   login: loginFuncType;

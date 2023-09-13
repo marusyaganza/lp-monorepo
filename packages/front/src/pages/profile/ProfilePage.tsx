@@ -12,7 +12,8 @@ export const ProfilePage = () => {
       setNotification({
         variant: 'error',
         text: 'Error',
-        subText: error?.message
+        subText: error?.message,
+        sameLocation: true
       });
     }
   }, [error, setNotification]);
