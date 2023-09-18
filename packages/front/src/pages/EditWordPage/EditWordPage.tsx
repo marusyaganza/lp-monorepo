@@ -21,6 +21,7 @@ const EditWordPage = () => {
   const [updateWordFunc, updateWordData] = useUpdateWordMutation({
     update(cache) {
       cache.evict({ fieldName: 'game' });
+      cache.evict({ fieldName: 'words' });
     }
   });
   const [fetchWord, { loading, error, data }] = useLazyQuery(WORD_BY_ID_QUERY);

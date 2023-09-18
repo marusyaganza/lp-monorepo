@@ -22,6 +22,7 @@ export interface SelectProps<T extends string> {
   renderValue?: (value?: T) => ReactNode;
   size?: 'S' | 'M';
   variant?: 'withIcon';
+  label?: string;
 }
 
 export const Select = function <T extends string>({
@@ -31,7 +32,8 @@ export const Select = function <T extends string>({
   placement = 'right',
   variant,
   size = 'S',
-  className
+  className,
+  label
 }: PropsWithChildren<SelectProps<T>>) {
   const [isOpen, setIsOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -57,19 +59,22 @@ export const Select = function <T extends string>({
 
   return (
     <div ref={ref} className={cn(styles.container, className)}>
-      <div className={cn(styles.currentValue, styles[`size${size}`])}>
-        <button
-          type="button"
-          className={cn(styles.select, variant ? styles[variant] : '')}
-          onClick={() => {
-            setIsOpen(curr => !curr);
-          }}
-        >
-          {renderValue ? renderValue(value) : value}
-          {variant === 'withIcon' && (
-            <Icon height={14} width={24} id={isOpen ? 'up' : 'down'} />
-          )}
-        </button>
+      <div className={styles.selectContainer}>
+        {label && <span className={styles.selectLabel}>{label}</span>}
+        <div className={cn(styles.currentValue, styles[`size${size}`])}>
+          <button
+            type="button"
+            className={cn(styles.select, variant ? styles[variant] : '')}
+            onClick={() => {
+              setIsOpen(curr => !curr);
+            }}
+          >
+            {renderValue ? renderValue(value) : value}
+            {variant === 'withIcon' && (
+              <Icon height={14} width={24} id={isOpen ? 'up' : 'down'} />
+            )}
+          </button>
+        </div>
       </div>
 
       {isOpen && (

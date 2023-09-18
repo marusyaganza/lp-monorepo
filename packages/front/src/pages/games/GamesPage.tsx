@@ -7,11 +7,12 @@ import React, {
 } from 'react';
 import { Outlet } from 'react-router-dom';
 import { SortBy, useGamesQuery } from '../../generated/graphql';
-import { GameCard, Spinner, useSelect, Checkbox, Icon } from '@lp/ui';
+import { GameCard, Spinner } from '@lp/ui';
 import { routes } from '../../constants/routes';
 import { PageLayout } from '../../components/PageLayout/PageLayout';
 import { AppContext } from '../../app-context/appContext';
 import { getStoredData, storeData } from '../../util/localStorageUtils';
+import { SortControls } from '../../components/SortControls/SortControls';
 
 import styles from './GamesPage.module.css';
 
@@ -34,16 +35,12 @@ const GamesPage = () => {
 
   const handleSortingParamChange = useCallback((val: string) => {
     setSortBy(val);
-    storeData('sortBy', val);
+    storeData('sortGamesBy', val);
   }, []);
 
-  const { Select, Option, setValue } = useSelect<string>({
-    onChange: handleSortingParamChange,
-    initialValue: sortBy
-  });
   const handleOrderChange = useCallback((value: boolean) => {
     setIsReverseOrder(value);
-    storeData('isReverseOrder', value);
+    storeData('gamesSortOrder', value);
   }, []);
 
   useEffect(() => {
@@ -58,57 +55,29 @@ const GamesPage = () => {
   }, [error]);
 
   useEffect(() => {
-    const storedSortBy = getStoredData<'sortBy'>('sortBy');
+    const storedSortBy = getStoredData<'sortGamesBy'>('sortGamesBy');
     const storedIsReverseOrder =
-      getStoredData<'isReverseOrder'>('isReverseOrder');
+      getStoredData<'gamesSortOrder'>('gamesSortOrder');
     if (storedSortBy) {
       setSortBy(storedSortBy);
-      setValue(storedSortBy);
     }
     if (storedIsReverseOrder) {
       setIsReverseOrder(storedIsReverseOrder);
     }
   }, []);
 
-  const renderValue = (val?: string) => {
-    // @ts-ignore
-    return OPTIONS?.[val] ? OPTIONS[val] : 'Select words by';
-  };
-
-  const renderSelect = () => {
-    return (
-      <div className={styles.orderControls}>
-        <Select
-          className={styles.select}
-          value={sortBy}
-          renderValue={renderValue}
-          variant="withIcon"
-          size="M"
-        >
-          <Option value="">none</Option>
-          <Option value={SortBy.LastTimePracticed}>
-            {OPTIONS.lastTimePracticed}
-          </Option>
-          <Option value={SortBy.PracticedTimes}>
-            {OPTIONS.practicedTimes}
-          </Option>
-          <Option value={SortBy.ErrorCount}>{OPTIONS.errorCount}</Option>
-        </Select>
-        <Checkbox
-          onChange={handleOrderChange}
-          initialValue={isReverseOrder}
-          variant="withIcon"
-          iconId={isReverseOrder ? 'asc' : 'desc'}
-        />
-      </div>
-    );
-  };
-
   return (
     <PageLayout>
       <div className={styles.topContainer}>
         <h1 className={styles.pageTitle}>Select a training</h1>
-        {renderSelect()}
+        <SortControls
+          sortBy={sortBy}
+          initialOrderValue={isReverseOrder}
+          options={OPTIONS}
+          onOrderChange={handleOrderChange}
+          onSortChange={handleSortingParamChange}
+          blankOption="none"
+        />
       </div>
       {loading && <Spinner />}
       {data?.games && (

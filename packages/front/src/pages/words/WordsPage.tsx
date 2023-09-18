@@ -1,21 +1,37 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   useWordsLazyQuery,
   Word,
-  useDeleteWordMutation
+  useDeleteWordMutation,
+  SortWordsBy
 } from '../../generated/graphql';
+
 import { WordCard, CardWrapper, Link, Spinner } from '@lp/ui';
 
 import { PageLayout } from '../../components/PageLayout/PageLayout';
 import { AppContext } from '../../app-context/appContext';
+import {
+  SortControls,
+  SortByType
+} from '../../components/SortControls/SortControls';
 
 import styles from './WordsPage.module.css';
 import { routes } from '../../constants/routes';
+import { getStoredData, storeData } from '../../util/localStorageUtils';
+
+const OPTIONS = {
+  [SortWordsBy.Name]: 'Alphabetically',
+  [SortWordsBy.Particle]: 'Particle',
+  [SortWordsBy.Level]: 'Level'
+};
 
 const WordsPage = () => {
   const [fetchWords, { loading, error, data }] = useWordsLazyQuery();
   const { setNotification, language } = useContext(AppContext);
+  const [sortBy, setSortBy] = useState<SortWordsBy>();
+  const [isReverseOrder, setIsReverseOrder] = useState(false);
+
   const [deleteWordFunc, deleteWordData] = useDeleteWordMutation({
     update(cache) {
       cache.evict({ fieldName: 'game' });
@@ -23,10 +39,23 @@ const WordsPage = () => {
     }
   });
 
-  // TODO ask 'are you sure' before deleting the word
+  const handleSortingParamChange = useCallback((val: SortByType) => {
+    setSortBy(val as SortWordsBy);
+    storeData('sortWordsBy', val);
+  }, []);
+
+  const handleOrderChange = useCallback((value: boolean) => {
+    setIsReverseOrder(value);
+    storeData('wordsSortOrder', value);
+  }, []);
+
   useEffect(() => {
-    fetchWords({ variables: { language } });
-  }, [language]);
+    fetchWords({
+      variables: {
+        input: { language, isReverseOrder, sortBy: sortBy || undefined }
+      }
+    });
+  }, [language, sortBy, isReverseOrder]);
 
   const navigate = useNavigate();
 
@@ -74,6 +103,18 @@ const WordsPage = () => {
     }
   }, [deleteWordData.data]);
 
+  useEffect(() => {
+    const storedSortBy = getStoredData<'sortWordsBy'>('sortWordsBy');
+    const storedIsReverseOrder =
+      getStoredData<'wordsSortOrder'>('wordsSortOrder');
+    if (storedSortBy) {
+      setSortBy(storedSortBy);
+    }
+    if (storedIsReverseOrder) {
+      setIsReverseOrder(storedIsReverseOrder);
+    }
+  }, []);
+
   const getDeleteWordHandler = (id: string) => {
     return function () {
       deleteWordFunc({
@@ -117,12 +158,24 @@ const WordsPage = () => {
   return (
     <PageLayout>
       <h1 className={styles.heading}>Vocabulary</h1>
-      <p className={styles.wordsInfo}>
-        {`You have ${data?.words.length || 0} words in your vocabulary`}{' '}
-        <Link className={styles.link} to={`/${routes.words}/new`}>
-          Add new
-        </Link>
-      </p>
+      <div className={styles.topSection}>
+        <p className={styles.wordsInfo}>
+          {`You have ${data?.words.length || 0} words in your vocabulary`}{' '}
+          <Link className={styles.link} to={`/${routes.words}/new`}>
+            Add new
+          </Link>
+        </p>
+        <SortControls
+          blankOption="Date"
+          blankValue="Date"
+          options={OPTIONS}
+          initialOrderValue={isReverseOrder}
+          sortBy={sortBy || ''}
+          onOrderChange={handleOrderChange}
+          onSortChange={handleSortingParamChange}
+          label="Sort words by"
+        />
+      </div>
       {loading && <Spinner />}
       {renderWords()}
     </PageLayout>

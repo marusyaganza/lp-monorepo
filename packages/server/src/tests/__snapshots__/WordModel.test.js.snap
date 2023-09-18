@@ -71,6 +71,7 @@ exports[`WordModel createOne 1`] = `
     },
   ],
   "transcription": "iˌɡælɪˈteəriən",
+  "updatedAt": Any<Number>,
   "user": "6480560e8cad1841ed6b4011",
   "uuid": "74046e79-e4c9-4b52-ac96-cb7ae98fb601",
 }
@@ -147,6 +148,7 @@ exports[`WordModel findOne 1`] = `
     },
   ],
   "transcription": "iˌɡælɪˈteəriən",
+  "updatedAt": Any<Number>,
   "user": "6480560e8cad1841ed6b4011",
   "uuid": "74046e79-e4c9-4b52-ac96-cb7ae98fb601",
 }
@@ -219,6 +221,7 @@ exports[`WordModel updateOne 1`] = `
     },
   ],
   "transcription": "iˌɡælɪˈteəriən",
+  "updatedAt": Any<Number>,
   "user": "6480560e8cad1841ed6b4011",
   "uuid": "74046e79-e4c9-4b52-ac96-cb7ae98fb601",
 }

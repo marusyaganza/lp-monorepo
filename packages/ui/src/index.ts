@@ -55,3 +55,4 @@ export * from './components/Progress/Progress';
 export * from './components/Game/Game';
 export * from './components/TextInput/TextInput';
 export * from './components/GameResult/GameResult';
+export * from './utils/classnames';

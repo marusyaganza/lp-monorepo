@@ -20,12 +20,18 @@ export const QueryResolvers: QueryResolversType<ResolverContext> = {
   games: async (_, __, { games }) => {
     return games;
   },
-  words: authenticated(
-    async (_, { language = Language.English }, { models, user }) => {
-      const words = await models.Word.findMany({ user: user?.id, language });
-      return words;
-    }
-  ),
+  words: authenticated(async (_, { input }, { models, user }) => {
+    const sortBy = input?.sortBy || 'updatedAt';
+    const isReverseOrder =
+      !input?.isReverseOrder && !input?.sortBy ? true : input?.isReverseOrder;
+    const words = await models.Word.findManyAndSort({
+      ...input,
+      user: user?.id,
+      sortBy,
+      isReverseOrder
+    });
+    return words;
+  }),
   word: authenticated(async (_, { id }, { models, user }) => {
     const word = await models.Word.findOne({
       user: user?.id,

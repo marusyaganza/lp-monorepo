@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
 export const WORDS_QUERY = gql`
-  query Words($language: Language!) {
-    words(language: $language) {
+  query Words($input: WordsInput) {
+    words(input: $input) {
       id
       name
       defs {

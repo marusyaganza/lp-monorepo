@@ -164,6 +164,22 @@ describe('User', () => {
     expect(res).toMatchSnapshot();
   });
 
+  test('can save more words and view all of them in reverse order', async () => {
+    const { mutate, query } = createTestServer({
+      ...serverContext,
+      user: createdUser
+    });
+    await mutate({
+      mutation: mutations.saveWordMutation,
+      variables: { input: testData.createWordInput2 }
+    });
+    const res = await query({
+      query: queries.wordsQuery,
+      variables: { input: { isReverseOrder: true } }
+    });
+    expect(res).toMatchSnapshot();
+  });
+
   test('cannot save a word with the same uuid', async () => {
     const { mutate } = createTestServer({
       ...serverContext,

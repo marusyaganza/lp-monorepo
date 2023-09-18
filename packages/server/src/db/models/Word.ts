@@ -3,9 +3,10 @@ import {
   Word as WordType,
   NewWordInput,
   UpdateStatisticsInput,
-  GameDataInput,
   Language,
-  Game
+  Game,
+  SortBy,
+  SortWordsBy
 } from '../../generated/graphql';
 import { formatFilter, formatData } from '../helpers';
 
@@ -22,12 +23,18 @@ const DEFAULT_STATISTICS = {
   [Game.TypeWord]: STATISTICS_FIELD
 };
 
+type wordsFilter = {
+  sortBy?: SortBy | SortWordsBy | 'updatedAt';
+  language: Language;
+  isReverseOrder: boolean;
+  gameType?: Game;
+  user?: string;
+};
+
 export interface WordModelType {
   findOne: (filter: Partial<WordType>) => Promise<WordType | null>;
   findMany: (filter: Partial<WordType>) => Promise<WordType[] | null>;
-  findManyAndSort: (
-    filter: Required<GameDataInput & { user?: string }>
-  ) => Promise<WordType[] | null>;
+  findManyAndSort: (filter: wordsFilter) => Promise<WordType[] | null>;
   createOne: (fields: NewWordInput) => Promise<WordType | null>;
   updateOne: (
     fields: Partial<WordType> & Pick<WordType, 'id' | 'user'>
@@ -72,15 +79,21 @@ export const WordModel: WordModelType = {
       isReverseOrder,
       gameType
     } = filter;
+
     if (!user) {
       return [];
     }
+
     const orderNum = isReverseOrder ? -1 : 1;
     let sort: Record<string, number> = { $natural: orderNum };
     if (sortBy) {
-      const propName = `statistics.${gameType}.${sortBy}`;
+      let propName: string = sortBy;
+      if (gameType) {
+        propName = `statistics.${gameType}.${sortBy}`;
+      }
       sort = { [propName]: orderNum };
     }
+
     // @ts-ignore
     const words = await Word.find({ user, language }).sort(sort);
     return words;
@@ -88,12 +101,14 @@ export const WordModel: WordModelType = {
 
   async createOne(fields) {
     const createdAt = Date.now();
+    const updatedAt = createdAt;
     const stems = fields?.stems?.length ? fields.stems : [fields.name];
     const transcription = fields?.transcription || fields?.name;
     const isOffensive = !!fields?.isOffensive;
     const word = await Word.create({
       ...fields,
       createdAt,
+      updatedAt,
       stems,
       isOffensive,
       transcription,
@@ -103,7 +118,8 @@ export const WordModel: WordModelType = {
   },
 
   async updateOne(fields) {
-    const update = { ...fields };
+    const updatedAt = Date.now();
+    const update = { ...fields, updatedAt };
     const { ok, value } = await Word.findOneAndUpdate(
       { _id: fields.id, user: fields.user },
       update,
@@ -116,8 +132,9 @@ export const WordModel: WordModelType = {
   // This method do not have a practical use for now
   async updateMany(data, user) {
     let isOk = true;
+    const updatedAt = Date.now();
     data.forEach(async entry => {
-      const update = { ...entry };
+      const update = { ...entry, updatedAt };
       const result = await Word.findOneAndUpdate(
         { _id: entry.id, user },
         update,

@@ -1,6 +1,6 @@
 import { createTestServer } from './helpers';
 import { words, users } from './mocks/data';
-import { Language, Game, SortBy } from '../generated/graphql';
+import { Language, Game, SortBy, SortWordsBy } from '../generated/graphql';
 import { searchWord } from '../dictionary';
 import { games } from '../mocks/games';
 import { generateGameData } from '../utils/generateGameData';
@@ -160,9 +160,11 @@ describe('queries', () => {
       models
     });
 
-    const res = await query({ query: wordsQuery });
+    const res = await query({
+      query: wordsQuery
+    });
     expect(res).toMatchSnapshot();
-    expect(findMany).toHaveBeenCalledTimes(1);
+    expect(findManyAndSort).toHaveBeenCalledTimes(1);
   });
 
   test('word by id', async () => {

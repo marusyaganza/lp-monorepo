@@ -1,16 +1,25 @@
 import { WordModel } from '../db/models/Word';
 import { connectToDb, disconnectFromDb, dropDb } from './helpers';
 import { testData } from './mocks/dbTestData';
-import { Game, SortBy } from '../generated/graphql';
+import { Game, SortBy, SortWordsBy } from '../generated/graphql';
 
 const snapshotConfig = {
   createdAt: expect.any(String),
+  updatedAt: expect.any(Number),
   id: expect.any(String),
   _id: expect.any(Object)
 };
 
 const mockUser = { id: '6480560e8cad1841ed6b4011', role: 'MEMBER' };
 const mockId = '6480653341e6f90377d19cfb';
+
+let index = 0;
+
+const dateNowMock = jest
+  .spyOn(global.Date, 'now')
+  .mockImplementation(function () {
+    return index++;
+  });
 
 describe('WordModel', () => {
   beforeAll(async () => {
@@ -117,6 +126,51 @@ describe('WordModel', () => {
     );
     expect(index).toEqual(1);
     expect(resultForUnknowUser).toHaveLength(0);
+  });
+
+  test('findManyAndSort by name, level, and date', async () => {
+    await WordModel.createOne({
+      ...testData.createWordInput,
+      user: mockUser.id
+    });
+    await WordModel.createOne({
+      ...testData.createWordInput2,
+      user: mockUser.id
+    });
+    await WordModel.createOne({
+      ...testData.createWordInput,
+      user: mockId
+    });
+
+    const resultByName = await WordModel.findManyAndSort({
+      user: mockUser.id,
+      sortBy: SortWordsBy.Name
+    });
+    expect(resultByName).toHaveLength(2);
+    const indexByName = resultByName.findIndex(
+      item => item.uuid === testData.createWordInput.uuid
+    );
+    expect(indexByName).toEqual(0);
+
+    const resultByLevel = await WordModel.findManyAndSort({
+      user: mockUser.id,
+      sortBy: SortWordsBy.Level
+    });
+    expect(resultByLevel).toHaveLength(2);
+    const indexByLevel = resultByName.findIndex(
+      item => item.uuid === testData.createWordInput.uuid
+    );
+    expect(indexByLevel).toEqual(0);
+
+    const resultByDate = await WordModel.findManyAndSort({
+      user: mockUser.id,
+      sortBy: 'updatedAt'
+    });
+    expect(resultByDate).toHaveLength(2);
+    const indexByDate = resultByName.findIndex(
+      item => item.uuid === testData.createWordInput.uuid
+    );
+    expect(indexByDate).toEqual(0);
   });
 
   test('findManyAndSort based on game statistics', async () => {

@@ -1,4 +1,4 @@
-import { Language, SortBy } from '../generated/graphql';
+import { Language, SortBy, SortWordsBy } from '../generated/graphql';
 
 type UserDataType = {
   token: string;
@@ -9,9 +9,11 @@ type UserDataType = {
 export interface StoredData {
   language: Language;
   userData: UserDataType;
-  isReverseOrder: boolean;
   previousLocation: string;
-  sortBy: SortBy | string;
+  gamesSortOrder: boolean;
+  sortGamesBy: SortBy;
+  wordsSortOrder: boolean;
+  sortWordsBy: SortWordsBy;
 }
 
 type PropName = keyof StoredData & string;

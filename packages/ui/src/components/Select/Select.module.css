@@ -105,3 +105,14 @@
   width: 100%;
   height: 40px;
 }
+
+.selectLabel {
+  font-size: var(--font-size-xs);
+  margin-bottom: 4px;
+  padding: 0;
+}
+
+.selectContainer {
+  display: flex;
+  flex-direction: column;
+}
