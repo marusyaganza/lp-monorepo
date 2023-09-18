@@ -55,6 +55,7 @@ export const testData = {
     particle: 'noun',
     language: 'ENGLISH',
     name: 'rubber',
+    level: 'B2',
     shortDef: [
       'a thin, flexible loop that is made of rubber and used to hold things together \u2014called also (US) elastic, elastic band'
     ],

@@ -200,6 +200,25 @@ exports[`User can save more words and view all of them 1`] = `
       "data": {
         "words": [
           {
+            "audioUrl": null,
+            "defs": [
+              {
+                "def": "{bc} a strong substance that stretches and that is made out of chemicals or from the juice of a tropical tree",
+              },
+              {
+                "def": "{it}British{/it}",
+              },
+              {
+                "def": "{b}{it}rubbers{/it}{/b} {it}US{/it}, {it}informal + old-fashioned{/it} {bc} shoes or boots that are made of rubber and that fit over your regular shoes to keep them dry",
+              },
+            ],
+            "isOffensive": false,
+            "level": "B2",
+            "name": "rubber",
+            "particle": "noun",
+            "transcription": "rubber",
+          },
+          {
             "audioUrl": "mock.mp3",
             "defs": [
               {
@@ -215,6 +234,27 @@ exports[`User can save more words and view all of them 1`] = `
             "particle": "noun",
             "transcription": "iˌɡælɪˈteəriən",
           },
+        ],
+      },
+      "errors": undefined,
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`User can save more words and view all of them in reverse order 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": {
+        "words": [
           {
             "audioUrl": null,
             "defs": [
@@ -229,10 +269,26 @@ exports[`User can save more words and view all of them 1`] = `
               },
             ],
             "isOffensive": false,
-            "level": null,
+            "level": "B2",
             "name": "rubber",
             "particle": "noun",
             "transcription": "rubber",
+          },
+          {
+            "audioUrl": "mock.mp3",
+            "defs": [
+              {
+                "def": "a person who believes that everyone is equal and should have the same rights and opportunities",
+              },
+              {
+                "def": "aiming for equal wealth, status, etc., for all people",
+              },
+            ],
+            "isOffensive": false,
+            "level": "C1",
+            "name": "egalitarian",
+            "particle": "noun",
+            "transcription": "iˌɡælɪˈteəriən",
           },
         ],
       },
@@ -349,7 +405,7 @@ exports[`User cannot get the words list if user record in DB does not exist 1`] 
           },
           "locations": [
             {
-              "column": 5,
+              "column": 7,
               "line": 3,
             },
           ],

@@ -1,6 +1,6 @@
 const wordsQuery = `
-  {
-    words {
+ query Words($input: WordsInput) {
+      words(input: $input) {
       name
       defs {
         def

@@ -20,12 +20,3 @@
   margin: 100px 70px;
   justify-content: space-between;
 }
-
-.orderControls {
-  display: flex;
-  gap: 8px;
-}
-
-.select {
-  width: 250px;
-}

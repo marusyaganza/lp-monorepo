@@ -1162,21 +1162,192 @@ exports[`queries words 1`] = `
       "data": {
         "words": [
           {
-            "audioUrl": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/e/ega/egali/egalitarian__gb_1.mp3",
+            "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/w/wheel001.mp3",
             "defs": [
               {
-                "def": "a person who believes that everyone is equal and should have the same rights and opportunities",
+                "def": "a circular frame of hard material that may be solid, partly solid, or spoked and that is capable of turning on an axle",
               },
               {
-                "def": "aiming for equal wealth, status, etc., for all people",
+                "def": "see also behind the wheel",
+              },
+              {
+                "def": "a recurring course, development, or action cycle",
+              },
+              {
+                "def": "something (such as a round, flat cheese) resembling a wheel in shape",
+              },
+              {
+                "def": "a rotation or turn usually about an axis or center",
+              },
+              {
+                "def": "a person of importance especially in an organization",
+              },
+              {
+                "def": "the refrain or burden of a song",
+              },
+              {
+                "def": "a sports league",
+              },
+              {
+                "def": "a wheeled vehicle",
+              },
+              {
+                "def": "legs",
               },
             ],
-            "id": "mockid",
+            "id": "1",
             "isOffensive": false,
-            "level": "C1",
-            "name": "egalitarian",
+            "level": null,
+            "name": "wheel",
             "particle": "noun",
-            "transcription": "iˌɡælɪˈteəriən",
+            "transcription": "ˈ(h)wēl",
+          },
+          {
+            "audioUrl": null,
+            "defs": [
+              {
+                "def": "to turn on or as if on an axis revolve",
+              },
+              {
+                "def": "to change direction as if revolving on a pivot",
+              },
+              {
+                "def": "to move or extend in a circle or curve",
+              },
+              {
+                "def": "to travel on or as if on wheels or in a wheeled vehicle",
+              },
+              {
+                "def": "to cause to turn on or as if on an axis rotate",
+              },
+              {
+                "def": "to convey or move on or as if on wheels or in a wheeled vehicle",
+              },
+              {
+                "def": "to cause to change direction as if revolving on a pivot",
+              },
+              {
+                "def": "to make or perform in a circle or curve",
+              },
+            ],
+            "id": "2",
+            "isOffensive": false,
+            "level": null,
+            "name": "wheel",
+            "particle": "verb",
+            "transcription": "wheel",
+          },
+          {
+            "audioUrl": null,
+            "defs": [
+              {
+                "def": "a mechanical device consisting of a grooved wheel turned by a cord or chain with a rigidly attached axle (as for winding up a weight) together with the supporting standards",
+              },
+            ],
+            "id": "3",
+            "isOffensive": false,
+            "level": null,
+            "name": "wheel and axle",
+            "particle": "noun",
+            "transcription": "wheel and axle",
+          },
+          {
+            "audioUrl": null,
+            "defs": [
+              {
+                "def": "rotifer",
+              },
+            ],
+            "id": "4",
+            "isOffensive": false,
+            "level": null,
+            "name": "wheel animal",
+            "particle": "noun",
+            "transcription": "wheel animal",
+          },
+          {
+            "audioUrl": null,
+            "defs": [
+              {
+                "def": "a large North American assassin bug (<i>Arilus cristatus</i>) that has a high serrated crest on its prothorax and preys on insects",
+              },
+            ],
+            "id": "5",
+            "isOffensive": false,
+            "level": null,
+            "name": "wheel bug",
+            "particle": "noun",
+            "transcription": "wheel bug",
+          },
+          {
+            "audioUrl": null,
+            "defs": [
+              {
+                "def": "a gun's lock for a muzzle-loading firearm in which sparks are struck from a flint or a piece of pyrite by a revolving wheel",
+              },
+            ],
+            "id": "6",
+            "isOffensive": false,
+            "level": null,
+            "name": "wheel lock",
+            "particle": "noun",
+            "transcription": "wheel lock",
+          },
+          {
+            "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/number/9wheel01.mp3",
+            "defs": [
+              {
+                "def": "made on a potter's wheel",
+              },
+            ],
+            "id": "7",
+            "isOffensive": false,
+            "level": null,
+            "name": "wheel-thrown",
+            "particle": "adjective",
+            "transcription": "ˈ(h)wēl-ˌthrōn",
+          },
+          {
+            "audioUrl": null,
+            "defs": [
+              {
+                "def": "an object that the police lock onto one of the wheels of a car so that the car cannot be moved",
+              },
+            ],
+            "id": "8",
+            "isOffensive": false,
+            "level": null,
+            "name": "wheel clamp",
+            "particle": "noun",
+            "transcription": "wheel clamp",
+          },
+          {
+            "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v.mp3",
+            "defs": [
+              {
+                "def": "acting especially independently on or by means of all four wheels of an automotive vehicle",
+              },
+            ],
+            "id": "9",
+            "isOffensive": false,
+            "level": null,
+            "name": "all-wheel",
+            "particle": "adjective",
+            "transcription": "ˈȯl-ˈwēl",
+          },
+          {
+            "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v.mp3",
+            "defs": [
+              {
+                "def": "an automobile drive mechanism that acts on all four wheels of the vehicle",
+              },
+            ],
+            "id": "10",
+            "isOffensive": false,
+            "level": null,
+            "name": "all-wheel drive",
+            "particle": "noun",
+            "transcription": "ˈȯl-ˈwēl-",
           },
         ],
       },
