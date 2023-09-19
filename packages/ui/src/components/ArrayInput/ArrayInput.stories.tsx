@@ -26,3 +26,18 @@ export const ArrayInputDefault = (args: ArrayInputProps) => {
     </div>
   );
 };
+
+export const ArrayInputWithOrderControls = (args: ArrayInputProps) => {
+  return (
+    <div className="presentationBox">
+      <ArrayInput
+        {...args}
+        variant="dark"
+        onChange={val => {
+          console.log(val);
+        }}
+        showOrderButtons
+      />
+    </div>
+  );
+};

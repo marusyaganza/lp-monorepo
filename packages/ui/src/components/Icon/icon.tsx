@@ -30,7 +30,9 @@ export type IconIdType =
   | 'eye'
   | 'eye-slashed'
   | 'sun'
-  | 'git';
+  | 'git'
+  | 'arrow-up'
+  | 'arrow-down';
 
 export type IconProps = {
   width?: number;
@@ -59,6 +61,8 @@ export const _iconIds: IconIdType[] = [
   'dragon',
   'eraser',
   'arrow-left',
+  'arrow-up',
+  'arrow-down',
   'pointer',
   'plus',
   'minus',

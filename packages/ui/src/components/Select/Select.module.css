@@ -52,18 +52,18 @@
   position: absolute;
   border: 1px solid var(--neutral-500);
   background: var(--text-inverted);
-  z-index: 1;
+  z-index: var(--z-index-2);
 }
 
 .radio {
   position: absolute;
-  z-index: 0;
+  z-index: var(--z-index-1);
   opacity: 0;
 }
 
 .label {
   background: var(--text-inverted);
-  z-index: 1;
+  z-index: var(--z-index-2);
   position: relative;
   padding: 8px;
   border-radius: var(--secondary-border-radius);

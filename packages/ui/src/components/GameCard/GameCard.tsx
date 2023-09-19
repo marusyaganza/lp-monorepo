@@ -35,16 +35,16 @@ const images = {
 export const GameCard = ({ game, linkUrl, className }: GameCardProps) => {
   const { name, type, desc } = game;
   return (
-    <Link to={linkUrl} className={cn(className, styles.link)}>
-      <div className={styles.gameContainer}>
+    <div className={styles.gameContainer}>
+      <Link to={linkUrl} className={cn(className, styles.link)}>
         <div className={styles.content}>
           <div className={styles.imageContainer}>
             <img className={styles.image} src={images[type]} alt={desc} />
           </div>
           <p className={styles.description}>{desc}</p>
         </div>
-        <h2 className={styles.gameTitle}>{name}</h2>
-      </div>
-    </Link>
+      </Link>
+      <h2 className={styles.gameTitle}>{name}</h2>
+    </div>
   );
 };

@@ -26,7 +26,7 @@
 
 .error,
 .error:focus {
-  background: var(--background-danger-100);
+  background: var(--background-danger-300);
   border: 1px solid var(--error-300);
   outline: none;
 }

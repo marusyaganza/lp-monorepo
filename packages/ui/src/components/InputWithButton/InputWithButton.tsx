@@ -5,6 +5,12 @@ import { IconIdType } from '../Icon/icon';
 
 import styles from './InputWithButton.module.css';
 
+interface ButtonProps {
+  onClick?: () => void;
+  disabled?: boolean;
+  text?: string;
+}
+
 export interface InputWithButtonProps {
   /**InputWithButton prop */
   value: string;
@@ -21,6 +27,9 @@ export interface InputWithButtonProps {
   ignoreErrors?: boolean;
   /**additional styling */
   className?: string;
+  upButtonProps?: ButtonProps;
+  downButtonProps?: ButtonProps;
+  showAdditionalControls?: boolean;
 }
 /**Input with button */
 export const InputWithButton = ({
@@ -35,7 +44,10 @@ export const InputWithButton = ({
   buttonText,
   fontStyle = 'primary',
   errorText,
-  ignoreErrors
+  ignoreErrors,
+  upButtonProps,
+  downButtonProps,
+  showAdditionalControls
 }: InputWithButtonProps) => {
   const isInValid = errorText?.length !== 0;
   return (
@@ -43,6 +55,30 @@ export const InputWithButton = ({
       <label className={styles.inputContainer}>
         {label && <span className={styles.label}>{label}</span>}
         <div className={styles.inputWrapper}>
+          {showAdditionalControls && (
+            <div className={styles.buttonsContainer}>
+              <Button
+                onClick={upButtonProps?.onClick}
+                variant="icon"
+                iconHeight={20}
+                iconWidth={20}
+                iconId="arrow-up"
+                disabled={upButtonProps?.disabled}
+              >
+                {upButtonProps?.text || 'Up'}
+              </Button>
+              <Button
+                onClick={downButtonProps?.onClick}
+                iconHeight={20}
+                iconWidth={20}
+                variant="icon"
+                iconId="arrow-down"
+                disabled={downButtonProps?.disabled}
+              >
+                {downButtonProps?.text || 'Down'}
+              </Button>
+            </div>
+          )}
           <textarea
             className={cn(styles.input, styles[fontStyle])}
             name={name}

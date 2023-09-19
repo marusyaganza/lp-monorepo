@@ -67,7 +67,12 @@ export const formConfig: (
   },
   { Component: DefinitionInput, name: 'defs' },
   { Component: InputV2, name: 'transcription' },
-  { Component: ArrayInput, name: 'shortDef', label: 'short definition' },
+  {
+    Component: ArrayInput,
+    name: 'shortDef',
+    label: 'short definition',
+    props: { showOrderButtons: true }
+  },
   { Component: InputV2, name: 'imgUrl', label: 'image url' },
   { Component: ArrayInput, name: 'stems', label: 'word form' },
   { Component: InputV2, name: 'imgDesc', label: 'image description' },
