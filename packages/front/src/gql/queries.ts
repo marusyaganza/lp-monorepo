@@ -110,6 +110,12 @@ export const GAME = gql`
         answer
         additionalInfo {
           audioUrl
+          imgUrl
+          shortDef
+          examples {
+            text
+            translation
+          }
         }
       }
       task

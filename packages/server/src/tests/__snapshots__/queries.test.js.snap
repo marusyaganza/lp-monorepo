@@ -156,7 +156,9 @@ exports[`queries get gamedata with walid user for Audio game and English 1`] = `
         "game": {
           "questions": [
             {
-              "additionalInfo": null,
+              "additionalInfo": {
+                "audioUrl": null,
+              },
               "answer": "wheel",
               "options": null,
               "question": [
@@ -165,31 +167,59 @@ exports[`queries get gamedata with walid user for Audio game and English 1`] = `
               "wordId": "1",
             },
             {
-              "additionalInfo": null,
+              "additionalInfo": {
+                "audioUrl": null,
+              },
+              "answer": "wheel",
+              "options": null,
+              "question": [
+                "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v1.mp3",
+              ],
+              "wordId": "2",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": null,
+              },
+              "answer": "wheel and axle",
+              "options": null,
+              "question": [
+                "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v3.mp3",
+              ],
+              "wordId": "3",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": null,
+              },
+              "answer": "wheel animal",
+              "options": null,
+              "question": [
+                "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v4.mp3",
+              ],
+              "wordId": "4",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": null,
+              },
+              "answer": "wheel bug",
+              "options": null,
+              "question": [
+                "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v5.mp3",
+              ],
+              "wordId": "5",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": null,
+              },
               "answer": "wheel-thrown",
               "options": null,
               "question": [
                 "https://media.merriam-webster.com/audio/prons/en/us/mp3/number/9wheel01.mp3",
               ],
               "wordId": "7",
-            },
-            {
-              "additionalInfo": null,
-              "answer": "all-wheel",
-              "options": null,
-              "question": [
-                "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v.mp3",
-              ],
-              "wordId": "9",
-            },
-            {
-              "additionalInfo": null,
-              "answer": "all-wheel drive",
-              "options": null,
-              "question": [
-                "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v.mp3",
-              ],
-              "wordId": "10",
             },
           ],
           "task": "Type the word that you've heard",
@@ -231,7 +261,7 @@ exports[`queries get gamedata with walid user for SelectDef game and English 1`]
             },
             {
               "additionalInfo": {
-                "audioUrl": null,
+                "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v1.mp3",
               },
               "answer": "wheel",
               "options": null,
@@ -244,7 +274,7 @@ exports[`queries get gamedata with walid user for SelectDef game and English 1`]
             },
             {
               "additionalInfo": {
-                "audioUrl": null,
+                "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v3.mp3",
               },
               "answer": "wheel and axle",
               "options": null,
@@ -255,7 +285,7 @@ exports[`queries get gamedata with walid user for SelectDef game and English 1`]
             },
             {
               "additionalInfo": {
-                "audioUrl": null,
+                "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v4.mp3",
               },
               "answer": "wheel animal",
               "options": null,
@@ -266,7 +296,7 @@ exports[`queries get gamedata with walid user for SelectDef game and English 1`]
             },
             {
               "additionalInfo": {
-                "audioUrl": null,
+                "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v5.mp3",
               },
               "answer": "wheel bug",
               "options": null,
@@ -326,7 +356,7 @@ exports[`queries get gamedata with walid user for SelectWord game and English 1`
             },
             {
               "additionalInfo": {
-                "audioUrl": null,
+                "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v1.mp3",
               },
               "answer": "wheel",
               "options": null,
@@ -339,7 +369,7 @@ exports[`queries get gamedata with walid user for SelectWord game and English 1`
             },
             {
               "additionalInfo": {
-                "audioUrl": null,
+                "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v3.mp3",
               },
               "answer": "wheel and axle",
               "options": null,
@@ -350,7 +380,7 @@ exports[`queries get gamedata with walid user for SelectWord game and English 1`
             },
             {
               "additionalInfo": {
-                "audioUrl": null,
+                "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v4.mp3",
               },
               "answer": "wheel animal",
               "options": null,
@@ -361,7 +391,7 @@ exports[`queries get gamedata with walid user for SelectWord game and English 1`
             },
             {
               "additionalInfo": {
-                "audioUrl": null,
+                "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v5.mp3",
               },
               "answer": "wheel bug",
               "options": null,
@@ -421,7 +451,7 @@ exports[`queries get gamedata with walid user for TypeWord game and English 1`] 
             },
             {
               "additionalInfo": {
-                "audioUrl": null,
+                "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v1.mp3",
               },
               "answer": "wheel",
               "options": null,
@@ -434,7 +464,7 @@ exports[`queries get gamedata with walid user for TypeWord game and English 1`] 
             },
             {
               "additionalInfo": {
-                "audioUrl": null,
+                "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v3.mp3",
               },
               "answer": "wheel and axle",
               "options": null,
@@ -445,7 +475,7 @@ exports[`queries get gamedata with walid user for TypeWord game and English 1`] 
             },
             {
               "additionalInfo": {
-                "audioUrl": null,
+                "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v4.mp3",
               },
               "answer": "wheel animal",
               "options": null,
@@ -456,7 +486,7 @@ exports[`queries get gamedata with walid user for TypeWord game and English 1`] 
             },
             {
               "additionalInfo": {
-                "audioUrl": null,
+                "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v5.mp3",
               },
               "answer": "wheel bug",
               "options": null,
@@ -1203,7 +1233,7 @@ exports[`queries words 1`] = `
             "transcription": "ˈ(h)wēl",
           },
           {
-            "audioUrl": null,
+            "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v1.mp3",
             "defs": [
               {
                 "def": "to turn on or as if on an axis revolve",
@@ -1238,7 +1268,7 @@ exports[`queries words 1`] = `
             "transcription": "wheel",
           },
           {
-            "audioUrl": null,
+            "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v3.mp3",
             "defs": [
               {
                 "def": "a mechanical device consisting of a grooved wheel turned by a cord or chain with a rigidly attached axle (as for winding up a weight) together with the supporting standards",
@@ -1252,7 +1282,7 @@ exports[`queries words 1`] = `
             "transcription": "wheel and axle",
           },
           {
-            "audioUrl": null,
+            "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v4.mp3",
             "defs": [
               {
                 "def": "rotifer",
@@ -1266,7 +1296,7 @@ exports[`queries words 1`] = `
             "transcription": "wheel animal",
           },
           {
-            "audioUrl": null,
+            "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v5.mp3",
             "defs": [
               {
                 "def": "a large North American assassin bug (<i>Arilus cristatus</i>) that has a high serrated crest on its prothorax and preys on insects",

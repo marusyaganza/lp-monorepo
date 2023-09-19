@@ -4,6 +4,20 @@ exports[`generateGameData generateGameData if all the words are given with valid
 {
   "questions": [
     {
+      "additionalInfo": {
+        "examples": [
+          {
+            "text": "… drivers are expected to keep their hands on the <i>wheel</i> and remain attentive …",
+            "translation": null,
+          },
+          {
+            "text": "a big <i>wheel</i>",
+            "translation": null,
+          },
+        ],
+        "imgUrl": "https://merriam-webster.com/assets/mw/static/art/dict/wheel.gif",
+        "shortDef": "<b>wheel means</b> a circular frame of hard material that may be solid, partly solid, or spoked and that is capable of turning on an axle",
+      },
       "answer": "wheel",
       "question": [
         "https://media.merriam-webster.com/audio/prons/en/us/mp3/w/wheel001.mp3",
@@ -11,25 +25,102 @@ exports[`generateGameData generateGameData if all the words are given with valid
       "wordId": "1",
     },
     {
+      "additionalInfo": {
+        "examples": [
+          {
+            "text": "the battalion would have <i>wheeled</i> to the flank",
+            "translation": null,
+          },
+          {
+            "text": "her mind will <i>wheel</i> around to the other extreme",
+            "translation": null,
+          },
+          {
+            "text": "<i>wheeled</i> to face her opponent",
+            "translation": null,
+          },
+          {
+            "text": "birds in <i>wheeling</i> flight",
+            "translation": null,
+          },
+          {
+            "text": "valleys where young cotton <i>wheeled</i> slowly in fanlike rows",
+            "translation": null,
+          },
+          {
+            "text": "<i>wheeled</i> the patient back to his room",
+            "translation": null,
+          },
+          {
+            "text": "<i>wheeled</i> the car into the driveway",
+            "translation": null,
+          },
+          {
+            "text": "<i>wheel</i> in the experts",
+            "translation": null,
+          },
+        ],
+        "imgUrl": "https://merriam-webster.com/assets/mw/static/art/dict/wheel1.gif",
+        "shortDef": "<b>wheel means</b> to turn on or as if on an axis : revolve",
+      },
+      "answer": "wheel",
+      "question": [
+        "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v1.mp3",
+      ],
+      "wordId": "2",
+    },
+    {
+      "additionalInfo": {
+        "examples": [],
+        "imgUrl": "https://merriam-webster.com/assets/mw/static/art/dict/wheel2.gif",
+        "shortDef": "<b>wheel and axle means</b> a mechanical device consisting of a grooved wheel turned by a cord or chain with a rigidly attached axle (as for winding up a weight) together with the supporting standards",
+      },
+      "answer": "wheel and axle",
+      "question": [
+        "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v3.mp3",
+      ],
+      "wordId": "3",
+    },
+    {
+      "additionalInfo": {
+        "examples": [],
+        "imgUrl": "https://merriam-webster.com/assets/mw/static/art/dict/wheel4.gif",
+        "shortDef": "<b>wheel animal means</b> rotifer",
+      },
+      "answer": "wheel animal",
+      "question": [
+        "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v4.mp3",
+      ],
+      "wordId": "4",
+    },
+    {
+      "additionalInfo": {
+        "examples": [],
+        "imgUrl": "https://merriam-webster.com/assets/mw/static/art/dict/wheel5.gif",
+        "shortDef": "<b>wheel bug means</b> a large North American assassin bug (Arilus cristatus) that has a high serrated crest on its prothorax and preys on insects",
+      },
+      "answer": "wheel bug",
+      "question": [
+        "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v5.mp3",
+      ],
+      "wordId": "5",
+    },
+    {
+      "additionalInfo": {
+        "examples": [
+          {
+            "text": "<i>wheel-thrown</i> pottery",
+            "translation": null,
+          },
+        ],
+        "imgUrl": null,
+        "shortDef": "<b>wheel-thrown means</b> made on a potter's wheel",
+      },
       "answer": "wheel-thrown",
       "question": [
         "https://media.merriam-webster.com/audio/prons/en/us/mp3/number/9wheel01.mp3",
       ],
       "wordId": "7",
-    },
-    {
-      "answer": "all-wheel",
-      "question": [
-        "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v.mp3",
-      ],
-      "wordId": "9",
-    },
-    {
-      "answer": "all-wheel drive",
-      "question": [
-        "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v.mp3",
-      ],
-      "wordId": "10",
     },
   ],
   "task": "Type the word that you've heard",
@@ -43,6 +134,17 @@ exports[`generateGameData generateGameData if all the words are given with valid
     {
       "additionalInfo": {
         "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/w/wheel001.mp3",
+        "examples": [
+          {
+            "text": "… drivers are expected to keep their hands on the <i>wheel</i> and remain attentive …",
+            "translation": null,
+          },
+          {
+            "text": "a big <i>wheel</i>",
+            "translation": null,
+          },
+        ],
+        "imgUrl": "https://merriam-webster.com/assets/mw/static/art/dict/wheel.gif",
       },
       "answer": "a circular frame of hard material that may be solid, partly solid, or spoked and that is capable of turning on an axle",
       "options": [
@@ -60,7 +162,42 @@ exports[`generateGameData generateGameData if all the words are given with valid
     },
     {
       "additionalInfo": {
-        "audioUrl": null,
+        "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v1.mp3",
+        "examples": [
+          {
+            "text": "the battalion would have <i>wheeled</i> to the flank",
+            "translation": null,
+          },
+          {
+            "text": "her mind will <i>wheel</i> around to the other extreme",
+            "translation": null,
+          },
+          {
+            "text": "<i>wheeled</i> to face her opponent",
+            "translation": null,
+          },
+          {
+            "text": "birds in <i>wheeling</i> flight",
+            "translation": null,
+          },
+          {
+            "text": "valleys where young cotton <i>wheeled</i> slowly in fanlike rows",
+            "translation": null,
+          },
+          {
+            "text": "<i>wheeled</i> the patient back to his room",
+            "translation": null,
+          },
+          {
+            "text": "<i>wheeled</i> the car into the driveway",
+            "translation": null,
+          },
+          {
+            "text": "<i>wheel</i> in the experts",
+            "translation": null,
+          },
+        ],
+        "imgUrl": "https://merriam-webster.com/assets/mw/static/art/dict/wheel1.gif",
       },
       "answer": "to turn on or as if on an axis : revolve",
       "options": [
@@ -78,7 +215,9 @@ exports[`generateGameData generateGameData if all the words are given with valid
     },
     {
       "additionalInfo": {
-        "audioUrl": null,
+        "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v3.mp3",
+        "examples": [],
+        "imgUrl": "https://merriam-webster.com/assets/mw/static/art/dict/wheel2.gif",
       },
       "answer": "a mechanical device consisting of a grooved wheel turned by a cord or chain with a rigidly attached axle (as for winding up a weight) together with the supporting standards",
       "options": [
@@ -96,7 +235,9 @@ exports[`generateGameData generateGameData if all the words are given with valid
     },
     {
       "additionalInfo": {
-        "audioUrl": null,
+        "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v4.mp3",
+        "examples": [],
+        "imgUrl": "https://merriam-webster.com/assets/mw/static/art/dict/wheel4.gif",
       },
       "answer": "rotifer",
       "options": [
@@ -114,7 +255,9 @@ exports[`generateGameData generateGameData if all the words are given with valid
     },
     {
       "additionalInfo": {
-        "audioUrl": null,
+        "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v5.mp3",
+        "examples": [],
+        "imgUrl": "https://merriam-webster.com/assets/mw/static/art/dict/wheel5.gif",
       },
       "answer": "a large North American assassin bug (Arilus cristatus) that has a high serrated crest on its prothorax and preys on insects",
       "options": [
@@ -133,6 +276,8 @@ exports[`generateGameData generateGameData if all the words are given with valid
     {
       "additionalInfo": {
         "audioUrl": null,
+        "examples": [],
+        "imgUrl": null,
       },
       "answer": "a gun's lock for a muzzle-loading firearm in which sparks are struck from a flint or a piece of pyrite by a revolving wheel",
       "options": [
@@ -160,6 +305,17 @@ exports[`generateGameData generateGameData if all the words are given with valid
     {
       "additionalInfo": {
         "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/w/wheel001.mp3",
+        "examples": [
+          {
+            "text": "… drivers are expected to keep their hands on the <i>wheel</i> and remain attentive …",
+            "translation": null,
+          },
+          {
+            "text": "a big <i>wheel</i>",
+            "translation": null,
+          },
+        ],
+        "imgUrl": "https://merriam-webster.com/assets/mw/static/art/dict/wheel.gif",
       },
       "answer": "wheel",
       "options": [
@@ -179,7 +335,42 @@ exports[`generateGameData generateGameData if all the words are given with valid
     },
     {
       "additionalInfo": {
-        "audioUrl": null,
+        "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v1.mp3",
+        "examples": [
+          {
+            "text": "the battalion would have <i>wheeled</i> to the flank",
+            "translation": null,
+          },
+          {
+            "text": "her mind will <i>wheel</i> around to the other extreme",
+            "translation": null,
+          },
+          {
+            "text": "<i>wheeled</i> to face her opponent",
+            "translation": null,
+          },
+          {
+            "text": "birds in <i>wheeling</i> flight",
+            "translation": null,
+          },
+          {
+            "text": "valleys where young cotton <i>wheeled</i> slowly in fanlike rows",
+            "translation": null,
+          },
+          {
+            "text": "<i>wheeled</i> the patient back to his room",
+            "translation": null,
+          },
+          {
+            "text": "<i>wheeled</i> the car into the driveway",
+            "translation": null,
+          },
+          {
+            "text": "<i>wheel</i> in the experts",
+            "translation": null,
+          },
+        ],
+        "imgUrl": "https://merriam-webster.com/assets/mw/static/art/dict/wheel1.gif",
       },
       "answer": "wheel",
       "options": [
@@ -199,7 +390,9 @@ exports[`generateGameData generateGameData if all the words are given with valid
     },
     {
       "additionalInfo": {
-        "audioUrl": null,
+        "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v3.mp3",
+        "examples": [],
+        "imgUrl": "https://merriam-webster.com/assets/mw/static/art/dict/wheel2.gif",
       },
       "answer": "wheel and axle",
       "options": [
@@ -217,7 +410,9 @@ exports[`generateGameData generateGameData if all the words are given with valid
     },
     {
       "additionalInfo": {
-        "audioUrl": null,
+        "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v4.mp3",
+        "examples": [],
+        "imgUrl": "https://merriam-webster.com/assets/mw/static/art/dict/wheel4.gif",
       },
       "answer": "wheel animal",
       "options": [
@@ -235,7 +430,9 @@ exports[`generateGameData generateGameData if all the words are given with valid
     },
     {
       "additionalInfo": {
-        "audioUrl": null,
+        "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v5.mp3",
+        "examples": [],
+        "imgUrl": "https://merriam-webster.com/assets/mw/static/art/dict/wheel5.gif",
       },
       "answer": "wheel bug",
       "options": [
@@ -254,6 +451,8 @@ exports[`generateGameData generateGameData if all the words are given with valid
     {
       "additionalInfo": {
         "audioUrl": null,
+        "examples": [],
+        "imgUrl": null,
       },
       "answer": "wheel lock",
       "options": [
@@ -281,6 +480,17 @@ exports[`generateGameData generateGameData if all the words are given with valid
     {
       "additionalInfo": {
         "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/w/wheel001.mp3",
+        "examples": [
+          {
+            "text": "… drivers are expected to keep their hands on the <i>wheel</i> and remain attentive …",
+            "translation": null,
+          },
+          {
+            "text": "a big <i>wheel</i>",
+            "translation": null,
+          },
+        ],
+        "imgUrl": "https://merriam-webster.com/assets/mw/static/art/dict/wheel.gif",
       },
       "answer": "wheel",
       "question": [
@@ -292,7 +502,42 @@ exports[`generateGameData generateGameData if all the words are given with valid
     },
     {
       "additionalInfo": {
-        "audioUrl": null,
+        "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v1.mp3",
+        "examples": [
+          {
+            "text": "the battalion would have <i>wheeled</i> to the flank",
+            "translation": null,
+          },
+          {
+            "text": "her mind will <i>wheel</i> around to the other extreme",
+            "translation": null,
+          },
+          {
+            "text": "<i>wheeled</i> to face her opponent",
+            "translation": null,
+          },
+          {
+            "text": "birds in <i>wheeling</i> flight",
+            "translation": null,
+          },
+          {
+            "text": "valleys where young cotton <i>wheeled</i> slowly in fanlike rows",
+            "translation": null,
+          },
+          {
+            "text": "<i>wheeled</i> the patient back to his room",
+            "translation": null,
+          },
+          {
+            "text": "<i>wheeled</i> the car into the driveway",
+            "translation": null,
+          },
+          {
+            "text": "<i>wheel</i> in the experts",
+            "translation": null,
+          },
+        ],
+        "imgUrl": "https://merriam-webster.com/assets/mw/static/art/dict/wheel1.gif",
       },
       "answer": "wheel",
       "question": [
@@ -304,7 +549,9 @@ exports[`generateGameData generateGameData if all the words are given with valid
     },
     {
       "additionalInfo": {
-        "audioUrl": null,
+        "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v3.mp3",
+        "examples": [],
+        "imgUrl": "https://merriam-webster.com/assets/mw/static/art/dict/wheel2.gif",
       },
       "answer": "wheel and axle",
       "question": [
@@ -314,7 +561,9 @@ exports[`generateGameData generateGameData if all the words are given with valid
     },
     {
       "additionalInfo": {
-        "audioUrl": null,
+        "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v4.mp3",
+        "examples": [],
+        "imgUrl": "https://merriam-webster.com/assets/mw/static/art/dict/wheel4.gif",
       },
       "answer": "wheel animal",
       "question": [
@@ -324,7 +573,9 @@ exports[`generateGameData generateGameData if all the words are given with valid
     },
     {
       "additionalInfo": {
-        "audioUrl": null,
+        "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v5.mp3",
+        "examples": [],
+        "imgUrl": "https://merriam-webster.com/assets/mw/static/art/dict/wheel5.gif",
       },
       "answer": "wheel bug",
       "question": [
@@ -335,6 +586,8 @@ exports[`generateGameData generateGameData if all the words are given with valid
     {
       "additionalInfo": {
         "audioUrl": null,
+        "examples": [],
+        "imgUrl": null,
       },
       "answer": "wheel lock",
       "question": [
@@ -560,7 +813,7 @@ exports[`generateGameData generateOptions with sufficient data 1`] = `
 [
   {
     "additionalInfo": null,
-    "audioUrl": null,
+    "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v1.mp3",
     "defs": [
       {
         "def": "to turn on or as if on an axis revolve",
@@ -632,7 +885,7 @@ exports[`generateGameData generateOptions with sufficient data 1`] = `
     ],
     "id": "2",
     "imgDesc": null,
-    "imgUrl": null,
+    "imgUrl": "https://merriam-webster.com/assets/mw/static/art/dict/wheel1.gif",
     "isOffensive": false,
     "language": "ENGLISH",
     "name": "wheel",
@@ -657,7 +910,7 @@ exports[`generateGameData generateOptions with sufficient data 1`] = `
   },
   {
     "additionalInfo": null,
-    "audioUrl": null,
+    "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v3.mp3",
     "defs": [
       {
         "def": "a mechanical device consisting of a grooved wheel turned by a cord or chain with a rigidly attached axle (as for winding up a weight) together with the supporting standards",
@@ -666,7 +919,7 @@ exports[`generateGameData generateOptions with sufficient data 1`] = `
     ],
     "id": "3",
     "imgDesc": null,
-    "imgUrl": null,
+    "imgUrl": "https://merriam-webster.com/assets/mw/static/art/dict/wheel2.gif",
     "isOffensive": false,
     "language": "ENGLISH",
     "name": "wheel and axle",
@@ -683,7 +936,7 @@ exports[`generateGameData generateOptions with sufficient data 1`] = `
   },
   {
     "additionalInfo": null,
-    "audioUrl": null,
+    "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v5.mp3",
     "defs": [
       {
         "def": "a large North American assassin bug (<i>Arilus cristatus</i>) that has a high serrated crest on its prothorax and preys on insects",
@@ -692,7 +945,7 @@ exports[`generateGameData generateOptions with sufficient data 1`] = `
     ],
     "id": "5",
     "imgDesc": null,
-    "imgUrl": null,
+    "imgUrl": "https://merriam-webster.com/assets/mw/static/art/dict/wheel5.gif",
     "isOffensive": false,
     "language": "ENGLISH",
     "name": "wheel bug",
@@ -770,7 +1023,7 @@ exports[`generateGameData generateOptions with valid data for English 1`] = `
 [
   {
     "additionalInfo": null,
-    "audioUrl": null,
+    "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v1.mp3",
     "defs": [
       {
         "def": "to turn on or as if on an axis revolve",
@@ -842,7 +1095,7 @@ exports[`generateGameData generateOptions with valid data for English 1`] = `
     ],
     "id": "2",
     "imgDesc": null,
-    "imgUrl": null,
+    "imgUrl": "https://merriam-webster.com/assets/mw/static/art/dict/wheel1.gif",
     "isOffensive": false,
     "language": "ENGLISH",
     "name": "wheel",
@@ -867,7 +1120,7 @@ exports[`generateGameData generateOptions with valid data for English 1`] = `
   },
   {
     "additionalInfo": null,
-    "audioUrl": null,
+    "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v3.mp3",
     "defs": [
       {
         "def": "a mechanical device consisting of a grooved wheel turned by a cord or chain with a rigidly attached axle (as for winding up a weight) together with the supporting standards",
@@ -876,7 +1129,7 @@ exports[`generateGameData generateOptions with valid data for English 1`] = `
     ],
     "id": "3",
     "imgDesc": null,
-    "imgUrl": null,
+    "imgUrl": "https://merriam-webster.com/assets/mw/static/art/dict/wheel2.gif",
     "isOffensive": false,
     "language": "ENGLISH",
     "name": "wheel and axle",
@@ -893,7 +1146,7 @@ exports[`generateGameData generateOptions with valid data for English 1`] = `
   },
   {
     "additionalInfo": null,
-    "audioUrl": null,
+    "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v5.mp3",
     "defs": [
       {
         "def": "a large North American assassin bug (<i>Arilus cristatus</i>) that has a high serrated crest on its prothorax and preys on insects",
@@ -902,7 +1155,7 @@ exports[`generateGameData generateOptions with valid data for English 1`] = `
     ],
     "id": "5",
     "imgDesc": null,
-    "imgUrl": null,
+    "imgUrl": "https://merriam-webster.com/assets/mw/static/art/dict/wheel5.gif",
     "isOffensive": false,
     "language": "ENGLISH",
     "name": "wheel bug",

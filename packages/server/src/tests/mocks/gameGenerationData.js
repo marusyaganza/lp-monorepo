@@ -98,7 +98,7 @@ export const words = [
     particle: 'verb',
     name: 'wheel',
     isOffensive: false,
-    imgUrl: null,
+    imgUrl: 'https://merriam-webster.com/assets/mw/static/art/dict/wheel1.gif',
     defs: [
       {
         examples: null,
@@ -168,7 +168,8 @@ export const words = [
         def: 'to make or perform in a circle or curve'
       }
     ],
-    audioUrl: null,
+    audioUrl:
+      'https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v1.mp3',
     additionalInfo: null,
     imgDesc: null,
     shortDef: [
@@ -186,14 +187,15 @@ export const words = [
     particle: 'noun',
     name: 'wheel and axle',
     isOffensive: false,
-    imgUrl: null,
+    imgUrl: 'https://merriam-webster.com/assets/mw/static/art/dict/wheel2.gif',
     defs: [
       {
         examples: null,
         def: 'a mechanical device consisting of a grooved wheel turned by a cord or chain with a rigidly attached axle (as for winding up a weight) together with the supporting standards'
       }
     ],
-    audioUrl: null,
+    audioUrl:
+      'https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v3.mp3',
     additionalInfo: null,
     imgDesc: null,
     shortDef: [
@@ -209,14 +211,15 @@ export const words = [
     particle: 'noun',
     name: 'wheel animal',
     isOffensive: false,
-    imgUrl: null,
+    imgUrl: 'https://merriam-webster.com/assets/mw/static/art/dict/wheel4.gif',
     defs: [
       {
         examples: null,
         def: 'rotifer'
       }
     ],
-    audioUrl: null,
+    audioUrl:
+      'https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v4.mp3',
     additionalInfo: null,
     imgDesc: null,
     shortDef: ['rotifer'],
@@ -230,14 +233,15 @@ export const words = [
     particle: 'noun',
     name: 'wheel bug',
     isOffensive: false,
-    imgUrl: null,
+    imgUrl: 'https://merriam-webster.com/assets/mw/static/art/dict/wheel5.gif',
     defs: [
       {
         examples: null,
         def: 'a large North American assassin bug (<i>Arilus cristatus</i>) that has a high serrated crest on its prothorax and preys on insects'
       }
     ],
-    audioUrl: null,
+    audioUrl:
+      'https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v5.mp3',
     additionalInfo: null,
     imgDesc: null,
     shortDef: [
@@ -326,7 +330,7 @@ export const words = [
     particle: 'adjective',
     name: 'all-wheel',
     isOffensive: false,
-    imgUrl: null,
+    imgUrl: 'https://merriam-webster.com/assets/mw/static/art/dict/wheel6.gif',
     defs: [
       {
         examples: [
@@ -355,7 +359,7 @@ export const words = [
     particle: 'noun',
     name: 'all-wheel drive',
     isOffensive: false,
-    imgUrl: null,
+    imgUrl: 'https://merriam-webster.com/assets/mw/static/art/dict/wheel6.gif',
     defs: [
       {
         examples: null,
