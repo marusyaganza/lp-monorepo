@@ -20,6 +20,7 @@ export interface ArrayInputProps {
   initialValue?: string[];
   /**additional styling */
   className?: string;
+  showOrderButtons?: boolean;
 }
 /**component ArrayInput */
 export const ArrayInput = ({
@@ -30,6 +31,7 @@ export const ArrayInput = ({
   variant = 'purple',
   children,
   initialValue,
+  showOrderButtons,
   ...rest
 }: PropsWithChildren<ArrayInputProps>) => {
   const [values, setValues] = useState<string[]>(
@@ -63,6 +65,23 @@ export const ArrayInput = ({
     return removeInputHandler;
   };
 
+  const getDefOrderHandler = (index: number, direction: 'up' | 'down') => {
+    if (
+      (index === 0 && direction === 'up') ||
+      (index === values.length - 1 && direction === 'down')
+    ) {
+      return;
+    }
+    return () => {
+      const indexToReplace = direction === 'up' ? index - 1 : index + 1;
+      const newVals = [...values];
+      newVals[index] = values[indexToReplace];
+      newVals[indexToReplace] = values[index];
+      setValues(newVals);
+      onChange(newVals.filter(Boolean));
+    };
+  };
+
   return (
     <div className={cn(className, styles.arrayInput)}>
       {values.map((value, i) => {
@@ -70,6 +89,15 @@ export const ArrayInput = ({
         return (
           <div key={`${name}-${i}`}>
             <InputWithButton
+              showAdditionalControls={showOrderButtons && values.length > 1}
+              upButtonProps={{
+                onClick: getDefOrderHandler(i, 'up'),
+                disabled: i === 0
+              }}
+              downButtonProps={{
+                onClick: getDefOrderHandler(i, 'down'),
+                disabled: isLast
+              }}
               label={`${label} ${i + 1}`}
               onButtonClick={
                 isLast ? addInputHandler : getRemoveInputHandler(i)

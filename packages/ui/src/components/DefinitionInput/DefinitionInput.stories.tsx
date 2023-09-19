@@ -26,6 +26,36 @@ export const DefinitionInputDefault = (args: DefinitionInputProps) => {
   );
 };
 
+export const DefinitionInputWithInitialDef = (args: DefinitionInputProps) => {
+  return (
+    <div className="presentationBox">
+      <DefinitionInput
+        {...args}
+        initialValue={[{ def: 'Def 1' }, { def: 'Def 2' }, { def: 'Def 3' }]}
+        onChange={val => {
+          console.log(val);
+        }}
+      />
+    </div>
+  );
+};
+
+export const DefinitionInputWithInitialDefAndExample = (
+  args: DefinitionInputProps
+) => {
+  return (
+    <div className="presentationBox">
+      <DefinitionInput
+        {...args}
+        initialValue={[{ def: 'Def 1', examples: [{ text: 'Example' }] }]}
+        onChange={val => {
+          console.log(val);
+        }}
+      />
+    </div>
+  );
+};
+
 export const DefinitionInputWithTranslation = (args: DefinitionInputProps) => {
   return (
     <div className="presentationBox">

@@ -55,7 +55,6 @@ export const SortControls = ({
         value={sortBy}
         renderValue={renderValue}
         variant="withIcon"
-        size="M"
         label={label}
       >
         <Option value="">{blankOption}</Option>

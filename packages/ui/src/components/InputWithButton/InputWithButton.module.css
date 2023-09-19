@@ -88,3 +88,9 @@
 .incorrect > .errorText {
   opacity: 1;
 }
+
+.buttonsContainer {
+  align-self: center;
+  position: absolute;
+  left: -30px;
+}

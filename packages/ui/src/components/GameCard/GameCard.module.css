@@ -6,6 +6,7 @@
 .link {
   text-decoration: none;
   color: var(--neutral-800);
+  border-radius: 20px;
 }
 
 .gameContainer {

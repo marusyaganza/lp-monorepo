@@ -43,7 +43,7 @@
 
 .buttonText {
   position: absolute;
-  z-index: 0;
+  z-index: var(--z-index-1);
   opacity: 0;
 }
 

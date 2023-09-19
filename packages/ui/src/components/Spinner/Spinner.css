@@ -79,7 +79,7 @@
 
 .altText {
   position: absolute;
-  z-index: 0;
+  z-index: var(--z-index-1);
   top: 40%;
   color: var(--primary-300);
   font-family: var(--font-libreBaskerville);

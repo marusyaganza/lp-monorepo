@@ -93,7 +93,11 @@ export const Game = ({
       );
     }
     if (question.length === 1) {
-      return <p className={styles.question}>{question[0]}</p>;
+      return (
+        <p className={styles.question}>
+          {<DictionaryEntity text={question[0]} />}
+        </p>
+      );
     }
     return (
       <div className={styles.questionContainer}>

@@ -222,7 +222,7 @@
 }
 
 .actionButton.danger:hover {
-  background: var(--error-100);
+  background: var(--background-danger-300);
 }
 
 .actionButton.danger:focus {

@@ -1,4 +1,4 @@
-import React, { MouseEventHandler, useState, useEffect } from 'react';
+import React, { MouseEventHandler, useState, useEffect, useMemo } from 'react';
 import { cn } from '../../utils/classnames';
 
 import { WordDefinition } from '../../generated/graphql';
@@ -29,9 +29,19 @@ export const DefinitionInput = ({
     : [{ text: '' }];
   const defaultInitialValues = [{ def: '', examples: defaultExamples }];
 
-  const [values, setValues] = useState<WordDefinition[]>(
-    initialValue || defaultInitialValues
-  );
+  const initialValues = useMemo(() => {
+    if (Array.isArray(initialValue)) {
+      return initialValue.map(val => {
+        if (!val?.examples?.length) {
+          return { ...val, examples: defaultExamples };
+        }
+        return val;
+      });
+    }
+    return defaultInitialValues;
+  }, [initialValue]);
+
+  const [values, setValues] = useState<WordDefinition[]>(initialValues);
 
   useEffect(() => {
     const newVals = values.map(item => {
@@ -110,6 +120,23 @@ export const DefinitionInput = ({
     return addExample;
   };
 
+  const getDefOrderHandler = (index: number, direction: 'up' | 'down') => {
+    if (
+      (index === 0 && direction === 'up') ||
+      (index === values.length - 1 && direction === 'down')
+    ) {
+      return;
+    }
+    return () => {
+      const indexToReplace = direction === 'up' ? index - 1 : index + 1;
+      const newVals = [...values];
+      newVals[index] = values[indexToReplace];
+      newVals[indexToReplace] = values[index];
+      setValues(newVals);
+      onChange(newVals.filter(v => v.def));
+    };
+  };
+
   return (
     <div className={cn(className, styles.template)}>
       {values.map((value, i) => {
@@ -117,6 +144,15 @@ export const DefinitionInput = ({
         return (
           <div key={`definition ${i + 1}`}>
             <InputWithButton
+              showAdditionalControls={values.length > 1}
+              upButtonProps={{
+                onClick: getDefOrderHandler(i, 'up'),
+                disabled: i === 0
+              }}
+              downButtonProps={{
+                onClick: getDefOrderHandler(i, 'down'),
+                disabled: isLast
+              }}
               value={value.def}
               name="definition"
               label={`definition ${i + 1}`}
