@@ -3,7 +3,9 @@ import {
   Word,
   GameData,
   GameConfig,
-  Language
+  Language,
+  WordDefinition,
+  DefExample
 } from '../generated/graphql';
 import { OperationResolutionError } from './apolloCustomErrors';
 import { madeUphWords } from '../mocks/madeUpWord';
@@ -23,6 +25,20 @@ const tasks = {
 
 export function generateRandomNumber(limit: number) {
   return Math.floor(Math.random() * limit);
+}
+
+export function getExamples(defs?: (WordDefinition | null)[] | null) {
+  if (!Array.isArray(defs)) {
+    return;
+  }
+  return defs
+    .reduce((acc?: (DefExample | null)[], curr?: WordDefinition | null) => {
+      if (Array.isArray(curr?.examples)) {
+        return acc!.concat(curr?.examples as DefExample[]);
+      }
+      return;
+    }, [])
+    ?.filter(Boolean);
 }
 
 /**Replaces word's `name` in `def` with `[...]` block
@@ -113,13 +129,17 @@ export const generateGameData: GenerateGameDataFuncType = (
   const words = wordsCandidates.slice(0, wordsPerGame);
   if (gameType === Game.TypeWord) {
     questions = words.map(word => {
-      const { name, shortDef, id, audioUrl } = word;
+      const { name, shortDef, id, audioUrl, imgUrl, defs } = word;
+      const examples = getExamples(defs);
+
       return {
         answer: name,
         wordId: id,
         question: shortDef,
         additionalInfo: {
-          audioUrl
+          audioUrl,
+          imgUrl,
+          examples
         }
       };
     });
@@ -127,21 +147,28 @@ export const generateGameData: GenerateGameDataFuncType = (
 
   if (gameType === Game.Audio) {
     questions = words.map(word => {
-      const { name, audioUrl, id } = word;
+      const { name, audioUrl, id, defs, imgUrl, shortDef } = word;
+      const examples = getExamples(defs);
       return {
         answer: name,
         question: [audioUrl],
-        wordId: id
+        wordId: id,
+        additionalInfo: {
+          imgUrl,
+          examples,
+          shortDef: `<b>${name} means</b> ${shortDef[0]}`
+        }
       };
     });
   }
   //TODO create 'find all defs' game to train the words with multiple definitions
   if (gameType === Game.SelectDef) {
     questions = words.map(word => {
-      const { name, shortDef, id, audioUrl, language } = word;
+      const { name, shortDef, id, audioUrl, language, defs, imgUrl } = word;
       const opts = generateOptions(data, optionsPerGame - 1, id, language);
       const options = opts.map(opt => prepareDef(opt?.shortDef?.[0], name));
       const answer = prepareDef(shortDef[0], name);
+      const examples = getExamples(defs);
       return {
         //TODO: filter the words so only ones with single definition will remain
         answer,
@@ -149,7 +176,9 @@ export const generateGameData: GenerateGameDataFuncType = (
         wordId: id,
         options: insertAnswer(options, answer),
         additionalInfo: {
-          audioUrl
+          audioUrl,
+          examples,
+          imgUrl
         }
       };
     });
@@ -157,10 +186,11 @@ export const generateGameData: GenerateGameDataFuncType = (
 
   if (gameType === Game.SelectWord) {
     questions = words.map(word => {
-      const { name, shortDef, id, audioUrl, language } = word;
+      const { name, shortDef, id, audioUrl, language, defs, imgUrl } = word;
       const opts = generateOptions(data, optionsPerGame - 1, id, language);
       const options = opts.map(opt => opt.name);
       const answer = name;
+      const examples = getExamples(defs);
       return {
         answer,
         question: shortDef,
@@ -168,7 +198,9 @@ export const generateGameData: GenerateGameDataFuncType = (
         // @ts-ignore
         options: insertAnswer(options, answer),
         additionalInfo: {
-          audioUrl
+          audioUrl,
+          examples,
+          imgUrl
         }
       };
     });

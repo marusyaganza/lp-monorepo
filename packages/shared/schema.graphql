@@ -143,6 +143,9 @@ type GameConfig {
 
 type GameQuestionAdditionalInfo {
   audioUrl: String
+  examples: [DefExample]
+  imgUrl: String
+  shortDef: String
 }
 
 type GameQuestion {

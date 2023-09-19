@@ -27,6 +27,7 @@ export const DefinitionInput = ({
   const defaultExamples = withTranslation
     ? [{ text: '', translation: '' }]
     : [{ text: '' }];
+
   const defaultInitialValues = [{ def: '', examples: defaultExamples }];
 
   const initialValues = useMemo(() => {
@@ -42,16 +43,6 @@ export const DefinitionInput = ({
   }, [initialValue]);
 
   const [values, setValues] = useState<WordDefinition[]>(initialValues);
-
-  useEffect(() => {
-    const newVals = values.map(item => {
-      if (Array.isArray(item?.examples) && !item.examples.length) {
-        return { ...item, examples: defaultExamples };
-      }
-      return { ...item };
-    });
-    setValues(newVals);
-  }, []);
 
   const getExamplesChangeHandler = (
     defIndex: number,

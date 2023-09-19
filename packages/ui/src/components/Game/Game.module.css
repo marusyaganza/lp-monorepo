@@ -74,3 +74,46 @@
   color: var(--secondary-500);
   flex-shrink: 0;
 }
+
+.examplesContainer {
+  position: absolute;
+  left: 0;
+  margin: 30px;
+  bottom: 100px;
+  max-width: 350px;
+  font-family: var(--font-kalam);
+}
+
+.examplesHeading {
+  font-weight: normal;
+  text-align: center;
+  margin: 0;
+  margin-bottom: 8px;
+}
+
+.listIconBook {
+  color: var(--primary-100);
+  flex-shrink: 0;
+}
+
+.example {
+  display: flex;
+  gap: 12px;
+}
+
+.examplesText > i {
+  color: var(--primary-500);
+}
+
+.additionalInfo {
+  position: absolute;
+  right: 0;
+  margin: 30px;
+  max-width: 250px;
+  top: 150px;
+}
+
+.wordImage {
+  width: 200px;
+  margin-bottom: 16px;
+}

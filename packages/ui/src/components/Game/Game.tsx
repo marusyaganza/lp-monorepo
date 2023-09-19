@@ -51,6 +51,10 @@ export const Game = ({
     () => currentResult?.type || 'initial',
     [currentResult?.type]
   );
+  const showAdditionalInfo = useMemo(
+    () => currentStage === 'error' || currentStage === 'success',
+    [currentStage]
+  );
   const buttonRef = useRef<HTMLButtonElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -180,8 +184,66 @@ export const Game = ({
     );
   };
 
+  const renderExamples = () => {
+    const examples = additionalInfo?.examples;
+    if (!examples?.length || !showAdditionalInfo) {
+      return;
+    }
+    return (
+      <section className={styles.examplesContainer}>
+        <h3 className={styles.examplesHeading}>Examples</h3>
+        <ul>
+          {examples.map(example => {
+            const text = example?.text;
+            const translation = example?.translation
+              ? ` (${example.translation})`
+              : '';
+            return (
+              <li key={text} className={styles.example}>
+                <Icon
+                  className={styles.listIconBook}
+                  width={20}
+                  height={20}
+                  id="book"
+                />
+                <DictionaryEntity
+                  className={styles.examplesText}
+                  text={`${text}${translation}`}
+                />
+              </li>
+            );
+          })}
+        </ul>
+      </section>
+    );
+  };
+
+  const renderAdditionalInfo = () => {
+    if (!showAdditionalInfo) {
+      return;
+    }
+    return (
+      <section className={styles.additionalInfo}>
+        {additionalInfo?.imgUrl && (
+          <img
+            className={styles.wordImage}
+            src={additionalInfo?.imgUrl}
+            alt=""
+          />
+        )}
+        {additionalInfo?.shortDef && (
+          <DictionaryEntity
+            className={styles.examplesText}
+            text={additionalInfo?.shortDef}
+          />
+        )}
+      </section>
+    );
+  };
+
   return (
     <div className={styles.gameContainer}>
+      {renderAdditionalInfo()}
       {!options?.length && renderCorrectAnswer()}
       <article className={cn(styles.container, className)}>
         <p className={styles.task}>
@@ -201,6 +263,7 @@ export const Game = ({
           )}
         </form>
       </article>
+      {renderExamples()}
     </div>
   );
 };
