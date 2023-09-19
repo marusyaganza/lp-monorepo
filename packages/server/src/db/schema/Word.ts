@@ -57,7 +57,7 @@ const wordSchema = new Schema<WordCoreType>({
   uuid: { type: String, immutable: true },
   name: { type: String, required: true, immutable: true },
   createdAt: { type: String, required: true },
-  updatedAt: { type: Number, required: true },
+  updatedAt: { type: Number },
   defs: { type: [defSchema], required: true },
   shortDef: { type: [String], required: true },
   user: { type: String, required: true },

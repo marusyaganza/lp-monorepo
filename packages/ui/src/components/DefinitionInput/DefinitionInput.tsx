@@ -28,18 +28,18 @@ export const DefinitionInput = ({
     ? [{ text: '', translation: '' }]
     : [{ text: '' }];
 
-  const defaultInitialValues = [{ def: '', examples: defaultExamples }];
+  const defaultInitialValues = [{ def: '', examples: [...defaultExamples] }];
 
   const initialValues = useMemo(() => {
     if (Array.isArray(initialValue)) {
       return initialValue.map(val => {
         if (!val?.examples?.length) {
-          return { ...val, examples: defaultExamples };
+          return { ...val, examples: [{ text: '' }] };
         }
         return val;
       });
     }
-    return defaultInitialValues;
+    return [...defaultInitialValues];
   }, [initialValue]);
 
   const [values, setValues] = useState<WordDefinition[]>(initialValues);
@@ -53,9 +53,9 @@ export const DefinitionInput = ({
       const val = event.target.value;
       const newVals = [...values];
       // @ts-ignore
-      newVals[defIndex].examples[parentIndex][prop] = val;
+      newVals[defIndex].examples[parentIndex][prop]! = val;
       setValues([...newVals]);
-      onChange(newVals);
+      onChange([...newVals]);
     };
     return changeHandler;
   };

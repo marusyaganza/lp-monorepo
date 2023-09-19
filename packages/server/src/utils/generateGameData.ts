@@ -33,10 +33,11 @@ export function getExamples(defs?: (WordDefinition | null)[] | null) {
   }
   return defs
     .reduce((acc?: (DefExample | null)[], curr?: WordDefinition | null) => {
-      if (Array.isArray(curr?.examples)) {
-        return acc!.concat(curr?.examples as DefExample[]);
+      const examples = curr?.examples;
+      if (examples && Array.isArray(examples)) {
+        return acc?.concat(examples);
       }
-      return;
+      return acc;
     }, [])
     ?.filter(Boolean);
 }
