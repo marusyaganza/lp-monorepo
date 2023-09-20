@@ -103,6 +103,7 @@
 
 .examplesText > i {
   color: var(--primary-500);
+  display: block;
 }
 
 .additionalInfo {
