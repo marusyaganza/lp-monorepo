@@ -101,9 +101,12 @@
   gap: 12px;
 }
 
+.examplesText {
+  display: block;
+}
+
 .examplesText > i {
   color: var(--primary-500);
-  display: block;
 }
 
 .additionalInfo {
