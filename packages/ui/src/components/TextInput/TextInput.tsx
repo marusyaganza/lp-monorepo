@@ -14,13 +14,16 @@ export interface TextInputProps {
 }
 /**Text Input for the Game component*/
 export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
-  ({ name, onChange, value, isDisabled, variant = 'initial' }, ref) => {
+  (
+    { name, onChange, value, isDisabled, variant = 'initial', ...rest },
+    ref
+  ) => {
     const handleChange: ChangeEventHandler<HTMLInputElement> = e => {
       const val = e.target.value;
       onChange(val);
     };
     return (
-      <div className={cn(styles.inputWrapper, styles[variant])}>
+      <div {...rest} className={cn(styles.inputWrapper, styles[variant])}>
         <input
           ref={ref}
           type="text"

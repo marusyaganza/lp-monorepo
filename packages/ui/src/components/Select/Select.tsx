@@ -58,7 +58,7 @@ export const Select = function <T extends string>({
   }, [isOpen]);
 
   return (
-    <div ref={ref} className={cn(styles.container, className)}>
+    <div data-cy="select" ref={ref} className={cn(styles.container, className)}>
       <div className={styles.selectContainer}>
         {label && <span className={styles.selectLabel}>{label}</span>}
         <div className={cn(styles.currentValue, styles[`size${size}`])}>
@@ -79,6 +79,7 @@ export const Select = function <T extends string>({
 
       {isOpen && (
         <ul
+          data-cy="selectOptions"
           className={cn(
             styles.options,
             styles[placement],

@@ -14,7 +14,7 @@ export const Spinner = ({
   size = 'L'
 }: SpinnerProps) => {
   return (
-    <div className={cn('spinnerBox', className)}>
+    <div data-cy="spinner" className={cn('spinnerBox', className)}>
       <p className="altText" role="alert">
         Loading...
       </p>

@@ -36,6 +36,7 @@ export const Notification = ({
       className={cn(className, styles.notificationContainer)}
     >
       <div
+        data-cy={`notification-${variant}`}
         className={cn(
           styles.notificationContent,
           styles[`${variant}Notification`]

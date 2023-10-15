@@ -129,7 +129,7 @@ const WordsPage = () => {
     }
     const words = data?.words as Word[];
     return (
-      <ul className={styles.wordList}>
+      <ul data-cy="wordsList" className={styles.wordList}>
         {words.map(word => {
           return (
             <li className={styles.wordListItem} key={word?.id}>
@@ -159,7 +159,7 @@ const WordsPage = () => {
     <PageLayout>
       <h1 className={styles.heading}>Vocabulary</h1>
       <div className={styles.topSection}>
-        <p className={styles.wordsInfo}>
+        <p data-cy="wordsCount" className={styles.wordsInfo}>
           {`You have ${data?.words.length || 0} words in your vocabulary`}{' '}
           <Link className={styles.link} to={`/${routes.words}/new`}>
             Add new

@@ -7,9 +7,11 @@
     "dev": "webpack-dev-server --env mode=development",
     "codegen": "graphql-codegen --config codegen.yml",
     "prod": "webpack --env mode=production",
+    "cypress": "npx cypress open",
+    "cypress:run": "npx cypress run",
     "stylelint": "stylelint src",
     "eslint": "eslint src",
-    "ready": "yarn codegen && yarn eslint --fix && yarn stylelint --fix",
+    "ready": "yarn codegen && yarn eslint --fix && yarn stylelint --fix && yarn cypress:run",
     "serve": "http-server",
     "clean": "rimraf dist src/generated *.tsbuildinfo public node_modules",
     "ts": "tsc -b .",
@@ -49,11 +51,15 @@
     "webpack-merge": "^5.8.0"
   },
   "devDependencies": {
+    "@cypress/code-coverage": "^3.12.1",
     "concurrently": "^7.6.0",
+    "cypress": "^13.2.0",
+    "eslint-plugin-cypress": "^2.15.1",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.30.0",
     "eslint-plugin-react-hooks": "^4.5.0",
     "http-server": "^14.1.0",
+    "mongoose": "^7.5.2",
     "webpack-dev-server": "^4.9.0"
   }
 }

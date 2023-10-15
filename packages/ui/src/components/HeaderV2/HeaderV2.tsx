@@ -59,7 +59,7 @@ export const HeaderV2 = ({
   };
   return (
     <header className={styles.header}>
-      <nav className={styles.navigation}>
+      <nav className={styles.navigation} data-cy="headerNav">
         <NavLink to="/">
           <img className={styles.logo} src={logo} alt="logo" />
         </NavLink>

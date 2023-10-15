@@ -24,6 +24,7 @@ export const CardWrapper = ({
   };
   return (
     <div
+      data-cy="cardWrapper"
       onClick={onClick}
       tabIndex={0}
       role="navigation"

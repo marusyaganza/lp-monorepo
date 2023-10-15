@@ -76,7 +76,12 @@ export const Input = ({
           {isPasswordVisible ? 'Hide password' : 'Show password'}
         </Button>
       )}
-      <p aria-hidden={isValid} role="status" className={styles.errorText}>
+      <p
+        aria-hidden={isValid}
+        data-cy="inputError"
+        role="status"
+        className={styles.errorText}
+      >
         {errorText}
       </p>
     </div>

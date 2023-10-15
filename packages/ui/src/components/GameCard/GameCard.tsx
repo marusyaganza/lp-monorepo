@@ -35,7 +35,7 @@ const images = {
 export const GameCard = ({ game, linkUrl, className }: GameCardProps) => {
   const { name, type, desc } = game;
   return (
-    <div className={styles.gameContainer}>
+    <div data-cy="gameCard" className={styles.gameContainer}>
       <Link to={linkUrl} className={cn(className, styles.link)}>
         <div className={styles.content}>
           <div className={styles.imageContainer}>

@@ -26,7 +26,7 @@ export const Option = function <T extends string>({
   };
 
   return (
-    <li className={cn(styles.option, className)}>
+    <li className={cn(styles.option, className)} data-cy="selectOption">
       <label
         tabIndex={0}
         className={cn(styles.label, isChecked ? styles.checked : '')}

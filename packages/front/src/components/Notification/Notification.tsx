@@ -31,6 +31,7 @@ export const Notification = () => {
     <>
       {notification && (
         <NotificationComponent
+          data-cy={`notification-${notification?.variant}`}
           onClose={closeHandler}
           {...notification}
           className="notification"

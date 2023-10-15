@@ -50,7 +50,10 @@ export const Checkbox = ({
     onChange(val);
   };
   return (
-    <label className={cn(styles.label, variant && styles[variant], className)}>
+    <label
+      data-cy="checkbox"
+      className={cn(styles.label, variant && styles[variant], className)}
+    >
       {renderLabel()}
       <input
         onChange={handleChange}
