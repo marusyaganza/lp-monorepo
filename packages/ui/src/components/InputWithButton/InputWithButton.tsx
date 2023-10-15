@@ -47,11 +47,12 @@ export const InputWithButton = ({
   ignoreErrors,
   upButtonProps,
   downButtonProps,
-  showAdditionalControls
+  showAdditionalControls,
+  ...rest
 }: InputWithButtonProps) => {
   const isInValid = errorText?.length !== 0;
   return (
-    <div className={cn(className, isInValid ? styles.incorrect : '')}>
+    <div {...rest} className={cn(className, isInValid ? styles.incorrect : '')}>
       <label className={styles.inputContainer}>
         {label && <span className={styles.label}>{label}</span>}
         <div className={styles.inputWrapper}>
@@ -88,6 +89,7 @@ export const InputWithButton = ({
           />
           {variant !== 'withoutButton' && (
             <Button
+              data-cy={`button-${buttonIconId}`}
               iconHeight={22}
               iconWidth={20}
               variant="icon"

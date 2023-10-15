@@ -8,6 +8,7 @@ storybook-static
 resourses
 generated
 coverage
+screenshots
 .vscode
 .env
 .yarnrc.yml

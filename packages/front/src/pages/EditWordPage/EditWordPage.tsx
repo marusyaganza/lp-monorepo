@@ -92,7 +92,7 @@ const EditWordPage = () => {
 
   return (
     <PageLayout>
-      <Link className={styles.link} to={`/${routes.words}`}>
+      <Link data-cy="backLink" className={styles.link} to={`/${routes.words}`}>
         <Icon width={16} height={16} id="arrow-left" />
         Back to vocabulary
       </Link>

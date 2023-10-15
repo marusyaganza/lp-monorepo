@@ -41,8 +41,17 @@ export const SearchField = ({
   }, []);
 
   return (
-    <form className={cn(className, styles.form)} onSubmit={handleSearch}>
-      <button disabled={!value} className={cn(styles.button)} type="submit">
+    <form
+      data-cy="searchForm"
+      className={cn(className, styles.form)}
+      onSubmit={handleSearch}
+    >
+      <button
+        disabled={!value}
+        data-cy="searchButton"
+        className={cn(styles.button)}
+        type="submit"
+      >
         <Icon id="search" width={20} height={20} />
         <span className={styles.buttonText}>search</span>
       </button>
@@ -53,6 +62,7 @@ export const SearchField = ({
         placeholder="Search"
       />
       <button
+        data-cy="clearButton"
         onClick={handlerClear}
         disabled={!value}
         className={cn(styles.button)}

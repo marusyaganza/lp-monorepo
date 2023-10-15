@@ -81,7 +81,7 @@ const GamesPage = () => {
       </div>
       {loading && <Spinner />}
       {data?.games && (
-        <ul className={styles.gamesList}>
+        <ul data-cy="gamesList" className={styles.gamesList}>
           {data.games.map(game => {
             if (!game) {
               return;

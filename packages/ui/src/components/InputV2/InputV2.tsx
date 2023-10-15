@@ -25,7 +25,8 @@ export const InputV2 = ({
   errorText,
   ignoreErrors,
   initialValue,
-  isDisabled
+  isDisabled,
+  ...rest
 }: InputV2Props) => {
   const isInValid = errorText?.length !== 0;
   const [value, setValue] = useState(initialValue || '');
@@ -35,7 +36,7 @@ export const InputV2 = ({
     onChange(val);
   };
   return (
-    <div className={cn(className, isInValid ? styles.incorrect : '')}>
+    <div {...rest} className={cn(className, isInValid ? styles.incorrect : '')}>
       <label className={styles.inputContainer}>
         {label && (
           <span className={cn(styles.label, isDisabled ? styles.disabled : '')}>

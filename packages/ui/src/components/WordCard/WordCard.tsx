@@ -72,7 +72,9 @@ export const WordCard = ({
         {audioUrl ? (
           <AudioButton buttonText={`[${transcription}]`} src={audioUrl} />
         ) : (
-          <div className="transcription">[{transcription}]</div>
+          <div data-cy="transcription" className="transcription">
+            [{transcription}]
+          </div>
         )}
       </section>
     );
@@ -83,7 +85,7 @@ export const WordCard = ({
       {examples?.map(example => {
         if (example && example?.text) {
           return (
-            <p key={example.text} className={styles.example}>
+            <p data-cy="example" key={example.text} className={styles.example}>
               <DictionaryEntity text={example.text} />
               {example.translation && ` (${example.translation})`}
             </p>
@@ -113,7 +115,7 @@ export const WordCard = ({
 
   const renderDefinition = () => {
     return (
-      <ul>
+      <ul data-cy="defsList">
         {defs.map(d => {
           if (d?.def) {
             return (
@@ -131,7 +133,7 @@ export const WordCard = ({
 
   const renderShortDefinition = () => {
     return (
-      <ul>
+      <ul data-cy="defsList">
         {shortDef.map(d => {
           return <li key={d}>{renderDef(d)}</li>;
         })}
@@ -143,6 +145,7 @@ export const WordCard = ({
     <div className={styles.buttons}>
       {editButton && (
         <Button
+          data-cy="editButton"
           className={styles.editButton}
           variant="primary"
           isActionButton
@@ -156,6 +159,7 @@ export const WordCard = ({
       )}
       {deleteButton && (
         <Button
+          data-cy="deleteButton"
           className={styles.deleteButton}
           variant="danger"
           disabled={deleteButton?.isDisabled}
@@ -169,6 +173,7 @@ export const WordCard = ({
       )}
       {addButton && (
         <Button
+          data-cy="addButton"
           className={styles.addButton}
           variant="secondary"
           disabled={addButton.isDisabled}
@@ -187,11 +192,17 @@ export const WordCard = ({
     <header className={styles.header}>
       <div className={styles.mainInfo}>
         <h3 className={styles.wordName}>{name}</h3>
-        <span className={styles.particle}>{particle}</span>
+        <span data-cy="particle" className={styles.particle}>
+          {particle}
+        </span>
         {renderAudio()}
-        {level && <span className={styles.level}>{level}</span>}
+        {level && (
+          <span data-cy="level" className={styles.level}>
+            {level}
+          </span>
+        )}
         {isOffensive && (
-          <span className={styles.offensive}>
+          <span data-cy="offensive" className={styles.offensive}>
             <Icon width={20} height={23} id="fire" />
             offensive
           </span>
@@ -203,13 +214,17 @@ export const WordCard = ({
 
   if (isFull) {
     return (
-      <article className={cn(className, styles.wordContainer)}>
+      <article
+        data-cy="wordCard"
+        className={cn(className, styles.wordContainer)}
+      >
         {renderHeader()}
         <div className={styles.wordContent}>
           <div className={styles.word}>{renderDefinition()}</div>
           {imgUrl && (
             <figure className={styles.illustration}>
               <img
+                data-cy="wordImg"
                 width={280}
                 className={styles.picture}
                 src={imgUrl}
@@ -223,7 +238,7 @@ export const WordCard = ({
         </div>
         {!!stems?.length && (
           <section>
-            <p className={styles.stems}>
+            <p className={styles.stems} data-cy="stems">
               <span className={styles.stemsHeading}>Word forms: </span>
               {stems.join(', ')}
             </p>
@@ -234,7 +249,7 @@ export const WordCard = ({
   }
 
   return (
-    <article className={cn(className, styles.wordContainer)}>
+    <article data-cy="wordCard" className={cn(className, styles.wordContainer)}>
       <div className={styles.word}>
         {renderHeader()}
         {isFull ? renderDefinition() : renderShortDefinition()}

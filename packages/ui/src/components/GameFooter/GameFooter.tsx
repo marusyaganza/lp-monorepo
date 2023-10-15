@@ -61,12 +61,16 @@ export const GameFooter = ({ variant, className }: GameFooterProps) => {
         {variant && (
           <img className={styles.image} src={images[variant]} alt={variant} />
         )}
-        {variant && <p className={styles.message}>{message}</p>}
+        {variant && (
+          <p data-cy="gameFooterMessage" className={styles.message}>
+            {message}
+          </p>
+        )}
       </section>
     );
   };
   return (
-    <footer className={cn(className, styles.container)}>
+    <footer data-cy="gameFooter" className={cn(className, styles.container)}>
       {renderContent()}
     </footer>
   );

@@ -49,7 +49,7 @@ export const SortControls = ({
   const optValues = Object.keys(options);
 
   return (
-    <div className={cn(styles.orderControls, className)}>
+    <div data-cy="sortControls" className={cn(styles.orderControls, className)}>
       <Select
         className={styles.select}
         value={sortBy}

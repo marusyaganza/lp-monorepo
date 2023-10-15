@@ -21,10 +21,10 @@ export const defaultInitialValues: NewWordInput = {
   defs: [{ def: '', examples: [{ text: '', translation: '' }] }],
   imgUrl: '',
   imgDesc: '',
-  shortDef: [''],
+  shortDef: [],
   language: Language.English,
   additionalInfo: '',
-  stems: [''],
+  stems: [],
   isOffensive: false,
   level: Level.B1
 };
@@ -86,6 +86,6 @@ export const validators = {
       }
       return vals.filter(Boolean).length > 0;
     },
-    errorText: 'shortDef is required'
+    errorText: 'short definition is required'
   }
 };

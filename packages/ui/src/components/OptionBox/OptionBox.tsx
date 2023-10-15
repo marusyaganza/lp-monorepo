@@ -40,7 +40,7 @@ export const OptionBox = forwardRef<HTMLInputElement, OptionBoxProps>(
     );
 
     return (
-      <div className={cn(className, styles.container)}>
+      <div data-cy="optionBox" className={cn(className, styles.container)}>
         {options.map((option, i) => {
           let style;
           if (correctOption === option) {

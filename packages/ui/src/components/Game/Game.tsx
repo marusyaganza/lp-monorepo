@@ -98,7 +98,7 @@ export const Game = ({
     }
     if (question.length === 1) {
       return (
-        <p className={styles.question}>
+        <p data-cy="gameQuestion" className={styles.question}>
           {<DictionaryEntity text={question[0]} />}
         </p>
       );
@@ -107,7 +107,7 @@ export const Game = ({
       <div className={styles.questionContainer}>
         {question.map(entry => {
           return (
-            <p key={entry} className={styles.question}>
+            <p data-cy="gameQuestion" key={entry} className={styles.question}>
               <Icon
                 className={styles.listIcon}
                 width={20}
@@ -143,6 +143,7 @@ export const Game = ({
     if (type === GameType.Audio || type === GameType.TypeWord) {
       return (
         <TextInput
+          data-cy="gameAnswer"
           ref={inputRef}
           value={value}
           variant={currentStage}
@@ -174,6 +175,7 @@ export const Game = ({
       !currentResult?.incorrectAnswer || currentStage === 'initial';
     return (
       <span
+        data-cy="correctAnswer"
         className={cn(
           styles.correctAnswer,
           answeredCorrectly ? styles.hidden : ''
@@ -190,7 +192,7 @@ export const Game = ({
       return;
     }
     return (
-      <section className={styles.examplesContainer}>
+      <section data-cy="examples" className={styles.examplesContainer}>
         <h3 className={styles.examplesHeading}>Examples</h3>
         <ul>
           {examples.map(example => {
@@ -223,7 +225,7 @@ export const Game = ({
       return;
     }
     return (
-      <section className={styles.additionalInfo}>
+      <section data-cy="additionalInfo" className={styles.additionalInfo}>
         {additionalInfo?.imgUrl && (
           <img
             className={styles.wordImage}
@@ -246,11 +248,15 @@ export const Game = ({
       {renderAdditionalInfo()}
       {!options?.length && renderCorrectAnswer()}
       <article className={cn(styles.container, className)}>
-        <p className={styles.task}>
+        <p data-cy="gameTask" className={styles.task}>
           {task} {renderAudioButton()}
         </p>
         {renderQuestion()}
-        <form className={styles.answer} onSubmit={handleSubmit}>
+        <form
+          data-cy="gameForm"
+          className={styles.answer}
+          onSubmit={handleSubmit}
+        >
           {renderInput()}
           {currentStage === 'initial' ? (
             <Button disabled={!value} type="submit" variant="secondary">

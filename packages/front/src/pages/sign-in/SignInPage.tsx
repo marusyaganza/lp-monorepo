@@ -61,6 +61,7 @@ const SignInPage = () => {
         <div className={styles.formContainer}>
           <h2 className={styles.heading}>Sign in</h2>
           <Form
+            data-cy="loginForm"
             id="loginForm"
             isLoading={loading}
             className={styles.form}

@@ -120,7 +120,7 @@ const SearchPage = () => {
     }
     const words = data?.searchWord as Word[];
     return (
-      <ul className={styles.list}>
+      <ul className={styles.list} data-cy="searchResult">
         {words.map(word => {
           return (
             <li className={styles.listItem} key={word?.id}>

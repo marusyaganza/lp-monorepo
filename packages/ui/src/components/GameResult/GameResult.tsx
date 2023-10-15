@@ -36,7 +36,7 @@ export const GameResult = ({
   };
 
   return (
-    <div className={cn(className, styles.container)}>
+    <div data-cy="gameResult" className={cn(className, styles.container)}>
       <h1 className={styles.heading}>Training complete</h1>
       <article className={styles.resultContainer}>
         {renderImage()}

@@ -83,6 +83,7 @@ export function WordForm<T extends Record<string, unknown>>({
         <Component
           // @ts-ignore
           initialValue={initialValue}
+          data-cy={`formField-${name}`}
           key={name}
           withTranslation={name === 'defs' && language === Language.Spanish}
           name={name}
@@ -99,7 +100,11 @@ export function WordForm<T extends Record<string, unknown>>({
   };
 
   return (
-    <form className={styles.form} onSubmit={handleFormSubmit}>
+    <form
+      className={styles.form}
+      onSubmit={handleFormSubmit}
+      data-cy="wordForm"
+    >
       <div className={styles.formFields}>{renderInputs()}</div>
       <div className={styles.buttonContainer}>
         <Link variant="button" to={`/${routes.words}`}>

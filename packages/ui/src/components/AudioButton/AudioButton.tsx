@@ -37,6 +37,7 @@ export const AudioButton = ({
 
   return (
     <Button
+      data-cy="audioButton"
       type="button"
       onClick={play}
       variant={buttonVariant}
