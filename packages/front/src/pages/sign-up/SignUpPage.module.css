@@ -1,24 +1,29 @@
 .link {
-    color: var(--text);
+  color: var(--text);
 }
 
 .form {
-    margin-top: 20px;
-    display: flex;
-    row-gap: 40px;
-    column-gap: 100px;
-    flex-flow: row wrap;
-    justify-content: center;
+  margin-top: 20px;
+  display: flex;
+  row-gap: 40px;
+  column-gap: 100px;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  @media (max-width: 800px) {
+    flex-direction: column;
+    gap: 0;
+  }
 }
 
 .formHeading {
-    margin: 0;
-    font-size: var(--font-size-l);
-    align-self: flex-start;
-    text-align: center;
+  margin: 0;
+  font-size: var(--font-size-l);
+  align-self: flex-start;
+  text-align: center;
 }
 
 .text {
-    margin: 40px 0;
-    text-align: center;
+  margin: 40px 0;
+  text-align: center;
 }
