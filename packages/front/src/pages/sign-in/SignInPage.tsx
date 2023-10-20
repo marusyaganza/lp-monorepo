@@ -79,7 +79,7 @@ const SignInPage = () => {
           )}
         </div>
         <div>
-          <img src={llustration} alt="Sign in" />
+          <img className={styles.image} src={llustration} alt="Sign in" />
         </div>
       </div>
     </AuthPageLayout>
