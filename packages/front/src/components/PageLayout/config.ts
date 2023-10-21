@@ -1,5 +1,4 @@
-import { HeaderLinkType } from '@lp/ui';
-import { UserMenuItemType } from '@lp/ui';
+import { HeaderLinkType, UserMenuItemType, LinkType } from '@lp/ui';
 import { routes } from '../../constants/routes';
 
 export const navLinks: HeaderLinkType[] = [
@@ -25,6 +24,29 @@ export const navLinks: HeaderLinkType[] = [
   }
 ];
 
+export const mobileNavLinks: HeaderLinkType[] = [
+  {
+    url: `/${routes.search}`,
+    text: 'Explore',
+    icon: 'explorer'
+  },
+  {
+    url: `/${routes.words}`,
+    text: 'Vocabulary',
+    icon: 'brain'
+  },
+  {
+    url: `/${routes.games}`,
+    text: 'Practice',
+    icon: 'dice'
+  },
+  {
+    url: '/profile',
+    text: 'Profile',
+    icon: 'dragon'
+  }
+];
+
 export const menuItems = (onLogout: () => void) => {
   const result: UserMenuItemType[] = [
     {
@@ -40,3 +62,26 @@ export const menuItems = (onLogout: () => void) => {
   ];
   return result;
 };
+
+export const mobileFooterLinks: LinkType[] = [
+  {
+    url: '/',
+    text: 'Home',
+    icon: 'home'
+  },
+  {
+    url: `/${routes.search}`,
+    text: 'Explore',
+    icon: 'explorer'
+  },
+  {
+    url: `/${routes.words}`,
+    text: 'Vocabulary',
+    icon: 'brain'
+  },
+  {
+    url: `/${routes.games}`,
+    text: 'Practice',
+    icon: 'dice'
+  }
+];

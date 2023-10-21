@@ -2,24 +2,35 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: calc(100vh - 180px);
 }
 
 .content {
   display: flex;
+  margin: 0;
   flex-direction: column;
-  gap: 40px;
+  gap: 32px;
   align-items: center;
+  width: 300px;
+  @media (min-width: 800px) {
+    gap: 40px;
+    width: 500px;
+  }
 }
 
 .heading {
+  font-size: var(--font-size-l);
   font-family: var(--font-kalam);
-  font-size: var(--font-size-xxl);
   color: var(--neutral-800);
   font-weight: normal;
   margin: 0;
+  @media (min-width: 800px) {
+    font-size: var(--font-size-xxl);
+  }
 }
 
 .image {
-  width: 600px;
+  width: 300px;
+  @media (min-width: 800px) {
+    width: 600px;
+  }
 }
