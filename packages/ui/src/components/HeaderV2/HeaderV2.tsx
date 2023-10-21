@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { cn } from '../../utils/classnames';
 
 import { NavLink } from 'react-router-dom';
@@ -8,6 +8,7 @@ import { LanguageSelector } from '../LanguageSelector/LanguageSelector';
 import { Language } from '../../generated/graphql';
 import logo from '../../assets/img/LogoV2.svg';
 import styles from './HeaderV2.module.css';
+import { Button } from '../Button/Button';
 
 export type HeaderLinkType = {
   url: string;
@@ -18,8 +19,12 @@ export type HeaderLinkType = {
 export interface HeaderV2Props {
   /**array with all header nav links */
   navLinks: HeaderLinkType[];
+  /**array with all mobile nav links */
+  mobileNavLinks?: HeaderLinkType[];
   /** LanguageSelector's component change handler */
   onLanguageChange: (value: Language) => void;
+  /**logout handler */
+  onLogout?: () => void;
   /** currently selected value */
   language: Language;
   /**array with all menu options for the UserMenu component */
@@ -29,10 +34,52 @@ export interface HeaderV2Props {
 /**Header component with navigation, language selector and user menu */
 export const HeaderV2 = ({
   navLinks,
+  mobileNavLinks,
   userMenuItems,
   onLanguageChange,
+  onLogout,
   language
 }: HeaderV2Props) => {
+  const [showMobileNav, setShowMobileNav] = useState(false);
+
+  const renderMobileNav = () => {
+    const links = mobileNavLinks || navLinks;
+    if (!showMobileNav) {
+      return;
+    }
+    return (
+      <ul className={styles.mobileNav}>
+        <NavLink to="/" className={styles.logoMobile}>
+          <img className={styles.logoImg} src={logo} alt="logo" />
+          <span className={styles.logoText}>Language Power</span>
+        </NavLink>
+        {links.map(link => {
+          const { icon, text, url } = link;
+          return (
+            <li key={link.text}>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive
+                    ? cn(styles.activeLink, styles.headerLink)
+                    : styles.headerLink
+                }
+                to={url}
+              >
+                {icon && <Icon height={17} width={17} id={icon} />}
+                {text}
+              </NavLink>
+            </li>
+          );
+        })}
+        <div className={styles.logoutBlock}>
+          <button className={styles.headerLink} onClick={onLogout}>
+            <Icon height={17} width={17} id="door" /> Logout
+          </button>
+        </div>
+      </ul>
+    );
+  };
+
   const renderNav = () => {
     return (
       <ul className={styles.navList}>
@@ -58,17 +105,34 @@ export const HeaderV2 = ({
     );
   };
   return (
-    <header className={styles.header}>
-      <nav className={styles.navigation} data-cy="headerNav">
-        <NavLink to="/">
-          <img className={styles.logo} src={logo} alt="logo" />
-        </NavLink>
-        {renderNav()}
-      </nav>
-      <div className={styles.headerMenu}>
-        <LanguageSelector value={language} onChange={onLanguageChange} />
-        <UserMenu menuItems={userMenuItems} />
-      </div>
-    </header>
+    <div className={styles.headerContainer}>
+      <header className={styles.header}>
+        <div className={styles.headerContent}>
+          <nav className={styles.navigation} data-cy="headerNav">
+            <Button
+              onClick={() => {
+                setShowMobileNav(prev => !prev);
+              }}
+              className={styles.mobileMenu}
+              variant="icon"
+              iconId="bars"
+              iconHeight={30}
+              iconWidth={30}
+            >
+              Open navigation menu
+            </Button>
+            <NavLink to="/">
+              <img className={styles.logo} src={logo} alt="logo" />
+            </NavLink>
+            {renderNav()}
+          </nav>
+          <div className={styles.headerMenu}>
+            <LanguageSelector value={language} onChange={onLanguageChange} />
+            <UserMenu className={styles.userMenu} menuItems={userMenuItems} />
+          </div>
+        </div>
+      </header>
+      {renderMobileNav()}
+    </div>
   );
 };

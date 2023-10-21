@@ -1,6 +1,11 @@
 import React, { PropsWithChildren, useContext, useEffect } from 'react';
-import { useNavigate, useLocation, Outlet } from 'react-router-dom';
-import { navLinks, menuItems } from './config';
+import { useNavigate, useLocation } from 'react-router-dom';
+import {
+  navLinks,
+  menuItems,
+  mobileNavLinks,
+  mobileFooterLinks
+} from './config';
 import { PageSpinner } from '../PageSpinner/PageSpinner';
 import { HeaderV2 } from '@lp/ui';
 import { Footer, LinkType } from '@lp/ui';
@@ -53,14 +58,18 @@ export const PageLayout = ({
         <Notification />
         {userId && (
           <HeaderV2
+            mobileNavLinks={mobileNavLinks}
             navLinks={navLinks}
             language={language}
+            onLogout={handleLogout}
             userMenuItems={menuItems(handleLogout)}
             onLanguageChange={handleLanguageChange}
           />
         )}
         {isLoading ? <PageSpinner /> : <main className="main">{children}</main>}
-        {userId && <Footer links={footerLinks} />}
+        {userId && (
+          <Footer links={footerLinks} mobileLinks={mobileFooterLinks} />
+        )}
       </div>
     </>
   );

@@ -22,10 +22,33 @@ const links: LinkType[] = [
   { text: 'Profile', url: '#' }
 ];
 
+const mobileFooterLinks: LinkType[] = [
+  {
+    url: '/',
+    text: 'Home',
+    icon: 'home'
+  },
+  {
+    url: '/search',
+    text: 'Explore',
+    icon: 'explorer'
+  },
+  {
+    url: '/vocab',
+    text: 'Vocabulary',
+    icon: 'brain'
+  },
+  {
+    url: '/practice',
+    text: 'Practice',
+    icon: 'dice'
+  }
+];
+
 export const FooterDefault = (args: FooterProps) => {
   return (
     <div className="footer">
-      <Footer {...args} />
+      <Footer {...args} mobileLinks={mobileFooterLinks} />
     </div>
   );
 };
@@ -33,7 +56,7 @@ export const FooterDefault = (args: FooterProps) => {
 export const FooterWithLinks = (args: FooterProps) => {
   return (
     <div className="footer">
-      <Footer {...args} links={links} />
+      <Footer {...args} links={links} mobileLinks={mobileFooterLinks} />
     </div>
   );
 };

@@ -1,5 +1,8 @@
 .image {
-  width: 500px;
+  width: 300px;
+  @media (min-width: 800px) {
+    width: 500px;
+  }
 }
 
 .content {
@@ -8,18 +11,24 @@
   align-items: center;
   justify-content: center;
   gap: 80px;
-  height: calc(100vh - 140px);
 }
 
 .heading {
-  position: absolute;
-  top: 50%;
-  left: 340px;
-  font-size: var(--font-size-xl);
+  text-align: center;
+  @media (min-width: 800px) {
+    position: absolute;
+    top: 50%;
+    left: 340px;
+    font-size: var(--font-size-xl);
+  }
 }
 
 .button {
-  font-size: var(--font-size-xl);
+  @media (min-width: 800px) {
+    font-size: var(--font-size-xl);
+  }
+
+  font-size: var(--font-size-m);
   font-family: var(--font-kalam);
   color: var(--neutral-800);
   border: 3px solid var(--neutral-800);
