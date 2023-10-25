@@ -14,6 +14,9 @@
   font-size: var(--font-size-s);
   font-family: var(--font-libreBaskerville);
   position: relative;
+  @media (max-width: 800px) {
+    padding: 24px;
+  }
 }
 
 .word {
@@ -24,15 +27,19 @@
 .header {
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 32px;
   justify-content: space-between;
-  flex-wrap: wrap;
+  @media (max-width: 800px) {
+    gap: 32px;
+  }
 }
 
 .mainInfo {
   display: flex;
   align-items: center;
-  gap: 32px;
+  row-gap: 24px;
+  column-gap: 30px;
+  flex-wrap: wrap;
 }
 
 .wordName {
@@ -92,6 +99,8 @@
   align-items: center;
   gap: 16px;
   justify-content: center;
+  flex-shrink: 0;
+  align-self: center;
 }
 
 .picture {
@@ -102,6 +111,18 @@
 .buttons {
   display: flex;
   gap: 40px;
+  align-self: flex-start;
+  @media (max-width: 800px) {
+    display: none;
+  }
+}
+
+.wordContainer > .buttons {
+  display: flex;
+  align-self: center;
+  @media (min-width: 800px) {
+    display: none;
+  }
 }
 
 .addButton {
@@ -129,4 +150,7 @@
   display: flex;
   justify-content: space-between;
   gap: 24px;
+  @media (max-width: 1000px) {
+    flex-direction: column;
+  }
 }

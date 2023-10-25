@@ -2,6 +2,9 @@
   position: relative;
   width: 100%;
   box-sizing: border-box;
+  position: fixed;
+  bottom: 0;
+  background: var(--text-inverted);
 }
 
 .links {
@@ -76,7 +79,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 16px 0;
+  height: 60px;
   border-top: 2px solid var(--neutral-300);
   @media (min-width: 800px) {
     display: none;

@@ -24,6 +24,10 @@
   margin: 40px auto;
   font-size: var(--font-size-xl);
   text-align: center;
+  @media (max-width: 800px) {
+    font-size: var(--font-size-l);
+    margin: 24px auto;
+  }
 }
 
 .wordsInfo {
@@ -34,6 +38,7 @@
   align-items: center;
   margin: 0;
   position: relative;
+  align-self: center;
 }
 
 .topSection {
@@ -41,4 +46,9 @@
   justify-content: space-between;
   margin-bottom: 40px;
   align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 32px;
+  @media (max-width: 800px) {
+    flex-direction: column;
+  }
 }
