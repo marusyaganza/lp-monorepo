@@ -1,0 +1,23 @@
+@import '../../assets/styles/colors.css';
+@import '../../assets/styles/font-sizes.css';
+@import '../../assets/styles/fonts.css';
+@import '../../assets/styles/effects.css';
+
+.modal {
+  position: relative;
+  border-radius: 10px;
+  box-shadow: var(--primary-box-shadow);
+  border: 1px solid var(--neutral-500);
+}
+
+.modal::backdrop {
+  /* CSS variables do not work here 😕 */
+  background: #d6d6d6;
+  opacity: 0.75;
+}
+
+.closeButton {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+}
