@@ -25,7 +25,11 @@ describe('Words Page', () => {
 
   games.forEach((game, i) => {
     it(`${game.id} game card should be rendered correctly`, () => {
-      cy.get('@gameCard').eq(i).find('h2').should('have.text', game.name);
+      cy.get('@gameCard')
+        .eq(i)
+        .find('h2')
+        .first()
+        .should('have.text', game.name);
       cy.get('@gameCard').eq(i).contains(game.desc);
       cy.get('@gameCard')
         .eq(i)

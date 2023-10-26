@@ -244,7 +244,6 @@ export const WordCard = ({
             </p>
           </section>
         )}
-        {renderButtons()}
       </article>
     );
   }
@@ -255,7 +254,6 @@ export const WordCard = ({
         {renderHeader()}
         {isFull ? renderDefinition() : renderShortDefinition()}
       </div>
-      {renderButtons()}
     </article>
   );
 };

@@ -16,6 +16,7 @@
   position: relative;
   @media (max-width: 800px) {
     padding: 24px;
+    padding-bottom: 64px;
   }
 }
 
@@ -113,7 +114,11 @@
   gap: 40px;
   align-self: flex-start;
   @media (max-width: 800px) {
-    display: none;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%);
+    margin: 16px 0;
   }
 }
 
