@@ -60,7 +60,7 @@ const HomePage = () => {
       </div>
       <div className={styles.bottomContainer}>
         <section className={styles.bottomContent}>
-          <p>
+          <p className={styles.mainText}>
             Ready to take the leap? Start your language-learning journey today
             with our interactive word games. Whether you&lsquo;re brushing up on
             your English proficiency or exploring the nuances of Spanish,

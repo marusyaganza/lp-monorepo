@@ -54,6 +54,9 @@
   font-size: var(--font-size-xs);
   font-family: var(--font-libreBaskerville);
   cursor: pointer;
+  @media (max-width: 800px) {
+    font-size: var(--font-size-s);
+  }
 }
 
 .headerLink:hover {
@@ -110,7 +113,7 @@
   padding: 24px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 24px;
   border: 1px solid var(--neutral-500);
   border-radius: var(--primary-border-radius);
   box-shadow: var(--secondary-box-shadow);
@@ -130,12 +133,12 @@
 }
 
 .logoText {
-  font-size: var(--font-size-xs);
+  font-size: var(--font-size-s);
   font-weight: bold;
 }
 
 .logoutBlock {
   margin-top: 16px;
-  padding-top: 8px;
+  padding-top: 16px;
   border-top: 1px solid var(--neutral-500);
 }

@@ -41,6 +41,7 @@ export const GameCard = ({ game, linkUrl, className }: GameCardProps) => {
           <div className={styles.imageContainer}>
             <img className={styles.image} src={images[type]} alt={desc} />
           </div>
+          <h2 className={styles.gameTitleMobile}>{name}</h2>
           <p className={styles.description}>{desc}</p>
         </div>
       </Link>

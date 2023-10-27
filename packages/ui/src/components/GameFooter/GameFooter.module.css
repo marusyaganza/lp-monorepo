@@ -9,6 +9,9 @@
   align-items: center;
   justify-content: flex-end;
   border-top: 3px solid rgba(0, 0, 0, 10%);
+  @media (max-width: 800px) {
+    justify-content: center;
+  }
 }
 
 .resultContainer {
@@ -16,6 +19,9 @@
   display: flex;
   gap: 16px;
   align-items: center;
+  @media (max-width: 800px) {
+    padding: 0;
+  }
 }
 
 .image {

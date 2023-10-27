@@ -17,6 +17,7 @@ import styles from './Game.module.css';
 import { OptionBox } from '../OptionBox/OptionBox';
 import { DictionaryEntity } from '../DictionaryEntity/DictionaryEntity';
 import { Icon } from '../Icon/icon';
+import { useModal } from '../Modal/useModal';
 
 export interface GameProps {
   task: string;
@@ -57,6 +58,7 @@ export const Game = ({
   );
   const buttonRef = useRef<HTMLButtonElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const { Modal, openModal } = useModal();
 
   useEffect(() => {
     // if the component displays the current game result, 'next' button is focused
@@ -192,7 +194,7 @@ export const Game = ({
       return;
     }
     return (
-      <section data-cy="examples" className={styles.examplesContainer}>
+      <>
         <h3 className={styles.examplesHeading}>Examples</h3>
         <ul>
           {examples.map(example => {
@@ -216,7 +218,7 @@ export const Game = ({
             );
           })}
         </ul>
-      </section>
+      </>
     );
   };
 
@@ -224,6 +226,10 @@ export const Game = ({
     if (!showAdditionalInfo) {
       return;
     }
+
+    const showButton = !!(
+      additionalInfo?.imgUrl || additionalInfo?.examples?.length
+    );
     return (
       <section data-cy="additionalInfo" className={styles.additionalInfo}>
         {additionalInfo?.imgUrl && (
@@ -238,6 +244,15 @@ export const Game = ({
             className={styles.examplesText}
             text={additionalInfo?.shortDef}
           />
+        )}
+        {showButton && (
+          <Button
+            onClick={openModal}
+            variant="tertiary"
+            className={styles.additionalInfoBtn}
+          >
+            Show additional info
+          </Button>
         )}
       </section>
     );
@@ -269,7 +284,21 @@ export const Game = ({
           )}
         </form>
       </article>
-      {renderExamples()}
+      <section data-cy="examples" className={styles.examplesContainer}>
+        {renderExamples()}
+      </section>
+      <Modal className={styles.modal}>
+        <div className={styles.modalContent}>
+          {additionalInfo?.imgUrl && (
+            <img
+              className={styles.modalWordImg}
+              src={additionalInfo?.imgUrl}
+              alt=""
+            />
+          )}
+          {renderExamples()}
+        </div>
+      </Modal>
     </div>
   );
 };

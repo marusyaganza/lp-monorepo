@@ -28,13 +28,24 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 50px 0;
+  @media (max-width: 800px) {
+    margin: 24px 0;
+    flex-direction: column;
+  }
 }
 
 .catalog {
   display: flex;
+  gap: 16px;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   margin-top: 32px;
+  flex-wrap: wrap;
+  @media (max-width: 800px) {
+    flex-direction: column;
+  }
 }
 
 .catalog > div {
@@ -55,12 +66,9 @@
   gap: 32px;
 }
 
-.topContainer {
-  margin: 50px 0;
-}
-
 .mainText {
-  min-width: 900px;
+  width: 100%;
+  line-height: 1.5;
   margin: 0;
 }
 
@@ -71,11 +79,13 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 40px;
-  margin: 80px 0;
 }
 
 .planePic {
   height: 200px;
+  @media (max-width: 800px) {
+    height: 150px;
+  }
 }
 
 .secondaryButton {
@@ -86,4 +96,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 80px 0;
+  gap: 16px;
+  @media (max-width: 800px) {
+    flex-direction: column;
+    margin: 24px 0;
+  }
 }

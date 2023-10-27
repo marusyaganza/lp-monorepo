@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { cn } from '../../utils/classnames';
 
 import { NavLink } from 'react-router-dom';
@@ -41,6 +41,26 @@ export const HeaderV2 = ({
   language
 }: HeaderV2Props) => {
   const [showMobileNav, setShowMobileNav] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  const clickOutsideHandler = (event: MouseEvent) => {
+    const target = event.target as Node | null;
+    if (!ref?.current?.contains(target)) {
+      setShowMobileNav(false);
+    }
+  };
+
+  useEffect(() => {
+    if (showMobileNav) {
+      document.addEventListener('click', clickOutsideHandler);
+    } else {
+      document.removeEventListener('click', clickOutsideHandler);
+    }
+
+    return () => {
+      document.removeEventListener('click', clickOutsideHandler);
+    };
+  }, [showMobileNav]);
 
   const renderMobileNav = () => {
     const links = mobileNavLinks || navLinks;
@@ -109,18 +129,21 @@ export const HeaderV2 = ({
       <header className={styles.header}>
         <div className={styles.headerContent}>
           <nav className={styles.navigation} data-cy="headerNav">
-            <Button
-              onClick={() => {
-                setShowMobileNav(prev => !prev);
-              }}
-              className={styles.mobileMenu}
-              variant="icon"
-              iconId="bars"
-              iconHeight={30}
-              iconWidth={30}
-            >
-              Open navigation menu
-            </Button>
+            <div ref={ref}>
+              <Button
+                onClick={() => {
+                  setShowMobileNav(prev => !prev);
+                }}
+                className={styles.mobileMenu}
+                variant="icon"
+                iconId="bars"
+                iconHeight={30}
+                iconWidth={30}
+              >
+                Open navigation menu
+              </Button>
+              {renderMobileNav()}
+            </div>
             <NavLink to="/">
               <img className={styles.logo} src={logo} alt="logo" />
             </NavLink>
@@ -132,7 +155,6 @@ export const HeaderV2 = ({
           </div>
         </div>
       </header>
-      {renderMobileNav()}
     </div>
   );
 };

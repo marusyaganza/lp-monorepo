@@ -8,6 +8,7 @@
   flex-direction: column;
   align-items: center;
   gap: 50px;
+  padding: 24px 0;
 }
 
 .heading {
@@ -20,6 +21,8 @@
   display: flex;
   gap: 40px;
   align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .result {
