@@ -84,7 +84,13 @@ export const WordModel: WordModelType = {
       return [];
     }
 
-    const orderNum = isReverseOrder ? -1 : 1;
+    let orderNum = isReverseOrder ? -1 : 1;
+
+    // words with the highest number of errors should go first
+    if (sortBy === SortBy.ErrorCount) {
+      orderNum = -1 * orderNum;
+    }
+
     let sort: Record<string, number> = { $natural: orderNum };
     if (sortBy) {
       let propName: string = sortBy;

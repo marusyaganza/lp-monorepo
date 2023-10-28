@@ -16,12 +16,14 @@ export interface SearchFieldProps {
   onSearch: (searchQuery?: string) => void;
   /**additional styling */
   className?: string;
+  autofocus?: boolean;
 }
 /**SearchField component */
 export const SearchField = ({
   searchQuery,
   className,
-  onSearch
+  onSearch,
+  autofocus
 }: SearchFieldProps) => {
   const [value, setValue] = useState(searchQuery);
 
@@ -56,6 +58,7 @@ export const SearchField = ({
         <span className={styles.buttonText}>search</span>
       </button>
       <input
+        autoFocus={autofocus}
         className={styles.input}
         onChange={handleChange}
         value={value}
