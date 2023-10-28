@@ -153,6 +153,7 @@ const SearchPage = () => {
           </Link>
         </div>
         <SearchField
+          autofocus
           className={styles.search}
           searchQuery={searchParams.get('search') || ''}
           onSearch={handleSearch}

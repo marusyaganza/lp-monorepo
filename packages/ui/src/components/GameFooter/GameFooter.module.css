@@ -11,6 +11,7 @@
   border-top: 3px solid rgba(0, 0, 0, 10%);
   @media (max-width: 800px) {
     justify-content: center;
+    height: 80px;
   }
 }
 
@@ -26,6 +27,9 @@
 
 .image {
   height: 80px;
+  @media (max-width: 800px) {
+    height: 60px;
+  }
 }
 
 .message {
@@ -33,4 +37,5 @@
   font-size: var(--font-size-s);
   max-width: 200px;
   max-height: 80px;
+  margin: 0;
 }

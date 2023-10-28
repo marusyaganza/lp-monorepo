@@ -129,11 +129,12 @@ const GamePage = () => {
 
   const handlerSubmit = (val: string) => {
     if (questions?.length && data?.game) {
+      const answer = typeof val === 'string' ? val.toLocaleLowerCase() : val;
       dispatch({
         type: GameAction.CHECK_ANSWER,
         payload: {
           gameType: data.game.type,
-          answer: val,
+          answer,
           correctAnswer: questions[state.currentIndex]?.answer || '',
           id: questions[state.currentIndex].wordId
         }
@@ -149,22 +150,26 @@ const GamePage = () => {
     navigate(`/${routes.games}`);
   };
 
+  const isLoading = loading || saveResultData.loading;
+
   return (
     <>
-      {(loading || saveResultData.loading) && <PageSpinner />}
-      {data && (
+      {isLoading && <PageSpinner />}
+      {data && !isLoading && (
         <div className={styles.container}>
-          <header className={styles.progress}>
-            <Progress value={progress} />
-            <Button
-              variant="icon"
-              iconId="close"
-              iconHeight={30}
-              onClick={handleClose}
-            >
-              Exit game
-            </Button>
-          </header>
+          {!isCompleted && (
+            <header className={styles.progress}>
+              <Progress value={progress} />
+              <Button
+                variant="icon"
+                iconId="close"
+                iconHeight={30}
+                onClick={handleClose}
+              >
+                Exit game
+              </Button>
+            </header>
+          )}
           <main className={styles.game}>
             {data && !isCompleted && (
               <Game
@@ -190,9 +195,13 @@ const GamePage = () => {
               />
             )}
           </main>
-          <GameFooter
-            variant={!state.isCompleted ? state.currentResult.type : 'success'}
-          />
+          {!isCompleted && (
+            <GameFooter
+              variant={
+                !state.isCompleted ? state.currentResult.type : 'success'
+              }
+            />
+          )}
         </div>
       )}
     </>

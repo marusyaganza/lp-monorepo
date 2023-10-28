@@ -12,7 +12,8 @@
 
 .input {
   height: 100%;
-  width: 400px;
+  width: 100%;
+  max-width: 400px;
   padding: 13px 16px;
   resize: none;
   background: var(--neutral-100);
@@ -56,7 +57,7 @@
 
 .errorText {
   min-height: 26px;
-  width: 400px;
+  max-width: 400px;
   color: var(--error-200);
   opacity: 0;
   text-align: center;

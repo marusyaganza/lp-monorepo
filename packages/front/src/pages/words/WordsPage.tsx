@@ -160,7 +160,7 @@ const WordsPage = () => {
       <h1 className={styles.heading}>Vocabulary</h1>
       <div className={styles.topSection}>
         <p data-cy="wordsCount" className={styles.wordsInfo}>
-          {`You have ${data?.words.length || 0} words in your vocabulary`}{' '}
+          {`You have ${data?.words.length || 0} words.`}{' '}
           <Link className={styles.link} to={`/${routes.words}/new`}>
             Add new
           </Link>

@@ -32,6 +32,7 @@
 
 .optionContainer:focus-within {
   border: 1px solid var(--neutral-800);
+  border-radius: var(--secondary-border-radius);
 }
 
 .hidden {

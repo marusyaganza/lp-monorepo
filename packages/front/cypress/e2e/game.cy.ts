@@ -226,13 +226,6 @@ describe('Words Page', () => {
 
     cy.get('h1').should('have.text', 'Training complete');
 
-    cy.get('[data-cy="gameFooter"]')
-      .find('[data-cy="gameFooterMessage"]')
-      .then($msg => {
-        const text = $msg.text();
-        expect(gameFooterMessages.success.includes(text));
-      });
-
     cy.get('[data-cy="gameResult"]').find('p').should('have.length', 3);
     cy.get('[data-cy="gameResult"]')
       .find('p')
@@ -248,8 +241,6 @@ describe('Words Page', () => {
       .find('p')
       .eq(2)
       .contains('Answered correctly: 0');
-
-    cy.get('header > progress').should('be.visible').and('have.value', 100);
 
     cy.get('[data-cy="gameResult"]')
       .find('button')
@@ -291,13 +282,6 @@ describe('Words Page', () => {
 
     cy.get('h1').should('have.text', 'Training complete');
 
-    cy.get('[data-cy="gameFooter"]')
-      .find('[data-cy="gameFooterMessage"]')
-      .then($msg => {
-        const text = $msg.text();
-        expect(gameFooterMessages.success.includes(text));
-      });
-
     cy.get('[data-cy="gameResult"]').find('p').should('have.length', 3);
     cy.get('[data-cy="gameResult"]')
       .find('p')
@@ -313,8 +297,6 @@ describe('Words Page', () => {
       .find('p')
       .eq(2)
       .contains('Answered correctly: 0');
-
-    cy.get('header > progress').should('be.visible').and('have.value', 100);
 
     cy.get('[data-cy="gameResult"]')
       .find('button')
@@ -358,13 +340,6 @@ describe('Words Page', () => {
 
     cy.get('h1').should('have.text', 'Training complete');
 
-    cy.get('[data-cy="gameFooter"]')
-      .find('[data-cy="gameFooterMessage"]')
-      .then($msg => {
-        const text = $msg.text();
-        expect(gameFooterMessages.success.includes(text));
-      });
-
     cy.get('[data-cy="gameResult"]').find('p').should('have.length', 3);
     cy.get('[data-cy="gameResult"]')
       .find('p')
@@ -380,8 +355,6 @@ describe('Words Page', () => {
       .find('p')
       .eq(2)
       .contains('Answered correctly: 0');
-
-    cy.get('header > progress').should('be.visible').and('have.value', 100);
 
     cy.get('[data-cy="gameResult"]')
       .find('button')
@@ -422,13 +395,6 @@ describe('Words Page', () => {
 
     cy.get('h1').should('have.text', 'Training complete');
 
-    cy.get('[data-cy="gameFooter"]')
-      .find('[data-cy="gameFooterMessage"]')
-      .then($msg => {
-        const text = $msg.text();
-        expect(gameFooterMessages.success.includes(text));
-      });
-
     cy.get('[data-cy="gameResult"]').find('p').should('have.length', 3);
     cy.get('[data-cy="gameResult"]')
       .find('p')
@@ -444,8 +410,6 @@ describe('Words Page', () => {
       .find('p')
       .eq(2)
       .contains('Answered correctly: 0');
-
-    cy.get('header > progress').should('be.visible').and('have.value', 100);
 
     cy.get('[data-cy="gameResult"]')
       .find('button')

@@ -95,6 +95,11 @@
   align-items: center;
 }
 
+.currentValue:focus-within {
+  border: 1px solid var(--neutral-800);
+  border-radius: var(--secondary-border-radius);
+}
+
 .withIcon {
   display: flex;
   padding: 8px 16px;

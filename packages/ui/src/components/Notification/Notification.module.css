@@ -12,7 +12,8 @@
   position: relative;
   border-radius: var(--primary-border-radius);
   @media (max-width: 800px) {
-    width: calc(100% - 24px);
+    width: fit-content;
+    max-width: calc(100% - 24px);
   }
 }
 
@@ -24,9 +25,7 @@
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
-  @media (max-width: 800px) {
-    padding: 8px 12px;
-  }
+  gap: 8px;
 }
 
 .successNotification {

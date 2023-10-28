@@ -12,6 +12,7 @@
 
 .link {
   text-decoration: none;
+  padding: 0;
   font-size: var(--font-size-m);
   color: inherit;
 }
