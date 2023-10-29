@@ -31,7 +31,6 @@
   max-width: 600px;
   display: flex;
   gap: 12px;
-  align-items: center;
   margin: 0;
   padding: 0 16px;
 }
@@ -121,6 +120,7 @@
 
 .examplesText {
   display: block;
+  line-height: 1.5;
 }
 
 .examplesText > i {

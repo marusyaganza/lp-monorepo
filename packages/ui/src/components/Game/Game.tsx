@@ -145,7 +145,7 @@ export const Game = ({
     if (type === GameType.Audio || type === GameType.TypeWord) {
       return (
         <TextInput
-          data-cy="gameAnswer"
+          dataCy="gameAnswer"
           ref={inputRef}
           value={value}
           variant={currentStage}

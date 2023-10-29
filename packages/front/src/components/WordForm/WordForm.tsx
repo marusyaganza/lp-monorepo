@@ -83,7 +83,7 @@ export function WordForm<T extends Record<string, unknown>>({
         <Component
           // @ts-ignore
           initialValue={initialValue}
-          data-cy={`formField-${name}`}
+          dataCy={`formField-${name}`}
           key={name}
           withTranslation={name === 'defs' && language === Language.Spanish}
           name={name}

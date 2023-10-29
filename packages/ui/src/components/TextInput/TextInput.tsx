@@ -9,21 +9,22 @@ export interface TextInputProps {
   onChange: (value: string) => void;
   isDisabled?: boolean;
   variant?: 'initial' | 'success' | 'error';
+  dataCy?: string;
   /**additional styling */
   className?: string;
 }
 /**Text Input for the Game component*/
 export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
-  (
-    { name, onChange, value, isDisabled, variant = 'initial', ...rest },
-    ref
-  ) => {
+  ({ name, onChange, value, isDisabled, dataCy, variant = 'initial' }, ref) => {
     const handleChange: ChangeEventHandler<HTMLInputElement> = e => {
       const val = e.target.value;
       onChange(val);
     };
     return (
-      <div {...rest} className={cn(styles.inputWrapper, styles[variant])}>
+      <div
+        data-cy={dataCy}
+        className={cn(styles.inputWrapper, styles[variant])}
+      >
         <input
           ref={ref}
           type="text"

@@ -14,6 +14,7 @@ export interface InputV2Props {
   isDisabled?: boolean;
   /**additional styling */
   className?: string;
+  dataCy?: string;
 }
 /**Input with button */
 export const InputV2 = ({
@@ -26,7 +27,7 @@ export const InputV2 = ({
   ignoreErrors,
   initialValue,
   isDisabled,
-  ...rest
+  dataCy
 }: InputV2Props) => {
   const isInValid = errorText?.length !== 0;
   const [value, setValue] = useState(initialValue || '');
@@ -36,7 +37,10 @@ export const InputV2 = ({
     onChange(val);
   };
   return (
-    <div {...rest} className={cn(className, isInValid ? styles.incorrect : '')}>
+    <div
+      data-cy={dataCy}
+      className={cn(className, isInValid ? styles.incorrect : '')}
+    >
       <label className={styles.inputContainer}>
         {label && (
           <span className={cn(styles.label, isDisabled ? styles.disabled : '')}>
