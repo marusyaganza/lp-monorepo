@@ -30,6 +30,7 @@ export interface InputWithButtonProps {
   upButtonProps?: ButtonProps;
   downButtonProps?: ButtonProps;
   showAdditionalControls?: boolean;
+  dataCy?: string;
 }
 /**Input with button */
 export const InputWithButton = ({
@@ -48,11 +49,14 @@ export const InputWithButton = ({
   upButtonProps,
   downButtonProps,
   showAdditionalControls,
-  ...rest
+  dataCy
 }: InputWithButtonProps) => {
   const isInValid = errorText?.length !== 0;
   return (
-    <div {...rest} className={cn(className, isInValid ? styles.incorrect : '')}>
+    <div
+      data-cy={dataCy}
+      className={cn(className, isInValid ? styles.incorrect : '')}
+    >
       <label className={styles.inputContainer}>
         {label && <span className={styles.label}>{label}</span>}
         <div className={styles.inputWrapper}>

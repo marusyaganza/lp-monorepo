@@ -132,11 +132,11 @@ export const generateGameData: GenerateGameDataFuncType = (
     questions = words.map(word => {
       const { name, shortDef, id, audioUrl, imgUrl, defs } = word;
       const examples = getExamples(defs);
-
+      const question = shortDef.map(def => prepareDef(def, name));
       return {
         answer: name,
         wordId: id,
-        question: shortDef,
+        question,
         additionalInfo: {
           audioUrl,
           imgUrl,
@@ -192,9 +192,11 @@ export const generateGameData: GenerateGameDataFuncType = (
       const options = opts.map(opt => opt.name);
       const answer = name;
       const examples = getExamples(defs);
+      const question = shortDef.map(def => prepareDef(def, name));
+
       return {
         answer,
-        question: shortDef,
+        question,
         wordId: id,
         // @ts-ignore
         options: insertAnswer(options, answer),

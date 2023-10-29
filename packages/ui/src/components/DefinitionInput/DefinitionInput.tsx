@@ -135,7 +135,7 @@ export const DefinitionInput = ({
         return (
           <div key={`definition ${i + 1}`}>
             <InputWithButton
-              data-cy="defInput"
+              dataCy="defInput"
               showAdditionalControls={values.length > 1}
               upButtonProps={{
                 onClick: getDefOrderHandler(i, 'up'),
@@ -161,7 +161,7 @@ export const DefinitionInput = ({
               return (
                 <div key={`example ${j + 1} of def ${i}`}>
                   <InputWithButton
-                    data-cy="exampleInput"
+                    dataCy="exampleInput"
                     ignoreErrors
                     fontStyle="secondary"
                     variant="dark"

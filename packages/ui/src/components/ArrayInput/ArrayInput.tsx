@@ -21,6 +21,8 @@ export interface ArrayInputProps {
   /**additional styling */
   className?: string;
   showOrderButtons?: boolean;
+  errorText?: string;
+  dataCy?: string;
 }
 /**component ArrayInput */
 export const ArrayInput = ({
@@ -32,7 +34,8 @@ export const ArrayInput = ({
   children,
   initialValue,
   showOrderButtons,
-  ...rest
+  errorText,
+  dataCy
 }: PropsWithChildren<ArrayInputProps>) => {
   const [values, setValues] = useState<string[]>(
     initialValue && initialValue.length ? initialValue : ['']
@@ -89,6 +92,8 @@ export const ArrayInput = ({
         return (
           <div key={`${name}-${i}`}>
             <InputWithButton
+              dataCy={dataCy}
+              errorText={errorText}
               showAdditionalControls={showOrderButtons && values.length > 1}
               upButtonProps={{
                 onClick: getDefOrderHandler(i, 'up'),
@@ -108,7 +113,6 @@ export const ArrayInput = ({
               name={`${name}-${i}`}
               onChange={changeHandler}
               buttonIconId={isLast ? 'plus' : 'minus'}
-              {...rest}
             />
             {children}
           </div>

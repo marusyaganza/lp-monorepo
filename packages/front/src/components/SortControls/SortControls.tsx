@@ -23,7 +23,6 @@ export const SortControls = ({
   onSortChange,
   sortBy,
   options,
-  initialSortValue,
   initialOrderValue,
   onOrderChange,
   className,
@@ -41,10 +40,10 @@ export const SortControls = ({
   };
 
   useEffect(() => {
-    if (initialSortValue) {
-      setValue(initialSortValue);
+    if (sortBy) {
+      setValue(sortBy);
     }
-  }, [initialSortValue]);
+  }, [sortBy, setValue]);
 
   const optValues = Object.keys(options);
 
@@ -57,7 +56,9 @@ export const SortControls = ({
         variant="withIcon"
         label={label}
       >
-        <Option value="">{blankOption}</Option>
+        <Option value="" key={blankOption}>
+          {blankOption}
+        </Option>
         {optValues.map(opt => (
           <Option key={opt} value={opt}>
             {options[opt]}

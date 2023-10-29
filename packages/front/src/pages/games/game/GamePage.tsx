@@ -196,11 +196,7 @@ const GamePage = () => {
             )}
           </main>
           {!isCompleted && (
-            <GameFooter
-              variant={
-                !state.isCompleted ? state.currentResult.type : 'success'
-              }
-            />
+            <GameFooter variant={state.currentResult.type || 'inProgress'} />
           )}
         </div>
       )}

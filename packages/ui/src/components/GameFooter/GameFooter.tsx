@@ -1,12 +1,13 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { cn } from '../../utils/classnames';
 import successImg from '../../assets/img/game-result-success.svg';
 import errorImg from '../../assets/img/game-result-error.svg';
-import initialImgfrom from '../../assets/img/game-result-initial.svg';
+import initialImg from '../../assets/img/game-result-initial.svg';
+import inProgressImg from '../../assets/img/game-result-in-progress.svg';
 import styles from './GameFooter.module.css';
 
 export interface GameFooterProps {
-  variant?: 'initial' | 'success' | 'error';
+  variant?: 'initial' | 'success' | 'error' | 'inProgress';
   /**additional styling */
   className?: string;
 }
@@ -14,7 +15,8 @@ export interface GameFooterProps {
 const images = {
   success: successImg,
   error: errorImg,
-  initial: initialImgfrom
+  initial: initialImg,
+  inProgress: inProgressImg
 };
 
 const messages = {
@@ -42,19 +44,32 @@ const messages = {
     'Progress comes from perseverance!',
     "Stay positive! You've got this!"
   ],
-  initial: ["Let's get started"]
+  initial: ["Let's get started"],
+  inProgress: [
+    'Embark on a wordy adventure and boost your vocabulary!',
+    'Unlock the magic of words in a thrilling word game.',
+    'Sharpen your language skills - dive into our word game!',
+    'Expand your horizons, one word at a time!',
+    'Words are your playground. Play and learn!',
+    'Challenge yourself in a fun word game today.',
+    'Discover joy in words, exercise your brain.',
+    'Words hold the keys to knowledge. Join the game!',
+    'Engage your mind with a fun word game.',
+    'Play with words, ignite your passion for language!'
+  ]
 };
 
 /**Game footer - displays current game results */
 export const GameFooter = ({ variant, className }: GameFooterProps) => {
-  const message = useMemo(() => {
+  console.log('variant', variant);
+  const getMessage = () => {
     if (!variant) {
       return '';
     }
     const texts = messages[variant];
     const index = Math.floor(Math.random() * texts.length);
     return texts[index];
-  }, [variant]);
+  };
   const renderContent = () => {
     return (
       <section className={styles.resultContainer}>
@@ -63,7 +78,7 @@ export const GameFooter = ({ variant, className }: GameFooterProps) => {
         )}
         {variant && (
           <p data-cy="gameFooterMessage" className={styles.message}>
-            {message}
+            {getMessage()}
           </p>
         )}
       </section>
