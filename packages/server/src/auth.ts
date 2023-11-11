@@ -23,7 +23,7 @@ export type ValidatePasswordFuncType = (
   sample?: string
 ) => Promise<boolean>;
 
-const { JWT_SECTET } = process.env;
+const { JWT_SECTET, TOKEN_TTL } = process.env;
 
 export const hashPassword: HashPasswordFuncType = async function (password) {
   if (!password) {
@@ -56,7 +56,10 @@ export const createToken: CreateTokenFuncType = ({ id, role }) => {
   if (!JWT_SECTET) {
     return;
   }
-  const token = jwt.sign({ id, role }, JWT_SECTET, { expiresIn: '2d' });
+  const tokenTtl = TOKEN_TTL || 7;
+  const token = jwt.sign({ id, role }, JWT_SECTET, {
+    expiresIn: `${tokenTtl}d`
+  });
   return token;
 };
 
