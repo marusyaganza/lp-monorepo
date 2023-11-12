@@ -45,6 +45,7 @@ export const WordCard = ({
     transcription,
     level,
     isOffensive,
+    isLearned,
     defs,
     stems,
     imgUrl,
@@ -205,6 +206,12 @@ export const WordCard = ({
           <span data-cy="offensive" className={styles.offensive}>
             <Icon width={20} height={23} id="fire" />
             offensive
+          </span>
+        )}
+        {isLearned && (
+          <span className={styles.learned}>
+            <Icon width={16} height={16} id="check" />
+            Learned
           </span>
         )}
       </div>

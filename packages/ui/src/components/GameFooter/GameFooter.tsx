@@ -61,7 +61,6 @@ const messages = {
 
 /**Game footer - displays current game results */
 export const GameFooter = ({ variant, className }: GameFooterProps) => {
-  console.log('variant', variant);
   const getMessage = () => {
     if (!variant) {
       return '';

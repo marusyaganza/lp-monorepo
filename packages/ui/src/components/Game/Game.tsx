@@ -18,6 +18,7 @@ import { OptionBox } from '../OptionBox/OptionBox';
 import { DictionaryEntity } from '../DictionaryEntity/DictionaryEntity';
 import { Icon } from '../Icon/icon';
 import { useModal } from '../Modal/useModal';
+import { Checkbox } from '../Checkbox/Checkbox';
 
 export interface GameProps {
   task: string;
@@ -33,7 +34,8 @@ export interface GameProps {
     correctAnswer?: string;
     incorrectAnswer?: string;
   };
-  onNext: () => void;
+  onNext: (isLearned?: boolean) => void;
+  memoryRefresherMode?: boolean;
 }
 /**Component to display game*/
 export const Game = ({
@@ -45,9 +47,11 @@ export const Game = ({
   onSubmit,
   currentResult,
   additionalInfo,
-  onNext
+  onNext,
+  memoryRefresherMode
 }: GameProps) => {
   const [value, setValue] = useState('');
+  const [isLearned, setIsLearned] = useState(false);
   const currentStage = useMemo(
     () => currentResult?.type || 'initial',
     [currentResult?.type]
@@ -83,6 +87,10 @@ export const Game = ({
   // Clean the state once the question is answered
   const handleNext = () => {
     setValue('');
+    if (!memoryRefresherMode && isLearned) {
+      onNext(isLearned);
+      setIsLearned(false);
+    }
     onNext();
   };
   const renderQuestion = () => {
@@ -278,9 +286,19 @@ export const Game = ({
               Check
             </Button>
           ) : (
-            <Button ref={buttonRef} autoFocus onClick={handleNext}>
-              Continue
-            </Button>
+            <>
+              <Button ref={buttonRef} autoFocus onClick={handleNext}>
+                Continue
+              </Button>
+              {!memoryRefresherMode && (
+                <Checkbox
+                  label="I already know this word"
+                  onChange={() => {
+                    setIsLearned(prev => !prev);
+                  }}
+                />
+              )}
+            </>
           )}
         </form>
       </article>

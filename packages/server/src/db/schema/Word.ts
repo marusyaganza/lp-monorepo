@@ -36,6 +36,7 @@ const defSchema = new Schema(
 
 const statisticsSchema = new Schema<WordStatisticsField>(
   {
+    successRate: Number,
     lastTimePracticed: Number,
     practicedTimes: Number,
     errorCount: Number
@@ -72,6 +73,7 @@ const wordSchema = new Schema<WordCoreType>({
   stems: [String],
   tags: [tagsSchema],
   additionalInfo: String,
+  isLearned: Boolean,
   statistics: wordStatisticsSchema
 });
 

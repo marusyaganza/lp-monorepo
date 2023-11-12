@@ -142,8 +142,8 @@ const GamePage = () => {
     }
   };
 
-  const handleNext = () => {
-    dispatch({ type: GameAction.NEXT });
+  const handleNext = (isLearned?: boolean) => {
+    dispatch({ type: GameAction.NEXT, payload: { isLearned } });
   };
 
   const handleFinish = () => {
@@ -184,6 +184,7 @@ const GamePage = () => {
                     | undefined
                 }
                 task={data?.game?.task}
+                memoryRefresherMode={sortBy === SortBy.MemoryRefresher}
                 onNext={handleNext}
               />
             )}

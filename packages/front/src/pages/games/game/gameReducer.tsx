@@ -18,6 +18,7 @@ export interface GameState {
     id: string;
     hasError: boolean;
     gameType: Game;
+    isLearned?: boolean;
   }[];
   result: {
     errorCount: number;
@@ -48,6 +49,9 @@ type CheckAnswerAction = {
 
 type NextAction = {
   type: GameAction.NEXT;
+  payload?: {
+    isLearned?: boolean;
+  };
 };
 
 type StartAction = {
@@ -96,6 +100,9 @@ export function gameReducer(
       newState.isCompleted = true;
     } else {
       newState.currentIndex = state.currentIndex + 1;
+    }
+    if (action?.payload?.isLearned) {
+      newState.resultData[index].isLearned = true;
     }
     newState.currentResult = {};
     return newState;

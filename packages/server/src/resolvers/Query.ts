@@ -69,7 +69,8 @@ export const QueryResolvers: QueryResolversType<ResolverContext> = {
         gameType,
         language,
         sortBy,
-        isReverseOrder
+        isReverseOrder,
+        timesToLearn: config?.timesToLearn
       });
       if (!words) {
         throw new OperationResolutionError(`words not found`);

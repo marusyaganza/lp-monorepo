@@ -92,6 +92,17 @@
   gap: 5px;
 }
 
+.learned {
+  color: var(--neutral-800);
+  padding: 4px 8px;
+  background: var(--background-success-100);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border-radius: var(--secondary-border-radius);
+  font-size: var(--font-size-xs);
+}
+
 .illustration {
   margin: 0;
   max-width: 280px;

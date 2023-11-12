@@ -106,7 +106,7 @@ describe('sign in page', () => {
     cy.get('[data-cy="selectOption"]').contains('Errors').click();
     cy.get('@sortControls').find('[data-cy="checkbox"]').click();
 
-    cy.tick(1000 * 60 * 60 * 24 * 2);
+    cy.tick(1000 * 60 * 60 * 24 * 7);
     cy.location().should('have.a.property', 'pathname', '/sign-in');
     cy.get('h2').should('have.text', 'Sign in');
     cy.get('input[name="email"]').type('test@test.com');

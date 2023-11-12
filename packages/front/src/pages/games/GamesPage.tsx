@@ -19,7 +19,9 @@ import styles from './GamesPage.module.css';
 const OPTIONS = {
   [SortBy.ErrorCount]: 'Errors',
   [SortBy.LastTimePracticed]: 'Last Practice Date',
-  [SortBy.PracticedTimes]: 'Practiced Times'
+  [SortBy.PracticedTimes]: 'Practiced Times',
+  [SortBy.SuccessRate]: 'Success Rate',
+  [SortBy.MemoryRefresher]: 'Memory Refresher'
 };
 
 const GamesPage = () => {
