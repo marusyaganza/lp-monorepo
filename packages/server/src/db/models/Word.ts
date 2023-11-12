@@ -100,10 +100,14 @@ export const WordModel: WordModelType = {
     // Select words that are not learned or have been practiced without error less than 5 times in a row
     if (gameType && sortBy !== SortBy.MemoryRefresher) {
       learningStatusFilter = {
-        isLearned: { $ne: true },
         $and: [
-          { [`statistics.${gameType}.successRate`]: { $lt: timesToLearn } },
-          { [`statistics.${gameType}.successRate`]: { $nin: [] } }
+          { isLearned: { $ne: true } },
+          {
+            $or: [
+              { [`statistics.${gameType}.successRate`]: { $lt: timesToLearn } },
+              { [`statistics.${gameType}.successRate`]: null }
+            ]
+          }
         ]
       };
     }
