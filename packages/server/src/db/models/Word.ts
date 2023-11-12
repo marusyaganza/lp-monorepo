@@ -10,6 +10,7 @@ import {
   WordStatisticsField
 } from '../../generated/graphql';
 import { formatFilter, formatData } from '../helpers';
+import { games } from '../../mocks/games';
 
 const STATISTICS_FIELD: WordStatisticsField = {
   lastTimePracticed: 0,
@@ -190,7 +191,10 @@ export const WordModel: WordModelType = {
           word.statistics = DEFAULT_STATISTICS;
         }
 
-        const { hasError = false, gameType } = entry;
+        const { gameType, hasError = false, isLearned = false } = entry;
+        const timesToLearn =
+          games.find(game => game.type === gameType)?.timesToLearn || 5;
+
         const currentStatistics = word?.statistics?.[gameType];
 
         const newStatistics = {
@@ -207,6 +211,10 @@ export const WordModel: WordModelType = {
 
         if (!hasError) {
           newStatistics.successRate++;
+        }
+
+        if (isLearned) {
+          newStatistics.successRate = timesToLearn;
         }
 
         if (currentStatistics?.practicedTimes) {
