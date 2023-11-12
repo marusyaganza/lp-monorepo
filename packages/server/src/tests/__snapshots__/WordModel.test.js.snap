@@ -42,21 +42,25 @@ exports[`WordModel createOne 1`] = `
       "errorCount": 0,
       "lastTimePracticed": 0,
       "practicedTimes": 0,
+      "successRate": 0,
     },
     "SELECT_DEF": {
       "errorCount": 0,
       "lastTimePracticed": 0,
       "practicedTimes": 0,
+      "successRate": 0,
     },
     "SELECT_WORD": {
       "errorCount": 0,
       "lastTimePracticed": 0,
       "practicedTimes": 0,
+      "successRate": 0,
     },
     "TYPE_WORD": {
       "errorCount": 0,
       "lastTimePracticed": 0,
       "practicedTimes": 0,
+      "successRate": 0,
     },
   },
   "stems": [
@@ -119,21 +123,25 @@ exports[`WordModel findOne 1`] = `
       "errorCount": 0,
       "lastTimePracticed": 0,
       "practicedTimes": 0,
+      "successRate": 0,
     },
     "SELECT_DEF": {
       "errorCount": 0,
       "lastTimePracticed": 0,
       "practicedTimes": 0,
+      "successRate": 0,
     },
     "SELECT_WORD": {
       "errorCount": 0,
       "lastTimePracticed": 0,
       "practicedTimes": 0,
+      "successRate": 0,
     },
     "TYPE_WORD": {
       "errorCount": 0,
       "lastTimePracticed": 0,
       "practicedTimes": 0,
+      "successRate": 0,
     },
   },
   "stems": [
@@ -192,21 +200,25 @@ exports[`WordModel updateOne 1`] = `
       "errorCount": 0,
       "lastTimePracticed": 0,
       "practicedTimes": 0,
+      "successRate": 0,
     },
     "SELECT_DEF": {
       "errorCount": 0,
       "lastTimePracticed": 0,
       "practicedTimes": 0,
+      "successRate": 0,
     },
     "SELECT_WORD": {
       "errorCount": 0,
       "lastTimePracticed": 0,
       "practicedTimes": 0,
+      "successRate": 0,
     },
     "TYPE_WORD": {
       "errorCount": 0,
       "lastTimePracticed": 0,
       "practicedTimes": 0,
+      "successRate": 0,
     },
   },
   "stems": [

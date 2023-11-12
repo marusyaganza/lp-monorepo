@@ -12,6 +12,7 @@ export const WORDS_QUERY = gql`
       audioUrl
       transcription
       isOffensive
+      isLearned
       level
       shortDef
     }
@@ -38,6 +39,7 @@ export const WORD_BY_ID_QUERY = gql`
       transcription
       user
       isOffensive
+      isLearned
       stems
       level
       shortDef

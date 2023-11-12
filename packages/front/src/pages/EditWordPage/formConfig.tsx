@@ -29,6 +29,7 @@ export const getDefaultInitialValues: (
     additionalInfo: '',
     stems: [''],
     isOffensive: false,
+    isLearned: false,
     level: Level.B1
   };
 
@@ -85,6 +86,11 @@ export const formConfig: (
     Component: Checkbox,
     name: 'isOffensive',
     props: { variant: 'isOffensive' }
+  },
+  {
+    Component: Checkbox,
+    name: 'isLearned',
+    props: { label: 'Mark as learned' }
   }
 ];
 

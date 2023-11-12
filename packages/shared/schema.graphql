@@ -66,6 +66,7 @@ type WordStatisticsField {
   lastTimePracticed: Int
   practicedTimes: Int
   errorCount: Int
+  successRate: Int
 }
 
 type WordStatistics {
@@ -95,6 +96,7 @@ type Word {
   level: Level
   shortDef: [String]!
   language: Language!
+  isLearned: Boolean
   statistics: WordStatistics
 }
 
@@ -139,6 +141,7 @@ type GameConfig {
   wordsPerGame: Int!
   optionsPerGame: Int!
   minWords: Int!
+  timesToLearn: Int
 }
 
 type GameQuestionAdditionalInfo {
@@ -193,6 +196,7 @@ input NewWordInput {
   tags: [WordTagInput]
   language: Language!
   shortDef: [String]!
+  isLearned: Boolean
 }
 
 input UpdateWordInput {
@@ -209,6 +213,7 @@ input UpdateWordInput {
   level: Level
   tags: [WordTagInput]
   shortDef: [String]
+  isLearned: Boolean
 }
 
 input SignUpInput {

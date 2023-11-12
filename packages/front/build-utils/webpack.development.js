@@ -45,9 +45,9 @@ module.exports = {
     ]
   },
   devServer: {
-    client: {
-      overlay: false
-    },
+    // client: {
+    //   overlay: false
+    // },
     historyApiFallback: true,
     static: {
       directory: path.join(__dirname, 'build')

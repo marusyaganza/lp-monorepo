@@ -370,6 +370,7 @@ describe('queries', () => {
     expect(res).toMatchSnapshot();
     expect(findManyAndSort).toHaveBeenCalledWith({
       ...input,
+      timesToLearn: 5,
       user: user.id
     });
   });
@@ -398,6 +399,7 @@ describe('queries', () => {
     expect(res).toMatchSnapshot();
     expect(findManyAndSort).toHaveBeenCalledWith({
       ...input,
+      timesToLearn: 5,
       user: user.id
     });
   });
@@ -424,6 +426,7 @@ describe('queries', () => {
     expect(res).toMatchSnapshot();
     expect(findManyAndSort).toHaveBeenCalledWith({
       ...input,
+      timesToLearn: 5,
       user: user.id
     });
   });

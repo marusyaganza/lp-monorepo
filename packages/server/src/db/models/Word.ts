@@ -6,17 +6,19 @@ import {
   Language,
   Game,
   SortBy,
-  SortWordsBy
+  SortWordsBy,
+  WordStatisticsField
 } from '../../generated/graphql';
 import { formatFilter, formatData } from '../helpers';
 
-const STATISTICS_FIELD = {
+const STATISTICS_FIELD: WordStatisticsField = {
   lastTimePracticed: 0,
   practicedTimes: 0,
-  errorCount: 0
+  errorCount: 0,
+  successRate: 0
 };
 
-const DEFAULT_STATISTICS = {
+const DEFAULT_STATISTICS: Record<Game, WordStatisticsField> = {
   [Game.Audio]: STATISTICS_FIELD,
   [Game.SelectDef]: STATISTICS_FIELD,
   [Game.SelectWord]: STATISTICS_FIELD,
@@ -27,6 +29,7 @@ type wordsFilter = {
   sortBy?: SortBy | SortWordsBy | 'updatedAt';
   language: Language;
   isReverseOrder: boolean;
+  timesToLearn?: number | null;
   gameType?: Game;
   user?: string;
 };
@@ -77,7 +80,8 @@ export const WordModel: WordModelType = {
       language = Language.English,
       sortBy,
       isReverseOrder,
-      gameType
+      gameType,
+      timesToLearn = 5
     } = filter;
 
     if (!user) {
@@ -90,8 +94,18 @@ export const WordModel: WordModelType = {
     if (sortBy === SortBy.ErrorCount) {
       orderNum = -1 * orderNum;
     }
-
+    let learningStatusFilter = {};
     let sort: Record<string, number> = { $natural: orderNum };
+    // Select words that are not learned or have been practiced without error less than 5 times in a row
+    if (gameType) {
+      learningStatusFilter = {
+        isLearned: { $ne: true },
+        $and: [
+          { [`statistics.${gameType}.successRate`]: { $lt: timesToLearn } },
+          { [`statistics.${gameType}.successRate`]: { $nin: [] } }
+        ]
+      };
+    }
     if (sortBy) {
       let propName: string = sortBy;
       if (gameType) {
@@ -100,8 +114,10 @@ export const WordModel: WordModelType = {
       sort = { [propName]: orderNum };
     }
 
-    // @ts-ignore
-    const words = await Word.find({ user, language }).sort(sort);
+    const words = await Word.find({ user, language, ...learningStatusFilter })
+      // @ts-ignore
+      .sort(sort);
+
     return words;
   },
 
@@ -164,20 +180,30 @@ export const WordModel: WordModelType = {
         if (!word?.statistics) {
           word.statistics = DEFAULT_STATISTICS;
         }
+
+        const { hasError = false, gameType } = entry;
+        const currentStatistics = word?.statistics?.[gameType];
+
         const newStatistics = {
           practicedTimes: 1,
-          errorCount: entry.hasError ? 1 : 0,
+          errorCount: currentStatistics?.errorCount ?? 0,
+          successRate: currentStatistics?.successRate ?? 0,
           lastTimePracticed: Date.now()
         };
-        const gameType = entry.gameType;
-        const currentStatistics = word?.statistics?.[gameType];
-        if (
-          currentStatistics?.practicedTimes &&
-          currentStatistics?.errorCount
-        ) {
-          newStatistics.practicedTimes += currentStatistics.practicedTimes;
-          newStatistics.errorCount += currentStatistics.errorCount;
+
+        if (hasError) {
+          newStatistics.errorCount++;
+          newStatistics.successRate = 0;
         }
+
+        if (!hasError) {
+          newStatistics.successRate++;
+        }
+
+        if (currentStatistics?.practicedTimes) {
+          newStatistics.practicedTimes += currentStatistics.practicedTimes;
+        }
+
         word.statistics[gameType] = newStatistics;
         await word.save();
       } catch (err) {

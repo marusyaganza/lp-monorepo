@@ -12,7 +12,7 @@ export type logoutFuncType = () => void;
 
 let logoutTimer: NodeJS.Timeout | undefined;
 
-const tokenTTL = Number.parseInt(process.env.TOKEN_TTL) || 7;
+const tokenTTL = Number.parseInt(process.env.TOKEN_TTL || '7');
 
 const TOKEN_EXPIRATION_PERIOD =
   new Date().getTime() + 1000 * 60 * 60 * 24 * tokenTTL;

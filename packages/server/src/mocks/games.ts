@@ -14,7 +14,8 @@ export const games: GameConfig[] = [
     type: Game.Audio,
     wordsPerGame: 6,
     minWords: 1,
-    optionsPerGame: 0
+    optionsPerGame: 0,
+    timesToLearn: 5
   },
   {
     name: 'LexiSense',
@@ -24,7 +25,8 @@ export const games: GameConfig[] = [
     type: Game.SelectDef,
     wordsPerGame: 6,
     minWords: 1,
-    optionsPerGame: 6
+    optionsPerGame: 6,
+    timesToLearn: 5
   },
   {
     name: 'Definify: Match & Learn',
@@ -34,7 +36,8 @@ export const games: GameConfig[] = [
     type: Game.SelectWord,
     wordsPerGame: 6,
     minWords: 1,
-    optionsPerGame: 6
+    optionsPerGame: 6,
+    timesToLearn: 5
   },
   {
     name: 'WordRecall: Define & Type',
@@ -44,7 +47,8 @@ export const games: GameConfig[] = [
     type: Game.TypeWord,
     wordsPerGame: 6,
     minWords: 1,
-    optionsPerGame: 0
+    optionsPerGame: 0,
+    timesToLearn: 5
   }
   // {
   //   name: 'find all definitions',
