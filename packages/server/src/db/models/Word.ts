@@ -97,7 +97,7 @@ export const WordModel: WordModelType = {
     let learningStatusFilter = {};
     let sort: Record<string, number> = { $natural: orderNum };
     // Select words that are not learned or have been practiced without error less than 5 times in a row
-    if (gameType) {
+    if (gameType && sortBy !== SortBy.MemoryRefresher) {
       learningStatusFilter = {
         isLearned: { $ne: true },
         $and: [
@@ -111,7 +111,16 @@ export const WordModel: WordModelType = {
       if (gameType) {
         propName = `statistics.${gameType}.${sortBy}`;
       }
-      sort = { [propName]: orderNum };
+      if (sortBy === SortBy.MemoryRefresher) {
+        learningStatusFilter = {
+          $or: [
+            { [`statistics.${gameType}.successRate`]: { $gte: timesToLearn } },
+            { isLearned: true }
+          ]
+        };
+      } else {
+        sort = { [propName]: orderNum };
+      }
     }
 
     const words = await Word.find({ user, language, ...learningStatusFilter })

@@ -29,6 +29,8 @@ enum SortBy {
   lastTimePracticed
   practicedTimes
   errorCount
+  successRate
+  memoryRefresher
 }
 
 enum sortWordsBy {
