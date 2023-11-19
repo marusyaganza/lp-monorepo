@@ -67,7 +67,7 @@ export const Input = ({
         <Button
           disabled={isDisabled}
           className={styles.passwordButton}
-          iconId={isPasswordVisible ? 'eye-slashed' : 'eye'}
+          iconId={isPasswordVisible ? 'eye' : 'eye-slashed'}
           variant="icon"
           iconHeight={25}
           iconWidth={20}

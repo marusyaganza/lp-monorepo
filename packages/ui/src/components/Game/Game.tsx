@@ -282,9 +282,14 @@ export const Game = ({
         >
           {renderInput()}
           {currentStage === 'initial' ? (
-            <Button disabled={!value} type="submit" variant="secondary">
-              Check
-            </Button>
+            <>
+              <Button disabled={!value} type="submit" variant="secondary">
+                Check
+              </Button>
+              {!memoryRefresherMode && (
+                <div className={styles.checkboxBlock}></div>
+              )}
+            </>
           ) : (
             <>
               <Button ref={buttonRef} autoFocus onClick={handleNext}>

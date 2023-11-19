@@ -2,6 +2,7 @@ import React, {
   FormEvent,
   useState,
   useCallback,
+  useRef,
   ChangeEventHandler
 } from 'react';
 import { Icon } from '../Icon/icon';
@@ -26,6 +27,7 @@ export const SearchField = ({
   autofocus
 }: SearchFieldProps) => {
   const [value, setValue] = useState(searchQuery);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleSearch = (e: FormEvent) => {
     e.preventDefault();
@@ -40,6 +42,7 @@ export const SearchField = ({
 
   const handlerClear = useCallback(() => {
     setValue('');
+    inputRef?.current?.focus();
   }, []);
 
   return (
@@ -58,6 +61,7 @@ export const SearchField = ({
         <span className={styles.buttonText}>search</span>
       </button>
       <input
+        ref={inputRef}
         autoFocus={autofocus}
         className={styles.input}
         onChange={handleChange}

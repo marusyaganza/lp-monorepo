@@ -10,6 +10,10 @@
   color: var(--neutral-800);
   position: relative;
   z-index: var(--z-index-2);
+
+  @media (max-width: 800px) {
+    font-size: var(--font-size-xs);
+  }
 }
 
 .labelText {
@@ -20,6 +24,10 @@
   width: 25px;
   height: 25px;
   accent-color: var(--primary-300);
+  @media (max-width: 800px) {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 .withIcon {

@@ -52,7 +52,7 @@ export function prepareDef(def?: string | null, name?: string | null): string {
   return def
     .split(' ')
     .map(word =>
-      word === name || word.toLocaleLowerCase() === name ? '[...]' : word
+      word.toLocaleLowerCase() === name.toLocaleLowerCase() ? '[...]' : word
     )
     .join(' ');
 }

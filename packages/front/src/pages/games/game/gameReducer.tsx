@@ -76,7 +76,7 @@ export function gameReducer(
   if (type === GameAction.CHECK_ANSWER) {
     const { correctAnswer, answer, id, gameType } = action.payload;
     const newState = { ...state };
-    if (answer === correctAnswer) {
+    if (answer.toLocaleLowerCase() === correctAnswer.toLocaleLowerCase()) {
       newState.currentResult = {
         type: 'success',
         correctAnswer: correctAnswer
