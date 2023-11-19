@@ -158,24 +158,26 @@ const WordsPage = () => {
   return (
     <PageLayout>
       <h1 className={styles.heading}>Vocabulary</h1>
-      <div className={styles.topSection}>
-        <p data-cy="wordsCount" className={styles.wordsInfo}>
-          {`You have ${data?.words.length || 0} words.`}{' '}
-          <Link className={styles.link} to={`/${routes.words}/new`}>
-            Add new
-          </Link>
-        </p>
-        <SortControls
-          blankOption="Date"
-          blankValue="Date"
-          options={OPTIONS}
-          initialOrderValue={isReverseOrder}
-          sortBy={sortBy || ''}
-          onOrderChange={handleOrderChange}
-          onSortChange={handleSortingParamChange}
-          label="Sort words by"
-        />
-      </div>
+      {!loading && (
+        <div className={styles.topSection}>
+          <p data-cy="wordsCount" className={styles.wordsInfo}>
+            {`You have ${data?.words.length || 0} words.`}{' '}
+            <Link className={styles.link} to={`/${routes.words}/new`}>
+              Add new
+            </Link>
+          </p>
+          <SortControls
+            blankOption="Date"
+            blankValue="Date"
+            options={OPTIONS}
+            initialOrderValue={isReverseOrder}
+            sortBy={sortBy || ''}
+            onOrderChange={handleOrderChange}
+            onSortChange={handleSortingParamChange}
+            label="Sort words by"
+          />
+        </div>
+      )}
       {loading && <Spinner />}
       {renderWords()}
     </PageLayout>

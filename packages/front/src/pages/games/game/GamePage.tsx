@@ -129,7 +129,7 @@ const GamePage = () => {
 
   const handlerSubmit = (val: string) => {
     if (questions?.length && data?.game) {
-      const answer = typeof val === 'string' ? val.toLocaleLowerCase() : val;
+      const answer = val;
       dispatch({
         type: GameAction.CHECK_ANSWER,
         payload: {

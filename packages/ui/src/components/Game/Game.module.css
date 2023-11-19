@@ -171,3 +171,7 @@
 .modal {
   max-width: calc(100% - 64px);
 }
+
+.checkboxBlock {
+  height: 32px;
+}
