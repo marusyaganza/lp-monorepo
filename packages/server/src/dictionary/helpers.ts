@@ -1,4 +1,4 @@
-import { DefEntity } from './dictionaryTypes';
+import { DefEntity, CognateEntity } from './dictionaryTypes';
 import { DefsInput } from '../generated/graphql';
 import {
   TAGS,
@@ -143,9 +143,25 @@ export function formatDictionaryEntity(str?: string) {
 //   t: 'el idioma ingl\u00e9s',
 //   tr: 'the English language'
 // }
-export function getDefs(def: DefEntity[] | null | undefined) {
+export function getDefs(
+  def: DefEntity[] | null | undefined,
+  cognateRef?: CognateEntity[]
+) {
   const result: DefsInput[] = [];
   if (!def || !Array.isArray(def)) {
+    cognateRef?.forEach(item => {
+      const cognateStr = item?.cxl ?? '';
+      const cognateTargets = item?.cxtis
+        ?.map(target => {
+          return target?.cxt ? `<i>${target?.cxt}</i>` : '';
+        })
+        ?.filter(Boolean)
+        .join(', ');
+      const cognateRes = `${cognateStr} ${cognateTargets}`;
+      if (cognateRes) {
+        result.push({ def: cognateRes });
+      }
+    });
     return result;
   }
   def?.forEach(d => {

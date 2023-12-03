@@ -137,15 +137,16 @@ export const Game = ({
       (type === GameType.SelectDef ||
         (currentStage !== 'initial' && type !== GameType.Audio));
     return (
-      hasAudioButton && (
-        <AudioButton
-          iconHeight={24}
-          iconWidth={24}
-          className={styles.additionalAudio}
-          src={additionalInfo?.audioUrl || ''}
-          autoplay
-        />
-      )
+      <span className={styles.additionalAudio}>
+        {hasAudioButton && (
+          <AudioButton
+            iconHeight={24}
+            iconWidth={24}
+            src={additionalInfo?.audioUrl || ''}
+            autoplay
+          />
+        )}
+      </span>
     );
   };
 

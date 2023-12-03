@@ -69,7 +69,7 @@ describe('Words Page', () => {
 
     cy.get('[data-cy="formField-particle"]')
       .find('textarea')
-      .should('be.disabled')
+      .should('be.enabled')
       .and('have.text', existingWord.particle);
 
     cy.get('[data-cy="formField-defs"]')

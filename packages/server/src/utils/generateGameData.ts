@@ -49,12 +49,21 @@ export function prepareDef(def?: string | null, name?: string | null): string {
   if (!def || !name) {
     return '';
   }
-  return def
-    .split(' ')
-    .map(word =>
-      word.toLocaleLowerCase() === name.toLocaleLowerCase() ? '[...]' : word
-    )
-    .join(' ');
+
+  const replacement = ' [...] ';
+  const word = name.toLocaleLowerCase();
+
+  let result = def.replaceAll(new RegExp(` ${word} `, 'gi'), replacement);
+
+  if (result.toLocaleLowerCase().startsWith(`${word} `)) {
+    result = result.replace(new RegExp(`${word} `, 'i'), replacement).trim();
+  }
+
+  if (result.toLocaleLowerCase().endsWith(` ${word}`)) {
+    result = result.replace(new RegExp(` ${word}`, 'i'), replacement).trim();
+  }
+
+  return result;
 }
 
 export function generateOptions(

@@ -2,11 +2,13 @@ import { formatDictionaryWord, formatData } from '../../dictionary/formatData';
 
 import {
   inputSpanish,
+  inputEnglishWithoutDefs,
   outputSpanish,
   inputEnglish,
   outputEnglish,
   inputSuggestions,
-  outputSuggestions
+  outputSuggestions,
+  outputEnglishWithoutDefs
 } from '../mocks/dictionaryData';
 
 const testData = [
@@ -42,7 +44,7 @@ const testData = [
       {
         desc: 'with no particle property',
         arguments: inputEnglish[2],
-        result: undefined
+        result: outputEnglish[2]
       }
     ]
   },
@@ -64,6 +66,11 @@ const testData = [
         desc: 'with valid english words',
         arguments: [inputEnglish],
         result: outputEnglish
+      },
+      {
+        desc: 'with valid english word without def',
+        arguments: [inputEnglishWithoutDefs],
+        result: outputEnglishWithoutDefs
       }
     ]
   }

@@ -16,6 +16,8 @@
 }
 
 .task {
+  display: flex;
+  align-items: center;
   text-align: center;
   font-family: var(--font-kalam);
   font-size: var(--font-size-l);
@@ -79,9 +81,7 @@
 }
 
 .additionalAudio {
-  position: absolute;
-  top: 6px;
-  right: -28px;
+  width: 30px;
 }
 
 .listIcon {

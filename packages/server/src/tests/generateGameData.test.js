@@ -45,6 +45,31 @@ const testData = [
         desc: 'with data that does not require replacement',
         arguments: ['name should not be removed from here', 'tree'],
         result: 'name should not be removed from here'
+      },
+      {
+        desc: 'with complex data that require replacement',
+        arguments: ['get out should be removed from here', 'get out'],
+        result: '[...] should be removed from here'
+      },
+      {
+        desc: 'with 2 complex words that require replacement',
+        arguments: ['get out should be get out removed from here', 'get out'],
+        result: '[...] should be [...] removed from here'
+      },
+      {
+        desc: 'with complex word in the end that require replacement',
+        arguments: ['word should be removed from here get back', 'get back'],
+        result: 'word should be removed from here [...]'
+      },
+      {
+        desc: 'with uppercase word that require replacement',
+        arguments: ['word should be removed from here. Get back', 'get back'],
+        result: 'word should be removed from here. [...]'
+      },
+      {
+        desc: 'with uppercase name and def that require replacement',
+        arguments: ['word should be removed from here', 'Word'],
+        result: '[...] should be removed from here'
       }
     ]
   },

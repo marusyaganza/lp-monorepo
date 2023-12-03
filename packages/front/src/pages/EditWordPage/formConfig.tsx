@@ -22,6 +22,7 @@ export const getDefaultInitialValues: (
   const defaultIntitalValues: UpdateWordInputType = {
     audioUrl: '',
     transcription: '',
+    particle: '',
     defs: [{ def: '', examples: [{ text: '', translation: '' }] }],
     imgUrl: '',
     imgDesc: '',
@@ -57,9 +58,7 @@ export const formConfig: (
   { Component: LevelSelector, name: 'level' },
   {
     Component: InputV2,
-    name: 'particle',
-    isDisabled: true,
-    value: word.particle
+    name: 'particle'
   },
   {
     Component: InputV2,
@@ -112,5 +111,11 @@ export const validators = {
       return vals.filter(Boolean).length > 0;
     },
     errorText: 'shortDef is required'
+  },
+  particle: {
+    validate: (val?: string) => {
+      return val ? true : false;
+    },
+    errorText: 'particle is required'
   }
 };

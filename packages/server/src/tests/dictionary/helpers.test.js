@@ -8,7 +8,12 @@ import {
   formatHw
 } from '../../dictionary/helpers';
 
-import { inputSpanish, dictionaryEntities, hw } from '../mocks/dictionaryData';
+import {
+  inputSpanish,
+  inputEnglishWithoutDefs,
+  dictionaryEntities,
+  hw
+} from '../mocks/dictionaryData';
 
 const testData = [
   {
@@ -104,6 +109,11 @@ const testData = [
         desc: 'with empty array',
         arguments: [[]],
         result: []
+      },
+      {
+        desc: 'with data without def',
+        arguments: [undefined, inputEnglishWithoutDefs[0].cxs],
+        result: [{ def: 'chiefly dialectal variant of <i>murder</i>' }]
       }
     ]
   },

@@ -239,8 +239,8 @@ export const inputEnglish = [
   },
   {
     meta: {
-      id: 'pussy:1',
-      uuid: 'mockUuid1',
+      id: 'pussy:2',
+      uuid: 'mockUuid2',
       stems: ['pussy', 'pussies'],
       offensive: true
     },
@@ -250,13 +250,13 @@ export const inputEnglish = [
         {
           ipa: '\u02c8p\u028asi',
           sound: {
-            audio: 'pussy001'
+            audio: 'pussy002'
           }
         }
       ]
     },
     art: {
-      artid: 'imageId',
+      artid: 'imageId2',
       capt: 'image Descr'
     },
     def: [
@@ -268,7 +268,7 @@ export const inputEnglish = [
               {
                 sls: ['informal'],
                 dt: [
-                  ['text', 'def1'],
+                  ['text', 'def12'],
                   ['uns', [[['text', 'uns1']]]]
                 ]
               }
@@ -315,6 +315,24 @@ export const outputEnglish = [
     particle: 'adjective',
     stems: ['egalitarian', 'egalitarians', 'egalitarianism'],
     transcription: 'egal*i*tar*i*an',
+    uuid: 'mockUuid2'
+  },
+  {
+    audioUrl: 'mock_audio_endpoint/en/us/mp3/p/pussy002.mp3',
+    defs: [
+      {
+        def: 'def12'
+      }
+    ],
+    isOffensive: true,
+    shortDef: ['def12'],
+    language: 'ENGLISH',
+    imgDesc: 'image Descr',
+    imgUrl: 'mock_img_endpoint/imageId2.gif',
+    name: 'pussy',
+    particle: 'noun',
+    stems: ['pussy', 'pussies'],
+    transcription: 'pussy',
     uuid: 'mockUuid2'
   }
 ];
@@ -497,5 +515,64 @@ export const dictionaryEntities = [
     desc: '{itsc}',
     arguments: 'white and {itsc}absence{/itsc} of color',
     result: 'white and <i>absence</i> of color'
+  }
+];
+
+export const inputEnglishWithoutDefs = [
+  {
+    meta: {
+      id: 'murther',
+      uuid: '87f2219c-6fcb-4390-9e2a-427384ef13a3',
+      sort: '134845000',
+      src: 'collegiate',
+      section: 'alpha',
+      stems: ['murder', 'murther', 'murthered', 'murthering', 'murthers'],
+      offensive: false
+    },
+    hwi: {
+      hw: 'mur*ther',
+      prs: [
+        {
+          mw: '\u02c8m\u0259r-t\u035fh\u0259r',
+          sound: {
+            audio: 'murthe01',
+            ref: 'c',
+            stat: '1'
+          }
+        }
+      ]
+    },
+    cxs: [
+      {
+        cxl: 'chiefly dialectal variant of',
+        cxtis: [
+          {
+            cxt: 'murder'
+          }
+        ]
+      }
+    ],
+    shortdef: []
+  }
+];
+
+export const outputEnglishWithoutDefs = [
+  {
+    audioUrl: 'mock_audio_endpoint/en/us/mp3/m/murthe01.mp3',
+    defs: [
+      {
+        def: 'chiefly dialectal variant of <i>murder</i>'
+      }
+    ],
+    imgDesc: undefined,
+    imgUrl: undefined,
+    isOffensive: false,
+    language: 'ENGLISH',
+    name: 'murther',
+    particle: 'noun',
+    shortDef: ['chiefly dialectal variant of <i>murder</i>'],
+    stems: ['murder', 'murther', 'murthered', 'murthering', 'murthers'],
+    transcription: 'ˈmər-t͟hər',
+    uuid: '87f2219c-6fcb-4390-9e2a-427384ef13a3'
   }
 ];

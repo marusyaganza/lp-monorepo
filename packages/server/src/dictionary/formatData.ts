@@ -12,7 +12,7 @@ import {
 export function formatDictionaryWord(
   word: DictionaryWordType
 ): DictionaryWord | undefined {
-  const { def, meta, hwi, art, shortdef } = word;
+  const { def, meta, hwi, art, shortdef, cxs } = word;
   const { uuid, id, stems, offensive, lang } = meta;
   const metaData = {
     uuid,
@@ -20,7 +20,7 @@ export function formatDictionaryWord(
     name: filterString(id),
     isOffensive: offensive
   };
-  const defs = getDefs(def);
+  const defs = getDefs(def, cxs);
   const pronunciation = hwi?.prs?.[0];
   const transcription = pronunciation?.mw || formatHw(hwi?.hw);
   const audio = pronunciation?.sound?.audio;
@@ -28,10 +28,10 @@ export function formatDictionaryWord(
   const language = lang == 'es' ? Language.Spanish : Language.English;
   const imgUrl = getImgUrl(art?.artid);
   const imgDesc = formatDictionaryEntity(art?.capt);
-  const particle = word?.fl;
-  const shortDef = shortdef || defs.map(def => def.def);
+  const particle = word?.fl ?? 'noun';
+  const shortDef = shortdef?.length ? shortdef : defs.map(def => def.def);
 
-  if (!particle || !defs?.length) {
+  if (!defs?.length) {
     return;
   }
 

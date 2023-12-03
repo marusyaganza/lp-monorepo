@@ -142,6 +142,10 @@
   background-color: transparent;
 }
 
+.icon:hover {
+  color: var(--primary-500);
+}
+
 .icon:focus {
   border: 1px solid var(--neutral-800);
 }

@@ -7,6 +7,7 @@ export interface DictionaryWordType {
   uros?: UrosEntity[] | null;
   shortdef?: string[] | null;
   art?: Art;
+  cxs?: CognateEntity[];
 }
 export interface AppShortdef {
   hw: string;
@@ -46,6 +47,7 @@ export interface Art {
   artid?: string;
   capt?: string;
 }
+
 export interface DefEntity {
   sseq?: (((string | Sense)[] | null)[] | null)[] | null;
 }
@@ -68,4 +70,13 @@ export interface InsEntity {
   il: string;
   ifc: string;
   if: string;
+}
+
+export interface CognateEntity {
+  cxl?: string;
+  cxtis: CognateTarget[];
+}
+
+export interface CognateTarget {
+  cxt?: string;
 }

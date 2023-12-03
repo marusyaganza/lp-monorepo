@@ -13,6 +13,7 @@ import { WordCard, Spinner } from '@lp/ui';
 import styles from './SearchPage.module.css';
 import { routes } from '../../constants/routes';
 import { removeTypenames } from '../../util/wordUtils';
+import notFound from '../../assets/img/not-found.svg';
 
 const SearchPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -102,6 +103,16 @@ const SearchPage = () => {
     }
 
     const suggestions = data?.searchWord as Suggestions[];
+    if (!suggestions?.length) {
+      return (
+        <div className={styles.notFound}>
+          <img src={notFound} className={styles.notFoundImage} alt="" />
+          <h3 className={styles.notFoundText}>
+            {searchParams?.get('search') ?? 'word'} is not found
+          </h3>
+        </div>
+      );
+    }
     return (
       <article>
         {suggestions?.map(el => (
