@@ -87,11 +87,8 @@ export const Game = ({
   // Clean the state once the question is answered
   const handleNext = () => {
     setValue('');
-    if (!memoryRefresherMode && isLearned) {
-      onNext(isLearned);
-      setIsLearned(false);
-    }
-    onNext();
+    onNext(isLearned);
+    setIsLearned(false);
   };
   const renderQuestion = () => {
     if (type === GameType.Audio) {

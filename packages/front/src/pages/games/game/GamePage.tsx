@@ -142,7 +142,8 @@ const GamePage = () => {
     }
   };
 
-  const handleNext = (isLearned?: boolean) => {
+  const handleNext = (val?: boolean) => {
+    const isLearned = val ?? false;
     dispatch({ type: GameAction.NEXT, payload: { isLearned } });
   };
 

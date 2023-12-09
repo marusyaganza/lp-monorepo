@@ -23,7 +23,7 @@ export const Checkbox = ({
   iconId = 'asc',
   onChange
 }: CheckboxProps) => {
-  const [isChecked, setIsChecked] = useState(initialValue);
+  const [isChecked, setIsChecked] = useState(initialValue || false);
 
   const renderLabel = () => {
     if (variant === 'isOffensive') {
