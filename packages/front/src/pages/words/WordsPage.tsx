@@ -64,8 +64,7 @@ const WordsPage = () => {
       setNotification({
         variant: 'error',
         text: 'Error',
-        subText: error?.message,
-        sameLocation: true
+        subText: error?.message
       });
     }
   }, [error, setNotification]);
@@ -75,8 +74,7 @@ const WordsPage = () => {
       setNotification({
         variant: 'error',
         text: 'Error',
-        subText: error?.message || 'something went wrong',
-        sameLocation: true
+        subText: error?.message || 'something went wrong'
       });
     }
   }, [error]);
@@ -86,8 +84,7 @@ const WordsPage = () => {
       setNotification({
         variant: 'error',
         text: 'Error',
-        subText: deleteWordData?.error?.message || 'something went wrong',
-        sameLocation: true
+        subText: deleteWordData?.error?.message || 'something went wrong'
       });
     }
   }, [deleteWordData.error]);
@@ -97,8 +94,7 @@ const WordsPage = () => {
       setNotification({
         variant: 'success',
         text: 'Word deleted',
-        subText: `${deleteWordData?.data?.deleteWord}`,
-        sameLocation: true
+        subText: `${deleteWordData?.data?.deleteWord}`
       });
     }
   }, [deleteWordData.data]);

@@ -25,8 +25,7 @@ const NewWordPage = () => {
       setNotification({
         variant: 'error',
         text: 'Error',
-        subText: saveWordData?.error?.message || 'something went wrong',
-        sameLocation: true
+        subText: saveWordData?.error?.message || 'something went wrong'
       });
     }
   }, [saveWordData.error]);
@@ -38,7 +37,8 @@ const NewWordPage = () => {
       setNotification({
         variant: 'success',
         text: 'Word added',
-        subText: `${name} is added successfully.`
+        subText: `${name} is added successfully.`,
+        targetLocation: `/${routes.words}`
       });
       navigate(`/${routes.words}`);
     }
