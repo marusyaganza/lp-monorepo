@@ -30,8 +30,7 @@ const WordPage = () => {
       setNotification({
         variant: 'error',
         text: 'Error',
-        subText: error?.message,
-        sameLocation: true
+        subText: error?.message
       });
     }
   }, [error, setNotification]);

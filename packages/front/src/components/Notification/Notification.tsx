@@ -22,7 +22,7 @@ export const Notification = () => {
   }, [notification, closeHandler]);
 
   useEffect(() => {
-    if (notification?.sameLocation) {
+    if (notification?.targetLocation !== location.pathname) {
       setNotification();
     }
   }, [location.pathname]);

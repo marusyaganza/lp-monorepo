@@ -50,8 +50,7 @@ const GamesPage = () => {
       setNotification({
         variant: 'error',
         text: 'Error',
-        subText: error?.message || 'something went wrong',
-        sameLocation: true
+        subText: error?.message || 'something went wrong'
       });
     }
   }, [error]);

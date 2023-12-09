@@ -45,8 +45,7 @@ const EditWordPage = () => {
       setNotification({
         variant: 'error',
         text: 'Error',
-        subText: error?.message || 'something went wrong',
-        sameLocation: true
+        subText: error?.message || 'something went wrong'
       });
     }
   }, [error]);
@@ -56,8 +55,7 @@ const EditWordPage = () => {
       setNotification({
         variant: 'error',
         text: 'Error',
-        subText: updateWordData?.error?.message || 'something went wrong',
-        sameLocation: true
+        subText: updateWordData?.error?.message || 'something went wrong'
       });
     }
   }, [updateWordData.error]);
@@ -69,7 +67,8 @@ const EditWordPage = () => {
       setNotification({
         variant: 'success',
         text: 'Word updated',
-        subText: `Changes for the word ${name} were saved`
+        subText: `Changes for the word ${name} were saved`,
+        targetLocation: `/${routes.words}`
       });
       navigate(`/${routes.words}`);
     }

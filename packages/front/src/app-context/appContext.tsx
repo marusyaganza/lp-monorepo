@@ -11,7 +11,7 @@ import { Language } from '../generated/graphql';
 import { getStoredData, storeData } from '../util/localStorageUtils';
 
 interface NotificationProps extends CoreNotificationProps {
-  sameLocation?: boolean;
+  targetLocation?: string;
 }
 
 type Context = {

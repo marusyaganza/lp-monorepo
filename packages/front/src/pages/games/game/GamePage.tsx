@@ -80,7 +80,8 @@ const GamePage = () => {
       setNotification({
         variant: 'error',
         text: 'Error',
-        subText: 'game is not found'
+        subText: 'game is not found',
+        targetLocation: `/${routes.games}`
       });
       navigate(`/${routes.games}`);
     }
@@ -97,7 +98,8 @@ const GamePage = () => {
       setNotification({
         variant: 'error',
         text: 'Error',
-        subText: error?.message || 'something went wrong'
+        subText: error?.message || 'something went wrong',
+        targetLocation: `/${routes.games}`
       });
       navigate(`/${routes.games}`);
     }
@@ -108,7 +110,8 @@ const GamePage = () => {
       setNotification({
         variant: 'error',
         text: 'Saving game result failed',
-        subText: saveResultData.error?.message || 'something went wrong'
+        subText: saveResultData.error?.message || 'something went wrong',
+        targetLocation: `/${routes.games}`
       });
       navigate(`/${routes.games}`);
     }
