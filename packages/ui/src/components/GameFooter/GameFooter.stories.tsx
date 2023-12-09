@@ -1,46 +1,27 @@
 import React from 'react';
-import { GameFooter, GameFooterProps } from './GameFooter';
-import '../../assets/styles/common-styles.css';
+import { GameFooter, GameFooterVariant } from './GameFooter';
+import type { Meta } from '@storybook/react';
 
-export default {
+const meta: Meta<typeof GameFooter> = {
   title: 'GameFooter',
-  component: GameFooter,
-  argTypes: {
-    prop: {
-      control: { type: 'text' },
-      defaultValue: 'prop text'
-    }
-  }
+  component: GameFooter
 };
 
-export const GameFooterDefault = (args: GameFooterProps) => {
-  return (
-    <div className="footer">
-      <GameFooter {...args} />
-    </div>
-  );
-};
+const variants: GameFooterVariant[] = [
+  'initial',
+  'success',
+  'error',
+  'inProgress'
+];
 
-export const GameFooterInitial = (args: GameFooterProps) => {
-  return (
-    <div className="footer">
-      <GameFooter {...args} variant="initial" />
+export const GameFooterDemo = () =>
+  variants.map(variant => (
+    <div key={variant}>
+      <h3 className="presentationBox">{variant}</h3>
+      <div className="page">
+        <GameFooter variant={variant} />
+      </div>
     </div>
-  );
-};
+  ));
 
-export const GameFooterSuccess = (args: GameFooterProps) => {
-  return (
-    <div className="footer">
-      <GameFooter {...args} variant="success" />
-    </div>
-  );
-};
-
-export const GameFooterError = (args: GameFooterProps) => {
-  return (
-    <div className="footer">
-      <GameFooter {...args} variant="error" />
-    </div>
-  );
-};
+export default meta;

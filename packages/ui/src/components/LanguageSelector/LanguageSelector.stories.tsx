@@ -1,23 +1,18 @@
-import React from 'react';
 import { Language } from '../../generated/graphql';
-import { LanguageSelector, LanguageSelectorProps } from './LanguageSelector';
-import '../../assets/styles/common-styles.css';
+import { LanguageSelector } from './LanguageSelector';
+import { styledPreviewDecorator } from '../../storybook-decorators';
+import type { Meta } from '@storybook/react';
 
-export default {
+const meta: Meta<typeof LanguageSelector> = {
   title: 'LanguageSelector',
   component: LanguageSelector,
-  argTypes: {
-    prop: {
-      control: { type: 'text' },
-      defaultValue: 'prop text'
-    }
+  decorators: [styledPreviewDecorator('centered')]
+};
+
+export const LanguageSelectorDefault = {
+  args: {
+    value: Language.English
   }
 };
 
-export const LanguageSelectorDefault = (args: LanguageSelectorProps) => {
-  return (
-    <div className="presentationBox" style={{ marginLeft: '200px' }}>
-      <LanguageSelector {...args} value={Language.English} />
-    </div>
-  );
-};
+export default meta;

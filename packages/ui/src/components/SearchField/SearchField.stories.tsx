@@ -1,21 +1,13 @@
-import React from 'react';
-import { SearchField, SearchFieldProps } from './SearchField';
-import '../../assets/styles/common-styles.css';
+import { SearchField } from './SearchField';
+import { styledPreviewDecorator } from '../../storybook-decorators';
+import type { Meta } from '@storybook/react';
 
-export default {
+const meta: Meta<typeof SearchField> = {
   title: 'SearchField',
-  component: SearchField
+  component: SearchField,
+  decorators: [styledPreviewDecorator()]
 };
 
-export const SearchFieldDefault = (args: SearchFieldProps) => {
-  return (
-    <div className="presentationBox" style={{ width: '50%' }}>
-      <SearchField
-        {...args}
-        onSearch={val => {
-          console.log(val);
-        }}
-      />
-    </div>
-  );
-};
+export const SearchFieldDefault = {};
+
+export default meta;

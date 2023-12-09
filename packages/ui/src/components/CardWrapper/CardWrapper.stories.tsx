@@ -1,28 +1,25 @@
 import React from 'react';
-import { CardWrapper } from './CardWrapper';
+import { CardWrapper, CardWrapperProps } from './CardWrapper';
 import { WordCard } from '../WordCard/WordCard';
 import { words } from '../../mocks/words';
-import '../../assets/styles/common-styles.css';
+import type { Meta } from '@storybook/react';
 
-export default {
-  title: 'CardWrapper',
-  component: CardWrapper,
-  argTypes: {
-    prop: {
-      control: { type: 'text' },
-      defaultValue: 'prop text'
-    }
-  }
-};
-
-export const CardWrapperDefault = () => {
+const renderCards = (args: CardWrapperProps) => {
   return words.map(word => (
-    <>
-      <div className="page">
-        <CardWrapper>
-          <WordCard word={word} variant="short" />
-        </CardWrapper>
-      </div>
-    </>
+    <div className="page" key={word.name}>
+      <CardWrapper {...args}>
+        <WordCard word={word} variant="short" />
+      </CardWrapper>
+    </div>
   ));
 };
+
+const meta: Meta<typeof CardWrapper> = {
+  title: 'CardWrapper',
+  component: CardWrapper,
+  render: props => <>{renderCards(props)}</>
+};
+
+export const CardWrapperDefault = {};
+
+export default meta;

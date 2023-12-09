@@ -1,22 +1,16 @@
-import React from 'react';
-import { Template, TemplateProps } from './Template';
-import '../../assets/styles/common-styles.css';
+import { Template } from './Template';
+import { styledPreviewDecorator } from '../../storybook-decorators';
+import type { Meta } from '@storybook/react';
 
-export default {
+const meta: Meta<typeof Template> = {
   title: 'Template',
   component: Template,
-  argTypes: {
-    prop: {
-      control: { type: 'text' },
-      defaultValue: 'prop text'
-    }
-  }
+  decorators: [styledPreviewDecorator()]
 };
+export default meta;
 
-export const TemplateDefault = (args: TemplateProps) => {
-  return (
-    <div className="presentationBox">
-      <Template {...args} />
-    </div>
-  );
+export const TemplateDefault = {
+  args: {
+    prop: 'prop text'
+  }
 };

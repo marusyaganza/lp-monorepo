@@ -1,53 +1,43 @@
-import React from 'react';
-import { Input, InputProps } from './Input';
+import { Input } from './Input';
+import { styledPreviewDecorator } from '../../storybook-decorators';
+import type { Meta } from '@storybook/react';
 
-export default {
+const meta: Meta<typeof Input> = {
   title: 'Input',
   component: Input,
-  argTypes: {
-    name: {
-      control: { type: 'text' },
-      defaultValue: 'text'
-    },
-    label: {
-      control: { type: 'text' },
-      defaultValue: 'Text Input'
-    },
-    errorText: {
-      control: { type: 'text' },
-      defaultValue: 'Text is requierd'
-    }
+  decorators: [styledPreviewDecorator()]
+};
+
+const args = {
+  name: 'text',
+  label: 'Text input',
+  errorText: 'Text is required'
+};
+
+export const DefaultInput = {
+  args
+};
+
+export const InputDisabled = {
+  args: {
+    ...args,
+    disabled: true
   }
 };
 
-export const DefaultInput = (args: InputProps) => {
-  return (
-    <div className="presentationBox">
-      <Input {...args} />
-    </div>
-  );
+export const PasswordInput = {
+  args: {
+    ...args,
+    type: 'password'
+  }
 };
 
-export const InputDisabled = (args: InputProps) => {
-  return (
-    <div className="presentationBox">
-      <Input {...args} isDisabled />
-    </div>
-  );
+export const PasswordInputDisabled = {
+  args: {
+    ...args,
+    type: 'password',
+    disabled: true
+  }
 };
 
-export const PasswordInput = (args: InputProps) => {
-  return (
-    <div className="presentationBox">
-      <Input {...args} type="password" />
-    </div>
-  );
-};
-
-export const PasswordInputDisabled = (args: InputProps) => {
-  return (
-    <div className="presentationBox">
-      <Input {...args} type="password" isDisabled />
-    </div>
-  );
-};
+export default meta;

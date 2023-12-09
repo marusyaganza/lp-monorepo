@@ -13,7 +13,9 @@ export type LinkType = {
 };
 
 export interface FooterProps {
+  /**Links that are displayed on desktop footer */
   links?: LinkType[];
+  /**Links that are displayed on mobile footer */
   mobileLinks?: LinkType[];
 }
 

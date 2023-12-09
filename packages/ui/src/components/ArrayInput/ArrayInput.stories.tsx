@@ -1,43 +1,24 @@
-import React from 'react';
 import { ArrayInput, ArrayInputProps } from './ArrayInput';
-import '../../assets/styles/common-styles.css';
+import { styledPreviewDecorator } from '../../storybook-decorators';
+import type { Meta, StoryObj } from '@storybook/react';
 
-export default {
+const meta: Meta<typeof ArrayInput> = {
   title: 'ArrayInput',
   component: ArrayInput,
-  argTypes: {
-    label: {
-      control: { type: 'text' },
-      defaultValue: 'label text'
-    }
-  }
+  decorators: [styledPreviewDecorator()]
 };
 
-export const ArrayInputDefault = (args: ArrayInputProps) => {
-  return (
-    <div className="presentationBox">
-      <ArrayInput
-        {...args}
-        variant="dark"
-        onChange={val => {
-          console.log(val);
-        }}
-      />
-    </div>
-  );
+type Story = StoryObj<typeof ArrayInput>;
+
+const defaultArgs: Partial<ArrayInputProps> = {
+  label: 'Default label',
+  variant: 'dark'
 };
 
-export const ArrayInputWithOrderControls = (args: ArrayInputProps) => {
-  return (
-    <div className="presentationBox">
-      <ArrayInput
-        {...args}
-        variant="dark"
-        onChange={val => {
-          console.log(val);
-        }}
-        showOrderButtons
-      />
-    </div>
-  );
+export const ArrayInputDefault: Story = { args: defaultArgs };
+
+export const ArrayInputWithOrderControls: Story = {
+  args: { ...defaultArgs, showOrderButtons: true }
 };
+
+export default meta;

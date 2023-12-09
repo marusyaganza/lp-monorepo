@@ -7,10 +7,11 @@ import { InputWithButton } from '../InputWithButton/InputWithButton';
 import styles from './DefinitionInput.module.css';
 
 export interface DefinitionInputProps {
-  /**DefinitionInput nitial value */
+  /**DefinitionInput initial value */
   initialValue?: WordDefinition[];
   onChange: (value: WordDefinition[]) => void;
   errorText?: string;
+  /**Defines whether examples have translations. */
   withTranslation?: boolean;
   /**additional styling */
   className?: string;

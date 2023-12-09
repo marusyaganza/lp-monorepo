@@ -1,6 +1,5 @@
 import React from 'react';
 import { Icon, _iconIds } from './icon';
-import '../../assets/styles/common-styles.css';
 
 export default {
   title: 'Icon',

@@ -1,20 +1,18 @@
-import React from 'react';
-
 import { ErrorDisplay } from './ErrorDisplay';
+import { styledPreviewDecorator } from '../../storybook-decorators';
+import type { Meta } from '@storybook/react';
 
-export default {
+const meta: Meta<typeof ErrorDisplay> = {
   title: 'ErrorDisplay',
-  component: ErrorDisplay
+  component: ErrorDisplay,
+  decorators: [styledPreviewDecorator('page')]
 };
 
-export const ErrorDisplayDefault = () => (
-  <div className="presentationContent">
-    <ErrorDisplay
-      heading="Some error"
-      buttonText="reload"
-      buttonHandler={() => {
-        console.log('clicked!');
-      }}
-    />
-  </div>
-);
+export const ErrorDisplayDefault = {
+  args: {
+    heading: 'Some error',
+    buttonText: 'reload'
+  }
+};
+
+export default meta;

@@ -1,17 +1,13 @@
-import React from 'react';
 import { validators } from '../../utils/validators';
-import { Form, FormProps } from './Form';
+import { Form } from './Form';
 import { InputProps } from '../Input/Input';
-import '../../assets/styles/common-styles.css';
+import { styledPreviewDecorator } from '../../storybook-decorators';
+import type { Meta } from '@storybook/react';
 
-export default {
+const meta: Meta<typeof Form> = {
   title: 'Form',
   component: Form,
-  argTypes: {
-    fields: {
-      control: false
-    }
-  }
+  decorators: [styledPreviewDecorator()]
 };
 
 const fields: InputProps[] = [
@@ -70,10 +66,8 @@ const fields: InputProps[] = [
   }
 ];
 
-export const FromDefault = (args: FormProps<Record<string, string>>) => {
-  return (
-    <div className="presentationBox">
-      <Form {...args} fields={fields} />
-    </div>
-  );
+export const FromDefault = {
+  args: { fields }
 };
+
+export default meta;

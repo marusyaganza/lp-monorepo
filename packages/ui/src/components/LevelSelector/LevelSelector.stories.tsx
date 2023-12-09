@@ -1,29 +1,18 @@
-import React from 'react';
 import { Level } from '../../generated/graphql';
-import { LevelSelector, LevelSelectorProps } from './LevelSelector';
-import '../../assets/styles/common-styles.css';
+import { LevelSelector } from './LevelSelector';
+import { styledPreviewDecorator } from '../../storybook-decorators';
+import type { Meta } from '@storybook/react';
 
-export default {
+const meta: Meta<typeof LevelSelector> = {
   title: 'LevelSelector',
   component: LevelSelector,
-  argTypes: {
-    prop: {
-      control: { type: 'text' },
-      defaultValue: 'prop text'
-    }
+  decorators: [styledPreviewDecorator()]
+};
+
+export const LevelSelectorDefault = {
+  args: {
+    initialValue: Level.B1
   }
 };
 
-export const LevelSelectorDefault = (args: LevelSelectorProps) => {
-  return (
-    <div className="presentationBox" style={{ marginLeft: '200px' }}>
-      <LevelSelector
-        {...args}
-        initialValue={Level.A1}
-        onChange={val => {
-          console.log(val);
-        }}
-      />
-    </div>
-  );
-};
+export default meta;

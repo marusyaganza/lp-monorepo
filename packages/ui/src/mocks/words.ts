@@ -42,7 +42,7 @@ export const words: Word[] = [
     language: Language.English,
     defs: [
       {
-        def: '<i>informal + offensive</i> {bc} a woman\u0027s sex organs <i>also</i> {bc} sexual intercourse with a woman'
+        def: '<i>informal + offensive</i> a woman\u0027s sex organs <i>also</i> sexual intercourse with a woman'
       }
     ],
     particle: 'noun',
@@ -63,11 +63,11 @@ export const words: Word[] = [
     language: Language.English,
     defs: [
       {
-        def: '{bc}made on a potter\u0027s wheel ',
-        examples: [{ text: '{wi}wheel-thrown{/wi} pottery' }]
+        def: 'made on a potter\u0027s wheel ',
+        examples: [{ text: '<i>wheel-thrown</i> pottery' }]
       },
       {
-        def: '{bc}{sx|rotifer||}'
+        def: 'rotifer'
       }
     ],
     particle: 'noun',

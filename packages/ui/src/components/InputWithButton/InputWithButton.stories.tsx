@@ -1,37 +1,19 @@
-import React, { useState } from 'react';
-import { InputWithButton, InputWithButtonProps } from './InputWithButton';
-import '../../assets/styles/common-styles.css';
+import { InputWithButton } from './InputWithButton';
+import { styledPreviewDecorator } from '../../storybook-decorators';
+import type { Meta } from '@storybook/react';
 
-export default {
+const meta: Meta<typeof InputWithButton> = {
   title: 'InputWithButton',
   component: InputWithButton,
-  argTypes: {
-    prop: {
-      control: { type: 'text' },
-      defaultValue: 'prop text'
-    }
+  decorators: [styledPreviewDecorator()]
+};
+
+export const InputWithButtonDefault = {};
+
+export const InputWithButtonError = {
+  args: {
+    errorText: 'Input cannot be empty'
   }
 };
 
-export const InputWithButtonDefault = (args: InputWithButtonProps) => {
-  const [value, setValue] = useState('');
-  return (
-    <div className="presentationBox">
-      <InputWithButton
-        {...args}
-        value={value}
-        onChange={e => {
-          setValue(e.target.value);
-        }}
-      />
-    </div>
-  );
-};
-
-export const InputWithButtonError = (args: InputWithButtonProps) => {
-  return (
-    <div className="presentationBox">
-      <InputWithButton {...args} errorText="inpout cannot be empty" />
-    </div>
-  );
-};
+export default meta;

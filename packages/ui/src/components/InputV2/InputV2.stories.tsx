@@ -1,35 +1,19 @@
-import React from 'react';
-import { InputV2, InputV2Props } from './InputV2';
-import '../../assets/styles/common-styles.css';
+import { InputV2 } from './InputV2';
+import { styledPreviewDecorator } from '../../storybook-decorators';
+import type { Meta } from '@storybook/react';
 
-export default {
+const meta: Meta<typeof InputV2> = {
   title: 'InputV2',
   component: InputV2,
-  argTypes: {
-    prop: {
-      control: { type: 'text' },
-      defaultValue: 'prop text'
-    }
+  decorators: [styledPreviewDecorator()]
+};
+
+export const InputV2Default = {};
+
+export const InputV2Error = {
+  args: {
+    errorText: 'Input cannot be empty'
   }
 };
 
-export const InputV2Default = (args: InputV2Props) => {
-  return (
-    <div className="presentationBox">
-      <InputV2
-        {...args}
-        onChange={val => {
-          console.log(val);
-        }}
-      />
-    </div>
-  );
-};
-
-export const InputV2Error = (args: InputV2Props) => {
-  return (
-    <div className="presentationBox">
-      <InputV2 {...args} errorText="inpout cannot be empty" />
-    </div>
-  );
-};
+export default meta;

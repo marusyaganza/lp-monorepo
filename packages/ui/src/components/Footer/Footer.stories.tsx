@@ -1,18 +1,14 @@
-import React from 'react';
-import { withRouter } from 'storybook-addon-react-router-v6';
-import { Footer, FooterProps, LinkType } from './Footer';
-import '../../assets/styles/common-styles.css';
+import { Footer, LinkType } from './Footer';
+import {
+  styledPreviewDecorator,
+  routerDecorator
+} from '../../storybook-decorators';
+import type { Meta } from '@storybook/react';
 
-export default {
+const meta: Meta<typeof Footer> = {
   title: 'Footer',
   component: Footer,
-  argTypes: {
-    prop: {
-      control: { type: 'text' },
-      defaultValue: 'prop text'
-    }
-  },
-  decorators: [withRouter]
+  decorators: [styledPreviewDecorator('footer'), routerDecorator]
 };
 
 const links: LinkType[] = [
@@ -22,7 +18,7 @@ const links: LinkType[] = [
   { text: 'Profile', url: '#' }
 ];
 
-const mobileFooterLinks: LinkType[] = [
+const mobileLinks: LinkType[] = [
   {
     url: '/',
     text: 'Home',
@@ -45,18 +41,17 @@ const mobileFooterLinks: LinkType[] = [
   }
 ];
 
-export const FooterDefault = (args: FooterProps) => {
-  return (
-    <div className="footer">
-      <Footer {...args} mobileLinks={mobileFooterLinks} />
-    </div>
-  );
+export const FooterDefault = {
+  args: {
+    mobileLinks
+  }
 };
 
-export const FooterWithLinks = (args: FooterProps) => {
-  return (
-    <div className="footer">
-      <Footer {...args} links={links} mobileLinks={mobileFooterLinks} />
-    </div>
-  );
+export const FooterWithLinks = {
+  args: {
+    mobileLinks,
+    links
+  }
 };
+
+export default meta;

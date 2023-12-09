@@ -1,11 +1,13 @@
 import React from 'react';
 import { useSelect } from './useSelect';
 import { Select } from './Select';
-import '../../assets/styles/common-styles.css';
+import { styledPreviewDecorator } from '../../storybook-decorators';
+import type { Meta } from '@storybook/react';
 
-export default {
+const meta: Meta<typeof Select> = {
   title: 'Select',
-  component: Select
+  component: Select,
+  decorators: [styledPreviewDecorator()]
 };
 
 export const SelectDefault = () => {
@@ -14,11 +16,11 @@ export const SelectDefault = () => {
   };
   const { Select, Option } = useSelect({ onChange });
   return (
-    <div className="presentationBox">
-      <Select value="Option 1 value">
-        <Option value="Option 1 value">Option 1</Option>
-        <Option value="Option 2 value">Option 2</Option>
-      </Select>
-    </div>
+    <Select value="Option 1 value">
+      <Option value="Option 1 value">Option 1</Option>
+      <Option value="Option 2 value">Option 2</Option>
+    </Select>
   );
 };
+
+export default meta;
