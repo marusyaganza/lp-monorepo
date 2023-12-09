@@ -61,8 +61,18 @@
   background: var(--neutral-800);
 }
 
+.button.dark:hover {
+  background: var(--primary-500);
+  color: var(--text-inverted);
+}
+
 .purple {
   background: var(--primary-300);
+}
+
+.button.purple:hover {
+  background: var(--primary-200);
+  color: var(--text-inverted);
 }
 
 .purple:focus,

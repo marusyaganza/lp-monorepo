@@ -1,16 +1,12 @@
 import React, { useState } from 'react';
-import { OptionBox, OptionBoxProps } from './OptionBox';
-import '../../assets/styles/common-styles.css';
+import { OptionBox } from './OptionBox';
+import { styledPreviewDecorator } from '../../storybook-decorators';
+import type { Meta } from '@storybook/react';
 
-export default {
+const meta: Meta<typeof OptionBox> = {
   title: 'OptionBox',
   component: OptionBox,
-  argTypes: {
-    prop: {
-      control: { type: 'text' },
-      defaultValue: 'prop text'
-    }
-  }
+  decorators: [styledPreviewDecorator()]
 };
 
 const options = [
@@ -22,55 +18,36 @@ const options = [
   'foot'
 ];
 
-export const OptionBoxDefault = (args: OptionBoxProps) => {
+export const OptionBoxDefault = () => {
   const [value, setValue] = useState('');
   return (
-    <div className="presentationBox">
-      <OptionBox
-        {...args}
-        options={options}
-        value={value}
-        onChange={val => {
-          setValue(val);
-        }}
-      />
-    </div>
+    <OptionBox
+      options={options}
+      value={value}
+      onChange={val => {
+        setValue(val);
+      }}
+    />
   );
 };
 
-export const OptionBoxSuccess = (args: OptionBoxProps) => {
-  return (
-    <div className="presentationBox">
-      <OptionBox
-        {...args}
-        options={options}
-        value="heart"
-        correctOption="heart"
-        variant="success"
-        isDisabled
-        onChange={val => {
-          console.log(val);
-        }}
-      />
-    </div>
-  );
+export const OptionBoxSuccess = {
+  args: {
+    correctOption: 'heart',
+    variant: 'success',
+    isDisabled: true,
+    options
+  }
 };
 
-export const OptionBoxError = (args: OptionBoxProps) => {
-  return (
-    <div className="presentationBox">
-      <OptionBox
-        {...args}
-        options={options}
-        value="heart"
-        correctOption="heart"
-        variant="error"
-        incorrectOption="egg"
-        isDisabled
-        onChange={val => {
-          console.log(val);
-        }}
-      />
-    </div>
-  );
+export const OptionBoxError = {
+  args: {
+    correctOption: 'heart',
+    variant: 'error',
+    incorrectOption: 'egg',
+    isDisabled: true,
+    options
+  }
 };
+
+export default meta;

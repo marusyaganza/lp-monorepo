@@ -6,23 +6,7 @@ import '../../assets/styles/common-styles.css';
 
 export default {
   title: 'Button',
-  component: Button,
-  argTypes: {
-    iconHeight: {
-      control: 'number',
-      defaultValue: 20,
-      min: 1,
-      max: 100,
-      step: 1
-    },
-    iconWidth: {
-      control: 'number',
-      defaultValue: 20,
-      min: 1,
-      max: 100,
-      step: 1
-    }
-  }
+  component: Button
 };
 
 const buttons: ButtonVariantType[] = [
@@ -115,4 +99,9 @@ export const IconButtons = (args: ButtonProps) => {
       </Button>
     </div>
   ));
+};
+
+IconButtons.args = {
+  iconHeight: 30,
+  iconWidth: 30
 };

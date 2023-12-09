@@ -1,25 +1,30 @@
-import React from 'react';
-import { AudioButton, AudioButtonProps } from './AudioButton';
-import '../../assets/styles/common-styles.css';
+import { AudioButton } from './AudioButton';
+import { styledPreviewDecorator } from '../../storybook-decorators';
+import type { Meta } from '@storybook/react';
 
-export default {
+const meta: Meta<typeof AudioButton> = {
   title: 'AudioButton',
   component: AudioButton,
-  argTypes: {
-    buttonText: {
-      control: { type: 'text' },
-      defaultValue: 'iˌɡælɪˈteəriən'
-    },
-    src: {
-      control: { type: 'text' },
-      defaultValue:
-        'https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/e/ega/egali/egalitarian__gb_1.mp3'
-    }
+  decorators: [styledPreviewDecorator()],
+  parameters: {
+    actions: { disable: true }
   }
 };
 
-export const StandartButton = (args: AudioButtonProps) => (
-  <div className="presentationBox">
-    <AudioButton {...args} />
-  </div>
-);
+export const StandartButton = {
+  args: {
+    src: 'https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/e/ega/egali/egalitarian__gb_1.mp3',
+    buttonText: 'iˌɡælɪˈteəriən'
+  }
+};
+
+export const AutoPlayButton = {
+  args: {
+    autoplay: true,
+    src: 'https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/e/ega/egali/egalitarian__gb_1.mp3',
+    iconHeight: 50,
+    iconWidth: 50
+  }
+};
+
+export default meta;

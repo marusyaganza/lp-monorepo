@@ -1,21 +1,8 @@
 import React from 'react';
-import { withRouter } from 'storybook-addon-react-router-v6';
 import { Language } from '../../generated/graphql';
 import { HeaderV2, HeaderV2Props, HeaderLinkType } from './HeaderV2';
 import { UserMenuItemType } from '../UserMenu/UserMenu';
-import '../../assets/styles/common-styles.css';
-
-export default {
-  title: 'HeaderV2',
-  component: HeaderV2,
-  argTypes: {
-    prop: {
-      control: { type: 'text' },
-      defaultValue: 'prop text'
-    }
-  },
-  decorators: [withRouter]
-};
+import { routerDecorator } from '../../storybook-decorators';
 
 const navLinks: HeaderLinkType[] = [
   {
@@ -40,6 +27,12 @@ const navLinks: HeaderLinkType[] = [
   }
 ];
 
+export default {
+  title: 'HeaderV2',
+  component: HeaderV2,
+  decorators: [routerDecorator]
+};
+
 const menuItems: UserMenuItemType[] = [
   {
     url: '/',
@@ -47,9 +40,6 @@ const menuItems: UserMenuItemType[] = [
     icon: 'dragon'
   },
   {
-    onClick: () => {
-      console.log('log out');
-    },
     text: 'Logout',
     icon: 'door'
   }

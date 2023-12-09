@@ -26,6 +26,7 @@
 
 .primary:hover {
   background: var(--primary-200);
+  color: var(--text-inverted);
 }
 
 .primary:active {
@@ -142,7 +143,7 @@
   background-color: transparent;
 }
 
-.icon:hover {
+.button.icon:hover {
   color: var(--primary-500);
 }
 

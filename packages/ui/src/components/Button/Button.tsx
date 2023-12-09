@@ -39,6 +39,7 @@ export interface ButtonProps {
   isActionButton?: boolean;
   /**shape of the icon button */
   shape?: 'circle' | 'rectangular';
+  /**Native HTML 'autofocus' property. Defines if the element initially focussed */
   autoFocus?: boolean;
 }
 /**
@@ -85,12 +86,12 @@ export const Button = forwardRef<
         type={type}
         disabled={disabled || isLoading}
         className={cn(
-          className,
           styles.button,
           styles[variant],
           styles[`size${size}`],
           disabled ? styles.disabled : '',
-          isActionButton ? styles.actionButton : ''
+          isActionButton ? styles.actionButton : '',
+          className
         )}
         {...rest}
       >

@@ -6,7 +6,7 @@ import styles from './GameCard.module.css';
 import { GameConfig } from '../../generated/graphql';
 
 export interface GameCardProps {
-  /**GameCard prop */
+  /**Game config: includes game title, description and type */
   game: Omit<GameConfig, 'wordsPerGame' | 'optionsPerGame' | 'minWords'>;
   /**additional styling */
   linkUrl: string;

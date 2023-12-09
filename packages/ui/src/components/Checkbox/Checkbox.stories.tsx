@@ -1,78 +1,37 @@
-import React from 'react';
-import { Checkbox, CheckboxProps } from './Checkbox';
-import '../../assets/styles/common-styles.css';
+import { Checkbox } from './Checkbox';
+import { styledPreviewDecorator } from '../../storybook-decorators';
+import type { Meta } from '@storybook/react';
 
-export default {
+const meta: Meta<typeof Checkbox> = {
   title: 'Checkbox',
   component: Checkbox,
-  argTypes: {
-    prop: {
-      control: { type: 'text' },
-      defaultValue: 'prop text'
-    }
+  decorators: [styledPreviewDecorator()]
+};
+
+export const CheckboxDefault = {
+  args: {
+    label: 'Default'
   }
 };
 
-export const CheckboxDefault = (args: CheckboxProps) => {
-  return (
-    <div className="presentationBox">
-      <Checkbox
-        {...args}
-        name="default"
-        label="mock label"
-        onChange={val => {
-          console.log(val);
-        }}
-      />
-    </div>
-  );
+export const CheckboxIsOffensive = {
+  args: {
+    variant: 'isOffensive'
+  }
 };
 
-export const CheckboxIsOffensive = (args: CheckboxProps) => {
-  return (
-    <div className="presentationBox">
-      <Checkbox
-        {...args}
-        name="default"
-        variant="isOffensive"
-        label="mock label"
-        onChange={val => {
-          console.log(val);
-        }}
-      />
-    </div>
-  );
+export const CheckboxHidden = {
+  args: {
+    variant: 'hidden',
+    label: 'hidden'
+  }
 };
 
-export const CheckboxHidden = (args: CheckboxProps) => {
-  return (
-    <div className="presentationBox">
-      <Checkbox
-        {...args}
-        name="default"
-        variant="hidden"
-        label="mock label"
-        onChange={val => {
-          console.log(val);
-        }}
-      />
-    </div>
-  );
+export const CheckboxWithIcon = {
+  args: {
+    variant: 'withIcon',
+    iconId: 'desc'
+  }
 };
 
-export const CheckboxWithIcon = (args: CheckboxProps) => {
-  return (
-    <div className="presentationBox">
-      <Checkbox
-        {...args}
-        name="default"
-        variant="withIcon"
-        iconId="desc"
-        label="mock label"
-        onChange={val => {
-          console.log(val);
-        }}
-      />
-    </div>
-  );
-};
+export default meta;

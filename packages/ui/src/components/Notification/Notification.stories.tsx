@@ -1,34 +1,27 @@
-import React from 'react';
-import { Notification, NotificationProps } from './Notification';
-import '../../assets/styles/common-styles.css';
+import { Notification } from './Notification';
+import { styledPreviewDecorator } from '../../storybook-decorators';
+import type { Meta } from '@storybook/react';
 
-export default {
+const meta: Meta<typeof Notification> = {
   title: 'Notification',
   component: Notification,
-  argTypes: {
-    text: {
-      control: { type: 'text' },
-      defaultValue: 'Text prop'
-    },
-    subText: {
-      control: { type: 'text' },
-      defaultValue: 'Subtext prop'
-    }
+  decorators: [styledPreviewDecorator()]
+};
+
+export const NotificationSuccess = {
+  args: {
+    variant: 'success',
+    text: 'Success!',
+    subText: 'Happy text'
   }
 };
 
-export const NotificationSuccess = (args: NotificationProps) => {
-  return (
-    <div className="presentationBox">
-      <Notification {...args} variant="success" />
-    </div>
-  );
+export const NotificationError = {
+  args: {
+    variant: 'error',
+    text: 'Error!',
+    subText: 'Error description'
+  }
 };
 
-export const NotificationError = (args: NotificationProps) => {
-  return (
-    <div className="presentationBox">
-      <Notification {...args} variant="error" />
-    </div>
-  );
-};
+export default meta;

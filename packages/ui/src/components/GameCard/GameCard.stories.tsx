@@ -1,13 +1,12 @@
 import React from 'react';
-import { withRouter } from 'storybook-addon-react-router-v6';
 import { GameCard } from './GameCard';
 import { games } from '../../mocks/games';
-import '../../assets/styles/common-styles.css';
+import { routerDecorator } from '../../storybook-decorators';
 
 export default {
   title: 'GameCard',
   component: GameCard,
-  decorators: [withRouter]
+  decorators: [routerDecorator]
 };
 
 export const GameCardDefault = () => {

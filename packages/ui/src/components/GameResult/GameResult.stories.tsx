@@ -1,6 +1,5 @@
 import React from 'react';
 import { GameResult, GameResultProps } from './GameResult';
-import '../../assets/styles/common-styles.css';
 
 export default {
   title: 'GameResult',

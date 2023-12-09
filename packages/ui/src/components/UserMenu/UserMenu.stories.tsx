@@ -1,18 +1,14 @@
-import React from 'react';
-import { withRouter } from 'storybook-addon-react-router-v6';
-import { UserMenu, UserMenuProps, UserMenuItemType } from './UserMenu';
-import '../../assets/styles/common-styles.css';
+import { UserMenu, UserMenuItemType } from './UserMenu';
+import {
+  styledPreviewDecorator,
+  routerDecorator
+} from '../../storybook-decorators';
+import type { Meta } from '@storybook/react';
 
-export default {
+const meta: Meta<typeof UserMenu> = {
   title: 'UserMenu',
   component: UserMenu,
-  argTypes: {
-    prop: {
-      control: { type: 'text' },
-      defaultValue: 'prop text'
-    }
-  },
-  decorators: [withRouter]
+  decorators: [styledPreviewDecorator('centered'), routerDecorator]
 };
 
 const menuItems: UserMenuItemType[] = [
@@ -30,10 +26,10 @@ const menuItems: UserMenuItemType[] = [
   }
 ];
 
-export const UserMenuDefault = (args: UserMenuProps) => {
-  return (
-    <div className="presentationBox" style={{ marginLeft: '200px' }}>
-      <UserMenu {...args} menuItems={menuItems} />
-    </div>
-  );
+export const UserMenuDefault = {
+  args: {
+    menuItems
+  }
 };
+
+export default meta;

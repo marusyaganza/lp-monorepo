@@ -2,11 +2,13 @@ import React from 'react';
 import { useModal } from './useModal';
 import { Modal as ModalComponent, ModalProps } from './Modal';
 import { Button } from '../Button/Button';
-import '../../assets/styles/common-styles.css';
 
 export default {
   title: 'Modal',
-  component: ModalComponent
+  component: ModalComponent,
+  parameters: {
+    actions: { disable: true }
+  }
 };
 
 export const ModalDefault = (args: ModalProps) => {

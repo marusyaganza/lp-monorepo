@@ -1,24 +1,17 @@
-import React from 'react';
-import { Progress, ProgressProps } from './Progress';
-import '../../assets/styles/common-styles.css';
+import { Progress } from './Progress';
+import { styledPreviewDecorator } from '../../storybook-decorators';
+import type { Meta } from '@storybook/react';
 
-export default {
+const meta: Meta<typeof Progress> = {
   title: 'Progress',
   component: Progress,
-  argTypes: {
-    value: {
-      control: { type: 'number' },
-      defaultValue: 30,
-      min: 10,
-      max: 100,
-      step: 10
-    }
+  decorators: [styledPreviewDecorator()]
+};
+
+export const ProgressDefault = {
+  args: {
+    value: 30
   }
 };
-export const ProgressDefault = (args: ProgressProps) => {
-  return (
-    <div className="presentationBox">
-      <Progress {...args} />
-    </div>
-  );
-};
+
+export default meta;

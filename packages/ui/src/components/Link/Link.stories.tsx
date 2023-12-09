@@ -1,37 +1,29 @@
 import React from 'react';
-import { withRouter } from 'storybook-addon-react-router-v6';
+import { Link } from './Link';
+import {
+  styledPreviewDecorator,
+  routerDecorator
+} from '../../storybook-decorators';
+import type { Meta } from '@storybook/react';
 
-import { Link, LinkProps } from './Link';
-import '../../assets/styles/common-styles.css';
-
-export default {
+const meta: Meta<typeof Link> = {
   title: 'Link',
   component: Link,
-  argTypes: {
-    prop: {
-      control: { type: 'text' },
-      defaultValue: 'prop text'
-    }
-  },
-  decorators: [withRouter]
+  decorators: [styledPreviewDecorator(), routerDecorator],
+  render: props => <Link {...props}>Link</Link>
 };
 
-export const LinkDefault = (args: LinkProps) => {
-  return (
-    <div className="presentationBox">
-      <Link {...args} to="/">
-        Link
-      </Link>
-    </div>
-  );
+export const LinkDefault = {
+  args: {
+    to: '/'
+  }
 };
 
-export const LinkButton = (args: LinkProps) => {
-  return (
-    <div className="presentationBox">
-      <Link {...args} to="/" variant="button">
-        Link
-      </Link>
-    </div>
-  );
+export const LinkButton = {
+  args: {
+    to: '/',
+    variant: 'button'
+  }
 };
+
+export default meta;

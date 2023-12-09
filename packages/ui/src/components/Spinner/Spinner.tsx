@@ -2,10 +2,12 @@ import React from 'react';
 import { cn } from '../../utils/classnames';
 import './Spinner.css';
 
+export type SpinnerSize = 'S' | 'M' | 'L';
+
 export interface SpinnerProps {
   className?: string;
   variant?: 'primary' | 'secondary';
-  size?: 'S' | 'M' | 'L';
+  size?: SpinnerSize;
 }
 
 export const Spinner = ({

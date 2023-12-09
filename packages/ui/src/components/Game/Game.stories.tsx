@@ -2,6 +2,14 @@ import React from 'react';
 import { Game, GameProps } from './Game';
 import '../../assets/styles/common-styles.css';
 import { Game as GameType } from '../../generated/graphql';
+import { styledPreviewDecorator } from '../../storybook-decorators';
+import type { Meta } from '@storybook/react';
+
+const meta: Meta<typeof Game> = {
+  title: 'Game',
+  component: Game,
+  decorators: [styledPreviewDecorator()]
+};
 
 const games = [
   {
@@ -57,28 +65,11 @@ const games = [
   }
 ];
 
-export default {
-  title: 'Game',
-  component: Game,
-  argTypes: {
-    prop: {
-      control: { type: 'text' },
-      defaultValue: 'prop text'
-    }
-  }
-};
-
 export const GameDefault = (args: GameProps) =>
   games.map(game => {
     return (
       <div key={game.type} className="presentationBox" style={{ width: 600 }}>
-        <Game
-          {...args}
-          {...game}
-          onSubmit={val => {
-            console.log(val);
-          }}
-        />
+        <Game {...args} {...game} />
       </div>
     );
   });
@@ -91,9 +82,6 @@ export const GameSuccess = (args: GameProps) =>
           {...args}
           {...game}
           currentResult={{ type: 'success', correctAnswer: 'wheel' }}
-          onSubmit={val => {
-            console.log(val);
-          }}
         />
       </div>
     );
@@ -111,10 +99,9 @@ export const GameError = (args: GameProps) =>
             correctAnswer: 'wheel',
             incorrectAnswer: 'flower'
           }}
-          onSubmit={val => {
-            console.log(val);
-          }}
         />
       </div>
     );
   });
+
+export default meta;

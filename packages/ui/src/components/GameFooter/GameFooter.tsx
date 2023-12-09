@@ -6,8 +6,10 @@ import initialImg from '../../assets/img/game-result-initial.svg';
 import inProgressImg from '../../assets/img/game-result-in-progress.svg';
 import styles from './GameFooter.module.css';
 
+export type GameFooterVariant = 'initial' | 'success' | 'error' | 'inProgress';
+
 export interface GameFooterProps {
-  variant?: 'initial' | 'success' | 'error' | 'inProgress';
+  variant?: GameFooterVariant;
   /**additional styling */
   className?: string;
 }
