@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, useState, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import {
   useWordsLazyQuery,
   Word,
@@ -176,6 +176,7 @@ const WordsPage = () => {
       )}
       {loading && <Spinner />}
       {renderWords()}
+      <Outlet />
     </PageLayout>
   );
 };
