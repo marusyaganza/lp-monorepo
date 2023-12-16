@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { useRouteError, useNavigate } from 'react-router-dom';
+import { useRouteError, useNavigate, Outlet } from 'react-router-dom';
 import { ErrorDisplay } from '@lp/ui';
 import { PageLayout } from '../../components/PageLayout/PageLayout';
 
@@ -21,6 +21,7 @@ const ErrorPage = () => {
         buttonText="Reload"
         heading="Something went wrong"
       />
+      <Outlet />
     </PageLayout>
   );
 };

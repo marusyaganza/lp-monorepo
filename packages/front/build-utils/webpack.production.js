@@ -8,6 +8,7 @@ const path = require('path');
 module.exports = {
   mode: 'production',
   output: {
+    publicPath: '/',
     path: path.resolve(__dirname, '../public')
   },
   module: {
