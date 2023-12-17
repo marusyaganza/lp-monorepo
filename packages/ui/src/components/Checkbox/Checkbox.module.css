@@ -1,0 +1,80 @@
+@import '../../assets/styles/colors.css';
+@import '../../assets/styles/font-sizes.css';
+@import '../../assets/styles/fonts.css';
+@import '../../assets/styles/effects.css';
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: var(--neutral-800);
+  position: relative;
+  z-index: var(--z-index-2);
+
+  @media (max-width: 800px) {
+    font-size: var(--font-size-xs);
+  }
+}
+
+.labelText {
+  opacity: 1;
+}
+
+.label > input[type='checkbox'] {
+  width: 25px;
+  height: 25px;
+  accent-color: var(--primary-300);
+  @media (max-width: 800px) {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.withIcon {
+  color: var(--primary-400);
+  border-radius: 5px;
+  width: 40px;
+  height: 40px;
+  box-sizing: border-box;
+  border: 1px solid var(--neutral-500);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.withIcon:hover {
+  color: var(--primary-300);
+}
+
+.withIcon:focus-within {
+  border: 1px solid var(--neutral-800);
+}
+
+.hidden > input[type='checkbox'],
+.withIcon > input[type='checkbox'] {
+  position: absolute;
+  opacity: 0;
+  z-index: var(--z-index-1);
+}
+
+.label.isOffensive > input[type='checkbox'] {
+  accent-color: var(--error-200);
+}
+
+.label.isOffensive > input[type='checkbox']:hover {
+  accent-color: var(--error-100);
+}
+
+.offensive {
+  color: var(--error-200);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.hiddenText {
+  opacity: 0;
+  position: absolute;
+  z-index: var(--z-index-1);
+}

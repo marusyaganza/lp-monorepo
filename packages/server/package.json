@@ -1,33 +1,49 @@
 {
   "name": "@lp/server",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "app for Spanish learners",
-  "main": "app.js",
+  "main": "dist/app.js",
   "scripts": {
-    "start": "nodemon src/app.js --ignore 'src/db/db.json'",
-    "build": "node src/app.js",
-    "clean": "rimraf dist *.tsbuildinfo",
+    "dev": "nodemon src/app.js --ignore 'src/db/db.json'",
+    "copy": "cp -r ../shared/schema.graphql dist",
+    "build": "yarn codegen && tsc && yarn copy",
+    "clean": "rimraf dist src/generated *.tsbuildinfo node_modules",
     "eslint": "eslint src",
-    "ts": "tsc -b .",
-    "test": "jest",
+    "ts": "tsc --watch --preserveWatchOutput",
+    "test": "jest --detectOpenHandles",
+    "coverage": "jest --coverage",
+    "test:watch": "jest --watch --detectOpenHandles",
+    "ready": "yarn codegen && yarn eslint --fix && yarn test",
     "watch": "nodemon --watch './**/*.{ts,js}' --exec 'node --experimental-specifier-resolution=node --loader ts-node/esm' src/app.ts",
-    "dev": "tsc-watch --onSuccess \"npm run watch\""
+    "codegen": "graphql-codegen --config codegen.ts",
+    "codegen:watch": "graphql-codegen --config codegen.ts --watch",
+    "start": "yarn build && yarn concurrently 'yarn nodemon app.js' 'yarn ts'"
   },
   "author": "Marusya Ganza",
   "license": "MIT",
   "dependencies": {
-    "apollo-server": "^3.7.0",
-    "date-fns": "^2.5.0",
-    "graphql": "^16.5.0",
+    "@apollo/server": "^4.3.0",
+    "@graphql-codegen/cli": "3.0.0",
+    "@graphql-codegen/introspection": "^3.0.0",
+    "@graphql-codegen/typescript": "3.0.0",
+    "@graphql-codegen/typescript-resolvers": "3.0.0",
+    "@types/node": "^18.11.18",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.3.1",
+    "graphql": "^16.6.0",
+    "graphql-import-node": "^0.0.5",
     "jsonwebtoken": "^8.5.1",
-    "lowdb": "^1.0.0",
-    "nanoid": "^2.1.3"
+    "mongoose": "^7.2.2",
+    "typescript": "^4.9.5"
   },
   "devDependencies": {
-    "apollo-server-testing": "^2.25.3",
-    "jest": "^28.1.0",
-    "nodemon": "^2.0.15",
-    "ts-node": "^10.7.0",
-    "typescript": "^4.6.4"
+    "@babel/preset-typescript": "^7.18.6",
+    "concurrently": "^7.6.0",
+    "jest": "^29.5.0",
+    "nodemon": "^2.0.15"
+  },
+  "volta": {
+    "node": "18.16.0",
+    "yarn": "1.22.19"
   }
 }

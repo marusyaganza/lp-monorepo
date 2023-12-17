@@ -1,40 +1,86 @@
-import React, { InputHTMLAttributes } from 'react';
+import React, { HTMLAttributes, useCallback, useMemo, useState } from 'react';
 import { validatorType } from '../../utils/validators';
+import { Button } from '../Button/Button';
+import { Icon } from '../Icon/icon';
+import { cn } from '../../utils/classnames';
 
-import './Input.css';
+import styles from './Input.module.css';
 
-export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+export interface InputProps extends HTMLAttributes<HTMLInputElement> {
+  /**name attribute of native HTML input element */
   name: string;
+  /**input's label */
   label: string;
+  /**array of validators */
   validators?: validatorType[];
+  /**text that is shown if input is invalid */
   errorText?: string;
+  /**defines if input has valid value */
   isValid?: boolean;
+  /** defines if the input is focused by default => native html attribute*/
+  autoFocus?: boolean;
+  /**additional styling */
+  className?: string;
+  type?: 'text' | 'password' | 'email';
+  isDisabled?: boolean;
+  autoComplete?: string;
+  required?: boolean;
 }
-//TODO
-// required fields style
-// handle loading state
+
+/**Default input component  */
 export const Input = ({
   name,
   label,
   errorText,
   isValid = true,
   className,
+  type = 'text',
+  isDisabled,
+  required,
   ...rest
 }: InputProps) => {
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const isPassword = useMemo(() => type === 'password', [type]);
+  const handlePasswordVisivbility = useCallback(() => {
+    setIsPasswordVisible(prev => !prev);
+  }, []);
   return (
-    <div className={`${className} inputContainer`}>
-      <label htmlFor={name} className="label">
-        {label}
+    <div
+      className={cn(
+        className,
+        styles.container,
+        isValid ? '' : styles.incorrect
+      )}
+    >
+      <label htmlFor={name} className={styles.label}>
+        <span className={styles.labelText}>{label}</span>
+        {required && <Icon height={8} width={8} id="sun" />}
       </label>
       <input
-        className={`${isValid ? '' : 'error'} input`}
+        disabled={isDisabled}
+        type={isPassword && isPasswordVisible ? 'text' : type}
+        className={styles.input}
         name={name}
         {...rest}
       />
+      {type === 'password' && (
+        <Button
+          disabled={isDisabled}
+          className={styles.passwordButton}
+          iconId={isPasswordVisible ? 'eye' : 'eye-slashed'}
+          variant="icon"
+          iconHeight={25}
+          iconWidth={20}
+          onClick={handlePasswordVisivbility}
+        >
+          {isPasswordVisible ? 'Hide password' : 'Show password'}
+        </Button>
+      )}
       <p
         aria-hidden={isValid}
+        data-cy="inputError"
         role="status"
-        className={`${isValid ? '' : 'errorTextActive'} errorText`}
+        className={styles.errorText}
       >
         {errorText}
       </p>

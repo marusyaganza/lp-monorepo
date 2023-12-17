@@ -1,0 +1,172 @@
+@import '../../assets/styles/colors.css';
+@import '../../assets/styles/font-sizes.css';
+@import '../../assets/styles/fonts.css';
+@import '../../assets/styles/effects.css';
+
+.wordContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 32px;
+  border: 1px solid var(--neutral-300);
+  box-shadow: var(--primary-box-shadow);
+  border-radius: var(--primary-border-radius);
+  font-size: var(--font-size-s);
+  font-family: var(--font-libreBaskerville);
+  position: relative;
+  @media (max-width: 800px) {
+    padding: 24px;
+    padding-bottom: 64px;
+  }
+}
+
+.word {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  justify-content: space-between;
+  @media (max-width: 800px) {
+    gap: 32px;
+  }
+}
+
+.mainInfo {
+  display: flex;
+  align-items: center;
+  row-gap: 24px;
+  column-gap: 30px;
+  flex-wrap: wrap;
+}
+
+.wordName {
+  color: var(--primary-500);
+  margin: 0;
+}
+
+.particle {
+  font-style: italic;
+}
+
+.level {
+  opacity: 0.5;
+  font-family: var(--font-kalam);
+  background: var(--secondary-400);
+  color: var(--primary-500);
+  padding: 5px;
+}
+
+.example {
+  font-family: var(--font-kalam);
+  background: var(--neutral-200);
+  margin: 0 0 8px 48px;
+  padding: 8px 16px;
+  display: inline-block;
+}
+
+.definition {
+  display: flex;
+  gap: 10px;
+  margin: 0;
+  margin: 16px 0;
+}
+
+.defIcon {
+  flex-shrink: 0;
+  color: var(--secondary-500);
+}
+
+.defText > i {
+  font-style: italic;
+  font-weight: normal;
+}
+
+.offensive {
+  color: var(--error-200);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.learned {
+  color: var(--neutral-800);
+  padding: 4px 8px;
+  background: var(--background-success-100);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border-radius: var(--secondary-border-radius);
+  font-size: var(--font-size-xs);
+}
+
+.illustration {
+  margin: 0;
+  max-width: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  justify-content: center;
+  flex-shrink: 0;
+  align-self: center;
+}
+
+.picture {
+  margin: 0;
+  max-width: 100%;
+}
+
+.buttons {
+  display: flex;
+  gap: 40px;
+  align-self: flex-start;
+  @media (max-width: 800px) {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%);
+    margin: 16px 0;
+  }
+}
+
+.wordContainer > .buttons {
+  display: flex;
+  align-self: center;
+  @media (min-width: 800px) {
+    display: none;
+  }
+}
+
+.addButton {
+  color: var(--primary-300);
+}
+
+.deleteButton {
+  color: var(--error-300);
+}
+
+.editButton {
+  color: var(--primary-500);
+}
+
+.stems {
+  line-height: 1.5rem;
+  padding-right: 16px;
+}
+
+.stemsHeading {
+  font-style: italic;
+}
+
+.wordContent {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  @media (max-width: 1000px) {
+    flex-direction: column;
+  }
+}

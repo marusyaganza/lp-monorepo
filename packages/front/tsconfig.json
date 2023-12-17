@@ -1,9 +1,10 @@
 {
-  "extends": "../tsconfig.settings",
+  "extends": "../shared/tsconfig.settings",
     "compilerOptions": {
     "outDir": "./dist/",
     "jsx": "react",
-    "typeRoots": ["./src/@types", "./node_modules/@types"]
+    "typeRoots": ["./src/@types", "./node_modules/@types"],
+    "plugins": [{ "name": "typescript-plugin-css-modules" }]
   },
   "include": ["./src/"],
   "exclude": ["**/node_modules/**"]

@@ -1,0 +1,12 @@
+.image {
+  height: 30px;
+}
+
+.option {
+  text-transform: capitalize;
+}
+
+.currentOption {
+  display: flex;
+  align-items: center;
+}

@@ -1,18 +1,127 @@
 import { gql } from '@apollo/client';
 
 export const WORDS_QUERY = gql`
-  query WordsQuery {
-    words {
-      name
-      defs
+  query Words($input: WordsInput) {
+    words(input: $input) {
       id
+      name
+      defs {
+        def
+      }
       particle
-      examples
-      additionalInfo
-      imgUrl
       audioUrl
       transcription
-      tags
+      isOffensive
+      isLearned
+      level
+      shortDef
+    }
+  }
+`;
+
+export const WORD_BY_ID_QUERY = gql`
+  query WordById($wordId: ID!) {
+    word(id: $wordId) {
+      id
+      name
+      defs {
+        def
+        examples {
+          text
+          translation
+        }
+      }
+      particle
+      imgUrl
+      imgDesc
+      audioUrl
+      additionalInfo
+      transcription
+      user
+      isOffensive
+      isLearned
+      stems
+      level
+      shortDef
+    }
+  }
+`;
+
+export const SEARCH_WORDS = gql`
+  query SearchWords($input: WordSearchInput!) {
+    searchWord(input: $input) {
+      ... on Suggestions {
+        suggestions
+      }
+      ... on DictionaryWord {
+        uuid
+        transcription
+        stems
+        particle
+        name
+        isOffensive
+        imgUrl
+        defs {
+          examples {
+            text
+            translation
+          }
+          def
+        }
+        audioUrl
+        additionalInfo
+        imgDesc
+        shortDef
+        language
+      }
+    }
+  }
+`;
+export const USER = gql`
+  query User {
+    user {
+      createdAt
+      email
+      firstName
+      lastName
+      primaryLanguage
+      role
+    }
+  }
+`;
+
+export const GAMES = gql`
+  query Games {
+    games {
+      desc
+      imgUrl
+      name
+      id
+      type
+    }
+  }
+`;
+
+export const GAME = gql`
+  query Game($input: GameDataInput!) {
+    game(input: $input) {
+      questions {
+        wordId
+        question
+        options
+        answer
+        additionalInfo {
+          audioUrl
+          imgUrl
+          shortDef
+          examples {
+            text
+            translation
+          }
+        }
+      }
+      task
+      type
     }
   }
 `;

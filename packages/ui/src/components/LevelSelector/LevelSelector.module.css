@@ -1,0 +1,9 @@
+.level {
+  opacity: 0.5;
+  font-family: var(--font-kalam);
+  background: var(--secondary-500);
+  color: var(--primary-500);
+  padding: 4px 8px;
+  width: 32px;
+  box-sizing: border-box;
+}

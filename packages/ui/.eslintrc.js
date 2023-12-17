@@ -3,7 +3,8 @@ module.exports = {
     '../../.eslintrc',
     'plugin:react/recommended',
     'plugin:jsx-a11y/recommended',
-    'plugin:react-hooks/recommended'
+    'plugin:react-hooks/recommended',
+    'plugin:storybook/recommended'
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -13,6 +14,8 @@ module.exports = {
   },
   plugins: ['react', 'jsx-a11y', 'react-hooks'],
   rules: {
-    'jsx-a11y/no-autofocus': 'off'
+    'jsx-a11y/no-autofocus': 'off',
+    'jsx-a11y/no-noninteractive-element-interactions': 'off',
+    'jsx-a11y/no-noninteractive-tabindex': 'off'
   }
 };

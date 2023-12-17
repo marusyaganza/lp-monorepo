@@ -1,6 +1,6 @@
 {
   "name": "lp-monorepo",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "monorepo",
   "main": "index.js",
   "repository": "/",
@@ -13,12 +13,22 @@
   "scripts": {
     "start": "lerna run start --stream",
     "storybook": "lerna run storybook --scope '@lp/ui' --stream",
+    "cypress": "lerna run cypress",
+    "cypress:run": "lerna run cypress:run",
+    "prod": "lerna run prod --scope '@lp/front' --stream",
+    "build:server": "lerna run build --scope '@lp/server'",
+    "build:front": "yarn codegen --scope={'@lp/front','@lp/ui'} && lerna run prod --scope '@lp/front'",
     "eslint": "lerna run eslint",
     "ready": "lerna run ready",
     "clean": "lerna run clean",
     "test": "lerna run test --stream",
+    "codegen": "lerna run codegen --stream",
+    "codegen:watch": "lerna run codegen:watch --stream",
     "release": "yarn lerna version --conventional-commits",
     "api-docs": "sh api-docs.sh"
+  },
+  "dependencies": {
+    "lerna": "^5.5.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",
@@ -31,9 +41,8 @@
     "commitlint": "^17.1.2",
     "eslint": "^8.16.0",
     "eslint-plugin-jest": "^27.0.1",
-    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "husky": "^8.0.1",
-    "lerna": "^5.5.0",
     "lerna-changelog": "^2.2.0",
     "prettier": "^2.7.1",
     "rimraf": "^3.0.2",
@@ -45,7 +54,7 @@
     "stylelint-order": "^5.0.0"
   },
   "volta": {
-    "node": "16.17.0",
+    "node": "16.14.0",
     "yarn": "1.22.19"
   },
   "husky": {

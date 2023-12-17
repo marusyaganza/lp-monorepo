@@ -1,0 +1,13 @@
+.wordCard {
+  margin-left: 50px;
+  @media (max-width: 800px) {
+    margin: 0;
+  }
+}
+
+.link {
+  margin: 50px 0;
+  @media (max-width: 800px) {
+    margin: 24px;
+  }
+}

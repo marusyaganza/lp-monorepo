@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 const path = require('path');
 
 module.exports = {
@@ -7,10 +6,51 @@ module.exports = {
     publicPath: '/',
     path: path.resolve(__dirname, '../dist')
   },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        exclude: /\.module\.css$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+              sourceMap: true,
+              modules: {
+                mode: 'icss'
+              }
+            }
+          }
+        ],
+        sideEffects: true
+      },
+      {
+        test: /\.module\.css$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+              sourceMap: true,
+              modules: {
+                mode: 'local'
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
   devServer: {
+    // client: {
+    //   overlay: false
+    // },
     historyApiFallback: true,
     static: {
-      directory: path.join(__dirname, 'public')
+      directory: path.join(__dirname, 'build')
     },
     compress: true,
     port: 8080

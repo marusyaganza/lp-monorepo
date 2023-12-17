@@ -1,0 +1,38 @@
+@import '../../assets/styles/colors.css';
+@import '../../assets/styles/font-sizes.css';
+@import '../../assets/styles/fonts.css';
+@import '../../assets/styles/effects.css';
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--neutral-800);
+  font-size: var(--font-size-s);
+  text-decoration: none;
+  border-bottom: 1px solid var(--neutral-800);
+  width: fit-content;
+  padding-bottom: 4px;
+}
+
+.button {
+  text-decoration: none;
+  color: var(--text);
+  background: var(--neutral-100);
+  border: 1px solid var(--neutral-800);
+  padding: 10px 40px;
+  font-size: var(--font-size-xs);
+  font-family: var(--font-libreBaskerville);
+  transition: 0.3s ease background-color;
+  box-shadow: var(--primary-box-shadow);
+  border-radius: var(--primary-border-radius);
+}
+
+.button:hover {
+  background: var(--text-inverted);
+}
+
+.button:focus {
+  outline: none;
+  border: 2px solid var(--neutral-800);
+}

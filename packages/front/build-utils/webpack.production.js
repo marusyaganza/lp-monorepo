@@ -8,13 +8,44 @@ const path = require('path');
 module.exports = {
   mode: 'production',
   output: {
+    publicPath: '/',
     path: path.resolve(__dirname, '../public')
   },
   module: {
     rules: [
       {
-        test: /\.css$/i,
-        use: [MiniCssExtractPlugin.loader, 'css-loader']
+        test: /\.css$/,
+        exclude: /\.module\.css$/,
+        use: [
+          { loader: MiniCssExtractPlugin.loader },
+          {
+            loader: require.resolve('css-loader'),
+            options: {
+              importLoaders: 1,
+              sourceMap: false,
+              modules: {
+                mode: 'icss'
+              }
+            }
+          }
+        ],
+        sideEffects: true
+      },
+      {
+        test: /\.module\.css$/,
+        use: [
+          { loader: MiniCssExtractPlugin.loader },
+          {
+            loader: require.resolve('css-loader'),
+            options: {
+              importLoaders: 1,
+              sourceMap: false,
+              modules: {
+                mode: 'local'
+              }
+            }
+          }
+        ]
       }
     ]
   },

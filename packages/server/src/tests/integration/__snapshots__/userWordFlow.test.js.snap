@@ -1,0 +1,563 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`User can find a word by id 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": {
+        "word": {
+          "additionalInfo": "very useful information",
+          "audioUrl": "mock.mp3",
+          "defs": [
+            {
+              "def": "{bc} a strong substance that stretches and that is made out of chemicals or from the juice of a tropical tree",
+              "examples": [
+                {
+                  "text": "a rubber plantation",
+                },
+                {
+                  "text": "a rubber tree",
+                },
+              ],
+            },
+            {
+              "def": "{b}{it}rubbers{/it}{/b} {it}US{/it}, {it}informal + old-fashioned{/it} {bc} shoes or boots that are made of rubber and that fit over your regular shoes to keep them dry",
+              "examples": [],
+            },
+          ],
+          "imgUrl": "mock.jpeg",
+          "isOffensive": false,
+          "level": "B2",
+          "name": "egalitarian",
+          "particle": "noun",
+          "shortDef": [
+            "aiming for equal wealth, status, etc., for all people",
+          ],
+          "stems": [
+            "egalitarian",
+            "egalitarianism",
+            "egalitarians",
+          ],
+          "transcription": "iˌɡælɪˈteəriən",
+          "user": "mockUser",
+        },
+      },
+      "errors": undefined,
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`User can get see the information about his/her account 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": {
+        "user": {
+          "email": "test@test.com",
+          "firstName": "User",
+          "lastName": "Test",
+          "role": "MEMBER",
+        },
+      },
+      "errors": undefined,
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`User can get the words list 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": {
+        "words": [],
+      },
+      "errors": undefined,
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`User can login with correct password 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": {
+        "login": {
+          "email": "test@test.com",
+          "firstName": "User",
+          "lastName": "Test",
+          "token": "mock_token",
+        },
+      },
+      "errors": undefined,
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`User can save a word 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": {
+        "saveWord": {
+          "additionalInfo": "additional info",
+          "audioUrl": "mock.mp3",
+          "defs": [
+            {
+              "def": "a person who believes that everyone is equal and should have the same rights and opportunities",
+              "examples": [
+                {
+                  "text": "He described himself as ‘an {it}egalitarian{/it}’.",
+                },
+              ],
+            },
+            {
+              "def": "aiming for equal wealth, status, etc., for all people",
+              "examples": [
+                {
+                  "text": "He is a committed {it}egalitarian{/it}",
+                },
+                {
+                  "text": "Even in the {it}egalitarian{/it} Nordic country, Marin felt hergender and age sometimes received too much emphasis. Kostya Manenkov And Karl Ritter, USA TODAY, 21 Aug. 2022",
+                },
+              ],
+            },
+          ],
+          "id": "mockId",
+          "imgUrl": "mock.jpeg",
+          "isOffensive": false,
+          "level": "C1",
+          "name": "egalitarian",
+          "particle": "noun",
+          "shortDef": [
+            "aiming for equal wealth, status, etc., for all people",
+          ],
+          "stems": [
+            "egalitarian",
+            "egalitarianism",
+            "egalitarians",
+          ],
+          "tags": [
+            {
+              "color": "pink",
+              "text": "academic",
+            },
+          ],
+          "transcription": "iˌɡælɪˈteəriən",
+          "user": "mockUser",
+          "uuid": "74046e79-e4c9-4b52-ac96-cb7ae98fb601",
+        },
+      },
+      "errors": undefined,
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`User can save more words and view all of them 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": {
+        "words": [
+          {
+            "audioUrl": null,
+            "defs": [
+              {
+                "def": "{bc} a strong substance that stretches and that is made out of chemicals or from the juice of a tropical tree",
+              },
+              {
+                "def": "{it}British{/it}",
+              },
+              {
+                "def": "{b}{it}rubbers{/it}{/b} {it}US{/it}, {it}informal + old-fashioned{/it} {bc} shoes or boots that are made of rubber and that fit over your regular shoes to keep them dry",
+              },
+            ],
+            "isOffensive": false,
+            "level": "B2",
+            "name": "rubber",
+            "particle": "noun",
+            "transcription": "rubber",
+          },
+          {
+            "audioUrl": "mock.mp3",
+            "defs": [
+              {
+                "def": "a person who believes that everyone is equal and should have the same rights and opportunities",
+              },
+              {
+                "def": "aiming for equal wealth, status, etc., for all people",
+              },
+            ],
+            "isOffensive": false,
+            "level": "C1",
+            "name": "egalitarian",
+            "particle": "noun",
+            "transcription": "iˌɡælɪˈteəriən",
+          },
+        ],
+      },
+      "errors": undefined,
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`User can save more words and view all of them in reverse order 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": {
+        "words": [
+          {
+            "audioUrl": null,
+            "defs": [
+              {
+                "def": "{bc} a strong substance that stretches and that is made out of chemicals or from the juice of a tropical tree",
+              },
+              {
+                "def": "{it}British{/it}",
+              },
+              {
+                "def": "{b}{it}rubbers{/it}{/b} {it}US{/it}, {it}informal + old-fashioned{/it} {bc} shoes or boots that are made of rubber and that fit over your regular shoes to keep them dry",
+              },
+            ],
+            "isOffensive": false,
+            "level": "B2",
+            "name": "rubber",
+            "particle": "noun",
+            "transcription": "rubber",
+          },
+          {
+            "audioUrl": "mock.mp3",
+            "defs": [
+              {
+                "def": "a person who believes that everyone is equal and should have the same rights and opportunities",
+              },
+              {
+                "def": "aiming for equal wealth, status, etc., for all people",
+              },
+            ],
+            "isOffensive": false,
+            "level": "C1",
+            "name": "egalitarian",
+            "particle": "noun",
+            "transcription": "iˌɡælɪˈteəriən",
+          },
+        ],
+      },
+      "errors": undefined,
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`User can sign up 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": {
+        "signUp": {
+          "email": "test@test.com",
+          "firstName": "User",
+          "id": "mock_id",
+          "lastName": "Test",
+          "token": "mock_token",
+        },
+      },
+      "errors": undefined,
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`User can update a word 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": {
+        "updateWord": {
+          "additionalInfo": "very useful information",
+          "audioUrl": "mock.mp3",
+          "defs": [
+            {
+              "def": "{bc} a strong substance that stretches and that is made out of chemicals or from the juice of a tropical tree",
+              "examples": [
+                {
+                  "text": "a rubber plantation",
+                },
+                {
+                  "text": "a rubber tree",
+                },
+              ],
+            },
+            {
+              "def": "{b}{it}rubbers{/it}{/b} {it}US{/it}, {it}informal + old-fashioned{/it} {bc} shoes or boots that are made of rubber and that fit over your regular shoes to keep them dry",
+              "examples": [],
+            },
+          ],
+          "imgUrl": "mock.jpeg",
+          "isOffensive": false,
+          "level": "B2",
+          "name": "egalitarian",
+          "particle": "noun",
+          "shortDef": [
+            "aiming for equal wealth, status, etc., for all people",
+          ],
+          "stems": [
+            "egalitarian",
+            "egalitarianism",
+            "egalitarians",
+          ],
+          "tags": [
+            {
+              "color": "pink",
+              "text": "academic",
+            },
+          ],
+          "transcription": "iˌɡælɪˈteəriən",
+          "user": "mockUser",
+          "uuid": "74046e79-e4c9-4b52-ac96-cb7ae98fb601",
+        },
+      },
+      "errors": undefined,
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`User cannot get the words list if user record in DB does not exist 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": null,
+      "errors": [
+        {
+          "extensions": {
+            "code": "INTERNAL_SERVER_ERROR",
+          },
+          "locations": [
+            {
+              "column": 7,
+              "line": 3,
+            },
+          ],
+          "message": "Login to perform this operation",
+          "path": [
+            "words",
+          ],
+        },
+      ],
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`User cannot login with incorrect password 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": null,
+      "errors": [
+        {
+          "extensions": {
+            "code": "INTERNAL_SERVER_ERROR",
+          },
+          "locations": [
+            {
+              "column": 5,
+              "line": 3,
+            },
+          ],
+          "message": "email or password is incorrect",
+          "path": [
+            "login",
+          ],
+        },
+      ],
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`User cannot login with invalid email 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": null,
+      "errors": [
+        {
+          "extensions": {
+            "code": "INTERNAL_SERVER_ERROR",
+          },
+          "locations": [
+            {
+              "column": 5,
+              "line": 3,
+            },
+          ],
+          "message": "email or password is incorrect",
+          "path": [
+            "login",
+          ],
+        },
+      ],
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`User cannot save a word with the same uuid 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": null,
+      "errors": [
+        {
+          "extensions": {
+            "code": "INTERNAL_SERVER_ERROR",
+          },
+          "locations": [
+            {
+              "column": 3,
+              "line": 2,
+            },
+          ],
+          "message": "word with uuid 74046e79-e4c9-4b52-ac96-cb7ae98fb601 is already added",
+          "path": [
+            "saveWord",
+          ],
+        },
+      ],
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`User nonexistent user cannot save a word 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": null,
+      "errors": [
+        {
+          "extensions": {
+            "code": "INTERNAL_SERVER_ERROR",
+          },
+          "locations": [
+            {
+              "column": 3,
+              "line": 2,
+            },
+          ],
+          "message": "You do not have permission to perform this operation",
+          "path": [
+            "saveWord",
+          ],
+        },
+      ],
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;

@@ -1,16 +1,13 @@
 import React from 'react';
-import { Icon, IconIdType } from './icon';
-import '../../assets/styles/common-styles.css';
+import { Icon, _iconIds } from './icon';
 
 export default {
   title: 'Icon',
   component: Icon
 };
 
-const ids: IconIdType[] = ['edit', 'search', 'error', 'reload', 'book', 'play'];
-
 export const Icons = () =>
-  ids.map(id => {
+  _iconIds.map(id => {
     return (
       <div key={id} className="presentationBox">
         <p>{id}</p>

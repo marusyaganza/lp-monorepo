@@ -1,0 +1,83 @@
+@import '../../assets/styles/colors.css';
+@import '../../assets/styles/font-sizes.css';
+@import '../../assets/styles/fonts.css';
+@import '../../assets/styles/effects.css';
+
+.notificationContainer {
+  width: 400px;
+  z-index: var(--z-index-3);
+  background-color: var(--text-inverted);
+  box-shadow: var(--secondary-box-shadow);
+  font-family: var(--font-libreBaskerville);
+  position: relative;
+  border-radius: var(--primary-border-radius);
+  @media (max-width: 800px) {
+    width: fit-content;
+    max-width: calc(100% - 24px);
+  }
+}
+
+.notificationContent {
+  padding: 12px 16px;
+  width: 100%;
+  border-radius: var(--primary-border-radius);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  gap: 8px;
+}
+
+.successNotification {
+  background: var(--background-success-100);
+  border: 3px solid var(--background-success-200);
+  color: var(--success-300);
+}
+
+.errorNotification {
+  background: var(--background-danger-300);
+  border: 3px solid var(--background-danger-400);
+}
+
+.errorIcon {
+  color: var(--error-300);
+  width: 25px;
+  height: 20px;
+}
+
+.successIcon {
+  width: 18px;
+  height: 20px;
+}
+
+.notificationText {
+  font-size: var(--font-size-s);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.notificationSubText {
+  font-size: var(--font-size-xs);
+  margin: 0;
+  margin-top: 10px;
+  color: var(--neutral-800);
+}
+
+.errorNotification > .notificationText {
+  color: var(--neutral-700);
+}
+
+.errorNotification > .notificationSubText {
+  color: var(--neutral-700);
+}
+
+.successNotification > .notificationCloseButton {
+  color: var(--success-300);
+}
+
+.errorNotification > .notificationCloseButton {
+  color: var(--error-300);
+}

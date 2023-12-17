@@ -1,44 +1,1394 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`queries user 1`] = `
-Object {
-  "data": Object {
-    "user": Object {
-      "email": "member@member.com",
-      "id": "1",
-      "name": "Test",
-      "role": "MEMBER",
+exports[`queries games 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": {
+        "games": [
+          {
+            "desc": "Listen, Type, Master. Sharpen language skills through auditory engagement.",
+            "id": "audio",
+            "imgUrl": "audio",
+            "name": "WordEcho",
+          },
+          {
+            "desc": "Define & Conquer.Match words with their meanings intuitively.",
+            "id": "select_definition",
+            "imgUrl": "select_definition",
+            "name": "LexiSense",
+          },
+          {
+            "desc": "Associate definitions with the right words. A captivating word puzzle adventure!",
+            "id": "select_word",
+            "imgUrl": "select_word",
+            "name": "Definify: Match & Learn",
+          },
+          {
+            "desc": "Type words matching given definitions. Boost vocabulary in engaging rounds!",
+            "id": "type_word",
+            "imgUrl": "type_word",
+            "name": "WordRecall: Define & Type",
+          },
+        ],
+      },
+      "errors": undefined,
     },
   },
-  "errors": undefined,
-  "extensions": undefined,
-  "http": Object {
-    "headers": Headers {
-      Symbol(map): Object {},
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
     },
+    "status": undefined,
   },
 }
 `;
 
-exports[`queries word 1`] = `
-Object {
-  "data": Object {
-    "words": Array [
-      Object {
-        "defs": Array [
-          "a person who believes that everyone is equal and should have the same rights and opportunities",
-        ],
-        "id": "0",
-        "particle": "noun",
-      },
-    ],
-  },
-  "errors": undefined,
-  "extensions": undefined,
-  "http": Object {
-    "headers": Headers {
-      Symbol(map): Object {},
+exports[`queries generate game data if game is not found 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": null,
+      "errors": [
+        {
+          "extensions": {
+            "code": "INTERNAL_SERVER_ERROR",
+          },
+          "locations": [
+            {
+              "column": 3,
+              "line": 2,
+            },
+          ],
+          "message": "game not found",
+          "path": [
+            "game",
+          ],
+        },
+      ],
     },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`queries generate game data if user does not have enough words 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": null,
+      "errors": [
+        {
+          "extensions": {
+            "code": "INTERNAL_SERVER_ERROR",
+          },
+          "locations": [
+            {
+              "column": 3,
+              "line": 2,
+            },
+          ],
+          "message": "not enough words to start a game. You have 0 word. Words requited for the game: 1",
+          "path": [
+            "game",
+          ],
+        },
+      ],
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`queries generate game data if words do not exist 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": null,
+      "errors": [
+        {
+          "extensions": {
+            "code": "INTERNAL_SERVER_ERROR",
+          },
+          "locations": [
+            {
+              "column": 3,
+              "line": 2,
+            },
+          ],
+          "message": "words not found",
+          "path": [
+            "game",
+          ],
+        },
+      ],
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`queries get gamedata with walid user for Audio game and English 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": {
+        "game": {
+          "questions": [
+            {
+              "additionalInfo": {
+                "audioUrl": null,
+              },
+              "answer": "wheel",
+              "options": null,
+              "question": [
+                "https://media.merriam-webster.com/audio/prons/en/us/mp3/w/wheel001.mp3",
+              ],
+              "wordId": "1",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": null,
+              },
+              "answer": "wheel",
+              "options": null,
+              "question": [
+                "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v1.mp3",
+              ],
+              "wordId": "2",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": null,
+              },
+              "answer": "wheel and axle",
+              "options": null,
+              "question": [
+                "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v3.mp3",
+              ],
+              "wordId": "3",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": null,
+              },
+              "answer": "wheel animal",
+              "options": null,
+              "question": [
+                "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v4.mp3",
+              ],
+              "wordId": "4",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": null,
+              },
+              "answer": "wheel bug",
+              "options": null,
+              "question": [
+                "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v5.mp3",
+              ],
+              "wordId": "5",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": null,
+              },
+              "answer": "wheel-thrown",
+              "options": null,
+              "question": [
+                "https://media.merriam-webster.com/audio/prons/en/us/mp3/number/9wheel01.mp3",
+              ],
+              "wordId": "7",
+            },
+          ],
+          "task": "Type the word that you've heard",
+          "type": "AUDIO",
+        },
+      },
+      "errors": undefined,
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`queries get gamedata with walid user for SelectDef game and English 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": {
+        "game": {
+          "questions": [
+            {
+              "additionalInfo": {
+                "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/w/wheel001.mp3",
+              },
+              "answer": "wheel",
+              "options": null,
+              "question": [
+                "a circular frame of hard material that may be solid, partly solid, or spoked and that is capable of turning on an axle",
+                "a contrivance or apparatus having as its principal part a wheel: such as",
+                "a chiefly medieval instrument of torture designed for mutilating a victim (as by stretching or disjointing)",
+              ],
+              "wordId": "1",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v1.mp3",
+              },
+              "answer": "wheel",
+              "options": null,
+              "question": [
+                "to turn on or as if on an axis : revolve",
+                "to change direction as if revolving on a pivot",
+                "to move or extend in a circle or curve",
+              ],
+              "wordId": "2",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v3.mp3",
+              },
+              "answer": "wheel and axle",
+              "options": null,
+              "question": [
+                "a mechanical device consisting of a grooved wheel turned by a cord or chain with a rigidly attached axle (as for winding up a weight) together with the supporting standards",
+              ],
+              "wordId": "3",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v4.mp3",
+              },
+              "answer": "wheel animal",
+              "options": null,
+              "question": [
+                "rotifer",
+              ],
+              "wordId": "4",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v5.mp3",
+              },
+              "answer": "wheel bug",
+              "options": null,
+              "question": [
+                "a large North American assassin bug (Arilus cristatus) that has a high serrated crest on its prothorax and preys on insects",
+              ],
+              "wordId": "5",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": null,
+              },
+              "answer": "wheel lock",
+              "options": null,
+              "question": [
+                "a gun's lock for a muzzle-loading firearm in which sparks are struck from a flint or a piece of pyrite by a revolving wheel",
+              ],
+              "wordId": "6",
+            },
+          ],
+          "task": "Type a word that means ",
+          "type": "TYPE_WORD",
+        },
+      },
+      "errors": undefined,
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`queries get gamedata with walid user for SelectWord game and English 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": {
+        "game": {
+          "questions": [
+            {
+              "additionalInfo": {
+                "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/w/wheel001.mp3",
+              },
+              "answer": "wheel",
+              "options": null,
+              "question": [
+                "a circular frame of hard material that may be solid, partly solid, or spoked and that is capable of turning on an axle",
+                "a contrivance or apparatus having as its principal part a wheel: such as",
+                "a chiefly medieval instrument of torture designed for mutilating a victim (as by stretching or disjointing)",
+              ],
+              "wordId": "1",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v1.mp3",
+              },
+              "answer": "wheel",
+              "options": null,
+              "question": [
+                "to turn on or as if on an axis : revolve",
+                "to change direction as if revolving on a pivot",
+                "to move or extend in a circle or curve",
+              ],
+              "wordId": "2",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v3.mp3",
+              },
+              "answer": "wheel and axle",
+              "options": null,
+              "question": [
+                "a mechanical device consisting of a grooved wheel turned by a cord or chain with a rigidly attached axle (as for winding up a weight) together with the supporting standards",
+              ],
+              "wordId": "3",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v4.mp3",
+              },
+              "answer": "wheel animal",
+              "options": null,
+              "question": [
+                "rotifer",
+              ],
+              "wordId": "4",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v5.mp3",
+              },
+              "answer": "wheel bug",
+              "options": null,
+              "question": [
+                "a large North American assassin bug (Arilus cristatus) that has a high serrated crest on its prothorax and preys on insects",
+              ],
+              "wordId": "5",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": null,
+              },
+              "answer": "wheel lock",
+              "options": null,
+              "question": [
+                "a gun's lock for a muzzle-loading firearm in which sparks are struck from a flint or a piece of pyrite by a revolving wheel",
+              ],
+              "wordId": "6",
+            },
+          ],
+          "task": "Type a word that means ",
+          "type": "TYPE_WORD",
+        },
+      },
+      "errors": undefined,
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`queries get gamedata with walid user for TypeWord game and English 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": {
+        "game": {
+          "questions": [
+            {
+              "additionalInfo": {
+                "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/w/wheel001.mp3",
+              },
+              "answer": "wheel",
+              "options": null,
+              "question": [
+                "a circular frame of hard material that may be solid, partly solid, or spoked and that is capable of turning on an axle",
+                "a contrivance or apparatus having as its principal part a wheel: such as",
+                "a chiefly medieval instrument of torture designed for mutilating a victim (as by stretching or disjointing)",
+              ],
+              "wordId": "1",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v1.mp3",
+              },
+              "answer": "wheel",
+              "options": null,
+              "question": [
+                "to turn on or as if on an axis : revolve",
+                "to change direction as if revolving on a pivot",
+                "to move or extend in a circle or curve",
+              ],
+              "wordId": "2",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v3.mp3",
+              },
+              "answer": "wheel and axle",
+              "options": null,
+              "question": [
+                "a mechanical device consisting of a grooved wheel turned by a cord or chain with a rigidly attached axle (as for winding up a weight) together with the supporting standards",
+              ],
+              "wordId": "3",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v4.mp3",
+              },
+              "answer": "wheel animal",
+              "options": null,
+              "question": [
+                "rotifer",
+              ],
+              "wordId": "4",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v5.mp3",
+              },
+              "answer": "wheel bug",
+              "options": null,
+              "question": [
+                "a large North American assassin bug (Arilus cristatus) that has a high serrated crest on its prothorax and preys on insects",
+              ],
+              "wordId": "5",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": null,
+              },
+              "answer": "wheel lock",
+              "options": null,
+              "question": [
+                "a gun's lock for a muzzle-loading firearm in which sparks are struck from a flint or a piece of pyrite by a revolving wheel",
+              ],
+              "wordId": "6",
+            },
+          ],
+          "task": "Type a word that means ",
+          "type": "TYPE_WORD",
+        },
+      },
+      "errors": undefined,
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`queries searchWord english lang, mocks enabled 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": {
+        "searchWord": [
+          {
+            "additionalInfo": null,
+            "audioUrl": "mock_audio_endpoint/en/us/mp3/r/rubber01.mp3",
+            "defs": [
+              {
+                "def": "see also foam rubber",
+                "examples": [
+                  {
+                    "text": "tires made of <i>rubber</i>",
+                    "translation": null,
+                  },
+                ],
+              },
+              {
+                "def": "eraser",
+                "examples": null,
+              },
+              {
+                "def": "shoes or boots that are made of rubber and that fit over your regular shoes to keep them dry compare galoshes",
+                "examples": null,
+              },
+              {
+                "def": "condom",
+                "examples": null,
+              },
+              {
+                "def": "a flat piece of hard, white rubber on which the pitcher stands while pitching",
+                "examples": null,
+              },
+            ],
+            "imgDesc": null,
+            "imgUrl": null,
+            "isOffensive": false,
+            "name": "rubber",
+            "particle": "noun",
+            "shortDef": [
+              "a strong substance that stretches and that is made out of chemicals or from the juice of a tropical tree —often used before another noun",
+              "eraser",
+              "shoes or boots that are made of rubber and that fit over your regular shoes to keep them dry",
+            ],
+            "stems": [
+              "rubber",
+              "rubbers",
+              "burn rubber",
+            ],
+            "transcription": "rub*ber",
+            "uuid": "59e03286-73c9-43e6-b1eb-4407a6c06b1e",
+          },
+          {
+            "additionalInfo": null,
+            "audioUrl": null,
+            "defs": [
+              {
+                "def": "a contest that consists of a series of games and that is won by the player or team that wins the most games (such as two games out of three)",
+                "examples": [
+                  {
+                    "text": "Let's play a <i>rubber</i> of bridge.",
+                    "translation": null,
+                  },
+                ],
+              },
+              {
+                "def": "a game that decides who will be the winner of a series of games",
+                "examples": null,
+              },
+            ],
+            "imgDesc": null,
+            "imgUrl": null,
+            "isOffensive": false,
+            "name": "rubber",
+            "particle": "noun",
+            "shortDef": [
+              "a contest that consists of a series of games and that is won by the player or team that wins the most games (such as two games out of three)",
+              "a game that decides who will be the winner of a series of games—usually used before another noun",
+            ],
+            "stems": [
+              "rubber",
+              "caoutchouc",
+              "india rubber",
+              "rubbers",
+              "rubber game",
+            ],
+            "transcription": "rubber",
+            "uuid": "31c81e56-7a47-40ee-b6b3-63407105feb4",
+          },
+          {
+            "additionalInfo": null,
+            "audioUrl": "mock_audio_endpoint/en/us/mp3/c/condom01.mp3",
+            "defs": [
+              {
+                "def": "a thin rubber covering that a man wears on his penis during sex in order to prevent a woman from becoming pregnant or to prevent the spread of diseases",
+                "examples": null,
+              },
+            ],
+            "imgDesc": null,
+            "imgUrl": null,
+            "isOffensive": false,
+            "name": "condom",
+            "particle": "noun",
+            "shortDef": [
+              "a thin rubber covering that a man wears on his penis during sex in order to prevent a woman from becoming pregnant or to prevent the spread of diseases —called also rubber, sheath",
+            ],
+            "stems": [
+              "condom",
+              "condoms",
+              "rubber",
+              "sheath",
+            ],
+            "transcription": "con*dom",
+            "uuid": "79b4d0fe-8d9d-4bd0-879c-366078d586d6",
+          },
+          {
+            "additionalInfo": null,
+            "audioUrl": "mock_audio_endpoint/en/us/mp3/e/eraser01.mp3",
+            "defs": [
+              {
+                "def": "see picture at office",
+                "examples": null,
+              },
+            ],
+            "imgDesc": null,
+            "imgUrl": null,
+            "isOffensive": false,
+            "name": "eraser",
+            "particle": "noun",
+            "shortDef": [
+              "a small piece of rubber or other material that is used to erase something you have written or drawn —called also (British) rubber",
+            ],
+            "stems": [
+              "eraser",
+              "erasers",
+              "rubber",
+            ],
+            "transcription": "eras*er",
+            "uuid": "eb991c0d-a218-4812-930d-9ea376c44445",
+          },
+          {
+            "additionalInfo": null,
+            "audioUrl": null,
+            "defs": [
+              {
+                "def": "see picture at office",
+                "examples": null,
+              },
+            ],
+            "imgDesc": null,
+            "imgUrl": null,
+            "isOffensive": false,
+            "name": "rubber band",
+            "particle": "noun",
+            "shortDef": [
+              "a thin, flexible loop that is made of rubber and used to hold things together —called also (US) elastic, elastic band",
+            ],
+            "stems": [
+              "rubber band",
+              "rubber bands",
+              "elastic",
+              "elastic band",
+            ],
+            "transcription": "rubber band",
+            "uuid": "0634ec1c-dc66-465f-b390-fb945313d066",
+          },
+          {
+            "additionalInfo": null,
+            "audioUrl": null,
+            "defs": [
+              {
+                "def": "a tall boot that is made out of rubber and that keeps your feet and lower legs dry",
+                "examples": null,
+              },
+            ],
+            "imgDesc": null,
+            "imgUrl": null,
+            "isOffensive": false,
+            "name": "rubber boot",
+            "particle": "noun",
+            "shortDef": [
+              "a tall boot that is made out of rubber and that keeps your feet and lower legs dry —called also (British) Wellington",
+            ],
+            "stems": [
+              "rubber boot",
+              "rubber boots",
+              "wellington",
+            ],
+            "transcription": "rubber boot",
+            "uuid": "48d907a0-a8fb-4ca3-bc75-57a70d908166",
+          },
+          {
+            "additionalInfo": null,
+            "audioUrl": null,
+            "defs": [
+              {
+                "def": "a bullet that is made out of rubber so that it hurts but does not kill people and that is used by the police and military to control a crowd",
+                "examples": null,
+              },
+            ],
+            "imgDesc": null,
+            "imgUrl": null,
+            "isOffensive": false,
+            "name": "rubber bullet",
+            "particle": "noun",
+            "shortDef": [
+              "a bullet that is made out of rubber so that it hurts but does not kill people and that is used by the police and military to control a crowd",
+            ],
+            "stems": [
+              "rubber bullet",
+              "rubber bullets",
+            ],
+            "transcription": "rubber bullet",
+            "uuid": "dbdc0d78-3e16-4dc3-afd5-2e72bf8b6a55",
+          },
+          {
+            "additionalInfo": null,
+            "audioUrl": null,
+            "defs": [
+              {
+                "def": "a thick, stretchy glue that contains rubber",
+                "examples": null,
+              },
+            ],
+            "imgDesc": null,
+            "imgUrl": null,
+            "isOffensive": false,
+            "name": "rubber cement",
+            "particle": "noun",
+            "shortDef": [
+              "a thick, stretchy glue that contains rubber",
+            ],
+            "stems": [
+              "rubber cement",
+              "rubber cements",
+            ],
+            "transcription": "rubber cement",
+            "uuid": "eb1c2aba-f3df-46d5-936b-626e499998b1",
+          },
+          {
+            "additionalInfo": null,
+            "audioUrl": null,
+            "defs": [
+              {
+                "def": "a plant with large, shiny, dark green leaves that is often grown indoors",
+                "examples": null,
+              },
+            ],
+            "imgDesc": null,
+            "imgUrl": null,
+            "isOffensive": false,
+            "name": "rubber plant",
+            "particle": "noun",
+            "shortDef": [
+              "a plant with large, shiny, dark green leaves that is often grown indoors",
+            ],
+            "stems": [
+              "rubber plant",
+              "rubber plants",
+            ],
+            "transcription": "rubber plant",
+            "uuid": "39f6a4ec-4959-4d6f-876a-39b8f780c8cd",
+          },
+          {
+            "additionalInfo": null,
+            "audioUrl": null,
+            "defs": [
+              {
+                "def": "a small tool that consists of a handle attached to a piece of carved rubber and that is dipped in ink and then pressed on paper to print a date, name, symbol, etc.",
+                "examples": null,
+              },
+              {
+                "def": "a person or organization that automatically approves everything that someone does or decides",
+                "examples": [
+                  {
+                    "text": "The legislature has been nothing more than a <i>rubber stamp</i> for the President.",
+                    "translation": null,
+                  },
+                ],
+              },
+            ],
+            "imgDesc": null,
+            "imgUrl": null,
+            "isOffensive": false,
+            "name": "rubber stamp",
+            "particle": "noun",
+            "shortDef": [
+              "a small tool that consists of a handle attached to a piece of carved rubber and that is dipped in ink and then pressed on paper to print a date, name, symbol, etc.",
+              "a person or organization that automatically approves everything that someone does or decides",
+            ],
+            "stems": [
+              "rubber stamp",
+              "rubber stamps",
+              "rubber-stamp",
+            ],
+            "transcription": "rubber stamp",
+            "uuid": "3d83c22d-0913-4b18-8462-a4064a7d8fd2",
+          },
+        ],
+      },
+      "errors": undefined,
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`queries searchWord english lang, mocks enabled returns suggestion 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": {
+        "searchWord": [
+          {
+            "suggestions": [
+              "Mocking is enabled. You can query words from the list: egalitarian, rubber, pussy, heart, wheel, voluminous, fowl, murther, or notFound to receive an empty array as a result",
+            ],
+          },
+        ],
+      },
+      "errors": undefined,
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`queries searchWord spanish lang, mocks enabled 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": {
+        "searchWord": [
+          {
+            "additionalInfo": null,
+            "audioUrl": "mock_audio_endpoint/es/me/mp3/i/idiom01sp.mp3",
+            "defs": [
+              {
+                "def": "language",
+                "examples": [
+                  {
+                    "text": "el idioma inglés",
+                    "translation": "the English language",
+                  },
+                ],
+              },
+            ],
+            "imgDesc": null,
+            "imgUrl": null,
+            "isOffensive": false,
+            "name": "idioma",
+            "particle": "masculine noun",
+            "shortDef": [
+              "language",
+            ],
+            "stems": [
+              "idioma",
+            ],
+            "transcription": "idioma",
+            "uuid": "63882a81-032e-4dc1-9c22-bb683cb1bad9",
+          },
+        ],
+      },
+      "errors": undefined,
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`queries searchWord spanish lang, mocks enabled returns suggestion 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": {
+        "searchWord": [
+          {
+            "suggestions": [
+              "Mocking is enabled. You can query words from the list: idioma, hola, caerse",
+            ],
+          },
+        ],
+      },
+      "errors": undefined,
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`queries should not generate game data if user is not found 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": null,
+      "errors": [
+        {
+          "extensions": {
+            "code": "INTERNAL_SERVER_ERROR",
+          },
+          "locations": [
+            {
+              "column": 3,
+              "line": 2,
+            },
+          ],
+          "message": "Login to perform this operation",
+          "path": [
+            "game",
+          ],
+        },
+      ],
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`queries should not generate game data if user is undefined 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": null,
+      "errors": [
+        {
+          "extensions": {
+            "code": "INTERNAL_SERVER_ERROR",
+          },
+          "locations": [
+            {
+              "column": 3,
+              "line": 2,
+            },
+          ],
+          "message": "Login to perform this operation",
+          "path": [
+            "game",
+          ],
+        },
+      ],
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`queries user if user exist 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": {
+        "user": {
+          "email": "member@member.com",
+          "firstName": "User",
+          "id": "1",
+          "lastName": "Test",
+          "role": "MEMBER",
+        },
+      },
+      "errors": undefined,
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`queries user if user is not found 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": null,
+      "errors": [
+        {
+          "extensions": {
+            "code": "INTERNAL_SERVER_ERROR",
+          },
+          "locations": [
+            {
+              "column": 5,
+              "line": 3,
+            },
+          ],
+          "message": "user is not found",
+          "path": [
+            "user",
+          ],
+        },
+      ],
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`queries user if user is undefined 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": {
+        "user": {
+          "email": "member@member.com",
+          "firstName": "User",
+          "id": "1",
+          "lastName": "Test",
+          "role": "MEMBER",
+        },
+      },
+      "errors": undefined,
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`queries word by id 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": {
+        "word": {
+          "additionalInfo": null,
+          "audioUrl": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/e/ega/egali/egalitarian__gb_1.mp3",
+          "defs": [
+            {
+              "def": "a person who believes that everyone is equal and should have the same rights and opportunities",
+              "examples": [
+                {
+                  "text": "He described himself as ‘an {it}egalitarian{/it}’.",
+                },
+              ],
+            },
+            {
+              "def": "aiming for equal wealth, status, etc., for all people",
+              "examples": [
+                {
+                  "text": "He is a committed {it}egalitarian{/it}",
+                },
+                {
+                  "text": "Even in the {it}egalitarian{/it} Nordic country, Marin felt hergender and age sometimes received too much emphasis. Kostya Manenkov And Karl Ritter, USA TODAY, 21 Aug. 2022",
+                },
+              ],
+            },
+          ],
+          "id": "mockid",
+          "imgUrl": null,
+          "isOffensive": false,
+          "level": "C1",
+          "name": "egalitarian",
+          "particle": "noun",
+          "stems": [
+            "egalitarian",
+            "egalitarianism",
+            "egalitarians",
+          ],
+          "transcription": "iˌɡælɪˈteəriən",
+          "user": "1",
+        },
+      },
+      "errors": undefined,
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`queries word by id if word is not found 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": null,
+      "errors": [
+        {
+          "extensions": {
+            "code": "INTERNAL_SERVER_ERROR",
+          },
+          "locations": [
+            {
+              "column": 5,
+              "line": 3,
+            },
+          ],
+          "message": "word with id mockid is not found",
+          "path": [
+            "word",
+          ],
+        },
+      ],
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`queries words 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": {
+        "words": [
+          {
+            "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/w/wheel001.mp3",
+            "defs": [
+              {
+                "def": "a circular frame of hard material that may be solid, partly solid, or spoked and that is capable of turning on an axle",
+              },
+              {
+                "def": "see also behind the wheel",
+              },
+              {
+                "def": "a recurring course, development, or action cycle",
+              },
+              {
+                "def": "something (such as a round, flat cheese) resembling a wheel in shape",
+              },
+              {
+                "def": "a rotation or turn usually about an axis or center",
+              },
+              {
+                "def": "a person of importance especially in an organization",
+              },
+              {
+                "def": "the refrain or burden of a song",
+              },
+              {
+                "def": "a sports league",
+              },
+              {
+                "def": "a wheeled vehicle",
+              },
+              {
+                "def": "legs",
+              },
+            ],
+            "id": "1",
+            "isOffensive": false,
+            "level": null,
+            "name": "wheel",
+            "particle": "noun",
+            "transcription": "ˈ(h)wēl",
+          },
+          {
+            "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v1.mp3",
+            "defs": [
+              {
+                "def": "to turn on or as if on an axis revolve",
+              },
+              {
+                "def": "to change direction as if revolving on a pivot",
+              },
+              {
+                "def": "to move or extend in a circle or curve",
+              },
+              {
+                "def": "to travel on or as if on wheels or in a wheeled vehicle",
+              },
+              {
+                "def": "to cause to turn on or as if on an axis rotate",
+              },
+              {
+                "def": "to convey or move on or as if on wheels or in a wheeled vehicle",
+              },
+              {
+                "def": "to cause to change direction as if revolving on a pivot",
+              },
+              {
+                "def": "to make or perform in a circle or curve",
+              },
+            ],
+            "id": "2",
+            "isOffensive": false,
+            "level": null,
+            "name": "wheel",
+            "particle": "verb",
+            "transcription": "wheel",
+          },
+          {
+            "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v3.mp3",
+            "defs": [
+              {
+                "def": "a mechanical device consisting of a grooved wheel turned by a cord or chain with a rigidly attached axle (as for winding up a weight) together with the supporting standards",
+              },
+            ],
+            "id": "3",
+            "isOffensive": false,
+            "level": null,
+            "name": "wheel and axle",
+            "particle": "noun",
+            "transcription": "wheel and axle",
+          },
+          {
+            "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v4.mp3",
+            "defs": [
+              {
+                "def": "rotifer",
+              },
+            ],
+            "id": "4",
+            "isOffensive": false,
+            "level": null,
+            "name": "wheel animal",
+            "particle": "noun",
+            "transcription": "wheel animal",
+          },
+          {
+            "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v5.mp3",
+            "defs": [
+              {
+                "def": "a large North American assassin bug (<i>Arilus cristatus</i>) that has a high serrated crest on its prothorax and preys on insects",
+              },
+            ],
+            "id": "5",
+            "isOffensive": false,
+            "level": null,
+            "name": "wheel bug",
+            "particle": "noun",
+            "transcription": "wheel bug",
+          },
+          {
+            "audioUrl": null,
+            "defs": [
+              {
+                "def": "a gun's lock for a muzzle-loading firearm in which sparks are struck from a flint or a piece of pyrite by a revolving wheel",
+              },
+            ],
+            "id": "6",
+            "isOffensive": false,
+            "level": null,
+            "name": "wheel lock",
+            "particle": "noun",
+            "transcription": "wheel lock",
+          },
+          {
+            "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/number/9wheel01.mp3",
+            "defs": [
+              {
+                "def": "made on a potter's wheel",
+              },
+            ],
+            "id": "7",
+            "isOffensive": false,
+            "level": null,
+            "name": "wheel-thrown",
+            "particle": "adjective",
+            "transcription": "ˈ(h)wēl-ˌthrōn",
+          },
+          {
+            "audioUrl": null,
+            "defs": [
+              {
+                "def": "an object that the police lock onto one of the wheels of a car so that the car cannot be moved",
+              },
+            ],
+            "id": "8",
+            "isOffensive": false,
+            "level": null,
+            "name": "wheel clamp",
+            "particle": "noun",
+            "transcription": "wheel clamp",
+          },
+          {
+            "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v.mp3",
+            "defs": [
+              {
+                "def": "acting especially independently on or by means of all four wheels of an automotive vehicle",
+              },
+            ],
+            "id": "9",
+            "isOffensive": false,
+            "level": null,
+            "name": "all-wheel",
+            "particle": "adjective",
+            "transcription": "ˈȯl-ˈwēl",
+          },
+          {
+            "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v.mp3",
+            "defs": [
+              {
+                "def": "an automobile drive mechanism that acts on all four wheels of the vehicle",
+              },
+            ],
+            "id": "10",
+            "isOffensive": false,
+            "level": null,
+            "name": "all-wheel drive",
+            "particle": "noun",
+            "transcription": "ˈȯl-ˈwēl-",
+          },
+        ],
+      },
+      "errors": undefined,
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
   },
 }
 `;

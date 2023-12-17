@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { merge } = require('webpack-merge');
+const Dotenv = require('dotenv-webpack');
 
 const modeConfig = env => require(`./build-utils/webpack.${env}`);
 
@@ -24,11 +25,13 @@ module.exports = ({ mode = 'production' }) => {
           {
             test: /\.(woff|woff2|ttf)$/i,
             type: 'asset/resource'
-          },
-          { test: /\.css$/, use: ['style-loader', 'css-loader'] }
+          }
         ]
       },
-      plugins: [new HtmlWebpackPlugin({ template: './index.html' })]
+      plugins: [
+        new Dotenv(),
+        new HtmlWebpackPlugin({ template: './index.html' })
+      ]
     },
     modeConfig(mode)
   );

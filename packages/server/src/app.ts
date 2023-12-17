@@ -1,26 +1,44 @@
-import { Http2ServerRequest } from 'http2';
+require('dotenv').config();
+import 'graphql-import-node';
+import { ApolloServer } from '@apollo/server';
+import { startStandaloneServer } from '@apollo/server/standalone';
+import { initDB } from './db/initDB';
+import { resolvers, ResolverContext } from './resolvers';
+import {
+  createToken,
+  getUserFromToken,
+  hashPassword,
+  validatePassword
+} from './auth';
+import { generateGameData } from './utils/generateGameData';
+import { games } from './mocks/games';
+import { ModelsType } from './db/models';
+import { searchWord } from './dictionary';
 
-const { ApolloServer } = require('apollo-server');
-const typeDefs = require('./typedefs');
-const resolvers = require('./resolvers');
-const { createToken, getUserFromToken } = require('./auth');
-const { models, db } = require('./db');
+const typeDefs = require('./schema.graphql');
 
 const server = new ApolloServer({
   typeDefs,
-  resolvers,
-  context({ req }: { req: Http2ServerRequest }) {
-    const token = req.headers.authorization;
-    const user = token ? getUserFromToken(token) : null;
-    return { models, db, user, createToken };
-  }
+  resolvers
 });
 
-server
-  .listen(4000)
-  .then(({ url }: { url: string }) => {
-    console.log(`🚀 Server ready at ${url}`);
-  })
-  .catch((err: string) => {
-    console.log(err);
+initDB(async (models: ModelsType) => {
+  const { url } = await startStandaloneServer(server, {
+    context: async function ({ req }): Promise<ResolverContext> {
+      const token = req?.headers?.authorization?.split(' ').pop();
+      const user = token ? getUserFromToken(token) : undefined;
+      return {
+        models,
+        user,
+        createToken,
+        validatePassword,
+        hashPassword,
+        searchWord,
+        games,
+        generateGameData
+      };
+    },
+    listen: { port: 4000 }
   });
+  console.log(`🚀 Server ready at ${url}`);
+});

@@ -1,0 +1,123 @@
+@import '../../assets/styles/colors.css';
+@import '../../assets/styles/font-sizes.css';
+@import '../../assets/styles/fonts.css';
+@import '../../assets/styles/effects.css';
+
+.container {
+  position: relative;
+  display: inline-block;
+  width: fit-content;
+}
+
+.select {
+  padding: 5px;
+  margin: 0;
+  background: transparent;
+  color: var(--neutral-800);
+  font-size: inherit;
+  font-family: var(--font-libreBaskerville);
+  position: relative;
+  border-radius: var(--secondary-border-radius);
+  border: 1px solid transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  height: 38px;
+}
+
+.sizeS {
+  font-size: var(--font-size-xs);
+}
+
+.sizeM {
+  font-size: var(--font-size-m);
+}
+
+.left {
+  left: 0;
+}
+
+.right {
+  right: 0;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  margin-top: 4px;
+  border-radius: var(--primary-border-radius);
+  box-shadow: var(--secondary-box-shadow);
+  position: absolute;
+  border: 1px solid var(--neutral-500);
+  background: var(--text-inverted);
+  z-index: var(--z-index-2);
+}
+
+.radio {
+  position: absolute;
+  z-index: var(--z-index-1);
+  opacity: 0;
+}
+
+.label {
+  background: var(--text-inverted);
+  z-index: var(--z-index-2);
+  position: relative;
+  padding: 8px;
+  border-radius: var(--secondary-border-radius);
+  border: 1px solid transparent;
+  color: var(--neutral-800);
+  font-family: var(--font-libreBaskerville);
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.checked {
+  border: 1px solid var(--primary-100);
+}
+
+.label:hover,
+.select:hover {
+  background: var(--neutral-100);
+}
+
+.label:focus,
+.select:focus {
+  border: 1px solid var(--neutral-600);
+  outline: none;
+}
+
+.currentValue {
+  display: flex;
+  align-items: center;
+}
+
+.currentValue:focus-within {
+  border: 1px solid var(--neutral-800);
+  border-radius: var(--secondary-border-radius);
+}
+
+.withIcon {
+  display: flex;
+  padding: 8px 16px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  border: 1px solid var(--neutral-500);
+  width: 100%;
+  height: 40px;
+}
+
+.selectLabel {
+  font-size: var(--font-size-xs);
+  margin-bottom: 4px;
+  padding: 0;
+}
+
+.selectContainer {
+  display: flex;
+  flex-direction: column;
+}

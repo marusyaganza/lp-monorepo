@@ -1,0 +1,34 @@
+@import '../../assets/styles/colors.css';
+@import '../../assets/styles/font-sizes.css';
+@import '../../assets/styles/fonts.css';
+@import '../../assets/styles/effects.css';
+
+.progress {
+  height: 8px;
+  width: 60%;
+  border-radius: 20px;
+}
+
+progress {
+  background-color: var(--neutral-400);
+  border-radius: 20px;
+  color: var(--primary-300);
+}
+
+/* progress background: */
+progress::-webkit-progress-bar {
+  background-color: var(--neutral-400);
+  width: 100%;
+  border-radius: 20px;
+}
+
+/* progress value: */
+progress::-webkit-progress-value {
+  background-color: var(--primary-300);
+  border-radius: 20px;
+}
+
+progress::-moz-progress-bar {
+  background-color: var(--primary-300);
+  border-radius: 20px;
+}

@@ -1,0 +1,38 @@
+.gamesList {
+  display: grid;
+  grid-gap: 24px;
+  margin: 0 auto;
+  width: fit-content;
+  @media (min-width: 800px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.pageTitle {
+  margin: 0;
+  text-align: center;
+  font-size: var(--font-size-l);
+}
+
+.selectValue {
+  padding: 8px;
+  width: 200px;
+  margin: 0;
+}
+
+.topContainer {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  margin: 24px auto;
+  gap: 24px;
+  @media (min-width: 800px) {
+    margin: 100px 70px;
+    flex-direction: row;
+  }
+}
+
+.sortControls {
+  align-self: flex-end;
+}

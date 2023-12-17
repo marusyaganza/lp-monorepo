@@ -1,36 +1,68 @@
 import React from 'react';
-import { addDecorator } from '@storybook/react';
-import { MemoryRouter } from 'react-router-dom';
-
-import { WordCard } from './WordCard';
-
-addDecorator(story => (
-  <MemoryRouter initialEntries={['/']}>{story()}</MemoryRouter>
-));
+import { WordCard, WordCardProps } from './WordCard';
+import { words, wheel, spanishWords } from '../../mocks/words';
+import '../../assets/styles/common-styles.css';
 
 export default {
   title: 'WordCard',
   component: WordCard
 };
 
-const word = {
-  uuid: '74046e79-e4c9-4b52-ac96-cb7ae98fb601',
-  id: 'mockid',
-  name: 'shoal',
-  imgUrl: 'https://image.adsoftheworld.com/k1fnqumahtfbzucobwcona3uck8n',
-  defs: [
-    '{bc} a large group or number',
-    '{bc} an area where the water in a sea, lake, or river is not deep',
-    '{bc} a small, raised area of sand just below the surface of the water'
-  ],
-  particle: 'noun',
-  examples: ['Example1', 'Example2'],
-  audioUrl:
-    'https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/e/ega/egali/egalitarian__gb_1.mp3',
-  transcription: 'iˌɡælɪˈteəriən',
-  // transcription: 'ˈʃoʊl',
-  // audioUrl: 'https://media.merriam-webster.com/soundc11/s/shoal001.wav',
-  user: '0'
+export const WordCardDefault = () => {
+  return words.map(word => (
+    <div key={word.name} className="page">
+      <WordCard word={word} />
+    </div>
+  ));
 };
 
-export const WordCardComponent = () => <WordCard word={word} />;
+export const WordCardShort = (args: WordCardProps) => {
+  return words.map(word => (
+    <div key={word.name} className="page">
+      <WordCard {...args} word={word} variant="short" />
+    </div>
+  ));
+};
+
+export const WordCardLong = (args: WordCardProps) => {
+  return wheel.map(word => (
+    <div key={word.name} className="page">
+      <WordCard {...args} word={word} variant="short" />
+    </div>
+  ));
+};
+
+export const WordCardSpanish = (args: WordCardProps) => {
+  return spanishWords.map(word => (
+    <div key={word.name} className="page">
+      <WordCard {...args} word={word} variant="full" />
+    </div>
+  ));
+};
+
+export const WordCardWithButtons = (args: WordCardProps) => {
+  const callBacks = {
+    addButton: {
+      callback: () => {
+        console.log('added!');
+      }
+    },
+    deleteButton: {
+      callback: () => {
+        {
+          console.log('deleted!');
+        }
+      }
+    },
+    editButton: {
+      callback: () => {
+        console.log('edited!');
+      }
+    }
+  };
+  return wheel.map(word => (
+    <div key={word.name} className="page">
+      <WordCard {...args} word={word} {...callBacks} variant="full" />
+    </div>
+  ));
+};

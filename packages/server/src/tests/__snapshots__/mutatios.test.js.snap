@@ -1,56 +1,861 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`mutations login with correct password 1`] = `
-Object {
-  "data": Object {
-    "login": Object {
-      "email": "member@member.com",
-      "id": "1",
-      "name": "Test",
-      "token": "token",
+exports[`mutations create not create word if user is not defined 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": null,
+      "errors": [
+        {
+          "extensions": {
+            "code": "INTERNAL_SERVER_ERROR",
+          },
+          "locations": [
+            {
+              "column": 3,
+              "line": 2,
+            },
+          ],
+          "message": "You do not have permission to perform this operation",
+          "path": [
+            "saveWord",
+          ],
+        },
+      ],
     },
   },
-  "errors": undefined,
-  "extensions": undefined,
-  "http": Object {
-    "headers": Headers {
-      Symbol(map): Object {},
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
     },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`mutations create not create word if user is not found 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": null,
+      "errors": [
+        {
+          "extensions": {
+            "code": "INTERNAL_SERVER_ERROR",
+          },
+          "locations": [
+            {
+              "column": 3,
+              "line": 2,
+            },
+          ],
+          "message": "You do not have permission to perform this operation",
+          "path": [
+            "saveWord",
+          ],
+        },
+      ],
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`mutations create word if word exists 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": null,
+      "errors": [
+        {
+          "extensions": {
+            "code": "INTERNAL_SERVER_ERROR",
+          },
+          "locations": [
+            {
+              "column": 3,
+              "line": 2,
+            },
+          ],
+          "message": "word with uuid 74046e79-e4c9-4b52-ac96-cb7ae98fb601 is already added",
+          "path": [
+            "saveWord",
+          ],
+        },
+      ],
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`mutations delete word 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": {
+        "deleteWord": "word with id deleteWordId was deleted",
+      },
+      "errors": undefined,
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`mutations delete word if operation fails 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": null,
+      "errors": [
+        {
+          "extensions": {
+            "code": "INTERNAL_SERVER_ERROR",
+          },
+          "locations": [
+            {
+              "column": 3,
+              "line": 2,
+            },
+          ],
+          "message": "deleting word with id deleteWordId failed",
+          "path": [
+            "deleteWord",
+          ],
+        },
+      ],
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`mutations delete word if operation result is undefined 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": null,
+      "errors": [
+        {
+          "extensions": {
+            "code": "INTERNAL_SERVER_ERROR",
+          },
+          "locations": [
+            {
+              "column": 3,
+              "line": 2,
+            },
+          ],
+          "message": "deleting word with id deleteWordId failed",
+          "path": [
+            "deleteWord",
+          ],
+        },
+      ],
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`mutations delete word if user is not defined 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": null,
+      "errors": [
+        {
+          "extensions": {
+            "code": "INTERNAL_SERVER_ERROR",
+          },
+          "locations": [
+            {
+              "column": 3,
+              "line": 2,
+            },
+          ],
+          "message": "You do not have permission to perform this operation",
+          "path": [
+            "deleteWord",
+          ],
+        },
+      ],
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`mutations delete word if user is not found 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": null,
+      "errors": [
+        {
+          "extensions": {
+            "code": "INTERNAL_SERVER_ERROR",
+          },
+          "locations": [
+            {
+              "column": 3,
+              "line": 2,
+            },
+          ],
+          "message": "You do not have permission to perform this operation",
+          "path": [
+            "deleteWord",
+          ],
+        },
+      ],
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`mutations login with correct password 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": {
+        "login": {
+          "email": "member@member.com",
+          "firstName": "User",
+          "id": "1",
+          "lastName": "Test",
+          "token": "token",
+        },
+      },
+      "errors": undefined,
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`mutations login with correct password if token is not defined 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": null,
+      "errors": [
+        {
+          "extensions": {
+            "code": "INTERNAL_SERVER_ERROR",
+          },
+          "locations": [
+            {
+              "column": 5,
+              "line": 3,
+            },
+          ],
+          "message": "sign up operation failed",
+          "path": [
+            "login",
+          ],
+        },
+      ],
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
   },
 }
 `;
 
 exports[`mutations login with incorrect password 1`] = `
-Object {
-  "data": null,
-  "errors": Array [
-    [GraphQLError: email or password is incorrect],
-  ],
-  "extensions": undefined,
-  "http": Object {
-    "headers": Headers {
-      Symbol(map): Object {},
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": null,
+      "errors": [
+        {
+          "extensions": {
+            "code": "INTERNAL_SERVER_ERROR",
+          },
+          "locations": [
+            {
+              "column": 5,
+              "line": 3,
+            },
+          ],
+          "message": "email or password is incorrect",
+          "path": [
+            "login",
+          ],
+        },
+      ],
     },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`mutations login with invalid email 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": null,
+      "errors": [
+        {
+          "extensions": {
+            "code": "INTERNAL_SERVER_ERROR",
+          },
+          "locations": [
+            {
+              "column": 5,
+              "line": 3,
+            },
+          ],
+          "message": "email or password is incorrect",
+          "path": [
+            "login",
+          ],
+        },
+      ],
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`mutations safe game result 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": {
+        "saveGameResult": "Game result saved",
+      },
+      "errors": undefined,
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`mutations safe game result if operation failed 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": null,
+      "errors": [
+        {
+          "extensions": {
+            "code": "INTERNAL_SERVER_ERROR",
+          },
+          "locations": [
+            {
+              "column": 3,
+              "line": 3,
+            },
+          ],
+          "message": "saving training result failed",
+          "path": [
+            "saveGameResult",
+          ],
+        },
+      ],
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`mutations safe game result if operation result is undefined 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": null,
+      "errors": [
+        {
+          "extensions": {
+            "code": "INTERNAL_SERVER_ERROR",
+          },
+          "locations": [
+            {
+              "column": 3,
+              "line": 3,
+            },
+          ],
+          "message": "saving training result failed",
+          "path": [
+            "saveGameResult",
+          ],
+        },
+      ],
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`mutations safe game result if user does not exist 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": null,
+      "errors": [
+        {
+          "extensions": {
+            "code": "INTERNAL_SERVER_ERROR",
+          },
+          "locations": [
+            {
+              "column": 3,
+              "line": 3,
+            },
+          ],
+          "message": "You do not have permission to perform this operation",
+          "path": [
+            "saveGameResult",
+          ],
+        },
+      ],
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`mutations safe game result if user is not defined 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": null,
+      "errors": [
+        {
+          "extensions": {
+            "code": "INTERNAL_SERVER_ERROR",
+          },
+          "locations": [
+            {
+              "column": 3,
+              "line": 3,
+            },
+          ],
+          "message": "You do not have permission to perform this operation",
+          "path": [
+            "saveGameResult",
+          ],
+        },
+      ],
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
   },
 }
 `;
 
 exports[`mutations signUp 1`] = `
-Object {
-  "data": Object {
-    "signUp": Object {
-      "email": "test@test.com",
-      "id": "2",
-      "name": "Hello World",
-      "token": "token",
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": {
+        "signUp": {
+          "email": "test@test.com",
+          "firstName": "User",
+          "id": "2",
+          "lastName": "Test",
+          "token": "token",
+        },
+      },
+      "errors": undefined,
     },
   },
-  "errors": undefined,
-  "extensions": undefined,
-  "http": Object {
-    "headers": Headers {
-      Symbol(map): Object {},
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
     },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`mutations signUp if email is already taken 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": null,
+      "errors": [
+        {
+          "extensions": {
+            "code": "INTERNAL_SERVER_ERROR",
+          },
+          "locations": [
+            {
+              "column": 5,
+              "line": 3,
+            },
+          ],
+          "message": "user with email test@test.com already exists",
+          "path": [
+            "signUp",
+          ],
+        },
+      ],
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`mutations signUp if hashing password fails 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": null,
+      "errors": [
+        {
+          "extensions": {
+            "code": "INTERNAL_SERVER_ERROR",
+          },
+          "locations": [
+            {
+              "column": 5,
+              "line": 3,
+            },
+          ],
+          "message": "sign up operation failed",
+          "path": [
+            "signUp",
+          ],
+        },
+      ],
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`mutations signUp if token is not defined 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": null,
+      "errors": [
+        {
+          "extensions": {
+            "code": "INTERNAL_SERVER_ERROR",
+          },
+          "locations": [
+            {
+              "column": 5,
+              "line": 3,
+            },
+          ],
+          "message": "sign up operation failed",
+          "path": [
+            "signUp",
+          ],
+        },
+      ],
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`mutations signUp if user creation fails 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": null,
+      "errors": [
+        {
+          "extensions": {
+            "code": "INTERNAL_SERVER_ERROR",
+          },
+          "locations": [
+            {
+              "column": 5,
+              "line": 3,
+            },
+          ],
+          "message": "sign up operation failed",
+          "path": [
+            "signUp",
+          ],
+        },
+      ],
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`mutations update word 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": {
+        "updateWord": {
+          "additionalInfo": null,
+          "audioUrl": null,
+          "defs": [
+            {
+              "def": "{bc} a strong substance that stretches and that is made out of chemicals or from the juice of a tropical tree",
+              "examples": null,
+            },
+            {
+              "def": "{it}British{/it}",
+              "examples": null,
+            },
+            {
+              "def": "{b}{it}rubbers{/it}{/b} {it}US{/it}, {it}informal + old-fashioned{/it} {bc} shoes or boots that are made of rubber and that fit over your regular shoes to keep them dry",
+              "examples": null,
+            },
+          ],
+          "imgUrl": null,
+          "isOffensive": null,
+          "level": "B2",
+          "name": "rubber",
+          "particle": "noun",
+          "shortDef": [
+            "a thin, flexible loop that is made of rubber and used to hold things together —called also (US) elastic, elastic band",
+          ],
+          "stems": [
+            "rubber",
+            "rubbers",
+            "burn rubber",
+          ],
+          "tags": null,
+          "transcription": null,
+          "user": "mockUserId",
+          "uuid": "59e03286-73c9-43e6-b1eb-4407a6c06b1e",
+        },
+      },
+      "errors": undefined,
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`mutations update word if operation fails 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": null,
+      "errors": [
+        {
+          "extensions": {
+            "code": "INTERNAL_SERVER_ERROR",
+          },
+          "locations": [
+            {
+              "column": 3,
+              "line": 3,
+            },
+          ],
+          "message": "updating word with id 1 failed",
+          "path": [
+            "updateWord",
+          ],
+        },
+      ],
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`mutations update word if operation result is undefined 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": null,
+      "errors": [
+        {
+          "extensions": {
+            "code": "INTERNAL_SERVER_ERROR",
+          },
+          "locations": [
+            {
+              "column": 3,
+              "line": 3,
+            },
+          ],
+          "message": "updating word with id 1 failed",
+          "path": [
+            "updateWord",
+          ],
+        },
+      ],
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`mutations update word if user is not defined 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": null,
+      "errors": [
+        {
+          "extensions": {
+            "code": "INTERNAL_SERVER_ERROR",
+          },
+          "locations": [
+            {
+              "column": 3,
+              "line": 3,
+            },
+          ],
+          "message": "You do not have permission to perform this operation",
+          "path": [
+            "updateWord",
+          ],
+        },
+      ],
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
   },
 }
 `;

@@ -1,0 +1,1652 @@
+[
+  {
+    "meta": {
+      "id": "rubber",
+      "uuid": "6e723308-653f-4c4f-b55c-db84f0911d12",
+      "src": "CTcompile",
+      "section": "alpha",
+      "stems": ["rubber"],
+      "syns": [
+        [
+          "round-robin",
+          "runoff",
+          "sudden death",
+          "rally",
+          "volley",
+          "dead heat",
+          "photo finish",
+          "seesaw",
+          "heat",
+          "round",
+          "run",
+          "set",
+          "classic",
+          "marathon",
+          "race",
+          "ultramarathon",
+          "biathlon",
+          "decathlon",
+          "heptathlon",
+          "pentathlon",
+          "triathlon",
+          "derby",
+          "field day",
+          "gymkhana",
+          "open",
+          "outing",
+          "final",
+          "nightcap",
+          "play-off",
+          "semifinal",
+          "championship",
+          "national(s)"
+        ]
+      ],
+      "ants": [],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "rubber"
+    },
+    "fl": "noun",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "dt": [["text", "as in {it}runoff{/it}, {it}round-robin{/it}"]],
+                "sim_list": [
+                  [
+                    {
+                      "wd": "round-robin"
+                    },
+                    {
+                      "wd": "runoff"
+                    },
+                    {
+                      "wd": "sudden death"
+                    }
+                  ],
+                  [
+                    {
+                      "wd": "rally"
+                    },
+                    {
+                      "wd": "volley"
+                    }
+                  ],
+                  [
+                    {
+                      "wd": "dead heat"
+                    },
+                    {
+                      "wd": "photo finish"
+                    },
+                    {
+                      "wd": "seesaw"
+                    }
+                  ],
+                  [
+                    {
+                      "wd": "heat"
+                    },
+                    {
+                      "wd": "round"
+                    },
+                    {
+                      "wd": "run"
+                    },
+                    {
+                      "wd": "set"
+                    }
+                  ],
+                  [
+                    {
+                      "wd": "classic"
+                    }
+                  ],
+                  [
+                    {
+                      "wd": "marathon"
+                    },
+                    {
+                      "wd": "race"
+                    },
+                    {
+                      "wd": "ultramarathon"
+                    }
+                  ],
+                  [
+                    {
+                      "wd": "biathlon"
+                    },
+                    {
+                      "wd": "decathlon"
+                    },
+                    {
+                      "wd": "heptathlon"
+                    },
+                    {
+                      "wd": "pentathlon"
+                    },
+                    {
+                      "wd": "triathlon"
+                    }
+                  ],
+                  [
+                    {
+                      "wd": "derby"
+                    },
+                    {
+                      "wd": "field day"
+                    },
+                    {
+                      "wd": "gymkhana"
+                    },
+                    {
+                      "wd": "open"
+                    },
+                    {
+                      "wd": "outing"
+                    }
+                  ],
+                  [
+                    {
+                      "wd": "final"
+                    },
+                    {
+                      "wd": "nightcap"
+                    },
+                    {
+                      "wd": "play-off"
+                    },
+                    {
+                      "wd": "semifinal"
+                    }
+                  ],
+                  [
+                    {
+                      "wd": "championship"
+                    },
+                    {
+                      "wd": "national(s)"
+                    }
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": ["as in runoff, round-robin"]
+  },
+  {
+    "meta": {
+      "id": "rubber stamp",
+      "uuid": "18d8d304-1dfe-4603-8a2d-b6b0d45040fe",
+      "src": "coll_thes",
+      "section": "alpha",
+      "target": {
+        "tuuid": "2161331f-c261-464b-bd49-d6b6846ccce1",
+        "tsrc": "collegiate"
+      },
+      "stems": ["rubber stamp", "rubber stamps", "rubber-stamp"],
+      "syns": [
+        [
+          "aper",
+          "copycat",
+          "copyist",
+          "echo",
+          "follower",
+          "imitator",
+          "wannabe"
+        ]
+      ],
+      "ants": [],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "rubber stamp"
+    },
+    "fl": "noun",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "dt": [
+                  [
+                    "text",
+                    "a person who adopts the appearance or behavior of another especially in an obvious way "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "an author who was ultimately just another {it}rubber stamp{/it} of Hemingway"
+                      }
+                    ]
+                  ]
+                ],
+                "syn_list": [
+                  [
+                    {
+                      "wd": "aper"
+                    },
+                    {
+                      "wd": "copycat"
+                    },
+                    {
+                      "wd": "copyist"
+                    },
+                    {
+                      "wd": "echo"
+                    },
+                    {
+                      "wd": "follower"
+                    },
+                    {
+                      "wd": "imitator"
+                    },
+                    {
+                      "wd": "wannabe",
+                      "wvrs": [
+                        {
+                          "wvl": "also",
+                          "wva": "wannabee"
+                        }
+                      ]
+                    }
+                  ]
+                ],
+                "rel_list": [
+                  [
+                    {
+                      "wd": "parrot"
+                    }
+                  ],
+                  [
+                    {
+                      "wd": "ape"
+                    },
+                    {
+                      "wd": "emulator"
+                    },
+                    {
+                      "wd": "impersonator"
+                    },
+                    {
+                      "wd": "impressionist"
+                    },
+                    {
+                      "wd": "mimic"
+                    }
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "a person who adopts the appearance or behavior of another especially in an obvious way"
+    ]
+  },
+  {
+    "meta": {
+      "id": "rubber-stamp",
+      "uuid": "fcae03b5-4b2b-400e-a606-dae8b4edb504",
+      "src": "CTcompile",
+      "section": "alpha",
+      "stems": ["rubber-stamp"],
+      "syns": [
+        [
+          "initial",
+          "sign",
+          "sign off (on)",
+          "bless",
+          "canonize",
+          "sanctify",
+          "allow",
+          "enable",
+          "legalize",
+          "license",
+          "pass",
+          "permit",
+          "certify",
+          "endorse",
+          "validate",
+          "reapprove",
+          "accept",
+          "acknowledge",
+          "affirm",
+          "accredit",
+          "approbate",
+          "approve",
+          "authorize",
+          "clear",
+          "confirm",
+          "finalize",
+          "formalize",
+          "homologate",
+          "OK",
+          "ratify",
+          "sanction",
+          "warrant"
+        ]
+      ],
+      "ants": [
+        [
+          "decline",
+          "deny",
+          "disallow",
+          "disapprove",
+          "negative",
+          "reject",
+          "turn down",
+          "veto",
+          "ban",
+          "enjoin",
+          "forbid",
+          "illegalize",
+          "interdict",
+          "prohibit",
+          "proscribe",
+          "disregard",
+          "ignore",
+          "neglect",
+          "overlook",
+          "rebuff",
+          "rebut",
+          "refuse",
+          "spurn"
+        ]
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "rubber-stamp"
+    },
+    "fl": "verb",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "dt": [["text", "as in {it}sign{/it}, {it}initial{/it}"]],
+                "sim_list": [
+                  [
+                    {
+                      "wd": "initial"
+                    },
+                    {
+                      "wd": "sign"
+                    },
+                    {
+                      "wd": "sign off (on)"
+                    }
+                  ],
+                  [
+                    {
+                      "wd": "bless"
+                    },
+                    {
+                      "wd": "canonize"
+                    },
+                    {
+                      "wd": "sanctify"
+                    }
+                  ],
+                  [
+                    {
+                      "wd": "allow"
+                    },
+                    {
+                      "wd": "enable"
+                    },
+                    {
+                      "wd": "legalize"
+                    },
+                    {
+                      "wd": "license",
+                      "wvrs": [
+                        {
+                          "wvl": "also",
+                          "wva": "licence"
+                        }
+                      ]
+                    },
+                    {
+                      "wd": "pass"
+                    },
+                    {
+                      "wd": "permit"
+                    }
+                  ],
+                  [
+                    {
+                      "wd": "certify"
+                    },
+                    {
+                      "wd": "endorse",
+                      "wvrs": [
+                        {
+                          "wvl": "also",
+                          "wva": "indorse"
+                        }
+                      ]
+                    },
+                    {
+                      "wd": "validate"
+                    }
+                  ],
+                  [
+                    {
+                      "wd": "reapprove"
+                    }
+                  ],
+                  [
+                    {
+                      "wd": "accept"
+                    },
+                    {
+                      "wd": "acknowledge"
+                    },
+                    {
+                      "wd": "affirm"
+                    }
+                  ],
+                  [
+                    {
+                      "wd": "accredit"
+                    },
+                    {
+                      "wd": "approbate"
+                    },
+                    {
+                      "wd": "approve"
+                    },
+                    {
+                      "wd": "authorize"
+                    },
+                    {
+                      "wd": "clear"
+                    },
+                    {
+                      "wd": "confirm"
+                    },
+                    {
+                      "wd": "finalize"
+                    },
+                    {
+                      "wd": "formalize"
+                    },
+                    {
+                      "wd": "homologate"
+                    },
+                    {
+                      "wd": "OK",
+                      "wvrs": [
+                        {
+                          "wvl": "or",
+                          "wva": "okay"
+                        }
+                      ]
+                    },
+                    {
+                      "wd": "ratify"
+                    },
+                    {
+                      "wd": "sanction"
+                    },
+                    {
+                      "wd": "warrant"
+                    }
+                  ]
+                ],
+                "opp_list": [
+                  [
+                    {
+                      "wd": "decline"
+                    },
+                    {
+                      "wd": "deny"
+                    },
+                    {
+                      "wd": "disallow"
+                    },
+                    {
+                      "wd": "disapprove"
+                    },
+                    {
+                      "wd": "negative"
+                    },
+                    {
+                      "wd": "reject"
+                    },
+                    {
+                      "wd": "turn down"
+                    },
+                    {
+                      "wd": "veto"
+                    }
+                  ],
+                  [
+                    {
+                      "wd": "ban"
+                    },
+                    {
+                      "wd": "enjoin"
+                    },
+                    {
+                      "wd": "forbid"
+                    },
+                    {
+                      "wd": "illegalize"
+                    },
+                    {
+                      "wd": "interdict"
+                    },
+                    {
+                      "wd": "prohibit"
+                    },
+                    {
+                      "wd": "proscribe"
+                    }
+                  ],
+                  [
+                    {
+                      "wd": "disregard"
+                    },
+                    {
+                      "wd": "ignore"
+                    },
+                    {
+                      "wd": "neglect"
+                    },
+                    {
+                      "wd": "overlook"
+                    }
+                  ],
+                  [
+                    {
+                      "wd": "rebuff"
+                    },
+                    {
+                      "wd": "rebut"
+                    },
+                    {
+                      "wd": "refuse"
+                    },
+                    {
+                      "wd": "spurn"
+                    }
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": ["as in sign, initial"]
+  },
+  {
+    "meta": {
+      "id": "rubber-stamped",
+      "uuid": "45ed6230-93bf-4a34-aeb0-60b03ae8e70d",
+      "src": "CTcompile",
+      "section": "alpha",
+      "stems": ["rubber-stamped"],
+      "syns": [
+        [
+          "initialed",
+          "signed",
+          "signed off (on)",
+          "blessed",
+          "canonized",
+          "sanctified",
+          "allowed",
+          "enabled",
+          "legalized",
+          "licensed",
+          "passed",
+          "permitted",
+          "certified",
+          "endorsed",
+          "validated",
+          "reapproved",
+          "accepted",
+          "acknowledged",
+          "affirmed",
+          "accredited",
+          "approbated",
+          "approved",
+          "authorized",
+          "cleared",
+          "confirmed",
+          "finalized",
+          "formalized",
+          "homologated",
+          "OK\u0027d",
+          "ratified",
+          "sanctioned",
+          "warranted"
+        ]
+      ],
+      "ants": [
+        [
+          "declined",
+          "denied",
+          "disallowed",
+          "disapproved",
+          "negatived",
+          "rejected",
+          "turned down",
+          "vetoed",
+          "banned",
+          "enjoined",
+          "forbade",
+          "illegalized",
+          "interdicted",
+          "prohibited",
+          "proscribed",
+          "disregarded",
+          "ignored",
+          "neglected",
+          "overlooked",
+          "rebuffed",
+          "rebutted",
+          "refused",
+          "spurned"
+        ]
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "rubber-stamped"
+    },
+    "fl": "verb",
+    "sls": ["past tense of {d_link|rubber-stamp|rubber-stamp}"],
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "dt": [["text", "as in {it}signed{/it}, {it}initialed{/it}"]],
+                "sim_list": [
+                  [
+                    {
+                      "wd": "initialed",
+                      "wvrs": [
+                        {
+                          "wvl": "or",
+                          "wva": "initialled"
+                        }
+                      ]
+                    },
+                    {
+                      "wd": "signed"
+                    },
+                    {
+                      "wd": "signed off (on)"
+                    }
+                  ],
+                  [
+                    {
+                      "wd": "blessed",
+                      "wvrs": [
+                        {
+                          "wvl": "also",
+                          "wva": "blest"
+                        }
+                      ]
+                    },
+                    {
+                      "wd": "canonized"
+                    },
+                    {
+                      "wd": "sanctified"
+                    }
+                  ],
+                  [
+                    {
+                      "wd": "allowed"
+                    },
+                    {
+                      "wd": "enabled"
+                    },
+                    {
+                      "wd": "legalized"
+                    },
+                    {
+                      "wd": "licensed",
+                      "wvrs": [
+                        {
+                          "wvl": "also",
+                          "wva": "licenced"
+                        }
+                      ]
+                    },
+                    {
+                      "wd": "passed"
+                    },
+                    {
+                      "wd": "permitted"
+                    }
+                  ],
+                  [
+                    {
+                      "wd": "certified"
+                    },
+                    {
+                      "wd": "endorsed",
+                      "wvrs": [
+                        {
+                          "wvl": "also",
+                          "wva": "indorsed"
+                        }
+                      ]
+                    },
+                    {
+                      "wd": "validated"
+                    }
+                  ],
+                  [
+                    {
+                      "wd": "reapproved"
+                    }
+                  ],
+                  [
+                    {
+                      "wd": "accepted"
+                    },
+                    {
+                      "wd": "acknowledged"
+                    },
+                    {
+                      "wd": "affirmed"
+                    }
+                  ],
+                  [
+                    {
+                      "wd": "accredited"
+                    },
+                    {
+                      "wd": "approbated"
+                    },
+                    {
+                      "wd": "approved"
+                    },
+                    {
+                      "wd": "authorized"
+                    },
+                    {
+                      "wd": "cleared"
+                    },
+                    {
+                      "wd": "confirmed"
+                    },
+                    {
+                      "wd": "finalized"
+                    },
+                    {
+                      "wd": "formalized"
+                    },
+                    {
+                      "wd": "homologated"
+                    },
+                    {
+                      "wd": "OK\u0027d",
+                      "wvrs": [
+                        {
+                          "wvl": "or",
+                          "wva": "okayed"
+                        }
+                      ]
+                    },
+                    {
+                      "wd": "ratified"
+                    },
+                    {
+                      "wd": "sanctioned"
+                    },
+                    {
+                      "wd": "warranted"
+                    }
+                  ]
+                ],
+                "opp_list": [
+                  [
+                    {
+                      "wd": "declined"
+                    },
+                    {
+                      "wd": "denied"
+                    },
+                    {
+                      "wd": "disallowed"
+                    },
+                    {
+                      "wd": "disapproved"
+                    },
+                    {
+                      "wd": "negatived"
+                    },
+                    {
+                      "wd": "rejected"
+                    },
+                    {
+                      "wd": "turned down"
+                    },
+                    {
+                      "wd": "vetoed"
+                    }
+                  ],
+                  [
+                    {
+                      "wd": "banned"
+                    },
+                    {
+                      "wd": "enjoined"
+                    },
+                    {
+                      "wd": "forbade",
+                      "wvrs": [
+                        {
+                          "wvl": "also",
+                          "wva": "forbad"
+                        }
+                      ]
+                    },
+                    {
+                      "wd": "illegalized"
+                    },
+                    {
+                      "wd": "interdicted"
+                    },
+                    {
+                      "wd": "prohibited"
+                    },
+                    {
+                      "wd": "proscribed"
+                    }
+                  ],
+                  [
+                    {
+                      "wd": "disregarded"
+                    },
+                    {
+                      "wd": "ignored"
+                    },
+                    {
+                      "wd": "neglected"
+                    },
+                    {
+                      "wd": "overlooked"
+                    }
+                  ],
+                  [
+                    {
+                      "wd": "rebuffed"
+                    },
+                    {
+                      "wd": "rebutted"
+                    },
+                    {
+                      "wd": "refused"
+                    },
+                    {
+                      "wd": "spurned"
+                    }
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": ["as in signed, initialed"]
+  },
+  {
+    "meta": {
+      "id": "rubber-stamping",
+      "uuid": "42e7918e-076b-47c8-ad53-45fb30fe701e",
+      "src": "CTcompile",
+      "section": "alpha",
+      "stems": ["rubber-stamping"],
+      "syns": [
+        [
+          "initialing",
+          "signing",
+          "signing off (on)",
+          "blessing",
+          "canonizing",
+          "sanctifying",
+          "allowing",
+          "enabling",
+          "legalizing",
+          "licensing",
+          "passing",
+          "permitting",
+          "certifying",
+          "endorsing",
+          "validating",
+          "reapproving",
+          "accepting",
+          "acknowledging",
+          "affirming",
+          "accrediting",
+          "approbating",
+          "approving",
+          "authorizing",
+          "clearing",
+          "confirming",
+          "finalizing",
+          "formalizing",
+          "homologating",
+          "OK\u0027ing",
+          "ratifying",
+          "sanctioning",
+          "warranting"
+        ]
+      ],
+      "ants": [
+        [
+          "declining",
+          "denying",
+          "disallowing",
+          "disapproving",
+          "negativing",
+          "rejecting",
+          "turning down",
+          "vetoing",
+          "banning",
+          "enjoining",
+          "forbidding",
+          "illegalizing",
+          "interdicting",
+          "prohibiting",
+          "proscribing",
+          "disregarding",
+          "ignoring",
+          "neglecting",
+          "overlooking",
+          "rebuffing",
+          "rebutting",
+          "refusing",
+          "spurning"
+        ]
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "rubber-stamping"
+    },
+    "fl": "verb",
+    "sls": ["present participle of {d_link|rubber-stamp|rubber-stamp}"],
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "dt": [["text", "as in {it}signing{/it}, {it}initialing{/it}"]],
+                "sim_list": [
+                  [
+                    {
+                      "wd": "initialing",
+                      "wvrs": [
+                        {
+                          "wvl": "or",
+                          "wva": "initialling"
+                        }
+                      ]
+                    },
+                    {
+                      "wd": "signing"
+                    },
+                    {
+                      "wd": "signing off (on)"
+                    }
+                  ],
+                  [
+                    {
+                      "wd": "blessing"
+                    },
+                    {
+                      "wd": "canonizing"
+                    },
+                    {
+                      "wd": "sanctifying"
+                    }
+                  ],
+                  [
+                    {
+                      "wd": "allowing"
+                    },
+                    {
+                      "wd": "enabling"
+                    },
+                    {
+                      "wd": "legalizing"
+                    },
+                    {
+                      "wd": "licensing",
+                      "wvrs": [
+                        {
+                          "wvl": "also",
+                          "wva": "licencing"
+                        }
+                      ]
+                    },
+                    {
+                      "wd": "passing"
+                    },
+                    {
+                      "wd": "permitting"
+                    }
+                  ],
+                  [
+                    {
+                      "wd": "certifying"
+                    },
+                    {
+                      "wd": "endorsing",
+                      "wvrs": [
+                        {
+                          "wvl": "also",
+                          "wva": "indorsing"
+                        }
+                      ]
+                    },
+                    {
+                      "wd": "validating"
+                    }
+                  ],
+                  [
+                    {
+                      "wd": "reapproving"
+                    }
+                  ],
+                  [
+                    {
+                      "wd": "accepting"
+                    },
+                    {
+                      "wd": "acknowledging"
+                    },
+                    {
+                      "wd": "affirming"
+                    }
+                  ],
+                  [
+                    {
+                      "wd": "accrediting"
+                    },
+                    {
+                      "wd": "approbating"
+                    },
+                    {
+                      "wd": "approving"
+                    },
+                    {
+                      "wd": "authorizing"
+                    },
+                    {
+                      "wd": "clearing"
+                    },
+                    {
+                      "wd": "confirming"
+                    },
+                    {
+                      "wd": "finalizing"
+                    },
+                    {
+                      "wd": "formalizing"
+                    },
+                    {
+                      "wd": "homologating"
+                    },
+                    {
+                      "wd": "OK\u0027ing",
+                      "wvrs": [
+                        {
+                          "wvl": "or",
+                          "wva": "okaying"
+                        }
+                      ]
+                    },
+                    {
+                      "wd": "ratifying"
+                    },
+                    {
+                      "wd": "sanctioning"
+                    },
+                    {
+                      "wd": "warranting"
+                    }
+                  ]
+                ],
+                "opp_list": [
+                  [
+                    {
+                      "wd": "declining"
+                    },
+                    {
+                      "wd": "denying"
+                    },
+                    {
+                      "wd": "disallowing"
+                    },
+                    {
+                      "wd": "disapproving"
+                    },
+                    {
+                      "wd": "negativing"
+                    },
+                    {
+                      "wd": "rejecting"
+                    },
+                    {
+                      "wd": "turning down"
+                    },
+                    {
+                      "wd": "vetoing"
+                    }
+                  ],
+                  [
+                    {
+                      "wd": "banning"
+                    },
+                    {
+                      "wd": "enjoining"
+                    },
+                    {
+                      "wd": "forbidding"
+                    },
+                    {
+                      "wd": "illegalizing"
+                    },
+                    {
+                      "wd": "interdicting"
+                    },
+                    {
+                      "wd": "prohibiting"
+                    },
+                    {
+                      "wd": "proscribing"
+                    }
+                  ],
+                  [
+                    {
+                      "wd": "disregarding"
+                    },
+                    {
+                      "wd": "ignoring"
+                    },
+                    {
+                      "wd": "neglecting"
+                    },
+                    {
+                      "wd": "overlooking"
+                    }
+                  ],
+                  [
+                    {
+                      "wd": "rebuffing"
+                    },
+                    {
+                      "wd": "rebutting"
+                    },
+                    {
+                      "wd": "refusing"
+                    },
+                    {
+                      "wd": "spurning"
+                    }
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": ["as in signing, initialing"]
+  },
+  {
+    "meta": {
+      "id": "rubber-stamps",
+      "uuid": "3820acb4-e66e-493b-a94d-4096f5c9023a",
+      "src": "CTcompile",
+      "section": "alpha",
+      "stems": ["rubber-stamps"],
+      "syns": [
+        [
+          "initials",
+          "signs",
+          "signs off (on)",
+          "blesses",
+          "canonizes",
+          "sanctifies",
+          "allows",
+          "enables",
+          "legalizes",
+          "licenses",
+          "passes",
+          "permits",
+          "certifies",
+          "endorses",
+          "validates",
+          "reapproves",
+          "accepts",
+          "acknowledges",
+          "affirms",
+          "accredits",
+          "approbates",
+          "approves",
+          "authorizes",
+          "clears",
+          "confirms",
+          "finalizes",
+          "formalizes",
+          "homologates",
+          "OKs",
+          "ratifies",
+          "sanctions",
+          "warrants"
+        ]
+      ],
+      "ants": [
+        [
+          "declines",
+          "denies",
+          "disallows",
+          "disapproves",
+          "negatives",
+          "rejects",
+          "turns down",
+          "vetoes",
+          "bans",
+          "enjoins",
+          "forbids",
+          "illegalizes",
+          "interdicts",
+          "prohibits",
+          "proscribes",
+          "disregards",
+          "ignores",
+          "neglects",
+          "overlooks",
+          "rebuffs",
+          "rebuts",
+          "refuses",
+          "spurns"
+        ]
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "rubber-stamps"
+    },
+    "fl": "verb",
+    "sls": [
+      "present tense third-person singular of {d_link|rubber-stamp|rubber-stamp}"
+    ],
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "dt": [["text", "as in {it}signs{/it}, {it}initials{/it}"]],
+                "sim_list": [
+                  [
+                    {
+                      "wd": "initials"
+                    },
+                    {
+                      "wd": "signs"
+                    },
+                    {
+                      "wd": "signs off (on)"
+                    }
+                  ],
+                  [
+                    {
+                      "wd": "blesses"
+                    },
+                    {
+                      "wd": "canonizes"
+                    },
+                    {
+                      "wd": "sanctifies"
+                    }
+                  ],
+                  [
+                    {
+                      "wd": "allows"
+                    },
+                    {
+                      "wd": "enables"
+                    },
+                    {
+                      "wd": "legalizes"
+                    },
+                    {
+                      "wd": "licenses",
+                      "wvrs": [
+                        {
+                          "wvl": "also",
+                          "wva": "licences"
+                        }
+                      ]
+                    },
+                    {
+                      "wd": "passes"
+                    },
+                    {
+                      "wd": "permits"
+                    }
+                  ],
+                  [
+                    {
+                      "wd": "certifies"
+                    },
+                    {
+                      "wd": "endorses",
+                      "wvrs": [
+                        {
+                          "wvl": "also",
+                          "wva": "indorses"
+                        }
+                      ]
+                    },
+                    {
+                      "wd": "validates"
+                    }
+                  ],
+                  [
+                    {
+                      "wd": "reapproves"
+                    }
+                  ],
+                  [
+                    {
+                      "wd": "accepts"
+                    },
+                    {
+                      "wd": "acknowledges"
+                    },
+                    {
+                      "wd": "affirms"
+                    }
+                  ],
+                  [
+                    {
+                      "wd": "accredits"
+                    },
+                    {
+                      "wd": "approbates"
+                    },
+                    {
+                      "wd": "approves"
+                    },
+                    {
+                      "wd": "authorizes"
+                    },
+                    {
+                      "wd": "clears"
+                    },
+                    {
+                      "wd": "confirms"
+                    },
+                    {
+                      "wd": "finalizes"
+                    },
+                    {
+                      "wd": "formalizes"
+                    },
+                    {
+                      "wd": "homologates"
+                    },
+                    {
+                      "wd": "OKs",
+                      "wvrs": [
+                        {
+                          "wvl": "or",
+                          "wva": "okays"
+                        }
+                      ]
+                    },
+                    {
+                      "wd": "ratifies"
+                    },
+                    {
+                      "wd": "sanctions"
+                    },
+                    {
+                      "wd": "warrants"
+                    }
+                  ]
+                ],
+                "opp_list": [
+                  [
+                    {
+                      "wd": "declines"
+                    },
+                    {
+                      "wd": "denies"
+                    },
+                    {
+                      "wd": "disallows"
+                    },
+                    {
+                      "wd": "disapproves"
+                    },
+                    {
+                      "wd": "negatives"
+                    },
+                    {
+                      "wd": "rejects"
+                    },
+                    {
+                      "wd": "turns down"
+                    },
+                    {
+                      "wd": "vetoes"
+                    }
+                  ],
+                  [
+                    {
+                      "wd": "bans"
+                    },
+                    {
+                      "wd": "enjoins"
+                    },
+                    {
+                      "wd": "forbids"
+                    },
+                    {
+                      "wd": "illegalizes"
+                    },
+                    {
+                      "wd": "interdicts"
+                    },
+                    {
+                      "wd": "prohibits"
+                    },
+                    {
+                      "wd": "proscribes"
+                    }
+                  ],
+                  [
+                    {
+                      "wd": "disregards"
+                    },
+                    {
+                      "wd": "ignores"
+                    },
+                    {
+                      "wd": "neglects"
+                    },
+                    {
+                      "wd": "overlooks"
+                    }
+                  ],
+                  [
+                    {
+                      "wd": "rebuffs"
+                    },
+                    {
+                      "wd": "rebuts"
+                    },
+                    {
+                      "wd": "refuses"
+                    },
+                    {
+                      "wd": "spurns"
+                    }
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": ["as in signs, initials"]
+  },
+  {
+    "meta": {
+      "id": "rubber stamps",
+      "uuid": "4f20ff78-52ec-4589-a216-18598e6b6ff8",
+      "src": "coll_thes",
+      "section": "alpha",
+      "stems": ["rubber stamps"],
+      "syns": [
+        [
+          "apers",
+          "copycats",
+          "copyists",
+          "echoes",
+          "followers",
+          "imitators",
+          "wannabes"
+        ]
+      ],
+      "ants": [],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "rubber stamps"
+    },
+    "fl": "noun",
+    "sls": ["plural of {d_link|rubber stamp|rubber stamp}"],
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "dt": [
+                  [
+                    "text",
+                    "a person who adopts the appearance or behavior of another especially in an obvious way "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "an author who was ultimately just another {it}rubber stamp{/it} of Hemingway"
+                      }
+                    ]
+                  ]
+                ],
+                "syn_list": [
+                  [
+                    {
+                      "wd": "apers"
+                    },
+                    {
+                      "wd": "copycats"
+                    },
+                    {
+                      "wd": "copyists"
+                    },
+                    {
+                      "wd": "echoes",
+                      "wvrs": [
+                        {
+                          "wvl": "also",
+                          "wva": "echos"
+                        }
+                      ]
+                    },
+                    {
+                      "wd": "followers"
+                    },
+                    {
+                      "wd": "imitators"
+                    },
+                    {
+                      "wd": "wannabes",
+                      "wvrs": [
+                        {
+                          "wvl": "also",
+                          "wva": "wannabees"
+                        }
+                      ]
+                    }
+                  ]
+                ],
+                "rel_list": [
+                  [
+                    {
+                      "wd": "parrots"
+                    }
+                  ],
+                  [
+                    {
+                      "wd": "apes"
+                    },
+                    {
+                      "wd": "emulators"
+                    },
+                    {
+                      "wd": "impersonators"
+                    },
+                    {
+                      "wd": "impressionists"
+                    },
+                    {
+                      "wd": "mimics"
+                    }
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "a person who adopts the appearance or behavior of another especially in an obvious way"
+    ]
+  }
+]

@@ -1,7 +1,8 @@
 echo "extracting API surface"
 yarn clean
-lerna run ts --scope "@lp/{ui,types}"
-yarn lerna run api-report
+# add new packages like this to create documentation: "@lp/{ui,types}"
+lerna run ts --scope "@lp/types"
+yarn lerna run api-report --scope "@lp/types"
 echo "generating Markdown Docs"
 GH_PAGES_CFG_EXISTS=$(test -f docs/_config.yml)
 if [ $GH_PAGES_CFG_EXISTS ]

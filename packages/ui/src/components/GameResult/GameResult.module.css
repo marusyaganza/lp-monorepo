@@ -1,0 +1,57 @@
+@import '../../assets/styles/colors.css';
+@import '../../assets/styles/font-sizes.css';
+@import '../../assets/styles/fonts.css';
+@import '../../assets/styles/effects.css';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+  padding: 24px 0;
+  @media (max-width: 800px) {
+    gap: 24px;
+  }
+}
+
+.heading {
+  font-family: var(--font-kalam);
+  font-size: var(--font-size-xl);
+  font-weight: normal;
+  @media (max-width: 800px) {
+    font-size: var(--font-size-l);
+  }
+}
+
+.resultContainer {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  @media (max-width: 800px) {
+    gap: 16px;
+  }
+}
+
+.result {
+  font-size: var(--font-size-m);
+  padding: 16px;
+  border: 1px dotted var(--neutral-800);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  @media (max-width: 800px) {
+    gap: 16px;
+    font-size: var(--font-size-s);
+  }
+}
+
+.result > p {
+  margin: 0;
+}
+
+.resultNumber {
+  font-style: italic;
+  color: var(--primary-400);
+}

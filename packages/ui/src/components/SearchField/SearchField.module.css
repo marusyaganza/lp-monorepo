@@ -1,0 +1,55 @@
+@import '../../assets/styles/colors.css';
+@import '../../assets/styles/font-sizes.css';
+@import '../../assets/styles/fonts.css';
+@import '../../assets/styles/effects.css';
+
+.form {
+  background: var(--text-inverted);
+  height: 48px;
+  border-radius: 20px;
+  box-sizing: border-box;
+  display: flex;
+  border: 2px solid var(--neutral-500);
+}
+
+.form:focus-within {
+  border: 2px solid var(--neutral-800);
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  background: var(--text-inverted);
+  position: relative;
+  padding: 16px;
+  border: 0;
+  color: var(--neutral-700);
+}
+
+.button:first-child {
+  border-radius: 20px 0 0 20px;
+}
+
+.button:last-child {
+  border-radius: 0 20px 20px 0;
+}
+
+.input {
+  width: 100%;
+  padding: 16px;
+  font-size: var(--font-size-s);
+  border: 0;
+}
+
+.buttonText {
+  position: absolute;
+  z-index: var(--z-index-1);
+  opacity: 0;
+}
+
+.button:focus,
+input:focus {
+  border: 0;
+  outline: none;
+  color: var(--neutral-800);
+}

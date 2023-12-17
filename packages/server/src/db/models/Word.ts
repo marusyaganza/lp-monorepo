@@ -1,0 +1,249 @@
+import { Word } from '../schema/Word';
+import {
+  Word as WordType,
+  NewWordInput,
+  UpdateStatisticsInput,
+  Language,
+  Game,
+  SortBy,
+  SortWordsBy,
+  WordStatisticsField
+} from '../../generated/graphql';
+import { formatFilter, formatData } from '../helpers';
+import { games } from '../../mocks/games';
+
+const STATISTICS_FIELD: WordStatisticsField = {
+  lastTimePracticed: 0,
+  practicedTimes: 0,
+  errorCount: 0,
+  successRate: 0
+};
+
+const DEFAULT_STATISTICS: Record<Game, WordStatisticsField> = {
+  [Game.Audio]: STATISTICS_FIELD,
+  [Game.SelectDef]: STATISTICS_FIELD,
+  [Game.SelectWord]: STATISTICS_FIELD,
+  [Game.TypeWord]: STATISTICS_FIELD
+};
+
+type wordsFilter = {
+  sortBy?: SortBy | SortWordsBy | 'updatedAt';
+  language: Language;
+  isReverseOrder: boolean;
+  timesToLearn?: number | null;
+  gameType?: Game;
+  user?: string;
+};
+
+export interface WordModelType {
+  findOne: (filter: Partial<WordType>) => Promise<WordType | null>;
+  findMany: (filter: Partial<WordType>) => Promise<WordType[] | null>;
+  findManyAndSort: (filter: wordsFilter) => Promise<WordType[] | null>;
+  createOne: (fields: NewWordInput) => Promise<WordType | null>;
+  updateOne: (
+    fields: Partial<WordType> & Pick<WordType, 'id' | 'user'>
+  ) => Promise<{ ok: boolean; value: WordType | null }>;
+  updateMany: (
+    fields: Partial<WordType> & Pick<WordType, 'id'>[],
+    user?: string
+  ) => Promise<{ ok: boolean }>;
+  deleteOne: (filter: {
+    id: string;
+    user?: string;
+  }) => Promise<{ ok: boolean }>;
+  updateStatistics: (
+    data: UpdateStatisticsInput[],
+    user?: string
+  ) => Promise<{ ok: boolean }>;
+}
+
+export const WordModel: WordModelType = {
+  async findOne(filter) {
+    if (!filter?.user) {
+      return null;
+    }
+    const word = await Word.findOne(formatFilter(filter));
+    return formatData(word);
+  },
+
+  async findMany(filter) {
+    if (!filter?.user) {
+      return [];
+    }
+    const words = await Word.find(formatFilter(filter));
+    return words;
+  },
+
+  // Check if criteria is defined, if so => sort by criteria, else use natural sorting
+  async findManyAndSort(filter) {
+    const {
+      user,
+      language = Language.English,
+      sortBy,
+      isReverseOrder,
+      gameType,
+      timesToLearn = 5
+    } = filter;
+
+    if (!user) {
+      return [];
+    }
+
+    let orderNum = isReverseOrder ? -1 : 1;
+
+    // words with the highest number of errors should go first
+    if (sortBy === SortBy.ErrorCount) {
+      orderNum = -1 * orderNum;
+    }
+    let learningStatusFilter = {};
+    let sort: Record<string, number> = { $natural: orderNum };
+    // Select words that are not learned or have been practiced without error less than 5 times in a row
+    if (gameType && sortBy !== SortBy.MemoryRefresher) {
+      learningStatusFilter = {
+        $and: [
+          { isLearned: { $ne: true } },
+          {
+            $or: [
+              { [`statistics.${gameType}.successRate`]: { $lt: timesToLearn } },
+              { [`statistics.${gameType}.successRate`]: null }
+            ]
+          }
+        ]
+      };
+    }
+    if (sortBy) {
+      let propName: string = sortBy;
+      if (gameType) {
+        propName = `statistics.${gameType}.${sortBy}`;
+      }
+      if (sortBy === SortBy.MemoryRefresher) {
+        learningStatusFilter = {
+          $or: [
+            { [`statistics.${gameType}.successRate`]: { $gte: timesToLearn } },
+            { isLearned: true }
+          ]
+        };
+      } else {
+        sort = { [propName]: orderNum };
+      }
+    }
+
+    const words = await Word.find({ user, language, ...learningStatusFilter })
+      // @ts-ignore
+      .sort(sort);
+
+    return words;
+  },
+
+  async createOne(fields) {
+    const createdAt = Date.now();
+    const updatedAt = createdAt;
+    const stems = fields?.stems?.length ? fields.stems : [fields.name];
+    const transcription = fields?.transcription || fields?.name;
+    const isOffensive = !!fields?.isOffensive;
+    const word = await Word.create({
+      ...fields,
+      createdAt,
+      updatedAt,
+      stems,
+      isOffensive,
+      transcription,
+      statistics: DEFAULT_STATISTICS
+    });
+    return formatData(word);
+  },
+
+  async updateOne(fields) {
+    const updatedAt = Date.now();
+    const update = { ...fields, updatedAt };
+    const { ok, value } = await Word.findOneAndUpdate(
+      { _id: fields.id, user: fields.user },
+      update,
+      { rawResult: true, new: true }
+    );
+    const isOk = ok == 1 && value !== null;
+    return { ok: isOk, value: formatData(value) };
+  },
+
+  // This method do not have a practical use for now
+  async updateMany(data, user) {
+    let isOk = true;
+    const updatedAt = Date.now();
+    data.forEach(async entry => {
+      const update = { ...entry, updatedAt };
+      const result = await Word.findOneAndUpdate(
+        { _id: entry.id, user },
+        update,
+        { rawResult: true, new: true }
+      );
+      isOk = isOk && result?.ok == 1 && result?.value !== null;
+    });
+
+    return { ok: isOk };
+  },
+
+  async updateStatistics(data) {
+    let isOk = true;
+    data.forEach(async entry => {
+      try {
+        const word = await Word.findById(entry.id);
+        if (!word) {
+          isOk = false;
+          return;
+        }
+        if (!word?.statistics) {
+          word.statistics = DEFAULT_STATISTICS;
+        }
+
+        const { gameType, hasError = false, isLearned = false } = entry;
+        const timesToLearn =
+          games.find(game => game.type === gameType)?.timesToLearn || 5;
+
+        const currentStatistics = word?.statistics?.[gameType];
+
+        const newStatistics = {
+          practicedTimes: 1,
+          errorCount: currentStatistics?.errorCount ?? 0,
+          successRate: currentStatistics?.successRate ?? 0,
+          lastTimePracticed: Date.now()
+        };
+
+        if (hasError) {
+          newStatistics.errorCount++;
+          newStatistics.successRate = 0;
+        }
+
+        if (!hasError) {
+          newStatistics.successRate++;
+        }
+
+        if (isLearned) {
+          newStatistics.successRate = timesToLearn;
+        }
+
+        if (currentStatistics?.practicedTimes) {
+          newStatistics.practicedTimes += currentStatistics.practicedTimes;
+        }
+
+        word.statistics[gameType] = newStatistics;
+        await word.save();
+      } catch (err) {
+        console.error('saving statisticks failed', err);
+        isOk = false;
+      }
+    });
+    return { ok: isOk };
+  },
+
+  async deleteOne(filter) {
+    const result = { ok: false };
+    const { deletedCount, acknowledged } = await Word.deleteOne({
+      _id: filter.id,
+      user: filter.user
+    });
+    if (acknowledged && deletedCount == 1) {
+      result.ok = true;
+    }
+    return result;
+  }
+};

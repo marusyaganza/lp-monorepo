@@ -1,7 +1,5 @@
 import React from 'react';
-// TODO fix this type problem
-// @ts-ignore
-import sprite from './sprite.svg';
+import sprite from '../../assets/icons/sprite.svg';
 
 export type IconIdType =
   | 'edit'
@@ -9,7 +7,34 @@ export type IconIdType =
   | 'error'
   | 'reload'
   | 'book'
-  | 'play';
+  | 'play'
+  | 'success'
+  | 'close'
+  | 'fire'
+  | 'home'
+  | 'dice'
+  | 'brain'
+  | 'explorer'
+  | 'door'
+  | 'dragon'
+  | 'eraser'
+  | 'arrow-left'
+  | 'pointer'
+  | 'plus'
+  | 'minus'
+  | 'desc'
+  | 'asc'
+  | 'comet'
+  | 'up'
+  | 'down'
+  | 'eye'
+  | 'eye-slashed'
+  | 'sun'
+  | 'git'
+  | 'arrow-up'
+  | 'arrow-down'
+  | 'bars'
+  | 'check';
 
 export type IconProps = {
   width?: number;
@@ -19,13 +44,44 @@ export type IconProps = {
   tooltip?: string;
 };
 
-export const Icon = ({
-  width = 18,
-  height = 18,
-  id,
-  tooltip,
-  className
-}: IconProps) => {
+/**@internal */
+export const _iconIds: IconIdType[] = [
+  'edit',
+  'search',
+  'error',
+  'reload',
+  'book',
+  'play',
+  'success',
+  'close',
+  'fire',
+  'home',
+  'dice',
+  'brain',
+  'explorer',
+  'door',
+  'dragon',
+  'eraser',
+  'arrow-left',
+  'arrow-up',
+  'arrow-down',
+  'pointer',
+  'plus',
+  'minus',
+  'asc',
+  'desc',
+  'comet',
+  'up',
+  'down',
+  'eye',
+  'eye-slashed',
+  'sun',
+  'git',
+  'bars',
+  'check'
+];
+
+export const Icon = ({ width, height, id, tooltip, className }: IconProps) => {
   const img = `${sprite}#${id}`;
   return (
     <svg

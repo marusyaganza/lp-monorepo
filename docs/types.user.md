@@ -10,10 +10,9 @@
 export declare type User = {
     email: string;
     name: string;
-    words: [Word];
     id: string;
     role: Role;
 };
 ```
-<b>References:</b> [Word](./types.word.md)<!-- -->, [Role](./types.role.md)
+<b>References:</b> [Role](./types.role.md)
 

@@ -9,11 +9,7 @@ module.exports = {
   parserOptions: {
     ecmaFeatures: {
       jsx: true
-    },
+    }
   },
-  plugins: [
-    'react',
-    'jsx-a11y',
-    'react-hooks'
-  ]
+  plugins: ['react', 'jsx-a11y', 'react-hooks', 'cypress']
 };

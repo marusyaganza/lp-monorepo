@@ -1,41 +1,42 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-import React, { FormHTMLAttributes, FormEvent, useState } from 'react';
+import React, { FormEventHandler, useState } from 'react';
 
 import { Input, InputProps } from '../Input/Input';
 import { Button } from '../Button/Button';
 import { validate } from '../../utils/validators';
-import './Form.css';
+import { cn } from '../../utils/classnames';
 
-export interface FormProps extends FormHTMLAttributes<HTMLFormElement> {
+export type FormField = InputProps;
+
+export interface FormProps<T extends Record<string, string | null>> {
+  /**additional styling */
   className?: string;
   buttonText?: string;
-  fields: InputProps[];
-  onFormSubmit: (values: Record<string, string>) => void;
+  fields: FormField[];
+  /**native html id property */
+  id?: string;
+  onFormSubmit: (values: T) => void;
   isLoading?: boolean;
 }
 
-export const Form = ({
+export function Form<T extends Record<string, string | null>>({
   className,
   fields,
   onFormSubmit,
-  buttonText,
+  buttonText = 'Submit',
   isLoading,
   ...rest
-}: FormProps) => {
+}: FormProps<T>) {
   const [errors, setErrors] = useState<string[]>([]);
 
-  const submitHandler = (evt: FormEvent<HTMLFormElement>) => {
+  const submitHandler: FormEventHandler<HTMLFormElement> = evt => {
     evt.preventDefault();
-    //TODO what is correct type for this? That contains all fields names?
-    const values: Record<string, string> = {};
+    const values: T = {} as T;
     const errorsArr: string[] = [];
 
     fields.forEach(field => {
-      const { name } = field;
-      // TODO fix this type problem
-      // @ts-ignore
-      const value = evt?.target?.[name]?.value || '';
-
+      const name: keyof T & string = field.name;
+      const target = evt.target as HTMLFormElement;
+      const value = target[name].value! || '';
       if (!validate(value, field.validators || [])) {
         errorsArr.push(name);
       }
@@ -69,11 +70,11 @@ export const Form = ({
   };
 
   return (
-    <form onSubmit={submitHandler} className={`${className}`} {...rest}>
+    <form onSubmit={submitHandler} className={cn(className)} {...rest}>
       {renderFields()}
-      <Button type="submit" className="submitButton" disabled={isLoading}>
-        {buttonText || 'Submit'}
+      <Button type="submit" isLoading={isLoading}>
+        {buttonText}
       </Button>
     </form>
   );
-};
+}
