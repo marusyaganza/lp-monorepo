@@ -15,7 +15,7 @@ import { games } from './mocks/games';
 import { ModelsType } from './db/models';
 import { searchWord } from './dictionary';
 
-const typeDefs = require('../../shared/schema.graphql');
+const typeDefs = require('./schema.graphql');
 
 const server = new ApolloServer({
   typeDefs,
