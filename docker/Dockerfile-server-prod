@@ -12,12 +12,14 @@ COPY packages/server /app/packages/server
 
 COPY packages/shared /app/packages/shared
 
-RUN yarn set version 1.22.19
-
-RUN yarn
+RUN yarn install --production --frozen-lockfile
 
 RUN yarn build:server
 
+RUN cp -a packages/server/dist /app/dist
+
+RUN rm -rf /app/packages/server
+
 EXPOSE 4000
 
-CMD ["node", "packages/server/dist/app.js"]
+CMD ["node", "dist/app.js"]
