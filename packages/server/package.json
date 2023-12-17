@@ -1,6 +1,6 @@
 {
   "name": "@lp/server",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "app for Spanish learners",
   "main": "dist/app.js",
   "scripts": {

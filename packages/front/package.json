@@ -1,6 +1,6 @@
 {
   "name": "@lp/front",
-  "version": "1.0.2",
+  "version": "1.0.0",
   "description": "frontend",
   "main": "index.js",
   "scripts": {
@@ -27,7 +27,7 @@
     "@graphql-codegen/typescript": "^3.0.0",
     "@graphql-codegen/typescript-operations": "^3.0.0",
     "@graphql-codegen/typescript-react-apollo": "^3.3.7",
-    "@lp/ui": "^0.0.2",
+    "@lp/ui": "^1.0.0",
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.5",
     "compression-webpack-plugin": "^10.0.0",
