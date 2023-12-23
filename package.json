@@ -28,7 +28,7 @@
     "api-docs": "sh api-docs.sh"
   },
   "dependencies": {
-    "lerna": "^5.5.0"
+    "lerna": "^8.0.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",
@@ -54,7 +54,7 @@
     "stylelint-order": "^5.0.0"
   },
   "volta": {
-    "node": "16.14.0",
+    "node": "18.16.0",
     "yarn": "1.22.19"
   },
   "husky": {
