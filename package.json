@@ -19,7 +19,7 @@
     "build:server": "lerna run build --scope '@lp/server'",
     "build:front": "yarn codegen --scope={'@lp/front','@lp/ui'} && lerna run prod --scope '@lp/front'",
     "eslint": "lerna run eslint",
-    "ready": "lerna run ready",
+    "ready": "lerna run ready --concurrency=3",
     "clean": "lerna run clean",
     "test": "lerna run test",
     "codegen": "lerna run codegen --stream",

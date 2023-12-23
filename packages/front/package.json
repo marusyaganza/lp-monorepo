@@ -21,7 +21,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@apollo/client": "^3.7.7",
+    "@apollo/client": "^3.8.8",
     "@graphql-codegen/cli": "^3.0.0",
     "@graphql-codegen/introspection": "^3.0.0",
     "@graphql-codegen/typescript": "^3.0.0",
@@ -35,7 +35,7 @@
     "css-loader": "^6.7.1",
     "css-minimizer-webpack-plugin": "^4.0.0",
     "dotenv-webpack": "^8.0.1",
-    "graphql": "^16.6.0",
+    "graphql": "^16.8.1",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.6.0",
     "react": "^18.0.0",
