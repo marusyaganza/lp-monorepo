@@ -39,7 +39,7 @@
   "devDependencies": {
     "@babel/preset-typescript": "^7.23.3",
     "concurrently": "^7.6.0",
-    "jest": "^29.5.0",
+    "jest": "^29.7.0",
     "nodemon": "^2.0.15"
   },
   "volta": {

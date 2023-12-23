@@ -21,7 +21,7 @@
     "eslint": "lerna run eslint",
     "ready": "lerna run ready",
     "clean": "lerna run clean",
-    "test": "lerna run test --stream",
+    "test": "lerna run test",
     "codegen": "lerna run codegen --stream",
     "codegen:watch": "lerna run codegen:watch --stream",
     "release": "yarn lerna version --conventional-commits",

@@ -10,6 +10,25 @@ exports[`mutations create not create word if user is not defined 1`] = `
         {
           "extensions": {
             "code": "INTERNAL_SERVER_ERROR",
+            "stacktrace": [
+              "GraphQLError: You do not have permission to perform this operation",
+              "    at new AuthenticationError (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/utils/apolloCustomErrors.js:5:5)",
+              "    at Object.saveWord (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/auth.ts:97:13)",
+              "    at field.resolve (/home/marusya/myProjects/experimental/lp-monorepo/node_modules/@apollo/server/src/utils/schemaInstrumentation.ts:82:22)",
+              "    at executeField (/home/marusya/myProjects/experimental/lp-monorepo/node_modules/graphql/execution/execute.js:481:20)",
+              "    at /home/marusya/myProjects/experimental/lp-monorepo/node_modules/graphql/execution/execute.js:377:22",
+              "    at promiseReduce (/home/marusya/myProjects/experimental/lp-monorepo/node_modules/graphql/jsutils/promiseReduce.js:23:9)",
+              "    at executeFieldsSerially (/home/marusya/myProjects/experimental/lp-monorepo/node_modules/graphql/execution/execute.js:373:43)",
+              "    at executeOperation (/home/marusya/myProjects/experimental/lp-monorepo/node_modules/graphql/execution/execute.js:347:14)",
+              "    at execute (/home/marusya/myProjects/experimental/lp-monorepo/node_modules/graphql/execution/execute.js:136:20)",
+              "    at executeIncrementally (/home/marusya/myProjects/experimental/lp-monorepo/node_modules/@apollo/server/src/incrementalDeliveryPolyfill.ts:114:17)",
+              "    at execute (/home/marusya/myProjects/experimental/lp-monorepo/node_modules/@apollo/server/src/requestPipeline.ts:545:31)",
+              "    at processGraphQLRequest (/home/marusya/myProjects/experimental/lp-monorepo/node_modules/@apollo/server/src/requestPipeline.ts:431:26)",
+              "    at internalExecuteOperation (/home/marusya/myProjects/experimental/lp-monorepo/node_modules/@apollo/server/src/ApolloServer.ts:1309:12)",
+              "    at ApolloServer.executeOperation (/home/marusya/myProjects/experimental/lp-monorepo/node_modules/@apollo/server/src/ApolloServer.ts:1244:39)",
+              "    at mutate (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/tests/helpers.ts:22:12)",
+              "    at Object.<anonymous> (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/tests/mutatios.test.js:405:17)",
+            ],
           },
           "locations": [
             {
@@ -44,6 +63,11 @@ exports[`mutations create not create word if user is not found 1`] = `
         {
           "extensions": {
             "code": "INTERNAL_SERVER_ERROR",
+            "stacktrace": [
+              "GraphQLError: You do not have permission to perform this operation",
+              "    at new AuthenticationError (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/utils/apolloCustomErrors.js:5:5)",
+              "    at Object.saveWord (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/auth.ts:101:13)",
+            ],
           },
           "locations": [
             {
@@ -78,6 +102,11 @@ exports[`mutations create word if word exists 1`] = `
         {
           "extensions": {
             "code": "INTERNAL_SERVER_ERROR",
+            "stacktrace": [
+              "GraphQLError: word with uuid 74046e79-e4c9-4b52-ac96-cb7ae98fb601 is already added",
+              "    at new UserInputError (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/utils/apolloCustomErrors.js:11:5)",
+              "    at /home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/resolvers/Mutation.ts:23:13",
+            ],
           },
           "locations": [
             {
@@ -132,6 +161,11 @@ exports[`mutations delete word if operation fails 1`] = `
         {
           "extensions": {
             "code": "INTERNAL_SERVER_ERROR",
+            "stacktrace": [
+              "GraphQLError: deleting word with id deleteWordId failed",
+              "    at new UserInputError (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/utils/apolloCustomErrors.js:11:5)",
+              "    at /home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/resolvers/Mutation.ts:57:13",
+            ],
           },
           "locations": [
             {
@@ -166,6 +200,11 @@ exports[`mutations delete word if operation result is undefined 1`] = `
         {
           "extensions": {
             "code": "INTERNAL_SERVER_ERROR",
+            "stacktrace": [
+              "GraphQLError: deleting word with id deleteWordId failed",
+              "    at new UserInputError (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/utils/apolloCustomErrors.js:11:5)",
+              "    at /home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/resolvers/Mutation.ts:57:13",
+            ],
           },
           "locations": [
             {
@@ -200,6 +239,25 @@ exports[`mutations delete word if user is not defined 1`] = `
         {
           "extensions": {
             "code": "INTERNAL_SERVER_ERROR",
+            "stacktrace": [
+              "GraphQLError: You do not have permission to perform this operation",
+              "    at new AuthenticationError (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/utils/apolloCustomErrors.js:5:5)",
+              "    at Object.deleteWord (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/auth.ts:97:13)",
+              "    at field.resolve (/home/marusya/myProjects/experimental/lp-monorepo/node_modules/@apollo/server/src/utils/schemaInstrumentation.ts:82:22)",
+              "    at executeField (/home/marusya/myProjects/experimental/lp-monorepo/node_modules/graphql/execution/execute.js:481:20)",
+              "    at /home/marusya/myProjects/experimental/lp-monorepo/node_modules/graphql/execution/execute.js:377:22",
+              "    at promiseReduce (/home/marusya/myProjects/experimental/lp-monorepo/node_modules/graphql/jsutils/promiseReduce.js:23:9)",
+              "    at executeFieldsSerially (/home/marusya/myProjects/experimental/lp-monorepo/node_modules/graphql/execution/execute.js:373:43)",
+              "    at executeOperation (/home/marusya/myProjects/experimental/lp-monorepo/node_modules/graphql/execution/execute.js:347:14)",
+              "    at execute (/home/marusya/myProjects/experimental/lp-monorepo/node_modules/graphql/execution/execute.js:136:20)",
+              "    at executeIncrementally (/home/marusya/myProjects/experimental/lp-monorepo/node_modules/@apollo/server/src/incrementalDeliveryPolyfill.ts:114:17)",
+              "    at execute (/home/marusya/myProjects/experimental/lp-monorepo/node_modules/@apollo/server/src/requestPipeline.ts:545:31)",
+              "    at processGraphQLRequest (/home/marusya/myProjects/experimental/lp-monorepo/node_modules/@apollo/server/src/requestPipeline.ts:431:26)",
+              "    at internalExecuteOperation (/home/marusya/myProjects/experimental/lp-monorepo/node_modules/@apollo/server/src/ApolloServer.ts:1309:12)",
+              "    at ApolloServer.executeOperation (/home/marusya/myProjects/experimental/lp-monorepo/node_modules/@apollo/server/src/ApolloServer.ts:1244:39)",
+              "    at mutate (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/tests/helpers.ts:22:12)",
+              "    at Object.<anonymous> (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/tests/mutatios.test.js:345:17)",
+            ],
           },
           "locations": [
             {
@@ -234,6 +292,11 @@ exports[`mutations delete word if user is not found 1`] = `
         {
           "extensions": {
             "code": "INTERNAL_SERVER_ERROR",
+            "stacktrace": [
+              "GraphQLError: You do not have permission to perform this operation",
+              "    at new AuthenticationError (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/utils/apolloCustomErrors.js:5:5)",
+              "    at Object.deleteWord (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/auth.ts:101:13)",
+            ],
           },
           "locations": [
             {
@@ -294,6 +357,11 @@ exports[`mutations login with correct password if token is not defined 1`] = `
         {
           "extensions": {
             "code": "INTERNAL_SERVER_ERROR",
+            "stacktrace": [
+              "GraphQLError: sign up operation failed",
+              "    at new OperationResolutionError (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/utils/apolloCustomErrors.js:17:5)",
+              "    at Object.login (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/resolvers/Mutation.ts:116:13)",
+            ],
           },
           "locations": [
             {
@@ -328,6 +396,11 @@ exports[`mutations login with incorrect password 1`] = `
         {
           "extensions": {
             "code": "INTERNAL_SERVER_ERROR",
+            "stacktrace": [
+              "GraphQLError: email or password is incorrect",
+              "    at new AuthenticationError (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/utils/apolloCustomErrors.js:5:5)",
+              "    at Object.login (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/resolvers/Mutation.ts:107:13)",
+            ],
           },
           "locations": [
             {
@@ -362,6 +435,11 @@ exports[`mutations login with invalid email 1`] = `
         {
           "extensions": {
             "code": "INTERNAL_SERVER_ERROR",
+            "stacktrace": [
+              "GraphQLError: email or password is incorrect",
+              "    at new AuthenticationError (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/utils/apolloCustomErrors.js:5:5)",
+              "    at Object.login (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/resolvers/Mutation.ts:100:13)",
+            ],
           },
           "locations": [
             {
@@ -416,6 +494,11 @@ exports[`mutations safe game result if operation failed 1`] = `
         {
           "extensions": {
             "code": "INTERNAL_SERVER_ERROR",
+            "stacktrace": [
+              "GraphQLError: saving training result failed",
+              "    at new UserInputError (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/utils/apolloCustomErrors.js:11:5)",
+              "    at /home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/resolvers/Mutation.ts:48:15",
+            ],
           },
           "locations": [
             {
@@ -450,6 +533,11 @@ exports[`mutations safe game result if operation result is undefined 1`] = `
         {
           "extensions": {
             "code": "INTERNAL_SERVER_ERROR",
+            "stacktrace": [
+              "GraphQLError: saving training result failed",
+              "    at new UserInputError (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/utils/apolloCustomErrors.js:11:5)",
+              "    at /home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/resolvers/Mutation.ts:48:15",
+            ],
           },
           "locations": [
             {
@@ -484,6 +572,11 @@ exports[`mutations safe game result if user does not exist 1`] = `
         {
           "extensions": {
             "code": "INTERNAL_SERVER_ERROR",
+            "stacktrace": [
+              "GraphQLError: You do not have permission to perform this operation",
+              "    at new AuthenticationError (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/utils/apolloCustomErrors.js:5:5)",
+              "    at Object.saveGameResult (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/auth.ts:101:13)",
+            ],
           },
           "locations": [
             {
@@ -518,6 +611,25 @@ exports[`mutations safe game result if user is not defined 1`] = `
         {
           "extensions": {
             "code": "INTERNAL_SERVER_ERROR",
+            "stacktrace": [
+              "GraphQLError: You do not have permission to perform this operation",
+              "    at new AuthenticationError (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/utils/apolloCustomErrors.js:5:5)",
+              "    at Object.saveGameResult (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/auth.ts:97:13)",
+              "    at field.resolve (/home/marusya/myProjects/experimental/lp-monorepo/node_modules/@apollo/server/src/utils/schemaInstrumentation.ts:82:22)",
+              "    at executeField (/home/marusya/myProjects/experimental/lp-monorepo/node_modules/graphql/execution/execute.js:481:20)",
+              "    at /home/marusya/myProjects/experimental/lp-monorepo/node_modules/graphql/execution/execute.js:377:22",
+              "    at promiseReduce (/home/marusya/myProjects/experimental/lp-monorepo/node_modules/graphql/jsutils/promiseReduce.js:23:9)",
+              "    at executeFieldsSerially (/home/marusya/myProjects/experimental/lp-monorepo/node_modules/graphql/execution/execute.js:373:43)",
+              "    at executeOperation (/home/marusya/myProjects/experimental/lp-monorepo/node_modules/graphql/execution/execute.js:347:14)",
+              "    at execute (/home/marusya/myProjects/experimental/lp-monorepo/node_modules/graphql/execution/execute.js:136:20)",
+              "    at executeIncrementally (/home/marusya/myProjects/experimental/lp-monorepo/node_modules/@apollo/server/src/incrementalDeliveryPolyfill.ts:114:17)",
+              "    at execute (/home/marusya/myProjects/experimental/lp-monorepo/node_modules/@apollo/server/src/requestPipeline.ts:545:31)",
+              "    at processGraphQLRequest (/home/marusya/myProjects/experimental/lp-monorepo/node_modules/@apollo/server/src/requestPipeline.ts:431:26)",
+              "    at internalExecuteOperation (/home/marusya/myProjects/experimental/lp-monorepo/node_modules/@apollo/server/src/ApolloServer.ts:1309:12)",
+              "    at ApolloServer.executeOperation (/home/marusya/myProjects/experimental/lp-monorepo/node_modules/@apollo/server/src/ApolloServer.ts:1244:39)",
+              "    at mutate (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/tests/helpers.ts:22:12)",
+              "    at Object.<anonymous> (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/tests/mutatios.test.js:635:17)",
+            ],
           },
           "locations": [
             {
@@ -578,6 +690,11 @@ exports[`mutations signUp if email is already taken 1`] = `
         {
           "extensions": {
             "code": "INTERNAL_SERVER_ERROR",
+            "stacktrace": [
+              "GraphQLError: user with email test@test.com already exists",
+              "    at new AuthenticationError (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/utils/apolloCustomErrors.js:5:5)",
+              "    at Object.signUp (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/resolvers/Mutation.ts:70:13)",
+            ],
           },
           "locations": [
             {
@@ -612,6 +729,11 @@ exports[`mutations signUp if hashing password fails 1`] = `
         {
           "extensions": {
             "code": "INTERNAL_SERVER_ERROR",
+            "stacktrace": [
+              "GraphQLError: sign up operation failed",
+              "    at new OperationResolutionError (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/utils/apolloCustomErrors.js:17:5)",
+              "    at Object.signUp (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/resolvers/Mutation.ts:77:13)",
+            ],
           },
           "locations": [
             {
@@ -646,6 +768,11 @@ exports[`mutations signUp if token is not defined 1`] = `
         {
           "extensions": {
             "code": "INTERNAL_SERVER_ERROR",
+            "stacktrace": [
+              "GraphQLError: sign up operation failed",
+              "    at new OperationResolutionError (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/utils/apolloCustomErrors.js:17:5)",
+              "    at Object.signUp (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/resolvers/Mutation.ts:93:13)",
+            ],
           },
           "locations": [
             {
@@ -680,6 +807,11 @@ exports[`mutations signUp if user creation fails 1`] = `
         {
           "extensions": {
             "code": "INTERNAL_SERVER_ERROR",
+            "stacktrace": [
+              "GraphQLError: sign up operation failed",
+              "    at new OperationResolutionError (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/utils/apolloCustomErrors.js:17:5)",
+              "    at Object.signUp (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/resolvers/Mutation.ts:77:13)",
+            ],
           },
           "locations": [
             {
@@ -768,6 +900,11 @@ exports[`mutations update word if operation fails 1`] = `
         {
           "extensions": {
             "code": "INTERNAL_SERVER_ERROR",
+            "stacktrace": [
+              "GraphQLError: updating word with id 1 failed",
+              "    at new UserInputError (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/utils/apolloCustomErrors.js:11:5)",
+              "    at /home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/resolvers/Mutation.ts:38:15",
+            ],
           },
           "locations": [
             {
@@ -802,6 +939,11 @@ exports[`mutations update word if operation result is undefined 1`] = `
         {
           "extensions": {
             "code": "INTERNAL_SERVER_ERROR",
+            "stacktrace": [
+              "GraphQLError: updating word with id 1 failed",
+              "    at new UserInputError (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/utils/apolloCustomErrors.js:11:5)",
+              "    at /home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/resolvers/Mutation.ts:38:15",
+            ],
           },
           "locations": [
             {
@@ -836,6 +978,25 @@ exports[`mutations update word if user is not defined 1`] = `
         {
           "extensions": {
             "code": "INTERNAL_SERVER_ERROR",
+            "stacktrace": [
+              "GraphQLError: You do not have permission to perform this operation",
+              "    at new AuthenticationError (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/utils/apolloCustomErrors.js:5:5)",
+              "    at Object.updateWord (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/auth.ts:97:13)",
+              "    at field.resolve (/home/marusya/myProjects/experimental/lp-monorepo/node_modules/@apollo/server/src/utils/schemaInstrumentation.ts:82:22)",
+              "    at executeField (/home/marusya/myProjects/experimental/lp-monorepo/node_modules/graphql/execution/execute.js:481:20)",
+              "    at /home/marusya/myProjects/experimental/lp-monorepo/node_modules/graphql/execution/execute.js:377:22",
+              "    at promiseReduce (/home/marusya/myProjects/experimental/lp-monorepo/node_modules/graphql/jsutils/promiseReduce.js:23:9)",
+              "    at executeFieldsSerially (/home/marusya/myProjects/experimental/lp-monorepo/node_modules/graphql/execution/execute.js:373:43)",
+              "    at executeOperation (/home/marusya/myProjects/experimental/lp-monorepo/node_modules/graphql/execution/execute.js:347:14)",
+              "    at execute (/home/marusya/myProjects/experimental/lp-monorepo/node_modules/graphql/execution/execute.js:136:20)",
+              "    at executeIncrementally (/home/marusya/myProjects/experimental/lp-monorepo/node_modules/@apollo/server/src/incrementalDeliveryPolyfill.ts:114:17)",
+              "    at execute (/home/marusya/myProjects/experimental/lp-monorepo/node_modules/@apollo/server/src/requestPipeline.ts:545:31)",
+              "    at processGraphQLRequest (/home/marusya/myProjects/experimental/lp-monorepo/node_modules/@apollo/server/src/requestPipeline.ts:431:26)",
+              "    at internalExecuteOperation (/home/marusya/myProjects/experimental/lp-monorepo/node_modules/@apollo/server/src/ApolloServer.ts:1309:12)",
+              "    at ApolloServer.executeOperation (/home/marusya/myProjects/experimental/lp-monorepo/node_modules/@apollo/server/src/ApolloServer.ts:1244:39)",
+              "    at mutate (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/tests/helpers.ts:22:12)",
+              "    at Object.<anonymous> (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/tests/mutatios.test.js:548:17)",
+            ],
           },
           "locations": [
             {
