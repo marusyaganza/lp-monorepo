@@ -8,5 +8,5 @@ export const mockEnv = {
   DICTIONARY_API_KEY: 'mockEnglishKey',
   DICTIONARY_API_URI: 'mockEnglishApi',
   USE_MOCKS: 'true',
-  NODE_ENV: 'development'
+  NODE_ENV: 'test'
 };

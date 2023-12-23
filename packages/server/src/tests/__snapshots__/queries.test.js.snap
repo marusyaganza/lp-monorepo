@@ -55,12 +55,6 @@ exports[`queries generate game data if game is not found 1`] = `
         {
           "extensions": {
             "code": "INTERNAL_SERVER_ERROR",
-            "stacktrace": [
-              "GraphQLError: game not found",
-              "    at new OperationResolutionError (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/utils/apolloCustomErrors.js:17:5)",
-              "    at /home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/resolvers/Query.ts:60:15",
-              "    at Object.next (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/auth.ts:89:12)",
-            ],
           },
           "locations": [
             {
@@ -95,11 +89,6 @@ exports[`queries generate game data if user does not have enough words 1`] = `
         {
           "extensions": {
             "code": "INTERNAL_SERVER_ERROR",
-            "stacktrace": [
-              "GraphQLError: not enough words to start a game. You have 0 word. Words requited for the game: 1",
-              "    at new OperationResolutionError (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/utils/apolloCustomErrors.js:17:5)",
-              "    at /home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/resolvers/Query.ts:80:15",
-            ],
           },
           "locations": [
             {
@@ -134,11 +123,6 @@ exports[`queries generate game data if words do not exist 1`] = `
         {
           "extensions": {
             "code": "INTERNAL_SERVER_ERROR",
-            "stacktrace": [
-              "GraphQLError: words not found",
-              "    at new OperationResolutionError (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/utils/apolloCustomErrors.js:17:5)",
-              "    at /home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/resolvers/Query.ts:76:15",
-            ],
           },
           "locations": [
             {
@@ -965,11 +949,6 @@ exports[`queries should not generate game data if user is not found 1`] = `
         {
           "extensions": {
             "code": "INTERNAL_SERVER_ERROR",
-            "stacktrace": [
-              "GraphQLError: Login to perform this operation",
-              "    at new AuthenticationError (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/utils/apolloCustomErrors.js:5:5)",
-              "    at Object.game (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/auth.ts:87:13)",
-            ],
           },
           "locations": [
             {
@@ -1004,23 +983,6 @@ exports[`queries should not generate game data if user is undefined 1`] = `
         {
           "extensions": {
             "code": "INTERNAL_SERVER_ERROR",
-            "stacktrace": [
-              "GraphQLError: Login to perform this operation",
-              "    at new AuthenticationError (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/utils/apolloCustomErrors.js:5:5)",
-              "    at Object.game (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/auth.ts:83:13)",
-              "    at field.resolve (/home/marusya/myProjects/experimental/lp-monorepo/node_modules/@apollo/server/src/utils/schemaInstrumentation.ts:82:22)",
-              "    at executeField (/home/marusya/myProjects/experimental/lp-monorepo/node_modules/graphql/execution/execute.js:492:20)",
-              "    at executeFields (/home/marusya/myProjects/experimental/lp-monorepo/node_modules/graphql/execution/execute.js:414:22)",
-              "    at executeOperation (/home/marusya/myProjects/experimental/lp-monorepo/node_modules/graphql/execution/execute.js:344:14)",
-              "    at execute (/home/marusya/myProjects/experimental/lp-monorepo/node_modules/graphql/execution/execute.js:136:20)",
-              "    at executeIncrementally (/home/marusya/myProjects/experimental/lp-monorepo/node_modules/@apollo/server/src/incrementalDeliveryPolyfill.ts:114:17)",
-              "    at execute (/home/marusya/myProjects/experimental/lp-monorepo/node_modules/@apollo/server/src/requestPipeline.ts:545:31)",
-              "    at processGraphQLRequest (/home/marusya/myProjects/experimental/lp-monorepo/node_modules/@apollo/server/src/requestPipeline.ts:431:26)",
-              "    at internalExecuteOperation (/home/marusya/myProjects/experimental/lp-monorepo/node_modules/@apollo/server/src/ApolloServer.ts:1309:12)",
-              "    at ApolloServer.executeOperation (/home/marusya/myProjects/experimental/lp-monorepo/node_modules/@apollo/server/src/ApolloServer.ts:1244:39)",
-              "    at query (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/tests/helpers.ts:34:12)",
-              "    at Object.<anonymous> (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/tests/queries.test.js:472:17)",
-            ],
           },
           "locations": [
             {
@@ -1081,11 +1043,6 @@ exports[`queries user if user is not found 1`] = `
         {
           "extensions": {
             "code": "INTERNAL_SERVER_ERROR",
-            "stacktrace": [
-              "GraphQLError: user is not found",
-              "    at new UserInputError (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/utils/apolloCustomErrors.js:11:5)",
-              "    at Object.user (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/resolvers/Query.ts:16:13)",
-            ],
           },
           "locations": [
             {
@@ -1203,11 +1160,6 @@ exports[`queries word by id if word is not found 1`] = `
         {
           "extensions": {
             "code": "INTERNAL_SERVER_ERROR",
-            "stacktrace": [
-              "GraphQLError: word with id mockid is not found",
-              "    at new UserInputError (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/utils/apolloCustomErrors.js:11:5)",
-              "    at /home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/resolvers/Query.ts:41:13",
-            ],
           },
           "locations": [
             {

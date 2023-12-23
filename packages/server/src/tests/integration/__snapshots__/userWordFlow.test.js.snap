@@ -402,12 +402,6 @@ exports[`User cannot get the words list if user record in DB does not exist 1`] 
         {
           "extensions": {
             "code": "INTERNAL_SERVER_ERROR",
-            "stacktrace": [
-              "GraphQLError: Login to perform this operation",
-              "    at new AuthenticationError (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/utils/apolloCustomErrors.js:5:5)",
-              "    at Object.words (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/auth.ts:87:13)",
-              "    at processTicksAndRejections (node:internal/process/task_queues:95:5)",
-            ],
           },
           "locations": [
             {
@@ -442,12 +436,6 @@ exports[`User cannot login with incorrect password 1`] = `
         {
           "extensions": {
             "code": "INTERNAL_SERVER_ERROR",
-            "stacktrace": [
-              "GraphQLError: email or password is incorrect",
-              "    at new AuthenticationError (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/utils/apolloCustomErrors.js:5:5)",
-              "    at Object.login (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/resolvers/Mutation.ts:107:13)",
-              "    at processTicksAndRejections (node:internal/process/task_queues:95:5)",
-            ],
           },
           "locations": [
             {
@@ -482,12 +470,6 @@ exports[`User cannot login with invalid email 1`] = `
         {
           "extensions": {
             "code": "INTERNAL_SERVER_ERROR",
-            "stacktrace": [
-              "GraphQLError: email or password is incorrect",
-              "    at new AuthenticationError (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/utils/apolloCustomErrors.js:5:5)",
-              "    at Object.login (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/resolvers/Mutation.ts:100:13)",
-              "    at processTicksAndRejections (node:internal/process/task_queues:95:5)",
-            ],
           },
           "locations": [
             {
@@ -522,12 +504,6 @@ exports[`User cannot save a word with the same uuid 1`] = `
         {
           "extensions": {
             "code": "INTERNAL_SERVER_ERROR",
-            "stacktrace": [
-              "GraphQLError: word with uuid 74046e79-e4c9-4b52-ac96-cb7ae98fb601 is already added",
-              "    at new UserInputError (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/utils/apolloCustomErrors.js:11:5)",
-              "    at /home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/resolvers/Mutation.ts:23:13",
-              "    at processTicksAndRejections (node:internal/process/task_queues:95:5)",
-            ],
           },
           "locations": [
             {
@@ -562,12 +538,6 @@ exports[`User nonexistent user cannot save a word 1`] = `
         {
           "extensions": {
             "code": "INTERNAL_SERVER_ERROR",
-            "stacktrace": [
-              "GraphQLError: You do not have permission to perform this operation",
-              "    at new AuthenticationError (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/utils/apolloCustomErrors.js:5:5)",
-              "    at Object.saveWord (/home/marusya/myProjects/experimental/lp-monorepo/packages/server/src/auth.ts:101:13)",
-              "    at processTicksAndRejections (node:internal/process/task_queues:95:5)",
-            ],
           },
           "locations": [
             {
