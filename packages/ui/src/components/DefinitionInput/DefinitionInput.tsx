@@ -1,4 +1,4 @@
-import React, { MouseEventHandler, useState, useEffect, useMemo } from 'react';
+import React, { MouseEventHandler, useState, useMemo } from 'react';
 import { cn } from '../../utils/classnames';
 
 import { WordDefinition } from '../../generated/graphql';

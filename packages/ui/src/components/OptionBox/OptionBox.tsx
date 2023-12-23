@@ -50,6 +50,7 @@ export const OptionBox = forwardRef<HTMLInputElement, OptionBoxProps>(
             style = 'error';
           }
           return (
+            // eslint-disable-next-line jsx-a11y/label-has-associated-control
             <label key={option} className={styles.optionContainer}>
               <input
                 className={styles.hidden}
