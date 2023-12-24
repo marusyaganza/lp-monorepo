@@ -24,6 +24,8 @@ RUN rm -rf /app/packages/ui
 
 RUN rm -rf /app/packages/front
 
+RUN rm -rf /app/node_modules
+
 FROM nginx:alpine
 
 WORKDIR /usr/share/nginx/html
