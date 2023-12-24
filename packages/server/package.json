@@ -4,9 +4,9 @@
   "description": "app for Spanish learners",
   "main": "dist/app.js",
   "scripts": {
-    "dev": "nodemon src/app.js --ignore 'src/db/db.json'",
-    "copy": "cp -r ../shared/schema.graphql dist",
     "build": "yarn codegen && tsc && yarn copy",
+    "dev": "yarn build && nodemon app.js",
+    "copy": "cp -r ../shared/schema.graphql dist",
     "clean": "rimraf dist src/generated *.tsbuildinfo node_modules",
     "eslint": "eslint src",
     "ts": "tsc --watch --preserveWatchOutput",
@@ -17,7 +17,7 @@
     "watch": "nodemon --watch './**/*.{ts,js}' --exec 'node --experimental-specifier-resolution=node --loader ts-node/esm' src/app.ts",
     "codegen": "graphql-codegen --config codegen.ts",
     "codegen:watch": "graphql-codegen --config codegen.ts --watch",
-    "start": "yarn build && yarn concurrently 'yarn nodemon app.js' 'yarn ts'"
+    "start": "lerna run dev,ts --scope '@lp/server'"
   },
   "author": "Marusya Ganza",
   "license": "MIT",
@@ -32,15 +32,14 @@
     "dotenv": "^16.3.1",
     "graphql": "^16.8.1",
     "graphql-import-node": "^0.0.5",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.2",
     "mongoose": "^7.2.2",
     "typescript": "^5.3.3"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.23.3",
-    "concurrently": "^7.6.0",
     "jest": "^29.7.0",
-    "nodemon": "^2.0.15"
+    "nodemon": "^3.0.2"
   },
   "volta": {
     "node": "18.16.0",
