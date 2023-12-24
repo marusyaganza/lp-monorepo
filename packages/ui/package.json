@@ -20,19 +20,20 @@
     "storybook": "lerna run dev,codegen:watch --scope '@lp/ui'"
   },
   "dependencies": {
+    "@graphql-codegen/cli": "5.0.0",
+    "@graphql-codegen/client-preset": "4.1.0",
+    "@graphql-codegen/typescript": "4.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.1",
-    "react-spring": "^9.7.3"
+    "react-spring": "^9.7.3",
+    "typescript": "^5.3.3"
   },
   "devDependencies": {
     "@babel/core": "^7.23.6",
     "@babel/preset-env": "^7.23.6",
     "@babel/preset-react": "^7.23.3",
     "@babel/preset-typescript": "^7.23.3",
-    "@graphql-codegen/cli": "5.0.0",
-    "@graphql-codegen/client-preset": "4.1.0",
-    "@graphql-codegen/typescript": "4.0.1",
     "@react-spring/types": "^9.5.5",
     "@storybook/addon-actions": "^7.6.6",
     "@storybook/addon-essentials": "^7.6.6",
@@ -51,7 +52,6 @@
     "eslint-plugin-storybook": "^0.6.15",
     "plop": "^4.0.1",
     "storybook": "^7.6.6",
-    "storybook-css-modules": "^1.0.8",
-    "typescript": "^5.3.3"
+    "storybook-css-modules": "^1.0.8"
   }
 }
