@@ -84,15 +84,19 @@ export const MutationResolvers: MutationResolversType<ResolverContext> = {
     if (!user) {
       throw new OperationResolutionError(`sign up operation failed`);
     }
+
     const userInfo = {
       id: user.id,
       role: user.role
     } as UserTokenInfo;
+
     const token = createToken(userInfo);
+
     if (!token) {
       throw new OperationResolutionError(`sign up operation failed`);
     }
-    return { ...user, token };
+
+    return { ...user, token } as AuthUser;
   },
   login: async (_, { input }, { models, createToken, validatePassword }) => {
     const user = await models.User.findOne({ email: input?.email });

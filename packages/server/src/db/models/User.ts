@@ -1,11 +1,11 @@
 import { User, UserType } from '../schema/User';
-import { AuthUser, SignUpInput, Role } from '../../generated/graphql';
+import { SignUpInput, Role } from '../../generated/graphql';
 import { formatData, formatFilter } from '../helpers';
 
 export interface UserModelType {
   findOne: (filter: Partial<UserType>) => Promise<UserType | null>;
   findMany: (filter: Partial<UserType>) => Promise<UserType[] | null>;
-  createOne: (fields: SignUpInput & { role: Role }) => Promise<AuthUser | null>;
+  createOne: (fields: SignUpInput & { role: Role }) => Promise<UserType | null>;
   updateOne: (
     fields: Partial<UserType>
   ) => Promise<{ ok: boolean; value: UserType | null }>;
@@ -35,7 +35,7 @@ export const UserModel: UserModelType = {
     const update = { ...fields };
     delete update.id;
     const { ok, value } = await User.findByIdAndUpdate(fields.id, update, {
-      rawResult: true,
+      includeResultMetadata: true,
       new: true
     });
     return { ok: Boolean(ok), value: formatData(value) };

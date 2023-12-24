@@ -57,7 +57,7 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "http-server": "^14.1.0",
-    "mongoose": "^7.5.2",
+    "mongoose": "^8.0.3",
     "webpack-dev-server": "^4.9.0"
   }
 }
