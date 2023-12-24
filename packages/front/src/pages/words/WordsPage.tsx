@@ -1,11 +1,13 @@
 import React, { useEffect, useContext, useState, useCallback } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import {
-  useWordsLazyQuery,
+  WordsQuery,
   Word,
-  useDeleteWordMutation,
+  DeleteWordMutation,
   SortWordsBy
 } from '../../generated/graphql';
+import { WORDS_QUERY } from '../../gql/queries';
+import { DELETE_WORD } from '../../gql/mutations';
 
 import { WordCard, CardWrapper, Link, Spinner } from '@lp/ui';
 
@@ -19,6 +21,7 @@ import {
 import styles from './WordsPage.module.css';
 import { routes } from '../../constants/routes';
 import { getStoredData, storeData } from '../../util/localStorageUtils';
+import { useLazyQuery, useMutation } from '@apollo/client';
 
 const OPTIONS = {
   [SortWordsBy.Name]: 'Alphabetically',
@@ -27,17 +30,21 @@ const OPTIONS = {
 };
 
 const WordsPage = () => {
-  const [fetchWords, { loading, error, data }] = useWordsLazyQuery();
+  const [fetchWords, { loading, error, data }] =
+    useLazyQuery<WordsQuery>(WORDS_QUERY);
   const { setNotification, language } = useContext(AppContext);
   const [sortBy, setSortBy] = useState<SortWordsBy>();
   const [isReverseOrder, setIsReverseOrder] = useState(false);
 
-  const [deleteWordFunc, deleteWordData] = useDeleteWordMutation({
-    update(cache) {
-      cache.evict({ fieldName: 'game' });
-      cache.evict({ fieldName: 'words' });
+  const [deleteWordFunc, deleteWordData] = useMutation<DeleteWordMutation>(
+    DELETE_WORD,
+    {
+      update(cache) {
+        cache.evict({ fieldName: 'game' });
+        cache.evict({ fieldName: 'words' });
+      }
     }
-  });
+  );
 
   const handleSortingParamChange = useCallback((val: SortByType) => {
     setSortBy(val as SortWordsBy);

@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom';
 import { validators } from '@lp/ui';
 import { AuthPageLayout } from '../../components/AuthPageLayout/AuthPageLayout';
 import { Form, FormField } from '@lp/ui';
-import { useLoginMutation, LoginInput } from '../../generated/graphql';
+import { LoginMutation, LoginInput } from '../../generated/graphql';
 import { AppContext } from '../../app-context/appContext';
 import { routes } from '../../constants/routes';
 import llustration from '../../assets/img/login.svg';
 import styles from './SignInPage.module.css';
+import { useMutation } from '@apollo/client';
+import { LOGIN } from '../../gql/mutations';
 
 const SignInPage = () => {
   const fields: FormField[] = [
@@ -31,7 +33,8 @@ const SignInPage = () => {
     }
   ];
 
-  const [authFunc, { data, loading, error }] = useLoginMutation();
+  const [authFunc, { data, loading, error }] =
+    useMutation<LoginMutation>(LOGIN);
   const { login, setNotification, isDevEnv } = useContext(AppContext);
 
   const submitHandler = (values: LoginInput) => {

@@ -6,15 +6,17 @@ import React, {
   useState
 } from 'react';
 import { Outlet } from 'react-router-dom';
-import { SortBy, useGamesQuery } from '../../generated/graphql';
+import { SortBy, GamesQuery } from '../../generated/graphql';
 import { GameCard, Spinner } from '@lp/ui';
 import { routes } from '../../constants/routes';
 import { PageLayout } from '../../components/PageLayout/PageLayout';
 import { AppContext } from '../../app-context/appContext';
 import { getStoredData, storeData } from '../../util/localStorageUtils';
 import { SortControls } from '../../components/SortControls/SortControls';
+import { GAMES } from '../../gql/queries';
 
 import styles from './GamesPage.module.css';
+import { useQuery } from '@apollo/client';
 
 const OPTIONS = {
   [SortBy.ErrorCount]: 'Errors',
@@ -25,7 +27,7 @@ const OPTIONS = {
 };
 
 const GamesPage = () => {
-  const { error, loading, data } = useGamesQuery();
+  const { error, loading, data } = useQuery<GamesQuery>(GAMES);
   const { setNotification } = useContext(AppContext);
   const [sortBy, setSortBy] = useState('');
   const [isReverseOrder, setIsReverseOrder] = useState(false);
