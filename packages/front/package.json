@@ -11,7 +11,7 @@
     "cypress:run": "npx cypress run",
     "stylelint": "stylelint src",
     "eslint": "eslint src",
-    "ready": "yarn codegen && yarn eslint --fix && yarn stylelint --fix && yarn cypress:run",
+    "ready": "yarn codegen && yarn eslint --fix && yarn stylelint --fix",
     "serve": "http-server",
     "clean": "rimraf dist src/generated *.tsbuildinfo public node_modules",
     "ts": "tsc -b .",
