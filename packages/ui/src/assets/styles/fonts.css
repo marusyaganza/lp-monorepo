@@ -8,6 +8,7 @@
     unicode-range: U+0020-007F;
     font-display: swap;
 }
+
 @font-face {
     font-family: Kalam;
     font-style: normal;
@@ -19,6 +20,7 @@
     unicode-range: U+0020-007F;
     font-display: swap;
 }
+
 @font-face {
     font-family: Kalam;
     font-style: italic;
@@ -29,6 +31,7 @@
     unicode-range: U+0020-007F, u+0250—02af;
     font-display: swap;
 }
+
 @font-face {
     font-family: LibreBaskerville;
     font-weight: bold;
@@ -39,6 +42,7 @@
     unicode-range: U+0020-007F;
     font-display: swap;
 }
+
 @font-face {
     font-family: LibreBaskerville;
     font-style: normal;
@@ -50,6 +54,7 @@
     unicode-range: U+0020-007F;
     font-display: swap;
 }
+
 @font-face {
     font-family: LibreBaskerville;
     font-style: italic;

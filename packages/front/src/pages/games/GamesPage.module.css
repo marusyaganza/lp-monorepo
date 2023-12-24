@@ -3,7 +3,8 @@
   grid-gap: 24px;
   margin: 0 auto;
   width: fit-content;
-  @media (min-width: 800px) {
+
+  @media (width >= 800px) {
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
@@ -27,7 +28,8 @@
   align-items: center;
   margin: 24px auto;
   gap: 24px;
-  @media (min-width: 800px) {
+
+  @media (width >= 800px) {
     margin: 100px 70px;
     flex-direction: row;
   }

@@ -35,7 +35,8 @@
 
 .navList {
   display: none;
-  @media (min-width: 800px) {
+
+  @media (width >= 800px) {
     display: flex;
     gap: 32px;
   }
@@ -54,7 +55,8 @@
   font-size: var(--font-size-xs);
   font-family: var(--font-libreBaskerville);
   cursor: pointer;
-  @media (max-width: 800px) {
+
+  @media (width <= 800px) {
     font-size: var(--font-size-s);
   }
 }
@@ -66,13 +68,14 @@
 .logo {
   height: 30px;
   margin-right: 40px;
-  @media (max-width: 800px) {
+
+  @media (width <= 800px) {
     display: none;
   }
 }
 
 .mobileMenu {
-  @media (min-width: 800px) {
+  @media (width >= 800px) {
     display: none;
   }
 }
@@ -93,13 +96,13 @@
 }
 
 .userMenu {
-  @media (max-width: 800px) {
+  @media (width <= 800px) {
     display: none;
   }
 }
 
 .mobileNav {
-  @media (min-width: 800px) {
+  @media (width >= 800px) {
     display: none;
   }
 
