@@ -3,7 +3,7 @@ services:
   lp-server:
     build:
       context: .
-      dockerfile: docker/Dockerfile-server-prod-tmp
+      dockerfile: docker/Dockerfile-server-prod
     ports:
       - "4000:4000"
     env_file:

@@ -21,7 +21,7 @@ services:
  lp-front:
     build:
       context: .
-      dockerfile: docker/Dockerfile-front-prod
+      dockerfile: docker/Dockerfile-front-prod-tmp
     ports:
       - '8080:80'
     env_file:

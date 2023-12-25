@@ -1,1 +1,0 @@
-{"version":3,"file":"constants.js","sourceRoot":"","sources":["../../src/mocks/constants.js"],"names":[],"mappings":";;;AAAa,QAAA,OAAO,GAAG;IACrB,WAAW,EAAE,CAAC;IACd,UAAU,EAAE,YAAY;IACxB,cAAc,EAAE,qBAAqB;IACrC,YAAY,EAAE,mBAAmB;IACjC,0BAA0B,EAAE,gBAAgB;IAC5C,0BAA0B,EAAE,gBAAgB;IAC5C,kBAAkB,EAAE,gBAAgB;IACpC,kBAAkB,EAAE,gBAAgB;IACpC,SAAS,EAAE,MAAM;IACjB,QAAQ,EAAE,MAAM;CACjB,CAAC"}
