@@ -18,7 +18,8 @@
   align-self: flex-start;
   font-family: var(--font-libreBaskerville);
   padding: 24px;
-  @media (min-width: 800px) {
+
+  @media (width >= 800px) {
     padding: 40px 120px;
   }
 }

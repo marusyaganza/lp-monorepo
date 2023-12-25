@@ -1,24 +1,22 @@
 import React, { useContext, useEffect, useMemo } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Link, Icon } from '@lp/ui';
-import { useLazyQuery } from '@apollo/client';
+import { useLazyQuery, useMutation } from '@apollo/client';
 import styles from './EditWordPage.module.css';
 import { getDefaultInitialValues, formConfig, validators } from './formConfig';
 
 import { PageLayout } from '../../components/PageLayout/PageLayout';
 import { WordForm } from '../../components/WordForm/WordForm';
 import { routes } from '../../constants/routes';
-import {
-  useUpdateWordMutation,
-  UpdateWordInput
-} from '../../generated/graphql';
+import { UpdateWordInput } from '../../generated/graphql';
 import { AppContext } from '../../app-context/appContext';
 import { WORDS_QUERY, WORD_BY_ID_QUERY } from '../../gql/queries';
 import { cleanDefs, removeTypenames } from '../../util/wordUtils';
+import { UPDATE_WORD } from '../../gql/mutations';
 
 const EditWordPage = () => {
   const { wordId } = useParams();
-  const [updateWordFunc, updateWordData] = useUpdateWordMutation({
+  const [updateWordFunc, updateWordData] = useMutation(UPDATE_WORD, {
     update(cache) {
       cache.evict({ fieldName: 'game' });
       cache.evict({ fieldName: 'words' });

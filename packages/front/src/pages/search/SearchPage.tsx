@@ -4,28 +4,34 @@ import { useSearchParams } from 'react-router-dom';
 import { Icon, SearchField, Link } from '@lp/ui';
 import { PageLayout } from '../../components/PageLayout/PageLayout';
 import {
-  useSearchWordsLazyQuery,
-  useSaveWordMutation,
   Suggestions,
-  Word
+  Word,
+  SaveWordMutation,
+  SearchWordsQuery
 } from '../../generated/graphql';
 import { WordCard, Spinner } from '@lp/ui';
 import styles from './SearchPage.module.css';
 import { routes } from '../../constants/routes';
 import { removeTypenames } from '../../util/wordUtils';
 import notFound from '../../assets/img/not-found.svg';
+import { SEARCH_WORDS } from '../../gql/queries';
+import { SAVE_WORD } from '../../gql/mutations';
+import { useMutation, useLazyQuery } from '@apollo/client';
 
 const SearchPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [saveWordFunc, saveWordData] = useSaveWordMutation({
-    update(cache) {
-      cache.evict({ fieldName: 'game' });
-      cache.evict({ fieldName: 'words' });
+  const [saveWordFunc, saveWordData] = useMutation<SaveWordMutation>(
+    SAVE_WORD,
+    {
+      update(cache) {
+        cache.evict({ fieldName: 'game' });
+        cache.evict({ fieldName: 'words' });
+      }
     }
-  });
+  );
   const { setNotification, language } = useContext(AppContext);
   const [fetchSearchResult, { loading, error, data }] =
-    useSearchWordsLazyQuery();
+    useLazyQuery<SearchWordsQuery>(SEARCH_WORDS);
   const [savedWords, setSavedWords] = useState<string[]>([]);
   const containsSuggestions = useMemo(
     () =>

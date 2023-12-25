@@ -6,18 +6,23 @@ import styles from './NewWordPage.module.css';
 import { PageLayout } from '../../components/PageLayout/PageLayout';
 import { WordForm } from '../../components/WordForm/WordForm';
 import { routes } from '../../constants/routes';
-import { NewWordInput, useSaveWordMutation } from '../../generated/graphql';
+import { NewWordInput, SaveWordMutation } from '../../generated/graphql';
 import { AppContext } from '../../app-context/appContext';
 import { defaultInitialValues, formConfig, validators } from './formConfig';
 import { cleanDefs } from '../../util/wordUtils';
+import { useMutation } from '@apollo/client';
+import { SAVE_WORD } from '../../gql/mutations';
 
 const NewWordPage = () => {
-  const [saveWordFunc, saveWordData] = useSaveWordMutation({
-    update(cache) {
-      cache.evict({ fieldName: 'game' });
-      cache.evict({ fieldName: 'words' });
+  const [saveWordFunc, saveWordData] = useMutation<SaveWordMutation>(
+    SAVE_WORD,
+    {
+      update(cache) {
+        cache.evict({ fieldName: 'game' });
+        cache.evict({ fieldName: 'words' });
+      }
     }
-  });
+  );
   const { setNotification, language } = useContext(AppContext);
   const navigate = useNavigate();
   useEffect(() => {

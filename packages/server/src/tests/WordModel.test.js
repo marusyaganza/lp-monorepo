@@ -15,11 +15,9 @@ const mockId = '6480653341e6f90377d19cfb';
 
 let index = 0;
 
-const dateNowMock = jest
-  .spyOn(global.Date, 'now')
-  .mockImplementation(function () {
-    return index++;
-  });
+jest.spyOn(global.Date, 'now').mockImplementation(function () {
+  return index++;
+});
 
 describe('WordModel', () => {
   beforeAll(async () => {

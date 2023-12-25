@@ -11,7 +11,8 @@
   font-family: var(--font-libreBaskerville);
   position: relative;
   border-radius: var(--primary-border-radius);
-  @media (max-width: 800px) {
+
+  @media (width <= 800px) {
     width: fit-content;
     max-width: calc(100% - 24px);
   }

@@ -4,11 +4,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import { validators } from '@lp/ui';
 import { AuthPageLayout } from '../../components/AuthPageLayout/AuthPageLayout';
 import { Form, FormField } from '@lp/ui';
-import { useSignUpMutation, SignUpInput } from '../../generated/graphql';
+import { SignUpMutation, SignUpInput } from '../../generated/graphql';
 import { AppContext } from '../../app-context/appContext';
 import { routes } from '../../constants/routes';
 
 import styles from './SignUpPage.module.css';
+import { useMutation } from '@apollo/client';
+import { SIGN_UP } from '../../gql/mutations';
 
 const SignUpPage = () => {
   const fields: FormField[] = [
@@ -66,7 +68,8 @@ const SignUpPage = () => {
     }
   ];
 
-  const [authFunc, { data, loading, error }] = useSignUpMutation();
+  const [authFunc, { data, loading, error }] =
+    useMutation<SignUpMutation>(SIGN_UP);
   const { login, setNotification, isDevEnv } = useContext(AppContext);
   const navigate = useNavigate();
 

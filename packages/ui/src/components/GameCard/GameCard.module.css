@@ -13,7 +13,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  @media (max-width: 800px) {
+
+  @media (width <= 800px) {
     border-radius: 20px;
     padding: 24px;
     box-shadow: var(--secondary-box-shadow);
@@ -24,7 +25,8 @@
 
 .content {
   position: relative;
-  @media (min-width: 800px) {
+
+  @media (width >= 800px) {
     width: 200px;
     height: 164px;
     border-radius: 20px;
@@ -43,14 +45,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  @media (min-width: 800px) {
+
+  @media (width >= 800px) {
     opacity: 1;
     transition: opacity 0.1s linear 0.1s;
   }
 }
 
 .content:hover > .imageContainer {
-  @media (min-width: 800px) {
+  @media (width >= 800px) {
     opacity: 0.1;
   }
 }
@@ -60,7 +63,8 @@
   font-family: var(--font-kalam);
   font-weight: normal;
   text-transform: capitalize;
-  @media (max-width: 800px) {
+
+  @media (width <= 800px) {
     display: none;
   }
 }
@@ -71,7 +75,8 @@
   font-weight: normal;
   text-transform: capitalize;
   text-align: center;
-  @media (min-width: 800px) {
+
+  @media (width >= 800px) {
     display: none;
   }
 }
@@ -86,7 +91,8 @@
   margin: 0;
   box-sizing: border-box;
   padding: 16px 0;
-  @media (min-width: 800px) {
+
+  @media (width >= 800px) {
     padding: 32px;
     opacity: 0;
     top: 0;
@@ -96,7 +102,7 @@
 }
 
 .content:hover > .description {
-  @media (min-width: 800px) {
+  @media (width >= 800px) {
     opacity: 1;
   }
 }
