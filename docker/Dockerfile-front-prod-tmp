@@ -1,0 +1,11 @@
+FROM nginx:stable-alpine
+
+WORKDIR /usr/share/nginx/html
+
+COPY /docker/nginx.conf /etc/nginx/nginx.conf
+
+RUN rm -rf ./*
+
+COPY packages/front/public .
+
+ENTRYPOINT ["nginx", "-g", "daemon off;"]

@@ -1,7 +1,7 @@
 node_modules
 nodemon.json
-public
-dist
+# public
+# dist
 tsconfig.tsbuildinfo
 temp
 storybook-static
