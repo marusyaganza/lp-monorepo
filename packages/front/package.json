@@ -16,7 +16,8 @@
     "clean": "rimraf dist src/generated *.tsbuildinfo public node_modules",
     "ts": "tsc -b .",
     "codegen:watch": "graphql-codegen --config codegen.ts -w",
-    "start": "yarn dev"
+    "start": "yarn dev",
+    "analyze": "yarn prod --env stats=server"
   },
   "author": "",
   "license": "ISC",

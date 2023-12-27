@@ -4,7 +4,19 @@ const Dotenv = require('dotenv-webpack');
 
 const modeConfig = env => require(`./build-utils/webpack.${env}`);
 
-module.exports = ({ mode = 'production' }) => {
+module.exports = ({ mode = 'production', stats }) => {
+  const plugins = [
+    new Dotenv(),
+    new HtmlWebpackPlugin({ template: './index.html' })
+  ];
+  if (stats) {
+    const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+    plugins.push(
+      new BundleAnalyzerPlugin({
+        analyzerMode: stats || 'disabled'
+      })
+    );
+  }
   return merge(
     {
       entry: './index.tsx',
@@ -13,11 +25,6 @@ module.exports = ({ mode = 'production' }) => {
       },
       module: {
         rules: [
-          {
-            test: /\.(t|j)sx?$/,
-            use: { loader: 'ts-loader' },
-            exclude: /node_modules/
-          },
           {
             test: /\.(jpg|jpeg|png|svg|gif|webp)$/,
             type: 'asset/resource'
@@ -28,10 +35,7 @@ module.exports = ({ mode = 'production' }) => {
           }
         ]
       },
-      plugins: [
-        new Dotenv(),
-        new HtmlWebpackPlugin({ template: './index.html' })
-      ]
+      plugins
     },
     modeConfig(mode)
   );
