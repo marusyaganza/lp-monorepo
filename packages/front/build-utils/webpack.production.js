@@ -7,12 +7,27 @@ const path = require('path');
 
 module.exports = {
   mode: 'production',
+  bail: true,
   output: {
     publicPath: '/',
-    path: path.resolve(__dirname, '../public')
+    pathinfo: false,
+    path: path.resolve(__dirname, '../public'),
+    filename: '[name].[contenthash].js'
   },
   module: {
     rules: [
+      {
+        test: /\.(t|j)sx?$/,
+        use: {
+          loader: 'ts-loader',
+          options: {
+            happyPackMode: true,
+            silent: true,
+            compilerOptions: { sourceMap: false }
+          }
+        },
+        exclude: /node_modules/
+      },
       {
         test: /\.css$/,
         exclude: /\.module\.css$/,
@@ -51,8 +66,40 @@ module.exports = {
   },
   optimization: {
     minimize: true,
+    runtimeChunk: true,
+    splitChunks: {
+      cacheGroups: {
+        react: {
+          chunks: 'initial',
+          name: 'react',
+          test: /node_modules\/react/,
+          enforce: true
+        },
+        apollo: {
+          chunks: 'initial',
+          name: 'apollo',
+          test: /node_modules\/@apollo\/client/,
+          enforce: true
+        },
+        vendor: {
+          chunks: 'initial',
+          name: 'vendor',
+          test: /node_modules\/(?!react)(?!@apollo\/client)/,
+          enforce: true
+        }
+      }
+    },
     minimizer: [
-      new CssMinimizerPlugin(),
+      new CssMinimizerPlugin({
+        minimizerOptions: {
+          preset: [
+            'default',
+            {
+              discardComments: { removeAll: true }
+            }
+          ]
+        }
+      }),
       new TerserPlugin({
         terserOptions: {
           format: {
@@ -64,10 +111,14 @@ module.exports = {
     ]
   },
   plugins: [
-    new MiniCssExtractPlugin(),
+    new MiniCssExtractPlugin({
+      filename: '[name].[contenthash].css',
+      chunkFilename: '[id].[contenthash].css'
+    }),
     new CompressionPlugin(),
     new CopyPlugin({
       patterns: [{ from: 'static' }]
     })
-  ]
+  ],
+  performance: false
 };
