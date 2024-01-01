@@ -92,6 +92,15 @@ const SearchPage = () => {
     }
   };
 
+  const getSuggestionClickHandler = (suggestion?: string | null) => {
+    if (!suggestion) {
+      return;
+    }
+    return function () {
+      setSearchParams({ search: suggestion });
+    };
+  };
+
   const getAddWordHandler = (word: Word) => {
     return function () {
       saveWordFunc({
@@ -116,14 +125,34 @@ const SearchPage = () => {
         </div>
       );
     }
+
+    const suggestionsArr = suggestions[0].suggestions;
+
+    if (!suggestionsArr?.length) {
+      return;
+    }
+
     return (
       <article>
-        {suggestions?.map(el => (
-          <p className={styles.suggestion} key={el?.suggestions?.[0]}>
-            <Icon id="pointer" width={20} height={20} />
-            {el?.suggestions?.join(', ')}
+        <div className={styles.suggestionsContainer}>
+          <Icon
+            className={styles.suggestionsIcon}
+            id="pointer"
+            width={20}
+            height={20}
+          />
+          <p className={styles.suggestions}>
+            {suggestionsArr.map(suggestion => (
+              <button
+                className={styles.suggestion}
+                key={suggestion}
+                onClick={getSuggestionClickHandler(suggestion)}
+              >
+                {suggestion}
+              </button>
+            ))}
           </p>
-        ))}
+        </div>
       </article>
     );
   };
@@ -158,11 +187,7 @@ const SearchPage = () => {
       <div className={styles.content}>
         <div className={styles.headingContainer}>
           <h1 className={styles.mainHeading}>Look up word</h1>
-          <Link
-            variant="button"
-            className={styles.link}
-            to={`/${routes.words}/new`}
-          >
+          <Link variant="button" to={`/${routes.words}/new`}>
             Add your own word
           </Link>
         </div>

@@ -37,7 +37,7 @@ describe('Search Page', () => {
     cy.get('[data-cy="spinner"]').should('not.exist');
     cy.get('form').find('input').type('a');
     cy.get('form').find('[data-cy="searchButton"]').click();
-    cy.contains('Mocking is enabled. You can query words from the list:');
+    cy.contains('Mocks are enabled. You can query words from the list:');
     cy.get('form').find('[data-cy="clearButton"]').click();
     cy.get('form').find('input').type('voluminous');
     cy.get('form').find('[data-cy="searchButton"]').click();
