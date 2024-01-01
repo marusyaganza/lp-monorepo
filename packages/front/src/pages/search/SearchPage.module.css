@@ -31,12 +31,29 @@
   }
 }
 
-.suggestion {
+.suggestionsContainer {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-style: italic;
+}
+
+.suggestions {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.suggestion {
+  border: 0;
+  background: var(--text-inverted);
   font-size: var(--font-size-m);
+  font-style: italic;
+  cursor: pointer;
+  text-decoration: underline;
+  font-family: var(--font-libreBaskerville);
+}
+
+.suggestionsIcon {
+  flex-shrink: 0;
 }
 
 .headingContainer {
