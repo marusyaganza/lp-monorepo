@@ -147,6 +147,7 @@ const SearchPage = () => {
                 className={styles.suggestion}
                 key={suggestion}
                 onClick={getSuggestionClickHandler(suggestion)}
+                data-cy="clickable-suggestion"
               >
                 {suggestion}
               </button>

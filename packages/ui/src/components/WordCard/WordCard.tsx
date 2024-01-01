@@ -255,7 +255,7 @@ export const WordCard = ({
           )}
           {!!alternativeSpelling?.length && (
             <section>
-              <p className={styles.stems} data-cy="stems">
+              <p className={styles.stems} data-cy="altSpelling">
                 <span className={styles.stemsHeading}>
                   Alternative spelling:{' '}
                 </span>
