@@ -50,7 +50,7 @@ const NewWordPage = () => {
   }, [saveWordData.data]);
 
   const handleFormSubmit = (values: NewWordInput) => {
-    const input = { ...cleanDefs(values), language };
+    const input = { ...cleanDefs(values), name: values.name.trim(), language };
     saveWordFunc({
       variables: { input }
     });

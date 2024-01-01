@@ -24,6 +24,7 @@ export const defaultInitialValues: NewWordInput = {
   shortDef: [],
   language: Language.English,
   additionalInfo: '',
+  alternativeSpelling: [],
   stems: [],
   isOffensive: false,
   level: Level.B1
@@ -53,6 +54,12 @@ export const formConfig: FormConfigType<NewWordInput>[] = [
     Component: InputV2,
     name: 'additionalInfo',
     label: 'Additional information'
+  },
+  {
+    Component: ArrayInput,
+    name: 'alternativeSpelling',
+    label: 'alternative spelling',
+    props: { showOrderButtons: true }
   },
   {
     Component: Checkbox,

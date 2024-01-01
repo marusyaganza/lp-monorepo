@@ -139,13 +139,22 @@ export const generateGameData: GenerateGameDataFuncType = (
   const words = wordsCandidates.slice(0, wordsPerGame);
   if (gameType === Game.TypeWord) {
     questions = words.map(word => {
-      const { name, shortDef, id, audioUrl, imgUrl, defs } = word;
+      const {
+        name,
+        shortDef,
+        id,
+        audioUrl,
+        imgUrl,
+        defs,
+        alternativeSpelling
+      } = word;
       const examples = getExamples(defs);
       const question = shortDef.map(def => prepareDef(def, name));
       return {
         answer: name,
         wordId: id,
         question,
+        alternativeSpelling,
         additionalInfo: {
           audioUrl,
           imgUrl,
@@ -157,12 +166,21 @@ export const generateGameData: GenerateGameDataFuncType = (
 
   if (gameType === Game.Audio) {
     questions = words.map(word => {
-      const { name, audioUrl, id, defs, imgUrl, shortDef } = word;
+      const {
+        name,
+        audioUrl,
+        id,
+        defs,
+        imgUrl,
+        shortDef,
+        alternativeSpelling
+      } = word;
       const examples = getExamples(defs);
       return {
         answer: name,
         question: [audioUrl],
         wordId: id,
+        alternativeSpelling,
         additionalInfo: {
           imgUrl,
           examples,

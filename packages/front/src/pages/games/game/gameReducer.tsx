@@ -44,6 +44,7 @@ type CheckAnswerAction = {
     answer: string;
     id: string;
     gameType: Game;
+    alternativeSpelling?: (string | null)[];
   };
 };
 
@@ -74,9 +75,16 @@ export function gameReducer(
     };
   }
   if (type === GameAction.CHECK_ANSWER) {
-    const { correctAnswer, answer, id, gameType } = action.payload;
+    const { correctAnswer, answer, id, gameType, alternativeSpelling } =
+      action.payload;
     const newState = { ...state };
-    if (answer.toLocaleLowerCase() === correctAnswer.toLocaleLowerCase()) {
+    const formattedAnswer = answer.toLocaleLowerCase();
+    if (
+      formattedAnswer === correctAnswer.toLocaleLowerCase() ||
+      alternativeSpelling?.some(
+        word => word?.toLocaleLowerCase() === formattedAnswer
+      )
+    ) {
       newState.currentResult = {
         type: 'success',
         correctAnswer: correctAnswer

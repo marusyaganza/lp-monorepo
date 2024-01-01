@@ -43,6 +43,7 @@ export const WORD_BY_ID_QUERY = gql`
       stems
       level
       shortDef
+      alternativeSpelling
     }
   }
 `;
@@ -110,6 +111,7 @@ export const GAME = gql`
         question
         options
         answer
+        alternativeSpelling
         additionalInfo {
           audioUrl
           imgUrl
