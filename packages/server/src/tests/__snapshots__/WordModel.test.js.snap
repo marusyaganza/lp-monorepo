@@ -4,6 +4,7 @@ exports[`WordModel createOne 1`] = `
 {
   "_id": Any<Object>,
   "additionalInfo": "additional info",
+  "alternativeSpelling": [],
   "audioUrl": "mock.mp3",
   "createdAt": Any<String>,
   "defs": [
@@ -85,6 +86,7 @@ exports[`WordModel findOne 1`] = `
 {
   "_id": Any<Object>,
   "additionalInfo": "additional info",
+  "alternativeSpelling": [],
   "audioUrl": "mock.mp3",
   "createdAt": Any<String>,
   "defs": [
@@ -166,6 +168,7 @@ exports[`WordModel updateOne 1`] = `
 {
   "_id": Any<Object>,
   "additionalInfo": "very useful information",
+  "alternativeSpelling": [],
   "audioUrl": "mock.mp3",
   "createdAt": Any<String>,
   "defs": [

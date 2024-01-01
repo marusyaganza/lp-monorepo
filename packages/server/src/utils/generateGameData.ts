@@ -5,7 +5,8 @@ import {
   GameConfig,
   Language,
   WordDefinition,
-  DefExample
+  DefExample,
+  GameQuestion
 } from '../generated/graphql';
 import { OperationResolutionError } from './apolloCustomErrors';
 import { madeUphWords } from '../mocks/madeUpWord';
@@ -150,17 +151,20 @@ export const generateGameData: GenerateGameDataFuncType = (
       } = word;
       const examples = getExamples(defs);
       const question = shortDef.map(def => prepareDef(def, name));
-      return {
+      const result: GameQuestion = {
         answer: name,
         wordId: id,
         question,
-        alternativeSpelling,
         additionalInfo: {
           audioUrl,
           imgUrl,
           examples
         }
       };
+      if (alternativeSpelling?.length) {
+        result.alternativeSpelling = alternativeSpelling;
+      }
+      return result;
     });
   }
 
@@ -175,18 +179,25 @@ export const generateGameData: GenerateGameDataFuncType = (
         shortDef,
         alternativeSpelling
       } = word;
+
       const examples = getExamples(defs);
-      return {
+
+      const result: GameQuestion = {
         answer: name,
-        question: [audioUrl],
+        question: [audioUrl] as string[],
         wordId: id,
-        alternativeSpelling,
         additionalInfo: {
           imgUrl,
           examples,
           shortDef: `<b>${name} means</b> ${shortDef[0]}`
         }
       };
+
+      if (alternativeSpelling?.length) {
+        result.alternativeSpelling = alternativeSpelling;
+      }
+
+      return result;
     });
   }
   //TODO create 'find all defs' game to train the words with multiple definitions
