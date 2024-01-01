@@ -145,6 +145,8 @@ const GamePage = () => {
         payload: {
           gameType: data.game.type,
           answer,
+          alternativeSpelling:
+            questions[state.currentIndex]?.alternativeSpelling || [],
           correctAnswer: questions[state.currentIndex]?.answer || '',
           id: questions[state.currentIndex].wordId
         }

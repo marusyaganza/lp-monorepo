@@ -502,3 +502,34 @@ export const wheel: any[] = [
     language: 'ENGLISH'
   }
 ];
+
+export const wordWithAltSpelling: Word[] = [
+  {
+    id: '659226238b5f8247cc5c51e7',
+    name: 'long haul',
+    defs: [
+      {
+        def: 'a long distance',
+        examples: [],
+        __typename: 'WordDefinition'
+      }
+    ],
+    particle: 'noun',
+    imgUrl: '',
+    imgDesc: '',
+    audioUrl:
+      'https://www.oxfordlearnersdictionaries.com/media/english/us_pron/l/lon/long_/long_haul_1_us_4.mp3',
+    additionalInfo: '',
+    transcription: 'long haul',
+    user: '6592087e6f03005fa31d194c',
+    isOffensive: false,
+    isLearned: null,
+    stems: ['long haul'],
+    level: Level.B1,
+    shortDef: ['a long distance'],
+    alternativeSpelling: ['long-haul'],
+    __typename: 'Word',
+    createdAt: '1571213104370',
+    language: Language.English
+  }
+];

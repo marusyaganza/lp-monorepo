@@ -100,6 +100,7 @@ type Word {
   language: Language!
   isLearned: Boolean
   statistics: WordStatistics
+  alternativeSpelling: [String]
 }
 
 type DictionaryWord {
@@ -159,6 +160,7 @@ type GameQuestion {
   answer: String!
   wordId: ID!
   additionalInfo: GameQuestionAdditionalInfo
+  alternativeSpelling: [String]
 }
 
 type GameData {
@@ -199,6 +201,7 @@ input NewWordInput {
   language: Language!
   shortDef: [String]!
   isLearned: Boolean
+  alternativeSpelling: [String]
 }
 
 input UpdateWordInput {
@@ -216,6 +219,7 @@ input UpdateWordInput {
   tags: [WordTagInput]
   shortDef: [String]
   isLearned: Boolean
+  alternativeSpelling: [String]
 }
 
 input SignUpInput {

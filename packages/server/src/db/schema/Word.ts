@@ -74,7 +74,8 @@ const wordSchema = new Schema<WordCoreType>({
   tags: [tagsSchema],
   additionalInfo: String,
   isLearned: Boolean,
-  statistics: wordStatisticsSchema
+  statistics: wordStatisticsSchema,
+  alternativeSpelling: [String]
 });
 
 export const Word = model<WordCoreType>('Word', wordSchema);
