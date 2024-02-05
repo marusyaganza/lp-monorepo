@@ -3,7 +3,8 @@ import {
   InputV2,
   ArrayInput,
   Checkbox,
-  LevelSelector
+  LevelSelector,
+  TagSelector
 } from '@lp/ui';
 import { FormConfigType } from '../../components/WordForm/WordForm';
 import {
@@ -32,7 +33,8 @@ export const getDefaultInitialValues: (
     stems: [''],
     isOffensive: false,
     isLearned: false,
-    level: Level.B1
+    level: Level.B1,
+    tags: []
   };
 
   if (!word) {
@@ -44,9 +46,14 @@ export const getDefaultInitialValues: (
   const keys = Object.keys(
     defaultIntitalValues
   ) as (keyof UpdateWordInputType)[];
+
   keys.forEach(key => {
     // @ts-ignore
     initialValues[key] = word[key] || defaultIntitalValues[key];
+    if (key === 'tags' && word?.tags) {
+      // @ts-ignore
+      initialValues[key] = word.tags?.map(tag => tag?.id).filter(Boolean);
+    }
   });
 
   return initialValues;
@@ -97,6 +104,10 @@ export const formConfig: (
     Component: Checkbox,
     name: 'isLearned',
     props: { label: 'Mark as learned' }
+  },
+  {
+    Component: TagSelector,
+    name: 'tags'
   }
 ];
 

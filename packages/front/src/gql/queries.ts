@@ -15,6 +15,11 @@ export const WORDS_QUERY = gql`
       isLearned
       level
       shortDef
+      tags {
+        text
+        color
+        id
+      }
     }
   }
 `;
@@ -43,6 +48,11 @@ export const WORD_BY_ID_QUERY = gql`
       level
       shortDef
       alternativeSpelling
+      tags {
+        text
+        color
+        id
+      }
     }
   }
 `;
@@ -123,6 +133,16 @@ export const GAME = gql`
       }
       task
       type
+    }
+  }
+`;
+
+export const TAGS_QUERY = gql`
+  query Tags {
+    tags {
+      text
+      id
+      color
     }
   }
 `;

@@ -55,3 +55,7 @@
     flex-direction: column;
   }
 }
+
+.tagsSelector {
+  width: 300px;
+}

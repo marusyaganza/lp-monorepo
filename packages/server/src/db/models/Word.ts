@@ -1,4 +1,5 @@
 import { Word } from '../schema/Word';
+
 import {
   Word as WordType,
   NewWordInput,
@@ -9,7 +10,7 @@ import {
   SortWordsBy,
   WordStatisticsField
 } from '../../generated/graphql';
-import { formatFilter, formatData } from '../helpers';
+import { formatFilter, formatData, checkTags } from '../helpers';
 import { games } from '../../mocks/games';
 
 const STATISTICS_FIELD: WordStatisticsField = {
@@ -62,7 +63,9 @@ export const WordModel: WordModelType = {
     if (!filter?.user) {
       return null;
     }
-    const word = await Word.findOne(formatFilter(filter));
+    const word = await Word.findOne(formatFilter(filter))
+      .populate('tags')
+      .exec();
     return formatData(word);
   },
 
@@ -70,7 +73,7 @@ export const WordModel: WordModelType = {
     if (!filter?.user) {
       return [];
     }
-    const words = await Word.find(formatFilter(filter));
+    const words = await Word.find(formatFilter(filter)).populate('tags').exec();
     return words;
   },
 
@@ -130,7 +133,9 @@ export const WordModel: WordModelType = {
 
     const words = await Word.find({ user, language, ...learningStatusFilter })
       // @ts-ignore
-      .sort(sort);
+      .sort(sort)
+      .populate('tags')
+      .exec();
 
     return words;
   },
@@ -155,7 +160,9 @@ export const WordModel: WordModelType = {
 
   async updateOne(fields) {
     const updatedAt = Date.now();
-    const update = { ...fields, updatedAt };
+    //TODO fix checkTags function
+    const tagsUpdate = checkTags(fields?.tags);
+    const update = { ...fields, tags: tagsUpdate, updatedAt };
     const { ok, value } = await Word.findOneAndUpdate(
       { _id: fields.id, user: fields.user },
       update,
