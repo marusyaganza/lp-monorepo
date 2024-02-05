@@ -24,6 +24,20 @@ export const words: Word[] = [
         ]
       }
     ],
+    tags: [
+      {
+        text: 'Terry Pratchett',
+        color: '#BFB3E7',
+        id: '1',
+        user: '0'
+      },
+      {
+        text: 'IT',
+        color: '#E1AFAF',
+        id: '2',
+        user: '0'
+      }
+    ],
     particle: 'noun',
     level: Level.C1,
     stems: ['egalitarian', 'egalitarianism', 'egalitarians'],

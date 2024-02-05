@@ -7,14 +7,6 @@ import {
   Game
 } from '../../generated/graphql';
 
-const tagsSchema = new Schema(
-  {
-    color: { type: String, required: true },
-    text: { type: String, required: true }
-  },
-  { _id: false }
-);
-
 const examplesSchema = new Schema(
   {
     text: { type: String, required: true },
@@ -71,7 +63,7 @@ const wordSchema = new Schema<WordCoreType>({
   language: { type: String, enum: Language },
   particle: String,
   stems: [String],
-  tags: [tagsSchema],
+  tags: [{ type: Schema.Types.ObjectId, ref: 'WordTag' }],
   additionalInfo: String,
   isLearned: Boolean,
   statistics: wordStatisticsSchema,

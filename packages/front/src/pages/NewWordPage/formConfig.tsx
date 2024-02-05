@@ -3,7 +3,8 @@ import {
   InputV2,
   ArrayInput,
   Checkbox,
-  LevelSelector
+  LevelSelector,
+  TagSelector
 } from '@lp/ui';
 import { FormConfigType } from '../../components/WordForm/WordForm';
 import {
@@ -65,6 +66,10 @@ export const formConfig: FormConfigType<NewWordInput>[] = [
     Component: Checkbox,
     name: 'isOffensive',
     props: { variant: 'isOffensive' }
+  },
+  {
+    Component: TagSelector,
+    name: 'tags'
   }
 ];
 

@@ -130,5 +130,32 @@ export const MutationResolvers: MutationResolversType<ResolverContext> = {
       email: user.email
     };
     return result;
-  }
+  },
+  createTag: authorized(Role.Member, async (_, { input }, { models, user }) => {
+    const existing = input?.text
+      ? await models.WordTag.findOne({
+          user: user?.id,
+          text: input.text
+        })
+      : null;
+    if (existing) {
+      throw new UserInputError(`tag with text ${input?.text} is already added`);
+    }
+    const tag = await models.WordTag.createOne({ ...input, user: user?.id });
+    if (!tag || !tag?.id) {
+      throw new OperationResolutionError(`creating tag operation failed`);
+    }
+    return `tag ${tag?.text} was created successfully`;
+  }),
+
+  updateTag: authorized(Role.Member, async (_, { input }, { models, user }) => {
+    const result = await models.WordTag.updateOne({
+      ...input,
+      user: user?.id
+    });
+    if (!result?.ok) {
+      throw new UserInputError(`updating word with id ${input.id} failed`);
+    }
+    return `tag ${result?.value?.text} was updated`;
+  })
 };
