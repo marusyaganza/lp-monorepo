@@ -922,7 +922,7 @@ exports[`queries searchWord spanish lang, mocks enabled returns suggestion 1`] =
         "searchWord": [
           {
             "suggestions": [
-              "Mocks are enabled. You can query words from the list: idioma, hola, caerse",
+              "Mocks are enabled. You can query words from the list: idioma, hola, caerse, asi",
             ],
           },
         ],
