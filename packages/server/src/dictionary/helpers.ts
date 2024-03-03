@@ -171,6 +171,9 @@ export function getDefs(
       // TODO add test for this case
       if (s && s.length) {
         const { sense } = formatArray([s]);
+        if (!sense?.dt) {
+          return;
+        }
         const { dt } = sense;
         const { text, vis } = formatArray([dt]);
         const rawResalt = {

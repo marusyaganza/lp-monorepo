@@ -9,6 +9,7 @@ import fowl from './mocks/fowl';
 import caerse from './mocks/caerse';
 import murther from './mocks/murther';
 import suggestions from './mocks/suggestions';
+import asi from './mocks/asi';
 
 import voluminous from './mocks/voluminous';
 import { DictionaryWordType } from './dictionaryTypes';
@@ -31,7 +32,8 @@ const mockWords = {
 const mockSpanishWords = {
   idioma,
   hola,
-  caerse
+  caerse,
+  asi
 };
 
 const mockSuggestions = {
@@ -39,7 +41,7 @@ const mockSuggestions = {
     'Mocks are enabled. You can query words from the list: egalitarian, rubber, pussy, heart, wheel, voluminous, fowl, murther, or notFound to receive an empty array as a result, or suggestions for an array with words'
   ],
   [Language.Spanish]: [
-    'Mocks are enabled. You can query words from the list: idioma, hola, caerse'
+    'Mocks are enabled. You can query words from the list: idioma, hola, caerse, asi'
   ]
 };
 

@@ -14,10 +14,12 @@ export function formatDictionaryWord(
 ): DictionaryWord | undefined {
   const { def, meta, hwi, art, shortdef, cxs } = word;
   const { uuid, id, stems, offensive, lang } = meta;
+  const isSpanish = lang == 'es';
+  const name = isSpanish && hwi?.hw ? hwi.hw : filterString(id);
   const metaData = {
     uuid,
     stems,
-    name: filterString(id),
+    name,
     isOffensive: offensive
   };
   const defs = getDefs(def, cxs);
@@ -25,7 +27,7 @@ export function formatDictionaryWord(
   const transcription = pronunciation?.mw || formatHw(hwi?.hw);
   const audio = pronunciation?.sound?.audio;
   const audioUrl = getAudioUrl(audio, lang);
-  const language = lang == 'es' ? Language.Spanish : Language.English;
+  const language = isSpanish ? Language.Spanish : Language.English;
   const imgUrl = getImgUrl(art?.artid);
   const imgDesc = formatDictionaryEntity(art?.capt);
   const particle = word?.fl ?? 'noun';
