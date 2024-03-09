@@ -4,28 +4,34 @@ import { useSearchParams } from 'react-router-dom';
 import { Icon, SearchField, Link } from '@lp/ui';
 import { PageLayout } from '../../components/PageLayout/PageLayout';
 import {
-  useSearchWordsLazyQuery,
-  useSaveWordMutation,
   Suggestions,
-  Word
+  Word,
+  SaveWordMutation,
+  SearchWordsQuery
 } from '../../generated/graphql';
 import { WordCard, Spinner } from '@lp/ui';
 import styles from './SearchPage.module.css';
 import { routes } from '../../constants/routes';
 import { removeTypenames } from '../../util/wordUtils';
 import notFound from '../../assets/img/not-found.svg';
+import { SEARCH_WORDS } from '../../gql/queries';
+import { SAVE_WORD } from '../../gql/mutations';
+import { useMutation, useLazyQuery } from '@apollo/client';
 
 const SearchPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [saveWordFunc, saveWordData] = useSaveWordMutation({
-    update(cache) {
-      cache.evict({ fieldName: 'game' });
-      cache.evict({ fieldName: 'words' });
+  const [saveWordFunc, saveWordData] = useMutation<SaveWordMutation>(
+    SAVE_WORD,
+    {
+      update(cache) {
+        cache.evict({ fieldName: 'game' });
+        cache.evict({ fieldName: 'words' });
+      }
     }
-  });
+  );
   const { setNotification, language } = useContext(AppContext);
   const [fetchSearchResult, { loading, error, data }] =
-    useSearchWordsLazyQuery();
+    useLazyQuery<SearchWordsQuery>(SEARCH_WORDS);
   const [savedWords, setSavedWords] = useState<string[]>([]);
   const containsSuggestions = useMemo(
     () =>
@@ -86,6 +92,15 @@ const SearchPage = () => {
     }
   };
 
+  const getSuggestionClickHandler = (suggestion?: string | null) => {
+    if (!suggestion) {
+      return;
+    }
+    return function () {
+      setSearchParams({ search: suggestion });
+    };
+  };
+
   const getAddWordHandler = (word: Word) => {
     return function () {
       saveWordFunc({
@@ -110,14 +125,35 @@ const SearchPage = () => {
         </div>
       );
     }
+
+    const suggestionsArr = suggestions[0].suggestions;
+
+    if (!suggestionsArr?.length) {
+      return;
+    }
+
     return (
       <article>
-        {suggestions?.map(el => (
-          <p className={styles.suggestion} key={el?.suggestions?.[0]}>
-            <Icon id="pointer" width={20} height={20} />
-            {el?.suggestions?.join(', ')}
+        <div className={styles.suggestionsContainer}>
+          <Icon
+            className={styles.suggestionsIcon}
+            id="pointer"
+            width={20}
+            height={20}
+          />
+          <p className={styles.suggestions}>
+            {suggestionsArr.map(suggestion => (
+              <button
+                className={styles.suggestion}
+                key={suggestion}
+                onClick={getSuggestionClickHandler(suggestion)}
+                data-cy="clickable-suggestion"
+              >
+                {suggestion}
+              </button>
+            ))}
           </p>
-        ))}
+        </div>
       </article>
     );
   };
@@ -152,11 +188,7 @@ const SearchPage = () => {
       <div className={styles.content}>
         <div className={styles.headingContainer}>
           <h1 className={styles.mainHeading}>Look up word</h1>
-          <Link
-            variant="button"
-            className={styles.link}
-            to={`/${routes.words}/new`}
-          >
+          <Link variant="button" to={`/${routes.words}/new`}>
             Add your own word
           </Link>
         </div>

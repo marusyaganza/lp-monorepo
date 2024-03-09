@@ -10,7 +10,8 @@
   align-items: center;
   margin: 0 24px;
   max-width: 600px;
-  @media (min-width: 800px) {
+
+  @media (width >= 800px) {
     gap: 24px;
   }
 }
@@ -23,7 +24,8 @@
   font-size: var(--font-size-l);
   margin: 0 24px;
   position: relative;
-  @media (min-width: 800px) {
+
+  @media (width >= 800px) {
     font-size: var(--font-size-m);
   }
 }
@@ -42,7 +44,8 @@
   flex-direction: column;
   align-items: center;
   gap: 24px;
-  @media (min-width: 800px) {
+
+  @media (width >= 800px) {
     gap: 40px;
   }
 }
@@ -54,7 +57,8 @@
   align-items: center;
   margin-bottom: 16px;
   gap: 24px;
-  @media (min-width: 800px) {
+
+  @media (width >= 800px) {
     margin-bottom: 38px;
     gap: 40px;
   }
@@ -96,7 +100,8 @@
   bottom: 100px;
   max-width: 350px;
   font-family: var(--font-kalam);
-  @media (max-width: 1200px) {
+
+  @media (width <= 1200px) {
     display: none;
   }
 }
@@ -129,7 +134,8 @@
 
 .additionalInfo {
   text-align: center;
-  @media (min-width: 800px) {
+
+  @media (width >= 800px) {
     position: absolute;
     right: 0;
     margin: 30px;
@@ -141,7 +147,8 @@
 .wordImage {
   width: 200px;
   margin-bottom: 16px;
-  @media (max-width: 1200px) {
+
+  @media (width <= 1200px) {
     display: none;
   }
 }
@@ -156,14 +163,16 @@
 .modalWordImg {
   height: 200px;
   margin: 16px;
-  @media (min-width: 800px) {
+
+  @media (width >= 800px) {
     display: none;
   }
 }
 
 .additionalInfoBtn {
   margin-top: 16px;
-  @media (min-width: 800px) {
+
+  @media (width >= 800px) {
     display: none;
   }
 }

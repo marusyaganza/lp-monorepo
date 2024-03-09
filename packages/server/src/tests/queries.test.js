@@ -118,16 +118,14 @@ const gameQuery = `query Game($input: GameDataInput!) {
 
 let index = 0;
 
-const mathRandomMock = jest
-  .spyOn(global.Math, 'random')
-  .mockImplementation(function () {
-    if (index === randomNumbersArray.length) {
-      index = 0;
-    }
-    const randomNum = randomNumbersArray[index];
-    index++;
-    return randomNum;
-  });
+jest.spyOn(global.Math, 'random').mockImplementation(function () {
+  if (index === randomNumbersArray.length) {
+    index = 0;
+  }
+  const randomNum = randomNumbersArray[index];
+  index++;
+  return randomNum;
+});
 
 const findMany = jest.fn(() => words);
 const findOneUser = jest.fn(() => users[0]);

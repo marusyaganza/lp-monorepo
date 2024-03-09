@@ -847,7 +847,7 @@ exports[`queries searchWord english lang, mocks enabled returns suggestion 1`] =
         "searchWord": [
           {
             "suggestions": [
-              "Mocking is enabled. You can query words from the list: egalitarian, rubber, pussy, heart, wheel, voluminous, fowl, murther, or notFound to receive an empty array as a result",
+              "Mocks are enabled. You can query words from the list: egalitarian, rubber, pussy, heart, wheel, voluminous, fowl, murther, or notFound to receive an empty array as a result, or suggestions for an array with words",
             ],
           },
         ],
@@ -922,7 +922,7 @@ exports[`queries searchWord spanish lang, mocks enabled returns suggestion 1`] =
         "searchWord": [
           {
             "suggestions": [
-              "Mocking is enabled. You can query words from the list: idioma, hola, caerse",
+              "Mocks are enabled. You can query words from the list: idioma, hola, caerse, asi",
             ],
           },
         ],

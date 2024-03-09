@@ -28,6 +28,7 @@ export const getDefaultInitialValues: (
     imgDesc: '',
     shortDef: [''],
     additionalInfo: '',
+    alternativeSpelling: [''],
     stems: [''],
     isOffensive: false,
     isLearned: false,
@@ -80,6 +81,12 @@ export const formConfig: (
     Component: InputV2,
     name: 'additionalInfo',
     label: 'Additional information'
+  },
+  {
+    Component: ArrayInput,
+    name: 'alternativeSpelling',
+    label: 'alternative spelling',
+    props: { showOrderButtons: true }
   },
   {
     Component: Checkbox,

@@ -1,9 +1,9 @@
 import React, { useMemo, useEffect, useContext, useReducer } from 'react';
 import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
 import {
-  useGameLazyQuery,
+  GameQuery,
   Game as GameType,
-  useSaveGameResultMutation,
+  SaveGameResultMutation,
   SortBy
 } from '../../../generated/graphql';
 import { routes } from '../../../constants/routes';
@@ -13,15 +13,22 @@ import { PageSpinner } from '../../../components/PageSpinner/PageSpinner';
 import { gameReducer, initialState, GameAction } from './gameReducer';
 
 import styles from './GamePage.module.css';
+import { useLazyQuery, useMutation } from '@apollo/client';
+import { GAME } from '../../../gql/queries';
+import { SAVE_GAME_RESULT } from '../../../gql/mutations';
 
 const GamePage = () => {
   const params = useParams();
   const navigate = useNavigate();
 
-  const [fetchGameData, { loading, error, data }] = useGameLazyQuery({
-    fetchPolicy: 'no-cache'
-  });
-  const [saveResultFunc, saveResultData] = useSaveGameResultMutation();
+  const [fetchGameData, { loading, error, data }] = useLazyQuery<GameQuery>(
+    GAME,
+    {
+      fetchPolicy: 'no-cache'
+    }
+  );
+  const [saveResultFunc, saveResultData] =
+    useMutation<SaveGameResultMutation>(SAVE_GAME_RESULT);
 
   const { setNotification, language, userId } = useContext(AppContext);
   const [state, dispatch] = useReducer(gameReducer, initialState);
@@ -138,6 +145,8 @@ const GamePage = () => {
         payload: {
           gameType: data.game.type,
           answer,
+          alternativeSpelling:
+            questions[state.currentIndex]?.alternativeSpelling || [],
           correctAnswer: questions[state.currentIndex]?.answer || '',
           id: questions[state.currentIndex].wordId
         }

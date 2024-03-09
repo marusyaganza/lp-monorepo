@@ -1,16 +1,12 @@
 {
-  "extends": [
-    "stylelint-config-standard",
-    "stylelint-config-prettier",
-    "stylelint-order",
-    "stylelint-high-performance-animation",
-    "stylelint-a11y"
-  ],
+  "extends": ["stylelint-config-standard"],
   "rules": {
     "selector-class-pattern": null,
     "custom-property-pattern": null,
-    "color-function-notation": "legacy"
+    "color-function-notation": "legacy",
+    "import-notation": "string"
   },
+  "plugins": ["stylelint-prettier", "stylelint-order"],
   "files": ["**/*.css"],
   "ignoreFiles": [
     "**/*.js",

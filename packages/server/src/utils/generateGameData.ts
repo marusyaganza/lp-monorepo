@@ -5,7 +5,8 @@ import {
   GameConfig,
   Language,
   WordDefinition,
-  DefExample
+  DefExample,
+  GameQuestion
 } from '../generated/graphql';
 import { OperationResolutionError } from './apolloCustomErrors';
 import { madeUphWords } from '../mocks/madeUpWord';
@@ -139,10 +140,18 @@ export const generateGameData: GenerateGameDataFuncType = (
   const words = wordsCandidates.slice(0, wordsPerGame);
   if (gameType === Game.TypeWord) {
     questions = words.map(word => {
-      const { name, shortDef, id, audioUrl, imgUrl, defs } = word;
+      const {
+        name,
+        shortDef,
+        id,
+        audioUrl,
+        imgUrl,
+        defs,
+        alternativeSpelling
+      } = word;
       const examples = getExamples(defs);
       const question = shortDef.map(def => prepareDef(def, name));
-      return {
+      const result: GameQuestion = {
         answer: name,
         wordId: id,
         question,
@@ -152,16 +161,30 @@ export const generateGameData: GenerateGameDataFuncType = (
           examples
         }
       };
+      if (alternativeSpelling?.length) {
+        result.alternativeSpelling = alternativeSpelling;
+      }
+      return result;
     });
   }
 
   if (gameType === Game.Audio) {
     questions = words.map(word => {
-      const { name, audioUrl, id, defs, imgUrl, shortDef } = word;
+      const {
+        name,
+        audioUrl,
+        id,
+        defs,
+        imgUrl,
+        shortDef,
+        alternativeSpelling
+      } = word;
+
       const examples = getExamples(defs);
-      return {
+
+      const result: GameQuestion = {
         answer: name,
-        question: [audioUrl],
+        question: [audioUrl] as string[],
         wordId: id,
         additionalInfo: {
           imgUrl,
@@ -169,6 +192,12 @@ export const generateGameData: GenerateGameDataFuncType = (
           shortDef: `<b>${name} means</b> ${shortDef[0]}`
         }
       };
+
+      if (alternativeSpelling?.length) {
+        result.alternativeSpelling = alternativeSpelling;
+      }
+
+      return result;
     });
   }
   //TODO create 'find all defs' game to train the words with multiple definitions

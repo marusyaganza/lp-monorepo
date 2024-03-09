@@ -14,7 +14,8 @@
   font-size: var(--font-size-s);
   font-family: var(--font-libreBaskerville);
   position: relative;
-  @media (max-width: 800px) {
+
+  @media (width <= 800px) {
     padding: 24px;
     padding-bottom: 64px;
   }
@@ -30,7 +31,8 @@
   align-items: center;
   gap: 32px;
   justify-content: space-between;
-  @media (max-width: 800px) {
+
+  @media (width <= 800px) {
     gap: 32px;
   }
 }
@@ -38,8 +40,7 @@
 .mainInfo {
   display: flex;
   align-items: center;
-  row-gap: 24px;
-  column-gap: 30px;
+  gap: 24px 30px;
   flex-wrap: wrap;
 }
 
@@ -124,7 +125,8 @@
   display: flex;
   gap: 40px;
   align-self: flex-start;
-  @media (max-width: 800px) {
+
+  @media (width <= 800px) {
     position: absolute;
     bottom: 0;
     left: 50%;
@@ -136,7 +138,8 @@
 .wordContainer > .buttons {
   display: flex;
   align-self: center;
-  @media (min-width: 800px) {
+
+  @media (width >= 800px) {
     display: none;
   }
 }
@@ -166,7 +169,8 @@
   display: flex;
   justify-content: space-between;
   gap: 24px;
-  @media (max-width: 1000px) {
+
+  @media (width <= 1000px) {
     flex-direction: column;
   }
 }

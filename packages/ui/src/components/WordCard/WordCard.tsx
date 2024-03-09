@@ -50,7 +50,8 @@ export const WordCard = ({
     stems,
     imgUrl,
     imgDesc,
-    shortDef
+    shortDef,
+    alternativeSpelling
   } = word;
 
   const isFull = variant === 'full';
@@ -243,14 +244,26 @@ export const WordCard = ({
             </figure>
           )}
         </div>
-        {!!stems?.length && (
-          <section>
-            <p className={styles.stems} data-cy="stems">
-              <span className={styles.stemsHeading}>Word forms: </span>
-              {stems.join(', ')}
-            </p>
-          </section>
-        )}
+        <div>
+          {!!stems?.length && (
+            <section>
+              <p className={styles.stems} data-cy="stems">
+                <span className={styles.stemsHeading}>Word forms: </span>
+                {stems.join(', ')}
+              </p>
+            </section>
+          )}
+          {!!alternativeSpelling?.length && (
+            <section>
+              <p className={styles.stems} data-cy="altSpelling">
+                <span className={styles.stemsHeading}>
+                  Alternative spelling:{' '}
+                </span>
+                {alternativeSpelling.join(', ')}
+              </p>
+            </section>
+          )}
+        </div>
       </article>
     );
   }

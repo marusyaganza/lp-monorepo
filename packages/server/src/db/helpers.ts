@@ -1,5 +1,5 @@
-import { Document } from 'mongoose';
-import { User, Word, Maybe } from '../generated/graphql';
+import { Document, Types } from 'mongoose';
+import { Maybe } from '../generated/graphql';
 
 type ModelDataType = {
   id?: Maybe<string>;
@@ -10,13 +10,14 @@ interface DbData extends ModelDataType {
   _id?: string;
 }
 
-type DocumentType = Document<
-  unknown,
-  Record<string, string>,
-  User | Word
-> | null;
+type DocumentType<T> =
+  | (Document<unknown, unknown, T> &
+      T & {
+        _id: Types.ObjectId;
+      })
+  | null;
 
-export function formatData<T>(data: DocumentType): T | null {
+export function formatData<T>(data: DocumentType<T>): T | null {
   if (!data) {
     return null;
   }

@@ -1,6 +1,7 @@
 .image {
   width: 300px;
-  @media (min-width: 800px) {
+
+  @media (width >= 800px) {
     width: 500px;
   }
 }
@@ -15,7 +16,8 @@
 
 .heading {
   text-align: center;
-  @media (min-width: 800px) {
+
+  @media (width >= 800px) {
     position: absolute;
     top: 50%;
     left: 340px;
@@ -24,7 +26,7 @@
 }
 
 .button {
-  @media (min-width: 800px) {
+  @media (width >= 800px) {
     font-size: var(--font-size-xl);
   }
 

@@ -25,7 +25,8 @@
   margin: 40px auto;
   font-size: var(--font-size-xl);
   text-align: center;
-  @media (max-width: 800px) {
+
+  @media (width <= 800px) {
     font-size: var(--font-size-l);
     margin: 24px auto;
   }
@@ -49,7 +50,8 @@
   align-items: flex-end;
   flex-wrap: wrap;
   gap: 32px;
-  @media (max-width: 800px) {
+
+  @media (width <= 800px) {
     flex-direction: column;
   }
 }

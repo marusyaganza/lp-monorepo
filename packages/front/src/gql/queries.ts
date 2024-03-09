@@ -37,12 +37,12 @@ export const WORD_BY_ID_QUERY = gql`
       audioUrl
       additionalInfo
       transcription
-      user
       isOffensive
       isLearned
       stems
       level
       shortDef
+      alternativeSpelling
     }
   }
 `;
@@ -110,6 +110,7 @@ export const GAME = gql`
         question
         options
         answer
+        alternativeSpelling
         additionalInfo {
           audioUrl
           imgUrl

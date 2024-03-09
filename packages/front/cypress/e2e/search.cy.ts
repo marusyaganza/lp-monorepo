@@ -37,7 +37,7 @@ describe('Search Page', () => {
     cy.get('[data-cy="spinner"]').should('not.exist');
     cy.get('form').find('input').type('a');
     cy.get('form').find('[data-cy="searchButton"]').click();
-    cy.contains('Mocking is enabled. You can query words from the list:');
+    cy.contains('Mocks are enabled. You can query words from the list:');
     cy.get('form').find('[data-cy="clearButton"]').click();
     cy.get('form').find('input').type('voluminous');
     cy.get('form').find('[data-cy="searchButton"]').click();
@@ -76,6 +76,18 @@ describe('Search Page', () => {
     cy.get('[data-cy="searchResult"]')
       .find('[data-cy="wordCard"]')
       .should('have.length', 10);
+  });
+
+  it('should display clickable suggestions correctly', () => {
+    cy.get('form').find('input').type('suggestions');
+    cy.get('@searchButton').click();
+    cy.get('[data-cy="clickable-suggestion"]').contains('voluminous').click();
+    cy.location().should('have.a.property', 'search', '?search=voluminous');
+    cy.get('[data-cy="searchResult"]')
+      .find('li')
+      .find('header')
+      .find('h3')
+      .should('have.text', 'voluminous');
   });
 
   // TODO figure out why error notifications do not work

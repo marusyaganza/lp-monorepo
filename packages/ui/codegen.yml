@@ -1,6 +1,0 @@
-overwrite: true
-schema: '../shared/schema.graphql'
-generates:
-  src/generated/graphql.tsx:
-    plugins:
-      - 'typescript'

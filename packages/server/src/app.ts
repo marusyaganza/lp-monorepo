@@ -23,6 +23,7 @@ const server = new ApolloServer({
 });
 
 initDB(async (models: ModelsType) => {
+  // @ts-ignore
   const { url } = await startStandaloneServer(server, {
     context: async function ({ req }): Promise<ResolverContext> {
       const token = req?.headers?.authorization?.split(' ').pop();

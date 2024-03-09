@@ -1,6 +1,24 @@
 version: "3.8"
 services:
-  lp-front:
+ lp-db:
+    image: "mongo"
+    volumes:
+      - data:/data/db
+    networks:
+      lp-network:
+ lp-server:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile-server-prod
+    ports:
+      - "4000:4000"
+    env_file:
+      - ./packages/server/.env.preprod
+    depends_on:
+      - lp-db
+    networks:
+      lp-network:
+ lp-front:
     build:
       context: .
       dockerfile: docker/Dockerfile-front-prod
@@ -10,3 +28,7 @@ services:
       - ./packages/front/.env
     stdin_open: true
     tty: true
+volumes:
+  data:
+networks:
+  lp-network:

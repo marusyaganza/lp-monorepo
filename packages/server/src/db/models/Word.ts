@@ -159,7 +159,7 @@ export const WordModel: WordModelType = {
     const { ok, value } = await Word.findOneAndUpdate(
       { _id: fields.id, user: fields.user },
       update,
-      { rawResult: true, new: true }
+      { includeResultMetadata: true, new: true }
     );
     const isOk = ok == 1 && value !== null;
     return { ok: isOk, value: formatData(value) };
@@ -174,7 +174,7 @@ export const WordModel: WordModelType = {
       const result = await Word.findOneAndUpdate(
         { _id: entry.id, user },
         update,
-        { rawResult: true, new: true }
+        { includeResultMetadata: true, new: true }
       );
       isOk = isOk && result?.ok == 1 && result?.value !== null;
     });
