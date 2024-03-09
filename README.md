@@ -18,6 +18,13 @@ run `docker compose down` to stop containers.
 
 run `yarn build:front` to build frontend. It generates files in `packages/front/public`.
 
+## Develop deploy
+
+run `docker compose -f docker-compose-dev.yml up -d`
+to start the server on port `4001` and the frontend on `8081`in detached mode.
+
+run `docker compose down` to stop containers.
+
 ## Pre-production deploy
 
 run `docker compose -f docker-compose-preprod.yml up -d`

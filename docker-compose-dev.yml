@@ -1,0 +1,22 @@
+version: "3.8"
+services:
+  lp-server:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile-server-prod
+    ports:
+      - "4001:4000"
+    env_file:
+      - ./packages/server/.env
+  lp-front:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile-front-prod
+    ports:
+      - '808:80'
+    env_file:
+      - ./packages/front/.env
+    stdin_open: true
+    tty: true
+    depends_on:
+      - lp-server
