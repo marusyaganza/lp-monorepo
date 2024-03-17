@@ -271,8 +271,8 @@ input WordTagInput {
 
 input UpdateWordTagInput {
   id: ID!
-  color: String
-  text: String
+  color: String!
+  text: String!
   desc: String
 }
 

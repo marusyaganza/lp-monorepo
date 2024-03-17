@@ -48,8 +48,7 @@ export const testData = {
     audioUrl: 'mock.mp3',
     transcription: 'iˌɡælɪˈteəriən',
     imgUrl: 'mock.jpeg',
-    additionalInfo: 'additional info',
-    tags: [{ color: 'pink', text: 'academic' }]
+    additionalInfo: 'additional info'
   },
   createWordInput2: {
     particle: 'noun',

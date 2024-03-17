@@ -1,0 +1,34 @@
+.tagsForm {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 36px 20px 0;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.buttonsBlock {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 18px;
+}
+
+.text {
+  min-width: 250px;
+}
+
+.desc {
+  min-width: 350px;
+}
+
+.tagDisplay {
+  margin-top: 24px;
+}
+
+.formFields {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  flex-wrap: wrap;
+}

@@ -182,6 +182,7 @@ const WordsPage = () => {
             onChange={handleTagsChange}
             className={styles.tagsSelector}
           />
+          <Link to={`/${routes.tags}`}>Manage tags</Link>
           <SortControls
             blankOption="Date"
             blankValue="Date"

@@ -5,9 +5,9 @@ import styles from './Tag.module.css';
 
 export interface TagProps {
   /**Tag text */
-  text: string;
+  text?: string;
   /**Tag color */
-  color: string;
+  color?: string;
   /**additional styling */
   className?: string;
 }
@@ -23,7 +23,7 @@ export const Tag = ({
       style={{ backgroundColor: color }}
       className={cn(className, styles.tag)}
     >
-      #{text}
+      {text && `#${text}`}
       {children}
     </span>
   );

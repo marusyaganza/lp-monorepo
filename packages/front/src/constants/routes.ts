@@ -4,5 +4,6 @@ export const routes = {
   search: 'search',
   games: 'games',
   words: 'words',
-  profile: 'profile'
+  profile: 'profile',
+  tags: 'tags'
 };
