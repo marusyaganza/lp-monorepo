@@ -1,11 +1,12 @@
 import React, { ChangeEventHandler, useState } from 'react';
+
 import { cn } from '../../utils/classnames';
 
-import styles from './InputV2.module.css';
+import styles from './ColorInput.module.css';
 
-export interface InputV2Props {
+export interface ColorInputProps {
   name: string;
-  initialValue?: string | null;
+  initialValue?: string;
   label?: string;
   onChange: (value: string) => void;
   fontStyle?: 'primary' | 'secondary';
@@ -16,8 +17,8 @@ export interface InputV2Props {
   className?: string;
   dataCy?: string;
 }
-/**Input with button */
-export const InputV2 = ({
+/**Color input that includes color picker and a text input */
+export const ColorInput = ({
   name,
   label,
   onChange,
@@ -28,13 +29,14 @@ export const InputV2 = ({
   initialValue,
   isDisabled,
   dataCy
-}: InputV2Props) => {
+}: ColorInputProps) => {
   const isInValid = errorText?.length !== 0;
   const [value, setValue] = useState(initialValue || '');
-  const handleChange: ChangeEventHandler<HTMLTextAreaElement> = e => {
-    const val = e.target.value;
-    setValue(val);
-    onChange(val);
+  const handleChange: ChangeEventHandler<HTMLInputElement> = e => {
+    const { value } = e.target;
+    const formattedValue = value.startsWith('#') ? value : `#${value}`;
+    setValue(formattedValue);
+    onChange(formattedValue);
   };
   return (
     <div
@@ -48,11 +50,18 @@ export const InputV2 = ({
           </span>
         )}
         <div className={styles.inputWrapper}>
-          <textarea
+          <input
             disabled={isDisabled}
             className={cn(styles.input, styles[fontStyle])}
             name={name}
-            rows={value?.length / 32 + 1 || 1}
+            value={value}
+            onChange={handleChange}
+          />
+          <input
+            type="color"
+            disabled={isDisabled}
+            className={styles.colorInput}
+            name={name}
             value={value}
             onChange={handleChange}
           />

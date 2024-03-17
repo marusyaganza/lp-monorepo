@@ -397,7 +397,7 @@ describe('mutations', () => {
     });
   });
 
-  test('create not create word if user is not defined', async () => {
+  test('not create word if user is not defined', async () => {
     const { mutate } = createTestServer({
       models
     });

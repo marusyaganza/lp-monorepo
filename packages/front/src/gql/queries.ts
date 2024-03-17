@@ -143,6 +143,7 @@ export const TAGS_QUERY = gql`
       text
       id
       color
+      desc
     }
   }
 `;

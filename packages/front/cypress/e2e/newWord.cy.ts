@@ -236,6 +236,7 @@ describe('Words Page', () => {
     cy.get('[data-cy="wordForm"]')
       .find('[data-cy="select"]')
       .find('button')
+      .first()
       .focus()
       .click({ force: true });
 

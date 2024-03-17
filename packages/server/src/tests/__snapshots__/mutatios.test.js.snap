@@ -1,39 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`mutations create not create word if user is not defined 1`] = `
-{
-  "body": {
-    "kind": "single",
-    "singleResult": {
-      "data": null,
-      "errors": [
-        {
-          "extensions": {
-            "code": "INTERNAL_SERVER_ERROR",
-          },
-          "locations": [
-            {
-              "column": 3,
-              "line": 2,
-            },
-          ],
-          "message": "You do not have permission to perform this operation",
-          "path": [
-            "saveWord",
-          ],
-        },
-      ],
-    },
-  },
-  "http": {
-    "headers": Map {
-      "cache-control" => "no-store",
-    },
-    "status": undefined,
-  },
-}
-`;
-
 exports[`mutations create not create word if user is not found 1`] = `
 {
   "body": {
@@ -372,6 +338,40 @@ exports[`mutations login with invalid email 1`] = `
           "message": "email or password is incorrect",
           "path": [
             "login",
+          ],
+        },
+      ],
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`mutations not create word if user is not defined 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": null,
+      "errors": [
+        {
+          "extensions": {
+            "code": "INTERNAL_SERVER_ERROR",
+          },
+          "locations": [
+            {
+              "column": 3,
+              "line": 2,
+            },
+          ],
+          "message": "You do not have permission to perform this operation",
+          "path": [
+            "saveWord",
           ],
         },
       ],
