@@ -1,22 +1,22 @@
 version: "3.8"
 services:
-  lp-server:
+  lp-server-dev:
     build:
       context: .
       dockerfile: docker/Dockerfile-server-prod
     ports:
       - "4001:4000"
     env_file:
-      - ./packages/server/.env
-  lp-front:
+      - ./packages/server/.env.dev
+  lp-front-dev:
     build:
       context: .
-      dockerfile: docker/Dockerfile-front-prod
+      dockerfile: docker/Dockerfile-front-prod-dev
     ports:
       - '8081:80'
     env_file:
-      - ./packages/front/.env
+      - ./packages/front/.env.dev
     stdin_open: true
     tty: true
     depends_on:
-      - lp-server
+      - lp-server-dev
