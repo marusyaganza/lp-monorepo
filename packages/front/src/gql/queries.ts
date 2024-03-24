@@ -138,8 +138,8 @@ export const GAME = gql`
 `;
 
 export const TAGS_QUERY = gql`
-  query Tags {
-    tags {
+  query Tags($language: Language!) {
+    tags(language: $language) {
       text
       id
       color

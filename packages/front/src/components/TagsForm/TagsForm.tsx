@@ -4,13 +4,13 @@ import { useForm } from '../../hooks/useForm';
 import { WordTagInput } from '../../generated/graphql';
 import styles from './TagsFrom.module.css';
 
-export interface TagsFormProps<T extends WordTagInput> {
+export interface TagsFormProps<T extends Omit<WordTagInput, 'language'>> {
   onSubmit: (values: T) => void;
   onCancel: () => void;
   initialValues?: T | null;
 }
 
-const DEFAUL_INITIAL_VALUES: WordTagInput = {
+const DEFAUL_INITIAL_VALUES = {
   text: '',
   desc: '',
   color: ''
@@ -27,7 +27,7 @@ const validators = {
   }
 };
 
-export const TagsForm = function <T extends WordTagInput>({
+export const TagsForm = function <T extends Omit<WordTagInput, 'language'>>({
   initialValues,
   onSubmit,
   onCancel

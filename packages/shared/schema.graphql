@@ -62,6 +62,7 @@ type WordDefinition {
 type WordTag {
   id: ID!
   user: ID!
+  language: Language!
   color: String!
   text: String!
   desc: String
@@ -266,6 +267,7 @@ input WordsInput {
 input WordTagInput {
   color: String!
   text: String!
+  language: Language!
   desc: String
 }
 
@@ -283,7 +285,7 @@ type Query {
   words(input: WordsInput): [Word]!
   word(id: ID!): Word!
   searchWord(input: WordSearchInput!): [SearchResult]!
-  tags: [WordTag]!
+  tags(language: Language!): [WordTag]!
 }
 
 type Mutation {
