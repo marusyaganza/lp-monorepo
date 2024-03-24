@@ -16,6 +16,7 @@ import styles from './GamePage.module.css';
 import { useLazyQuery, useMutation } from '@apollo/client';
 import { GAME } from '../../../gql/queries';
 import { SAVE_GAME_RESULT } from '../../../gql/mutations';
+import { getStoredData } from '../../../util/localStorageUtils';
 
 const GamePage = () => {
   const params = useParams();
@@ -46,6 +47,8 @@ const GamePage = () => {
     () => searchParams.get('isReverseOrder') === 'true',
     [searchParams]
   );
+
+  const storedTags = useMemo(() => getStoredData<'gameTags'>('gameTags'), []);
 
   const gameId = useMemo<GameType | undefined>(() => {
     const gameId = params.gameId?.toUpperCase();
@@ -79,7 +82,8 @@ const GamePage = () => {
             gameType: gameId,
             language,
             sortBy,
-            isReverseOrder
+            isReverseOrder,
+            tags: storedTags
           }
         }
       });

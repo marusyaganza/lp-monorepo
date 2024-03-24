@@ -35,6 +35,7 @@ const WordsPage = () => {
     useLazyQuery<WordsQuery>(WORDS_QUERY);
   const { setNotification, language } = useContext(AppContext);
   const [sortBy, setSortBy] = useState<SortWordsBy>();
+  const [tags, setTags] = useState<string[] | undefined>();
   const [isReverseOrder, setIsReverseOrder] = useState(false);
 
   const tagsResult = useQuery<TagsQuery>(TAGS_QUERY, {
@@ -55,9 +56,13 @@ const WordsPage = () => {
     setSortBy(val as SortWordsBy);
     storeData('sortWordsBy', val);
   }, []);
-  const handleTagsChange = (tags: string[]) => {
-    console.log('tags', tags);
-  };
+
+  const handleTagsChange = useCallback((val: string[]) => {
+    setTags(val);
+    storeData('tags', val ?? []);
+  }, []);
+
+  console.log('tags', tags);
 
   const handleOrderChange = useCallback((value: boolean) => {
     setIsReverseOrder(value);
@@ -67,10 +72,10 @@ const WordsPage = () => {
   useEffect(() => {
     fetchWords({
       variables: {
-        input: { language, isReverseOrder, sortBy: sortBy || undefined }
+        input: { language, isReverseOrder, sortBy: sortBy || undefined, tags }
       }
     });
-  }, [language, sortBy, isReverseOrder]);
+  }, [language, sortBy, isReverseOrder, tags]);
 
   const navigate = useNavigate();
 
@@ -118,11 +123,15 @@ const WordsPage = () => {
     const storedSortBy = getStoredData<'sortWordsBy'>('sortWordsBy');
     const storedIsReverseOrder =
       getStoredData<'wordsSortOrder'>('wordsSortOrder');
+    const storedTags = getStoredData<'tags'>('tags');
     if (storedSortBy) {
       setSortBy(storedSortBy);
     }
     if (storedIsReverseOrder) {
       setIsReverseOrder(storedIsReverseOrder);
+    }
+    if (storedTags) {
+      setTags(storedTags);
     }
   }, []);
 
@@ -180,6 +189,7 @@ const WordsPage = () => {
           <TagSelector
             // @ts-ignore
             tags={tagsResult?.data?.tags}
+            initialValue={tags}
             label="tags"
             onChange={handleTagsChange}
             className={styles.tagsSelector}

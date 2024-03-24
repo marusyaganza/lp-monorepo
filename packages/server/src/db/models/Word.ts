@@ -34,6 +34,7 @@ type wordsFilter = {
   timesToLearn?: number | null;
   gameType?: Game;
   user?: string;
+  tags?: string[];
 };
 
 export interface WordModelType {
@@ -85,6 +86,7 @@ export const WordModel: WordModelType = {
       sortBy,
       isReverseOrder,
       gameType,
+      tags,
       timesToLearn = 5
     } = filter;
 
@@ -100,11 +102,20 @@ export const WordModel: WordModelType = {
     }
     let learningStatusFilter = {};
     let sort: Record<string, number> = { $natural: orderNum };
+
+    let tagsFilters: { tags: string }[] = [];
+    if (tags?.length) {
+      tagsFilters = tags?.map(tag => {
+        return { tags: tag };
+      });
+    }
+    // TODO: refactor this part
     // Select words that are not learned or have been practiced without error less than 5 times in a row
     if (gameType && sortBy !== SortBy.MemoryRefresher) {
       learningStatusFilter = {
         $and: [
           { isLearned: { $ne: true } },
+          ...tagsFilters,
           {
             $or: [
               { [`statistics.${gameType}.successRate`]: { $lt: timesToLearn } },
@@ -113,12 +124,20 @@ export const WordModel: WordModelType = {
           }
         ]
       };
+    } else {
+      if (tagsFilters?.length) {
+        learningStatusFilter = {
+          $and: tagsFilters
+        };
+      }
     }
+
     if (sortBy) {
       let propName: string = sortBy;
       if (gameType) {
         propName = `statistics.${gameType}.${sortBy}`;
       }
+
       if (sortBy === SortBy.MemoryRefresher) {
         learningStatusFilter = {
           $or: [
@@ -131,7 +150,13 @@ export const WordModel: WordModelType = {
       }
     }
 
-    const words = await Word.find({ user, language, ...learningStatusFilter })
+    const filters = {
+      user,
+      language,
+      ...learningStatusFilter
+    };
+
+    const words = await Word.find(filters)
       // @ts-ignore
       .sort(sort)
       .populate('tags')
