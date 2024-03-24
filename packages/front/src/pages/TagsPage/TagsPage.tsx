@@ -16,8 +16,10 @@ import { removeTypenames } from '../../util/wordUtils';
 import styles from './TagsPage.module.css';
 
 export const TagsPage = () => {
-  const { error, loading, data } = useQuery<TagsQuery>(TAGS_QUERY);
   const { setNotification, language } = useContext(AppContext);
+  const { error, loading, data } = useQuery<TagsQuery>(TAGS_QUERY, {
+    variables: { language }
+  });
   const [currentTag, setCurrentTag] = useState<
     UpdateWordTagInput | undefined
   >();
@@ -106,7 +108,7 @@ export const TagsPage = () => {
   const handleNewTagFormSubmit = (values: WordTagInput) => {
     const mutationFunc = createTagFunc;
     mutationFunc({
-      variables: { input: values },
+      variables: { input: { ...values, language } },
       refetchQueries: () => [
         {
           query: WORDS_QUERY,

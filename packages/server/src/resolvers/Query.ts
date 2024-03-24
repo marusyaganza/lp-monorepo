@@ -85,9 +85,9 @@ export const QueryResolvers: QueryResolversType<ResolverContext> = {
       return generateGameData(gameType, words, config);
     }
   ),
-  tags: authenticated(async (_, { input }, { models, user }) => {
+  tags: authenticated(async (_, { language }, { models, user }) => {
     const tags = await models.WordTag.findMany({
-      ...input,
+      language,
       user: user?.id
     });
     return tags;

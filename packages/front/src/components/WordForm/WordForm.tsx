@@ -69,7 +69,9 @@ export function WordForm<T extends Record<string, unknown>>({
   );
   const [errors, setErrors] = useState<Record<string, string>>({});
   const { language, setNotification } = useContext(AppContext);
-  const { error, loading, data } = useQuery<TagsQuery>(TAGS_QUERY);
+  const { error, loading, data } = useQuery<TagsQuery>(TAGS_QUERY, {
+    variables: { language }
+  });
 
   const handleFormSubmit: FormEventHandler<HTMLFormElement> = e => {
     e.preventDefault();

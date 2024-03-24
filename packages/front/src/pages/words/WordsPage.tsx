@@ -37,7 +37,9 @@ const WordsPage = () => {
   const [sortBy, setSortBy] = useState<SortWordsBy>();
   const [isReverseOrder, setIsReverseOrder] = useState(false);
 
-  const tagsResult = useQuery<TagsQuery>(TAGS_QUERY);
+  const tagsResult = useQuery<TagsQuery>(TAGS_QUERY, {
+    variables: { language }
+  });
 
   const [deleteWordFunc, deleteWordData] = useMutation<DeleteWordMutation>(
     DELETE_WORD,
