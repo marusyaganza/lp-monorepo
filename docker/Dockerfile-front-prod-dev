@@ -1,0 +1,39 @@
+FROM node:18-alpine3.17 AS builder
+
+WORKDIR /app
+
+COPY package.json /app
+
+COPY yarn.lock /app
+
+COPY lerna.json /app
+
+COPY packages/shared /app/packages/shared
+
+COPY packages/front /app/packages/front
+
+COPY packages/ui /app/packages/ui
+
+RUN yarn install --production --frozen-lockfile
+
+RUN yarn build:front-dev
+
+RUN cp -a packages/front/public /app/public
+
+RUN rm -rf /app/packages/ui
+
+RUN rm -rf /app/packages/front
+
+RUN rm -rf /app/node_modules
+
+FROM nginx:alpine
+
+WORKDIR /usr/share/nginx/html
+
+COPY /docker/nginx.conf /etc/nginx/nginx.conf
+
+RUN rm -rf ./*
+
+COPY --from=builder /app/public .
+
+ENTRYPOINT ["nginx", "-g", "daemon off;"]

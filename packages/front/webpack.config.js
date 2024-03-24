@@ -4,9 +4,9 @@ const Dotenv = require('dotenv-webpack');
 
 const modeConfig = env => require(`./build-utils/webpack.${env}`);
 
-module.exports = ({ mode = 'production', stats }) => {
+module.exports = ({ mode = 'production', stats, envFile }) => {
   const plugins = [
-    new Dotenv(),
+    new Dotenv({ path: envFile || '.env' }),
     new HtmlWebpackPlugin({ template: './index.html' })
   ];
   if (stats) {
