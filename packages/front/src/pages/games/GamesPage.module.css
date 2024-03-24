@@ -38,3 +38,7 @@
 .sortControls {
   align-self: flex-end;
 }
+
+.tagsSelector {
+  width: 300px;
+}

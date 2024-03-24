@@ -6,14 +6,14 @@ import React, {
   useState
 } from 'react';
 import { Outlet } from 'react-router-dom';
-import { SortBy, GamesQuery } from '../../generated/graphql';
-import { GameCard, Spinner } from '@lp/ui';
+import { SortBy, GamesQuery, TagsQuery } from '../../generated/graphql';
+import { GameCard, Spinner, TagSelector } from '@lp/ui';
 import { routes } from '../../constants/routes';
 import { PageLayout } from '../../components/PageLayout/PageLayout';
 import { AppContext } from '../../app-context/appContext';
 import { getStoredData, storeData } from '../../util/localStorageUtils';
 import { SortControls } from '../../components/SortControls/SortControls';
-import { GAMES } from '../../gql/queries';
+import { GAMES, TAGS_QUERY } from '../../gql/queries';
 
 import styles from './GamesPage.module.css';
 import { useQuery } from '@apollo/client';
@@ -28,9 +28,14 @@ const OPTIONS = {
 
 const GamesPage = () => {
   const { error, loading, data } = useQuery<GamesQuery>(GAMES);
-  const { setNotification } = useContext(AppContext);
+  const { setNotification, language } = useContext(AppContext);
   const [sortBy, setSortBy] = useState('');
+  const [tags, setTags] = useState<string[] | undefined>();
   const [isReverseOrder, setIsReverseOrder] = useState(false);
+
+  const tagsResult = useQuery<TagsQuery>(TAGS_QUERY, {
+    variables: { language }
+  });
 
   const searchStr = useMemo(() => {
     const sort = sortBy ? `&sortBy=${sortBy}` : '';
@@ -47,6 +52,11 @@ const GamesPage = () => {
     storeData('gamesSortOrder', value);
   }, []);
 
+  const handleTagsChange = useCallback((val: string[]) => {
+    setTags(val);
+    storeData('gameTags', val ?? []);
+  }, []);
+
   useEffect(() => {
     if (error) {
       setNotification({
@@ -61,11 +71,16 @@ const GamesPage = () => {
     const storedSortBy = getStoredData<'sortGamesBy'>('sortGamesBy');
     const storedIsReverseOrder =
       getStoredData<'gamesSortOrder'>('gamesSortOrder');
+    const storedTags = getStoredData<'gameTags'>('gameTags');
+
     if (storedSortBy) {
       setSortBy(storedSortBy);
     }
     if (storedIsReverseOrder) {
       setIsReverseOrder(storedIsReverseOrder);
+    }
+    if (storedTags) {
+      setTags(storedTags);
     }
   }, []);
 
@@ -81,6 +96,14 @@ const GamesPage = () => {
           onOrderChange={handleOrderChange}
           onSortChange={handleSortingParamChange}
           blankOption="none"
+        />
+        <TagSelector
+          // @ts-ignore
+          tags={tagsResult?.data?.tags}
+          initialValue={tags}
+          label="tags"
+          onChange={handleTagsChange}
+          className={styles.tagsSelector}
         />
       </div>
       {loading && <Spinner />}

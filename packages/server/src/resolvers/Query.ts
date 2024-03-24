@@ -52,10 +52,10 @@ export const QueryResolvers: QueryResolversType<ResolverContext> = {
         language = Language.English,
         gameType,
         sortBy,
-        isReverseOrder
+        isReverseOrder,
+        tags
       } = input;
       const config = games.find(game => game.type === gameType);
-
       if (!config) {
         throw new OperationResolutionError(`game not found`);
       }
@@ -70,6 +70,7 @@ export const QueryResolvers: QueryResolversType<ResolverContext> = {
         language,
         sortBy,
         isReverseOrder,
+        tags,
         timesToLearn: config?.timesToLearn
       });
       if (!words) {

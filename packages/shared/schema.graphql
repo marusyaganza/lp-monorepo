@@ -248,6 +248,7 @@ input GameDataInput {
   gameType: Game!
   sortBy: SortBy
   isReverseOrder: Boolean
+  tags: [String]
   language: Language
 }
 
@@ -262,6 +263,7 @@ input WordsInput {
   language: Language
   sortBy: sortWordsBy
   isReverseOrder: Boolean
+  tags: [String]
 }
 
 input WordTagInput {

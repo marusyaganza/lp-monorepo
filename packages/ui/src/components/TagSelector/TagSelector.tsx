@@ -31,7 +31,8 @@ export const TagSelector = ({
   };
 
   const { Select, Option } = useSelect<string>({
-    onChange: handleChange
+    onChange: handleChange,
+    isMultiselect: true
   });
 
   useEffect(() => {

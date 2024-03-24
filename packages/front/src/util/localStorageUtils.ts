@@ -14,6 +14,8 @@ export interface StoredData {
   sortGamesBy: SortBy;
   wordsSortOrder: boolean;
   sortWordsBy: SortWordsBy;
+  tags?: string[];
+  gameTags?: string[];
 }
 
 type PropName = keyof StoredData & string;
@@ -32,5 +34,8 @@ export function storeData<T extends PropName>(
   propName: PropName,
   data: StoredData[T]
 ) {
+  if (!data || !propName) {
+    return;
+  }
   localStorage.setItem(propName, JSON.stringify(data));
 }
