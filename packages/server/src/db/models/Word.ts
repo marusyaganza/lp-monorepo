@@ -1,4 +1,5 @@
 import { Word } from '../schema/Word';
+import { QueryOptions } from 'mongoose';
 
 import {
   Word as WordType,
@@ -39,7 +40,11 @@ type wordsFilter = {
 
 export interface WordModelType {
   findOne: (filter: Partial<WordType>) => Promise<WordType | null>;
-  findMany: (filter: Partial<WordType>) => Promise<WordType[] | null>;
+  findMany: (
+    filter: Partial<WordType>,
+    projection: string,
+    options?: QueryOptions
+  ) => Promise<WordType[] | null>;
   findManyAndSort: (filter: wordsFilter) => Promise<WordType[] | null>;
   createOne: (fields: NewWordInput) => Promise<WordType | null>;
   updateOne: (
@@ -70,11 +75,13 @@ export const WordModel: WordModelType = {
     return formatData(word);
   },
 
-  async findMany(filter) {
+  async findMany(filter, projection, options) {
     if (!filter?.user) {
       return [];
     }
-    const words = await Word.find(formatFilter(filter)).populate('tags').exec();
+    const words = await Word.find(formatFilter(filter), projection, options)
+      .populate('tags')
+      .exec();
     return words;
   },
 

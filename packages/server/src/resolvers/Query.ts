@@ -62,6 +62,19 @@ export const QueryResolvers: QueryResolversType<ResolverContext> = {
 
       const minWords = config?.minWords;
 
+      let optionsMaterial;
+
+      if (config?.optionsPerGame) {
+        optionsMaterial = await models.Word.findMany(
+          {
+            user: user?.id,
+            language
+          },
+          'name shortDef',
+          { limit: 40 }
+        );
+      }
+
       // @ts-ignore
       const words = await models.Word.findManyAndSort({
         // @ts-ignore
@@ -83,7 +96,7 @@ export const QueryResolvers: QueryResolversType<ResolverContext> = {
         );
       }
 
-      return generateGameData(gameType, words, config);
+      return generateGameData(gameType, words, config, optionsMaterial);
     }
   ),
   tags: authenticated(async (_, { language }, { models, user }) => {

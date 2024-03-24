@@ -14,7 +14,8 @@ import { madeUphWords } from '../mocks/madeUpWord';
 export type GenerateGameDataFuncType = (
   gameType: Game,
   words: Word[],
-  config: GameConfig
+  config: GameConfig,
+  optionsMaterial?: Word[] | null
 ) => GameData;
 
 const tasks = {
@@ -113,12 +114,15 @@ export function insertAnswer(data: string[], answer: string) {
 export const generateGameData: GenerateGameDataFuncType = (
   gameType,
   data,
-  config
+  config,
+  optionsMaterial
 ) => {
   let questions;
   const { optionsPerGame, wordsPerGame, minWords } = config;
 
   let wordsCandidates = data;
+
+  const optionsCandidates = optionsMaterial?.length ? optionsMaterial : data;
 
   if (gameType === Game.Audio) {
     wordsCandidates = data.filter(word => word.audioUrl);
@@ -204,7 +208,12 @@ export const generateGameData: GenerateGameDataFuncType = (
   if (gameType === Game.SelectDef) {
     questions = words.map(word => {
       const { name, shortDef, id, audioUrl, language, defs, imgUrl } = word;
-      const opts = generateOptions(data, optionsPerGame - 1, id, language);
+      const opts = generateOptions(
+        optionsCandidates,
+        optionsPerGame - 1,
+        id,
+        language
+      );
       const options = opts.map(opt => prepareDef(opt?.shortDef?.[0], name));
       const answer = prepareDef(shortDef[0], name);
       const examples = getExamples(defs);
@@ -226,7 +235,12 @@ export const generateGameData: GenerateGameDataFuncType = (
   if (gameType === Game.SelectWord) {
     questions = words.map(word => {
       const { name, shortDef, id, audioUrl, language, defs, imgUrl } = word;
-      const opts = generateOptions(data, optionsPerGame - 1, id, language);
+      const opts = generateOptions(
+        optionsCandidates,
+        optionsPerGame - 1,
+        id,
+        language
+      );
       const options = opts.map(opt => opt.name);
       const answer = name;
       const examples = getExamples(defs);
