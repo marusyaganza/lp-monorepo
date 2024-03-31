@@ -19,11 +19,16 @@
 }
 
 .desc {
-  min-width: 350px;
+  min-width: 250px;
 }
 
 .tagDisplay {
   margin-top: 24px;
+}
+
+.tagDisplayContainer {
+  margin-top: 18px;
+  width: 250px;
 }
 
 .formFields {

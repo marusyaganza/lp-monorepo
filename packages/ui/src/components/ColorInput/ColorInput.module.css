@@ -20,7 +20,7 @@
   box-sizing: border-box;
   border: 1px solid var(--neutral-600);
   box-shadow: var(--secondary-box-shadow);
-  width: 150px;
+  width: 100px;
   position: relative;
 }
 

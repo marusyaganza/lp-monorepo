@@ -186,25 +186,26 @@ const WordsPage = () => {
               Add new
             </Link>
           </p>
-          <TagSelector
-            // @ts-ignore
-            tags={tagsResult?.data?.tags}
-            value={tags}
-            label="tags"
-            onChange={handleTagsChange}
-            className={styles.tagsSelector}
-          />
-          <Link to={`/${routes.tags}`}>Manage tags</Link>
-          <SortControls
-            blankOption="Date"
-            blankValue="Date"
-            options={OPTIONS}
-            initialOrderValue={isReverseOrder}
-            sortBy={sortBy || ''}
-            onOrderChange={handleOrderChange}
-            onSortChange={handleSortingParamChange}
-            label="Sort words by"
-          />
+          <div className={styles.wordSelection}>
+            <TagSelector
+              // @ts-ignore
+              tags={tagsResult?.data?.tags}
+              value={tags}
+              label="tags"
+              onChange={handleTagsChange}
+              className={styles.tagsSelector}
+            />
+            <SortControls
+              blankOption="Date"
+              blankValue="Date"
+              options={OPTIONS}
+              initialOrderValue={isReverseOrder}
+              sortBy={sortBy || ''}
+              onOrderChange={handleOrderChange}
+              onSortChange={handleSortingParamChange}
+              label="Sort words by"
+            />
+          </div>
         </div>
       )}
       {loading && <Spinner />}

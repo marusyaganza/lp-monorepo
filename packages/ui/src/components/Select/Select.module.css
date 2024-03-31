@@ -57,7 +57,7 @@
   position: absolute;
   border: 1px solid var(--neutral-500);
   background: var(--text-inverted);
-  z-index: var(--z-index-2);
+  z-index: var(--z-index-3);
 }
 
 .radio {

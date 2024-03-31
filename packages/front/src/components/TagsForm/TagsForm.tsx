@@ -1,5 +1,5 @@
 import React, { FormEventHandler, useState } from 'react';
-import { Button, ColorInput, InputV2, Tag } from '@lp/ui';
+import { Button, ColorInput, InputV2, Tag, cn } from '@lp/ui';
 import { useForm } from '../../hooks/useForm';
 import { WordTagInput } from '../../generated/graphql';
 import styles from './TagsFrom.module.css';
@@ -8,6 +8,7 @@ export interface TagsFormProps<T extends Omit<WordTagInput, 'language'>> {
   onSubmit: (values: T) => void;
   onCancel: () => void;
   initialValues?: T | null;
+  className?: string;
 }
 
 const DEFAUL_INITIAL_VALUES = {
@@ -30,7 +31,8 @@ const validators = {
 export const TagsForm = function <T extends Omit<WordTagInput, 'language'>>({
   initialValues,
   onSubmit,
-  onCancel
+  onCancel,
+  className
 }: TagsFormProps<T>) {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [{ values, changeHandler, validate }] = useForm<T>(
@@ -56,9 +58,11 @@ export const TagsForm = function <T extends Omit<WordTagInput, 'language'>>({
   };
 
   return (
-    <form className={styles.tagsForm} onSubmit={onFormSubmit}>
+    <form className={cn(styles.tagsForm, className)} onSubmit={onFormSubmit}>
       <div className={styles.formFields}>
-        <Tag className={styles.tagDisplay} {...values} />
+        <div className={styles.tagDisplayContainer}>
+          <Tag className={styles.tagDisplay} {...values} />
+        </div>
         <InputV2
           name="text"
           initialValue={initialValues?.text}
@@ -84,13 +88,7 @@ export const TagsForm = function <T extends Omit<WordTagInput, 'language'>>({
         />
       </div>
       <div className={styles.buttonsBlock}>
-        <Button
-          variant="icon"
-          iconId="check"
-          iconHeight={40}
-          iconWidth={40}
-          type="submit"
-        >
+        <Button variant="secondary" type="submit">
           Save
         </Button>
         <Button

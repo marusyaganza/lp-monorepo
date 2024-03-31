@@ -41,5 +41,11 @@
 }
 
 .tagsPage {
-  padding: 40px 0;
+  @media (width >= 800px) {
+    padding: 40px 0;
+  }
+}
+
+.newTagForm {
+  width: 100%;
 }

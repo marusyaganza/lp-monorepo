@@ -203,6 +203,7 @@ export const TagsPage = () => {
           </Button>
           {showNewTagForm && (
             <TagsForm
+              className={styles.newTagForm}
               onSubmit={handleNewTagFormSubmit}
               onCancel={showTagsFormHandler}
             />

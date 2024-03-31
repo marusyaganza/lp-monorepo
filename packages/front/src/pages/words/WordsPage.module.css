@@ -22,7 +22,8 @@
 }
 
 .heading {
-  margin: 40px auto;
+  margin: 0 auto;
+  margin-bottom: 40px;
   font-size: var(--font-size-xl);
   text-align: center;
 
@@ -47,9 +48,9 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 40px;
-  align-items: flex-end;
-  flex-wrap: wrap;
+  flex-flow: column wrap;
   gap: 32px;
+  align-items: center;
 
   @media (width <= 800px) {
     flex-direction: column;
@@ -57,5 +58,11 @@
 }
 
 .tagsSelector {
-  width: 300px;
+  width: 400px;
+}
+
+.wordSelection {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
 }

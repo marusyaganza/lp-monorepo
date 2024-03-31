@@ -63,7 +63,11 @@ export const formConfig: (
   word: Word
 ) => FormConfigType<NewWordInput>[] = word => [
   { Component: InputV2, name: 'name', isDisabled: true, value: word.name },
-  { Component: LevelSelector, name: 'level' },
+  {
+    Component: TagSelector,
+    name: 'tags'
+  },
+
   {
     Component: InputV2,
     name: 'particle'
@@ -83,6 +87,7 @@ export const formConfig: (
   },
   { Component: InputV2, name: 'imgUrl', label: 'image url' },
   { Component: ArrayInput, name: 'stems', label: 'word form' },
+  { Component: LevelSelector, name: 'level' },
   { Component: InputV2, name: 'imgDesc', label: 'image description' },
   {
     Component: InputV2,
@@ -104,10 +109,6 @@ export const formConfig: (
     Component: Checkbox,
     name: 'isLearned',
     props: { label: 'Mark as learned' }
-  },
-  {
-    Component: TagSelector,
-    name: 'tags'
   }
 ];
 

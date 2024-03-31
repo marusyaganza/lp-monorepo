@@ -54,7 +54,9 @@ export const TagSelector = ({
     if (!options) {
       return;
     }
-    return options.map(option => renderOption(option));
+    return options
+      .sort((a, b) => a.text.localeCompare(b.text))
+      .map(option => renderOption(option));
   };
 
   const renderCurrentValue = () => {

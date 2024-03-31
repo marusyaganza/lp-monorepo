@@ -85,46 +85,50 @@ const GamesPage = () => {
   }, []);
 
   return (
-    <PageLayout>
+    <PageLayout className={styles.page}>
       <div className={styles.topContainer}>
         <h1 className={styles.pageTitle}>Select a training</h1>
-        <SortControls
-          className={styles.sortControls}
-          sortBy={sortBy}
-          initialOrderValue={isReverseOrder}
-          options={OPTIONS}
-          onOrderChange={handleOrderChange}
-          onSortChange={handleSortingParamChange}
-          blankOption="none"
-        />
-        <TagSelector
-          // @ts-ignore
-          tags={tagsResult?.data?.tags}
-          value={tags}
-          label="tags"
-          onChange={handleTagsChange}
-          className={styles.tagsSelector}
-        />
+        <section className={styles.topSection}>
+          <SortControls
+            className={styles.sortControls}
+            sortBy={sortBy}
+            initialOrderValue={isReverseOrder}
+            options={OPTIONS}
+            onOrderChange={handleOrderChange}
+            onSortChange={handleSortingParamChange}
+            blankOption="none"
+          />
+          <TagSelector
+            // @ts-ignore
+            tags={tagsResult?.data?.tags}
+            value={tags}
+            label="tags"
+            onChange={handleTagsChange}
+            className={styles.tagsSelector}
+          />
+        </section>
       </div>
       {loading && <Spinner />}
       {data?.games && (
-        <ul data-cy="gamesList" className={styles.gamesList}>
-          {data.games.map(game => {
-            if (!game) {
-              return;
-            }
-            return (
-              <li key={game.id}>
-                <GameCard
-                  game={game}
-                  linkUrl={`/${
-                    routes.games
-                  }/${game.type?.toLocaleLowerCase()}${searchStr}`}
-                />
-              </li>
-            );
-          })}
-        </ul>
+        <div className={styles.catalog}>
+          <ul data-cy="gamesList" className={styles.gamesList}>
+            {data.games.map(game => {
+              if (!game) {
+                return;
+              }
+              return (
+                <li key={game.id}>
+                  <GameCard
+                    game={game}
+                    linkUrl={`/${
+                      routes.games
+                    }/${game.type?.toLocaleLowerCase()}${searchStr}`}
+                  />
+                </li>
+              );
+            })}
+          </ul>
+        </div>
       )}
       <Outlet />
     </PageLayout>

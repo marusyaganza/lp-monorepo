@@ -110,6 +110,7 @@ export function WordForm<T extends Record<string, unknown>>({
           initialValue={initialValue}
           dataCy={`formField-${name}`}
           key={name}
+          value={values[name]}
           withTranslation={name === 'defs' && language === Language.Spanish}
           name={name}
           tags={tags}
