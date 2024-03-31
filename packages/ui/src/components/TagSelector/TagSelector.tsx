@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { cn } from '../../utils/classnames';
 
 import styles from './TagSelector.module.css';
@@ -10,24 +10,23 @@ import { Button } from '../Button/Button';
 export interface TagSelectorProps {
   /**TagSelector prop */
   tags?: WordTag[];
-  /**additional styling */
   onChange: (val: string[]) => void;
-  initialValue?: string[];
+  value?: string[];
   label?: string;
+  /**additional styling */
   className?: string;
 }
 /**Component description goes here */
 export const TagSelector = ({
   tags,
-  initialValue,
+  value = [],
   className,
   onChange,
   label
 }: TagSelectorProps) => {
-  const [currentValues, setCurrentValues] = useState(initialValue || []);
-
   const handleChange = (val: string) => {
-    setCurrentValues(prev => [...prev, val]);
+    const values = [...value, val];
+    onChange(values);
   };
 
   const { Select, Option } = useSelect<string>({
@@ -35,14 +34,10 @@ export const TagSelector = ({
     isMultiselect: true
   });
 
-  useEffect(() => {
-    onChange(currentValues);
-  }, [currentValues]);
-
   const getTagRemoveHandler = (tagId: string) => {
     return function removeTag() {
-      const newValues = currentValues.filter(value => value !== tagId);
-      setCurrentValues(newValues);
+      const newValues = value.filter(value => value !== tagId);
+      onChange(newValues);
     };
   };
 
@@ -55,7 +50,7 @@ export const TagSelector = ({
   };
 
   const renderOptions = () => {
-    const options = tags?.filter(tag => !currentValues.includes(tag.id));
+    const options = tags?.filter(tag => !value.includes(tag.id));
     if (!options) {
       return;
     }
@@ -63,7 +58,7 @@ export const TagSelector = ({
   };
 
   const renderCurrentValue = () => {
-    const currentTags = tags?.filter(tag => currentValues.includes(tag.id));
+    const currentTags = tags?.filter(tag => value.includes(tag.id));
     return (
       <ul className={styles.tags}>
         {currentTags?.map(tag => {

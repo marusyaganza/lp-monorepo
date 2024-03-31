@@ -189,7 +189,7 @@ const WordsPage = () => {
           <TagSelector
             // @ts-ignore
             tags={tagsResult?.data?.tags}
-            initialValue={tags}
+            value={tags}
             label="tags"
             onChange={handleTagsChange}
             className={styles.tagsSelector}
