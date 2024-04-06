@@ -1,5 +1,6 @@
 import { Document, Types } from 'mongoose';
-import { Maybe } from '../generated/graphql';
+import { Maybe, WordTag as WordTagType } from '../generated/graphql';
+import { WordTag } from './schema/WordTag';
 
 type ModelDataType = {
   id?: Maybe<string>;
@@ -35,4 +36,17 @@ export function formatFilter<T extends DbData>(filter: T): T {
     return formattedFilter;
   }
   return filter;
+}
+
+// TODO investigate why this function does not work correctly
+export function checkTags(tags?: Maybe<Maybe<WordTagType>[]>) {
+  if (!tags?.length) {
+    return tags;
+  }
+  const newTags = tags.filter(async tag => {
+    const existing = await WordTag.findById(tag);
+    return existing ? tag : undefined;
+  });
+
+  return newTags;
 }
