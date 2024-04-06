@@ -3,7 +3,8 @@ import {
   InputV2,
   ArrayInput,
   Checkbox,
-  LevelSelector
+  LevelSelector,
+  TagSelector
 } from '@lp/ui';
 import { FormConfigType } from '../../components/WordForm/WordForm';
 import {
@@ -32,7 +33,8 @@ export const getDefaultInitialValues: (
     stems: [''],
     isOffensive: false,
     isLearned: false,
-    level: Level.B1
+    level: Level.B1,
+    tags: []
   };
 
   if (!word) {
@@ -44,9 +46,14 @@ export const getDefaultInitialValues: (
   const keys = Object.keys(
     defaultIntitalValues
   ) as (keyof UpdateWordInputType)[];
+
   keys.forEach(key => {
     // @ts-ignore
     initialValues[key] = word[key] || defaultIntitalValues[key];
+    if (key === 'tags' && word?.tags) {
+      // @ts-ignore
+      initialValues[key] = word.tags?.map(tag => tag?.id).filter(Boolean);
+    }
   });
 
   return initialValues;
@@ -56,7 +63,11 @@ export const formConfig: (
   word: Word
 ) => FormConfigType<NewWordInput>[] = word => [
   { Component: InputV2, name: 'name', isDisabled: true, value: word.name },
-  { Component: LevelSelector, name: 'level' },
+  {
+    Component: TagSelector,
+    name: 'tags'
+  },
+
   {
     Component: InputV2,
     name: 'particle'
@@ -76,6 +87,7 @@ export const formConfig: (
   },
   { Component: InputV2, name: 'imgUrl', label: 'image url' },
   { Component: ArrayInput, name: 'stems', label: 'word form' },
+  { Component: LevelSelector, name: 'level' },
   { Component: InputV2, name: 'imgDesc', label: 'image description' },
   {
     Component: InputV2,

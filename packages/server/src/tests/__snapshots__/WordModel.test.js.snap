@@ -69,12 +69,7 @@ exports[`WordModel createOne 1`] = `
     "egalitarianism",
     "egalitarians",
   ],
-  "tags": [
-    {
-      "color": "pink",
-      "text": "academic",
-    },
-  ],
+  "tags": [],
   "transcription": "iˌɡælɪˈteəriən",
   "updatedAt": Any<Number>,
   "user": "6480560e8cad1841ed6b4011",
@@ -151,12 +146,7 @@ exports[`WordModel findOne 1`] = `
     "egalitarianism",
     "egalitarians",
   ],
-  "tags": [
-    {
-      "color": "pink",
-      "text": "academic",
-    },
-  ],
+  "tags": [],
   "transcription": "iˌɡælɪˈteəriən",
   "updatedAt": Any<Number>,
   "user": "6480560e8cad1841ed6b4011",
@@ -229,12 +219,7 @@ exports[`WordModel updateOne 1`] = `
     "egalitarianism",
     "egalitarians",
   ],
-  "tags": [
-    {
-      "color": "pink",
-      "text": "academic",
-    },
-  ],
+  "tags": [],
   "transcription": "iˌɡælɪˈteəriən",
   "updatedAt": Any<Number>,
   "user": "6480560e8cad1841ed6b4011",

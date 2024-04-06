@@ -21,6 +21,7 @@ const SignInPage = lazy(() => import('../pages/sign-in/SignInPage'));
 const SignUpPage = lazy(() => import('../pages/sign-up/SignUpPage'));
 const ProfilePage = lazy(() => import('../pages/profile/ProfilePage'));
 const ErrorPage = lazy(() => import('../pages/error/ErrorPage'));
+const TagsPage = lazy(() => import('../pages/TagsPage/TagsPage'));
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -40,6 +41,7 @@ export const router = createBrowserRouter(
       <Route path={routes.signIn} element={withSuspense(SignInPage)} />
       <Route path={routes.signUp} element={withSuspense(SignUpPage)} />
       <Route path={routes.profile} element={withSuspense(ProfilePage)} />
+      <Route path={routes.tags} element={withSuspense(TagsPage)} />
       <Route path="*" element={withSuspense(NotFoundPage)} />
     </Route>
   )

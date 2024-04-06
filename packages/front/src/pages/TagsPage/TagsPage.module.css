@@ -1,0 +1,51 @@
+.mainHeading {
+  font-size: var(--font-size-l);
+  margin: 32px auto;
+  text-align: center;
+}
+
+.tag {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--neutral-500);
+  padding: 16px 0;
+}
+
+.desc {
+  margin: 0;
+  flex-grow: 3;
+  padding: 0 16px;
+}
+
+.tagDisplay {
+  width: 250px;
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.topSection {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.newTagContainer {
+  margin-top: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tagsPage {
+  @media (width >= 800px) {
+    padding: 40px 0;
+  }
+}
+
+.newTagForm {
+  width: 100%;
+}

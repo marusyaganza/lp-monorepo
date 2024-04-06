@@ -3,7 +3,8 @@ import {
   InputV2,
   ArrayInput,
   Checkbox,
-  LevelSelector
+  LevelSelector,
+  TagSelector
 } from '@lp/ui';
 import { FormConfigType } from '../../components/WordForm/WordForm';
 import {
@@ -32,7 +33,10 @@ export const defaultInitialValues: NewWordInput = {
 
 export const formConfig: FormConfigType<NewWordInput>[] = [
   { Component: InputV2, name: 'name' },
-  { Component: LevelSelector, name: 'level' },
+  {
+    Component: TagSelector,
+    name: 'tags'
+  },
   { Component: InputV2, name: 'particle' },
   {
     Component: InputV2,
@@ -47,6 +51,7 @@ export const formConfig: FormConfigType<NewWordInput>[] = [
     label: 'short definition',
     props: { showOrderButtons: true }
   },
+  { Component: LevelSelector, name: 'level' },
   { Component: InputV2, name: 'imgUrl', label: 'image url' },
   { Component: ArrayInput, name: 'stems', label: 'word form' },
   { Component: InputV2, name: 'imgDesc', label: 'image description' },

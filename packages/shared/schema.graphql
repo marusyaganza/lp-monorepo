@@ -60,8 +60,12 @@ type WordDefinition {
 }
 
 type WordTag {
+  id: ID!
+  user: ID!
+  language: Language!
   color: String!
   text: String!
+  desc: String
 }
 
 type WordStatisticsField {
@@ -197,7 +201,7 @@ input NewWordInput {
   isOffensive: Boolean
   stems: [String]
   level: Level
-  tags: [WordTagInput]
+  tags: [String]
   language: Language!
   shortDef: [String]!
   isLearned: Boolean
@@ -216,7 +220,7 @@ input UpdateWordInput {
   isOffensive: Boolean
   stems: [String]
   level: Level
-  tags: [WordTagInput]
+  tags: [String]
   shortDef: [String]
   isLearned: Boolean
   alternativeSpelling: [String]
@@ -244,6 +248,7 @@ input GameDataInput {
   gameType: Game!
   sortBy: SortBy
   isReverseOrder: Boolean
+  tags: [String]
   language: Language
 }
 
@@ -258,6 +263,21 @@ input WordsInput {
   language: Language
   sortBy: sortWordsBy
   isReverseOrder: Boolean
+  tags: [String]
+}
+
+input WordTagInput {
+  color: String!
+  text: String!
+  language: Language!
+  desc: String
+}
+
+input UpdateWordTagInput {
+  id: ID!
+  color: String!
+  text: String!
+  desc: String
 }
 
 type Query {
@@ -267,6 +287,7 @@ type Query {
   words(input: WordsInput): [Word]!
   word(id: ID!): Word!
   searchWord(input: WordSearchInput!): [SearchResult]!
+  tags(language: Language!): [WordTag]!
 }
 
 type Mutation {
@@ -276,4 +297,7 @@ type Mutation {
   deleteWord(id: ID!): String!
   signUp(input: SignUpInput!): AuthUser!
   login(input: LoginInput!): AuthUser!
+  createTag(input: WordTagInput!): String!
+  updateTag(input: UpdateWordTagInput): String!
+  # deleteTag(id: ID!): String!
 }

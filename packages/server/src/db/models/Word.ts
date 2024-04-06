@@ -1,4 +1,6 @@
 import { Word } from '../schema/Word';
+import { QueryOptions } from 'mongoose';
+
 import {
   Word as WordType,
   NewWordInput,
@@ -9,7 +11,7 @@ import {
   SortWordsBy,
   WordStatisticsField
 } from '../../generated/graphql';
-import { formatFilter, formatData } from '../helpers';
+import { formatFilter, formatData, checkTags } from '../helpers';
 import { games } from '../../mocks/games';
 
 const STATISTICS_FIELD: WordStatisticsField = {
@@ -33,11 +35,16 @@ type wordsFilter = {
   timesToLearn?: number | null;
   gameType?: Game;
   user?: string;
+  tags?: string[];
 };
 
 export interface WordModelType {
   findOne: (filter: Partial<WordType>) => Promise<WordType | null>;
-  findMany: (filter: Partial<WordType>) => Promise<WordType[] | null>;
+  findMany: (
+    filter: Partial<WordType>,
+    projection: string,
+    options?: QueryOptions
+  ) => Promise<WordType[] | null>;
   findManyAndSort: (filter: wordsFilter) => Promise<WordType[] | null>;
   createOne: (fields: NewWordInput) => Promise<WordType | null>;
   updateOne: (
@@ -62,15 +69,19 @@ export const WordModel: WordModelType = {
     if (!filter?.user) {
       return null;
     }
-    const word = await Word.findOne(formatFilter(filter));
+    const word = await Word.findOne(formatFilter(filter))
+      .populate('tags')
+      .exec();
     return formatData(word);
   },
 
-  async findMany(filter) {
+  async findMany(filter, projection, options) {
     if (!filter?.user) {
       return [];
     }
-    const words = await Word.find(formatFilter(filter));
+    const words = await Word.find(formatFilter(filter), projection, options)
+      .populate('tags')
+      .exec();
     return words;
   },
 
@@ -82,6 +93,7 @@ export const WordModel: WordModelType = {
       sortBy,
       isReverseOrder,
       gameType,
+      tags,
       timesToLearn = 5
     } = filter;
 
@@ -97,11 +109,20 @@ export const WordModel: WordModelType = {
     }
     let learningStatusFilter = {};
     let sort: Record<string, number> = { $natural: orderNum };
+
+    let tagsFilters: { tags: string }[] = [];
+    if (tags?.length) {
+      tagsFilters = tags?.map(tag => {
+        return { tags: tag };
+      });
+    }
+    // TODO: refactor this part
     // Select words that are not learned or have been practiced without error less than 5 times in a row
     if (gameType && sortBy !== SortBy.MemoryRefresher) {
       learningStatusFilter = {
         $and: [
           { isLearned: { $ne: true } },
+          ...tagsFilters,
           {
             $or: [
               { [`statistics.${gameType}.successRate`]: { $lt: timesToLearn } },
@@ -110,12 +131,20 @@ export const WordModel: WordModelType = {
           }
         ]
       };
+    } else {
+      if (tagsFilters?.length) {
+        learningStatusFilter = {
+          $and: tagsFilters
+        };
+      }
     }
+
     if (sortBy) {
       let propName: string = sortBy;
       if (gameType) {
         propName = `statistics.${gameType}.${sortBy}`;
       }
+
       if (sortBy === SortBy.MemoryRefresher) {
         learningStatusFilter = {
           $or: [
@@ -128,9 +157,17 @@ export const WordModel: WordModelType = {
       }
     }
 
-    const words = await Word.find({ user, language, ...learningStatusFilter })
+    const filters = {
+      user,
+      language,
+      ...learningStatusFilter
+    };
+
+    const words = await Word.find(filters)
       // @ts-ignore
-      .sort(sort);
+      .sort(sort)
+      .populate('tags')
+      .exec();
 
     return words;
   },
@@ -155,7 +192,9 @@ export const WordModel: WordModelType = {
 
   async updateOne(fields) {
     const updatedAt = Date.now();
-    const update = { ...fields, updatedAt };
+    //TODO fix checkTags function
+    const tagsUpdate = checkTags(fields?.tags);
+    const update = { ...fields, tags: tagsUpdate, updatedAt };
     const { ok, value } = await Word.findOneAndUpdate(
       { _id: fields.id, user: fields.user },
       update,

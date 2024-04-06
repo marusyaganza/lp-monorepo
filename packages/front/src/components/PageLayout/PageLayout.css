@@ -11,7 +11,8 @@
 .main {
   width: 100%;
   max-width: 1200px;
-  margin: 60px auto;
+  margin: 0 auto;
+  margin-top: 60px;
   flex-grow: 1;
   box-sizing: border-box;
   height: 100%;

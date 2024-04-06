@@ -169,12 +169,7 @@ exports[`User can save a word 1`] = `
             "egalitarianism",
             "egalitarians",
           ],
-          "tags": [
-            {
-              "color": "pink",
-              "text": "academic",
-            },
-          ],
+          "tags": [],
           "transcription": "iˌɡælɪˈteəriən",
           "user": "mockUser",
           "uuid": "74046e79-e4c9-4b52-ac96-cb7ae98fb601",
@@ -369,12 +364,7 @@ exports[`User can update a word 1`] = `
             "egalitarianism",
             "egalitarians",
           ],
-          "tags": [
-            {
-              "color": "pink",
-              "text": "academic",
-            },
-          ],
+          "tags": [],
           "transcription": "iˌɡælɪˈteəriən",
           "user": "mockUser",
           "uuid": "74046e79-e4c9-4b52-ac96-cb7ae98fb601",

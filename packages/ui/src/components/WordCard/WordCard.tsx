@@ -4,9 +4,10 @@ import { AudioButton } from '../AudioButton/AudioButton';
 import { Icon } from '../Icon/icon';
 import { DictionaryEntity } from '../DictionaryEntity/DictionaryEntity';
 import { Button } from '../Button/Button';
-import { Word, WordDefinition } from '../../generated/graphql';
+import { Word, WordDefinition, WordTag } from '../../generated/graphql';
 
 import styles from './WordCard.module.css';
+import { Tag } from '../Tag/Tag';
 
 export type ActionButtonType = {
   callback: () => void;
@@ -51,7 +52,8 @@ export const WordCard = ({
     imgUrl,
     imgDesc,
     shortDef,
-    alternativeSpelling
+    alternativeSpelling,
+    tags
   } = word;
 
   const isFull = variant === 'full';
@@ -220,6 +222,27 @@ export const WordCard = ({
     </header>
   );
 
+  const renderTags = () => {
+    if (!tags) {
+      return;
+    }
+    return (
+      <ul className={styles.tags}>
+        {tags?.map(tag => {
+          const { text, color, id } = tag as WordTag;
+          if (!text || !color || !id) {
+            return;
+          }
+          return (
+            <li key={id}>
+              <Tag color={color} text={text} />
+            </li>
+          );
+        })}
+      </ul>
+    );
+  };
+
   if (isFull) {
     return (
       <article
@@ -264,6 +287,7 @@ export const WordCard = ({
             </section>
           )}
         </div>
+        {renderTags()}
       </article>
     );
   }
@@ -274,6 +298,7 @@ export const WordCard = ({
         {renderHeader()}
         {isFull ? renderDefinition() : renderShortDefinition()}
       </div>
+      {renderTags()}
     </article>
   );
 };

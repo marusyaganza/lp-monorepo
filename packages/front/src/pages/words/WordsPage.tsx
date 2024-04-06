@@ -4,12 +4,13 @@ import {
   WordsQuery,
   Word,
   DeleteWordMutation,
-  SortWordsBy
+  SortWordsBy,
+  TagsQuery
 } from '../../generated/graphql';
-import { WORDS_QUERY } from '../../gql/queries';
+import { TAGS_QUERY, WORDS_QUERY } from '../../gql/queries';
 import { DELETE_WORD } from '../../gql/mutations';
 
-import { WordCard, CardWrapper, Link, Spinner } from '@lp/ui';
+import { WordCard, CardWrapper, Link, Spinner, TagSelector } from '@lp/ui';
 
 import { PageLayout } from '../../components/PageLayout/PageLayout';
 import { AppContext } from '../../app-context/appContext';
@@ -21,7 +22,7 @@ import {
 import styles from './WordsPage.module.css';
 import { routes } from '../../constants/routes';
 import { getStoredData, storeData } from '../../util/localStorageUtils';
-import { useLazyQuery, useMutation } from '@apollo/client';
+import { useLazyQuery, useMutation, useQuery } from '@apollo/client';
 
 const OPTIONS = {
   [SortWordsBy.Name]: 'Alphabetically',
@@ -34,7 +35,12 @@ const WordsPage = () => {
     useLazyQuery<WordsQuery>(WORDS_QUERY);
   const { setNotification, language } = useContext(AppContext);
   const [sortBy, setSortBy] = useState<SortWordsBy>();
+  const [tags, setTags] = useState<string[] | undefined>();
   const [isReverseOrder, setIsReverseOrder] = useState(false);
+
+  const tagsResult = useQuery<TagsQuery>(TAGS_QUERY, {
+    variables: { language }
+  });
 
   const [deleteWordFunc, deleteWordData] = useMutation<DeleteWordMutation>(
     DELETE_WORD,
@@ -51,6 +57,13 @@ const WordsPage = () => {
     storeData('sortWordsBy', val);
   }, []);
 
+  const handleTagsChange = useCallback((val: string[]) => {
+    setTags(val);
+    storeData('tags', val ?? []);
+  }, []);
+
+  console.log('tags', tags);
+
   const handleOrderChange = useCallback((value: boolean) => {
     setIsReverseOrder(value);
     storeData('wordsSortOrder', value);
@@ -59,10 +72,10 @@ const WordsPage = () => {
   useEffect(() => {
     fetchWords({
       variables: {
-        input: { language, isReverseOrder, sortBy: sortBy || undefined }
+        input: { language, isReverseOrder, sortBy: sortBy || undefined, tags }
       }
     });
-  }, [language, sortBy, isReverseOrder]);
+  }, [language, sortBy, isReverseOrder, tags]);
 
   const navigate = useNavigate();
 
@@ -110,11 +123,15 @@ const WordsPage = () => {
     const storedSortBy = getStoredData<'sortWordsBy'>('sortWordsBy');
     const storedIsReverseOrder =
       getStoredData<'wordsSortOrder'>('wordsSortOrder');
+    const storedTags = getStoredData<'tags'>('tags');
     if (storedSortBy) {
       setSortBy(storedSortBy);
     }
     if (storedIsReverseOrder) {
       setIsReverseOrder(storedIsReverseOrder);
+    }
+    if (storedTags) {
+      setTags(storedTags);
     }
   }, []);
 
@@ -169,16 +186,26 @@ const WordsPage = () => {
               Add new
             </Link>
           </p>
-          <SortControls
-            blankOption="Date"
-            blankValue="Date"
-            options={OPTIONS}
-            initialOrderValue={isReverseOrder}
-            sortBy={sortBy || ''}
-            onOrderChange={handleOrderChange}
-            onSortChange={handleSortingParamChange}
-            label="Sort words by"
-          />
+          <div className={styles.wordSelection}>
+            <TagSelector
+              // @ts-ignore
+              tags={tagsResult?.data?.tags}
+              value={tags}
+              label="tags"
+              onChange={handleTagsChange}
+              className={styles.tagsSelector}
+            />
+            <SortControls
+              blankOption="Date"
+              blankValue="Date"
+              options={OPTIONS}
+              initialOrderValue={isReverseOrder}
+              sortBy={sortBy || ''}
+              onOrderChange={handleOrderChange}
+              onSortChange={handleSortingParamChange}
+              label="Sort words by"
+            />
+          </div>
         </div>
       )}
       {loading && <Spinner />}

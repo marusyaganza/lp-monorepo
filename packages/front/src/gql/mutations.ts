@@ -46,3 +46,15 @@ export const SAVE_GAME_RESULT = gql`
     saveGameResult(input: $input)
   }
 `;
+
+export const UPDATE_TAG = gql`
+  mutation UpdateTag($input: UpdateWordTagInput!) {
+    updateTag(input: $input)
+  }
+`;
+
+export const CREATE_TAG = gql`
+  mutation CreateTag($input: WordTagInput!) {
+    createTag(input: $input)
+  }
+`;
