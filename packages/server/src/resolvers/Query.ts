@@ -60,7 +60,8 @@ export const QueryResolvers: QueryResolversType<ResolverContext> = {
         gameType,
         sortBy,
         isReverseOrder,
-        tags
+        tags,
+        tense = 'pind'
       } = input;
       const config = await models.Game.findOne({
         type: gameType,
@@ -107,7 +108,7 @@ export const QueryResolvers: QueryResolversType<ResolverContext> = {
         );
       }
 
-      return generateGameData(gameType, words, config, optionsMaterial);
+      return generateGameData(gameType, words, config, optionsMaterial, tense);
     }
   ),
   tags: authenticated(async (_, { language }, { models, user }) => {

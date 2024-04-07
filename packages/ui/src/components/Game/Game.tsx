@@ -19,6 +19,7 @@ import { DictionaryEntity } from '../DictionaryEntity/DictionaryEntity';
 import { Icon } from '../Icon/icon';
 import { useModal } from '../Modal/useModal';
 import { Checkbox } from '../Checkbox/Checkbox';
+import { ConjugationInput } from '../ConjugationGame/ConjugationInput';
 
 export interface GameProps {
   task: string;
@@ -172,6 +173,18 @@ export const Game = ({
           incorrectOption={currentResult?.incorrectAnswer}
           options={options}
           onChange={handleChange}
+        />
+      );
+    }
+    if (type === GameType.Conjugation) {
+      return (
+        <ConjugationInput
+          dataCy="gameAnswer"
+          ref={inputRef}
+          variant={currentStage}
+          correctAnswer={currentResult?.correctAnswer}
+          onChange={handleChange}
+          isDisabled={currentStage !== 'initial'}
         />
       );
     }

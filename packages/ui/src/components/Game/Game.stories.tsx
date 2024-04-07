@@ -62,6 +62,15 @@ const games = [
       audioUrl:
         'https://media.merriam-webster.com/audio/prons/en/us/mp3/w/wheel001.mp3'
     }
+  },
+  {
+    task: 'Conjugate the verb',
+    type: GameType.Conjugation,
+    question: ['caer'],
+    additionalInfo: {
+      audioUrl:
+        'https://media.merriam-webster.com/audio/prons/en/us/mp3/w/wheel001.mp3'
+    }
   }
 ];
 

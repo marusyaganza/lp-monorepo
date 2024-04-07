@@ -8,6 +8,7 @@ export interface DictionaryWordType {
   shortdef?: string[] | null;
   art?: Art;
   cxs?: CognateEntity[];
+  suppl?: { cjts: Conjugation[] };
 }
 export interface AppShortdef {
   hw: string;
@@ -79,4 +80,9 @@ export interface CognateEntity {
 
 export interface CognateTarget {
   cxt?: string;
+}
+
+export interface Conjugation {
+  cjid: string;
+  cjfs: string[];
 }

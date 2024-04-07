@@ -27,6 +27,12 @@ exports[`queries games 1`] = `
             "id": "type_word",
             "name": "WordRecall: Define & Type",
           },
+          {
+            "desc": "Conjugate verbs!",
+            "id": "conjugation",
+            "imgUrl": "type_word",
+            "name": "Conjugation",
+          },
         ],
       },
       "errors": undefined,
@@ -918,7 +924,7 @@ exports[`queries searchWord spanish lang, mocks enabled returns suggestion 1`] =
         "searchWord": [
           {
             "suggestions": [
-              "Mocks are enabled. You can query words from the list: idioma, hola, caerse, asi",
+              "Mocks are enabled. You can query words from the list: idioma, hola, caerse, asi, tener, ser",
             ],
           },
         ],
