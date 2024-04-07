@@ -22,11 +22,12 @@ const STATISTICS_FIELD: WordStatisticsField = {
   successRate: 0
 };
 
-const DEFAULT_STATISTICS: Record<GameType, WordStatisticsField> = {
-  [GameType.Audio]: STATISTICS_FIELD,
-  [GameType.SelectDef]: STATISTICS_FIELD,
-  [GameType.SelectWord]: STATISTICS_FIELD,
-  [GameType.TypeWord]: STATISTICS_FIELD
+const DEFAULT_STATISTICS: Record<Game, WordStatisticsField> = {
+  [Game.Audio]: STATISTICS_FIELD,
+  [Game.SelectDef]: STATISTICS_FIELD,
+  [Game.SelectWord]: STATISTICS_FIELD,
+  [Game.TypeWord]: STATISTICS_FIELD,
+  [Game.Conjugation]: STATISTICS_FIELD
 };
 
 type wordsFilter = {
@@ -111,6 +112,16 @@ export const WordModel: WordModelType = {
     let learningStatusFilter = {};
     let sort: Record<string, number> = { $natural: orderNum };
 
+    let gameFilter;
+
+    if (gameType === Game.Conjugation) {
+      gameFilter = { conjugation: { $ne: null } };
+    }
+
+    if (gameType === Game.Audio) {
+      gameFilter = { audioUrl: { $ne: '' } };
+    }
+
     let tagsFilters: { tags: string }[] = [];
     if (tags?.length) {
       tagsFilters = tags?.map(tag => {
@@ -124,6 +135,7 @@ export const WordModel: WordModelType = {
         $and: [
           { isLearned: { $ne: true } },
           ...tagsFilters,
+          gameFilter,
           {
             $or: [
               { [`statistics.${gameType}.successRate`]: { $lt: timesToLearn } },
@@ -245,6 +257,10 @@ export const WordModel: WordModelType = {
         const timesToLearn = gameConfig?.timesToLearn || 5;
 
         const currentStatistics = word?.statistics?.[gameType];
+
+        if (!currentStatistics) {
+          word.statistics[gameType] = DEFAULT_STATISTICS[gameType];
+        }
 
         const newStatistics = {
           practicedTimes: 1,

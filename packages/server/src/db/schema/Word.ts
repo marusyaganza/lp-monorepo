@@ -4,7 +4,8 @@ import {
   Language,
   WordStatisticsField,
   WordStatistics,
-  Game
+  Game,
+  Conjugation
 } from '../../generated/graphql';
 
 const examplesSchema = new Schema(
@@ -41,10 +42,16 @@ const wordStatisticsSchema = new Schema<WordStatistics>(
     [Game.Audio]: statisticsSchema,
     [Game.SelectDef]: statisticsSchema,
     [Game.SelectWord]: statisticsSchema,
-    [Game.TypeWord]: statisticsSchema
+    [Game.TypeWord]: statisticsSchema,
+    [Game.Conjugation]: statisticsSchema
   },
   { _id: false }
 );
+
+const conjugationSchema = new Schema<Conjugation>({
+  cjid: { type: String, required: true },
+  cjfs: { type: [String], required: true }
+});
 
 const wordSchema = new Schema<WordCoreType>({
   uuid: { type: String, immutable: true },
@@ -67,7 +74,8 @@ const wordSchema = new Schema<WordCoreType>({
   additionalInfo: String,
   isLearned: Boolean,
   statistics: wordStatisticsSchema,
-  alternativeSpelling: [String]
+  alternativeSpelling: [String],
+  conjugation: [conjugationSchema]
 });
 
 export const Word = model<WordCoreType>('Word', wordSchema);

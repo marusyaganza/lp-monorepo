@@ -50,6 +50,17 @@ export const games: GameConfigType[] = [
     optionsPerGame: 0,
     timesToLearn: 5,
     languages: [Language.English, Language.Spanish]
+  },
+  {
+    name: 'Conjugation',
+    desc: 'Conjugate verbs!',
+    id: 'conjugation',
+    type: Game.Conjugation,
+    wordsPerGame: 6,
+    minWords: 1,
+    optionsPerGame: 0,
+    timesToLearn: 5,
+    languages: [Language.Spanish]
   }
   // {
   //   name: 'find all definitions',
