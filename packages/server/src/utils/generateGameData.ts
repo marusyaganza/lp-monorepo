@@ -35,15 +35,13 @@ export function getExamples(defs?: (WordDefinition | null)[] | null) {
   if (!Array.isArray(defs)) {
     return;
   }
-  return defs
-    .reduce((acc?: (DefExample | null)[], curr?: WordDefinition | null) => {
-      const examples = curr?.examples;
-      if (examples && Array.isArray(examples)) {
-        return acc?.concat(examples);
-      }
-      return acc;
-    }, [])
-    ?.filter(Boolean);
+
+  const examples = defs
+    .flatMap(def => def?.examples)
+    .filter(Boolean)
+    .slice(0, 5);
+
+  return examples as DefExample[];
 }
 
 /**Replaces word's `name` in `def` with `[...]` block
