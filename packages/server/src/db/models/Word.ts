@@ -22,7 +22,7 @@ const STATISTICS_FIELD: WordStatisticsField = {
   successRate: 0
 };
 
-const DEFAULT_STATISTICS: Record<Game, WordStatisticsField> = {
+const DEFAULT_STATISTICS: Record<GameType, WordStatisticsField> = {
   [Game.Audio]: STATISTICS_FIELD,
   [Game.SelectDef]: STATISTICS_FIELD,
   [Game.SelectWord]: STATISTICS_FIELD,

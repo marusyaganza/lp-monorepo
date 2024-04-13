@@ -56,7 +56,7 @@ export const games: GameConfigType[] = [
     desc: 'Conjugate verbs!',
     id: 'conjugation',
     type: Game.Conjugation,
-    wordsPerGame: 6,
+    wordsPerGame: 2,
     minWords: 1,
     optionsPerGame: 0,
     timesToLearn: 5,
