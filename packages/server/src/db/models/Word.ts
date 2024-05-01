@@ -7,13 +7,15 @@ import {
   Word as WordType,
   NewWordInput,
   UpdateStatisticsInput,
-  Language,
   Game as GameType,
-  SortBy,
-  SortWordsBy,
   WordStatisticsField
 } from '../../generated/graphql';
-import { formatFilter, formatData } from '../helpers';
+import {
+  formatFilter,
+  formatData,
+  getWordsFilters,
+  WordsFilterType
+} from '../helpers';
 
 const STATISTICS_FIELD: WordStatisticsField = {
   lastTimePracticed: 0,
@@ -30,16 +32,6 @@ const DEFAULT_STATISTICS: Record<GameType, WordStatisticsField> = {
   [GameType.Conjugation]: STATISTICS_FIELD
 };
 
-type wordsFilter = {
-  sortBy?: SortBy | SortWordsBy | 'updatedAt';
-  language: Language;
-  isReverseOrder: boolean;
-  timesToLearn?: number | null;
-  gameType?: GameType;
-  user?: string;
-  tags?: string[];
-};
-
 export interface WordModelType {
   findOne: (filter: Partial<WordType>) => Promise<WordType | null>;
   findMany: (
@@ -47,7 +39,7 @@ export interface WordModelType {
     projection: string,
     options?: QueryOptions
   ) => Promise<WordType[] | null>;
-  findManyAndSort: (filter: wordsFilter) => Promise<WordType[] | null>;
+  findManyAndSort: (filter: WordsFilterType) => Promise<WordType[] | null>;
   createOne: (fields: NewWordInput) => Promise<WordType | null>;
   updateOne: (
     fields: Partial<WordType> & Pick<WordType, 'id' | 'user'>
@@ -87,94 +79,14 @@ export const WordModel: WordModelType = {
     return words;
   },
 
-  // Check if criteria is defined, if so => sort by criteria, else use natural sorting
   async findManyAndSort(filter) {
-    const {
-      user,
-      language = Language.English,
-      sortBy,
-      isReverseOrder,
-      gameType,
-      tags,
-      timesToLearn = 5
-    } = filter;
+    const { user } = filter;
 
     if (!user) {
       return [];
     }
 
-    let orderNum = isReverseOrder ? -1 : 1;
-
-    // words with the highest number of errors should go first
-    if (sortBy === SortBy.ErrorCount) {
-      orderNum = -1 * orderNum;
-    }
-    let learningStatusFilter = {};
-    let sort: Record<string, number> = { $natural: orderNum };
-
-    let gameFilter;
-
-    if (gameType === GameType.Conjugation) {
-      gameFilter = { conjugation: { $ne: null } };
-    }
-
-    if (gameType === GameType.Audio) {
-      gameFilter = { audioUrl: { $ne: '' } };
-    }
-
-    let tagsFilters: { tags: string }[] = [];
-    if (tags?.length) {
-      tagsFilters = tags?.map(tag => {
-        return { tags: tag };
-      });
-    }
-    // TODO: refactor this part
-    // Select words that are not learned or have been practiced without error less than 5 times in a row
-    if (gameType && sortBy !== SortBy.MemoryRefresher) {
-      learningStatusFilter = {
-        $and: [
-          { isLearned: { $ne: true } },
-          ...tagsFilters,
-          gameFilter,
-          {
-            $or: [
-              { [`statistics.${gameType}.successRate`]: { $lt: timesToLearn } },
-              { [`statistics.${gameType}.successRate`]: null }
-            ]
-          }
-        ]
-      };
-    } else {
-      if (tagsFilters?.length) {
-        learningStatusFilter = {
-          $and: tagsFilters
-        };
-      }
-    }
-
-    if (sortBy) {
-      let propName: string = sortBy;
-      if (gameType) {
-        propName = `statistics.${gameType}.${sortBy}`;
-      }
-
-      if (sortBy === SortBy.MemoryRefresher) {
-        learningStatusFilter = {
-          $or: [
-            { [`statistics.${gameType}.successRate`]: { $gte: timesToLearn } },
-            { isLearned: true }
-          ]
-        };
-      } else {
-        sort = { [propName]: orderNum };
-      }
-    }
-
-    const filters = {
-      user,
-      language,
-      ...learningStatusFilter
-    };
+    const { sort, filters } = getWordsFilters(filter);
 
     const words = await Word.find(filters)
       // @ts-ignore
