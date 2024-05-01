@@ -1,5 +1,6 @@
-import { Game, GameConfig } from '../generated/graphql';
-export const games: GameConfig[] = [
+import { Game, Language } from '../generated/graphql';
+import { GameConfigType } from 'db/schema/Game';
+export const games: GameConfigType[] = [
   // {
   //   name: 'flash cards',
   //   desc: 'Check if you can recall your words',
@@ -9,46 +10,46 @@ export const games: GameConfig[] = [
   {
     name: 'WordEcho',
     desc: 'Listen, Type, Master. Sharpen language skills through auditory engagement.',
-    imgUrl: 'audio',
     id: 'audio',
     type: Game.Audio,
     wordsPerGame: 6,
     minWords: 1,
     optionsPerGame: 0,
-    timesToLearn: 5
+    timesToLearn: 5,
+    languages: [Language.English, Language.Spanish]
   },
   {
     name: 'LexiSense',
     desc: 'Define & Conquer.Match words with their meanings intuitively.',
-    imgUrl: 'select_definition',
     id: 'select_definition',
     type: Game.SelectDef,
     wordsPerGame: 6,
     minWords: 1,
     optionsPerGame: 6,
-    timesToLearn: 5
+    timesToLearn: 5,
+    languages: [Language.English, Language.Spanish]
   },
   {
     name: 'Definify: Match & Learn',
     desc: 'Associate definitions with the right words. A captivating word puzzle adventure!',
-    imgUrl: 'select_word',
     id: 'select_word',
     type: Game.SelectWord,
     wordsPerGame: 6,
     minWords: 1,
     optionsPerGame: 6,
-    timesToLearn: 5
+    timesToLearn: 5,
+    languages: [Language.English, Language.Spanish]
   },
   {
     name: 'WordRecall: Define & Type',
     desc: 'Type words matching given definitions. Boost vocabulary in engaging rounds!',
-    imgUrl: 'type_word',
     id: 'type_word',
     type: Game.TypeWord,
     wordsPerGame: 6,
     minWords: 1,
     optionsPerGame: 0,
-    timesToLearn: 5
+    timesToLearn: 5,
+    languages: [Language.English, Language.Spanish]
   }
   // {
   //   name: 'find all definitions',

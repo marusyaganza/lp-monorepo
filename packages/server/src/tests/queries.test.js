@@ -94,7 +94,6 @@ const searchQuery = `
 const gamesQuery = `query Games {
   games {
     desc
-    imgUrl
     name
     id
   }
@@ -131,6 +130,10 @@ const findMany = jest.fn(() => words);
 const findOneUser = jest.fn(() => users[0]);
 const findOneWord = jest.fn(() => words[0]);
 const findManyAndSort = jest.fn(() => wordsArr);
+const findOneGame = jest.fn(({ type }) =>
+  games.find(game => game.type === type)
+);
+const findManyGames = jest.fn(() => games);
 
 const user = { id: '1' };
 
@@ -142,6 +145,10 @@ const models = {
   },
   User: {
     findOne: findOneUser
+  },
+  Game: {
+    findMany: findManyGames,
+    findOne: findOneGame
   }
 };
 
@@ -323,16 +330,13 @@ describe('queries', () => {
   });
 
   test('games', async () => {
-    const { query } = createTestServer({
-      games
-    });
+    const { query } = createTestServer({ models });
     const res = await query({ query: gamesQuery });
     expect(res).toMatchSnapshot();
   });
 
   test('get gamedata with walid user for Audio game and English', async () => {
     const { query } = createTestServer({
-      games,
       generateGameData,
       models,
       user
@@ -354,7 +358,6 @@ describe('queries', () => {
       sortBy: SortBy.PracticedTimes
     };
     const { query } = createTestServer({
-      games,
       generateGameData,
       models,
       user
@@ -382,7 +385,6 @@ describe('queries', () => {
     };
 
     const { query } = createTestServer({
-      games,
       generateGameData,
       models,
       user
@@ -410,7 +412,6 @@ describe('queries', () => {
       sortBy: SortBy.ErrorCount
     };
     const { query } = createTestServer({
-      games,
       generateGameData,
       models,
       user
@@ -437,7 +438,6 @@ describe('queries', () => {
       sortBy: SortBy.ErrorCount
     };
     const { query } = createTestServer({
-      games,
       generateGameData,
       models: {
         ...models,
@@ -465,7 +465,6 @@ describe('queries', () => {
       sortBy: SortBy.ErrorCount
     };
     const { query } = createTestServer({
-      games,
       generateGameData,
       models
     });
@@ -487,7 +486,6 @@ describe('queries', () => {
       sortBy: SortBy.ErrorCount
     };
     const { query } = createTestServer({
-      games,
       generateGameData,
       user,
       models: {
@@ -514,7 +512,6 @@ describe('queries', () => {
       sortBy: SortBy.ErrorCount
     };
     const { query } = createTestServer({
-      games,
       generateGameData,
       user,
       models: {
@@ -541,13 +538,15 @@ describe('queries', () => {
       sortBy: SortBy.ErrorCount
     };
     const { query } = createTestServer({
-      games: [],
       generateGameData,
       user,
       models: {
         ...models,
         Word: {
           findManyAndSort: jest.fn()
+        },
+        Game: {
+          findOne: jest.fn()
         }
       }
     });

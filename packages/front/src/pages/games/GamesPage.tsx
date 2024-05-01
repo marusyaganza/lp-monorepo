@@ -31,12 +31,14 @@ const OPTIONS = {
 };
 
 const GamesPage = () => {
-  const { error, loading, data } = useQuery<GamesQuery>(GAMES);
   const { setNotification, language } = useContext(AppContext);
   const [sortBy, setSortBy] = useState('');
   const [tags, setTags] = useState<string[] | undefined>();
   const [isReverseOrder, setIsReverseOrder] = useState(false);
 
+  const { error, loading, data } = useQuery<GamesQuery>(GAMES, {
+    variables: { language }
+  });
   const tagsResult = useQuery<TagsQuery>(TAGS_QUERY, {
     variables: { language }
   });

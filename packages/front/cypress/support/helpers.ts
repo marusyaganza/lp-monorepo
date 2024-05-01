@@ -1,5 +1,7 @@
 import { connect, connection } from 'mongoose';
 import { mockUser } from './mocks/mockData';
+import { games } from './mocks/games';
+
 export async function connectToDb() {
   try {
     await connect('mongodb://localhost:27017/test');
@@ -28,6 +30,8 @@ export async function seedDb() {
   try {
     const usersCollection = await connection.db.createCollection('users');
     await usersCollection.insertOne(mockUser);
+    const gamesCollection = await connection.db.createCollection('games');
+    await gamesCollection.insertMany(games);
   } catch (err) {
     console.error('mongoose drop db error', err);
   }
