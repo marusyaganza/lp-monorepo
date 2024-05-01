@@ -23,11 +23,11 @@ const STATISTICS_FIELD: WordStatisticsField = {
 };
 
 const DEFAULT_STATISTICS: Record<GameType, WordStatisticsField> = {
-  [Game.Audio]: STATISTICS_FIELD,
-  [Game.SelectDef]: STATISTICS_FIELD,
-  [Game.SelectWord]: STATISTICS_FIELD,
-  [Game.TypeWord]: STATISTICS_FIELD,
-  [Game.Conjugation]: STATISTICS_FIELD
+  [GameType.Audio]: STATISTICS_FIELD,
+  [GameType.SelectDef]: STATISTICS_FIELD,
+  [GameType.SelectWord]: STATISTICS_FIELD,
+  [GameType.TypeWord]: STATISTICS_FIELD,
+  [GameType.Conjugation]: STATISTICS_FIELD
 };
 
 type wordsFilter = {
@@ -114,11 +114,11 @@ export const WordModel: WordModelType = {
 
     let gameFilter;
 
-    if (gameType === Game.Conjugation) {
+    if (gameType === GameType.Conjugation) {
       gameFilter = { conjugation: { $ne: null } };
     }
 
-    if (gameType === Game.Audio) {
+    if (gameType === GameType.Audio) {
       gameFilter = { audioUrl: { $ne: '' } };
     }
 
