@@ -157,5 +157,16 @@ export const MutationResolvers: MutationResolversType<ResolverContext> = {
       throw new UserInputError(`updating word with id ${input.id} failed`);
     }
     return `tag ${result?.value?.text} was updated`;
+  }),
+
+  deleteTag: authorized(Role.Member, async (_, { id }, { models, user }) => {
+    const result = await models.WordTag.deleteOne({
+      id,
+      user: user?.id
+    });
+    if (!result?.ok || !result?.value) {
+      throw new UserInputError(`deleting word with id ${id} failed`);
+    }
+    return result.value;
   })
 };

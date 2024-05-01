@@ -46,6 +46,11 @@ export const mobileNavLinks: HeaderLinkType[] = [
     icon: 'dice'
   },
   {
+    url: `/${routes.tags}`,
+    text: 'Tags',
+    icon: 'tag'
+  },
+  {
     url: '/profile',
     text: 'Profile',
     icon: 'dragon'

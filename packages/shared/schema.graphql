@@ -299,5 +299,5 @@ type Mutation {
   login(input: LoginInput!): AuthUser!
   createTag(input: WordTagInput!): String!
   updateTag(input: UpdateWordTagInput): String!
-  # deleteTag(id: ID!): String!
+  deleteTag(id: ID!): WordTag!
 }

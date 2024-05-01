@@ -49,3 +49,7 @@
 .newTagForm {
   width: 100%;
 }
+
+.boldText {
+  font-weight: bold;
+}

@@ -6,6 +6,8 @@ type UserDataType = {
   expiration: string;
 };
 
+export type TagDataType = Record<Language, string[] | undefined>;
+
 export interface StoredData {
   language: Language;
   userData: UserDataType;
@@ -14,8 +16,8 @@ export interface StoredData {
   sortGamesBy: SortBy;
   wordsSortOrder: boolean;
   sortWordsBy: SortWordsBy;
-  tags?: string[];
-  gameTags?: string[];
+  tags?: TagDataType;
+  gameTags?: TagDataType;
 }
 
 type PropName = keyof StoredData & string;

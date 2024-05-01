@@ -48,7 +48,10 @@ const GamePage = () => {
     [searchParams]
   );
 
-  const storedTags = useMemo(() => getStoredData<'gameTags'>('gameTags'), []);
+  const storedTags = useMemo(
+    () => getStoredData<'gameTags'>('gameTags')?.[language],
+    [language]
+  );
 
   const gameId = useMemo<GameType | undefined>(() => {
     const gameId = params.gameId?.toUpperCase();

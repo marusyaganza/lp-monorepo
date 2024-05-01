@@ -43,7 +43,7 @@ export async function connectToDb() {
   try {
     await connect('mongodb://localhost:27017/test');
   } catch (err) {
-    console.log('mongoose err, make sure you run the DB', err);
+    console.error('mongoose err, make sure you run the DB', err);
   }
 }
 
@@ -51,7 +51,7 @@ export async function disconnectFromDb() {
   try {
     await connection.close();
   } catch (err) {
-    console.log('mongoose close connection error', err);
+    console.error('mongoose close connection error', err);
   }
 }
 
@@ -59,7 +59,7 @@ export async function dropDb() {
   try {
     await connection.db.dropDatabase();
   } catch (err) {
-    console.log('mongoose drop db error', err);
+    console.error('mongoose drop db error', err);
   }
 }
 

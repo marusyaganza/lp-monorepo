@@ -58,7 +58,11 @@
 }
 
 .tagsSelector {
-  width: 400px;
+  width: 300px;
+
+  @media (width >= 800px) {
+    width: 400px;
+  }
 }
 
 .wordSelection {

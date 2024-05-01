@@ -35,13 +35,18 @@
 }
 
 .tagsSelector {
-  width: 400px;
+  width: 300px;
+
+  @media (width >= 800px) {
+    width: 400px;
+  }
 }
 
 .topSection {
   display: flex;
   gap: 32px;
   justify-self: flex-end;
+  flex-wrap: wrap;
 }
 
 .page {

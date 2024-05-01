@@ -259,7 +259,7 @@ describe('WordModel', () => {
       ...testData.updateWordInput,
       id: word2.id
     });
-    expect(resultForUnknowUser).toEqual({ ok: false, value: null });
+    expect(resultForUnknowUser).toEqual({ ok: false });
 
     const resultWithImmutableProps = await WordModel.updateOne({
       ...testData.updateWordInput2,
