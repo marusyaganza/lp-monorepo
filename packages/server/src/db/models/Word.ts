@@ -1,19 +1,19 @@
+import { QueryOptions } from 'mongoose';
 import { Word } from '../schema/Word';
 import { WordTag } from '../schema/WordTag';
-import { QueryOptions } from 'mongoose';
+import { Game } from '../schema/Game';
 
 import {
   Word as WordType,
   NewWordInput,
   UpdateStatisticsInput,
   Language,
-  Game,
+  Game as GameType,
   SortBy,
   SortWordsBy,
   WordStatisticsField
 } from '../../generated/graphql';
 import { formatFilter, formatData } from '../helpers';
-import { games } from '../../mocks/games';
 
 const STATISTICS_FIELD: WordStatisticsField = {
   lastTimePracticed: 0,
@@ -22,11 +22,11 @@ const STATISTICS_FIELD: WordStatisticsField = {
   successRate: 0
 };
 
-const DEFAULT_STATISTICS: Record<Game, WordStatisticsField> = {
-  [Game.Audio]: STATISTICS_FIELD,
-  [Game.SelectDef]: STATISTICS_FIELD,
-  [Game.SelectWord]: STATISTICS_FIELD,
-  [Game.TypeWord]: STATISTICS_FIELD
+const DEFAULT_STATISTICS: Record<GameType, WordStatisticsField> = {
+  [GameType.Audio]: STATISTICS_FIELD,
+  [GameType.SelectDef]: STATISTICS_FIELD,
+  [GameType.SelectWord]: STATISTICS_FIELD,
+  [GameType.TypeWord]: STATISTICS_FIELD
 };
 
 type wordsFilter = {
@@ -34,7 +34,7 @@ type wordsFilter = {
   language: Language;
   isReverseOrder: boolean;
   timesToLearn?: number | null;
-  gameType?: Game;
+  gameType?: GameType;
   user?: string;
   tags?: string[];
 };
@@ -241,8 +241,8 @@ export const WordModel: WordModelType = {
         }
 
         const { gameType, hasError = false, isLearned = false } = entry;
-        const timesToLearn =
-          games.find(game => game.type === gameType)?.timesToLearn || 5;
+        const gameConfig = await Game.findOne({ type: gameType });
+        const timesToLearn = gameConfig?.timesToLearn || 5;
 
         const currentStatistics = word?.statistics?.[gameType];
 

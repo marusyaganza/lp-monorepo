@@ -142,7 +142,6 @@ union SearchResult = DictionaryWord | Suggestions
 type GameConfig {
   name: String!
   desc: String!
-  imgUrl: String!
   id: String!
   type: Game!
   wordsPerGame: Int!
@@ -282,7 +281,7 @@ input UpdateWordTagInput {
 
 type Query {
   user: User!
-  games: [GameConfig]!
+  games(language: Language): [GameConfig]!
   game(input: GameDataInput!): GameData!
   words(input: WordsInput): [Word]!
   word(id: ID!): Word!

@@ -17,7 +17,14 @@ export const QueryResolvers: QueryResolversType<ResolverContext> = {
     }
     return result;
   },
-  games: async (_, __, { games }) => {
+  games: async (_, { language }, { models }) => {
+    const lang = language || Language.English;
+    const games = await models.Game.findMany({
+      languages: lang
+    });
+    if (!games) {
+      throw new UserInputError(`no games for ${language} language were found`);
+    }
     return games;
   },
   words: authenticated(async (_, { input }, { models, user }) => {
@@ -47,7 +54,7 @@ export const QueryResolvers: QueryResolversType<ResolverContext> = {
     return searchResult;
   }),
   game: authenticated(
-    async (_, { input }, { models, user, generateGameData, games }) => {
+    async (_, { input }, { models, user, generateGameData }) => {
       const {
         language = Language.English,
         gameType,
@@ -55,7 +62,11 @@ export const QueryResolvers: QueryResolversType<ResolverContext> = {
         isReverseOrder,
         tags
       } = input;
-      const config = games.find(game => game.type === gameType);
+      const config = await models.Game.findOne({
+        type: gameType,
+        languages: input.language
+      });
+
       if (!config) {
         throw new OperationResolutionError(`game not found`);
       }

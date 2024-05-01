@@ -10,25 +10,21 @@ exports[`queries games 1`] = `
           {
             "desc": "Listen, Type, Master. Sharpen language skills through auditory engagement.",
             "id": "audio",
-            "imgUrl": "audio",
             "name": "WordEcho",
           },
           {
             "desc": "Define & Conquer.Match words with their meanings intuitively.",
             "id": "select_definition",
-            "imgUrl": "select_definition",
             "name": "LexiSense",
           },
           {
             "desc": "Associate definitions with the right words. A captivating word puzzle adventure!",
             "id": "select_word",
-            "imgUrl": "select_word",
             "name": "Definify: Match & Learn",
           },
           {
             "desc": "Type words matching given definitions. Boost vocabulary in engaging rounds!",
             "id": "type_word",
-            "imgUrl": "type_word",
             "name": "WordRecall: Define & Type",
           },
         ],

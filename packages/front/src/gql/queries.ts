@@ -101,10 +101,9 @@ export const USER = gql`
 `;
 
 export const GAMES = gql`
-  query Games {
-    games {
+  query Games($language: Language) {
+    games(language: $language) {
       desc
-      imgUrl
       name
       id
       type
