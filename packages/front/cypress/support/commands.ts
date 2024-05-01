@@ -45,7 +45,7 @@ Cypress.Commands.add('login', () => {
 });
 
 Cypress.on('uncaught:exception', err => {
-  console.log('err', err.message);
+  console.error('err', err.message);
   // if (err.message.includes('ApolloError')) {
   return false;
   // }

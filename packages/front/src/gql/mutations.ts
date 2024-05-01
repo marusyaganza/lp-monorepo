@@ -58,3 +58,12 @@ export const CREATE_TAG = gql`
     createTag(input: $input)
   }
 `;
+
+export const DELETE_TAG = gql`
+  mutation DeleteTag($deleteTagId: ID!) {
+    deleteTag(id: $deleteTagId) {
+      text
+      id
+    }
+  }
+`;

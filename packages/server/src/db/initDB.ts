@@ -16,5 +16,5 @@ export const initDB: initDBFuncType = async function (
     .then(() => {
       cb(models);
     })
-    .catch(err => console.log(err));
+    .catch(err => console.error(err));
 };

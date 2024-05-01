@@ -34,7 +34,7 @@ export const hashPassword: HashPasswordFuncType = async function (password) {
   try {
     hashedPassword = await bcrypt.hash(password, parseInt(salt));
   } catch (err) {
-    console.log('error');
+    console.error('error');
   }
   return hashedPassword;
 };
@@ -71,7 +71,7 @@ export function getUserFromToken(token?: string): UserTokenInfo | undefined {
     const user = jwt.verify(token, JWT_SECTET);
     return user;
   } catch (e) {
-    console.log('error', e);
+    console.error('error', e);
     return;
   }
 }

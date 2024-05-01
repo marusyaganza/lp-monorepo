@@ -1,16 +1,20 @@
 import { formatData, formatFilter } from '../helpers';
-// import { Word } from '../schema/Word';
+import { Word } from '../schema/Word';
 import { WordTag, WordTagType } from '../schema/WordTag';
-import { WordTagInput, UpdateWordTagInput } from 'generated/graphql';
+import {
+  WordTagInput,
+  UpdateWordTagInput,
+  WordTag as TagType
+} from 'generated/graphql';
 
 export interface WordTagModelType {
   findOne: (filter: Partial<WordTagType>) => Promise<WordTagType | null>;
   findMany: (filter: Partial<WordTagType>) => Promise<WordTagType[] | null>;
   createOne: (fields: WordTagInput) => Promise<WordTagType | null>;
-  // deleteOne: (filter: {
-  //   id: string;
-  //   user?: string;
-  // }) => Promise<{ ok: boolean }>;
+  deleteOne: (filter: {
+    id: string;
+    user?: string;
+  }) => Promise<{ ok: boolean; value?: TagType }>;
   updateOne: (
     fields: Partial<UpdateWordTagInput> & Pick<WordTagType, 'id' | 'user'>
   ) => Promise<{ ok: boolean; value: WordTagType | null }>;
@@ -45,16 +49,44 @@ export const WordTagModel: WordTagModelType = {
     );
     const isOk = ok == 1 && value !== null;
     return { ok: isOk, value: formatData(value) };
+  },
+
+  async deleteOne(filter) {
+    const { id, user } = filter;
+
+    let result = { ok: false };
+
+    const tag = await WordTag.findOne({
+      _id: filter.id,
+      user: filter.user
+    });
+
+    if (!tag) {
+      return result;
+    }
+
+    const wordsWithTag = await Word.find(
+      {
+        tags: id,
+        user: user
+      },
+      'tags'
+    );
+
+    const tagId = tag._id;
+
+    wordsWithTag.forEach(async wordWithTag => {
+      if (wordWithTag?.tags?.length) {
+        // @ts-ignore
+        wordWithTag.tags = wordWithTag.tags.filter(tag => tag != tagId);
+        await wordWithTag.save();
+      }
+    });
+
+    await tag.deleteOne();
+    // @ts-ignore
+    result = { ok: true, value: tag };
+
+    return result;
   }
-  // async deleteOne(filter) {
-  //   const result = { ok: false };
-  //   const { deletedCount, acknowledged } = await WordTag.deleteOne({
-  //     _id: filter.id,
-  //     user: filter.user
-  //   });
-  //   if (acknowledged && deletedCount == 1) {
-  //     result.ok = true;
-  //   }
-  //   return result;
-  // }
 };

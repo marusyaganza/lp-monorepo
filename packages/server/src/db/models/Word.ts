@@ -1,4 +1,5 @@
 import { Word } from '../schema/Word';
+import { WordTag } from '../schema/WordTag';
 import { QueryOptions } from 'mongoose';
 
 import {
@@ -11,7 +12,7 @@ import {
   SortWordsBy,
   WordStatisticsField
 } from '../../generated/graphql';
-import { formatFilter, formatData, checkTags } from '../helpers';
+import { formatFilter, formatData } from '../helpers';
 import { games } from '../../mocks/games';
 
 const STATISTICS_FIELD: WordStatisticsField = {
@@ -49,7 +50,7 @@ export interface WordModelType {
   createOne: (fields: NewWordInput) => Promise<WordType | null>;
   updateOne: (
     fields: Partial<WordType> & Pick<WordType, 'id' | 'user'>
-  ) => Promise<{ ok: boolean; value: WordType | null }>;
+  ) => Promise<{ ok: boolean; value?: WordType | null }>;
   updateMany: (
     fields: Partial<WordType> & Pick<WordType, 'id'>[],
     user?: string
@@ -192,16 +193,21 @@ export const WordModel: WordModelType = {
 
   async updateOne(fields) {
     const updatedAt = Date.now();
-    //TODO fix checkTags function
-    const tagsUpdate = checkTags(fields?.tags);
+    const word = await Word.findOne({ _id: fields.id, user: fields.user });
+    if (!word) {
+      return { ok: false };
+    }
+    const language = word.language;
+    const { user, tags } = fields;
+    let existingTags = await WordTag.find({ user, language }, 'id');
+    existingTags = existingTags.map(tag => tag.id);
+    // @ts-ignore
+    const tagsUpdate = tags?.filter(tag => existingTags.includes(tag));
     const update = { ...fields, tags: tagsUpdate, updatedAt };
-    const { ok, value } = await Word.findOneAndUpdate(
-      { _id: fields.id, user: fields.user },
-      update,
-      { includeResultMetadata: true, new: true }
-    );
-    const isOk = ok == 1 && value !== null;
-    return { ok: isOk, value: formatData(value) };
+    const { acknowledged, modifiedCount } = await word.updateOne(update);
+    const updatedWord = await Word.findById(word.id);
+    const isOk = modifiedCount == 1 && acknowledged === true;
+    return { ok: isOk, value: formatData(updatedWord) };
   },
 
   // This method do not have a practical use for now
