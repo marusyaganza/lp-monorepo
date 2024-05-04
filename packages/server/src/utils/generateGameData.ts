@@ -6,26 +6,20 @@ import {
   Language,
   WordDefinition,
   DefExample,
-  GameQuestion
+  GameQuestion,
+  Tense
 } from '../generated/graphql';
 import { OperationResolutionError } from './apolloCustomErrors';
 import { madeUphWords } from '../mocks/madeUpWord';
+import { TENSES } from '../dictionary/constants';
 
 export type GenerateGameDataFuncType = (
   gameType: Game,
   words: Word[],
   config: GameConfig,
   optionsMaterial?: Word[] | null,
-  tense?: string
+  tense?: Tense
 ) => GameData;
-
-const tasks = {
-  [Game.Audio]: "Type the word that you've heard",
-  [Game.SelectDef]: 'Select a definition that means ',
-  [Game.SelectWord]: 'Select a word that means ',
-  [Game.TypeWord]: 'Type a word that means ',
-  [Game.Conjugation]: 'Conjugate the verb '
-};
 
 export function generateRandomNumber(limit: number) {
   return Math.floor(Math.random() * limit);
@@ -116,8 +110,16 @@ export const generateGameData: GenerateGameDataFuncType = (
   data,
   config,
   optionsMaterial,
-  tense
+  tense = Tense.Pind
 ) => {
+  const tasks = {
+    [Game.Audio]: "Type the word that you've heard",
+    [Game.SelectDef]: 'Select a definition that means ',
+    [Game.SelectWord]: 'Select a word that means ',
+    [Game.TypeWord]: 'Type a word that means ',
+    [Game.Conjugation]: `Conjugate the verb in ${TENSES[tense]}`
+  };
+
   let questions;
   const { optionsPerGame, wordsPerGame, minWords } = config;
 
