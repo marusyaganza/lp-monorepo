@@ -26,6 +26,28 @@ enum Game {
   CONJUGATION
 }
 
+enum Tense {
+  pind
+  pprf
+  impf
+  pret
+  # futr
+  # cond
+  # psub
+  # pisb1
+  # pisb2
+  # fsub
+  # ppci
+  # ppsi
+  # pant
+  # fpin
+  # cpef
+  # ppfs
+  # ppss1
+  # ppss2
+  # fpsb
+}
+
 enum SortBy {
   lastTimePracticed
   practicedTimes
@@ -264,7 +286,7 @@ input GameDataInput {
   isReverseOrder: Boolean
   tags: [String]
   language: Language
-  tense: String
+  tense: Tense
 }
 
 input UpdateStatisticsInput {

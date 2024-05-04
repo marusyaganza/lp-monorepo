@@ -53,6 +53,8 @@ const GamePage = () => {
     [language]
   );
 
+  const tense = useMemo(() => searchParams.get('tense'), [searchParams]);
+
   const gameId = useMemo<GameType | undefined>(() => {
     const gameId = params.gameId?.toUpperCase();
     const isExistingGame = Object.values(GameType).includes(gameId as GameType);
@@ -86,6 +88,7 @@ const GamePage = () => {
             language,
             sortBy,
             isReverseOrder,
+            tense,
             tags: storedTags
           }
         }
