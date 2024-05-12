@@ -24,6 +24,10 @@
   box-shadow: var(--secondary-box-shadow);
 }
 
+.input:disabled:not(.success):not(.error) {
+  background: var(--neutral-300);
+}
+
 .input:focus {
   outline: none;
   border: 1px solid var(--neutral-800);

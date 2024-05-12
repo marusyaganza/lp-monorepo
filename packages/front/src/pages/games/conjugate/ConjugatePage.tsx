@@ -37,7 +37,6 @@ const ConjugatePage = () => {
     setTense(val);
   };
   const [searchParams] = useSearchParams();
-  console.log('searchParams', searchParams);
   const { Select, Option } = useSelect<Tense>({ onChange: handleChange });
   const renderOptions = () => {
     const keys = Object.keys(TENSES) as Tense[];

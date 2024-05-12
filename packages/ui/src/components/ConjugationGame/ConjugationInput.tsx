@@ -3,6 +3,7 @@ import { cn } from '../../utils/classnames';
 import { TextInput } from '../TextInput/TextInput';
 
 import styles from './ConjugationInput.module.css';
+import { Tense } from '../../generated/graphql';
 
 export interface ConjugationInputProps {
   onChange: (value: string) => void;
@@ -10,6 +11,8 @@ export interface ConjugationInputProps {
   variant?: 'initial' | 'success' | 'error';
   isDisabled?: boolean;
   dataCy?: string;
+  tense?: string | null;
+  initialValue?: string;
   /**additional styling */
   className?: string;
 }
@@ -23,15 +26,26 @@ const PRONOUNS = [
   'ellos, ellas'
 ];
 
+const IMPF_INDEXES = [1, 2];
+
 const INITIAL_VALUES = Array(6).fill('');
 
-/**Component description goes here */
+/**Conjugation game input */
 export const ConjugationInput = forwardRef<
   HTMLInputElement,
   ConjugationInputProps
 >(
   (
-    { onChange, className, correctAnswer = '', variant, isDisabled, dataCy },
+    {
+      onChange,
+      className,
+      correctAnswer = '',
+      variant,
+      isDisabled,
+      dataCy,
+      initialValue,
+      tense
+    },
     ref
   ) => {
     const [values, setValues] = useState(INITIAL_VALUES);
@@ -40,7 +54,11 @@ export const ConjugationInput = forwardRef<
       [correctAnswer]
     );
 
-    console.log('variant', variant, correctAnswer);
+    const isImpf = useMemo(() => tense === Tense.Impf, [tense]);
+    const initialValues = useMemo(
+      () => initialValue?.split(', '),
+      [initialValue]
+    );
 
     const getChangeHandler = (index: number) => {
       return function handleChange(val: string) {
@@ -53,29 +71,51 @@ export const ConjugationInput = forwardRef<
 
     useEffect(() => {
       if (!correctAnswer && variant === 'initial') {
-        setValues(INITIAL_VALUES);
+        const initialVals = [...INITIAL_VALUES];
+        if (isImpf && initialValues?.length) {
+          initialVals.forEach((value, index) => {
+            if (!IMPF_INDEXES.includes(index)) {
+              initialVals[index] = initialValues[index];
+            }
+          });
+        }
+        setValues(initialVals);
       }
-    }, [correctAnswer, variant]);
+    }, [correctAnswer, variant, isImpf]);
 
     const renderInputs = () => {
       return PRONOUNS.map((pronoun: string, index: number) => {
-        const currentValue = values[index];
+        let currentValue = values[index];
+
+        const disableInput =
+          isImpf && initialValues?.length && !IMPF_INDEXES.includes(index);
+
+        if (disableInput) {
+          currentValue = initialValues[index];
+        }
+
         let currentVariant = variant;
+
         if (
           currentVariant === 'error' &&
           currentValue === correctAnswers[index]
         ) {
           currentVariant = 'success';
         }
+
+        const isFirst =
+          (isImpf && index === IMPF_INDEXES[0]) ||
+          (!disableInput && index === 0);
+
         return (
           <label key={pronoun} className={styles.inputContainer}>
             <span className={styles.pronoun}>{pronoun}</span>
             <TextInput
               className={styles.input}
               dataCy={`${dataCy}-${index}`}
-              isDisabled={isDisabled}
+              isDisabled={disableInput || isDisabled}
               variant={currentVariant}
-              ref={index === 0 ? ref : undefined}
+              ref={isFirst ? ref : undefined}
               value={currentValue}
               name={pronoun}
               onChange={getChangeHandler(index)}
