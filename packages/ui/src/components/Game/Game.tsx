@@ -26,6 +26,8 @@ export interface GameProps {
   question: string[];
   options?: string[];
   type: GameType;
+  tense?: string | null;
+  correctAnswer?: string;
   additionalInfo?: GameQuestionAdditionalInfo | null;
   onSubmit: (value: string) => void;
   /**additional styling */
@@ -49,6 +51,8 @@ export const Game = ({
   currentResult,
   additionalInfo,
   onNext,
+  tense,
+  correctAnswer,
   memoryRefresherMode
 }: GameProps) => {
   const [value, setValue] = useState('');
@@ -181,6 +185,8 @@ export const Game = ({
         <ConjugationInput
           dataCy="gameAnswer"
           ref={inputRef}
+          tense={tense}
+          initialValue={correctAnswer}
           variant={currentStage}
           correctAnswer={currentResult?.correctAnswer}
           onChange={handleChange}

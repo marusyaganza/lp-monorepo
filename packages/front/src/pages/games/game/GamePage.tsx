@@ -64,6 +64,11 @@ const GamePage = () => {
     () => data?.game?.questions?.filter(Boolean),
     [data]
   );
+
+  const correctAnswer = useMemo(
+    () => questions?.[state.currentIndex]?.answer || '',
+    [questions, state]
+  );
   const isCompleted = useMemo(() => state?.isCompleted, [state?.isCompleted]);
   const progress = useMemo(
     () =>
@@ -157,7 +162,7 @@ const GamePage = () => {
           answer,
           alternativeSpelling:
             questions[state.currentIndex]?.alternativeSpelling || [],
-          correctAnswer: questions[state.currentIndex]?.answer || '',
+          correctAnswer,
           id: questions[state.currentIndex].wordId
         }
       });
@@ -201,6 +206,8 @@ const GamePage = () => {
                 type={data.game.type}
                 onSubmit={handlerSubmit}
                 question={questions?.[state.currentIndex].question as string[]}
+                tense={tense}
+                correctAnswer={correctAnswer}
                 options={
                   questions?.[state.currentIndex]?.options as
                     | string[]
