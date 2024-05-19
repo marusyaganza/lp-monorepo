@@ -324,7 +324,7 @@ type Query {
   words(input: WordsInput): [Word]!
   word(id: ID!): Word!
   searchWord(input: WordSearchInput!): [SearchResult]!
-  tags(language: Language!): [WordTag]!
+  tags(language: Language): [WordTag]!
 }
 
 type Mutation {

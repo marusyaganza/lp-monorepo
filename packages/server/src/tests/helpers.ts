@@ -68,3 +68,7 @@ export const dbSnapshotConfig = {
   id: expect.any(String),
   _id: expect.any(Object)
 };
+
+export function getErrorMessageFromGQL(result) {
+  return result?.body?.singleResult?.errors?.[0]?.message;
+}
