@@ -3,32 +3,35 @@ import { games } from './games';
 import { words as wordsArr, spanishWords } from './gameGenerationData';
 import { Language } from '../../generated/graphql';
 
-const findOneUser = jest.fn(() => users[0]);
-const findMany = jest.fn(() => words);
-const findOneWord = jest.fn(() => words[0]);
-const findManyAndSort = jest.fn(({ language }) =>
-  language === Language.English ? wordsArr : spanishWords
-);
-const findOneGame = jest.fn(({ type }) =>
-  games.find(game => game.type === type)
-);
-const findManyGames = jest.fn(() => games);
-const findManyTags = jest.fn(() => tags);
-
 export const models = {
   Word: {
-    findMany,
-    findOne: findOneWord,
-    findManyAndSort
+    findMany: jest.fn(() => words),
+    findOne: jest.fn(() => words[0]),
+    findManyAndSort: jest.fn(({ language }) =>
+      language === Language.Spanish ? spanishWords : wordsArr
+    ),
+    createOne: jest.fn(data => ({ ...data, id: '2' })),
+    deleteOne: jest.fn()
   },
   User: {
-    findOne: findOneUser
+    findOne: jest.fn(() => users[0]),
+    createOne: jest.fn(data => ({
+      ...data,
+      id: '2'
+    }))
   },
   Game: {
-    findMany: findManyGames,
-    findOne: findOneGame
+    findMany: jest.fn(() => games),
+    findOne: jest.fn(({ type }) => games.find(game => game.type === type))
   },
   WordTag: {
-    findMany: findManyTags
+    findMany: jest.fn(() => tags),
+    findOne: jest.fn(),
+    deleteOne: jest.fn(),
+    createOne: jest.fn(data => ({
+      ...data,
+      id: '2'
+    })),
+    updateOne: jest.fn()
   }
 };

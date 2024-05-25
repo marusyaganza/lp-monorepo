@@ -1,7 +1,7 @@
 import { createTestServer, getErrorMessageFromGQL } from '../helpers';
 import { models } from '../mocks/models';
 import { user } from '../mocks/data';
-import { userQueries } from './queries';
+import { userQueries } from '../mocks/gqlQueries';
 
 describe('user queries', () => {
   afterEach(() => {

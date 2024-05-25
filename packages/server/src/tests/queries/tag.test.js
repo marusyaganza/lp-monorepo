@@ -1,7 +1,7 @@
 import { createTestServer, getErrorMessageFromGQL } from '../helpers';
 import { models } from '../mocks/models';
 import { user } from '../mocks/data';
-import { tagsQueries } from './queries';
+import { tagsQueries } from '../mocks/gqlQueries';
 import { Language } from '../../generated/graphql';
 
 describe('tags queries', () => {
