@@ -4,7 +4,7 @@ import { generateGameData } from '../../utils/generateGameData';
 import { randomNumbersArray } from '../mocks/gameGenerationData';
 
 import { models } from '../mocks/models';
-import { gameQueries } from './queries';
+import { gameQueries } from '../mocks/gqlQueries';
 
 const user = { id: '1' };
 

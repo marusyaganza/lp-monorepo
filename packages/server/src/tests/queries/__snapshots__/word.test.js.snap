@@ -515,10 +515,17 @@ exports[`word queries words 1`] = `
               },
             ],
             "id": "1",
+            "isLearned": null,
             "isOffensive": false,
             "level": null,
             "name": "wheel",
             "particle": "noun",
+            "shortDef": [
+              "a circular frame of hard material that may be solid, partly solid, or spoked and that is capable of turning on an axle",
+              "a contrivance or apparatus having as its principal part a wheel: such as",
+              "a chiefly medieval instrument of torture designed for mutilating a victim (as by stretching or disjointing)",
+            ],
+            "tags": null,
             "transcription": "ˈ(h)wēl",
           },
           {
@@ -550,10 +557,17 @@ exports[`word queries words 1`] = `
               },
             ],
             "id": "2",
+            "isLearned": null,
             "isOffensive": false,
             "level": null,
             "name": "wheel",
             "particle": "verb",
+            "shortDef": [
+              "to turn on or as if on an axis : revolve",
+              "to change direction as if revolving on a pivot",
+              "to move or extend in a circle or curve",
+            ],
+            "tags": null,
             "transcription": "wheel",
           },
           {
@@ -564,10 +578,15 @@ exports[`word queries words 1`] = `
               },
             ],
             "id": "3",
+            "isLearned": null,
             "isOffensive": false,
             "level": null,
             "name": "wheel and axle",
             "particle": "noun",
+            "shortDef": [
+              "a mechanical device consisting of a grooved wheel turned by a cord or chain with a rigidly attached axle (as for winding up a weight) together with the supporting standards",
+            ],
+            "tags": null,
             "transcription": "wheel and axle",
           },
           {
@@ -578,10 +597,15 @@ exports[`word queries words 1`] = `
               },
             ],
             "id": "4",
+            "isLearned": null,
             "isOffensive": false,
             "level": null,
             "name": "wheel animal",
             "particle": "noun",
+            "shortDef": [
+              "rotifer",
+            ],
+            "tags": null,
             "transcription": "wheel animal",
           },
           {
@@ -592,10 +616,15 @@ exports[`word queries words 1`] = `
               },
             ],
             "id": "5",
+            "isLearned": null,
             "isOffensive": false,
             "level": null,
             "name": "wheel bug",
             "particle": "noun",
+            "shortDef": [
+              "a large North American assassin bug (Arilus cristatus) that has a high serrated crest on its prothorax and preys on insects",
+            ],
+            "tags": null,
             "transcription": "wheel bug",
           },
           {
@@ -606,10 +635,15 @@ exports[`word queries words 1`] = `
               },
             ],
             "id": "6",
+            "isLearned": null,
             "isOffensive": false,
             "level": null,
             "name": "wheel lock",
             "particle": "noun",
+            "shortDef": [
+              "a gun's lock for a muzzle-loading firearm in which sparks are struck from a flint or a piece of pyrite by a revolving wheel",
+            ],
+            "tags": null,
             "transcription": "wheel lock",
           },
           {
@@ -620,10 +654,15 @@ exports[`word queries words 1`] = `
               },
             ],
             "id": "7",
+            "isLearned": null,
             "isOffensive": false,
             "level": null,
             "name": "wheel-thrown",
             "particle": "adjective",
+            "shortDef": [
+              "made on a potter's wheel",
+            ],
+            "tags": null,
             "transcription": "ˈ(h)wēl-ˌthrōn",
           },
           {
@@ -634,10 +673,15 @@ exports[`word queries words 1`] = `
               },
             ],
             "id": "8",
+            "isLearned": null,
             "isOffensive": false,
             "level": null,
             "name": "wheel clamp",
             "particle": "noun",
+            "shortDef": [
+              "an object that the police lock onto one of the wheels of a car so that the car cannot be moved",
+            ],
+            "tags": null,
             "transcription": "wheel clamp",
           },
           {
@@ -648,10 +692,15 @@ exports[`word queries words 1`] = `
               },
             ],
             "id": "9",
+            "isLearned": null,
             "isOffensive": false,
             "level": null,
             "name": "all-wheel",
             "particle": "adjective",
+            "shortDef": [
+              "acting especially independently on or by means of all four wheels of an automotive vehicle",
+            ],
+            "tags": null,
             "transcription": "ˈȯl-ˈwēl",
           },
           {
@@ -662,11 +711,58 @@ exports[`word queries words 1`] = `
               },
             ],
             "id": "10",
+            "isLearned": null,
             "isOffensive": false,
             "level": null,
             "name": "all-wheel drive",
             "particle": "noun",
+            "shortDef": [
+              "an automobile drive mechanism that acts on all four wheels of the vehicle",
+            ],
+            "tags": null,
             "transcription": "ˈȯl-ˈwēl-",
+          },
+        ],
+      },
+      "errors": undefined,
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`word queries words in Spanish 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": {
+        "words": [
+          {
+            "audioUrl": null,
+            "defs": [
+              {
+                "def": "to fall",
+              },
+            ],
+            "id": "0",
+            "isLearned": null,
+            "isOffensive": null,
+            "level": null,
+            "name": "caer",
+            "particle": "intransitive verb",
+            "shortDef": [
+              "to fall",
+              "to drop away, to slope",
+              "to fall (of night)",
+            ],
+            "tags": null,
+            "transcription": null,
           },
         ],
       },

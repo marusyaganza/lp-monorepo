@@ -3,7 +3,7 @@ import { words, user } from '../mocks/data';
 import { Language } from '../../generated/graphql';
 import { searchWord } from '../../dictionary';
 import { models } from '../mocks/models';
-import { wordQueries } from './queries';
+import { wordQueries } from '../mocks/gqlQueries';
 
 describe('word queries', () => {
   afterEach(() => {
@@ -23,6 +23,30 @@ describe('word queries', () => {
     });
     expect(res).toMatchSnapshot();
     expect(models.Word.findManyAndSort).toHaveBeenCalledTimes(1);
+    expect(models.Word.findManyAndSort).toHaveBeenCalledWith({
+      isReverseOrder: true,
+      sortBy: 'updatedAt',
+      user: '1'
+    });
+  });
+
+  test('words in Spanish', async () => {
+    const { query } = createTestServer({
+      user,
+      models
+    });
+
+    const res = await query({
+      query: wordQueries.wordsQuery,
+      variables: { input: { language: Language.Spanish } }
+    });
+    expect(res).toMatchSnapshot();
+    expect(models.Word.findManyAndSort).toHaveBeenCalledWith({
+      isReverseOrder: true,
+      language: 'SPANISH',
+      sortBy: 'updatedAt',
+      user: '1'
+    });
   });
 
   test('word by id', async () => {

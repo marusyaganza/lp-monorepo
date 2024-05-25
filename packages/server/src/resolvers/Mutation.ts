@@ -154,7 +154,7 @@ export const MutationResolvers: MutationResolversType<ResolverContext> = {
       user: user?.id
     });
     if (!result?.ok) {
-      throw new UserInputError(`updating word with id ${input.id} failed`);
+      throw new UserInputError(`updating tag with id ${input.id} failed`);
     }
     return `tag ${result?.value?.text} was updated`;
   }),
@@ -165,7 +165,7 @@ export const MutationResolvers: MutationResolversType<ResolverContext> = {
       user: user?.id
     });
     if (!result?.ok || !result?.value) {
-      throw new UserInputError(`deleting word with id ${id} failed`);
+      throw new UserInputError(`deleting tag with id ${id} failed`);
     }
     return result.value;
   })
