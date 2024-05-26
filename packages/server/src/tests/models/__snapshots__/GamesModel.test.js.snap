@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WordTagModel findOne with AUDIO game, English 1`] = `
+{
+  "_id": Any<Object>,
+  "desc": "Listen, Type, Master. Sharpen language skills through auditory engagement.",
+  "id": Any<String>,
+  "languages": [
+    "ENGLISH",
+    "SPANISH",
+  ],
+  "minWords": 1,
+  "name": "WordEcho",
+  "optionsPerGame": 0,
+  "timesToLearn": 5,
+  "type": "AUDIO",
+  "wordsPerGame": 6,
+}
+`;
+
+exports[`WordTagModel findOne with CONJUGATION game, English 1`] = `
+{
+  "_id": Any<Object>,
+  "desc": "Conjugate verbs!",
+  "id": Any<String>,
+  "languages": [
+    "SPANISH",
+  ],
+  "minWords": 1,
+  "name": "Conjugation",
+  "optionsPerGame": 0,
+  "timesToLearn": 5,
+  "type": "CONJUGATION",
+  "wordsPerGame": 2,
+}
+`;
+
+exports[`WordTagModel findOne with SELECT_DEF game, English 1`] = `
+{
+  "_id": Any<Object>,
+  "desc": "Define & Conquer.Match words with their meanings intuitively.",
+  "id": Any<String>,
+  "languages": [
+    "ENGLISH",
+    "SPANISH",
+  ],
+  "minWords": 1,
+  "name": "LexiSense",
+  "optionsPerGame": 6,
+  "timesToLearn": 5,
+  "type": "SELECT_DEF",
+  "wordsPerGame": 6,
+}
+`;
+
+exports[`WordTagModel findOne with SELECT_WORD game, English 1`] = `
+{
+  "_id": Any<Object>,
+  "desc": "Associate definitions with the right words. A captivating word puzzle adventure!",
+  "id": Any<String>,
+  "languages": [
+    "ENGLISH",
+    "SPANISH",
+  ],
+  "minWords": 1,
+  "name": "Definify: Match & Learn",
+  "optionsPerGame": 6,
+  "timesToLearn": 5,
+  "type": "SELECT_WORD",
+  "wordsPerGame": 6,
+}
+`;
+
+exports[`WordTagModel findOne with TYPE_WORD game, English 1`] = `
+{
+  "_id": Any<Object>,
+  "desc": "Type words matching given definitions. Boost vocabulary in engaging rounds!",
+  "id": Any<String>,
+  "languages": [
+    "ENGLISH",
+    "SPANISH",
+  ],
+  "minWords": 1,
+  "name": "WordRecall: Define & Type",
+  "optionsPerGame": 0,
+  "timesToLearn": 5,
+  "type": "TYPE_WORD",
+  "wordsPerGame": 6,
+}
+`;

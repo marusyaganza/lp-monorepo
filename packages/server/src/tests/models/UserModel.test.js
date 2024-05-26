@@ -1,6 +1,6 @@
-import { UserModel } from '../db/models/User';
-import { connectToDb, disconnectFromDb, dropDb } from './helpers';
-import { testData } from './mocks/dbTestData';
+import { UserModel } from '../../db/models/User';
+import { connectToDb, disconnectFromDb, dropDb } from '../helpers';
+import { testData } from '../mocks/dbTestData';
 
 const snapshotConfig = {
   createdAt: expect.any(String),
@@ -9,16 +9,13 @@ const snapshotConfig = {
 };
 
 describe('User', () => {
-  beforeAll(async () => {
+  beforeEach(async () => {
     await connectToDb();
     await dropDb();
   });
 
   afterEach(async () => {
     await dropDb();
-  });
-
-  afterAll(async () => {
     await disconnectFromDb();
   });
 

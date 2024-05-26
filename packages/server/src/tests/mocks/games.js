@@ -3,7 +3,6 @@ export const games = [
   {
     name: 'WordEcho',
     desc: 'Listen, Type, Master. Sharpen language skills through auditory engagement.',
-    id: 'audio',
     type: Game.Audio,
     wordsPerGame: 6,
     minWords: 1,
@@ -14,7 +13,6 @@ export const games = [
   {
     name: 'LexiSense',
     desc: 'Define & Conquer.Match words with their meanings intuitively.',
-    id: 'select_definition',
     type: Game.SelectDef,
     wordsPerGame: 6,
     minWords: 1,
@@ -25,7 +23,6 @@ export const games = [
   {
     name: 'Definify: Match & Learn',
     desc: 'Associate definitions with the right words. A captivating word puzzle adventure!',
-    id: 'select_word',
     type: Game.SelectWord,
     wordsPerGame: 6,
     minWords: 1,
@@ -36,7 +33,6 @@ export const games = [
   {
     name: 'WordRecall: Define & Type',
     desc: 'Type words matching given definitions. Boost vocabulary in engaging rounds!',
-    id: 'type_word',
     type: Game.TypeWord,
     wordsPerGame: 6,
     minWords: 1,
@@ -47,7 +43,6 @@ export const games = [
   {
     name: 'Conjugation',
     desc: 'Conjugate verbs!',
-    id: 'conjugation',
     type: Game.Conjugation,
     wordsPerGame: 2,
     minWords: 1,
