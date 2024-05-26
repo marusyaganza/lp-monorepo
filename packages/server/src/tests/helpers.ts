@@ -1,7 +1,9 @@
 import { ApolloServer } from '@apollo/server';
 import { resolvers, ResolverContext } from '../resolvers';
 import { readFileSync } from 'fs';
+import { games } from './mocks/games';
 import { connect, connection } from 'mongoose';
+import { Language } from '../generated/graphql';
 
 const typeDefs = readFileSync(
   require.resolve('../../../shared/schema.graphql')
@@ -52,6 +54,39 @@ export async function disconnectFromDb() {
     await connection.close();
   } catch (err) {
     console.error('mongoose close connection error', err);
+  }
+}
+
+export async function seedDb() {
+  const mockUser = {
+    email: 'default@test.com',
+    password: 'password1',
+    firstName: 'Default',
+    lastName: 'User'
+  };
+
+  const mockWord = {
+    particle: 'noun',
+    language: Language.English,
+    name: 'default word',
+    shortDef: ['default word shortDef'],
+    user: '6480560e8cad1841ed6b4011',
+    createdAt: 1716739789226,
+    defs: [
+      {
+        def: 'default word def'
+      }
+    ]
+  };
+  try {
+    const usersCollection = await connection.db.createCollection('users');
+    await usersCollection.insertOne(mockUser);
+    const gamesCollection = await connection.db.createCollection('games');
+    await gamesCollection.insertMany(games);
+    const wordsCollection = await connection.db.createCollection('words');
+    await wordsCollection.insertOne(mockWord);
+  } catch (err) {
+    console.error('mongoose seed db error', err);
   }
 }
 

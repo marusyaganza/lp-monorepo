@@ -102,6 +102,12 @@ export const testData = {
     color: '#f0f0f0',
     language: Language.English
   },
+  createTagInput2: {
+    text: 'Tag2 text',
+    desc: 'Tag2 description',
+    color: '#f2f2f2',
+    language: Language.English
+  },
   updateTagInput: {
     text: 'Updated Tag text',
     desc: 'Tag description was updated',
