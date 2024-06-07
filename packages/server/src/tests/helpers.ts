@@ -58,19 +58,12 @@ export async function disconnectFromDb() {
 }
 
 export async function seedDb() {
-  const mockUser = {
-    email: 'default@test.com',
-    password: 'password1',
-    firstName: 'Default',
-    lastName: 'User'
-  };
-
   const mockWord = {
     particle: 'noun',
     language: Language.English,
     name: 'default word',
     shortDef: ['default word shortDef'],
-    user: '6480560e8cad1841ed6b4011',
+    user: '6480560e8cad1841ed6b4012',
     createdAt: 1716739789226,
     defs: [
       {
@@ -79,8 +72,6 @@ export async function seedDb() {
     ]
   };
   try {
-    const usersCollection = await connection.db.createCollection('users');
-    await usersCollection.insertOne(mockUser);
     const gamesCollection = await connection.db.createCollection('games');
     await gamesCollection.insertMany(games);
     const wordsCollection = await connection.db.createCollection('words');
@@ -106,4 +97,8 @@ export const dbSnapshotConfig = {
 
 export function getErrorMessageFromGQL(result) {
   return result?.body?.singleResult?.errors?.[0]?.message;
+}
+
+export function getDataFromGQL(result) {
+  return result?.body?.singleResult?.data;
 }

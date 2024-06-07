@@ -24,6 +24,7 @@ export const words = [
       }
     ],
     particle: 'noun',
+    shortDef: ['asserting, promoting, or marked by egalitarianism'],
     level: 'C1',
     stems: ['egalitarian', 'egalitarianism', 'egalitarians'],
     audioUrl:
