@@ -92,7 +92,7 @@ describe('Words Page', () => {
       .should('have.text', 'Additional information');
 
     cy.get('[data-cy="wordForm"]')
-      .find('[data-cy="select"]')
+      .find('[data-cy="levelSelector"]')
       .find('button')
       .should('have.text', 'B1 ');
 
@@ -234,13 +234,13 @@ describe('Words Page', () => {
       .type(mockNewWord.additionalInfo);
 
     cy.get('[data-cy="wordForm"]')
-      .find('[data-cy="select"]')
+      .find('[data-cy="levelSelector"]')
       .find('button')
       .first()
       .focus()
       .click({ force: true });
 
-    cy.get('[data-cy="selectOption"]').contains(mockNewWord.level).click();
+    cy.get('[data-cy="levelSelector"]').contains(mockNewWord.level).click();
 
     cy.get('[data-cy="formField-audioUrl"]');
 

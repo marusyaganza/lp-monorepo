@@ -23,7 +23,11 @@ export const LevelSelector = ({
   const levels = Object.keys(Level) as Level[];
 
   return (
-    <Select value={initialValue} renderValue={renderCurrentValue}>
+    <Select
+      dataCy="levelSelector"
+      value={initialValue}
+      renderValue={renderCurrentValue}
+    >
       {levels.map(level => {
         return (
           <Option key={level} value={level}>
