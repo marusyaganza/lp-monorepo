@@ -23,7 +23,8 @@ const gameSchema = new Schema<GameConfigType>({
   optionsPerGame: { type: Number, required: true },
   minWords: { type: Number, required: true },
   timesToLearn: { type: Number, required: true },
-  languages: [{ type: String, enum: Language, required: true }]
+  languages: [{ type: String, enum: Language, required: true }],
+  orderNum: { type: Number, unique: true }
 });
 
 export const Game = model<GameConfigType>('Game', gameSchema);
