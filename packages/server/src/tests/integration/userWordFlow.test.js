@@ -2,19 +2,28 @@ import {
   createTestServer,
   connectToDb,
   dropDb,
-  disconnectFromDb
+  seedDb,
+  disconnectFromDb,
+  getErrorMessageFromGQL
 } from '../helpers';
 import { models } from '../../db/models';
 import { testData } from '../mocks/dbTestData';
-import { queries } from '../mocks/gqlQueries';
+import { wordsQuery, userQuery, wordByIdQuery } from '../mocks/gqlQueries';
+import { generateGameData } from '../../utils/generateGameData';
 import { mutations } from '../mocks/gqlMutations';
-
 import {
   createToken,
   getUserFromToken,
   hashPassword,
   validatePassword
 } from '../../auth';
+
+const userCreateInput = {
+  email: 'test2@test.com',
+  password: 'password',
+  firstName: 'User',
+  lastName: 'Test'
+};
 
 jest.mock('bcryptjs', () => {
   return {
@@ -36,6 +45,7 @@ const serverContext = {
   getUserFromToken,
   hashPassword,
   validatePassword,
+  generateGameData,
   models
 };
 
@@ -61,6 +71,7 @@ describe('User', () => {
   beforeAll(async () => {
     await connectToDb();
     await dropDb();
+    await seedDb();
   });
 
   afterAll(async () => {
@@ -70,7 +81,10 @@ describe('User', () => {
 
   test('can sign up', async () => {
     const res = await mutate({
-      mutation: mutations.signUpMutation
+      mutation: mutations.signUpMutation,
+      variables: {
+        input: userCreateInput
+      }
     });
     const { id, role } = res.body.singleResult.data.signUp;
     createdUser = { id, role };
@@ -81,7 +95,12 @@ describe('User', () => {
   test('can login with correct password', async () => {
     const res = await mutate({
       mutation: mutations.loginMutation,
-      variables: { input: { email: 'test@test.com', password: 'password' } }
+      variables: {
+        input: {
+          email: userCreateInput.email,
+          password: userCreateInput.password
+        }
+      }
     });
     expect(res).toMatchSnapshot();
   });
@@ -91,7 +110,9 @@ describe('User', () => {
       mutation: mutations.loginMutation,
       variables: { input: { email: 'test@test.com', password: 'password!' } }
     });
-    expect(res).toMatchSnapshot();
+    expect(getErrorMessageFromGQL(res)).toEqual(
+      'email or password is incorrect'
+    );
   });
 
   test('cannot login with invalid email', async () => {
@@ -99,18 +120,22 @@ describe('User', () => {
       mutation: mutations.loginMutation,
       variables: { input: { email: 'test2test.com', password: 'password' } }
     });
-    expect(res).toMatchSnapshot();
+    expect(getErrorMessageFromGQL(res)).toEqual(
+      'email or password is incorrect'
+    );
   });
 
   test('cannot get the words list if user record in DB does not exist', async () => {
     const { query } = createTestServer({ ...serverContext, user: mockUser });
-    const res = await query({ query: queries.wordsQuery });
-    expect(res).toMatchSnapshot();
+    const res = await query({ query: wordsQuery });
+    expect(getErrorMessageFromGQL(res)).toEqual(
+      'Login to perform this operation'
+    );
   });
 
   test('can get the words list', async () => {
     const { query } = createTestServer({ ...serverContext, user: createdUser });
-    const res = await query({ query: queries.wordsQuery });
+    const res = await query({ query: wordsQuery });
     expect(res).toMatchSnapshot();
   });
 
@@ -119,7 +144,7 @@ describe('User', () => {
       ...serverContext,
       user: { id: addedUserId, role: 'MEMBER' }
     });
-    const res = await query({ query: queries.userQuery });
+    const res = await query({ query: userQuery });
     expect(res).toMatchSnapshot();
   });
 
@@ -148,7 +173,9 @@ describe('User', () => {
       mutation: mutations.saveWordMutation,
       variables: { input: testData.createWordInput }
     });
-    expect(res).toMatchSnapshot();
+    expect(getErrorMessageFromGQL(res)).toEqual(
+      'You do not have permission to perform this operation'
+    );
   });
 
   test('can save more words and view all of them', async () => {
@@ -160,7 +187,7 @@ describe('User', () => {
       mutation: mutations.saveWordMutation,
       variables: { input: testData.createWordInput2 }
     });
-    const res = await query({ query: queries.wordsQuery });
+    const res = await query({ query: wordsQuery });
     expect(res).toMatchSnapshot();
   });
 
@@ -174,7 +201,7 @@ describe('User', () => {
       variables: { input: testData.createWordInput2 }
     });
     const res = await query({
-      query: queries.wordsQuery,
+      query: wordsQuery,
       variables: { input: { isReverseOrder: true } }
     });
     expect(res).toMatchSnapshot();
@@ -189,7 +216,9 @@ describe('User', () => {
       mutation: mutations.saveWordMutation,
       variables: { input: testData.createWordInput }
     });
-    expect(res).toMatchSnapshot();
+    expect(getErrorMessageFromGQL(res)).toEqual(
+      'word with uuid 74046e79-e4c9-4b52-ac96-cb7ae98fb601 is already added'
+    );
   });
 
   test('can update a word', async () => {
@@ -223,7 +252,7 @@ describe('User', () => {
       user: createdUser
     });
     const res = await query({
-      query: queries.wordByIdQuery,
+      query: wordByIdQuery,
       variables: { wordId: addedWordId }
     });
     res.body.singleResult.data.word.user = 'mockUser';

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`queries game queries 1`] = `
+exports[`game queries games query 1`] = `
 {
   "body": {
     "kind": "single",
@@ -9,27 +9,22 @@ exports[`queries game queries 1`] = `
         "games": [
           {
             "desc": "Listen, Type, Master. Sharpen language skills through auditory engagement.",
-            "id": "audio",
             "name": "WordEcho",
           },
           {
             "desc": "Define & Conquer.Match words with their meanings intuitively.",
-            "id": "select_definition",
             "name": "LexiSense",
           },
           {
             "desc": "Associate definitions with the right words. A captivating word puzzle adventure!",
-            "id": "select_word",
             "name": "Definify: Match & Learn",
           },
           {
             "desc": "Type words matching given definitions. Boost vocabulary in engaging rounds!",
-            "id": "type_word",
             "name": "WordRecall: Define & Type",
           },
           {
             "desc": "Conjugate verbs!",
-            "id": "conjugation",
             "name": "Conjugation",
           },
         ],
@@ -46,7 +41,7 @@ exports[`queries game queries 1`] = `
 }
 `;
 
-exports[`queries get gamedata with walid user for Audio game and English 1`] = `
+exports[`game queries get gamedata with walid user for Audio game and English 1`] = `
 {
   "body": {
     "kind": "single",
@@ -137,7 +132,7 @@ exports[`queries get gamedata with walid user for Audio game and English 1`] = `
 }
 `;
 
-exports[`queries get gamedata with walid user for Conjugation game and Spanish 1`] = `
+exports[`game queries get gamedata with walid user for Conjugation game and Spanish 1`] = `
 {
   "body": {
     "kind": "single",
@@ -173,7 +168,7 @@ exports[`queries get gamedata with walid user for Conjugation game and Spanish 1
 }
 `;
 
-exports[`queries get gamedata with walid user for SelectDef game and English 1`] = `
+exports[`game queries get gamedata with walid user for SelectDef game and English 1`] = `
 {
   "body": {
     "kind": "single",
@@ -187,7 +182,7 @@ exports[`queries get gamedata with walid user for SelectDef game and English 1`]
               },
               "answer": "a circular frame of hard material that may be solid, partly solid, or spoked and that is capable of turning on an axle",
               "options": [
-                "",
+                "asserting, promoting, or marked by egalitarianism",
                 "delightful feeling of anticipation and excitement that arises before embarking on a new adventure or journey.",
                 "to engage in a playful and creative activity that sparks joy and imagination. It involves letting go of inhibitions and embracing a carefree spirit to explore new ideas and possibilities",
                 "a whimsical, fleeting moment when sunlight catches water droplets in the air, creating a shimmering and enchanting effect",
@@ -205,7 +200,7 @@ exports[`queries get gamedata with walid user for SelectDef game and English 1`]
               },
               "answer": "to turn on or as if on an axis : revolve",
               "options": [
-                "",
+                "asserting, promoting, or marked by egalitarianism",
                 "delightful feeling of anticipation and excitement that arises before embarking on a new adventure or journey.",
                 "to engage in a playful and creative activity that sparks joy and imagination. It involves letting go of inhibitions and embracing a carefree spirit to explore new ideas and possibilities",
                 "a whimsical, fleeting moment when sunlight catches water droplets in the air, creating a shimmering and enchanting effect",
@@ -223,7 +218,7 @@ exports[`queries get gamedata with walid user for SelectDef game and English 1`]
               },
               "answer": "a mechanical device consisting of a grooved wheel turned by a cord or chain with a rigidly attached axle (as for winding up a weight) together with the supporting standards",
               "options": [
-                "",
+                "asserting, promoting, or marked by egalitarianism",
                 "delightful feeling of anticipation and excitement that arises before embarking on a new adventure or journey.",
                 "to engage in a playful and creative activity that sparks joy and imagination. It involves letting go of inhibitions and embracing a carefree spirit to explore new ideas and possibilities",
                 "a whimsical, fleeting moment when sunlight catches water droplets in the air, creating a shimmering and enchanting effect",
@@ -241,7 +236,7 @@ exports[`queries get gamedata with walid user for SelectDef game and English 1`]
               },
               "answer": "rotifer",
               "options": [
-                "",
+                "asserting, promoting, or marked by egalitarianism",
                 "delightful feeling of anticipation and excitement that arises before embarking on a new adventure or journey.",
                 "to engage in a playful and creative activity that sparks joy and imagination. It involves letting go of inhibitions and embracing a carefree spirit to explore new ideas and possibilities",
                 "a whimsical, fleeting moment when sunlight catches water droplets in the air, creating a shimmering and enchanting effect",
@@ -259,7 +254,7 @@ exports[`queries get gamedata with walid user for SelectDef game and English 1`]
               },
               "answer": "a large North American assassin bug (Arilus cristatus) that has a high serrated crest on its prothorax and preys on insects",
               "options": [
-                "",
+                "asserting, promoting, or marked by egalitarianism",
                 "delightful feeling of anticipation and excitement that arises before embarking on a new adventure or journey.",
                 "to engage in a playful and creative activity that sparks joy and imagination. It involves letting go of inhibitions and embracing a carefree spirit to explore new ideas and possibilities",
                 "a whimsical, fleeting moment when sunlight catches water droplets in the air, creating a shimmering and enchanting effect",
@@ -277,7 +272,7 @@ exports[`queries get gamedata with walid user for SelectDef game and English 1`]
               },
               "answer": "a gun's lock for a muzzle-loading firearm in which sparks are struck from a flint or a piece of pyrite by a revolving wheel",
               "options": [
-                "",
+                "asserting, promoting, or marked by egalitarianism",
                 "delightful feeling of anticipation and excitement that arises before embarking on a new adventure or journey.",
                 "to engage in a playful and creative activity that sparks joy and imagination. It involves letting go of inhibitions and embracing a carefree spirit to explore new ideas and possibilities",
                 "a whimsical, fleeting moment when sunlight catches water droplets in the air, creating a shimmering and enchanting effect",
@@ -306,7 +301,7 @@ exports[`queries get gamedata with walid user for SelectDef game and English 1`]
 }
 `;
 
-exports[`queries get gamedata with walid user for SelectWord game and English 1`] = `
+exports[`game queries get gamedata with walid user for SelectWord game and English 1`] = `
 {
   "body": {
     "kind": "single",
@@ -443,7 +438,7 @@ exports[`queries get gamedata with walid user for SelectWord game and English 1`
 }
 `;
 
-exports[`queries get gamedata with walid user for TypeWord game and English 1`] = `
+exports[`game queries get gamedata with walid user for TypeWord game and English 1`] = `
 {
   "body": {
     "kind": "single",

@@ -62,7 +62,7 @@ exports[`User can get see the information about his/her account 1`] = `
     "singleResult": {
       "data": {
         "user": {
-          "email": "test@test.com",
+          "email": "test2@test.com",
           "firstName": "User",
           "lastName": "Test",
           "role": "MEMBER",
@@ -107,7 +107,7 @@ exports[`User can login with correct password 1`] = `
     "singleResult": {
       "data": {
         "login": {
-          "email": "test@test.com",
+          "email": "test2@test.com",
           "firstName": "User",
           "lastName": "Test",
           "token": "mock_token",
@@ -211,6 +211,10 @@ exports[`User can save more words and view all of them 1`] = `
             "level": "B2",
             "name": "rubber",
             "particle": "noun",
+            "shortDef": [
+              "a thin, flexible loop that is made of rubber and used to hold things together —called also (US) elastic, elastic band",
+            ],
+            "tags": [],
             "transcription": "rubber",
           },
           {
@@ -227,6 +231,10 @@ exports[`User can save more words and view all of them 1`] = `
             "level": "C1",
             "name": "egalitarian",
             "particle": "noun",
+            "shortDef": [
+              "aiming for equal wealth, status, etc., for all people",
+            ],
+            "tags": [],
             "transcription": "iˌɡælɪˈteəriən",
           },
         ],
@@ -267,6 +275,10 @@ exports[`User can save more words and view all of them in reverse order 1`] = `
             "level": "B2",
             "name": "rubber",
             "particle": "noun",
+            "shortDef": [
+              "a thin, flexible loop that is made of rubber and used to hold things together —called also (US) elastic, elastic band",
+            ],
+            "tags": [],
             "transcription": "rubber",
           },
           {
@@ -283,6 +295,10 @@ exports[`User can save more words and view all of them in reverse order 1`] = `
             "level": "C1",
             "name": "egalitarian",
             "particle": "noun",
+            "shortDef": [
+              "aiming for equal wealth, status, etc., for all people",
+            ],
+            "tags": [],
             "transcription": "iˌɡælɪˈteəriən",
           },
         ],
@@ -306,7 +322,7 @@ exports[`User can sign up 1`] = `
     "singleResult": {
       "data": {
         "signUp": {
-          "email": "test@test.com",
+          "email": "test2@test.com",
           "firstName": "User",
           "id": "mock_id",
           "lastName": "Test",
@@ -371,176 +387,6 @@ exports[`User can update a word 1`] = `
         },
       },
       "errors": undefined,
-    },
-  },
-  "http": {
-    "headers": Map {
-      "cache-control" => "no-store",
-    },
-    "status": undefined,
-  },
-}
-`;
-
-exports[`User cannot get the words list if user record in DB does not exist 1`] = `
-{
-  "body": {
-    "kind": "single",
-    "singleResult": {
-      "data": null,
-      "errors": [
-        {
-          "extensions": {
-            "code": "INTERNAL_SERVER_ERROR",
-          },
-          "locations": [
-            {
-              "column": 7,
-              "line": 3,
-            },
-          ],
-          "message": "Login to perform this operation",
-          "path": [
-            "words",
-          ],
-        },
-      ],
-    },
-  },
-  "http": {
-    "headers": Map {
-      "cache-control" => "no-store",
-    },
-    "status": undefined,
-  },
-}
-`;
-
-exports[`User cannot login with incorrect password 1`] = `
-{
-  "body": {
-    "kind": "single",
-    "singleResult": {
-      "data": null,
-      "errors": [
-        {
-          "extensions": {
-            "code": "INTERNAL_SERVER_ERROR",
-          },
-          "locations": [
-            {
-              "column": 5,
-              "line": 3,
-            },
-          ],
-          "message": "email or password is incorrect",
-          "path": [
-            "login",
-          ],
-        },
-      ],
-    },
-  },
-  "http": {
-    "headers": Map {
-      "cache-control" => "no-store",
-    },
-    "status": undefined,
-  },
-}
-`;
-
-exports[`User cannot login with invalid email 1`] = `
-{
-  "body": {
-    "kind": "single",
-    "singleResult": {
-      "data": null,
-      "errors": [
-        {
-          "extensions": {
-            "code": "INTERNAL_SERVER_ERROR",
-          },
-          "locations": [
-            {
-              "column": 5,
-              "line": 3,
-            },
-          ],
-          "message": "email or password is incorrect",
-          "path": [
-            "login",
-          ],
-        },
-      ],
-    },
-  },
-  "http": {
-    "headers": Map {
-      "cache-control" => "no-store",
-    },
-    "status": undefined,
-  },
-}
-`;
-
-exports[`User cannot save a word with the same uuid 1`] = `
-{
-  "body": {
-    "kind": "single",
-    "singleResult": {
-      "data": null,
-      "errors": [
-        {
-          "extensions": {
-            "code": "INTERNAL_SERVER_ERROR",
-          },
-          "locations": [
-            {
-              "column": 3,
-              "line": 2,
-            },
-          ],
-          "message": "word with uuid 74046e79-e4c9-4b52-ac96-cb7ae98fb601 is already added",
-          "path": [
-            "saveWord",
-          ],
-        },
-      ],
-    },
-  },
-  "http": {
-    "headers": Map {
-      "cache-control" => "no-store",
-    },
-    "status": undefined,
-  },
-}
-`;
-
-exports[`User nonexistent user cannot save a word 1`] = `
-{
-  "body": {
-    "kind": "single",
-    "singleResult": {
-      "data": null,
-      "errors": [
-        {
-          "extensions": {
-            "code": "INTERNAL_SERVER_ERROR",
-          },
-          "locations": [
-            {
-              "column": 3,
-              "line": 2,
-            },
-          ],
-          "message": "You do not have permission to perform this operation",
-          "path": [
-            "saveWord",
-          ],
-        },
-      ],
     },
   },
   "http": {

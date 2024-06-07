@@ -1,7 +1,6 @@
 export const wordsQuery = `
 query Words($input: WordsInput) {
   words(input: $input) {
-    id
     name
     defs {
       def
@@ -10,13 +9,11 @@ query Words($input: WordsInput) {
     audioUrl
     transcription
     isOffensive
-    isLearned
     level
     shortDef
     tags {
       text
       color
-      id
     }
   }
 }
@@ -25,7 +22,6 @@ query Words($input: WordsInput) {
 export const wordByIdQuery = `
   query Query($wordId: ID!) {
     word(id: $wordId) {
-      id
       name
       defs {
         def
@@ -38,6 +34,7 @@ export const wordByIdQuery = `
       audioUrl
       additionalInfo
       transcription
+      shortDef
       user
       isOffensive
       stems
@@ -52,7 +49,6 @@ export const userQuery = `
       firstName
       lastName
       email
-      id
       role
     }
   }
@@ -92,7 +88,6 @@ export const gamesQuery = `query Games {
   games {
     desc
     name
-    id
   }
 }`;
 

@@ -19,7 +19,7 @@ jest.spyOn(global.Math, 'random').mockImplementation(function () {
   return randomNum;
 });
 
-describe('queries', () => {
+describe('game queries', () => {
   afterEach(() => {
     jest.clearAllMocks();
   });
@@ -27,7 +27,7 @@ describe('queries', () => {
     jest.resetAllMocks();
   });
 
-  test('game queries', async () => {
+  test('games query', async () => {
     const { query } = createTestServer({ models });
     const res = await query({ query: gameQueries.gamesQuery });
     expect(res).toMatchSnapshot();
