@@ -8,6 +8,7 @@ export const games = [
     minWords: 1,
     optionsPerGame: 0,
     timesToLearn: 5,
+    orderNum: 0,
     languages: [Language.English, Language.Spanish]
   },
   {
@@ -18,6 +19,7 @@ export const games = [
     minWords: 1,
     optionsPerGame: 6,
     timesToLearn: 5,
+    orderNum: 1,
     languages: [Language.English, Language.Spanish]
   },
   {
@@ -28,6 +30,7 @@ export const games = [
     minWords: 1,
     optionsPerGame: 6,
     timesToLearn: 5,
+    orderNum: 2,
     languages: [Language.English, Language.Spanish]
   },
   {
@@ -38,6 +41,7 @@ export const games = [
     minWords: 1,
     optionsPerGame: 0,
     timesToLearn: 5,
+    orderNum: 3,
     languages: [Language.English, Language.Spanish]
   },
   {
@@ -48,6 +52,7 @@ export const games = [
     minWords: 1,
     optionsPerGame: 0,
     timesToLearn: 5,
+    orderNum: 4,
     languages: [Language.Spanish]
   }
 ];

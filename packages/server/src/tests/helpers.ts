@@ -43,7 +43,7 @@ export const createTestServer = (context: ResolverContext) => {
 
 export async function connectToDb() {
   try {
-    await connect('mongodb://localhost:27017/test');
+    await connect('mongodb://localhost:27017/server-test');
   } catch (err) {
     console.error('mongoose err, make sure you run the DB', err);
   }
