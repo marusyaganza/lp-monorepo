@@ -23,6 +23,7 @@ export interface SelectProps<T extends string> {
   size?: 'S' | 'M';
   variant?: 'withIcon';
   label?: string;
+  dataCy?: string;
 }
 
 export const Select = function <T extends string>({
@@ -33,7 +34,8 @@ export const Select = function <T extends string>({
   variant,
   size = 'S',
   className,
-  label
+  label,
+  dataCy = 'select'
 }: PropsWithChildren<SelectProps<T>>) {
   const [isOpen, setIsOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -58,7 +60,7 @@ export const Select = function <T extends string>({
   }, [isOpen]);
 
   return (
-    <div data-cy="select" ref={ref} className={cn(styles.container, className)}>
+    <div data-cy={dataCy} ref={ref} className={cn(styles.container, className)}>
       <div className={styles.selectContainer}>
         {label && <span className={styles.selectLabel}>{label}</span>}
         <div className={cn(styles.currentValue, styles[`size${size}`])}>
