@@ -52,6 +52,7 @@ export function formatFilter<T extends DbData>(filter: T): T {
   }
   return filter;
 }
+const NO_TAGS_ID = '000000000000000000000000';
 
 export function getWordsFilters(filter: WordsFilterType) {
   const {
@@ -76,9 +77,17 @@ export function getWordsFilters(filter: WordsFilterType) {
   // filter based on tags
   let tagsFilters: { tags: string }[] = [];
   if (tags?.length) {
-    tagsFilters = tags?.map(tag => {
-      return { tags: tag };
-    });
+    tagsFilters = tags
+      ?.filter(tag => tag !== NO_TAGS_ID)
+      .map(tag => {
+        return { tags: tag };
+      });
+  }
+
+  let noTagsFilter;
+
+  if (tags?.includes(NO_TAGS_ID)) {
+    noTagsFilter = { $or: [{ tags: [] }, { tags: null }] };
   }
 
   // filter based on learning status
@@ -128,6 +137,7 @@ export function getWordsFilters(filter: WordsFilterType) {
 
   const filtersArray = [
     gameFilter,
+    noTagsFilter,
     ...tagsFilters,
     ...learningStatusFilters
   ].filter(Boolean);

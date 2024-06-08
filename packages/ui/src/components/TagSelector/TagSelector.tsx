@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { cn } from '../../utils/classnames';
 
 import styles from './TagSelector.module.css';
@@ -16,9 +16,17 @@ export interface TagSelectorProps {
   /**additional styling */
   className?: string;
 }
+
+// @ts-ignore
+const NO_TAGS_TAG: WordTag = {
+  color: '#F7F7F7',
+  text: 'without tags',
+  id: '000000000000000000000000',
+  desc: 'select words that have no tags'
+};
 /**Component description goes here */
 export const TagSelector = ({
-  tags,
+  tags: initialTags = [],
   value = [],
   className,
   onChange,
@@ -28,6 +36,8 @@ export const TagSelector = ({
     const values = [...value, val];
     onChange(values);
   };
+
+  const tags = useMemo(() => [...initialTags, NO_TAGS_TAG], [initialTags]);
 
   const { Select, Option } = useSelect<string>({
     onChange: handleChange,
