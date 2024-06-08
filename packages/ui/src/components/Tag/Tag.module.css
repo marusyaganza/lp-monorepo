@@ -9,3 +9,9 @@
   padding: 0 16px;
   font-family: var(--font-kalam);
 }
+
+.withIcon {
+  display: flex;
+  gap: 4;
+  align-items: center;
+}

@@ -2,6 +2,7 @@ import React, { PropsWithChildren } from 'react';
 import { cn } from '../../utils/classnames';
 
 import styles from './Tag.module.css';
+import { Icon, IconIdType } from '../Icon/icon';
 
 export interface TagProps {
   /**Tag text */
@@ -10,20 +11,29 @@ export interface TagProps {
   color?: string;
   /**additional styling */
   className?: string;
+
+  iconId?: IconIdType;
 }
 /**Component description goes here */
 export const Tag = ({
   text,
   color,
   className,
-  children
+  children,
+  iconId
 }: PropsWithChildren<TagProps>) => {
   return (
     <span
       style={{ backgroundColor: color }}
       className={cn(className, styles.tag)}
     >
-      {text && `#${text}`}
+      {iconId ? (
+        <div className={styles.withIcon}>
+          <Icon width={20} height={20} id={iconId} /> {text}
+        </div>
+      ) : (
+        text && `#${text}`
+      )}
       {children}
     </span>
   );
