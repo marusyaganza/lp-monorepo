@@ -266,7 +266,7 @@ describe('Words Page', () => {
       .should('have.text', 'Additional information');
 
     cy.get('[data-cy="wordForm"]')
-      .find('[data-cy="select"]')
+      .find('[data-cy="levelSelector"]')
       .find('button')
       .should('have.text', 'B1 ');
 

@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WordTagModel createOne 1`] = `
+{
+  "_id": Any<Object>,
+  "color": "#f0f0f0",
+  "desc": "Tag description",
+  "id": Any<String>,
+  "language": "ENGLISH",
+  "text": "Tag text",
+  "user": "6480560e8cad1841ed6b4011",
+}
+`;
+
+exports[`WordTagModel findOne 1`] = `
+{
+  "_id": Any<Object>,
+  "color": "#f0f0f0",
+  "desc": "Tag description",
+  "id": Any<String>,
+  "language": "ENGLISH",
+  "text": "Tag text",
+  "user": "6480560e8cad1841ed6b4011",
+}
+`;
+
+exports[`WordTagModel updateOne 1`] = `
+{
+  "_id": Any<Object>,
+  "color": "#f0f0f1",
+  "desc": "Tag description was updated",
+  "id": Any<String>,
+  "language": "ENGLISH",
+  "text": "Updated Tag text",
+  "user": "6480560e8cad1841ed6b4011",
+}
+`;

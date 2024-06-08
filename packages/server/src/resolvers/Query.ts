@@ -23,7 +23,7 @@ export const QueryResolvers: QueryResolversType<ResolverContext> = {
       languages: lang
     });
     if (!games) {
-      throw new UserInputError(`no games for ${language} language were found`);
+      throw new UserInputError(`no games for ${lang} language were found`);
     }
     return games;
   },
@@ -60,7 +60,8 @@ export const QueryResolvers: QueryResolversType<ResolverContext> = {
         gameType,
         sortBy,
         isReverseOrder,
-        tags
+        tags,
+        tense = 'pind'
       } = input;
       const config = await models.Game.findOne({
         type: gameType,
@@ -107,14 +108,16 @@ export const QueryResolvers: QueryResolversType<ResolverContext> = {
         );
       }
 
-      return generateGameData(gameType, words, config, optionsMaterial);
+      return generateGameData(gameType, words, config, optionsMaterial, tense);
     }
   ),
-  tags: authenticated(async (_, { language }, { models, user }) => {
-    const tags = await models.WordTag.findMany({
-      language,
-      user: user?.id
-    });
-    return tags;
-  })
+  tags: authenticated(
+    async (_, { language = Language.English }, { models, user }) => {
+      const tags = await models.WordTag.findMany({
+        language,
+        user: user?.id
+      });
+      return tags;
+    }
+  )
 };

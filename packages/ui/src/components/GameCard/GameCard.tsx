@@ -20,6 +20,7 @@ import audio from '../../mocks/mockGamesLogos/audio.svg';
 import select_definition from '../../mocks/mockGamesLogos/select_definition.svg';
 import select_word from '../../mocks/mockGamesLogos/select_word.svg';
 import type_word from '../../mocks/mockGamesLogos/type_word.svg';
+import conjugation from '../../mocks/mockGamesLogos/conjugation.svg';
 // import find_defs from '../../mocks/mockGamesLogos/find_defs.svg';
 // import flash_cards from '../../mocks/mockGamesLogos/flash_cards.svg';
 import { Game } from '../../generated/graphql';
@@ -27,7 +28,8 @@ const images = {
   [Game.SelectDef]: select_definition,
   [Game.Audio]: audio,
   [Game.SelectWord]: select_word,
-  [Game.TypeWord]: type_word
+  [Game.TypeWord]: type_word,
+  [Game.Conjugation]: conjugation
   // find_defs,
   // flash_cards
 };

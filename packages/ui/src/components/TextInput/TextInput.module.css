@@ -29,6 +29,10 @@
   border: 1px solid var(--neutral-800);
 }
 
+.input:disabled:not(.success, .error) {
+  background: var(--neutral-300);
+}
+
 .error,
 .error:focus {
   background: var(--background-danger-300);

@@ -15,7 +15,18 @@ export interface TextInputProps {
 }
 /**Text Input for the Game component*/
 export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
-  ({ name, onChange, value, isDisabled, dataCy, variant = 'initial' }, ref) => {
+  (
+    {
+      name,
+      onChange,
+      value,
+      isDisabled,
+      className,
+      dataCy,
+      variant = 'initial'
+    },
+    ref
+  ) => {
     const handleChange: ChangeEventHandler<HTMLInputElement> = e => {
       const val = e.target.value;
       onChange(val);
@@ -31,7 +42,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
           autoComplete="off"
           spellCheck="false"
           disabled={isDisabled}
-          className={cn(styles.input, styles[variant])}
+          className={cn(styles.input, styles[variant], className)}
           name={name}
           value={value}
           onChange={handleChange}

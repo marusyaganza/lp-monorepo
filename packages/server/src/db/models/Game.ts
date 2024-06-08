@@ -18,7 +18,7 @@ export const GameModel: GameModelType = {
   },
 
   async findMany(filter) {
-    const games = await Game.find(formatFilter(filter));
+    const games = await Game.find(formatFilter(filter)).sort('orderNum').exec();
     return games;
   }
 };

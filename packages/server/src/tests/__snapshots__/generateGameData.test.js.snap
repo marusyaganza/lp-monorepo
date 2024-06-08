@@ -47,18 +47,6 @@ exports[`generateGameData generateGameData if all the words are given with valid
             "text": "valleys where young cotton <i>wheeled</i> slowly in fanlike rows",
             "translation": null,
           },
-          {
-            "text": "<i>wheeled</i> the patient back to his room",
-            "translation": null,
-          },
-          {
-            "text": "<i>wheeled</i> the car into the driveway",
-            "translation": null,
-          },
-          {
-            "text": "<i>wheel</i> in the experts",
-            "translation": null,
-          },
         ],
         "imgUrl": "https://merriam-webster.com/assets/mw/static/art/dict/wheel1.gif",
         "shortDef": "<b>wheel means</b> to turn on or as if on an axis : revolve",
@@ -182,18 +170,6 @@ exports[`generateGameData generateGameData if all the words are given with valid
           },
           {
             "text": "valleys where young cotton <i>wheeled</i> slowly in fanlike rows",
-            "translation": null,
-          },
-          {
-            "text": "<i>wheeled</i> the patient back to his room",
-            "translation": null,
-          },
-          {
-            "text": "<i>wheeled</i> the car into the driveway",
-            "translation": null,
-          },
-          {
-            "text": "<i>wheel</i> in the experts",
             "translation": null,
           },
         ],
@@ -357,18 +333,6 @@ exports[`generateGameData generateGameData if all the words are given with valid
             "text": "valleys where young cotton <i>wheeled</i> slowly in fanlike rows",
             "translation": null,
           },
-          {
-            "text": "<i>wheeled</i> the patient back to his room",
-            "translation": null,
-          },
-          {
-            "text": "<i>wheeled</i> the car into the driveway",
-            "translation": null,
-          },
-          {
-            "text": "<i>wheel</i> in the experts",
-            "translation": null,
-          },
         ],
         "imgUrl": "https://merriam-webster.com/assets/mw/static/art/dict/wheel1.gif",
       },
@@ -522,18 +486,6 @@ exports[`generateGameData generateGameData if all the words are given with valid
           },
           {
             "text": "valleys where young cotton <i>wheeled</i> slowly in fanlike rows",
-            "translation": null,
-          },
-          {
-            "text": "<i>wheeled</i> the patient back to his room",
-            "translation": null,
-          },
-          {
-            "text": "<i>wheeled</i> the car into the driveway",
-            "translation": null,
-          },
-          {
-            "text": "<i>wheel</i> in the experts",
             "translation": null,
           },
         ],

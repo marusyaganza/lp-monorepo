@@ -1,0 +1,16 @@
+.heading {
+  margin: 0;
+  text-align: center;
+  font-size: var(--font-size-l);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+}
+
+.select {
+  width: 230px;
+}

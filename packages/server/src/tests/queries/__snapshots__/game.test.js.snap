@@ -1,0 +1,534 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`game queries games query 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": {
+        "games": [
+          {
+            "desc": "Listen, Type, Master. Sharpen language skills through auditory engagement.",
+            "name": "WordEcho",
+          },
+          {
+            "desc": "Define & Conquer.Match words with their meanings intuitively.",
+            "name": "LexiSense",
+          },
+          {
+            "desc": "Associate definitions with the right words. A captivating word puzzle adventure!",
+            "name": "Definify: Match & Learn",
+          },
+          {
+            "desc": "Type words matching given definitions. Boost vocabulary in engaging rounds!",
+            "name": "WordRecall: Define & Type",
+          },
+          {
+            "desc": "Conjugate verbs!",
+            "name": "Conjugation",
+          },
+        ],
+      },
+      "errors": undefined,
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`game queries get gamedata with walid user for Audio game and English 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": {
+        "game": {
+          "questions": [
+            {
+              "additionalInfo": {
+                "audioUrl": null,
+              },
+              "answer": "wheel",
+              "options": null,
+              "question": [
+                "https://media.merriam-webster.com/audio/prons/en/us/mp3/w/wheel001.mp3",
+              ],
+              "wordId": "1",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": null,
+              },
+              "answer": "wheel",
+              "options": null,
+              "question": [
+                "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v1.mp3",
+              ],
+              "wordId": "2",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": null,
+              },
+              "answer": "wheel and axle",
+              "options": null,
+              "question": [
+                "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v3.mp3",
+              ],
+              "wordId": "3",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": null,
+              },
+              "answer": "wheel animal",
+              "options": null,
+              "question": [
+                "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v4.mp3",
+              ],
+              "wordId": "4",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": null,
+              },
+              "answer": "wheel bug",
+              "options": null,
+              "question": [
+                "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v5.mp3",
+              ],
+              "wordId": "5",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": null,
+              },
+              "answer": "wheel-thrown",
+              "options": null,
+              "question": [
+                "https://media.merriam-webster.com/audio/prons/en/us/mp3/number/9wheel01.mp3",
+              ],
+              "wordId": "7",
+            },
+          ],
+          "task": "Type the word that you've heard",
+          "type": "AUDIO",
+        },
+      },
+      "errors": undefined,
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`game queries get gamedata with walid user for Conjugation game and Spanish 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": {
+        "game": {
+          "questions": [
+            {
+              "additionalInfo": {
+                "audioUrl": null,
+              },
+              "answer": "caigo, caes, cae, caemos, caéis, caen",
+              "options": null,
+              "question": [
+                "caer",
+              ],
+              "wordId": "0",
+            },
+          ],
+          "task": "Conjugate the verb in Presente indicativo",
+          "type": "CONJUGATION",
+        },
+      },
+      "errors": undefined,
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`game queries get gamedata with walid user for SelectDef game and English 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": {
+        "game": {
+          "questions": [
+            {
+              "additionalInfo": {
+                "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/w/wheel001.mp3",
+              },
+              "answer": "a circular frame of hard material that may be solid, partly solid, or spoked and that is capable of turning on an axle",
+              "options": [
+                "asserting, promoting, or marked by egalitarianism",
+                "delightful feeling of anticipation and excitement that arises before embarking on a new adventure or journey.",
+                "to engage in a playful and creative activity that sparks joy and imagination. It involves letting go of inhibitions and embracing a carefree spirit to explore new ideas and possibilities",
+                "a whimsical, fleeting moment when sunlight catches water droplets in the air, creating a shimmering and enchanting effect",
+                "a gentle, soothing sensation experienced when a cool breeze rustles through leaves on a warm summer day",
+                "a circular frame of hard material that may be solid, partly solid, or spoked and that is capable of turning on an axle",
+              ],
+              "question": [
+                "wheel",
+              ],
+              "wordId": "1",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v1.mp3",
+              },
+              "answer": "to turn on or as if on an axis : revolve",
+              "options": [
+                "asserting, promoting, or marked by egalitarianism",
+                "delightful feeling of anticipation and excitement that arises before embarking on a new adventure or journey.",
+                "to engage in a playful and creative activity that sparks joy and imagination. It involves letting go of inhibitions and embracing a carefree spirit to explore new ideas and possibilities",
+                "a whimsical, fleeting moment when sunlight catches water droplets in the air, creating a shimmering and enchanting effect",
+                "a gentle, soothing sensation experienced when a cool breeze rustles through leaves on a warm summer day",
+                "to turn on or as if on an axis : revolve",
+              ],
+              "question": [
+                "wheel",
+              ],
+              "wordId": "2",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v3.mp3",
+              },
+              "answer": "a mechanical device consisting of a grooved wheel turned by a cord or chain with a rigidly attached axle (as for winding up a weight) together with the supporting standards",
+              "options": [
+                "asserting, promoting, or marked by egalitarianism",
+                "delightful feeling of anticipation and excitement that arises before embarking on a new adventure or journey.",
+                "to engage in a playful and creative activity that sparks joy and imagination. It involves letting go of inhibitions and embracing a carefree spirit to explore new ideas and possibilities",
+                "a whimsical, fleeting moment when sunlight catches water droplets in the air, creating a shimmering and enchanting effect",
+                "a gentle, soothing sensation experienced when a cool breeze rustles through leaves on a warm summer day",
+                "a mechanical device consisting of a grooved wheel turned by a cord or chain with a rigidly attached axle (as for winding up a weight) together with the supporting standards",
+              ],
+              "question": [
+                "wheel and axle",
+              ],
+              "wordId": "3",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v4.mp3",
+              },
+              "answer": "rotifer",
+              "options": [
+                "asserting, promoting, or marked by egalitarianism",
+                "delightful feeling of anticipation and excitement that arises before embarking on a new adventure or journey.",
+                "to engage in a playful and creative activity that sparks joy and imagination. It involves letting go of inhibitions and embracing a carefree spirit to explore new ideas and possibilities",
+                "a whimsical, fleeting moment when sunlight catches water droplets in the air, creating a shimmering and enchanting effect",
+                "a gentle, soothing sensation experienced when a cool breeze rustles through leaves on a warm summer day",
+                "rotifer",
+              ],
+              "question": [
+                "wheel animal",
+              ],
+              "wordId": "4",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v5.mp3",
+              },
+              "answer": "a large North American assassin bug (Arilus cristatus) that has a high serrated crest on its prothorax and preys on insects",
+              "options": [
+                "asserting, promoting, or marked by egalitarianism",
+                "delightful feeling of anticipation and excitement that arises before embarking on a new adventure or journey.",
+                "to engage in a playful and creative activity that sparks joy and imagination. It involves letting go of inhibitions and embracing a carefree spirit to explore new ideas and possibilities",
+                "a whimsical, fleeting moment when sunlight catches water droplets in the air, creating a shimmering and enchanting effect",
+                "a gentle, soothing sensation experienced when a cool breeze rustles through leaves on a warm summer day",
+                "a large North American assassin bug (Arilus cristatus) that has a high serrated crest on its prothorax and preys on insects",
+              ],
+              "question": [
+                "wheel bug",
+              ],
+              "wordId": "5",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": null,
+              },
+              "answer": "a gun's lock for a muzzle-loading firearm in which sparks are struck from a flint or a piece of pyrite by a revolving wheel",
+              "options": [
+                "asserting, promoting, or marked by egalitarianism",
+                "delightful feeling of anticipation and excitement that arises before embarking on a new adventure or journey.",
+                "to engage in a playful and creative activity that sparks joy and imagination. It involves letting go of inhibitions and embracing a carefree spirit to explore new ideas and possibilities",
+                "a whimsical, fleeting moment when sunlight catches water droplets in the air, creating a shimmering and enchanting effect",
+                "a gentle, soothing sensation experienced when a cool breeze rustles through leaves on a warm summer day",
+                "a gun's lock for a muzzle-loading firearm in which sparks are struck from a flint or a piece of pyrite by a revolving wheel",
+              ],
+              "question": [
+                "wheel lock",
+              ],
+              "wordId": "6",
+            },
+          ],
+          "task": "Select a definition that means ",
+          "type": "SELECT_DEF",
+        },
+      },
+      "errors": undefined,
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`game queries get gamedata with walid user for SelectWord game and English 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": {
+        "game": {
+          "questions": [
+            {
+              "additionalInfo": {
+                "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/w/wheel001.mp3",
+              },
+              "answer": "wheel",
+              "options": [
+                "egalitarian",
+                "quix",
+                "flibberfazzle",
+                "glitzephyr",
+                "zephral",
+                "wheel",
+              ],
+              "question": [
+                "a circular frame of hard material that may be solid, partly solid, or spoked and that is capable of turning on an axle",
+                "a contrivance or apparatus having as its principal part a wheel: such as",
+                "a chiefly medieval instrument of torture designed for mutilating a victim (as by stretching or disjointing)",
+              ],
+              "wordId": "1",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v1.mp3",
+              },
+              "answer": "wheel",
+              "options": [
+                "egalitarian",
+                "quix",
+                "flibberfazzle",
+                "glitzephyr",
+                "zephral",
+                "wheel",
+              ],
+              "question": [
+                "to turn on or as if on an axis : revolve",
+                "to change direction as if revolving on a pivot",
+                "to move or extend in a circle or curve",
+              ],
+              "wordId": "2",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v3.mp3",
+              },
+              "answer": "wheel and axle",
+              "options": [
+                "egalitarian",
+                "quix",
+                "flibberfazzle",
+                "glitzephyr",
+                "zephral",
+                "wheel and axle",
+              ],
+              "question": [
+                "a mechanical device consisting of a grooved wheel turned by a cord or chain with a rigidly attached axle (as for winding up a weight) together with the supporting standards",
+              ],
+              "wordId": "3",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v4.mp3",
+              },
+              "answer": "wheel animal",
+              "options": [
+                "egalitarian",
+                "quix",
+                "flibberfazzle",
+                "glitzephyr",
+                "zephral",
+                "wheel animal",
+              ],
+              "question": [
+                "rotifer",
+              ],
+              "wordId": "4",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v5.mp3",
+              },
+              "answer": "wheel bug",
+              "options": [
+                "egalitarian",
+                "quix",
+                "flibberfazzle",
+                "glitzephyr",
+                "zephral",
+                "wheel bug",
+              ],
+              "question": [
+                "a large North American assassin bug (Arilus cristatus) that has a high serrated crest on its prothorax and preys on insects",
+              ],
+              "wordId": "5",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": null,
+              },
+              "answer": "wheel lock",
+              "options": [
+                "egalitarian",
+                "quix",
+                "flibberfazzle",
+                "glitzephyr",
+                "zephral",
+                "wheel lock",
+              ],
+              "question": [
+                "a gun's lock for a muzzle-loading firearm in which sparks are struck from a flint or a piece of pyrite by a revolving wheel",
+              ],
+              "wordId": "6",
+            },
+          ],
+          "task": "Select a word that means ",
+          "type": "SELECT_WORD",
+        },
+      },
+      "errors": undefined,
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`game queries get gamedata with walid user for TypeWord game and English 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": {
+        "game": {
+          "questions": [
+            {
+              "additionalInfo": {
+                "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/w/wheel001.mp3",
+              },
+              "answer": "wheel",
+              "options": null,
+              "question": [
+                "a circular frame of hard material that may be solid, partly solid, or spoked and that is capable of turning on an axle",
+                "a contrivance or apparatus having as its principal part a wheel: such as",
+                "a chiefly medieval instrument of torture designed for mutilating a victim (as by stretching or disjointing)",
+              ],
+              "wordId": "1",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v1.mp3",
+              },
+              "answer": "wheel",
+              "options": null,
+              "question": [
+                "to turn on or as if on an axis : revolve",
+                "to change direction as if revolving on a pivot",
+                "to move or extend in a circle or curve",
+              ],
+              "wordId": "2",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v3.mp3",
+              },
+              "answer": "wheel and axle",
+              "options": null,
+              "question": [
+                "a mechanical device consisting of a grooved wheel turned by a cord or chain with a rigidly attached axle (as for winding up a weight) together with the supporting standards",
+              ],
+              "wordId": "3",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v4.mp3",
+              },
+              "answer": "wheel animal",
+              "options": null,
+              "question": [
+                "rotifer",
+              ],
+              "wordId": "4",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": "https://media.merriam-webster.com/audio/prons/en/us/mp3/a/all_w01v5.mp3",
+              },
+              "answer": "wheel bug",
+              "options": null,
+              "question": [
+                "a large North American assassin bug (Arilus cristatus) that has a high serrated crest on its prothorax and preys on insects",
+              ],
+              "wordId": "5",
+            },
+            {
+              "additionalInfo": {
+                "audioUrl": null,
+              },
+              "answer": "wheel lock",
+              "options": null,
+              "question": [
+                "a gun's lock for a muzzle-loading firearm in which sparks are struck from a flint or a piece of pyrite by a revolving wheel",
+              ],
+              "wordId": "6",
+            },
+          ],
+          "task": "Type a word that means ",
+          "type": "TYPE_WORD",
+        },
+      },
+      "errors": undefined,
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;

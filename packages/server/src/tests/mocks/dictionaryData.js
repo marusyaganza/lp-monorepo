@@ -125,7 +125,8 @@ export const outputSpanish = [
     particle: 'interjection',
     stems: ['hola'],
     transcription: 'hola',
-    uuid: 'mockUuid'
+    uuid: 'mockUuid',
+    conjugation: null
   },
   {
     audioUrl: 'mock_audio_endpoint/es/me/mp3/i/idiom01sp.mp3',
@@ -144,7 +145,8 @@ export const outputSpanish = [
     particle: 'masculine noun',
     stems: ['idioma'],
     transcription: 'idioma',
-    uuid: 'mockUuid2'
+    uuid: 'mockUuid2',
+    conjugation: null
   }
 ];
 
@@ -297,7 +299,8 @@ export const outputEnglish = [
     particle: 'noun',
     stems: ['pussy', 'pussies'],
     transcription: 'pussy',
-    uuid: 'mockUuid1'
+    uuid: 'mockUuid1',
+    conjugation: null
   },
   {
     audioUrl: 'mock_audio_endpoint/en/us/mp3/e/egalit01.mp3',
@@ -315,7 +318,8 @@ export const outputEnglish = [
     particle: 'adjective',
     stems: ['egalitarian', 'egalitarians', 'egalitarianism'],
     transcription: 'egal*i*tar*i*an',
-    uuid: 'mockUuid2'
+    uuid: 'mockUuid2',
+    conjugation: null
   },
   {
     audioUrl: 'mock_audio_endpoint/en/us/mp3/p/pussy002.mp3',
@@ -333,7 +337,8 @@ export const outputEnglish = [
     particle: 'noun',
     stems: ['pussy', 'pussies'],
     transcription: 'pussy',
-    uuid: 'mockUuid2'
+    uuid: 'mockUuid2',
+    conjugation: null
   }
 ];
 
@@ -573,6 +578,7 @@ export const outputEnglishWithoutDefs = [
     shortDef: ['chiefly dialectal variant of <i>murder</i>'],
     stems: ['murder', 'murther', 'murthered', 'murthering', 'murthers'],
     transcription: 'ˈmər-t͟hər',
-    uuid: '87f2219c-6fcb-4390-9e2a-427384ef13a3'
+    uuid: '87f2219c-6fcb-4390-9e2a-427384ef13a3',
+    conjugation: null
   }
 ];

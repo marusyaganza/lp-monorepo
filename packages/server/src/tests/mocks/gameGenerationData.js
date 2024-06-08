@@ -376,3 +376,214 @@ export const words = [
     language: 'ENGLISH'
   }
 ];
+
+export const spanishWords = [
+  {
+    id: '0',
+    user: '1',
+    name: 'caer',
+    particle: 'intransitive verb',
+    imgUrl: 'mockAudio',
+
+    defs: [
+      {
+        def: 'to fall'
+      }
+    ],
+    shortDef: ['to fall', 'to drop away, to slope', 'to fall (of night)'],
+    conjugation: [
+      {
+        cjid: 'gppt',
+        cjfs: ['cayendo', 'ca\u00eddo']
+      },
+      {
+        cjid: 'pind',
+        cjfs: ['caigo', 'caes', 'cae', 'caemos', 'ca\u00e9is', 'caen']
+      },
+      {
+        cjid: 'pret',
+        cjfs: [
+          'ca\u00eda',
+          'ca\u00edas',
+          'ca\u00eda',
+          'ca\u00edamos',
+          'ca\u00edais',
+          'ca\u00edan'
+        ]
+      },
+      {
+        cjid: 'pprf',
+        cjfs: [
+          'ca\u00ed',
+          'ca\u00edste',
+          'cay\u00f3',
+          'ca\u00edmos',
+          'ca\u00edsteis',
+          'cayeron'
+        ]
+      },
+      {
+        cjid: 'futr',
+        cjfs: [
+          'caer\u00e9',
+          'caer\u00e1s',
+          'caer\u00e1',
+          'caeremos',
+          'caer\u00e9is',
+          'caer\u00e1n'
+        ]
+      },
+      {
+        cjid: 'cond',
+        cjfs: [
+          'caer\u00eda',
+          'caer\u00edas',
+          'caer\u00eda',
+          'caer\u00edamos',
+          'caer\u00edais',
+          'caer\u00edan'
+        ]
+      },
+      {
+        cjid: 'psub',
+        cjfs: ['caiga', 'caigas', 'caiga', 'caigamos', 'caig\u00e1is', 'caigan']
+      },
+      {
+        cjid: 'pisb1',
+        cjfs: [
+          'cayera',
+          'cayeras',
+          'cayera',
+          'cay\u00e9ramos',
+          'cayerais',
+          'cayeran'
+        ]
+      },
+      {
+        cjid: 'pisb2',
+        cjfs: [
+          'cayese',
+          'cayeses',
+          'cayese',
+          'cay\u00e9semos',
+          'cayeseis',
+          'cayesen'
+        ]
+      },
+      {
+        cjid: 'fsub',
+        cjfs: [
+          'cayere',
+          'cayeres',
+          'cayere',
+          'cay\u00e9remos',
+          'cayereis',
+          'cayeren'
+        ]
+      },
+      {
+        cjid: 'ppci',
+        cjfs: [
+          'he ca\u00eddo',
+          'has ca\u00eddo',
+          'ha ca\u00eddo',
+          'hemos ca\u00eddo',
+          'hab\u00e9is ca\u00eddo',
+          'han ca\u00eddo'
+        ]
+      },
+      {
+        cjid: 'ppsi',
+        cjfs: [
+          'hab\u00eda ca\u00eddo',
+          'hab\u00edas ca\u00eddo',
+          'hab\u00eda ca\u00eddo',
+          'hab\u00edamos ca\u00eddo',
+          'hab\u00edais ca\u00eddo',
+          'hab\u00edan ca\u00eddo'
+        ]
+      },
+      {
+        cjid: 'pant',
+        cjfs: [
+          'hube ca\u00eddo',
+          'hubiste ca\u00eddo',
+          'hubo ca\u00eddo',
+          'hubimos ca\u00eddo',
+          'hubisteis ca\u00eddo',
+          'hubieron ca\u00eddo'
+        ]
+      },
+      {
+        cjid: 'fpin',
+        cjfs: [
+          'habr\u00e9 ca\u00eddo',
+          'habr\u00e1s ca\u00eddo',
+          'habr\u00e1 ca\u00eddo',
+          'habremos ca\u00eddo',
+          'habr\u00e9is ca\u00eddo',
+          'habr\u00e1n ca\u00eddo'
+        ]
+      },
+      {
+        cjid: 'cpef',
+        cjfs: [
+          'habr\u00eda ca\u00eddo',
+          'habr\u00edas ca\u00eddo',
+          'habr\u00eda ca\u00eddo',
+          'habr\u00edamos ca\u00eddo',
+          'habr\u00edais ca\u00eddo',
+          'habr\u00edan ca\u00eddo'
+        ]
+      },
+      {
+        cjid: 'ppfs',
+        cjfs: [
+          'haya ca\u00eddo',
+          'hayas ca\u00eddo',
+          'haya ca\u00eddo',
+          'hayamos ca\u00eddo',
+          'hay\u00e1is ca\u00eddo',
+          'hayan ca\u00eddo'
+        ]
+      },
+      {
+        cjid: 'ppss1',
+        cjfs: [
+          'hubiera ca\u00eddo',
+          'hubieras ca\u00eddo',
+          'hubiera ca\u00eddo',
+          'hubi\u00e9ramos ca\u00eddo',
+          'hubierais ca\u00eddo',
+          'hubieran ca\u00eddo'
+        ]
+      },
+      {
+        cjid: 'ppss2',
+        cjfs: [
+          'hubiese ca\u00eddo',
+          'hubieses ca\u00eddo',
+          'hubiese ca\u00eddo',
+          'hubi\u00e9semos ca\u00eddo',
+          'hubieseis ca\u00eddo',
+          'hubiesen ca\u00eddo'
+        ]
+      },
+      {
+        cjid: 'fpsb',
+        cjfs: [
+          'hubiere ca\u00eddo',
+          'hubieres ca\u00eddo',
+          'hubiere ca\u00eddo',
+          'hubi\u00e9remos ca\u00eddo',
+          'hubiereis ca\u00eddo',
+          'hubieren ca\u00eddo'
+        ]
+      },
+      {
+        cjid: 'impf',
+        cjfs: ['-', 'cae', 'caiga', 'caigamos', 'caed', 'caigan']
+      }
+    ]
+  }
+];

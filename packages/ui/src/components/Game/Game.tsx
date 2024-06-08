@@ -19,12 +19,15 @@ import { DictionaryEntity } from '../DictionaryEntity/DictionaryEntity';
 import { Icon } from '../Icon/icon';
 import { useModal } from '../Modal/useModal';
 import { Checkbox } from '../Checkbox/Checkbox';
+import { ConjugationInput } from '../ConjugationGame/ConjugationInput';
 
 export interface GameProps {
   task: string;
   question: string[];
   options?: string[];
   type: GameType;
+  tense?: string | null;
+  correctAnswer?: string;
   additionalInfo?: GameQuestionAdditionalInfo | null;
   onSubmit: (value: string) => void;
   /**additional styling */
@@ -48,6 +51,8 @@ export const Game = ({
   currentResult,
   additionalInfo,
   onNext,
+  tense,
+  correctAnswer,
   memoryRefresherMode
 }: GameProps) => {
   const [value, setValue] = useState('');
@@ -172,6 +177,20 @@ export const Game = ({
           incorrectOption={currentResult?.incorrectAnswer}
           options={options}
           onChange={handleChange}
+        />
+      );
+    }
+    if (type === GameType.Conjugation) {
+      return (
+        <ConjugationInput
+          dataCy="gameAnswer"
+          ref={inputRef}
+          tense={tense}
+          initialValue={correctAnswer}
+          variant={currentStage}
+          correctAnswer={currentResult?.correctAnswer}
+          onChange={handleChange}
+          isDisabled={currentStage !== 'initial'}
         />
       );
     }
