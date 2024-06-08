@@ -1,6 +1,6 @@
 import { QueryResolvers } from './Query';
 import { MutationResolvers } from './Mutation';
-import { Resolvers, GameConfig } from '../generated/graphql';
+import { Resolvers } from '../generated/graphql';
 import {
   CreateTokenFuncType,
   UserTokenInfo,
@@ -18,7 +18,6 @@ export interface ResolverContext {
   validatePassword: ValidatePasswordFuncType;
   hashPassword: HashPasswordFuncType;
   searchWord: SearchFuncType;
-  games: GameConfig[];
   generateGameData: GenerateGameDataFuncType;
 }
 

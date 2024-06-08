@@ -11,13 +11,15 @@
 .main {
   width: 100%;
   max-width: 1200px;
-  margin: 60px auto;
+  margin: 0 auto;
+  margin-top: 60px;
   flex-grow: 1;
   box-sizing: border-box;
   height: 100%;
   align-self: flex-start;
   font-family: var(--font-libreBaskerville);
   padding: 24px;
+  margin-bottom: 60px;
 
   @media (width >= 800px) {
     padding: 40px 120px;

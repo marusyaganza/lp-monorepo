@@ -17,7 +17,7 @@ export interface SelectProps<T extends string> {
   /**additional styling */
   className?: string;
   /**aligh options to the right or to the left */
-  placement?: 'right' | 'left';
+  placement?: 'right' | 'left' | 'center';
   /**a handler that renders current value */
   renderValue?: (value?: T) => ReactNode;
   size?: 'S' | 'M';

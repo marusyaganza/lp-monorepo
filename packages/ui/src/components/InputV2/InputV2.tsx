@@ -5,7 +5,7 @@ import styles from './InputV2.module.css';
 
 export interface InputV2Props {
   name: string;
-  initialValue?: string;
+  initialValue?: string | null;
   label?: string;
   onChange: (value: string) => void;
   fontStyle?: 'primary' | 'secondary';

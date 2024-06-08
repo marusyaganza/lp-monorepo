@@ -17,7 +17,14 @@ export const QueryResolvers: QueryResolversType<ResolverContext> = {
     }
     return result;
   },
-  games: async (_, __, { games }) => {
+  games: async (_, { language }, { models }) => {
+    const lang = language || Language.English;
+    const games = await models.Game.findMany({
+      languages: lang
+    });
+    if (!games) {
+      throw new UserInputError(`no games for ${language} language were found`);
+    }
     return games;
   },
   words: authenticated(async (_, { input }, { models, user }) => {
@@ -47,20 +54,37 @@ export const QueryResolvers: QueryResolversType<ResolverContext> = {
     return searchResult;
   }),
   game: authenticated(
-    async (_, { input }, { models, user, generateGameData, games }) => {
+    async (_, { input }, { models, user, generateGameData }) => {
       const {
         language = Language.English,
         gameType,
         sortBy,
-        isReverseOrder
+        isReverseOrder,
+        tags
       } = input;
-      const config = games.find(game => game.type === gameType);
+      const config = await models.Game.findOne({
+        type: gameType,
+        languages: input.language
+      });
 
       if (!config) {
         throw new OperationResolutionError(`game not found`);
       }
 
       const minWords = config?.minWords;
+
+      let optionsMaterial;
+
+      if (config?.optionsPerGame) {
+        optionsMaterial = await models.Word.findMany(
+          {
+            user: user?.id,
+            language
+          },
+          'name shortDef',
+          { limit: 40 }
+        );
+      }
 
       // @ts-ignore
       const words = await models.Word.findManyAndSort({
@@ -70,6 +94,7 @@ export const QueryResolvers: QueryResolversType<ResolverContext> = {
         language,
         sortBy,
         isReverseOrder,
+        tags,
         timesToLearn: config?.timesToLearn
       });
       if (!words) {
@@ -82,7 +107,14 @@ export const QueryResolvers: QueryResolversType<ResolverContext> = {
         );
       }
 
-      return generateGameData(gameType, words, config);
+      return generateGameData(gameType, words, config, optionsMaterial);
     }
-  )
+  ),
+  tags: authenticated(async (_, { language }, { models, user }) => {
+    const tags = await models.WordTag.findMany({
+      language,
+      user: user?.id
+    });
+    return tags;
+  })
 };

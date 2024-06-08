@@ -73,12 +73,12 @@ describe('Words Page', () => {
     cy.get('[data-cy="wordCard"]').as('wordCard').should('have.length', 3);
 
     cy.get('@wordCard').first().find('h3').should('have.text', 'fowl');
-    cy.get('@select').find('button').focus().click({ force: true });
+    cy.get('@select').find('button').first().focus().click({ force: true });
     cy.get('[data-cy="selectOption"]').should('have.length', 4);
     cy.get('[data-cy="selectOption"]').contains('Alphabetically').click();
     cy.get('@wordCard').first().find('h3').should('have.text', 'fish');
 
-    cy.get('@select').find('button').focus().click({ force: true });
+    cy.get('@select').find('button').first().focus().click({ force: true });
     cy.get('[data-cy="selectOption"]').contains('Particle').click();
     cy.get('@wordCard').first().find('h3').should('have.text', 'voluminous');
 
@@ -86,7 +86,7 @@ describe('Words Page', () => {
     cy.get('@wordCard').last().find('h3').should('have.text', 'voluminous');
     cy.get('@sortControls').find('[data-cy="checkbox"]').click();
 
-    cy.get('@select').find('button').focus().click({ force: true });
+    cy.get('@select').find('button').first().focus().click({ force: true });
     cy.get('[data-cy="selectOption"]').contains('Date').click();
     cy.get('@wordCard').first().find('h3').should('have.text', 'fowl');
 
@@ -95,6 +95,7 @@ describe('Words Page', () => {
     cy.get('form')
       .find('[data-cy="select"]')
       .find('button')
+      .first()
       .focus()
       .click({ force: true });
     cy.get('[data-cy="select"]')
@@ -109,7 +110,7 @@ describe('Words Page', () => {
     cy.get('form').submit();
     cy.get('@wordCard').first().find('h3').should('have.text', 'fowl');
 
-    cy.get('@select').find('button').focus().click({ force: true });
+    cy.get('@select').find('button').first().focus().click({ force: true });
     cy.get('[data-cy="selectOption"]').contains('Level').click();
 
     cy.get('@wordCard').first().find('h3').should('have.text', 'voluminous');

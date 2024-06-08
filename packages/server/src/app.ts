@@ -11,7 +11,6 @@ import {
   validatePassword
 } from './auth';
 import { generateGameData } from './utils/generateGameData';
-import { games } from './mocks/games';
 import { ModelsType } from './db/models';
 import { searchWord } from './dictionary';
 
@@ -35,7 +34,6 @@ initDB(async (models: ModelsType) => {
         validatePassword,
         hashPassword,
         searchWord,
-        games,
         generateGameData
       };
     },

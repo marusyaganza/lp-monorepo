@@ -6,6 +6,8 @@ type UserDataType = {
   expiration: string;
 };
 
+export type TagDataType = Record<Language, string[] | undefined>;
+
 export interface StoredData {
   language: Language;
   userData: UserDataType;
@@ -14,6 +16,8 @@ export interface StoredData {
   sortGamesBy: SortBy;
   wordsSortOrder: boolean;
   sortWordsBy: SortWordsBy;
+  tags?: TagDataType;
+  gameTags?: TagDataType;
 }
 
 type PropName = keyof StoredData & string;
@@ -32,5 +36,8 @@ export function storeData<T extends PropName>(
   propName: PropName,
   data: StoredData[T]
 ) {
+  if (!data || !propName) {
+    return;
+  }
   localStorage.setItem(propName, JSON.stringify(data));
 }

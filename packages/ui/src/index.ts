@@ -57,3 +57,6 @@ export * from './components/TextInput/TextInput';
 export * from './components/GameResult/GameResult';
 export * from './utils/classnames';
 export * from './components/Modal/useModal';
+export * from './components/TagSelector/TagSelector';
+export * from './components/Tag/Tag';
+export * from './components/ColorInput/ColorInput';

@@ -13,10 +13,12 @@ export type SelectProps<T extends string> = PropsWithChildren<
 
 export function useSelect<T extends string>({
   onChange,
-  initialValue
+  initialValue,
+  isMultiselect
 }: {
   onChange: (value: T) => void;
   initialValue?: T;
+  isMultiselect?: boolean;
 }) {
   const [currentValue, setCurrentValue] = useState<T | undefined>(initialValue);
 
@@ -25,9 +27,11 @@ export function useSelect<T extends string>({
       if (onChange) {
         onChange(val);
       }
-      setCurrentValue(val);
+      if (!isMultiselect) {
+        setCurrentValue(val);
+      }
     },
-    [onChange]
+    [onChange, isMultiselect]
   );
 
   return {

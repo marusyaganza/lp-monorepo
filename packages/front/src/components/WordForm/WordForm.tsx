@@ -1,4 +1,10 @@
-import React, { FormEventHandler, useContext, useState, FC } from 'react';
+import React, {
+  FormEventHandler,
+  useContext,
+  useState,
+  FC,
+  useEffect
+} from 'react';
 import {
   Button,
   DefinitionInputProps,
@@ -6,13 +12,17 @@ import {
   ArrayInputProps,
   Link,
   CheckboxProps,
-  LevelSelectorProps
+  LevelSelectorProps,
+  TagSelectorProps
 } from '@lp/ui';
 import { useForm, FormValidators } from '../../hooks/useForm';
-import { Language } from '../../generated/graphql';
+import { Language, TagsQuery } from '../../generated/graphql';
 import { AppContext } from '../../app-context/appContext';
 import { routes } from '../../constants/routes';
 import styles from './WordForm.module.css';
+import { TAGS_QUERY } from '../../gql/queries';
+import { useQuery } from '@apollo/client';
+import { PageSpinner } from '../PageSpinner/PageSpinner';
 
 type ComponentProps = InputV2Props &
   DefinitionInputProps &
@@ -33,6 +43,7 @@ export interface FormConfigType<T extends Record<string, unknown>> {
     | ArrayInputProps
     | CheckboxProps
     | LevelSelectorProps
+    | TagSelectorProps
   >;
 }
 
@@ -57,7 +68,10 @@ export function WordForm<T extends Record<string, unknown>>({
     validators
   );
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const { language } = useContext(AppContext);
+  const { language, setNotification } = useContext(AppContext);
+  const { error, loading, data } = useQuery<TagsQuery>(TAGS_QUERY, {
+    variables: { language }
+  });
 
   const handleFormSubmit: FormEventHandler<HTMLFormElement> = e => {
     e.preventDefault();
@@ -75,9 +89,20 @@ export function WordForm<T extends Record<string, unknown>>({
     };
   };
 
+  useEffect(() => {
+    if (error) {
+      setNotification({
+        variant: 'error',
+        text: 'Error',
+        subText: error?.message || 'something went wrong'
+      });
+    }
+  }, [error]);
+
   const renderInputs = () => {
     return formConfig.map(field => {
       const { Component, name, label, props = {}, isDisabled, value } = field;
+      const tags = name === 'tags' ? data?.tags : undefined;
       const initialValue = values[name] || value;
       return (
         <Component
@@ -85,8 +110,10 @@ export function WordForm<T extends Record<string, unknown>>({
           initialValue={initialValue}
           dataCy={`formField-${name}`}
           key={name}
+          value={values[name]}
           withTranslation={name === 'defs' && language === Language.Spanish}
           name={name}
+          tags={tags}
           // @ts-ignore
           label={label || name}
           isDisabled={isDisabled}
@@ -98,6 +125,10 @@ export function WordForm<T extends Record<string, unknown>>({
       );
     });
   };
+
+  if (loading) {
+    return <PageSpinner />;
+  }
 
   return (
     <form

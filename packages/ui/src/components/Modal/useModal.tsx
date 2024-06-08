@@ -9,7 +9,6 @@ export const useModal = () => {
   const modalRef = useRef<HTMLDialogElement>(null);
   const closeModal = useCallback(() => {
     modalRef.current?.close();
-    console.log('ref', modalRef.current);
   }, [modalRef]);
 
   const openModal = useCallback(() => {

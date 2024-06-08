@@ -28,13 +28,34 @@
   align-items: center;
   margin: 24px auto;
   gap: 24px;
-
-  @media (width >= 800px) {
-    margin: 100px 70px;
-    flex-direction: row;
-  }
 }
 
 .sortControls {
   align-self: flex-end;
+}
+
+.tagsSelector {
+  width: 300px;
+
+  @media (width >= 800px) {
+    width: 400px;
+  }
+}
+
+.topSection {
+  display: flex;
+  gap: 32px;
+  justify-self: flex-end;
+  flex-wrap: wrap;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+}
+
+.catalog {
+  flex-grow: 3;
+  display: flex;
+  align-items: center;
 }

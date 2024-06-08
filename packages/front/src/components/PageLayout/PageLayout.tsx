@@ -7,8 +7,7 @@ import {
   mobileFooterLinks
 } from './config';
 import { PageSpinner } from '../PageSpinner/PageSpinner';
-import { HeaderV2 } from '@lp/ui';
-import { Footer, LinkType } from '@lp/ui';
+import { HeaderV2, Footer, LinkType, cn } from '@lp/ui';
 import { AppContext } from '../../app-context/appContext';
 import { Notification } from '../Notification/Notification';
 import { Language } from '../../generated/graphql';
@@ -19,6 +18,7 @@ import './PageLayout.css';
 export interface PageLayoutProps {
   isLoading?: boolean;
   noRedirect?: boolean;
+  className?: string;
 }
 
 const footerLinks: LinkType[] = [
@@ -31,7 +31,8 @@ const footerLinks: LinkType[] = [
 export const PageLayout = ({
   children,
   isLoading,
-  noRedirect
+  noRedirect,
+  className
 }: PropsWithChildren<PageLayoutProps>) => {
   const { userId, logout, language, saveLanguage } = useContext(AppContext);
   const navigate = useNavigate();
@@ -66,7 +67,11 @@ export const PageLayout = ({
             onLanguageChange={handleLanguageChange}
           />
         )}
-        {isLoading ? <PageSpinner /> : <main className="main">{children}</main>}
+        {isLoading ? (
+          <PageSpinner />
+        ) : (
+          <main className={cn('main', className)}>{children}</main>
+        )}
         {userId && (
           <Footer links={footerLinks} mobileLinks={mobileFooterLinks} />
         )}
