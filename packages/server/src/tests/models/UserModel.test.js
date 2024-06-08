@@ -36,8 +36,8 @@ describe('User', () => {
 
   test('findMany', async () => {
     await UserModel.createOne(testData.createUserInput);
-    await UserModel.createOne(testData.createUserInput);
-    const result = await UserModel.findMany({ role: 'MEMBER' });
+    await UserModel.createOne(testData.createUserInput2);
+    const result = await UserModel.findMany({});
     expect(result).toHaveLength(2);
   });
 
@@ -55,7 +55,6 @@ describe('User', () => {
 
   test('deleteOne', async () => {
     const user1 = await UserModel.createOne(testData.createUserInput);
-    await UserModel.createOne(testData.createUserInput);
     const result = await UserModel.deleteOne({ id: user1.id });
     expect(result).toEqual({ ok: true });
     const searchTResult = await UserModel.findOne({ id: user1.id });
@@ -64,7 +63,6 @@ describe('User', () => {
 
   test('deleteOne if user does not exist', async () => {
     const user1 = await UserModel.createOne(testData.createUserInput);
-    await UserModel.createOne(testData.createUserInput);
     const result = await UserModel.deleteOne({ email: 'test77@test.com' });
     expect(result).toEqual({ ok: false });
     const searchTResult = await UserModel.findOne({ id: user1.id });
