@@ -77,3 +77,11 @@
   gap: 32px;
   margin: 32px;
 }
+
+.search {
+  width: 300px;
+
+  @media (width >= 800px) {
+    width: 400px;
+  }
+}

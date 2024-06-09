@@ -22,7 +22,8 @@ import {
   Link,
   Spinner,
   TagSelector,
-  Button
+  Button,
+  SearchField
 } from '@lp/ui';
 
 import { PageLayout } from '../../components/PageLayout/PageLayout';
@@ -56,6 +57,7 @@ const WordsPage = () => {
   const [tags, setTags] = useState<string[] | undefined>();
   const [isReverseOrder, setIsReverseOrder] = useState(false);
   const [pageNum, setPageNum] = useState(1);
+  const [searchQuery, setSearchQuery] = useState<string>();
 
   const words = useMemo(
     () => data?.wordsPerPage?.words || [],
@@ -99,26 +101,6 @@ const WordsPage = () => {
   }, []);
 
   const handleNext = () => {
-    setPageNum(prev => prev + 1);
-  };
-
-  const handlePrevious = () => {
-    if (pageNum < 2) {
-      return;
-    }
-    setPageNum(prev => prev - 1);
-  };
-
-  useEffect(() => {
-    setPageNum(1);
-    fetchWords({
-      variables: {
-        input: { language, isReverseOrder, sortBy: sortBy || undefined, tags }
-      }
-    });
-  }, [language, sortBy, isReverseOrder, tags]);
-
-  useEffect(() => {
     fetchWords({
       variables: {
         input: {
@@ -126,11 +108,51 @@ const WordsPage = () => {
           isReverseOrder,
           sortBy: sortBy || undefined,
           tags,
-          page: pageNum
+          searchQuery,
+          page: pageNum + 1
         }
       }
     });
-  }, [pageNum]);
+    setPageNum(prev => prev + 1);
+  };
+
+  const handlePrevious = () => {
+    if (pageNum < 2) {
+      return;
+    }
+    fetchWords({
+      variables: {
+        input: {
+          language,
+          isReverseOrder,
+          sortBy: sortBy || undefined,
+          tags,
+          searchQuery,
+          page: pageNum - 1
+        }
+      }
+    });
+    setPageNum(prev => prev - 1);
+  };
+
+  const handleSearch = (val?: string) => {
+    setSearchQuery(val);
+  };
+
+  useEffect(() => {
+    setPageNum(1);
+    fetchWords({
+      variables: {
+        input: {
+          language,
+          isReverseOrder,
+          sortBy: sortBy || undefined,
+          tags,
+          searchQuery
+        }
+      }
+    });
+  }, [language, sortBy, isReverseOrder, tags, searchQuery]);
 
   useEffect(() => {
     if (error) {
@@ -258,6 +280,12 @@ const WordsPage = () => {
               Add new
             </Link>
           </p>
+          <SearchField
+            className={styles.search}
+            searchQuery={searchQuery}
+            onSearch={handleSearch}
+            allowEmptySearch
+          />
           <div className={styles.wordSelection}>
             <TagSelector
               // @ts-ignore

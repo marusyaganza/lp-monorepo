@@ -319,6 +319,7 @@ input WordsPerPageInput {
   tags: [String]
   limit: Int
   page: Int
+  searchQuery: String
 }
 
 input WordTagInput {
