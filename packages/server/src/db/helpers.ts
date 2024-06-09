@@ -23,15 +23,21 @@ type DocumentType<T> =
       })
   | null;
 
-export type WordsFilterType = {
+export interface WordsFilterType {
   sortBy?: SortBy | SortWordsBy | 'updatedAt';
   language: Language;
-  isReverseOrder: boolean;
+  isReverseOrder?: boolean;
   timesToLearn?: number | null;
   gameType?: Game;
   user?: string;
   tags?: string[];
-};
+  searchQuery?: string;
+}
+
+export interface WordsWithPaginationFilter extends WordsFilterType {
+  page?: number;
+  limit?: number;
+}
 
 export function formatData<T>(data: DocumentType<T>): T | null {
   if (!data) {
@@ -62,6 +68,7 @@ export function getWordsFilters(filter: WordsFilterType) {
     isReverseOrder,
     gameType,
     tags,
+    searchQuery,
     timesToLearn = 5
   } = filter;
 
@@ -85,9 +92,21 @@ export function getWordsFilters(filter: WordsFilterType) {
   }
 
   let noTagsFilter;
-
   if (tags?.includes(NO_TAGS_ID)) {
     noTagsFilter = { $or: [{ tags: [] }, { tags: null }] };
+  }
+
+  let searchFilter;
+  if (searchQuery) {
+    const searchRegexp = { $regex: new RegExp(searchQuery, 'i') };
+    searchFilter = {
+      $or: [
+        { name: searchRegexp },
+        { 'defs.def': searchRegexp },
+        { alternativeSpelling: searchRegexp },
+        { stems: searchRegexp }
+      ]
+    };
   }
 
   // filter based on learning status
@@ -138,6 +157,7 @@ export function getWordsFilters(filter: WordsFilterType) {
   const filtersArray = [
     gameFilter,
     noTagsFilter,
+    searchFilter,
     ...tagsFilters,
     ...learningStatusFilters
   ].filter(Boolean);

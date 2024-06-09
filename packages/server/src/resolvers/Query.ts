@@ -119,5 +119,17 @@ export const QueryResolvers: QueryResolversType<ResolverContext> = {
       });
       return tags;
     }
-  )
+  ),
+  wordsPerPage: authenticated(async (_, { input }, { models, user }) => {
+    const sortBy = input?.sortBy || 'updatedAt';
+    const isReverseOrder =
+      !input?.isReverseOrder && !input?.sortBy ? true : input?.isReverseOrder;
+    const result = await models.Word.findManyAndPaginate({
+      ...input,
+      user: user?.id,
+      sortBy,
+      isReverseOrder
+    });
+    return result;
+  })
 };

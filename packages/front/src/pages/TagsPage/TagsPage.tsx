@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useMutation, useQuery } from '@apollo/client';
-import { TAGS_QUERY, WORDS_QUERY } from '../../gql/queries';
+import { TAGS_QUERY } from '../../gql/queries';
 import { UPDATE_TAG, CREATE_TAG, DELETE_TAG } from '../../gql/mutations';
 import {
   Language,
@@ -65,7 +65,7 @@ export const TagsPage = () => {
   const [updateTagFunc, updateTagData] = useMutation(UPDATE_TAG, {
     update(cache) {
       cache.evict({ fieldName: 'game' });
-      cache.evict({ fieldName: 'words' });
+      cache.evict({ fieldName: 'wordsPerPage' });
       cache.evict({ fieldName: 'tags' });
     }
   });
@@ -73,7 +73,7 @@ export const TagsPage = () => {
   const [deleteTagFunc, deleteTagData] = useMutation(DELETE_TAG, {
     update(cache) {
       cache.evict({ fieldName: 'game' });
-      cache.evict({ fieldName: 'words' });
+      cache.evict({ fieldName: 'wordsPerPage' });
       cache.evict({ fieldName: 'tags' });
     }
   });
@@ -81,7 +81,7 @@ export const TagsPage = () => {
   const [createTagFunc, createTagData] = useMutation(CREATE_TAG, {
     update(cache) {
       cache.evict({ fieldName: 'game' });
-      cache.evict({ fieldName: 'words' });
+      cache.evict({ fieldName: 'wordsPerPage' });
       cache.evict({ fieldName: 'tags' });
     }
   });
@@ -139,29 +139,17 @@ export const TagsPage = () => {
     const input = removeTypenames(values);
     mutationFunc({
       variables: { input },
-      refetchQueries: () => [
-        {
-          query: WORDS_QUERY,
-          variables: {
-            language
-          }
-        }
-      ]
+      update(cache) {
+        cache.evict({ fieldName: 'game' });
+        cache.evict({ fieldName: 'wordsPerPage' });
+      }
     });
   };
 
   const handleNewTagFormSubmit = (values: WordTagInput) => {
     const mutationFunc = createTagFunc;
     mutationFunc({
-      variables: { input: { ...values, language } },
-      refetchQueries: () => [
-        {
-          query: WORDS_QUERY,
-          variables: {
-            language
-          }
-        }
-      ]
+      variables: { input: { ...values, language } }
     });
   };
 

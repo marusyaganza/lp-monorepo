@@ -132,6 +132,14 @@ type Word {
   conjugation: [Conjugation]
 }
 
+type PaginatedWords {
+  words: [Word]!
+  hasNext: Boolean!
+  page: Int!
+  limit: Int!
+  wordsCount: Int!
+}
+
 type DictionaryWord {
   uuid: ID!
   name: String!
@@ -304,6 +312,16 @@ input WordsInput {
   tags: [String]
 }
 
+input WordsPerPageInput {
+  language: Language
+  sortBy: sortWordsBy
+  isReverseOrder: Boolean
+  tags: [String]
+  limit: Int
+  page: Int
+  searchQuery: String
+}
+
 input WordTagInput {
   color: String!
   text: String!
@@ -324,6 +342,7 @@ type Query {
   game(input: GameDataInput!): GameData!
   words(input: WordsInput): [Word]!
   word(id: ID!): Word!
+  wordsPerPage(input: WordsPerPageInput): PaginatedWords!
   searchWord(input: WordSearchInput!): [SearchResult]!
   tags(language: Language): [WordTag]!
 }

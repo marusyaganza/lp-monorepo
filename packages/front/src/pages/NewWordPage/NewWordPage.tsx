@@ -19,7 +19,7 @@ const NewWordPage = () => {
     {
       update(cache) {
         cache.evict({ fieldName: 'game' });
-        cache.evict({ fieldName: 'words' });
+        cache.evict({ fieldName: 'wordsPerPage' });
       }
     }
   );

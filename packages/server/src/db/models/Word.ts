@@ -8,13 +8,15 @@ import {
   NewWordInput,
   UpdateStatisticsInput,
   Game as GameType,
-  WordStatisticsField
+  WordStatisticsField,
+  PaginatedWords
 } from '../../generated/graphql';
 import {
   formatFilter,
   formatData,
   getWordsFilters,
-  WordsFilterType
+  WordsFilterType,
+  WordsWithPaginationFilter
 } from '../helpers';
 
 const STATISTICS_FIELD: WordStatisticsField = {
@@ -40,6 +42,9 @@ export interface WordModelType {
     options?: QueryOptions
   ) => Promise<WordType[] | null>;
   findManyAndSort: (filter: WordsFilterType) => Promise<WordType[] | null>;
+  findManyAndPaginate: (
+    filter: WordsWithPaginationFilter
+  ) => Promise<PaginatedWords | null>;
   createOne: (fields: NewWordInput) => Promise<WordType | null>;
   updateOne: (
     fields: Partial<WordType> & Pick<WordType, 'id' | 'user'>
@@ -95,6 +100,38 @@ export const WordModel: WordModelType = {
       .exec();
 
     return words;
+  },
+
+  async findManyAndPaginate(filter) {
+    const { page = 1, limit = 5 } = filter;
+    const docsLimit = Math.abs(limit);
+    const skip = (Math.abs(page) - 1) * docsLimit;
+    const { user } = filter;
+
+    if (!user) {
+      return null;
+    }
+
+    const { sort, filters } = getWordsFilters(filter);
+    const wordsCount = await Word.countDocuments(filters);
+    const hasNext = wordsCount - Math.abs(page) * limit > 0;
+    const words = await Word.find(filters)
+      // @ts-ignore
+      .sort(sort)
+      .limit(docsLimit)
+      .skip(skip)
+      .populate('tags')
+      .exec();
+
+    const result: PaginatedWords = {
+      words,
+      page,
+      limit,
+      hasNext,
+      wordsCount
+    };
+
+    return result;
   },
 
   async createOne(fields) {
