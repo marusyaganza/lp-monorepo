@@ -1,16 +1,29 @@
-import React, { useEffect, useContext, useState, useCallback } from 'react';
+import React, {
+  useEffect,
+  useContext,
+  useState,
+  useCallback,
+  useMemo
+} from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import {
-  WordsQuery,
   Word,
   DeleteWordMutation,
   SortWordsBy,
-  TagsQuery
+  TagsQuery,
+  WordsPerPageQuery
 } from '../../generated/graphql';
-import { TAGS_QUERY, WORDS_QUERY } from '../../gql/queries';
+import { TAGS_QUERY, WORDS_PER_PAGE_QUERY } from '../../gql/queries';
 import { DELETE_WORD } from '../../gql/mutations';
 
-import { WordCard, CardWrapper, Link, Spinner, TagSelector } from '@lp/ui';
+import {
+  WordCard,
+  CardWrapper,
+  Link,
+  Spinner,
+  TagSelector,
+  Button
+} from '@lp/ui';
 
 import { PageLayout } from '../../components/PageLayout/PageLayout';
 import { AppContext } from '../../app-context/appContext';
@@ -35,12 +48,21 @@ const OPTIONS = {
 };
 
 const WordsPage = () => {
+  const navigate = useNavigate();
   const [fetchWords, { loading, error, data }] =
-    useLazyQuery<WordsQuery>(WORDS_QUERY);
+    useLazyQuery<WordsPerPageQuery>(WORDS_PER_PAGE_QUERY);
   const { setNotification, language } = useContext(AppContext);
   const [sortBy, setSortBy] = useState<SortWordsBy>();
   const [tags, setTags] = useState<string[] | undefined>();
   const [isReverseOrder, setIsReverseOrder] = useState(false);
+  const [pageNum, setPageNum] = useState(1);
+
+  const words = useMemo(
+    () => data?.wordsPerPage?.words || [],
+    [data]
+  ) as Word[];
+
+  const hasNext = useMemo(() => data?.wordsPerPage?.hasNext, [data]);
 
   const tagsResult = useQuery<TagsQuery>(TAGS_QUERY, {
     variables: { language }
@@ -51,7 +73,7 @@ const WordsPage = () => {
     {
       update(cache) {
         cache.evict({ fieldName: 'game' });
-        cache.evict({ fieldName: 'words' });
+        cache.evict({ fieldName: 'wordsPerPage' });
       }
     }
   );
@@ -76,7 +98,19 @@ const WordsPage = () => {
     storeData('wordsSortOrder', value);
   }, []);
 
+  const handleNext = () => {
+    setPageNum(prev => prev + 1);
+  };
+
+  const handlePrevious = () => {
+    if (pageNum < 2) {
+      return;
+    }
+    setPageNum(prev => prev - 1);
+  };
+
   useEffect(() => {
+    setPageNum(1);
     fetchWords({
       variables: {
         input: { language, isReverseOrder, sortBy: sortBy || undefined, tags }
@@ -84,7 +118,19 @@ const WordsPage = () => {
     });
   }, [language, sortBy, isReverseOrder, tags]);
 
-  const navigate = useNavigate();
+  useEffect(() => {
+    fetchWords({
+      variables: {
+        input: {
+          language,
+          isReverseOrder,
+          sortBy: sortBy || undefined,
+          tags,
+          page: pageNum
+        }
+      }
+    });
+  }, [pageNum]);
 
   useEffect(() => {
     if (error) {
@@ -151,10 +197,9 @@ const WordsPage = () => {
   };
 
   const renderWords = () => {
-    if (!Array.isArray(data?.words)) {
+    if (!Array.isArray(words)) {
       return;
     }
-    const words = data?.words as Word[];
     return (
       <ul data-cy="wordsList" className={styles.wordList}>
         {words.map(word => {
@@ -182,13 +227,33 @@ const WordsPage = () => {
     );
   };
 
+  const renderPagination = () => {
+    if (!words?.length || (!hasNext && pageNum === 1)) {
+      return;
+    }
+    return (
+      <div className={styles.pagination}>
+        <Button
+          onClick={handlePrevious}
+          disabled={pageNum === 1}
+          variant="tertiary"
+        >
+          Previous
+        </Button>
+        <Button disabled={!hasNext} onClick={handleNext} variant="tertiary">
+          Next
+        </Button>
+      </div>
+    );
+  };
+
   return (
     <PageLayout>
       <h1 className={styles.heading}>Vocabulary</h1>
       {!loading && (
         <div className={styles.topSection}>
           <p data-cy="wordsCount" className={styles.wordsInfo}>
-            {`You have ${data?.words.length || 0} words.`}{' '}
+            {`You have ${data?.wordsPerPage?.wordsCount || 0} words.`}{' '}
             <Link className={styles.link} to={`/${routes.words}/new`}>
               Add new
             </Link>
@@ -217,6 +282,7 @@ const WordsPage = () => {
       )}
       {loading && <Spinner />}
       {renderWords()}
+      {renderPagination()}
       <Outlet />
     </PageLayout>
   );

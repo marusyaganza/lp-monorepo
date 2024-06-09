@@ -70,3 +70,10 @@
   gap: 32px;
   flex-wrap: wrap;
 }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin: 32px;
+}

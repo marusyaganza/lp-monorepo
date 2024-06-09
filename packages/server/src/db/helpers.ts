@@ -23,15 +23,20 @@ type DocumentType<T> =
       })
   | null;
 
-export type WordsFilterType = {
+export interface WordsFilterType {
   sortBy?: SortBy | SortWordsBy | 'updatedAt';
   language: Language;
-  isReverseOrder: boolean;
+  isReverseOrder?: boolean;
   timesToLearn?: number | null;
   gameType?: Game;
   user?: string;
   tags?: string[];
-};
+}
+
+export interface WordsWithPaginationFilter extends WordsFilterType {
+  page?: number;
+  limit?: number;
+}
 
 export function formatData<T>(data: DocumentType<T>): T | null {
   if (!data) {
