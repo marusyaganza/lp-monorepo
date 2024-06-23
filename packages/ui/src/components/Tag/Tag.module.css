@@ -12,6 +12,6 @@
 
 .withIcon {
   display: flex;
-  gap: 4;
+  gap: 4px;
   align-items: center;
 }

@@ -29,7 +29,7 @@ export const Tag = ({
     >
       {iconId ? (
         <div className={styles.withIcon}>
-          <Icon width={20} height={20} id={iconId} /> {text}
+          <Icon width={15} height={15} id={iconId} /> {text}
         </div>
       ) : (
         text && `#${text}`

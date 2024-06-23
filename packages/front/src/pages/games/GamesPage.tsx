@@ -111,6 +111,7 @@ const GamesPage = () => {
             blankOption="none"
           />
           <TagSelector
+            showNoTagsTag
             // @ts-ignore
             tags={tagsResult?.data?.tags}
             value={tags}
