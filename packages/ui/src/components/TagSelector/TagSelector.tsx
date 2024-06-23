@@ -13,6 +13,7 @@ export interface TagSelectorProps {
   onChange: (val: string[]) => void;
   value?: string[];
   label?: string;
+  showNoTagsTag?: boolean;
   /**additional styling */
   className?: string;
 }
@@ -30,14 +31,20 @@ export const TagSelector = ({
   value = [],
   className,
   onChange,
-  label
+  label,
+  showNoTagsTag
 }: TagSelectorProps) => {
   const handleChange = (val: string) => {
     const values = [...value, val];
     onChange(values);
   };
 
-  const tags = useMemo(() => [...initialTags, NO_TAGS_TAG], [initialTags]);
+  const tags = useMemo(() => {
+    if (showNoTagsTag) {
+      return [...initialTags, NO_TAGS_TAG];
+    }
+    return initialTags;
+  }, [initialTags, showNoTagsTag]);
 
   const { Select, Option } = useSelect<string>({
     onChange: handleChange,
@@ -80,7 +87,12 @@ export const TagSelector = ({
           }
           return (
             <li key={id}>
-              <Tag color={color} text={text} className={styles.tag}>
+              <Tag
+                color={color}
+                text={text}
+                className={styles.tag}
+                iconId={tag.id === NO_TAGS_TAG.id ? 'void' : undefined}
+              >
                 <Button
                   className={styles.button}
                   variant="icon"
