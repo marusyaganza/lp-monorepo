@@ -1,29 +1,5 @@
 import { gql } from '@apollo/client';
 
-export const WORDS_QUERY = gql`
-  query Words($input: WordsInput) {
-    words(input: $input) {
-      id
-      name
-      defs {
-        def
-      }
-      particle
-      audioUrl
-      transcription
-      isOffensive
-      isLearned
-      level
-      shortDef
-      tags {
-        text
-        color
-        id
-      }
-    }
-  }
-`;
-
 export const WORD_BY_ID_QUERY = gql`
   query WordById($wordId: ID!) {
     word(id: $wordId) {
@@ -83,6 +59,10 @@ export const SEARCH_WORDS = gql`
         imgDesc
         shortDef
         language
+        conjugation {
+          cjid
+          cjfs
+        }
       }
     }
   }
@@ -143,6 +123,34 @@ export const TAGS_QUERY = gql`
       id
       color
       desc
+    }
+  }
+`;
+
+export const WORDS_PER_PAGE_QUERY = gql`
+  query WordsPerPage($input: WordsPerPageInput) {
+    wordsPerPage(input: $input) {
+      hasNext
+      wordsCount
+      words {
+        id
+        name
+        defs {
+          def
+        }
+        particle
+        audioUrl
+        transcription
+        isOffensive
+        isLearned
+        level
+        shortDef
+        tags {
+          text
+          color
+          id
+        }
+      }
     }
   }
 `;

@@ -1,3 +1,5 @@
+import { Language } from '../../generated/graphql';
+
 export const testData = {
   createUserInput: {
     email: 'test@test.com',
@@ -93,5 +95,22 @@ export const testData = {
     level: 'B2',
     name: 'rubber1',
     uuid: 'invaliduuid'
+  },
+  createTagInput: {
+    text: 'Tag text',
+    desc: 'Tag description',
+    color: '#f0f0f0',
+    language: Language.English
+  },
+  createTagInput2: {
+    text: 'Tag2 text',
+    desc: 'Tag2 description',
+    color: '#f2f2f2',
+    language: Language.English
+  },
+  updateTagInput: {
+    text: 'Updated Tag text',
+    desc: 'Tag description was updated',
+    color: '#f0f0f1'
   }
 };

@@ -10,7 +10,7 @@ import { WordForm } from '../../components/WordForm/WordForm';
 import { routes } from '../../constants/routes';
 import { UpdateWordInput } from '../../generated/graphql';
 import { AppContext } from '../../app-context/appContext';
-import { WORDS_QUERY, WORD_BY_ID_QUERY } from '../../gql/queries';
+import { WORD_BY_ID_QUERY } from '../../gql/queries';
 import { cleanDefs, removeTypenames } from '../../util/wordUtils';
 import { UPDATE_WORD } from '../../gql/mutations';
 
@@ -19,11 +19,11 @@ const EditWordPage = () => {
   const [updateWordFunc, updateWordData] = useMutation(UPDATE_WORD, {
     update(cache) {
       cache.evict({ fieldName: 'game' });
-      cache.evict({ fieldName: 'words' });
+      cache.evict({ fieldName: 'wordsPerPage' });
     }
   });
   const [fetchWord, { loading, error, data }] = useLazyQuery(WORD_BY_ID_QUERY);
-  const { setNotification, language } = useContext(AppContext);
+  const { setNotification } = useContext(AppContext);
 
   const navigate = useNavigate();
 
@@ -76,14 +76,10 @@ const EditWordPage = () => {
     const input = cleanDefs(values);
     updateWordFunc({
       variables: { input },
-      refetchQueries: () => [
-        {
-          query: WORDS_QUERY,
-          variables: {
-            language
-          }
-        }
-      ]
+      update(cache) {
+        cache.evict({ fieldName: 'game' });
+        cache.evict({ fieldName: 'wordsPerPage' });
+      }
     });
   };
 

@@ -6,6 +6,7 @@ exports[`WordModel createOne 1`] = `
   "additionalInfo": "additional info",
   "alternativeSpelling": [],
   "audioUrl": "mock.mp3",
+  "conjugation": [],
   "createdAt": Any<String>,
   "defs": [
     {
@@ -40,6 +41,12 @@ exports[`WordModel createOne 1`] = `
   ],
   "statistics": {
     "AUDIO": {
+      "errorCount": 0,
+      "lastTimePracticed": 0,
+      "practicedTimes": 0,
+      "successRate": 0,
+    },
+    "CONJUGATION": {
       "errorCount": 0,
       "lastTimePracticed": 0,
       "practicedTimes": 0,
@@ -83,6 +90,7 @@ exports[`WordModel findOne 1`] = `
   "additionalInfo": "additional info",
   "alternativeSpelling": [],
   "audioUrl": "mock.mp3",
+  "conjugation": [],
   "createdAt": Any<String>,
   "defs": [
     {
@@ -117,6 +125,12 @@ exports[`WordModel findOne 1`] = `
   ],
   "statistics": {
     "AUDIO": {
+      "errorCount": 0,
+      "lastTimePracticed": 0,
+      "practicedTimes": 0,
+      "successRate": 0,
+    },
+    "CONJUGATION": {
       "errorCount": 0,
       "lastTimePracticed": 0,
       "practicedTimes": 0,
@@ -160,6 +174,7 @@ exports[`WordModel updateOne 1`] = `
   "additionalInfo": "very useful information",
   "alternativeSpelling": [],
   "audioUrl": "mock.mp3",
+  "conjugation": [],
   "createdAt": Any<String>,
   "defs": [
     {
@@ -190,6 +205,12 @@ exports[`WordModel updateOne 1`] = `
   ],
   "statistics": {
     "AUDIO": {
+      "errorCount": 0,
+      "lastTimePracticed": 0,
+      "practicedTimes": 0,
+      "successRate": 0,
+    },
+    "CONJUGATION": {
       "errorCount": 0,
       "lastTimePracticed": 0,
       "practicedTimes": 0,

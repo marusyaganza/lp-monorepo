@@ -53,6 +53,8 @@ const GamePage = () => {
     [language]
   );
 
+  const tense = useMemo(() => searchParams.get('tense'), [searchParams]);
+
   const gameId = useMemo<GameType | undefined>(() => {
     const gameId = params.gameId?.toUpperCase();
     const isExistingGame = Object.values(GameType).includes(gameId as GameType);
@@ -61,6 +63,11 @@ const GamePage = () => {
   const questions = useMemo(
     () => data?.game?.questions?.filter(Boolean),
     [data]
+  );
+
+  const correctAnswer = useMemo(
+    () => questions?.[state.currentIndex]?.answer || '',
+    [questions, state]
   );
   const isCompleted = useMemo(() => state?.isCompleted, [state?.isCompleted]);
   const progress = useMemo(
@@ -86,6 +93,7 @@ const GamePage = () => {
             language,
             sortBy,
             isReverseOrder,
+            tense,
             tags: storedTags
           }
         }
@@ -154,7 +162,7 @@ const GamePage = () => {
           answer,
           alternativeSpelling:
             questions[state.currentIndex]?.alternativeSpelling || [],
-          correctAnswer: questions[state.currentIndex]?.answer || '',
+          correctAnswer,
           id: questions[state.currentIndex].wordId
         }
       });
@@ -198,6 +206,8 @@ const GamePage = () => {
                 type={data.game.type}
                 onSubmit={handlerSubmit}
                 question={questions?.[state.currentIndex].question as string[]}
+                tense={tense}
+                correctAnswer={correctAnswer}
                 options={
                   questions?.[state.currentIndex]?.options as
                     | string[]

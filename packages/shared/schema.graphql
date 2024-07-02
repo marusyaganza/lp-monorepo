@@ -23,6 +23,29 @@ enum Game {
   TYPE_WORD
   SELECT_WORD
   SELECT_DEF
+  CONJUGATION
+}
+
+enum Tense {
+  pind
+  pprf
+  impf
+  pret
+  # futr
+  # cond
+  # psub
+  # pisb1
+  # pisb2
+  # fsub
+  # ppci
+  # ppsi
+  # pant
+  # fpin
+  # cpef
+  # ppfs
+  # ppss1
+  # ppss2
+  # fpsb
 }
 
 enum SortBy {
@@ -80,6 +103,7 @@ type WordStatistics {
   TYPE_WORD: WordStatisticsField
   SELECT_WORD: WordStatisticsField
   SELECT_DEF: WordStatisticsField
+  CONJUGATION: WordStatisticsField
 }
 
 type Word {
@@ -105,6 +129,15 @@ type Word {
   isLearned: Boolean
   statistics: WordStatistics
   alternativeSpelling: [String]
+  conjugation: [Conjugation]
+}
+
+type PaginatedWords {
+  words: [Word]!
+  hasNext: Boolean!
+  page: Int!
+  limit: Int!
+  wordsCount: Int!
 }
 
 type DictionaryWord {
@@ -121,6 +154,7 @@ type DictionaryWord {
   stems: [String]
   shortDef: [String]!
   language: Language!
+  conjugation: [Conjugation]
 }
 
 type AuthUser {
@@ -148,6 +182,7 @@ type GameConfig {
   optionsPerGame: Int!
   minWords: Int!
   timesToLearn: Int
+  orderNum: Int
 }
 
 type GameQuestionAdditionalInfo {
@@ -172,6 +207,11 @@ type GameData {
   questions: [GameQuestion!]
 }
 
+type Conjugation {
+  cjid: String!
+  cjfs: [String!]
+}
+
 input DefExampleInput {
   text: String!
   translation: String
@@ -185,6 +225,11 @@ input DefsInput {
 input WordTagInput {
   color: String!
   text: String!
+}
+
+input ConjugationInput {
+  cjid: String!
+  cjfs: [String!]
 }
 
 input NewWordInput {
@@ -205,6 +250,7 @@ input NewWordInput {
   shortDef: [String]!
   isLearned: Boolean
   alternativeSpelling: [String]
+  conjugation: [ConjugationInput]
 }
 
 input UpdateWordInput {
@@ -249,6 +295,7 @@ input GameDataInput {
   isReverseOrder: Boolean
   tags: [String]
   language: Language
+  tense: Tense
 }
 
 input UpdateStatisticsInput {
@@ -263,6 +310,16 @@ input WordsInput {
   sortBy: sortWordsBy
   isReverseOrder: Boolean
   tags: [String]
+}
+
+input WordsPerPageInput {
+  language: Language
+  sortBy: sortWordsBy
+  isReverseOrder: Boolean
+  tags: [String]
+  limit: Int
+  page: Int
+  searchQuery: String
 }
 
 input WordTagInput {
@@ -285,8 +342,9 @@ type Query {
   game(input: GameDataInput!): GameData!
   words(input: WordsInput): [Word]!
   word(id: ID!): Word!
+  wordsPerPage(input: WordsPerPageInput): PaginatedWords!
   searchWord(input: WordSearchInput!): [SearchResult]!
-  tags(language: Language!): [WordTag]!
+  tags(language: Language): [WordTag]!
 }
 
 type Mutation {

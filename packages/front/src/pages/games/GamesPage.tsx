@@ -6,7 +6,7 @@ import React, {
   useState
 } from 'react';
 import { Outlet } from 'react-router-dom';
-import { SortBy, GamesQuery, TagsQuery } from '../../generated/graphql';
+import { SortBy, GamesQuery, TagsQuery, Game } from '../../generated/graphql';
 import { GameCard, Spinner, TagSelector } from '@lp/ui';
 import { routes } from '../../constants/routes';
 import { PageLayout } from '../../components/PageLayout/PageLayout';
@@ -111,6 +111,7 @@ const GamesPage = () => {
             blankOption="none"
           />
           <TagSelector
+            showNoTagsTag
             // @ts-ignore
             tags={tagsResult?.data?.tags}
             value={tags}
@@ -128,14 +129,13 @@ const GamesPage = () => {
               if (!game) {
                 return;
               }
+              const gameLink =
+                game.type === Game.Conjugation
+                  ? `${routes.games}/${routes.conjugate}`
+                  : `${routes.games}/${game.type?.toLocaleLowerCase()}`;
               return (
                 <li key={game.id}>
-                  <GameCard
-                    game={game}
-                    linkUrl={`/${
-                      routes.games
-                    }/${game.type?.toLocaleLowerCase()}${searchStr}`}
-                  />
+                  <GameCard game={game} linkUrl={`/${gameLink}${searchStr}`} />
                 </li>
               );
             })}

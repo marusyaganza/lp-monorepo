@@ -22,6 +22,9 @@ const SignUpPage = lazy(() => import('../pages/sign-up/SignUpPage'));
 const ProfilePage = lazy(() => import('../pages/profile/ProfilePage'));
 const ErrorPage = lazy(() => import('../pages/error/ErrorPage'));
 const TagsPage = lazy(() => import('../pages/TagsPage/TagsPage'));
+const ConjugatePage = lazy(
+  () => import('../pages/games/conjugate/ConjugatePage')
+);
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -36,6 +39,7 @@ export const router = createBrowserRouter(
       </Route>
       <Route path={routes.games}>
         <Route index element={withSuspense(GamesPage)} />
+        <Route path={routes.conjugate} element={withSuspense(ConjugatePage)} />
         <Route path=":gameId" element={withSuspense(GamePage)} />
       </Route>
       <Route path={routes.signIn} element={withSuspense(SignInPage)} />

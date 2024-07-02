@@ -6,24 +6,20 @@ import {
   Language,
   WordDefinition,
   DefExample,
-  GameQuestion
+  GameQuestion,
+  Tense
 } from '../generated/graphql';
 import { OperationResolutionError } from './apolloCustomErrors';
 import { madeUphWords } from '../mocks/madeUpWord';
+import { TENSES } from '../dictionary/constants';
 
 export type GenerateGameDataFuncType = (
   gameType: Game,
   words: Word[],
   config: GameConfig,
-  optionsMaterial?: Word[] | null
+  optionsMaterial?: Word[] | null,
+  tense?: Tense
 ) => GameData;
-
-const tasks = {
-  [Game.Audio]: "Type the word that you've heard",
-  [Game.SelectDef]: 'Select a definition that means ',
-  [Game.SelectWord]: 'Select a word that means ',
-  [Game.TypeWord]: 'Type a word that means '
-};
 
 export function generateRandomNumber(limit: number) {
   return Math.floor(Math.random() * limit);
@@ -33,15 +29,13 @@ export function getExamples(defs?: (WordDefinition | null)[] | null) {
   if (!Array.isArray(defs)) {
     return;
   }
-  return defs
-    .reduce((acc?: (DefExample | null)[], curr?: WordDefinition | null) => {
-      const examples = curr?.examples;
-      if (examples && Array.isArray(examples)) {
-        return acc?.concat(examples);
-      }
-      return acc;
-    }, [])
-    ?.filter(Boolean);
+
+  const examples = defs
+    .flatMap(def => def?.examples)
+    .filter(Boolean)
+    .slice(0, 5);
+
+  return examples as DefExample[];
 }
 
 /**Replaces word's `name` in `def` with `[...]` block
@@ -115,8 +109,17 @@ export const generateGameData: GenerateGameDataFuncType = (
   gameType,
   data,
   config,
-  optionsMaterial
+  optionsMaterial,
+  tense = Tense.Pind
 ) => {
+  const tasks = {
+    [Game.Audio]: "Type the word that you've heard",
+    [Game.SelectDef]: 'Select a definition that means ',
+    [Game.SelectWord]: 'Select a word that means ',
+    [Game.TypeWord]: 'Type a word that means ',
+    [Game.Conjugation]: `Conjugate the verb in ${TENSES[tense]}`
+  };
+
   let questions;
   const { optionsPerGame, wordsPerGame, minWords } = config;
 
@@ -259,6 +262,34 @@ export const generateGameData: GenerateGameDataFuncType = (
         }
       };
     });
+  }
+
+  if (gameType === Game.Conjugation) {
+    questions = words.map(word => {
+      const { imgUrl, shortDef, audioUrl, name, id, conjugation } = word;
+      const verbForms = conjugation?.find(conj => conj?.cjid === tense)?.cjfs;
+
+      if (!verbForms) {
+        return;
+      }
+
+      return {
+        question: [name],
+        answer: verbForms.join(', '),
+        wordId: id,
+        additionalInfo: {
+          imgUrl,
+          audioUrl,
+          shortDef: `<b>${name} means</b> ${shortDef[0]}`
+        }
+      };
+    });
+
+    if (!questions?.length) {
+      throw new OperationResolutionError(
+        `Not enough words to start a game. You need at least ${minWords} verb to conjugate`
+      );
+    }
   }
 
   return {

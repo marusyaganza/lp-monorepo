@@ -1,3 +1,5 @@
+import { Language, Role } from '../../generated/graphql';
+
 export const words = [
   {
     uuid: '74046e79-e4c9-4b52-ac96-cb7ae98fb601',
@@ -22,6 +24,7 @@ export const words = [
       }
     ],
     particle: 'noun',
+    shortDef: ['asserting, promoting, or marked by egalitarianism'],
     level: 'C1',
     stems: ['egalitarian', 'egalitarianism', 'egalitarians'],
     audioUrl:
@@ -43,6 +46,8 @@ export const users = [
     lastName: 'Test'
   }
 ];
+
+export const user = { id: '1', role: Role.Member };
 
 export const dbUsers = [
   {
@@ -152,3 +157,20 @@ export const dictionaryWord = {
     'https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/e/ega/egali/egalitarian__gb_1.mp3',
   transcription: 'iˌɡælɪˈteəriən'
 };
+
+export const tags = [
+  {
+    text: 'Spanish Tag 1 text',
+    desc: 'Tag 1 desc',
+    id: 'tag1Id',
+    color: '#d1af33',
+    language: Language.Spanish
+  },
+  {
+    text: 'English Tag 2 text',
+    desc: 'Tag 2 desc',
+    id: 'tag2Id',
+    color: '#ee7777',
+    language: Language.English
+  }
+];

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.2.0 (2024-07-02)
+
+### Features
+
+- select words with no tags ([#173](https://github.com/marusyaganza/lp-monorepo/issues/173)) ([6459827](https://github.com/marusyaganza/lp-monorepo/commit/64598273c12f64a068e5912285f8c504c85ceeb7))
+
 # 1.1.0 (2024-06-08)
 
 ### Features

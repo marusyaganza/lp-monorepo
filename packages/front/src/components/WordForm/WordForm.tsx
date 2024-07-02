@@ -106,6 +106,7 @@ export function WordForm<T extends Record<string, unknown>>({
       const initialValue = values[name] || value;
       return (
         <Component
+          className={styles.formField}
           // @ts-ignore
           initialValue={initialValue}
           dataCy={`formField-${name}`}

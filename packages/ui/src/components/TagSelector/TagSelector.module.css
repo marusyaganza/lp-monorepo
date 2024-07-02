@@ -4,7 +4,7 @@
 @import '../../assets/styles/effects.css';
 
 .container {
-  width: 400px;
+  width: 100%;
 }
 
 .tags {

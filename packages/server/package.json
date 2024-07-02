@@ -1,6 +1,6 @@
 {
   "name": "@lp/server",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "app for Spanish learners",
   "main": "dist/app.js",
   "scripts": {
@@ -10,8 +10,8 @@
     "clean": "rimraf dist src/generated *.tsbuildinfo node_modules",
     "eslint": "eslint src",
     "ts": "tsc --watch --preserveWatchOutput",
-    "test": "jest --detectOpenHandles",
-    "coverage": "jest --coverage",
+    "test": "jest --detectOpenHandles --runInBand",
+    "coverage": "jest --runInBand --coverage",
     "test:watch": "jest --watch --detectOpenHandles",
     "ready": "yarn codegen && yarn eslint --fix && yarn test",
     "watch": "nodemon --watch './**/*.{ts,js}' --exec 'node --experimental-specifier-resolution=node --loader ts-node/esm' src/app.ts",

@@ -18,20 +18,22 @@ export interface SearchFieldProps {
   /**additional styling */
   className?: string;
   autofocus?: boolean;
+  allowEmptySearch?: boolean;
 }
 /**SearchField component */
 export const SearchField = ({
   searchQuery,
   className,
   onSearch,
-  autofocus
+  autofocus,
+  allowEmptySearch
 }: SearchFieldProps) => {
   const [value, setValue] = useState(searchQuery);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleSearch = (e: FormEvent) => {
     e.preventDefault();
-    if (value) {
+    if (value || allowEmptySearch) {
       onSearch(value);
     }
   };
@@ -52,7 +54,7 @@ export const SearchField = ({
       onSubmit={handleSearch}
     >
       <button
-        disabled={!value}
+        disabled={!value && !allowEmptySearch}
         data-cy="searchButton"
         className={cn(styles.button)}
         type="submit"

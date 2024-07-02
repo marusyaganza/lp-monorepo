@@ -1,20 +1,13 @@
 const signUpMutation = `
-  mutation {
-    signUp(
-      input: {
-        firstName: "User"
-        lastName: "Test"
-        email: "test@test.com"
-        password: "password"
-      }
-    ) {
-      email
-      firstName
-      lastName
-      token
-      id
-    }
+mutation SignUp($input: SignUpInput!) {
+  signUp(input: $input) {
+    email
+    firstName
+    lastName
+    token
+    id
   }
+}
 `;
 
 const loginMutation = `
@@ -95,11 +88,37 @@ mutation SaveGameResult($input: [UpdateStatisticsInput!]) {
 }
 `;
 
+export const updateTagMutation = `
+  mutation UpdateTag($input: UpdateWordTagInput!) {
+    updateTag(input: $input)
+  }
+`;
+
+export const createTagMutation = `
+  mutation CreateTag($input: WordTagInput!) {
+    createTag(input: $input)
+  }
+`;
+
+export const deleteTagMutation = `
+  mutation DeleteTag($deleteTagId: ID!) {
+    deleteTag(id: $deleteTagId) {
+      text
+      desc
+      color
+      id
+    }
+  }
+`;
+
 export const mutations = {
   signUpMutation,
   loginMutation,
   saveWordMutation,
   updateWordMutation,
   deleteWordMutation,
-  saveGameResultMutation
+  saveGameResultMutation,
+  updateTagMutation,
+  createTagMutation,
+  deleteTagMutation
 };
