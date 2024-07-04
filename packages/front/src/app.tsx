@@ -17,7 +17,7 @@ const httpLink = createHttpLink({
   uri: process.env.GQL_URL
 });
 
-const token = getStoredData<'userData'>('userData')?.token;
+const token = getStoredData('userData')?.token;
 
 export const createAuthLink = (tkn: string | undefined) => {
   return setContext((_, { headers }) => {

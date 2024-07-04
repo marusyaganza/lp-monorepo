@@ -49,7 +49,7 @@ const GamePage = () => {
   );
 
   const storedTags = useMemo(
-    () => getStoredData<'gameTags'>('gameTags')?.[language],
+    () => getStoredData('gameTags')?.[language],
     [language]
   );
 

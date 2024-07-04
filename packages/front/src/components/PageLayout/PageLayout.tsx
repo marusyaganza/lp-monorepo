@@ -39,7 +39,7 @@ export const PageLayout = ({
   const location = useLocation();
   useEffect(() => {
     if (!userId && !noRedirect) {
-      storeData<'previousLocation'>('previousLocation', location.pathname);
+      storeData('previousLocation', location.pathname);
       navigate('/sign-in');
     }
   }, [userId, navigate, noRedirect, location.pathname]);

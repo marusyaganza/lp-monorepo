@@ -13,8 +13,7 @@ export const AuthPageLayout = ({ children }: PropsWithChildren<unknown>) => {
 
   useEffect(() => {
     if (userId) {
-      const previousLocation =
-        (getStoredData('previousLocation') as string) || '/';
+      const previousLocation = getStoredData('previousLocation') || '/';
       localStorage.removeItem('previousLocation');
       navigate(previousLocation);
     }

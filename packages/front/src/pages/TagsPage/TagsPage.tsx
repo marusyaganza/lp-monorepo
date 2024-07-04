@@ -16,20 +16,14 @@ import { AppContext } from '../../app-context/appContext';
 import { removeTypenames } from '../../util/wordUtils';
 
 import styles from './TagsPage.module.css';
-import {
-  TagDataType,
-  getStoredData,
-  storeData
-} from '../../util/localStorageUtils';
+import { getStoredData, storeData } from '../../util/localStorageUtils';
 
 const filterData = (
   id: string,
   dataName: 'tags' | 'gameTags',
   language: Language
 ) => {
-  const storedData: TagDataType | undefined = getStoredData<
-    'tags' | 'gameTags'
-  >(dataName);
+  const storedData = getStoredData(dataName);
 
   if (!storedData?.[language]?.length) {
     return;

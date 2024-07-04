@@ -11,11 +11,7 @@ import { GameCard, Spinner, TagSelector } from '@lp/ui';
 import { routes } from '../../constants/routes';
 import { PageLayout } from '../../components/PageLayout/PageLayout';
 import { AppContext } from '../../app-context/appContext';
-import {
-  TagDataType,
-  getStoredData,
-  storeData
-} from '../../util/localStorageUtils';
+import { getStoredData, storeData } from '../../util/localStorageUtils';
 import { SortControls } from '../../components/SortControls/SortControls';
 import { GAMES, TAGS_QUERY } from '../../gql/queries';
 
@@ -50,7 +46,7 @@ const GamesPage = () => {
 
   const handleSortingParamChange = useCallback((val: string) => {
     setSortBy(val);
-    storeData('sortGamesBy', val);
+    storeData('sortGamesBy', val as SortBy);
   }, []);
 
   const handleOrderChange = useCallback((value: boolean) => {
@@ -61,8 +57,7 @@ const GamesPage = () => {
   const handleTagsChange = useCallback(
     (val: string[]) => {
       setTags(val);
-      const storedTags =
-        getStoredData<'gameTags'>('gameTags') || ({} as TagDataType);
+      const storedTags = getStoredData('gameTags') || {};
       storedTags[language] = val;
       storeData('gameTags', storedTags);
     },
@@ -80,10 +75,9 @@ const GamesPage = () => {
   }, [error]);
 
   useEffect(() => {
-    const storedSortBy = getStoredData<'sortGamesBy'>('sortGamesBy');
-    const storedIsReverseOrder =
-      getStoredData<'gamesSortOrder'>('gamesSortOrder');
-    const storedTags = getStoredData<'gameTags'>('gameTags')?.[language];
+    const storedSortBy = getStoredData('sortGamesBy');
+    const storedIsReverseOrder = getStoredData('gamesSortOrder');
+    const storedTags = getStoredData('gameTags')?.[language];
 
     if (storedSortBy) {
       setSortBy(storedSortBy);

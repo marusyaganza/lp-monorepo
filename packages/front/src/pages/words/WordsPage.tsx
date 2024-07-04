@@ -29,17 +29,13 @@ import {
 import { PageLayout } from '../../components/PageLayout/PageLayout';
 import { AppContext } from '../../app-context/appContext';
 import {
-  SortControls,
-  SortByType
+  SortByType,
+  SortControls
 } from '../../components/SortControls/SortControls';
 
 import styles from './WordsPage.module.css';
 import { routes } from '../../constants/routes';
-import {
-  getStoredData,
-  storeData,
-  TagDataType
-} from '../../util/localStorageUtils';
+import { getStoredData, storeData } from '../../util/localStorageUtils';
 import { useLazyQuery, useMutation, useQuery } from '@apollo/client';
 
 const OPTIONS = {
@@ -82,13 +78,13 @@ const WordsPage = () => {
 
   const handleSortingParamChange = useCallback((val: SortByType) => {
     setSortBy(val as SortWordsBy);
-    storeData('sortWordsBy', val);
+    storeData('sortWordsBy', val as SortWordsBy);
   }, []);
 
   const handleTagsChange = useCallback(
     (val: string[]) => {
       setTags(val);
-      const storedTags = getStoredData<'tags'>('tags') || ({} as TagDataType);
+      const storedTags = getStoredData('tags') || {};
       storedTags[language] = val;
       storeData('tags', storedTags);
     },
@@ -195,10 +191,9 @@ const WordsPage = () => {
   }, [deleteWordData.data]);
 
   useEffect(() => {
-    const storedSortBy = getStoredData<'sortWordsBy'>('sortWordsBy');
-    const storedIsReverseOrder =
-      getStoredData<'wordsSortOrder'>('wordsSortOrder');
-    const storedTags = getStoredData<'tags'>('tags')?.[language];
+    const storedSortBy = getStoredData('sortWordsBy');
+    const storedIsReverseOrder = getStoredData('wordsSortOrder');
+    const storedTags = getStoredData('tags')?.[language];
     if (storedSortBy) {
       setSortBy(storedSortBy);
     }
