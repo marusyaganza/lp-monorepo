@@ -1,13 +1,14 @@
 import { ApolloServer } from '@apollo/server';
 import { resolvers, ResolverContext } from '../resolvers';
-import { readFileSync } from 'fs';
 import { games } from './mocks/games';
 import { connect, connection } from 'mongoose';
 import { Language } from '../generated/graphql';
+import { loadFilesSync } from '@graphql-tools/load-files';
+import * as path from 'path';
 
-const typeDefs = readFileSync(
-  require.resolve('../../../shared/schema.graphql')
-).toString('utf-8');
+const typeDefs = loadFilesSync(
+  path.join(__dirname, '../../../shared/schema/*.graphql')
+);
 
 export const createTestServer = (context: ResolverContext) => {
   const server = new ApolloServer({

@@ -13,8 +13,12 @@ import {
 import { generateGameData } from './utils/generateGameData';
 import { ModelsType } from './db/models';
 import { searchWord } from './dictionary';
+import { loadFilesSync } from '@graphql-tools/load-files';
+import * as path from 'path';
 
-const typeDefs = require('./schema.graphql');
+const typeDefs = loadFilesSync(
+  path.join(__dirname, '../../shared/schema/*.graphql')
+);
 
 const server = new ApolloServer({
   typeDefs,

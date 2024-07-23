@@ -1,9 +1,3 @@
-enum Role {
-  ADMIN
-  MEMBER
-  GUEST
-}
-
 enum Level {
   A1
   A2
@@ -13,17 +7,23 @@ enum Level {
   C2
 }
 
+enum SortWordsBy {
+  name
+  particle
+  level
+}
+
 enum Language {
   ENGLISH
   SPANISH
 }
 
-enum Game {
-  AUDIO
-  TYPE_WORD
-  SELECT_WORD
-  SELECT_DEF
-  CONJUGATION
+enum SortBy {
+  lastTimePracticed
+  practicedTimes
+  errorCount
+  successRate
+  memoryRefresher
 }
 
 enum Tense {
@@ -46,35 +46,6 @@ enum Tense {
   # ppss1
   # ppss2
   # fpsb
-}
-
-enum SortBy {
-  lastTimePracticed
-  practicedTimes
-  errorCount
-  successRate
-  memoryRefresher
-}
-
-enum sortWordsBy {
-  name
-  particle
-  level
-}
-
-type User {
-  email: String!
-  firstName: String!
-  lastName: String!
-  createdAt: String!
-  id: ID!
-  role: Role!
-  primaryLanguage: String
-}
-
-type DefExample {
-  text: String!
-  translation: String
 }
 
 type WordDefinition {
@@ -157,59 +128,20 @@ type DictionaryWord {
   conjugation: [Conjugation]
 }
 
-type AuthUser {
-  email: String!
-  firstName: String!
-  lastName: String!
-  createdAt: String!
-  id: ID!
-  role: Role!
-  token: String!
-}
-
 type Suggestions {
   suggestions: [String]
 }
 
 union SearchResult = DictionaryWord | Suggestions
 
-type GameConfig {
-  name: String!
-  desc: String!
-  id: String!
-  type: Game!
-  wordsPerGame: Int!
-  optionsPerGame: Int!
-  minWords: Int!
-  timesToLearn: Int
-  orderNum: Int
-}
-
-type GameQuestionAdditionalInfo {
-  audioUrl: String
-  examples: [DefExample]
-  imgUrl: String
-  shortDef: String
-}
-
-type GameQuestion {
-  question: [String!]
-  options: [String]
-  answer: String!
-  wordId: ID!
-  additionalInfo: GameQuestionAdditionalInfo
-  alternativeSpelling: [String]
-}
-
-type GameData {
-  type: Game!
-  task: String!
-  questions: [GameQuestion!]
-}
-
 type Conjugation {
   cjid: String!
   cjfs: [String!]
+}
+
+type DefExample {
+  text: String!
+  translation: String
 }
 
 input DefExampleInput {
@@ -271,31 +203,9 @@ input UpdateWordInput {
   alternativeSpelling: [String]
 }
 
-input SignUpInput {
-  email: String!
-  password: String!
-  firstName: String!
-  lastName: String!
-  primaryLanguage: String
-}
-
-input LoginInput {
-  email: String!
-  password: String!
-}
-
 input WordSearchInput {
   search: String!
   language: Language
-}
-
-input GameDataInput {
-  gameType: Game!
-  sortBy: SortBy
-  isReverseOrder: Boolean
-  tags: [String]
-  language: Language
-  tense: Tense
 }
 
 input UpdateStatisticsInput {
@@ -307,14 +217,14 @@ input UpdateStatisticsInput {
 
 input WordsInput {
   language: Language
-  sortBy: sortWordsBy
+  sortBy: SortWordsBy
   isReverseOrder: Boolean
   tags: [String]
 }
 
 input WordsPerPageInput {
   language: Language
-  sortBy: sortWordsBy
+  sortBy: SortWordsBy
   isReverseOrder: Boolean
   tags: [String]
   limit: Int
@@ -337,9 +247,6 @@ input UpdateWordTagInput {
 }
 
 type Query {
-  user: User!
-  games(language: Language): [GameConfig]!
-  game(input: GameDataInput!): GameData!
   words(input: WordsInput): [Word]!
   word(id: ID!): Word!
   wordsPerPage(input: WordsPerPageInput): PaginatedWords!
@@ -352,8 +259,6 @@ type Mutation {
   updateWord(input: UpdateWordInput!): Word!
   saveGameResult(input: [UpdateStatisticsInput!]): String!
   deleteWord(id: ID!): String!
-  signUp(input: SignUpInput!): AuthUser!
-  login(input: LoginInput!): AuthUser!
   createTag(input: WordTagInput!): String!
   updateTag(input: UpdateWordTagInput): String!
   deleteTag(id: ID!): WordTag!
