@@ -1,0 +1,292 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`generateAudioGame should return the correct number of questions when data has enough ENGLISH words 1`] = `
+{
+  "questions": [
+    {
+      "additionalInfo": {
+        "examples": [],
+        "imgUrl": "https://example.com/images/apple.jpg",
+        "shortDef": "<b>apple means</b> Round fruit with red or green skin.",
+      },
+      "alternativeSpelling": [
+        "appel",
+        "aple",
+      ],
+      "answer": "apple",
+      "question": [
+        "https://example.com/audio/apple.mp3",
+      ],
+      "wordId": "1",
+    },
+    {
+      "additionalInfo": {
+        "examples": [],
+        "imgUrl": "https://example.com/images/orange.jpg",
+        "shortDef": "<b>orange means</b> Citrus fruit with orange rind.",
+      },
+      "alternativeSpelling": [
+        "oranj",
+        "orenge",
+      ],
+      "answer": "orange",
+      "question": [
+        "https://example.com/audio/orange.mp3",
+      ],
+      "wordId": "2",
+    },
+    {
+      "additionalInfo": {
+        "examples": [],
+        "imgUrl": "https://example.com/images/banana.jpg",
+        "shortDef": "<b>banana means</b> Curved fruit with yellow skin.",
+      },
+      "answer": "banana",
+      "question": [
+        "https://example.com/audio/banana.mp3",
+      ],
+      "wordId": "3",
+    },
+    {
+      "additionalInfo": {
+        "examples": [],
+        "imgUrl": "https://example.com/images/strawberry.jpg",
+        "shortDef": "<b>strawberry means</b> Soft red fruit with seeds.",
+      },
+      "alternativeSpelling": [
+        "strawbery",
+        "straw-berry",
+      ],
+      "answer": "strawberry",
+      "question": [
+        "https://example.com/audio/strawberry.mp3",
+      ],
+      "wordId": "4",
+    },
+    {
+      "additionalInfo": {
+        "examples": [],
+        "imgUrl": "https://example.com/images/pineapple.jpg",
+        "shortDef": "<b>pineapple means</b> Tropical fruit with spiky rind.",
+      },
+      "answer": "pineapple",
+      "question": [
+        "https://example.com/audio/pineapple.mp3",
+      ],
+      "wordId": "5",
+    },
+    {
+      "additionalInfo": {
+        "examples": [],
+        "imgUrl": "https://example.com/images/grape.jpg",
+        "shortDef": "<b>grape means</b> Small juicy fruit with smooth skin.",
+      },
+      "alternativeSpelling": [
+        "grap",
+        "greyp",
+      ],
+      "answer": "grape",
+      "question": [
+        "https://example.com/audio/grape.mp3",
+      ],
+      "wordId": "6",
+    },
+  ],
+  "task": "Type the word that you've heard",
+  "type": "AUDIO",
+}
+`;
+
+exports[`generateAudioGame should return the correct number of questions when data has enough SPANISH words 1`] = `
+{
+  "questions": [
+    {
+      "additionalInfo": {
+        "examples": [
+          {
+            "text": "Ella comió una manzana roja para el desayuno.",
+            "translation": "She ate a red apple for breakfast.",
+          },
+        ],
+        "imgUrl": "https://example.com/images/manzana.jpg",
+        "shortDef": "<b>manzana means</b> Round fruit with red or green skin.",
+      },
+      "alternativeSpelling": [
+        "manzana",
+        "manzána",
+      ],
+      "answer": "manzana",
+      "question": [
+        "https://example.com/audio/manzana.mp3",
+      ],
+      "wordId": "1",
+    },
+    {
+      "additionalInfo": {
+        "examples": [
+          {
+            "text": "Ella bebió jugo de naranja fresco esta mañana.",
+            "translation": "She drank fresh orange juice this morning.",
+          },
+          {
+            "text": "Llamaban la naranja “fruta del sol” por su color.",
+            "translation": "They called the orange "sun fruit" because of its color.",
+          },
+        ],
+        "imgUrl": "https://example.com/images/naranja.jpg",
+        "shortDef": "<b>naranja means</b> Citrus fruit with orange rind.",
+      },
+      "alternativeSpelling": [
+        "naranga",
+        "naranj",
+      ],
+      "answer": "naranja",
+      "question": [
+        "https://example.com/audio/naranja.mp3",
+      ],
+      "wordId": "2",
+    },
+    {
+      "additionalInfo": {
+        "examples": [
+          {
+            "text": "Él peló un plátano y se lo comió.",
+            "translation": "He peeled a banana and ate it.",
+          },
+        ],
+        "imgUrl": "https://example.com/images/platano.jpg",
+        "shortDef": "<b>plátano means</b> Curved fruit with yellow skin.",
+      },
+      "alternativeSpelling": [
+        "platáno",
+        "plátan",
+      ],
+      "answer": "plátano",
+      "question": [
+        "https://example.com/audio/platano.mp3",
+      ],
+      "wordId": "3",
+    },
+    {
+      "additionalInfo": {
+        "examples": [
+          {
+            "text": "Ella recogió una fresa madura del jardín.",
+            "translation": "She picked a ripe strawberry from the garden.",
+          },
+        ],
+        "imgUrl": "https://example.com/images/fresa.jpg",
+        "shortDef": "<b>fresa means</b> Soft red fruit with seeds.",
+      },
+      "alternativeSpelling": [
+        "freza",
+        "fre-sá",
+      ],
+      "answer": "fresa",
+      "question": [
+        "https://example.com/audio/fresa.mp3",
+      ],
+      "wordId": "4",
+    },
+    {
+      "additionalInfo": {
+        "examples": [
+          {
+            "text": "Hicieron un batido de piña.",
+            "translation": "They made a pineapple smoothie.",
+          },
+        ],
+        "imgUrl": "https://example.com/images/pina.jpg",
+        "shortDef": "<b>piña means</b> Tropical fruit with spiky rind.",
+      },
+      "alternativeSpelling": [
+        "pina",
+        "pi-ñá",
+      ],
+      "answer": "piña",
+      "question": [
+        "https://example.com/audio/pina.mp3",
+      ],
+      "wordId": "5",
+    },
+    {
+      "additionalInfo": {
+        "examples": [
+          {
+            "text": "Él me ofreció un racimo de uvas.",
+            "translation": "He offered me a bunch of grapes.",
+          },
+        ],
+        "imgUrl": "https://example.com/images/uva.jpg",
+        "shortDef": "<b>uva means</b> Small juicy fruit with smooth skin.",
+      },
+      "alternativeSpelling": [
+        "uba",
+        "uvá",
+      ],
+      "answer": "uva",
+      "question": [
+        "https://example.com/audio/uva.mp3",
+      ],
+      "wordId": "6",
+    },
+  ],
+  "task": "Type the word that you've heard",
+  "type": "AUDIO",
+}
+`;
+
+exports[`generateAudioGame should return the correct number of questions when with minimal ENGLISH words 1`] = `
+{
+  "questions": [
+    {
+      "additionalInfo": {
+        "examples": [],
+        "imgUrl": "https://example.com/images/apple.jpg",
+        "shortDef": "<b>apple means</b> Round fruit with red or green skin.",
+      },
+      "alternativeSpelling": [
+        "appel",
+        "aple",
+      ],
+      "answer": "apple",
+      "question": [
+        "https://example.com/audio/apple.mp3",
+      ],
+      "wordId": "1",
+    },
+  ],
+  "task": "Type the word that you've heard",
+  "type": "AUDIO",
+}
+`;
+
+exports[`generateAudioGame should return the correct number of questions when with minimal SPANISH words 1`] = `
+{
+  "questions": [
+    {
+      "additionalInfo": {
+        "examples": [
+          {
+            "text": "Ella comió una manzana roja para el desayuno.",
+            "translation": "She ate a red apple for breakfast.",
+          },
+        ],
+        "imgUrl": "https://example.com/images/manzana.jpg",
+        "shortDef": "<b>manzana means</b> Round fruit with red or green skin.",
+      },
+      "alternativeSpelling": [
+        "manzana",
+        "manzána",
+      ],
+      "answer": "manzana",
+      "question": [
+        "https://example.com/audio/manzana.mp3",
+      ],
+      "wordId": "1",
+    },
+  ],
+  "task": "Type the word that you've heard",
+  "type": "AUDIO",
+}
+`;

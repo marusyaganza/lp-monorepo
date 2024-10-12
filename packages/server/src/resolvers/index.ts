@@ -1,39 +1,16 @@
 import { QueryResolvers } from './Query';
 import { MutationResolvers } from './Mutation';
 import { Resolvers } from '../generated/graphql';
-import {
-  CreateTokenFuncType,
-  UserTokenInfo,
-  ValidatePasswordFuncType,
-  HashPasswordFuncType
-} from '../auth';
-import { ModelsType } from '../db/models';
-import { SearchFuncType } from '../dictionary/searchWord';
-import { GenerateGameDataFuncType } from '../utils/generateGameData';
+import { IResolverContext } from '../types/types';
+import { isSuggestion } from '../types/typeGuards';
 
-export interface ResolverContext {
-  models: ModelsType;
-  user?: UserTokenInfo;
-  createToken: CreateTokenFuncType;
-  validatePassword: ValidatePasswordFuncType;
-  hashPassword: HashPasswordFuncType;
-  searchWord: SearchFuncType;
-  generateGameData: GenerateGameDataFuncType;
-}
-
-export const resolvers: Resolvers<ResolverContext> = {
+export const resolvers: Resolvers<IResolverContext> = {
   SearchResult: {
     __resolveType(obj) {
-      // @ts-ignore
-      if (obj?.suggestions) {
+      if (isSuggestion(obj)) {
         return 'Suggestions';
       }
-      // @ts-ignore
-      if (obj?.name) {
-        return 'DictionaryWord';
-      }
-
-      return null;
+      return 'DictionaryWord';
     }
   },
   Query: QueryResolvers,

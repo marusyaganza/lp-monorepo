@@ -11,6 +11,7 @@ enum SortWordsBy {
   name
   particle
   level
+  updatedAt
 }
 
 enum Language {
@@ -95,7 +96,7 @@ type Word {
   stems: [String]
   tags: [WordTag]
   level: Level
-  shortDef: [String]!
+  shortDef: [String!]!
   language: Language!
   isLearned: Boolean
   statistics: WordStatistics
@@ -205,7 +206,7 @@ input UpdateWordInput {
 
 input WordSearchInput {
   search: String!
-  language: Language
+  language: Language!
 }
 
 input UpdateStatisticsInput {
@@ -213,13 +214,6 @@ input UpdateStatisticsInput {
   hasError: Boolean!
   gameType: Game!
   isLearned: Boolean
-}
-
-input WordsInput {
-  language: Language
-  sortBy: SortWordsBy
-  isReverseOrder: Boolean
-  tags: [String]
 }
 
 input WordsPerPageInput {
@@ -247,7 +241,6 @@ input UpdateWordTagInput {
 }
 
 type Query {
-  words(input: WordsInput): [Word]!
   word(id: ID!): Word!
   wordsPerPage(input: WordsPerPageInput): PaginatedWords!
   searchWord(input: WordSearchInput!): [SearchResult]!
@@ -257,9 +250,9 @@ type Query {
 type Mutation {
   saveWord(input: NewWordInput!): Word!
   updateWord(input: UpdateWordInput!): Word!
-  saveGameResult(input: [UpdateStatisticsInput!]): String!
+  saveGameResult(input: [UpdateStatisticsInput!]!): String!
   deleteWord(id: ID!): String!
   createTag(input: WordTagInput!): String!
-  updateTag(input: UpdateWordTagInput): String!
+  updateTag(input: UpdateWordTagInput!): String!
   deleteTag(id: ID!): WordTag!
 }

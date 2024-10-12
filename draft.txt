@@ -1,0 +1,206 @@
+Consider the following code
+
+import { SortOrder } from 'mongoose';
+
+export enum Tense {
+  Impf = 'impf',
+  Pind = 'pind',
+  Pprf = 'pprf',
+  Pret = 'pret'
+}
+
+export const GAME_FILTERS: Partial<Record<Game, FilterQuery<Word>>> = {
+  [Game.Audio]: { audioUrl: { $nin: ['', null] } },
+  [Game.Conjugation]: { conjugation: { $ne: null } }
+};
+
+export enum Game {
+  Audio = 'AUDIO',
+  Conjugation = 'CONJUGATION',
+  SelectDef = 'SELECT_DEF',
+  SelectWord = 'SELECT_WORD',
+  TypeWord = 'TYPE_WORD'
+}
+
+export enum SortWordsBy {
+  Level = 'level',
+  Name = 'name',
+  Particle = 'particle',
+  UpdatedAt = 'updatedAt'
+}
+
+export interface IMongooseSortingFilter {
+  [key: string]: SortOrder;
+}
+
+export const NO_TAGS_ID = '000000000000000000000000';
+
+export const DEFAULT_WORDS_SORT_BY = SortWordsBy.UpdatedAt;
+
+export function getTagsFilter(tags?: (string | null)[] | null) {
+  if (tags?.includes(NO_TAGS_ID)) {
+    return { $or: [{ tags: [] }, { tags: null }] };
+  }
+  return tags?.length
+    ? {
+        $and: tags.map(tag => ({
+          tags: tag
+        }))
+      }
+    : {};
+}
+
+export function getSearchFilter(searchQuery?: string | null) {
+  if (!searchQuery) {
+    return {};
+  }
+  const searchRegexp = { $regex: new RegExp(searchQuery, 'i') };
+  const searchFilter = {
+    $or: [
+      { name: searchRegexp },
+      { 'defs.def': searchRegexp },
+      { alternativeSpelling: searchRegexp },
+      { stems: searchRegexp }
+    ]
+  };
+  return searchFilter;
+}
+
+export function getWordsFilters(
+  filter: WordsPerPageInput | null | undefined,
+  user: string
+) {
+  const minFilter = { user, language: filter?.language || DEFAULT_LANGUAGE };
+
+  if (!filter) {
+    return minFilter;
+  }
+  const tagsFilter = getTagsFilter(filter?.tags);
+  const searchFilter = getSearchFilter(filter?.searchQuery);
+  const filters = {
+    ...minFilter,
+    ...searchFilter,
+    ...tagsFilter
+  };
+  return filters;
+}
+
+Can you write tests with jest and typescript for getWordsFilters function?
+
+
+Consider the following code
+
+export type WordDefinition = {
+  def: string;
+  examples?: DefExample[];
+};
+
+export type DefExample = {
+  text: string;
+  translation?: string;
+};
+
+export function getExamples(defs?: (WordDefinition | null)[] | null) {
+  if (!Array.isArray(defs)) {
+    return;
+  }
+
+  const examples = defs
+    .flatMap(def => def?.examples)
+    .filter(Boolean)
+    .slice(0, 5);
+
+  return examples as DefExample[];
+}
+
+Can you write tests with jest and typescript for getExamples function?
+
+Consider the following array of data for testing
+
+export const testData: IWordWithAudio[] = [
+  {
+    name: 'apple',
+    audioUrl: 'https://example.com/audio/apple.mp3',
+    id: '1',
+    defs: [
+      { def: 'A round fruit with red or green skin and a whitish interior.' }
+    ],
+    shortDef: ['Round fruit with red or green skin.'],
+    imgUrl: 'https://example.com/images/apple.jpg',
+    alternativeSpelling: ['appel', 'aple']
+  },
+  {
+    name: 'orange',
+    audioUrl: 'https://example.com/audio/orange.mp3',
+    id: '2',
+    defs: [
+      {
+        def: 'A citrus fruit with a tough bright orange rind and juicy sweet flesh.'
+      },
+      {
+        def: 'Sun fruit'
+      }
+    ],
+    shortDef: ['Citrus fruit with orange rind.'],
+    imgUrl: 'https://example.com/images/orange.jpg',
+    alternativeSpelling: ['oranj', 'orenge']
+  },
+  {
+    name: 'banana',
+    audioUrl: 'https://example.com/audio/banana.mp3',
+    id: '3',
+    defs: [
+      {
+        def: 'A long curved fruit that grows in clusters and has soft pulpy flesh and yellow skin when ripe.'
+      }
+    ],
+    shortDef: ['Curved fruit with yellow skin.'],
+    imgUrl: 'https://example.com/images/banana.jpg'
+  },
+  {
+    name: 'strawberry',
+    audioUrl: 'https://example.com/audio/strawberry.mp3',
+    id: '4',
+    defs: [{ def: 'A sweet soft red fruit with a seed-studded surface.' }],
+    shortDef: ['Soft red fruit with seeds.'],
+    imgUrl: 'https://example.com/images/strawberry.jpg',
+    alternativeSpelling: ['strawbery', 'straw-berry']
+  },
+  {
+    name: 'pineapple',
+    audioUrl: 'https://example.com/audio/pineapple.mp3',
+    id: '5',
+    defs: [
+      {
+        def: 'A large tropical fruit with a tough spiky rind and sweet yellow flesh.'
+      }
+    ],
+    shortDef: ['Tropical fruit with spiky rind.'],
+    imgUrl: 'https://example.com/images/pineapple.jpg'
+  },
+  {
+    name: 'grape',
+    audioUrl: 'https://example.com/audio/grape.mp3',
+    id: '6',
+    defs: [
+      { def: 'A small juicy fruit with a smooth skin and a sweet taste.' }
+    ],
+    shortDef: ['Small juicy fruit with smooth skin.'],
+    imgUrl: 'https://example.com/images/grape.jpg',
+    alternativeSpelling: ['grap', 'greyp']
+  }
+];
+
+Can you modify it a little? 'name'property should be a Spanish word and def and shortDef should be the word's definition in English.
+Also please add examples to some defs objects like this: 
+defs: [
+      {
+        def: 'The quality of being beautiful or pleasing to the senses.',
+        examples: [
+          {
+            text: 'Su hermosura es indescriptible.',
+            translation: 'Her beauty is indescribable.'
+          }
+        ]
+      }
+    ],

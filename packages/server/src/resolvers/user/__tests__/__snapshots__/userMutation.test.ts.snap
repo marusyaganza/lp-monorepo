@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`user mutations login with correct password 1`] = `
+{
+  "login": {
+    "email": "member@member.com",
+    "firstName": "User",
+    "lastName": "Test",
+    "token": "token_{"id":"1","role":"MEMBER"}",
+  },
+}
+`;
+
+exports[`user mutations signUp 1`] = `
+{
+  "signUp": {
+    "email": "test@test.com",
+    "firstName": "User",
+    "id": "2",
+    "lastName": "Test",
+    "token": "token_{"id":"2","role":"MEMBER"}",
+  },
+}
+`;

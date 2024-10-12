@@ -1,0 +1,201 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`generateConjugationGame generate data with minimal SPANISH words with impf tense 1`] = `
+{
+  "questions": [
+    {
+      "additionalInfo": {
+        "audioUrl": "https://example.com/audio/pensar.mp3",
+        "imgUrl": "https://example.com/images/pensar.jpg",
+        "shortDef": "<b>pensar means</b> To think.",
+      },
+      "answer": "piensa, piense, pensemos, pensad, piensen",
+      "question": [
+        "pensar",
+      ],
+      "wordId": "001",
+    },
+  ],
+  "task": "Conjugate the verb in Imperativo",
+  "type": "CONJUGATION",
+}
+`;
+
+exports[`generateConjugationGame generate data with minimal SPANISH words with pind tense 1`] = `
+{
+  "questions": [
+    {
+      "additionalInfo": {
+        "audioUrl": "https://example.com/audio/pensar.mp3",
+        "imgUrl": "https://example.com/images/pensar.jpg",
+        "shortDef": "<b>pensar means</b> To think.",
+      },
+      "answer": "pienso, piensas, piensa, pensamos, pensáis, piensan",
+      "question": [
+        "pensar",
+      ],
+      "wordId": "001",
+    },
+  ],
+  "task": "Conjugate the verb in Presente indicativo",
+  "type": "CONJUGATION",
+}
+`;
+
+exports[`generateConjugationGame generate data with minimal SPANISH words with pprf tense 1`] = `
+{
+  "questions": [
+    {
+      "additionalInfo": {
+        "audioUrl": "https://example.com/audio/pensar.mp3",
+        "imgUrl": "https://example.com/images/pensar.jpg",
+        "shortDef": "<b>pensar means</b> To think.",
+      },
+      "answer": "he pensado, has pensado, ha pensado, hemos pensado, habéis pensado, han pensado",
+      "question": [
+        "pensar",
+      ],
+      "wordId": "001",
+    },
+  ],
+  "task": "Conjugate the verb in Pretérito perfecto simple",
+  "type": "CONJUGATION",
+}
+`;
+
+exports[`generateConjugationGame generate data with minimal SPANISH words with pret tense 1`] = `
+{
+  "questions": [
+    {
+      "additionalInfo": {
+        "audioUrl": "https://example.com/audio/pensar.mp3",
+        "imgUrl": "https://example.com/images/pensar.jpg",
+        "shortDef": "<b>pensar means</b> To think.",
+      },
+      "answer": "pensé, pensaste, pensó, pensamos, pensasteis, pensaron",
+      "question": [
+        "pensar",
+      ],
+      "wordId": "001",
+    },
+  ],
+  "task": "Conjugate the verb in Pretérito imperfecto",
+  "type": "CONJUGATION",
+}
+`;
+
+exports[`generateConjugationGame should return the correct data if there are enough words with impf tense 1`] = `
+[
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/pensar.mp3",
+      "imgUrl": "https://example.com/images/pensar.jpg",
+      "shortDef": "<b>pensar means</b> To think.",
+    },
+    "answer": "piensa, piense, pensemos, pensad, piensen",
+    "question": [
+      "pensar",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/correr.mp3",
+      "imgUrl": "https://example.com/images/correr.jpg",
+      "shortDef": "<b>correr means</b> To run.",
+    },
+    "answer": "corre, corra, corramos, corred, corran",
+    "question": [
+      "correr",
+    ],
+    "wordId": Any<String>,
+  },
+]
+`;
+
+exports[`generateConjugationGame should return the correct data if there are enough words with pind tense 1`] = `
+[
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/pensar.mp3",
+      "imgUrl": "https://example.com/images/pensar.jpg",
+      "shortDef": "<b>pensar means</b> To think.",
+    },
+    "answer": "pienso, piensas, piensa, pensamos, pensáis, piensan",
+    "question": [
+      "pensar",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/correr.mp3",
+      "imgUrl": "https://example.com/images/correr.jpg",
+      "shortDef": "<b>correr means</b> To run.",
+    },
+    "answer": "corro, corres, corre, corremos, corréis, corren",
+    "question": [
+      "correr",
+    ],
+    "wordId": Any<String>,
+  },
+]
+`;
+
+exports[`generateConjugationGame should return the correct data if there are enough words with pprf tense 1`] = `
+[
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/pensar.mp3",
+      "imgUrl": "https://example.com/images/pensar.jpg",
+      "shortDef": "<b>pensar means</b> To think.",
+    },
+    "answer": "he pensado, has pensado, ha pensado, hemos pensado, habéis pensado, han pensado",
+    "question": [
+      "pensar",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/correr.mp3",
+      "imgUrl": "https://example.com/images/correr.jpg",
+      "shortDef": "<b>correr means</b> To run.",
+    },
+    "answer": "he corrido, has corrido, ha corrido, hemos corrido, habéis corrido, han corrido",
+    "question": [
+      "correr",
+    ],
+    "wordId": Any<String>,
+  },
+]
+`;
+
+exports[`generateConjugationGame should return the correct data if there are enough words with pret tense 1`] = `
+[
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/pensar.mp3",
+      "imgUrl": "https://example.com/images/pensar.jpg",
+      "shortDef": "<b>pensar means</b> To think.",
+    },
+    "answer": "pensé, pensaste, pensó, pensamos, pensasteis, pensaron",
+    "question": [
+      "pensar",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/correr.mp3",
+      "imgUrl": "https://example.com/images/correr.jpg",
+      "shortDef": "<b>correr means</b> To run.",
+    },
+    "answer": "corrí, corriste, corrió, corrimos, corristeis, corrieron",
+    "question": [
+      "correr",
+    ],
+    "wordId": Any<String>,
+  },
+]
+`;

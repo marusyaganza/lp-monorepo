@@ -1,0 +1,49 @@
+import { DEFAULT_LANGUAGE } from '../constants/defaultValues';
+import { ERROR_MESSAGES } from '../constants/errorMessages';
+import { GameModel } from '../db/models/Game/Game';
+import { WordModel } from '../db/models/Word/Word';
+import { Game, GameDataInput } from '../generated/graphql';
+import { GameDataGeneratorFunc } from '../types/types';
+import { OperationResolutionError } from '../utils/apolloCustomErrors';
+import { generateAudioGame } from './generators/generateAudioGame';
+import { generateConjugationGame } from './generators/generateConjugationGame';
+import { generateSelectDefGame } from './generators/generateSelectDefGame';
+import { generateSelectWordGame } from './generators/generateSelectWordGame';
+import { generateTypeWordGame } from './generators/generateTypeWordGame';
+
+const generators: Record<Game, GameDataGeneratorFunc> = {
+  [Game.Audio]: generateAudioGame,
+  [Game.TypeWord]: generateTypeWordGame,
+  [Game.SelectWord]: generateSelectWordGame,
+  [Game.SelectDef]: generateSelectDefGame,
+  [Game.Conjugation]: generateConjugationGame
+};
+
+export async function generateGameData(
+  parameters: GameDataInput,
+  user: string
+) {
+  const language = parameters?.language || DEFAULT_LANGUAGE;
+  const { gameType } = parameters;
+  const config = await GameModel.findOne({
+    type: gameType,
+    languages: language
+  });
+
+  if (!config) {
+    throw new OperationResolutionError(ERROR_MESSAGES.GAME_NOT_FOUND);
+  }
+
+  const { minWords } = config;
+
+  const words = await WordModel.selectWordsForGame(parameters, config, user);
+
+  if (!minWords || words.length < minWords) {
+    throw new OperationResolutionError(
+      `not enough words to start a game. You have ${words.length} word. Words requited for the game: ${minWords}`
+    );
+  }
+
+  const gameData = generators[gameType](words, parameters, config, user);
+  return gameData;
+}

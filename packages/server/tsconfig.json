@@ -1,20 +1,15 @@
 {
-  "extends": "../shared/tsconfig.settings",
-    "compilerOptions": {
-        "sourceMap": true,
-        "outDir": "dist",
-        "module": "CommonJS",
-        "baseUrl": "./src",
-        "moduleResolution": "node",
-        "lib": ["ES2020", "DOM", "ES2021.String"],
-        "noImplicitAny": true,
-        "noUnusedLocals": true,
-        "noUnusedParameters": false,
-        "noUncheckedIndexedAccess": true,
-        "useUnknownInCatchVariables": true,
-        "resolveJsonModule": true,
-        "typeRoots": ["node_modules/@types", "src/@types"],
-    },
-    "include": ["src"],
-    "exclude": ["**/node_modules", "**/tests"],
+  "extends": "../tsconfig.settings.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist",
+    "lib": ["ES2022", "DOM", "ES2021.String"],
+    "esModuleInterop": true,
+    "composite": true,
+    "allowJs": true,
+    "sourceMap": true
+
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "**/tests", "**/*.test.ts"]
 }

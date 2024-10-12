@@ -1,0 +1,766 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`formatData should return correct result minimal English words 1`] = `
+[
+  {
+    "audioUrl": "mock_audio_endpoint/en/us/mp3/m/murthe01.mp3",
+    "conjugation": null,
+    "defs": [
+      {
+        "def": "chiefly dialectal variant of <i>murder</i>",
+      },
+    ],
+    "imgDesc": null,
+    "imgUrl": undefined,
+    "isOffensive": false,
+    "language": "ENGLISH",
+    "name": "murther",
+    "particle": "noun",
+    "shortDef": [
+      "chiefly dialectal variant of <i>murder</i>",
+    ],
+    "stems": [
+      "murder",
+      "murther",
+      "murthered",
+      "murthering",
+      "murthers",
+    ],
+    "transcription": "ˈmər-t͟hər",
+    "uuid": "87f2219c-6fcb-4390-9e2a-427384ef13a3",
+  },
+]
+`;
+
+exports[`formatData should return correct result with Spanish noun 1`] = `
+[
+  {
+    "audioUrl": "mock_audio_endpoint/es/me/mp3/i/idiom01sp.mp3",
+    "conjugation": null,
+    "defs": [
+      {
+        "def": "language",
+        "examples": [
+          {
+            "text": "el idioma inglés",
+            "translation": "the English language",
+          },
+        ],
+      },
+    ],
+    "imgDesc": null,
+    "imgUrl": undefined,
+    "isOffensive": false,
+    "language": "SPANISH",
+    "name": "idioma",
+    "particle": "masculine noun",
+    "shortDef": [
+      "language",
+    ],
+    "stems": [
+      "idioma",
+    ],
+    "transcription": "idioma",
+    "uuid": "63882a81-032e-4dc1-9c22-bb683cb1bad9",
+  },
+]
+`;
+
+exports[`formatData should return correct result with Spanish verbs 1`] = `
+{
+  "audioUrl": "mock_audio_endpoint/es/me/mp3/t/tener01sp.mp3",
+  "conjugation": [
+    {
+      "cjfs": [
+        "teniendo",
+        "tenido",
+      ],
+      "cjid": "gppt",
+    },
+    {
+      "cjfs": [
+        "tengo",
+        "tienes",
+        "tiene",
+        "tenemos",
+        "tenéis",
+        "tienen",
+      ],
+      "cjid": "pind",
+    },
+    {
+      "cjfs": [
+        "tenía",
+        "tenías",
+        "tenía",
+        "teníamos",
+        "teníais",
+        "tenían",
+      ],
+      "cjid": "pret",
+    },
+    {
+      "cjfs": [
+        "tuve",
+        "tuviste",
+        "tuvo",
+        "tuvimos",
+        "tuvisteis",
+        "tuvieron",
+      ],
+      "cjid": "pprf",
+    },
+    {
+      "cjfs": [
+        "tendré",
+        "tendrás",
+        "tendrá",
+        "tendremos",
+        "tendréis",
+        "tendrán",
+      ],
+      "cjid": "futr",
+    },
+    {
+      "cjfs": [
+        "tendría",
+        "tendrías",
+        "tendría",
+        "tendríamos",
+        "tendríais",
+        "tendrían",
+      ],
+      "cjid": "cond",
+    },
+    {
+      "cjfs": [
+        "tenga",
+        "tengas",
+        "tenga",
+        "tengamos",
+        "tengáis",
+        "tengan",
+      ],
+      "cjid": "psub",
+    },
+    {
+      "cjfs": [
+        "tuviera",
+        "tuvieras",
+        "tuviera",
+        "tuviéramos",
+        "tuvierais",
+        "tuvieran",
+      ],
+      "cjid": "pisb1",
+    },
+    {
+      "cjfs": [
+        "tuviese",
+        "tuvieses",
+        "tuviese",
+        "tuviésemos",
+        "tuvieseis",
+        "tuviesen",
+      ],
+      "cjid": "pisb2",
+    },
+    {
+      "cjfs": [
+        "tuviere",
+        "tuvieres",
+        "tuviere",
+        "tuviéremos",
+        "tuviereis",
+        "tuvieren",
+      ],
+      "cjid": "fsub",
+    },
+    {
+      "cjfs": [
+        "he tenido",
+        "has tenido",
+        "ha tenido",
+        "hemos tenido",
+        "habéis tenido",
+        "han tenido",
+      ],
+      "cjid": "ppci",
+    },
+    {
+      "cjfs": [
+        "había tenido",
+        "habías tenido",
+        "había tenido",
+        "habíamos tenido",
+        "habíais tenido",
+        "habían tenido",
+      ],
+      "cjid": "ppsi",
+    },
+    {
+      "cjfs": [
+        "hube tenido",
+        "hubiste tenido",
+        "hubo tenido",
+        "hubimos tenido",
+        "hubisteis tenido",
+        "hubieron tenido",
+      ],
+      "cjid": "pant",
+    },
+    {
+      "cjfs": [
+        "habré tenido",
+        "habrás tenido",
+        "habrá tenido",
+        "habremos tenido",
+        "habréis tenido",
+        "habrán tenido",
+      ],
+      "cjid": "fpin",
+    },
+    {
+      "cjfs": [
+        "habría tenido",
+        "habrías tenido",
+        "habría tenido",
+        "habríamos tenido",
+        "habríais tenido",
+        "habrían tenido",
+      ],
+      "cjid": "cpef",
+    },
+    {
+      "cjfs": [
+        "haya tenido",
+        "hayas tenido",
+        "haya tenido",
+        "hayamos tenido",
+        "hayáis tenido",
+        "hayan tenido",
+      ],
+      "cjid": "ppfs",
+    },
+    {
+      "cjfs": [
+        "hubiera tenido",
+        "hubieras tenido",
+        "hubiera tenido",
+        "hubiéramos tenido",
+        "hubierais tenido",
+        "hubieran tenido",
+      ],
+      "cjid": "ppss1",
+    },
+    {
+      "cjfs": [
+        "hubiese tenido",
+        "hubieses tenido",
+        "hubiese tenido",
+        "hubiésemos tenido",
+        "hubieseis tenido",
+        "hubiesen tenido",
+      ],
+      "cjid": "ppss2",
+    },
+    {
+      "cjfs": [
+        "hubiere tenido",
+        "hubieres tenido",
+        "hubiere tenido",
+        "hubiéremos tenido",
+        "hubiereis tenido",
+        "hubieren tenido",
+      ],
+      "cjid": "fpsb",
+    },
+    {
+      "cjfs": [
+        "-",
+        "ten",
+        "tenga",
+        "tengamos",
+        "tened",
+        "tengan",
+      ],
+      "cjid": "impf",
+    },
+  ],
+  "defs": [
+    {
+      "def": "to have",
+      "examples": [
+        {
+          "text": "tiene un coche azul",
+          "translation": "he has a blue car",
+        },
+        {
+          "text": "¿lo tienes contigo?",
+          "translation": "do you have it with you?",
+        },
+        {
+          "text": "tienen tres hijos",
+          "translation": "they have three children",
+        },
+        {
+          "text": "tiene ojos verdes",
+          "translation": "she has green eyes",
+        },
+        {
+          "text": "tiene mucha experiencia",
+          "translation": "she has a lot of experience",
+        },
+        {
+          "text": "¿tiene hora?",
+          "translation": "do you have the time?, can you tell me what time it is?",
+        },
+      ],
+    },
+    {
+      "def": "to have (available)",
+      "examples": [
+        {
+          "text": "tener dinero/tiempo para",
+          "translation": "to have money/time for",
+        },
+        {
+          "text": "no tuve más remedio",
+          "translation": "I had no choice",
+        },
+      ],
+    },
+    {
+      "def": "to have (plans, etc.)",
+      "examples": [
+        {
+          "text": "tengo mucho que hacer",
+          "translation": "I have a lot to do",
+        },
+        {
+          "text": "hoy tiene clase",
+          "translation": "he has class today",
+        },
+      ],
+    },
+    {
+      "def": "to have, to cause (consequences, etc.)",
+    },
+    {
+      "def": "to have (an illness or injury)",
+    },
+    {
+      "def": "to have, to experience (problems, etc.)",
+      "examples": [
+        {
+          "text": "tuve un buen día",
+          "translation": "I had a good day",
+        },
+      ],
+    },
+    {
+      "def": "to have, to receive (news, etc.)",
+    },
+    {
+      "def": "to have, to show (a quality)",
+      "examples": [
+        {
+          "text": "tienes razón",
+          "translation": "you're right",
+        },
+        {
+          "text": "eso no tiene sentido",
+          "translation": "that doesn't make sense",
+        },
+        {
+          "text": "no tiene nada de malo/raro",
+          "translation": "there's nothing bad/strange about it",
+        },
+      ],
+    },
+    {
+      "def": "to have, to include",
+      "examples": [
+        {
+          "text": "el libro tiene 500 páginas",
+          "translation": "the book has 500 pages",
+        },
+      ],
+    },
+    {
+      "def": "to use, to exercise",
+      "examples": [
+        {
+          "text": "tener cuidado",
+          "translation": "to be careful",
+        },
+      ],
+    },
+    {
+      "def": "to hold",
+      "examples": [
+        {
+          "text": "ten esto",
+          "translation": "hold this",
+        },
+      ],
+    },
+    {
+      "def": "to have, to give birth to",
+    },
+    {
+      "def": "to think, to consider",
+      "examples": [
+        {
+          "text": "me tienes por loco",
+          "translation": "you think I'm crazy",
+        },
+      ],
+    },
+    {
+      "def": "to have to",
+      "examples": [
+        {
+          "text": "tengo que salir",
+          "translation": "I have to leave",
+        },
+        {
+          "text": "tiene que estar aquí",
+          "translation": "it has to be here, it must be here",
+        },
+      ],
+    },
+  ],
+  "imgDesc": null,
+  "imgUrl": undefined,
+  "isOffensive": false,
+  "language": "SPANISH",
+  "name": "tener",
+  "particle": "transitive verb",
+  "shortDef": [
+    "to have",
+    "to have (available)",
+    "to have (plans, etc.)",
+  ],
+  "stems": [
+    "tener",
+    "tener por",
+    "tener que",
+    "tenerse",
+    "tenerse por",
+  ],
+  "transcription": "tener",
+  "uuid": "4de5e98f-d04c-46d8-89dd-42aa6a5078ac",
+}
+`;
+
+exports[`formatData should return correct result with complex English words 1`] = `
+[
+  {
+    "audioUrl": "mock_audio_endpoint/en/us/mp3/h/heart001.mp3",
+    "conjugation": null,
+    "defs": [
+      {
+        "def": "something resembling a heart in shape",
+      },
+      {
+        "def": "a game in which the object is to avoid taking tricks see trick containing hearts",
+      },
+      {
+        "def": "intellect",
+      },
+      {
+        "def": "see also take heart",
+        "examples": [
+          {
+            "text": "never lost <i>heart</i>",
+            "translation": undefined,
+          },
+        ],
+      },
+      {
+        "def": "one's innermost character, feelings, or inclinations",
+        "examples": [
+          {
+            "text": "knew it in his <i>heart</i>",
+            "translation": undefined,
+          },
+          {
+            "text": "a man after my own <i>heart</i>",
+            "translation": undefined,
+          },
+        ],
+      },
+      {
+        "def": "the younger central compact part of a leafy rosette (such as a head of lettuce or stalk of celery)",
+      },
+    ],
+    "imgDesc": "heart 1a: <i>1</i> aorta, <i>2</i> pulmonary artery, <i>3</i> left atrium, <i>4</i> left ventricle, <i>5</i> right ventricle, <i>6</i> right atrium",
+    "imgUrl": "mock_img_endpoint/heart.gif",
+    "isOffensive": false,
+    "language": "ENGLISH",
+    "name": "heart",
+    "particle": "noun",
+    "shortDef": [
+      "a hollow muscular organ of vertebrate animals that by its rhythmic contraction acts as a force pump maintaining the circulation of the blood",
+      "a structure in an invertebrate animal functionally analogous to the vertebrate heart",
+      "breast, bosom",
+    ],
+    "stems": [
+      "at heart",
+      "by heart",
+      "heart",
+      "hearts",
+      "to heart",
+    ],
+    "transcription": "ˈhärt",
+    "uuid": "f0b7bdb0-3194-4621-8410-992ac81192f1",
+  },
+  {
+    "audioUrl": undefined,
+    "conjugation": null,
+    "defs": [
+      {
+        "def": "to like see like an online post, comment, etc., especially by clicking or tapping a heart-shaped symbol",
+        "examples": [
+          {
+            "text": "The tweet still hits home so much, not just for us, but for the 2.6 million that <i>hearted</i> her tweet too.",
+            "translation": undefined,
+          },
+        ],
+      },
+      {
+        "def": "hearten",
+      },
+      {
+        "def": "to fix in the heart",
+      },
+    ],
+    "imgDesc": null,
+    "imgUrl": undefined,
+    "isOffensive": false,
+    "language": "ENGLISH",
+    "name": "heart",
+    "particle": "verb",
+    "shortDef": [
+      "love",
+      "to like an online post, comment, etc., especially by clicking or tapping a heart-shaped symbol",
+      "hearten",
+    ],
+    "stems": [
+      "heart",
+      "hearted",
+      "hearting",
+      "hearts",
+    ],
+    "transcription": "heart",
+    "uuid": "0a4e128b-2ecc-4633-99f2-3066ca9ba48e",
+  },
+  {
+    "audioUrl": "mock_audio_endpoint/en/us/mp3/h/heart001.mp3",
+    "conjugation": null,
+    "defs": [
+      {
+        "def": "river in southwestern North Dakota flowing 200 miles (320 kilometers) east into the Missouri River opposite Bismarck",
+      },
+    ],
+    "imgDesc": null,
+    "imgUrl": undefined,
+    "isOffensive": false,
+    "language": "ENGLISH",
+    "name": "Heartg",
+    "particle": "geographical name",
+    "shortDef": [
+      "river in southwestern North Dakota flowing 200 miles (320 kilometers) east into the Missouri River opposite Bismarck",
+    ],
+    "stems": [
+      "Heart",
+    ],
+    "transcription": "ˈhärt",
+    "uuid": "2d93a577-e48b-46d9-ab53-2a6d717f3ffe",
+  },
+  {
+    "audioUrl": undefined,
+    "conjugation": null,
+    "defs": [
+      {
+        "def": "an acute episode of coronary heart disease marked by the death or damage of heart muscle due to insufficient blood supply to the heart usually as a result of a coronary artery becoming blocked by a blood clot formed in response to a ruptured or torn fatty arterial deposit",
+      },
+    ],
+    "imgDesc": null,
+    "imgUrl": undefined,
+    "isOffensive": false,
+    "language": "ENGLISH",
+    "name": "heart attack",
+    "particle": "noun",
+    "shortDef": [
+      "an acute episode of coronary heart disease marked by the death or damage of heart muscle due to insufficient blood supply to the heart usually as a result of a coronary artery becoming blocked by a blood clot formed in response to a ruptured or torn fatty arterial deposit —called also myocardial infarction",
+    ],
+    "stems": [
+      "heart attack",
+      "heart attacks",
+      "myocardial infarction",
+    ],
+    "transcription": "heart attack",
+    "uuid": "73f780c0-3094-4b7e-bf73-8c97547629fc",
+  },
+  {
+    "audioUrl": undefined,
+    "conjugation": null,
+    "defs": [
+      {
+        "def": "incoordination of the heartbeat in which the atria and ventricles beat independently and which is marked by decreased cardiac output",
+      },
+    ],
+    "imgDesc": null,
+    "imgUrl": undefined,
+    "isOffensive": false,
+    "language": "ENGLISH",
+    "name": "heart block",
+    "particle": "noun",
+    "shortDef": [
+      "incoordination of the heartbeat in which the atria and ventricles beat independently and which is marked by decreased cardiac output",
+    ],
+    "stems": [
+      "heart block",
+      "heart blocks",
+    ],
+    "transcription": "heart block",
+    "uuid": "d7947c52-7862-401b-945c-5f3da7deb78b",
+  },
+  {
+    "audioUrl": undefined,
+    "conjugation": null,
+    "defs": [
+      {
+        "def": "an abnormal condition of the heart or of the heart and circulation (such as coronary heart disease, arrhythmia, or heart-valve defect)",
+      },
+    ],
+    "imgDesc": null,
+    "imgUrl": undefined,
+    "isOffensive": false,
+    "language": "ENGLISH",
+    "name": "heart disease",
+    "particle": "noun",
+    "shortDef": [
+      "an abnormal condition of the heart or of the heart and circulation (such as coronary heart disease, arrhythmia, or heart-valve defect)",
+    ],
+    "stems": [
+      "heart disease",
+      "heart diseases",
+    ],
+    "transcription": "heart disease",
+    "uuid": "8e11a660-b660-457d-bbd3-bbe1679cb502",
+  },
+  {
+    "audioUrl": undefined,
+    "conjugation": null,
+    "defs": [
+      {
+        "def": "a condition in which the heart is unable to pump blood at an adequate rate or in adequate volume",
+      },
+      {
+        "def": "cessation of heartbeat death",
+      },
+    ],
+    "imgDesc": null,
+    "imgUrl": undefined,
+    "isOffensive": false,
+    "language": "ENGLISH",
+    "name": "heart failure",
+    "particle": "noun",
+    "shortDef": [
+      "a condition in which the heart is unable to pump blood at an adequate rate or in adequate volume",
+      "cessation of heartbeat : death",
+    ],
+    "stems": [
+      "heart failure",
+      "heart failures",
+    ],
+    "transcription": "heart failure",
+    "uuid": "e2b02f4e-09bd-4e8e-968c-9d0aa143576b",
+  },
+  {
+    "audioUrl": "mock_audio_endpoint/en/us/mp3/h/heartf02.mp3",
+    "conjugation": null,
+    "defs": [
+      {
+        "def": "not in love",
+      },
+    ],
+    "imgDesc": null,
+    "imgUrl": undefined,
+    "isOffensive": false,
+    "language": "ENGLISH",
+    "name": "heart-free",
+    "particle": "adjective",
+    "shortDef": [
+      "not in love",
+    ],
+    "stems": [
+      "heart-free",
+    ],
+    "transcription": "ˈhärt-ˌfrē",
+    "uuid": "d1af8d89-e8e2-4263-bc19-7bb3b59a96c7",
+  },
+  {
+    "audioUrl": "mock_audio_endpoint/en/us/mp3/h/heart01v.mp3",
+    "conjugation": null,
+    "defs": [
+      {
+        "def": "conducive to a healthy heart and circulatory system",
+        "examples": [
+          {
+            "text": "<i>heart-healthy</i> exercise",
+            "translation": undefined,
+          },
+          {
+            "text": "a <i>heart-healthy</i> diet",
+            "translation": undefined,
+          },
+        ],
+      },
+    ],
+    "imgDesc": null,
+    "imgUrl": undefined,
+    "isOffensive": false,
+    "language": "ENGLISH",
+    "name": "heart-healthy",
+    "particle": "adjective",
+    "shortDef": [
+      "conducive to a healthy heart and circulatory system",
+    ],
+    "stems": [
+      "heart-healthier",
+      "heart-healthiest",
+      "heart-healthy",
+    ],
+    "transcription": "ˈhärt-ˌhel-thē",
+    "uuid": "46efd099-6a3e-4795-80da-d4d10c8b3300",
+  },
+  {
+    "audioUrl": undefined,
+    "conjugation": null,
+    "defs": [
+      {
+        "def": "a mechanical pump that maintains circulation during heart surgery by shunting blood away from the heart, oxygenating it, and returning it to the body",
+      },
+    ],
+    "imgDesc": null,
+    "imgUrl": undefined,
+    "isOffensive": false,
+    "language": "ENGLISH",
+    "name": "heart-lung machine",
+    "particle": "noun",
+    "shortDef": [
+      "a mechanical pump that maintains circulation during heart surgery by shunting blood away from the heart, oxygenating it, and returning it to the body",
+    ],
+    "stems": [
+      "heart-lung machine",
+      "heart-lung machines",
+    ],
+    "transcription": "heart-lung machine",
+    "uuid": "e7167521-baec-415c-a951-7d0e80ed1a70",
+  },
+]
+`;

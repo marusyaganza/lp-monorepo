@@ -59,10 +59,6 @@ export const SEARCH_WORDS = gql`
         imgDesc
         shortDef
         language
-        conjugation {
-          cjid
-          cjfs
-        }
       }
     }
   }

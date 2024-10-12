@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+      "target": "ES2020",
+      "module": "commonjs",
+      "types": [],
+      "declaration": true,
+      "stripInternal": true,
+      "forceConsistentCasingInFileNames": true,
+      "strict": true,
+      "noUnusedLocals": true,
+      "noImplicitReturns": true,
+      "esModuleInterop": true,
+      "skipLibCheck": false,
+    }
+  }

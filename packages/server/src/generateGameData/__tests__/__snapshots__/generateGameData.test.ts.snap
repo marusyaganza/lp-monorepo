@@ -1,0 +1,255 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`generateGameData with AUDIO game English 1`] = `
+{
+  "additionalInfo": {
+    "examples": [
+      {
+        "text": "She found the perfect book by sheer serendipity.",
+      },
+    ],
+    "imgUrl": "https://example.com/images/serendipity.jpg",
+    "shortDef": "<b>serendipity means</b> Unexpected good fortune.",
+  },
+  "answer": "serendipity",
+  "question": [
+    "https://example.com/audio/serendipity.mp3",
+  ],
+  "wordId": Any<String>,
+}
+`;
+
+exports[`generateGameData with AUDIO game Spanish 1`] = `
+{
+  "additionalInfo": {
+    "examples": [
+      {
+        "text": "Él puede correr muy rápido.",
+        "translation": "He can run very fast.",
+      },
+    ],
+    "imgUrl": "https://example.com/images/correr.jpg",
+    "shortDef": "<b>correr means</b> To run.",
+  },
+  "alternativeSpelling": [
+    "korrer",
+  ],
+  "answer": "correr",
+  "question": [
+    "https://example.com/audio/correr.mp3",
+  ],
+  "wordId": Any<String>,
+}
+`;
+
+exports[`generateGameData with CONJUGATION game impf tense 1`] = `
+{
+  "additionalInfo": {
+    "audioUrl": "https://example.com/audio/correr.mp3",
+    "imgUrl": "https://example.com/images/correr.jpg",
+    "shortDef": "<b>correr means</b> To run.",
+  },
+  "answer": "corre, corra, corramos, corred, corran",
+  "question": [
+    "correr",
+  ],
+  "wordId": Any<String>,
+}
+`;
+
+exports[`generateGameData with CONJUGATION game pind tense 1`] = `
+{
+  "additionalInfo": {
+    "audioUrl": "https://example.com/audio/correr.mp3",
+    "imgUrl": "https://example.com/images/correr.jpg",
+    "shortDef": "<b>correr means</b> To run.",
+  },
+  "answer": "corro, corres, corre, corremos, corréis, corren",
+  "question": [
+    "correr",
+  ],
+  "wordId": Any<String>,
+}
+`;
+
+exports[`generateGameData with CONJUGATION game pprf tense 1`] = `
+{
+  "additionalInfo": {
+    "audioUrl": "https://example.com/audio/correr.mp3",
+    "imgUrl": "https://example.com/images/correr.jpg",
+    "shortDef": "<b>correr means</b> To run.",
+  },
+  "answer": "he corrido, has corrido, ha corrido, hemos corrido, habéis corrido, han corrido",
+  "question": [
+    "correr",
+  ],
+  "wordId": Any<String>,
+}
+`;
+
+exports[`generateGameData with CONJUGATION game pret tense 1`] = `
+{
+  "additionalInfo": {
+    "audioUrl": "https://example.com/audio/correr.mp3",
+    "imgUrl": "https://example.com/images/correr.jpg",
+    "shortDef": "<b>correr means</b> To run.",
+  },
+  "answer": "corrí, corriste, corrió, corrimos, corristeis, corrieron",
+  "question": [
+    "correr",
+  ],
+  "wordId": Any<String>,
+}
+`;
+
+exports[`generateGameData with SELECT_DEF game English 1`] = `
+{
+  "additionalInfo": {
+    "audioUrl": "https://example.com/audio/serendipity.mp3",
+    "examples": [
+      {
+        "text": "She found the perfect book by sheer serendipity.",
+      },
+    ],
+    "imgUrl": "https://example.com/images/serendipity.jpg",
+  },
+  "answer": "Unexpected good fortune.",
+  "options": [
+    "Short-lived.",
+    "Found everywhere.",
+    "Idealistic but impractical.",
+    "State of being alone.",
+    "Glowing or bright.",
+    "Unexpected good fortune.",
+  ],
+  "question": [
+    "serendipity",
+  ],
+  "wordId": Any<String>,
+}
+`;
+
+exports[`generateGameData with SELECT_DEF game Spanish 1`] = `
+{
+  "additionalInfo": {
+    "audioUrl": "https://example.com/audio/correr.mp3",
+    "examples": [
+      {
+        "text": "Él puede correr muy rápido.",
+        "translation": "He can run very fast.",
+      },
+    ],
+    "imgUrl": "https://example.com/images/correr.jpg",
+  },
+  "answer": "To run.",
+  "options": [
+    "Happiness.",
+    "Quickly.",
+    "Big, large.",
+    "To think.",
+    "Beauty.",
+    "To run.",
+  ],
+  "question": [
+    "correr",
+  ],
+  "wordId": Any<String>,
+}
+`;
+
+exports[`generateGameData with SELECT_WORD game English 1`] = `
+{
+  "additionalInfo": {
+    "audioUrl": "https://example.com/audio/serendipity.mp3",
+    "examples": [
+      {
+        "text": "She found the perfect book by sheer serendipity.",
+      },
+    ],
+    "imgUrl": "https://example.com/images/serendipity.jpg",
+  },
+  "answer": "serendipity",
+  "options": [
+    "ephemeral",
+    "ubiquitous",
+    "quixotic",
+    "solitude",
+    "luminous",
+    "serendipity",
+  ],
+  "question": [
+    "Unexpected good fortune.",
+  ],
+  "wordId": Any<String>,
+}
+`;
+
+exports[`generateGameData with SELECT_WORD game Spanish 1`] = `
+{
+  "additionalInfo": {
+    "audioUrl": "https://example.com/audio/correr.mp3",
+    "examples": [
+      {
+        "text": "Él puede correr muy rápido.",
+        "translation": "He can run very fast.",
+      },
+    ],
+    "imgUrl": "https://example.com/images/correr.jpg",
+  },
+  "answer": "correr",
+  "options": [
+    "felicidad",
+    "rápidamente",
+    "grande",
+    "pensar",
+    "hermosura",
+    "correr",
+  ],
+  "question": [
+    "To run.",
+  ],
+  "wordId": Any<String>,
+}
+`;
+
+exports[`generateGameData with TYPE_WORD game English 1`] = `
+{
+  "additionalInfo": {
+    "audioUrl": "https://example.com/audio/serendipity.mp3",
+    "examples": [
+      {
+        "text": "She found the perfect book by sheer serendipity.",
+      },
+    ],
+    "imgUrl": "https://example.com/images/serendipity.jpg",
+  },
+  "answer": "serendipity",
+  "question": [
+    "Unexpected good fortune.",
+  ],
+  "wordId": Any<String>,
+}
+`;
+
+exports[`generateGameData with TYPE_WORD game Spanish 1`] = `
+{
+  "additionalInfo": {
+    "audioUrl": "https://example.com/audio/correr.mp3",
+    "examples": [
+      {
+        "text": "Él puede correr muy rápido.",
+        "translation": "He can run very fast.",
+      },
+    ],
+    "imgUrl": "https://example.com/images/correr.jpg",
+  },
+  "alternativeSpelling": [
+    "korrer",
+  ],
+  "answer": "correr",
+  "question": [
+    "To run.",
+  ],
+  "wordId": Any<String>,
+}
+`;

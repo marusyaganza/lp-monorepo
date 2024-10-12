@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`user queries user if user exist 1`] = `
+{
+  "user": {
+    "email": "member@member.com",
+    "firstName": "User",
+    "lastName": "Test",
+    "role": "MEMBER",
+  },
+}
+`;

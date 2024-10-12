@@ -53,29 +53,36 @@ const conjugationSchema = new Schema<Conjugation>({
   cjfs: { type: [String], required: true }
 });
 
-const wordSchema = new Schema<WordCoreType>({
-  uuid: { type: String, immutable: true },
-  name: { type: String, required: true, immutable: true },
-  createdAt: { type: String, required: true },
-  updatedAt: { type: Number },
-  defs: { type: [defSchema], required: true },
-  shortDef: { type: [String], required: true },
-  user: { type: String, required: true },
-  audioUrl: String,
-  transcription: String,
-  imgUrl: String,
-  imgDesc: String,
-  isOffensive: Boolean,
-  level: { type: String, enum: ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'] },
-  language: { type: String, enum: Language },
-  particle: String,
-  stems: [String],
-  tags: [{ type: Schema.Types.ObjectId, ref: 'WordTag' }],
-  additionalInfo: String,
-  isLearned: Boolean,
-  statistics: wordStatisticsSchema,
-  alternativeSpelling: [String],
-  conjugation: [conjugationSchema]
+const wordSchema = new Schema<WordCoreType>(
+  {
+    uuid: { type: String, immutable: true },
+    name: { type: String, required: true, immutable: true },
+    createdAt: { type: String, required: true },
+    updatedAt: { type: Number },
+    defs: { type: [defSchema], required: true },
+    shortDef: { type: [String], required: true },
+    user: { type: String, required: true },
+    audioUrl: String,
+    transcription: String,
+    imgUrl: String,
+    imgDesc: String,
+    isOffensive: Boolean,
+    level: { type: String, enum: ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'] },
+    language: { type: String, enum: Language },
+    particle: String,
+    stems: [String],
+    tags: [{ type: Schema.Types.ObjectId, ref: 'WordTag' }],
+    additionalInfo: String,
+    isLearned: Boolean,
+    statistics: wordStatisticsSchema,
+    alternativeSpelling: [String],
+    conjugation: [conjugationSchema]
+  },
+  { toObject: { virtuals: true, getters: true, versionKey: false } }
+);
+
+wordSchema.virtual('id').get(function () {
+  return this._id.toHexString();
 });
 
 export const Word = model<WordCoreType>('Word', wordSchema);

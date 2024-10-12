@@ -24,7 +24,6 @@ const loginMutation = `
 const saveWordMutation = `mutation($input: NewWordInput!) {
   saveWord(input: $input) {
     uuid
-    user
     transcription
     tags {
       text
@@ -72,7 +71,6 @@ mutation($input: UpdateWordInput!) {
     }
     transcription
     shortDef
-    user
     uuid
   }
 }
@@ -83,9 +81,9 @@ const deleteWordMutation = `mutation($deleteWordId: ID!) {
 }`;
 
 const saveGameResultMutation = `
-mutation SaveGameResult($input: [UpdateStatisticsInput!]) {
-  saveGameResult(input: $input)
-}
+mutation SaveGameResult($input: [UpdateStatisticsInput!]!) {
+    saveGameResult(input: $input)
+  }
 `;
 
 export const updateTagMutation = `
@@ -107,6 +105,7 @@ export const deleteTagMutation = `
       desc
       color
       id
+      language
     }
   }
 `;

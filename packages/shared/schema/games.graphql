@@ -14,8 +14,8 @@ type GameConfig {
   wordsPerGame: Int!
   optionsPerGame: Int!
   minWords: Int!
-  timesToLearn: Int
-  orderNum: Int
+  timesToLearn: Int!
+  orderNum: Int!
 }
 
 type GameQuestionAdditionalInfo {

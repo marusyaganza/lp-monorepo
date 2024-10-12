@@ -1,46 +1,25 @@
 require('dotenv').config();
-import 'graphql-import-node';
+import * as path from 'path';
 import { ApolloServer } from '@apollo/server';
 import { startStandaloneServer } from '@apollo/server/standalone';
-import { initDB } from './db/initDB';
-import { resolvers, ResolverContext } from './resolvers';
-import {
-  createToken,
-  getUserFromToken,
-  hashPassword,
-  validatePassword
-} from './auth';
-import { generateGameData } from './utils/generateGameData';
-import { ModelsType } from './db/models';
-import { searchWord } from './dictionary';
 import { loadFilesSync } from '@graphql-tools/load-files';
-import * as path from 'path';
+import { initDB } from './db/initDB';
+import { resolvers } from './resolvers';
+import { IResolverContext } from './types/types';
+import { context } from './context';
 
 const typeDefs = loadFilesSync(
   path.join(__dirname, '../../shared/schema/*.graphql')
 );
 
-const server = new ApolloServer({
+const server = new ApolloServer<IResolverContext>({
   typeDefs,
   resolvers
 });
 
-initDB(async (models: ModelsType) => {
-  // @ts-ignore
+initDB(async () => {
   const { url } = await startStandaloneServer(server, {
-    context: async function ({ req }): Promise<ResolverContext> {
-      const token = req?.headers?.authorization?.split(' ').pop();
-      const user = token ? getUserFromToken(token) : undefined;
-      return {
-        models,
-        user,
-        createToken,
-        validatePassword,
-        hashPassword,
-        searchWord,
-        generateGameData
-      };
-    },
+    context,
     listen: { port: 4000 }
   });
   console.log(`🚀 Server ready at ${url}`);

@@ -179,7 +179,6 @@ const GamePage = () => {
   };
 
   const isLoading = loading || saveResultData.loading;
-
   return (
     <>
       {isLoading && <PageSpinner />}
