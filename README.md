@@ -20,7 +20,7 @@ run `yarn build:front` to build frontend. It generates files in `packages/front/
 
 ## Develop deploy
 
-run `docker compose -p lp-dev -f docker-compose-dev.yml up -d`
+run `docker-compose -p lp-dev -f docker-compose-dev.yml up -d`
 to start the server on port `4001` and the frontend on `8081`in detached mode.
 
 run `docker compose down` to stop containers.

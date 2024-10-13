@@ -1,5 +1,4 @@
 {
-  "extends": "../tsconfig.settings.json",
   "compilerOptions": {
     "rootDir": "src",
     "outDir": "dist",
@@ -7,9 +6,18 @@
     "esModuleInterop": true,
     "composite": true,
     "allowJs": true,
-    "sourceMap": true
-
+    "sourceMap": true,
+    "target": "ES2020",
+    "module": "commonjs",
+    "types": [],
+    "declaration": true,
+    "stripInternal": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noImplicitReturns": true,
+    "skipLibCheck": false,
   },
   "include": ["src"],
-  "exclude": ["node_modules", "**/tests", "**/*.test.ts"]
+  "exclude": ["node_modules", "**/tests", "**/*.test.ts", "**/__tests__",]
 }

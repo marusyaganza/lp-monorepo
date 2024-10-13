@@ -53,6 +53,7 @@ const gameTypes = Object.values(Game);
 describe('Game findOne', () => {
   beforeEach(async () => {
     await connectToDb();
+    await dropDb();
     await seedDb();
   });
 

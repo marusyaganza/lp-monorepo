@@ -11,7 +11,7 @@ services:
   lp-front-dev:
     build:
       context: .
-      dockerfile: docker/Dockerfile-front-prod-dev
+      dockerfile: docker/Dockerfile-front-dev
     ports:
       - '8081:80'
     env_file:

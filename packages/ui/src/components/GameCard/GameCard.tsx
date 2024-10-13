@@ -16,11 +16,11 @@ export interface GameCardProps {
 /**Temporary mock
  * remove this once the server returns correct imageUrls
  */
-import audio from '../../mocks/mockGamesLogos/audio.svg';
-import select_definition from '../../mocks/mockGamesLogos/select_definition.svg';
-import select_word from '../../mocks/mockGamesLogos/select_word.svg';
-import type_word from '../../mocks/mockGamesLogos/type_word.svg';
-import conjugation from '../../mocks/mockGamesLogos/conjugation.svg';
+import audio from '../../assets/img/mockGamesLogos/audio.svg';
+import select_definition from '../../assets/img/mockGamesLogos/select_definition.svg';
+import select_word from '../../assets/img/mockGamesLogos/select_word.svg';
+import type_word from '../../assets/img/mockGamesLogos/type_word.svg';
+import conjugation from '../../assets/img/mockGamesLogos/conjugation.svg';
 // import find_defs from '../../mocks/mockGamesLogos/find_defs.svg';
 // import flash_cards from '../../mocks/mockGamesLogos/flash_cards.svg';
 import { Game } from '../../generated/graphql';
