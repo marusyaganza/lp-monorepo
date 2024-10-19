@@ -1,6 +1,5 @@
 node_modules
 nodemon.json
-public
 dist
 tsconfig.tsbuildinfo
 temp

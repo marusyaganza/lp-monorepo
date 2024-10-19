@@ -1,0 +1,9 @@
+.orderControls {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+}
+
+.select {
+  width: 250px;
+}

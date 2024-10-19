@@ -1,0 +1,31 @@
+.buttonContainer {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+  margin-top: 24px;
+}
+
+.formFields {
+  display: grid;
+  grid-row-gap: 8px;
+  box-sizing: border-box;
+
+  @media (width >= 800px) {
+    padding: 32px;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 32px;
+  }
+}
+
+.formField {
+  @media (width >= 800px) {
+    width: 400px;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}

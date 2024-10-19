@@ -1,0 +1,69 @@
+import { gql } from '@apollo/client';
+
+export const LOGIN = gql`
+  mutation Login($input: LoginInput!) {
+    login(input: $input) {
+      token
+      id
+    }
+  }
+`;
+
+export const SIGN_UP = gql`
+  mutation SignUp($input: SignUpInput!) {
+    signUp(input: $input) {
+      token
+      id
+    }
+  }
+`;
+
+export const SAVE_WORD = gql`
+  mutation SaveWord($input: NewWordInput!) {
+    saveWord(input: $input) {
+      name
+      uuid
+    }
+  }
+`;
+
+export const DELETE_WORD = gql`
+  mutation DeleteWord($deleteWordId: ID!) {
+    deleteWord(id: $deleteWordId)
+  }
+`;
+
+export const UPDATE_WORD = gql`
+  mutation UpdateWord($input: UpdateWordInput!) {
+    updateWord(input: $input) {
+      name
+    }
+  }
+`;
+
+export const SAVE_GAME_RESULT = gql`
+  mutation SaveGameResult($input: [UpdateStatisticsInput!]!) {
+    saveGameResult(input: $input)
+  }
+`;
+
+export const UPDATE_TAG = gql`
+  mutation UpdateTag($input: UpdateWordTagInput!) {
+    updateTag(input: $input)
+  }
+`;
+
+export const CREATE_TAG = gql`
+  mutation CreateTag($input: WordTagInput!) {
+    createTag(input: $input)
+  }
+`;
+
+export const DELETE_TAG = gql`
+  mutation DeleteTag($deleteTagId: ID!) {
+    deleteTag(id: $deleteTagId) {
+      text
+      id
+    }
+  }
+`;

@@ -1,0 +1,53 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  @media (width >= 800px) {
+    height: 100vh;
+  }
+}
+
+.progress {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  height: 130px;
+  justify-content: center;
+
+  @media (width <= 800px) {
+    height: 80px;
+  }
+}
+
+.game {
+  flex-grow: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+
+.task {
+  text-align: center;
+  font-family: var(--font-kalam);
+  font-size: var(--font-size-l);
+
+  @media (width <= 800px) {
+    font-size: var(--font-size-m);
+  }
+}
+
+.question {
+  font-size: var(--font-size-m);
+  max-width: 600px;
+}
+
+.answer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  margin: 40px auto;
+}
