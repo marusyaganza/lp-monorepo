@@ -18,7 +18,6 @@
     "prod": "lerna run prod --scope '@lp/front' --stream",
     "build:server": "lerna run prod --scope '@lp/server'",
     "build:front": "yarn codegen --scope={'@lp/front','@lp/ui'} && lerna run prod --scope '@lp/front'",
-    "build:front-dev": "yarn codegen --scope={'@lp/front','@lp/ui'} && lerna run deploy-dev --scope '@lp/front'",
     "eslint": "lerna run eslint",
     "ready": "lerna run ready --concurrency=1 --stream",
     "clean": "lerna run clean && rimraf node_modules",
