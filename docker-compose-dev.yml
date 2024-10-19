@@ -13,7 +13,7 @@ services:
       context: .
       dockerfile: docker/Dockerfile-front
       args:
-        - GQL_URL=http://localhost:4001/graphql
+        - GQL_URL=/data/graphql
         - TOKEN_TTL=7
         - NODE_ENV=production
     ports:
