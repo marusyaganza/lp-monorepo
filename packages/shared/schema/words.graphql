@@ -54,15 +54,6 @@ type WordDefinition {
   examples: [DefExample]
 }
 
-type WordTag {
-  id: ID!
-  user: ID!
-  language: Language!
-  color: String!
-  text: String!
-  desc: String
-}
-
 type WordStatisticsField {
   lastTimePracticed: Int
   practicedTimes: Int
@@ -226,25 +217,10 @@ input WordsPerPageInput {
   searchQuery: String
 }
 
-input WordTagInput {
-  color: String!
-  text: String!
-  language: Language!
-  desc: String
-}
-
-input UpdateWordTagInput {
-  id: ID!
-  color: String!
-  text: String!
-  desc: String
-}
-
 type Query {
   word(id: ID!): Word!
   wordsPerPage(input: WordsPerPageInput): PaginatedWords!
   searchWord(input: WordSearchInput!): [SearchResult]!
-  tags(language: Language): [WordTag]!
 }
 
 type Mutation {
@@ -252,7 +228,4 @@ type Mutation {
   updateWord(input: UpdateWordInput!): Word!
   saveGameResult(input: [UpdateStatisticsInput!]!): String!
   deleteWord(id: ID!): String!
-  createTag(input: WordTagInput!): String!
-  updateTag(input: UpdateWordTagInput!): String!
-  deleteTag(id: ID!): WordTag!
 }

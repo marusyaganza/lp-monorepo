@@ -5,12 +5,11 @@ import { UPDATE_TAG, CREATE_TAG, DELETE_TAG } from '../../gql/mutations';
 import {
   Language,
   TagsQuery,
-  UpdateWordTagInput,
-  WordTagInput
+  UpdateWordTagInput
 } from '../../generated/graphql';
-import { Button, Tag, useModal } from '@lp/ui';
+
+import { Button, Tag, TagsForm, TagsFormValues, useModal } from '@lp/ui';
 import { PageLayout } from '../../components/PageLayout/PageLayout';
-import { TagsForm } from '../../components/TagsForm/TagsForm';
 import { DeleteConfirnation } from '../../components/DeleteConfirnation/DeleteConfirnation';
 import { AppContext } from '../../app-context/appContext';
 import { removeTypenames } from '../../util/wordUtils';
@@ -28,9 +27,7 @@ const filterData = (
   if (!storedData?.[language]?.length) {
     return;
   }
-
   storedData[language] = storedData?.[language]?.filter(tag => tag != id);
-
   storeData(dataName, storedData);
 };
 
@@ -41,20 +38,20 @@ const cleanUpDeletedTags = (id: string, language: Language) => {
 
 export const TagsPage = () => {
   const { setNotification, language } = useContext(AppContext);
-  const { error, loading, data } = useQuery<TagsQuery>(TAGS_QUERY, {
-    variables: { language }
-  });
+
   const [currentTag, setCurrentTag] = useState<
     UpdateWordTagInput | undefined
   >();
-
   const [tagToDelete, setTagToDelete] = useState<
     { text?: string; id?: string } | undefined
   >();
+  const [showNewTagForm, setShowNewTagForm] = useState(false);
 
   const { Modal, openModal, closeModal } = useModal();
 
-  const [showNewTagForm, setShowNewTagForm] = useState(false);
+  const { error, loading, data } = useQuery<TagsQuery>(TAGS_QUERY, {
+    variables: { language }
+  });
 
   const [updateTagFunc, updateTagData] = useMutation(UPDATE_TAG, {
     update(cache) {
@@ -80,70 +77,78 @@ export const TagsPage = () => {
     }
   });
 
+  const getUpdateFormHandler = (id: string) => {
+    return function submitUpdateTag(values: TagsFormValues) {
+      const mutationFunc = updateTagFunc;
+      const input: UpdateWordTagInput = { ...values, id };
+      mutationFunc({
+        variables: { input },
+        update(cache) {
+          cache.evict({ fieldName: 'game' });
+          cache.evict({ fieldName: 'wordsPerPage' });
+          cache.evict({ fieldName: 'tags' });
+        }
+      });
+    };
+  };
+
+  const handleNewTagFormSubmit = (values: TagsFormValues) => {
+    const mutationFunc = createTagFunc;
+    mutationFunc({
+      variables: { input: { ...values, language } }
+    });
+  };
+
   const renderTags = () => {
     const tags = data?.tags;
     if (!tags) {
       return;
     }
 
-    return tags.map(tag => (
-      <div key={tag?.id}>
-        <div className={styles.tag}>
-          <div className={styles.tagDisplay}>
-            <Tag {...tag} />
+    return tags.map(tag => {
+      const { id, text, desc } = tag;
+      return (
+        <div key={id}>
+          <div className={styles.tag}>
+            <div className={styles.tagDisplay}>
+              <Tag {...tag} />
+            </div>
+            {desc && <p className={styles.desc}>{desc}</p>}
+            <div className={styles.buttons}>
+              <Button
+                variant="icon"
+                iconId="edit"
+                iconHeight={30}
+                iconWidth={30}
+                onClick={getEditButtonHandler(id)}
+              >
+                Edit
+              </Button>
+              <Button
+                iconId="eraser"
+                variant="icon"
+                iconHeight={30}
+                iconWidth={30}
+                onClick={getDeleteButtonHandler({
+                  text,
+                  id
+                })}
+              >
+                Delete
+              </Button>
+            </div>
           </div>
-          {tag?.desc && <p className={styles.desc}>{tag?.desc}</p>}
-          <div className={styles.buttons}>
-            <Button
-              variant="icon"
-              iconId="edit"
-              iconHeight={30}
-              iconWidth={30}
-              onClick={getEditButtonHandler(tag?.id)}
-            >
-              Edit
-            </Button>
-            <Button
-              iconId="eraser"
-              variant="icon"
-              iconHeight={30}
-              iconWidth={30}
-              onClick={getDeleteButtonHandler({ text: tag?.text, id: tag?.id })}
-            >
-              Delete
-            </Button>
-          </div>
+          {currentTag?.id === id && (
+            <TagsForm
+              onSubmit={getUpdateFormHandler(tag?.id)}
+              onCancel={() => {
+                setCurrentTag(undefined);
+              }}
+              initialValues={tag}
+            />
+          )}
         </div>
-        {currentTag?.id === tag?.id && (
-          <TagsForm<UpdateWordTagInput>
-            onSubmit={handleFormSubmit}
-            onCancel={() => {
-              setCurrentTag(undefined);
-            }}
-            // @ts-ignore
-            initialValues={removeTypenames(tag)}
-          />
-        )}
-      </div>
-    ));
-  };
-
-  const handleFormSubmit = (values: UpdateWordTagInput) => {
-    const mutationFunc = updateTagFunc;
-    const input = removeTypenames(values);
-    mutationFunc({
-      variables: { input },
-      update(cache) {
-        cache.evict({ fieldName: 'game' });
-        cache.evict({ fieldName: 'wordsPerPage' });
-      }
-    });
-  };
-
-  const handleNewTagFormSubmit = (values: WordTagInput) => {
-    const mutationFunc = createTagFunc;
-    mutationFunc({
-      variables: { input: { ...values, language } }
+      );
     });
   };
 

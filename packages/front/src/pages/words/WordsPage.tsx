@@ -284,7 +284,6 @@ const WordsPage = () => {
           <div className={styles.wordSelection}>
             <TagSelector
               showNoTagsTag
-              // @ts-ignore
               tags={tagsResult?.data?.tags}
               value={tags}
               label="tags"

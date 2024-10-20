@@ -106,7 +106,6 @@ const GamesPage = () => {
           />
           <TagSelector
             showNoTagsTag
-            // @ts-ignore
             tags={tagsResult?.data?.tags}
             value={tags}
             label="tags"
@@ -129,7 +128,6 @@ const GamesPage = () => {
                   : `${routes.games}/${game.type?.toLocaleLowerCase()}`;
               return (
                 <li key={game.id}>
-                  {/* @ts-ignore */}
                   <GameCard game={game} linkUrl={`/${gameLink}${searchStr}`} />
                 </li>
               );

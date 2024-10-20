@@ -7,9 +7,11 @@ import { useSelect } from '../Select/useSelect';
 import { Tag } from '../Tag/Tag';
 import { Button } from '../Button/Button';
 
+type TagType = Omit<WordTag, 'language' | 'user'>;
+
 export interface TagSelectorProps {
   /**TagSelector prop */
-  tags?: WordTag[];
+  tags?: TagType[];
   onChange: (val: string[]) => void;
   value?: string[];
   label?: string;
@@ -18,13 +20,13 @@ export interface TagSelectorProps {
   className?: string;
 }
 
-// @ts-ignore
-const NO_TAGS_TAG: WordTag = {
+const NO_TAGS_TAG: TagType = {
   color: '#F7F7F7',
   text: 'without tags',
   id: '000000000000000000000000',
   desc: 'select words that have no tags'
 };
+
 /**Component description goes here */
 export const TagSelector = ({
   tags: initialTags = [],
@@ -58,7 +60,7 @@ export const TagSelector = ({
     };
   };
 
-  const renderOption = (tag: WordTag) => {
+  const renderOption = (tag: TagType) => {
     return (
       <Option key={tag.id} value={tag.id} className={styles.option}>
         <span>{tag.text}</span>

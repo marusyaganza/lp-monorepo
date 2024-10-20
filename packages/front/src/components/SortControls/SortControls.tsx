@@ -35,7 +35,9 @@ export const SortControls = ({
   });
 
   const renderValue = (val?: string) => {
-    // @ts-ignore
+    if (!val) {
+      return '';
+    }
     return options?.[val] ? options[val] : blankValue || 'Select words by';
   };
 

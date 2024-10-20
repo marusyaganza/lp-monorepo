@@ -53,8 +53,10 @@ export const DefinitionInput = ({
     const changeHandler = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
       const val = event.target.value;
       const newVals = [...values];
-      // @ts-ignore
-      newVals[defIndex].examples[parentIndex][prop]! = val;
+      const example = newVals?.[defIndex]?.examples?.[parentIndex];
+      if (example?.[prop]) {
+        example[prop] = val;
+      }
       setValues([...newVals]);
       onChange([...newVals]);
     };

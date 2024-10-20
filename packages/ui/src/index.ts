@@ -59,4 +59,5 @@ export * from './utils/classnames';
 export * from './components/Modal/useModal';
 export * from './components/TagSelector/TagSelector';
 export * from './components/Tag/Tag';
+export * from './components/TagsForm/TagsForm';
 export * from './components/ColorInput/ColorInput';

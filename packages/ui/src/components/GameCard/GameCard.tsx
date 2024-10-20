@@ -3,26 +3,28 @@ import { Link } from 'react-router-dom';
 import { cn } from '../../utils/classnames';
 
 import styles from './GameCard.module.css';
-import { GameConfig } from '../../generated/graphql';
+
+interface GameConfigType {
+  name: string;
+  desc: string;
+  type: Game;
+}
 
 export interface GameCardProps {
   /**Game config: includes game title, description and type */
-  game: Omit<GameConfig, 'wordsPerGame' | 'optionsPerGame' | 'minWords'>;
-  /**additional styling */
+  game: GameConfigType;
+  /**link to game's page */
   linkUrl: string;
+  /**additional styling */
   className?: string;
 }
 
-/**Temporary mock
- * remove this once the server returns correct imageUrls
- */
-import audio from '../../assets/img/mockGamesLogos/audio.svg';
-import select_definition from '../../assets/img/mockGamesLogos/select_definition.svg';
-import select_word from '../../assets/img/mockGamesLogos/select_word.svg';
-import type_word from '../../assets/img/mockGamesLogos/type_word.svg';
-import conjugation from '../../assets/img/mockGamesLogos/conjugation.svg';
-// import find_defs from '../../mocks/mockGamesLogos/find_defs.svg';
-// import flash_cards from '../../mocks/mockGamesLogos/flash_cards.svg';
+import audio from '../../assets/img/gameLogos/audio.svg';
+import select_definition from '../../assets/img/gameLogos/select_definition.svg';
+import select_word from '../../assets/img/gameLogos/select_word.svg';
+import type_word from '../../assets/img/gameLogos/type_word.svg';
+import conjugation from '../../assets/img/gameLogos/conjugation.svg';
+
 import { Game } from '../../generated/graphql';
 const images = {
   [Game.SelectDef]: select_definition,
@@ -30,8 +32,6 @@ const images = {
   [Game.SelectWord]: select_word,
   [Game.TypeWord]: type_word,
   [Game.Conjugation]: conjugation
-  // find_defs,
-  // flash_cards
 };
 /**Game card that displays game's main info */
 export const GameCard = ({ game, linkUrl, className }: GameCardProps) => {

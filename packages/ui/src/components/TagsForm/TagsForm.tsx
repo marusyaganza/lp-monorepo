@@ -1,13 +1,19 @@
-import React, { FormEventHandler, useState } from 'react';
-import { Button, ColorInput, InputV2, Tag, cn } from '@lp/ui';
-import { useForm } from '../../hooks/useForm';
+import React, { FormEventHandler, useMemo, useState } from 'react';
+import { InputV2 } from '../InputV2/InputV2';
+import { ColorInput } from '../ColorInput/ColorInput';
+import { Button } from '../Button/Button';
+import { Tag } from '../Tag/Tag';
 import { WordTagInput } from '../../generated/graphql';
+import { validateFormValues } from '../../utils/validators';
 import styles from './TagsFrom.module.css';
+import { cn } from '../../utils/classnames';
 
-export interface TagsFormProps<T extends Omit<WordTagInput, 'language'>> {
-  onSubmit: (values: T) => void;
+export type TagsFormValues = Omit<WordTagInput, 'language'>;
+
+export interface TagsFormProps {
+  onSubmit: (values: TagsFormValues) => void;
   onCancel: () => void;
-  initialValues?: T | null;
+  initialValues?: TagsFormValues | null;
   className?: string;
 }
 
@@ -28,37 +34,49 @@ const validators = {
   }
 };
 
-export const TagsForm = function <T extends Omit<WordTagInput, 'language'>>({
+export const TagsForm = function ({
   initialValues,
   onSubmit,
   onCancel,
   className
-}: TagsFormProps<T>) {
-  const [errors, setErrors] = useState<Record<string, string>>({});
-  const [{ values, changeHandler, validate }] = useForm<T>(
-    // @ts-ignore
-    initialValues || DEFAUL_INITIAL_VALUES,
-    validators
-  );
-
-  const onFormSubmit: FormEventHandler<HTMLFormElement> = e => {
-    e.preventDefault();
-    const { errors, isValid } = validate();
-    if (isValid) {
-      onSubmit(values);
+}: TagsFormProps) {
+  const initVals = useMemo(() => {
+    if (!initialValues) {
+      return DEFAUL_INITIAL_VALUES;
     }
-    setErrors(errors);
-  };
+    const vals: TagsFormValues = DEFAUL_INITIAL_VALUES;
+    const keys = Object.keys(vals) as (keyof TagsFormValues)[];
+    keys.forEach(k => {
+      const value = initialValues[k];
+      if (value) {
+        vals[k] = value;
+      }
+    });
+    return vals;
+  }, [initialValues]);
 
-  const getChangeHandler = (name: keyof T) => {
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [values, setValues] = useState(initVals);
+
+  const getChangeHandler = (name: keyof TagsFormValues) => {
     return function (val: string) {
-      // @ts-ignore
-      changeHandler({ [name]: val });
+      setValues(prev => ({ ...prev, [name]: val }));
     };
   };
 
+  const handleSubmit: FormEventHandler = e => {
+    e.preventDefault();
+    const { errors, isValid } = validateFormValues(validators, values);
+    if (isValid) {
+      onSubmit(values);
+      setValues(DEFAUL_INITIAL_VALUES);
+    } else {
+      setErrors(errors);
+    }
+  };
+
   return (
-    <form className={cn(styles.tagsForm, className)} onSubmit={onFormSubmit}>
+    <form className={cn(styles.tagsForm, className)} onSubmit={handleSubmit}>
       <div className={styles.formFields}>
         <div className={styles.tagDisplayContainer}>
           <Tag className={styles.tagDisplay} {...values} />
