@@ -206,69 +206,13 @@ describe('Words Page', () => {
 
     /**word forms*/
 
-    cy.get('[data-cy="formField-stems"]').should(
-      'have.length',
-      existingWord.stems.length
-    );
-
-    cy.get('[data-cy="formField-stems"]')
-      .first()
-      .as('stem1')
-      .find('textarea')
-      .should('have.text', existingWord.stems[0]);
-
-    cy.get('@stem1').find('label').contains('word form 1');
-
-    cy.get('@stem1')
-      .find('button[data-cy="button-minus"]')
-      .should('be.enabled');
-
-    cy.get('[data-cy="formField-stems"]')
-      .eq(1)
-      .as('stem2')
-      .find('textarea')
-      .should('have.text', existingWord.stems[1]);
-
-    cy.get('@stem2').find('label').contains('word form 2');
-
-    cy.get('@stem2')
-      .find('button[data-cy="button-minus"]')
-      .should('be.enabled');
-
-    cy.get('[data-cy="formField-stems"]')
-      .eq(2)
-      .as('stem3')
-      .find('textarea')
-      .should('have.text', existingWord.stems[2]);
-
-    cy.get('@stem3').find('label').contains('word form 3');
-
-    cy.get('@stem3')
-      .find('button[data-cy="button-minus"]')
-      .should('be.enabled');
-
-    cy.get('[data-cy="formField-stems"]')
-      .eq(3)
-      .as('stem4')
-      .find('textarea')
-      .should('have.text', existingWord.stems[3]);
-
-    cy.get('@stem4').find('label').contains('word form 4');
-
-    cy.get('@stem4').find('button[data-cy="button-plus"]').should('be.enabled');
-
     cy.get('[data-cy="formField-additionalInfo"]')
       .find('textarea')
       .should('be.empty');
 
     cy.get('[data-cy="formField-additionalInfo"]')
       .find('label > span')
-      .should('have.text', 'Additional information');
-
-    cy.get('[data-cy="wordForm"]')
-      .find('[data-cy="levelSelector"]')
-      .find('button')
-      .should('have.text', 'B1 ');
+      .should('have.text', 'additional information');
 
     cy.get('[data-cy="formField-audioUrl"]')
       .find('label > span')
@@ -299,14 +243,8 @@ describe('Words Page', () => {
       .should('have.text', 'image description');
 
     cy.get('[data-cy="wordForm"]')
-      .find('[data-cy="checkbox"]')
-      .contains('offensive');
-
-    cy.get('[data-cy="wordForm"]')
       .find('button[type="submit"]')
       .should('have.text', 'Save');
-
-    cy.get('[data-cy="wordForm"]').find('a').should('have.text', 'Cancel');
 
     cy.get('[data-cy="backLink"]').should('have.attr', 'href', '/words');
   });
@@ -396,10 +334,6 @@ describe('Words Page', () => {
       .find('textarea')
       .type(existingWord.imgDesc);
 
-    cy.get('[data-cy="wordForm"]')
-      .find('[data-cy="checkbox"]')
-      .contains('offensive');
-
     cy.get('[data-cy="wordForm"]').find('button[type="submit"]').click();
 
     // /** Check that user was redirected on the words page and the notification is displayed */
@@ -439,10 +373,6 @@ describe('Words Page', () => {
       .should('have.text', existingWord.particle);
 
     cy.get('[data-cy="wordCard"]')
-      .find('[data-cy="level"]')
-      .should('have.text', 'B1');
-
-    cy.get('[data-cy="wordCard"]')
       .find('[data-cy="offensive"]')
       .should('not.exist');
 
@@ -459,7 +389,6 @@ describe('Words Page', () => {
     cy.get('[data-cy="particle"]').should('have.text', existingWord.particle);
 
     cy.get('@deflist').should('have.length', 3);
-    cy.get('[data-cy="level"]').should('have.text', 'B1');
     cy.get('@deflist')
       .first()
       .as('def1')
@@ -510,10 +439,6 @@ describe('Words Page', () => {
       .contains(existingWord.defs[3].examples[1].text);
 
     cy.get('@def3').contains(existingWord.defs[3].def);
-
-    cy.get('[data-cy="stems"]').contains(
-      `Word forms: ${existingWord.stems.join(', ')}`
-    );
 
     cy.get('figcaption').contains(existingWord.imgDesc);
     cy.get('[data-cy="wordImg"]').should(

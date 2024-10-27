@@ -1,7 +1,7 @@
 type WordTag {
   id: ID!
-  user: ID!
-  language: Language!
+  user: ID
+  language: Language
   color: String!
   text: String!
   desc: String

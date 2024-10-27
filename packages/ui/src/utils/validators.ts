@@ -1,3 +1,10 @@
+import {
+  isDef,
+  isNotEmptyString,
+  isString,
+  isTypedArray
+} from '../@types/typeGuards';
+
 /** Validators that don't accept arguments */
 export enum Validator {
   /**the value can't be emply */
@@ -91,7 +98,6 @@ export function validateFormValues<T>(
   }
   const fields = Object.keys(validators) as (keyof T)[];
   fields.forEach(field => {
-    console.log('field', field, values);
     const validator = validators[field];
     if (validator) {
       const isFieldValid = validator.validate(values[field]);
@@ -102,4 +108,27 @@ export function validateFormValues<T>(
     }
   });
   return { isValid, errors };
+}
+
+export const defsValidator: FormValidator = {
+  validate: (data: unknown) => isTypedArray(data, isDef) && data.length > 0,
+  errorText: 'definition value cannot be empty'
+};
+
+export const stringArrayValidator: FormValidator = {
+  validate: (data: unknown) =>
+    isTypedArray(data, isNotEmptyString) && data.length > 0,
+  errorText: 'value cannot be empty'
+};
+
+export const colorValidator: FormValidator = {
+  validate: (val: string) => /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/.test(val),
+  errorText: 'color should be a valid hex color'
+};
+
+export function getStringValidator(name = ''): FormValidator {
+  return {
+    validate: (data: unknown) => isString(data) && data.length > 0,
+    errorText: `${name} value cannot be empty`.trim()
+  };
 }

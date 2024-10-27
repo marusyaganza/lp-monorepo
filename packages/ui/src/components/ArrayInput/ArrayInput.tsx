@@ -8,6 +8,7 @@ import { cn } from '../../utils/classnames';
 import { InputWithButton } from '../InputWithButton/InputWithButton';
 
 import styles from './ArrayInput.module.css';
+import { isNotEmptyString } from '../../@types/typeGuards';
 
 export interface ArrayInputProps {
   /**InputWithButton name prop */
@@ -44,11 +45,11 @@ export const ArrayInput = ({
   const changeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
     const value = e?.target?.value;
     const elementIndex = Number.parseInt(e?.target?.name?.split('-')?.[1]);
-    const newVals = values;
+    const newVals = [...values];
     if (typeof elementIndex === 'number') {
       newVals[elementIndex] = value;
-      setValues([...newVals]);
-      onChange(values.filter(Boolean));
+      setValues(newVals);
+      onChange(newVals.filter(isNotEmptyString));
     }
   };
 

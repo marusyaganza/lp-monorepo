@@ -1,0 +1,48 @@
+@import '../../assets/styles/colors.css';
+@import '../../assets/styles/font-sizes.css';
+@import '../../assets/styles/fonts.css';
+@import '../../assets/styles/effects.css';
+
+.form {
+  display: flex;
+  width: 100%;
+  gap: 32px;
+  justify-content: center;
+
+  @media (width <= 800px) {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+
+.column {
+  width: 50%;
+  padding: 0;
+  border: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @media (width <= 800px) {
+    width: 100%;
+  }
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.formHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 36px;
+}
+
+.heading {
+  font-size: var(--font-size-l);
+  margin: 0;
+  margin-bottom: 0;
+}

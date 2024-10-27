@@ -1,17 +1,18 @@
-import React, { useContext, useEffect, useMemo } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Link, Icon } from '@lp/ui';
-import { useLazyQuery, useMutation } from '@apollo/client';
+import { Link, Icon, EditWordForm, Spinner } from '@lp/ui';
+import { useLazyQuery, useMutation, useQuery } from '@apollo/client';
 import styles from './EditWordPage.module.css';
-import { getDefaultInitialValues, formConfig, validators } from './formConfig';
 
 import { PageLayout } from '../../components/PageLayout/PageLayout';
-import { WordForm } from '../../components/WordForm/WordForm';
 import { routes } from '../../constants/routes';
-import { UpdateWordInput } from '../../generated/graphql';
+import {
+  TagsQuery,
+  UpdateWordInput,
+  WordByIdQuery
+} from '../../generated/graphql';
 import { AppContext } from '../../app-context/appContext';
-import { WORD_BY_ID_QUERY } from '../../gql/queries';
-import { cleanDefs, removeTypenames } from '../../util/wordUtils';
+import { TAGS_QUERY, WORD_BY_ID_QUERY } from '../../gql/queries';
 import { UPDATE_WORD } from '../../gql/mutations';
 
 const EditWordPage = () => {
@@ -22,15 +23,15 @@ const EditWordPage = () => {
       cache.evict({ fieldName: 'wordsPerPage' });
     }
   });
-  const [fetchWord, { loading, error, data }] = useLazyQuery(WORD_BY_ID_QUERY);
-  const { setNotification } = useContext(AppContext);
+  const [fetchWord, { loading, error, data }] =
+    useLazyQuery<WordByIdQuery>(WORD_BY_ID_QUERY);
+  const { setNotification, language } = useContext(AppContext);
+
+  const tagsData = useQuery<TagsQuery>(TAGS_QUERY, {
+    variables: { language }
+  });
 
   const navigate = useNavigate();
-
-  const initialValues: UpdateWordInput | undefined = useMemo(
-    () => getDefaultInitialValues(removeTypenames(data?.word)),
-    [data?.word, wordId]
-  );
 
   useEffect(() => {
     fetchWord({
@@ -39,7 +40,7 @@ const EditWordPage = () => {
   }, [wordId]);
 
   useEffect(() => {
-    if (updateWordData.error) {
+    if (error) {
       setNotification({
         variant: 'error',
         text: 'Error',
@@ -73,14 +74,33 @@ const EditWordPage = () => {
   }, [updateWordData.data]);
 
   const handleFormSubmit = (values: UpdateWordInput) => {
-    const input = cleanDefs(values);
     updateWordFunc({
-      variables: { input },
+      variables: { input: values },
       update(cache) {
         cache.evict({ fieldName: 'game' });
         cache.evict({ fieldName: 'wordsPerPage' });
       }
     });
+  };
+
+  const renderForm = () => {
+    const isLoading = loading || tagsData?.loading;
+    if (isLoading) {
+      return <Spinner />;
+    }
+    const tags = tagsData?.data?.tags;
+    const word = data?.word;
+    if (!word || !tags) {
+      return;
+    }
+    return (
+      <EditWordForm
+        word={word}
+        tags={tags}
+        onSubmit={handleFormSubmit}
+        language={language}
+      />
+    );
   };
 
   return (
@@ -89,17 +109,7 @@ const EditWordPage = () => {
         <Icon width={16} height={16} id="arrow-left" />
         Back to vocabulary
       </Link>
-      <h1 className={styles.mainHeading}>Edit word</h1>
-      {data && initialValues && (
-        <WordForm
-          validators={validators}
-          initialValues={initialValues}
-          // @ts-ignore
-          formConfig={formConfig(data.word)}
-          isLoading={loading}
-          onSubmit={handleFormSubmit}
-        />
-      )}
+      {renderForm()}
     </PageLayout>
   );
 };

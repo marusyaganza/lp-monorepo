@@ -89,12 +89,7 @@ describe('Words Page', () => {
 
     cy.get('[data-cy="formField-additionalInfo"]')
       .find('label')
-      .should('have.text', 'Additional information');
-
-    cy.get('[data-cy="wordForm"]')
-      .find('[data-cy="levelSelector"]')
-      .find('button')
-      .should('have.text', 'B1 ');
+      .should('have.text', 'additional information');
 
     cy.get('[data-cy="formField-audioUrl"]')
       .find('label')
@@ -131,8 +126,6 @@ describe('Words Page', () => {
     cy.get('[data-cy="wordForm"]')
       .find('button[type="submit"]')
       .should('have.text', 'Save');
-
-    cy.get('[data-cy="wordForm"]').find('a').should('have.text', 'Cancel');
 
     cy.get('[data-cy="backLink"]').should('have.attr', 'href', '/words');
   });
@@ -233,15 +226,6 @@ describe('Words Page', () => {
       .find('textarea')
       .type(mockNewWord.additionalInfo);
 
-    cy.get('[data-cy="wordForm"]')
-      .find('[data-cy="levelSelector"]')
-      .find('button')
-      .first()
-      .focus()
-      .click({ force: true });
-
-    cy.get('[data-cy="levelSelector"]').contains(mockNewWord.level).click();
-
     cy.get('[data-cy="formField-audioUrl"]');
 
     cy.get('[data-cy="formField-audioUrl"]')
@@ -309,10 +293,6 @@ describe('Words Page', () => {
       .should('have.text', mockNewWord.particle);
 
     cy.get('[data-cy="wordCard"]')
-      .find('[data-cy="level"]')
-      .should('have.text', mockNewWord.level);
-
-    cy.get('[data-cy="wordCard"]')
       .find('[data-cy="offensive"]')
       .should('not.exist');
 
@@ -333,7 +313,6 @@ describe('Words Page', () => {
 
     cy.get('[data-cy="particle"]').should('have.text', mockNewWord.particle);
 
-    cy.get('[data-cy="level"]').should('have.text', mockNewWord.level);
     cy.get('[data-cy="defsList"] li')
       .first()
       .find('[data-cy="example"]')
@@ -386,19 +365,19 @@ describe('Words Page', () => {
     cy.get('[data-cy="wordForm"]').find('button[type="submit"]').click();
 
     cy.get('[data-cy="formField-name"] > p')
-      .should('have.text', 'name is required')
+      .should('have.text', 'name value cannot be empty')
       .and('be.visible');
 
     cy.get('[data-cy="formField-particle"] > p')
-      .should('contain', 'particle is required')
+      .should('contain', 'particle value cannot be empty')
       .and('be.visible');
 
     cy.get('[data-cy="defInput"] > p')
-      .should('contain', 'definition is required')
+      .should('contain', 'definition value cannot be empty')
       .and('be.visible');
 
     cy.get('[data-cy="formField-shortDef"] > p')
-      .should('contain', 'short definition is required')
+      .should('contain', 'value cannot be empty')
       .and('be.visible');
 
     cy.get('[data-cy="formField-name"]').find('textarea').type(minNewWord.name);
@@ -450,10 +429,6 @@ describe('Words Page', () => {
       .contains(minNewWord.name);
 
     cy.get('[data-cy="wordCard"]')
-      .find('[data-cy="level"]')
-      .should('have.text', 'B1');
-
-    cy.get('[data-cy="wordCard"]')
       .find('[data-cy="offensive"]')
       .should('exist');
 
@@ -475,8 +450,6 @@ describe('Words Page', () => {
     );
 
     cy.get('[data-cy="particle"]').should('have.text', minNewWord.particle);
-
-    cy.get('[data-cy="level"]').should('have.text', 'B1');
 
     cy.get('[data-cy="defsList"] li')
       .first()

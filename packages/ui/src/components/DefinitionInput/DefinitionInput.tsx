@@ -54,7 +54,7 @@ export const DefinitionInput = ({
       const val = event.target.value;
       const newVals = [...values];
       const example = newVals?.[defIndex]?.examples?.[parentIndex];
-      if (example?.[prop]) {
+      if (typeof example?.[prop] === 'string') {
         example[prop] = val;
       }
       setValues([...newVals]);

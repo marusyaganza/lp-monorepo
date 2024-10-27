@@ -1,12 +1,13 @@
-import React, { FormEventHandler, useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 import { InputV2 } from '../InputV2/InputV2';
 import { ColorInput } from '../ColorInput/ColorInput';
 import { Button } from '../Button/Button';
 import { Tag } from '../Tag/Tag';
 import { WordTagInput } from '../../generated/graphql';
-import { validateFormValues } from '../../utils/validators';
 import styles from './TagsFrom.module.css';
 import { cn } from '../../utils/classnames';
+import { useForm } from '../../hooks/useForm';
+import { colorValidator } from '../../utils/validators';
 
 export type TagsFormValues = Omit<WordTagInput, 'language'>;
 
@@ -28,10 +29,7 @@ const validators = {
     validate: (val: string) => val.length > 0,
     errorText: 'tag text is required'
   },
-  color: {
-    validate: (val: string) => /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/.test(val),
-    errorText: 'tag color should be a valid hex color'
-  }
+  color: colorValidator
 };
 
 export const TagsForm = function ({
@@ -55,28 +53,15 @@ export const TagsForm = function ({
     return vals;
   }, [initialValues]);
 
-  const [errors, setErrors] = useState<Record<string, string>>({});
-  const [values, setValues] = useState(initVals);
-
-  const getChangeHandler = (name: keyof TagsFormValues) => {
-    return function (val: string) {
-      setValues(prev => ({ ...prev, [name]: val }));
-    };
-  };
-
-  const handleSubmit: FormEventHandler = e => {
-    e.preventDefault();
-    const { errors, isValid } = validateFormValues(validators, values);
-    if (isValid) {
-      onSubmit(values);
-      setValues(DEFAUL_INITIAL_VALUES);
-    } else {
-      setErrors(errors);
-    }
-  };
+  const { errors, values, submitFunc, getChangeHandler } = useForm({
+    initialValues: initVals,
+    onSubmit,
+    validators,
+    defaultValues: DEFAUL_INITIAL_VALUES
+  });
 
   return (
-    <form className={cn(styles.tagsForm, className)} onSubmit={handleSubmit}>
+    <form className={cn(styles.tagsForm, className)} onSubmit={submitFunc}>
       <div className={styles.formFields}>
         <div className={styles.tagDisplayContainer}>
           <Tag className={styles.tagDisplay} {...values} />
