@@ -4,17 +4,12 @@ import { cn } from '../../utils/classnames';
 
 import styles from './GameCard.module.css';
 
-interface GameConfigType {
-  name: string;
-  desc: string;
-  type: Game;
-}
-
 export interface GameCardProps {
   /**Game config: includes game title, description and type */
   game: GameConfigType;
   /**link to game's page */
   linkUrl: string;
+  state?: Record<keyof any, unknown>;
   /**additional styling */
   className?: string;
 }
@@ -26,6 +21,7 @@ import type_word from '../../assets/img/gameLogos/type_word.svg';
 import conjugation from '../../assets/img/gameLogos/conjugation.svg';
 
 import { Game } from '../../generated/graphql';
+import { GameConfigType } from '../../types/types';
 const images = {
   [Game.SelectDef]: select_definition,
   [Game.Audio]: audio,
@@ -34,11 +30,16 @@ const images = {
   [Game.Conjugation]: conjugation
 };
 /**Game card that displays game's main info */
-export const GameCard = ({ game, linkUrl, className }: GameCardProps) => {
+export const GameCard = ({
+  game,
+  linkUrl,
+  state,
+  className
+}: GameCardProps) => {
   const { name, type, desc } = game;
   return (
     <div data-cy="gameCard" className={styles.gameContainer}>
-      <Link to={linkUrl} className={cn(className, styles.link)}>
+      <Link to={linkUrl} state={state} className={cn(className, styles.link)}>
         <div className={styles.content}>
           <div className={styles.imageContainer}>
             <img className={styles.image} src={images[type]} alt={desc} />

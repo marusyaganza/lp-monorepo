@@ -4,7 +4,7 @@ import { Modal as ModalComponent, ModalProps } from './Modal';
 import { Button } from '../Button/Button';
 
 export default {
-  title: 'Modal',
+  title: 'general/Modal',
   component: ModalComponent,
   parameters: {
     actions: { disable: true }

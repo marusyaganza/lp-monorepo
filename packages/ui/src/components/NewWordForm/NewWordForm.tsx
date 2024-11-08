@@ -7,7 +7,7 @@ import { InputV2 } from '../InputV2/InputV2';
 import { DefinitionInput } from '../DefinitionInput/DefinitionInput';
 import { ArrayInput } from '../ArrayInput/ArrayInput';
 import { TagSelector } from '../TagSelector/TagSelector';
-import { TagType } from '../../@types/types';
+import { TagType } from '../../types/types';
 import { Button } from '../Button/Button';
 import { Checkbox } from '../Checkbox/Checkbox';
 import {
@@ -104,6 +104,7 @@ export const NewWordForm = ({
               errorText={errors?.name}
             />
             <TagSelector
+              className={styles.tagSelector}
               onChange={getChangeHandler('tags')}
               tags={tags}
               value={values.tags || []}

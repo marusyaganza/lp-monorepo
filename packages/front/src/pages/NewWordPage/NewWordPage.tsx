@@ -12,12 +12,12 @@ import {
 } from '../../generated/graphql';
 import { AppContext } from '../../app-context/appContext';
 import { useMutation, useQuery } from '@apollo/client';
-import { SAVE_WORD } from '../../gql/mutations';
+import { SAVE_WORD_MUTATION } from '../../gql/mutations';
 import { TAGS_QUERY } from '../../gql/queries';
 
 const NewWordPage = () => {
   const [saveWordFunc, saveWordData] = useMutation<SaveWordMutation>(
-    SAVE_WORD,
+    SAVE_WORD_MUTATION,
     {
       update(cache) {
         cache.evict({ fieldName: 'game' });

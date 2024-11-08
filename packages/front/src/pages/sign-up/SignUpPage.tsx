@@ -10,7 +10,7 @@ import { routes } from '../../constants/routes';
 
 import styles from './SignUpPage.module.css';
 import { useMutation } from '@apollo/client';
-import { SIGN_UP } from '../../gql/mutations';
+import { SIGN_UP_MUTATION } from '../../gql/mutations';
 
 const SignUpPage = () => {
   const fields: FormField[] = [
@@ -69,7 +69,7 @@ const SignUpPage = () => {
   ];
 
   const [authFunc, { data, loading, error }] =
-    useMutation<SignUpMutation>(SIGN_UP);
+    useMutation<SignUpMutation>(SIGN_UP_MUTATION);
   const { login, setNotification, isDevEnv } = useContext(AppContext);
   const navigate = useNavigate();
 

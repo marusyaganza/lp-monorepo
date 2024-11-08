@@ -4,7 +4,7 @@ import { styledPreviewDecorator } from '../../storybook-decorators';
 import type { Meta } from '@storybook/react';
 
 const meta: Meta<typeof OptionBox> = {
-  title: 'OptionBox',
+  title: 'inputs/OptionBox',
   component: OptionBox,
   decorators: [styledPreviewDecorator()]
 };

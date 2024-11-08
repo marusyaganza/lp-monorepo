@@ -1,45 +1,24 @@
-import { Game, GameConfig } from '../generated/graphql';
-export const games: Partial<GameConfig>[] = [
-  // {
-  //   name: 'flash cards',
-  //   desc: 'Check if you can recall your words',
-  //   id: 'flash_cards'
-  // },
+import { Game } from '../generated/graphql';
+import { GameConfigType } from '../types/types';
+export const games: GameConfigType[] = [
   {
     name: 'audio',
     desc: 'Type the word that you hear',
-    id: 'audio',
-    type: Game.Audio,
-    wordsPerGame: 6,
-    optionsPerGame: 0
+    type: Game.Audio
   },
   {
     name: 'select definition',
     desc: 'Match the word and its definition',
-    id: 'select_definition',
-    type: Game.SelectDef,
-    wordsPerGame: 6,
-    optionsPerGame: 6
+    type: Game.SelectDef
   },
   {
     name: 'select word',
     desc: 'Match the definition and the word',
-    id: 'select_word',
-    type: Game.SelectWord,
-    wordsPerGame: 6,
-    optionsPerGame: 6
+    type: Game.SelectWord
   },
   {
     name: 'type word',
     desc: 'Type the word that has the definition given',
-    id: 'type_word',
-    type: Game.TypeWord,
-    wordsPerGame: 6,
-    optionsPerGame: 0
+    type: Game.TypeWord
   }
-  // {
-  //   name: 'find all definitions',
-  //   desc: 'Match the word and all its definitions',
-  //   id: 'select_defs'
-  // }
 ];

@@ -8,7 +8,7 @@ import { cn } from '../../utils/classnames';
 import { InputWithButton } from '../InputWithButton/InputWithButton';
 
 import styles from './ArrayInput.module.css';
-import { isNotEmptyString } from '../../@types/typeGuards';
+import { isNotEmptyString } from '../../types/typeGuards';
 
 export interface ArrayInputProps {
   /**InputWithButton name prop */

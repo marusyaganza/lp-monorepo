@@ -1,10 +1,4 @@
-import React, {
-  useContext,
-  useEffect,
-  useCallback,
-  useMemo,
-  useState
-} from 'react';
+import React, { useContext, useEffect, useCallback, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { SortBy, GamesQuery, TagsQuery, Game } from '../../generated/graphql';
 import { GameCard, Spinner, TagSelector } from '@lp/ui';
@@ -13,7 +7,7 @@ import { PageLayout } from '../../components/PageLayout/PageLayout';
 import { AppContext } from '../../app-context/appContext';
 import { getStoredData, storeData } from '../../util/localStorageUtils';
 import { SortControls } from '../../components/SortControls/SortControls';
-import { GAMES, TAGS_QUERY } from '../../gql/queries';
+import { GAMES_QUERY, TAGS_QUERY } from '../../gql/queries';
 
 import styles from './GamesPage.module.css';
 import { useQuery } from '@apollo/client';
@@ -32,17 +26,12 @@ const GamesPage = () => {
   const [tags, setTags] = useState<string[] | undefined>();
   const [isReverseOrder, setIsReverseOrder] = useState(false);
 
-  const { error, loading, data } = useQuery<GamesQuery>(GAMES, {
+  const { error, loading, data } = useQuery<GamesQuery>(GAMES_QUERY, {
     variables: { language }
   });
   const tagsResult = useQuery<TagsQuery>(TAGS_QUERY, {
     variables: { language }
   });
-
-  const searchStr = useMemo(() => {
-    const sort = sortBy ? `&sortBy=${sortBy}` : '';
-    return `?isReverseOrder=${isReverseOrder}${sort}`;
-  }, [sortBy, isReverseOrder]);
 
   const handleSortingParamChange = useCallback((val: string) => {
     setSortBy(val);
@@ -128,7 +117,16 @@ const GamesPage = () => {
                   : `${routes.games}/${game.type?.toLocaleLowerCase()}`;
               return (
                 <li key={game.id}>
-                  <GameCard game={game} linkUrl={`/${gameLink}${searchStr}`} />
+                  <GameCard
+                    game={game}
+                    state={{
+                      sortBy,
+                      isReverseOrder,
+                      gameType: game.type,
+                      tags
+                    }}
+                    linkUrl={`/${gameLink}`}
+                  />
                 </li>
               );
             })}

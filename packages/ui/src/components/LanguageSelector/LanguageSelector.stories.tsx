@@ -4,7 +4,7 @@ import { styledPreviewDecorator } from '../../storybook-decorators';
 import type { Meta } from '@storybook/react';
 
 const meta: Meta<typeof LanguageSelector> = {
-  title: 'LanguageSelector',
+  title: 'inputs/LanguageSelector',
   component: LanguageSelector,
   decorators: [styledPreviewDecorator('centered')]
 };

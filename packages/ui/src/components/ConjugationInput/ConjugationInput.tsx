@@ -1,4 +1,4 @@
-import React, { useState, forwardRef, useMemo, useEffect } from 'react';
+import React, { forwardRef, useMemo } from 'react';
 import { cn } from '../../utils/classnames';
 import { TextInput } from '../TextInput/TextInput';
 
@@ -12,6 +12,7 @@ export interface ConjugationInputProps {
   isDisabled?: boolean;
   dataCy?: string;
   tense?: string | null;
+  value?: string;
   initialValue?: string;
   /**additional styling */
   className?: string;
@@ -44,11 +45,11 @@ export const ConjugationInput = forwardRef<
       isDisabled,
       dataCy,
       initialValue,
-      tense
+      tense,
+      value = ''
     },
     ref
   ) => {
-    const [values, setValues] = useState(INITIAL_VALUES);
     const correctAnswers = useMemo(
       () => correctAnswer.split(', '),
       [correctAnswer]
@@ -60,28 +61,28 @@ export const ConjugationInput = forwardRef<
       [initialValue]
     );
 
+    const values = useMemo(() => {
+      if (value) {
+        return value?.split(', ');
+      }
+      const initialVals = [...INITIAL_VALUES];
+      if (isImpf && initialValues?.length) {
+        initialVals.forEach((value, index) => {
+          if (!IMPF_INDEXES.includes(index)) {
+            initialVals[index] = initialValues[index];
+          }
+        });
+      }
+      return initialVals;
+    }, [value, isImpf, initialValues]);
+
     const getChangeHandler = (index: number) => {
       return function handleChange(val: string) {
         const newValues = [...values];
         newValues[index] = val;
-        setValues(newValues);
         onChange(newValues.join(', '));
       };
     };
-
-    useEffect(() => {
-      if (!correctAnswer && variant === 'initial') {
-        const initialVals = [...INITIAL_VALUES];
-        if (isImpf && initialValues?.length) {
-          initialVals.forEach((value, index) => {
-            if (!IMPF_INDEXES.includes(index)) {
-              initialVals[index] = initialValues[index];
-            }
-          });
-        }
-        setValues(initialVals);
-      }
-    }, [correctAnswer, variant, isImpf]);
 
     const renderInputs = () => {
       return PRONOUNS.map((pronoun: string, index: number) => {

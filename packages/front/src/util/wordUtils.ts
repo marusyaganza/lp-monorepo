@@ -1,56 +1,25 @@
-import { WordDefinition, DefsInput, InputMaybe } from '../generated/graphql';
+type TypedData = { __typename?: string };
 
-type TypedData = {
-  __typename?: string;
-};
-
-// TODO trim all string values
-export function removeTypenames<T>(obj: T & TypedData): T {
+export function removeTypenames<T>(obj: T): T {
   if (Array.isArray(obj)) {
-    // @ts-ignore
-    return obj.map(removeTypenames);
+    return obj.map(item => removeTypenames(item)) as unknown as T;
   }
-  if (typeof obj === 'string') {
-    // @ts-ignore
-    return obj?.trim();
-  }
-  if (obj === null || typeof obj !== 'object') {
-    return obj;
-  }
-  const result = { ...obj };
-  if (result?.__typename) {
-    delete result.__typename;
-  }
-  const keys = Object.keys(result) as (keyof T & string)[];
-  keys.forEach(key => {
-    const val = result[key];
-    // @ts-ignore
-    result[key] = removeTypenames(val);
-  });
-  return result;
-}
 
-interface WordWithDefs {
-  defs?: InputMaybe<InputMaybe<DefsInput>[]>;
-  shortDef?: InputMaybe<InputMaybe<string>[]>;
-}
+  if (obj && typeof obj === 'object') {
+    const result: Partial<T> = { ...obj };
 
-export function cleanDefs<T extends WordWithDefs>(word: T): T {
-  const { defs } = word;
-  if (!defs) {
-    return word;
+    if ('__typename' in result) {
+      delete (result as TypedData).__typename;
+    }
+
+    for (const key in result) {
+      if (Object.prototype.hasOwnProperty.call(result, key)) {
+        result[key] = removeTypenames(result[key]);
+      }
+    }
+
+    return result as T;
   }
-  const cleanedDefs = defs
-    .map(item => {
-      return {
-        def: item?.def,
-        examples: item?.examples?.filter(ex => ex?.text)
-      };
-    })
-    .filter(item => item?.def) as WordDefinition[];
-  return {
-    ...word,
-    defs: cleanedDefs,
-    shortDef: word?.shortDef?.filter(Boolean)
-  };
+
+  return obj;
 }

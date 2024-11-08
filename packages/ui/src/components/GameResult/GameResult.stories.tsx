@@ -2,7 +2,7 @@ import React from 'react';
 import { GameResult, GameResultProps } from './GameResult';
 
 export default {
-  title: 'GameResult',
+  title: 'game/GameResult',
   component: GameResult
 };
 

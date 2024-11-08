@@ -7,7 +7,7 @@ import {
 import type { Meta } from '@storybook/react';
 
 const meta: Meta<typeof Link> = {
-  title: 'Link',
+  title: 'general/Link',
   component: Link,
   decorators: [styledPreviewDecorator(), routerDecorator],
   render: props => <Link {...props}>Link</Link>

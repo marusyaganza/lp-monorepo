@@ -1,4 +1,5 @@
-import { Game } from '@lp/ui/src/generated/graphql';
+import { GameStage, GameState } from '../../types/gameTypes';
+import { Game, GameQuestion } from '../../generated/graphql';
 
 export enum GameAction {
   CHECK_ANSWER = 'CHECK_ANSWER',
@@ -6,77 +7,59 @@ export enum GameAction {
   START = 'START'
 }
 
-export interface GameState {
-  currentIndex: number;
-  isCompleted: boolean;
-  currentResult: {
-    type?: 'initial' | 'success' | 'error';
-    correctAnswer?: string;
-    incorrectAnswer?: string;
-  };
-  resultData: {
-    id: string;
-    hasError: boolean;
-    gameType: Game;
-    isLearned?: boolean;
-  }[];
-  result: {
-    errorCount: number;
-  };
-  wordsPerSession: number;
-}
-
 export const initialState: GameState = {
   currentIndex: 0,
   isCompleted: false,
   currentResult: {
-    type: 'initial'
+    type: GameStage.Initial
   },
   resultData: [],
   result: { errorCount: 0 },
-  wordsPerSession: 0
+  questions: [],
+  progress: 0
 };
 
 type CheckAnswerAction = {
   type: GameAction.CHECK_ANSWER;
   payload: {
-    correctAnswer: string;
     answer: string;
-    id: string;
     gameType: Game;
-    alternativeSpelling?: (string | null)[];
   };
 };
 
 type NextAction = {
   type: GameAction.NEXT;
-  payload?: {
-    isLearned?: boolean;
-  };
 };
 
 type StartAction = {
   type: GameAction.START;
-  payload: { wordsPerSession: number };
+  payload: { questions: GameQuestion[] };
 };
 
 export function gameReducer(
   state: GameState,
   action: CheckAnswerAction | NextAction | StartAction
-) {
+): GameState {
   const { type } = action;
+
   if (type === GameAction.START) {
-    const { wordsPerSession } = action.payload;
+    const { questions } = action.payload;
     return {
       ...initialState,
-      wordsPerSession,
       result: { errorCount: 0 },
-      resultData: []
+      resultData: [],
+      questions,
+      currentQuestion: questions[0]
     };
   }
+
   if (type === GameAction.CHECK_ANSWER) {
-    const { correctAnswer, answer, id, gameType, alternativeSpelling } =
-      action.payload;
+    const { gameType, answer } = action.payload;
+    const {
+      answer: correctAnswer,
+      wordId,
+      alternativeSpelling
+    } = state.questions[state.currentIndex];
     const newState = { ...state };
     const formattedAnswer = answer.toLocaleLowerCase();
     if (
@@ -86,31 +69,33 @@ export function gameReducer(
       )
     ) {
       newState.currentResult = {
-        type: 'success',
-        correctAnswer: correctAnswer
+        type: GameStage.Success,
+        correctAnswer
       };
-      newState.resultData.push({ id, hasError: false, gameType });
+      newState.resultData.push({ id: wordId, hasError: false, gameType });
     } else {
       newState.currentResult = {
-        type: 'error',
+        type: GameStage.Error,
         correctAnswer: correctAnswer,
         incorrectAnswer: answer
       };
       newState.result.errorCount++;
-      newState.resultData.push({ id, hasError: true, gameType });
+      newState.resultData.push({ id: wordId, hasError: true, gameType });
     }
     return newState;
   }
+
   if (type === GameAction.NEXT) {
     const newState = { ...state };
     const index = state.currentIndex;
-    if (index === state.wordsPerSession - 1) {
+    if (index === state.questions.length - 1) {
       newState.isCompleted = true;
+      newState.progress = 100;
     } else {
       newState.currentIndex = state.currentIndex + 1;
-    }
-    if (action?.payload?.isLearned) {
-      newState.resultData[index].isLearned = true;
+      newState.progress =
+        ((state.currentIndex + 1) * 100) / (state.questions.length + 1);
+      newState.currentQuestion = newState.questions[newState.currentIndex];
     }
     newState.currentResult = {};
     return newState;

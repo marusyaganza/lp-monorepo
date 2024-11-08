@@ -3,7 +3,7 @@ import { styledPreviewDecorator } from '../../storybook-decorators';
 import type { Meta } from '@storybook/react';
 
 const meta: Meta<typeof ColorInput> = {
-  title: 'ColorInput',
+  title: 'inputs/ColorInput',
   component: ColorInput,
   decorators: [styledPreviewDecorator()]
 };

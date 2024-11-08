@@ -1,4 +1,4 @@
-import { isDef, isExample, isNotEmptyString } from '../@types/typeGuards';
+import { isDef, isExample, isNotEmptyString } from '../types/typeGuards';
 import { DefExample, DefsInput, WordDefinition } from '../generated/graphql';
 
 /**

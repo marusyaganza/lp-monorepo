@@ -3,7 +3,7 @@ import { styledPreviewDecorator } from '../../storybook-decorators';
 import type { Meta } from '@storybook/react';
 
 const meta: Meta<typeof DictionaryEntity> = {
-  title: 'DictionaryEntity',
+  title: 'general/DictionaryEntity',
   component: DictionaryEntity,
   decorators: [styledPreviewDecorator()]
 };

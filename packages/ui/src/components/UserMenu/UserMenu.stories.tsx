@@ -6,7 +6,7 @@ import {
 import type { Meta } from '@storybook/react';
 
 const meta: Meta<typeof UserMenu> = {
-  title: 'UserMenu',
+  title: 'general/UserMenu',
   component: UserMenu,
   decorators: [styledPreviewDecorator('centered'), routerDecorator]
 };

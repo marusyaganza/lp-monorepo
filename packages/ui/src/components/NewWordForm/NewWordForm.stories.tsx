@@ -4,7 +4,7 @@ import { tags } from '../../mocks/tags';
 import { Language } from '../../generated/graphql';
 
 const meta: Meta<typeof NewWordForm> = {
-  title: 'NewWordForm',
+  title: 'forms/NewWordForm',
   component: NewWordForm
 };
 

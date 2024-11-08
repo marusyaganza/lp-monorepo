@@ -4,7 +4,7 @@ import logo from '../../../assets/img/conjugate-logo.svg';
 import { PageLayout } from '../../../components/PageLayout/PageLayout';
 import { useSelect, Button } from '@lp/ui';
 import styles from './ConjugatePage.module.css';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { routes } from '../../../constants/routes';
 
 // Uncomment more tenses as needed
@@ -36,7 +36,9 @@ const ConjugatePage = () => {
   const handleChange = (val: Tense) => {
     setTense(val);
   };
-  const [searchParams] = useSearchParams();
+  const location = useLocation();
+  const { state } = location;
+
   const { Select, Option } = useSelect<Tense>({ onChange: handleChange });
   const renderOptions = () => {
     const keys = Object.keys(TENSES) as Tense[];
@@ -52,16 +54,9 @@ const ConjugatePage = () => {
     return TENSES[tense];
   };
   const handleButtonClick = () => {
-    const sortBy = searchParams.get('sortBy');
-    const isReverseOrder = searchParams.get('isReverseOrder');
-    const searchString = `isReverseOrder=${isReverseOrder}${
-      sortBy ? `&sortBy=${sortBy}` : ''
-    }`;
-    navigate(
-      `/${
-        routes.games
-      }/${Game.Conjugation.toLocaleLowerCase()}?tense=${tense}&${searchString}`
-    );
+    navigate(`/${routes.games}/${Game.Conjugation.toLocaleLowerCase()}`, {
+      state: { ...state, tense }
+    });
   };
   return (
     <PageLayout>

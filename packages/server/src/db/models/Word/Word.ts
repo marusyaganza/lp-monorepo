@@ -1,5 +1,4 @@
 import { Word } from '../../schema/Word';
-import { Game } from '../../schema/Game';
 import {
   calculatePaginationValues,
   getGameFilters,
@@ -27,6 +26,7 @@ import {
 } from '../../../generated/graphql';
 import { getWordsFilters, filterTags } from '../../helpers';
 import { UserInputError } from '../../../utils/apolloCustomErrors';
+import { DEFAULT_OPTIONS__SAMPLE_SIZE } from '../../../constants/defaultValues';
 
 const STATISTICS_FIELD: WordStatisticsField = {
   lastTimePracticed: 0,
@@ -192,9 +192,7 @@ export const WordModel: WordModelType = {
           word.statistics = DEFAULT_STATISTICS;
         }
 
-        const { gameType, hasError = false, isLearned = false } = entry;
-        const gameConfig = await Game.findOne({ type: gameType });
-        const timesToLearn = gameConfig?.timesToLearn || 5;
+        const { gameType, hasError = false } = entry;
 
         const currentStatistics = word?.statistics?.[gameType];
 
@@ -216,10 +214,6 @@ export const WordModel: WordModelType = {
 
         if (!hasError) {
           newStatistics.successRate++;
-        }
-
-        if (isLearned) {
-          newStatistics.successRate = timesToLearn;
         }
 
         if (currentStatistics?.practicedTimes) {
@@ -279,7 +273,7 @@ export const WordModel: WordModelType = {
   async selectWordsForOptions(gameType, language, config, user) {
     const optionProjections = OPTIONS_PROJECTIONS[gameType];
     const words = Word.find({ language, user }, optionProjections, {
-      limit: config.optionsPerGame + 1
+      limit: config.optionsPerGame + DEFAULT_OPTIONS__SAMPLE_SIZE
     });
     return words;
   }

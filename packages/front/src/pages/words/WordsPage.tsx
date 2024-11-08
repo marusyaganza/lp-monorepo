@@ -14,7 +14,7 @@ import {
   WordsPerPageQuery
 } from '../../generated/graphql';
 import { TAGS_QUERY, WORDS_PER_PAGE_QUERY } from '../../gql/queries';
-import { DELETE_WORD } from '../../gql/mutations';
+import { DELETE_WORD_MUTATION } from '../../gql/mutations';
 
 import {
   WordCard,
@@ -67,7 +67,7 @@ const WordsPage = () => {
   });
 
   const [deleteWordFunc, deleteWordData] = useMutation<DeleteWordMutation>(
-    DELETE_WORD,
+    DELETE_WORD_MUTATION,
     {
       update(cache) {
         cache.evict({ fieldName: 'game' });

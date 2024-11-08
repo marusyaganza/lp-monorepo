@@ -43,5 +43,5 @@ export async function generateConjugationGame(
 
   const task = getGameTask(gameType, tense);
 
-  return { questions, task, type: gameType };
+  return { questions, task, type: gameType, tense };
 }

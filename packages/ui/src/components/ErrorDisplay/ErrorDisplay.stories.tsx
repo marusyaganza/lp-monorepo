@@ -3,7 +3,7 @@ import { styledPreviewDecorator } from '../../storybook-decorators';
 import type { Meta } from '@storybook/react';
 
 const meta: Meta<typeof ErrorDisplay> = {
-  title: 'ErrorDisplay',
+  title: 'general/ErrorDisplay',
   component: ErrorDisplay,
   decorators: [styledPreviewDecorator('page')]
 };

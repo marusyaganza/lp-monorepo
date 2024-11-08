@@ -1,13 +1,14 @@
 import React from 'react';
-import { Game, GameProps } from './Game';
+import { GameComponent, GameComponentProps } from './GameComponent';
 import '../../assets/styles/common-styles.css';
 import { Game as GameType } from '../../generated/graphql';
 import { styledPreviewDecorator } from '../../storybook-decorators';
 import type { Meta } from '@storybook/react';
+import { GameStage } from '../../types/gameTypes';
 
-const meta: Meta<typeof Game> = {
-  title: 'Game',
-  component: Game,
+const meta: Meta<typeof GameComponent> = {
+  title: 'game/GameComponent',
+  component: GameComponent,
   decorators: [styledPreviewDecorator()]
 };
 
@@ -74,37 +75,37 @@ const games = [
   }
 ];
 
-export const GameDefault = (args: GameProps) =>
+export const GameDefault = (args: GameComponentProps) =>
   games.map(game => {
     return (
       <div key={game.type} className="presentationBox" style={{ width: 600 }}>
-        <Game {...args} {...game} />
+        <GameComponent {...args} {...game} />
       </div>
     );
   });
 
-export const GameSuccess = (args: GameProps) =>
+export const GameSuccess = (args: GameComponentProps) =>
   games.map(game => {
     return (
       <div key={game.type} className="presentationBox" style={{ width: 600 }}>
-        <Game
+        <GameComponent
           {...args}
           {...game}
-          currentResult={{ type: 'success', correctAnswer: 'wheel' }}
+          currentResult={{ type: GameStage.Success, correctAnswer: 'wheel' }}
         />
       </div>
     );
   });
 
-export const GameError = (args: GameProps) =>
+export const GameError = (args: GameComponentProps) =>
   games.map(game => {
     return (
       <div key={game.type} className="presentationBox" style={{ width: 600 }}>
-        <Game
+        <GameComponent
           {...args}
           {...game}
           currentResult={{
-            type: 'error',
+            type: GameStage.Error,
             correctAnswer: 'wheel',
             incorrectAnswer: 'flower'
           }}

@@ -17,6 +17,7 @@ exports[`generateConjugationGame generate data with minimal SPANISH words with i
     },
   ],
   "task": "Conjugate the verb in Imperativo",
+  "tense": "impf",
   "type": "CONJUGATION",
 }
 `;
@@ -38,6 +39,7 @@ exports[`generateConjugationGame generate data with minimal SPANISH words with p
     },
   ],
   "task": "Conjugate the verb in Presente indicativo",
+  "tense": "pind",
   "type": "CONJUGATION",
 }
 `;
@@ -59,6 +61,7 @@ exports[`generateConjugationGame generate data with minimal SPANISH words with p
     },
   ],
   "task": "Conjugate the verb in Pretérito perfecto simple",
+  "tense": "pprf",
   "type": "CONJUGATION",
 }
 `;
@@ -80,6 +83,7 @@ exports[`generateConjugationGame generate data with minimal SPANISH words with p
     },
   ],
   "task": "Conjugate the verb in Pretérito imperfecto",
+  "tense": "pret",
   "type": "CONJUGATION",
 }
 `;

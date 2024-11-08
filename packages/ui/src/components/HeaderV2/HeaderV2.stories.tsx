@@ -28,7 +28,7 @@ const navLinks: HeaderLinkType[] = [
 ];
 
 export default {
-  title: 'HeaderV2',
+  title: 'general/HeaderV2',
   component: HeaderV2,
   decorators: [routerDecorator]
 };

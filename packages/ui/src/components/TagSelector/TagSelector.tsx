@@ -6,7 +6,7 @@ import { WordTag } from '../../generated/graphql';
 import { useSelect } from '../Select/useSelect';
 import { Tag } from '../Tag/Tag';
 import { Button } from '../Button/Button';
-import { TagType } from '../../@types/types';
+import { TagType } from '../../types/types';
 
 export interface TagSelectorProps {
   /**TagSelector prop */

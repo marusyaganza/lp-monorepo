@@ -46,3 +46,8 @@
   margin: 0;
   margin-bottom: 0;
 }
+
+.tagSelector {
+  padding-bottom: 32px;
+  max-width: 440px;
+}

@@ -15,7 +15,7 @@ const renderCards = (args: CardWrapperProps) => {
 };
 
 const meta: Meta<typeof CardWrapper> = {
-  title: 'CardWrapper',
+  title: 'general/CardWrapper',
   component: CardWrapper,
   render: props => <>{renderCards(props)}</>
 };

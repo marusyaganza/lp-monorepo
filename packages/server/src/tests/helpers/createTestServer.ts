@@ -2,7 +2,6 @@ import { ApolloServer } from '@apollo/server';
 import { resolvers } from '../../resolvers';
 import { loadFilesSync } from '@graphql-tools/load-files';
 import * as path from 'path';
-// import { IResolverContext } from '../../types/types';
 
 const typeDefs = loadFilesSync(
   path.join(__dirname, '../../../../shared/schema/*.graphql')

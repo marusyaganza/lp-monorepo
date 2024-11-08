@@ -3,7 +3,7 @@ import { styledPreviewDecorator } from '../../storybook-decorators';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof ArrayInput> = {
-  title: 'ArrayInput',
+  title: 'inputs/ArrayInput',
   component: ArrayInput,
   decorators: [styledPreviewDecorator()]
 };

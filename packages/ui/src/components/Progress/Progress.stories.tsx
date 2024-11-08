@@ -3,7 +3,7 @@ import { styledPreviewDecorator } from '../../storybook-decorators';
 import type { Meta } from '@storybook/react';
 
 const meta: Meta<typeof Progress> = {
-  title: 'Progress',
+  title: 'game/Progress',
   component: Progress,
   decorators: [styledPreviewDecorator()]
 };

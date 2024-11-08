@@ -14,14 +14,14 @@ import styles from './SearchPage.module.css';
 import { routes } from '../../constants/routes';
 import { removeTypenames } from '../../util/wordUtils';
 import notFound from '../../assets/img/not-found.svg';
-import { SEARCH_WORDS } from '../../gql/queries';
-import { SAVE_WORD } from '../../gql/mutations';
+import { SEARCH_WORDS_QUERY } from '../../gql/queries';
+import { SAVE_WORD_MUTATION } from '../../gql/mutations';
 import { useMutation, useLazyQuery } from '@apollo/client';
 
 const SearchPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [saveWordFunc, saveWordData] = useMutation<SaveWordMutation>(
-    SAVE_WORD,
+    SAVE_WORD_MUTATION,
     {
       update(cache) {
         cache.evict({ fieldName: 'game' });
@@ -31,7 +31,7 @@ const SearchPage = () => {
   );
   const { setNotification, language } = useContext(AppContext);
   const [fetchSearchResult, { loading, error, data }] =
-    useLazyQuery<SearchWordsQuery>(SEARCH_WORDS);
+    useLazyQuery<SearchWordsQuery>(SEARCH_WORDS_QUERY);
   const [savedWords, setSavedWords] = useState<string[]>([]);
   const containsSuggestions = useMemo(
     () =>

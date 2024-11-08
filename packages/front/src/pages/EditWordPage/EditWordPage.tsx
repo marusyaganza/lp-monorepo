@@ -13,11 +13,11 @@ import {
 } from '../../generated/graphql';
 import { AppContext } from '../../app-context/appContext';
 import { TAGS_QUERY, WORD_BY_ID_QUERY } from '../../gql/queries';
-import { UPDATE_WORD } from '../../gql/mutations';
+import { UPDATE_WORD_MUTATION } from '../../gql/mutations';
 
 const EditWordPage = () => {
   const { wordId } = useParams();
-  const [updateWordFunc, updateWordData] = useMutation(UPDATE_WORD, {
+  const [updateWordFunc, updateWordData] = useMutation(UPDATE_WORD_MUTATION, {
     update(cache) {
       cache.evict({ fieldName: 'game' });
       cache.evict({ fieldName: 'wordsPerPage' });

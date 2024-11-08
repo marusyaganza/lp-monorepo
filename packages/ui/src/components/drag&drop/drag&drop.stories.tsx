@@ -2,7 +2,7 @@ import React from 'react';
 import { DragDrop } from './drag&drop';
 
 export default {
-  title: 'DragDrop',
+  title: 'experimental/DragDrop',
   component: DragDrop
   // argTypes: {
   //   backgroundColor: { control: 'color' },

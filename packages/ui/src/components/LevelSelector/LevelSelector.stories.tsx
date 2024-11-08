@@ -4,7 +4,7 @@ import { styledPreviewDecorator } from '../../storybook-decorators';
 import type { Meta } from '@storybook/react';
 
 const meta: Meta<typeof LevelSelector> = {
-  title: 'LevelSelector',
+  title: 'inputs/LevelSelector',
   component: LevelSelector,
   decorators: [styledPreviewDecorator()]
 };

@@ -7,13 +7,13 @@ import { InputV2 } from '../InputV2/InputV2';
 import { DefinitionInput } from '../DefinitionInput/DefinitionInput';
 import { ArrayInput } from '../ArrayInput/ArrayInput';
 import { TagSelector } from '../TagSelector/TagSelector';
-import { TagType, WordType } from '../../@types/types';
+import { TagType, WordType } from '../../types/types';
 import { Button } from '../Button/Button';
 import { Checkbox } from '../Checkbox/Checkbox';
 import { defsValidator, stringArrayValidator } from '../../utils/validators';
 import { useForm } from '../../hooks/useForm';
 import { cleanDefs, formatArrayOfStrings } from '../../utils/wordFormUtils';
-import { isNotEmptyString } from '../../@types/typeGuards';
+import { isNotEmptyString } from '../../types/typeGuards';
 
 export interface EditWordFormProps {
   /**EditWordForm onSubmit */
@@ -98,6 +98,7 @@ export const EditWordForm = ({
               isDisabled
             />
             <TagSelector
+              className={styles.tagSelector}
               onChange={getChangeHandler('tags')}
               tags={tags}
               value={values.tags || []}

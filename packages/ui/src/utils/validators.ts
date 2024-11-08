@@ -3,7 +3,7 @@ import {
   isNotEmptyString,
   isString,
   isTypedArray
-} from '../@types/typeGuards';
+} from '../types/typeGuards';
 
 /** Validators that don't accept arguments */
 export enum Validator {

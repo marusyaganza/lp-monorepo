@@ -27,16 +27,17 @@ type GameQuestionAdditionalInfo {
 
 type GameQuestion {
   question: [String!]
-  options: [String]
+  options: [String!]
   answer: String!
   wordId: ID!
   additionalInfo: GameQuestionAdditionalInfo
-  alternativeSpelling: [String]
+  alternativeSpelling: [String!]
 }
 
 type GameData {
   type: Game!
   task: String!
+  tense: Tense
   questions: [GameQuestion!]
 }
 

@@ -3,7 +3,7 @@ import { styledPreviewDecorator } from '../../storybook-decorators';
 import type { Meta } from '@storybook/react';
 
 const meta: Meta<typeof ConjugationInput> = {
-  title: 'ConjugationInput',
+  title: 'inputs/ConjugationInput',
   component: ConjugationInput,
   decorators: [styledPreviewDecorator()]
 };

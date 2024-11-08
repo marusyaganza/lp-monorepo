@@ -204,7 +204,6 @@ input UpdateStatisticsInput {
   id: ID!
   hasError: Boolean!
   gameType: Game!
-  isLearned: Boolean
 }
 
 input WordsPerPageInput {

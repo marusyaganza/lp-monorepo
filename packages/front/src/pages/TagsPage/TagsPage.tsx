@@ -1,7 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useMutation, useQuery } from '@apollo/client';
 import { TAGS_QUERY } from '../../gql/queries';
-import { UPDATE_TAG, CREATE_TAG, DELETE_TAG } from '../../gql/mutations';
+import {
+  UPDATE_TAG_MUTATION,
+  CREATE_TAG_MUTATION,
+  DELETE_TAG_MUTATION
+} from '../../gql/mutations';
 import {
   Language,
   TagsQuery,
@@ -53,7 +57,7 @@ export const TagsPage = () => {
     variables: { language }
   });
 
-  const [updateTagFunc, updateTagData] = useMutation(UPDATE_TAG, {
+  const [updateTagFunc, updateTagData] = useMutation(UPDATE_TAG_MUTATION, {
     update(cache) {
       cache.evict({ fieldName: 'game' });
       cache.evict({ fieldName: 'wordsPerPage' });
@@ -61,7 +65,7 @@ export const TagsPage = () => {
     }
   });
 
-  const [deleteTagFunc, deleteTagData] = useMutation(DELETE_TAG, {
+  const [deleteTagFunc, deleteTagData] = useMutation(DELETE_TAG_MUTATION, {
     update(cache) {
       cache.evict({ fieldName: 'game' });
       cache.evict({ fieldName: 'wordsPerPage' });
@@ -69,7 +73,7 @@ export const TagsPage = () => {
     }
   });
 
-  const [createTagFunc, createTagData] = useMutation(CREATE_TAG, {
+  const [createTagFunc, createTagData] = useMutation(CREATE_TAG_MUTATION, {
     update(cache) {
       cache.evict({ fieldName: 'game' });
       cache.evict({ fieldName: 'wordsPerPage' });

@@ -5,7 +5,7 @@ import { _iconIds } from '../Icon/icon';
 import '../../assets/styles/common-styles.css';
 
 export default {
-  title: 'Button',
+  title: 'buttons/Button',
   component: Button
 };
 
