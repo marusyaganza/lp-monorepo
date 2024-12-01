@@ -45,7 +45,9 @@ export const GameCard = ({
             <img className={styles.image} src={images[type]} alt={desc} />
           </div>
           <h2 className={styles.gameTitleMobile}>{name}</h2>
-          <p className={styles.description}>{desc}</p>
+          <p data-cy="game-desc" className={styles.description}>
+            {desc}
+          </p>
         </div>
       </Link>
       <h2 className={styles.gameTitle}>{name}</h2>

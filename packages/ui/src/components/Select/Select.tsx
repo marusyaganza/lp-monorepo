@@ -62,9 +62,10 @@ export const Select = function <T extends string>({
   return (
     <div data-cy={dataCy} ref={ref} className={cn(styles.container, className)}>
       <div className={styles.selectContainer}>
-        {label && <span className={styles.selectLabel}>{label}</span>}
+        {label && <label className={styles.selectLabel}>{label}</label>}
         <div className={cn(styles.currentValue, styles[`size${size}`])}>
           <button
+            data-cy="select-btn"
             type="button"
             className={cn(styles.select, variant ? styles[variant] : '')}
             onClick={() => {

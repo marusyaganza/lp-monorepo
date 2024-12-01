@@ -77,3 +77,10 @@
 .menuLink:hover {
   color: var(--primary-300);
 }
+
+.hidden {
+  opacity: 0;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+}

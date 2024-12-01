@@ -94,6 +94,7 @@ const GamesPage = () => {
             blankOption="none"
           />
           <TagSelector
+            dataCy="tag-selector"
             showNoTagsTag
             tags={tagsResult?.data?.tags}
             value={tags}

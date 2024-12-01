@@ -61,7 +61,6 @@ export const ColorInput = ({
             type="color"
             disabled={isDisabled}
             className={styles.colorInput}
-            name={name}
             value={value}
             onChange={handleChange}
           />

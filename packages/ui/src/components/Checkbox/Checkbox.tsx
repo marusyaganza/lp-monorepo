@@ -51,11 +51,12 @@ export const Checkbox = ({
   };
   return (
     <label
-      data-cy="checkbox"
       className={cn(styles.label, variant && styles[variant], className)}
+      data-cy="checkbox-label"
     >
       {renderLabel()}
       <input
+        data-cy="checkbox"
         onChange={handleChange}
         checked={isChecked}
         type="checkbox"

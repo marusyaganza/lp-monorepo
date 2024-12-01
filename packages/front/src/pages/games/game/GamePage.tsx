@@ -30,7 +30,8 @@ const GamePage = () => {
         tense: state.tense,
         tags: state.tags
       }
-    }
+    },
+    fetchPolicy: 'network-only'
   });
 
   const [saveResultFunc, saveResultData] = useMutation<SaveGameResultMutation>(

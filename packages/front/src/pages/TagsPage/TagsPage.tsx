@@ -112,14 +112,19 @@ export const TagsPage = () => {
     return tags.map(tag => {
       const { id, text, desc } = tag;
       return (
-        <div key={id}>
+        <div key={id} data-cy={`tag-${text}`}>
           <div className={styles.tag}>
             <div className={styles.tagDisplay}>
               <Tag {...tag} />
             </div>
-            {desc && <p className={styles.desc}>{desc}</p>}
+            {desc && (
+              <p data-cy="tag-desc" className={styles.desc}>
+                {desc}
+              </p>
+            )}
             <div className={styles.buttons}>
               <Button
+                data-cy="edit-btn"
                 variant="icon"
                 iconId="edit"
                 iconHeight={30}
@@ -129,6 +134,7 @@ export const TagsPage = () => {
                 Edit
               </Button>
               <Button
+                data-cy="delete-btn"
                 iconId="eraser"
                 variant="icon"
                 iconHeight={30}
@@ -278,6 +284,7 @@ export const TagsPage = () => {
           <div>{renderTags()}</div>
           <section className={styles.newTagContainer}>
             <Button
+              data-cy="new-tag-btn"
               variant="tertiary"
               isActionButton
               iconId="plus"

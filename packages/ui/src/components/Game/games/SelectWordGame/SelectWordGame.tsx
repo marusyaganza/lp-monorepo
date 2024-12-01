@@ -71,6 +71,7 @@ export const SelectWordGame = ({
         {renderQuestion()}
         <div className={styles.answer}>
           <OptionBox
+            dataCy="gameAnswer"
             ref={inputRef}
             value={value}
             isDisabled={currentStage !== 'initial'}

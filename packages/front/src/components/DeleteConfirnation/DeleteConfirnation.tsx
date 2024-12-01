@@ -16,10 +16,10 @@ export const DeleteConfirnation = ({
     <section className={styles.modalContent}>
       {children}
       <div className={styles.buttons}>
-        <Button variant="danger" onClick={onDelete}>
+        <Button data-cy="yes-btn" variant="danger" onClick={onDelete}>
           Delete
         </Button>
-        <Button variant="tertiary" onClick={onCancel}>
+        <Button data-cy="no-btn" variant="tertiary" onClick={onCancel}>
           Cancel
         </Button>
       </div>

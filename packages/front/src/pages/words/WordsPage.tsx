@@ -249,15 +249,21 @@ const WordsPage = () => {
       return;
     }
     return (
-      <div className={styles.pagination}>
+      <div className={styles.pagination} data-cy="pagination">
         <Button
+          data-cy="prev-btn"
           onClick={handlePrevious}
           disabled={pageNum === 1}
           variant="tertiary"
         >
           Previous
         </Button>
-        <Button disabled={!hasNext} onClick={handleNext} variant="tertiary">
+        <Button
+          data-cy="next-btn"
+          disabled={!hasNext}
+          onClick={handleNext}
+          variant="tertiary"
+        >
           Next
         </Button>
       </div>
@@ -269,9 +275,13 @@ const WordsPage = () => {
       <h1 className={styles.heading}>Vocabulary</h1>
       {!loading && (
         <div className={styles.topSection}>
-          <p data-cy="wordsCount" className={styles.wordsInfo}>
+          <p data-cy="words-count" className={styles.wordsInfo}>
             {`You have ${data?.wordsPerPage?.wordsCount || 0} words.`}{' '}
-            <Link className={styles.link} to={`/${routes.words}/new`}>
+            <Link
+              data-cy="add-word-link"
+              className={styles.link}
+              to={`/${routes.words}/new`}
+            >
               Add new
             </Link>
           </p>
@@ -283,6 +293,7 @@ const WordsPage = () => {
           />
           <div className={styles.wordSelection}>
             <TagSelector
+              dataCy="tag-selector"
               showNoTagsTag
               tags={tagsResult?.data?.tags}
               value={tags}

@@ -38,7 +38,7 @@ const SignInPage = () => {
   const { login, setNotification, isDevEnv } = useContext(AppContext);
 
   const submitHandler = (values: LoginInput) => {
-    authFunc({ variables: { input: values } });
+    authFunc({ variables: { input: values }, errorPolicy: 'all' });
   };
 
   useEffect(() => {
@@ -62,7 +62,9 @@ const SignInPage = () => {
     <AuthPageLayout>
       <div className={styles.mainContent}>
         <div className={styles.formContainer}>
-          <h2 className={styles.heading}>Sign in</h2>
+          <h2 data-cy="login-heading" className={styles.heading}>
+            Sign in
+          </h2>
           <Form
             data-cy="loginForm"
             id="loginForm"

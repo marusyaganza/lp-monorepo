@@ -99,6 +99,7 @@ export const EditWordForm = ({
             />
             <TagSelector
               className={styles.tagSelector}
+              dataCy="formField-tags"
               onChange={getChangeHandler('tags')}
               tags={tags}
               value={values.tags || []}
@@ -114,6 +115,7 @@ export const EditWordForm = ({
               errorText={errors?.shortDef}
             />
             <DefinitionInput
+              dataCy="formField-defs"
               errorText={errors?.defs}
               withTranslation={language === Language.Spanish}
               onChange={getChangeHandler('defs')}
@@ -171,11 +173,13 @@ export const EditWordForm = ({
               initialValue={initialValues.transcription}
               label="transcription"
             />
-            <Checkbox
-              name="isLearned"
-              onChange={getChangeHandler('isLearned')}
-              label="Mark as learned"
-            />
+            <div data-cy="formField-isLearned">
+              <Checkbox
+                name="isLearned"
+                onChange={getChangeHandler('isLearned')}
+                label="Mark as learned"
+              />
+            </div>
           </fieldset>
         </div>
       </form>

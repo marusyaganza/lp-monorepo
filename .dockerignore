@@ -48,6 +48,9 @@
 **/.yarn
 **/.husky
 
+# bash scripts
+**/*.sh
+
 
 
 

@@ -108,7 +108,12 @@ export const InputWithButton = ({
         </div>
       </label>
       {!ignoreErrors && (
-        <p aria-hidden={isInValid} role="status" className={styles.errorText}>
+        <p
+          aria-hidden={isInValid}
+          role="status"
+          data-cy="input-error"
+          className={styles.errorText}
+        >
           {errorText}
         </p>
       )}

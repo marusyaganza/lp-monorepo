@@ -12,6 +12,8 @@
   ],
   "scripts": {
     "start": "lerna run start --stream",
+    "dev": "bash ./dev.sh",
+    "dev:test": "bash ./dev-test.sh",
     "storybook": "lerna run storybook --scope '@lp/ui' --stream",
     "cypress": "lerna run cypress",
     "cypress:run": "lerna run cypress:run",
@@ -19,7 +21,7 @@
     "build:server": "lerna run prod --scope '@lp/server'",
     "build:front": "yarn codegen --scope={'@lp/front','@lp/ui'} && lerna run prod --scope '@lp/front'",
     "eslint": "lerna run eslint",
-    "ready": "lerna run ready --concurrency=1 --stream",
+    "ready": "bash ./preprod.sh",
     "clean": "lerna run clean && rimraf node_modules",
     "test": "lerna run test",
     "codegen": "lerna run codegen --stream",

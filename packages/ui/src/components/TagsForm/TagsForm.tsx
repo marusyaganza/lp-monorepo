@@ -61,12 +61,17 @@ export const TagsForm = function ({
   });
 
   return (
-    <form className={cn(styles.tagsForm, className)} onSubmit={submitFunc}>
+    <form
+      className={cn(styles.tagsForm, className)}
+      onSubmit={submitFunc}
+      data-cy="tags-form"
+    >
       <div className={styles.formFields}>
         <div className={styles.tagDisplayContainer}>
           <Tag className={styles.tagDisplay} {...values} />
         </div>
         <InputV2
+          dataCy="text"
           name="text"
           initialValue={initialValues?.text}
           className={styles.text}
@@ -75,6 +80,7 @@ export const TagsForm = function ({
           label="text"
         />
         <InputV2
+          dataCy="desc"
           name="desc"
           initialValue={initialValues?.desc}
           className={styles.desc}
@@ -83,6 +89,7 @@ export const TagsForm = function ({
           label="desc"
         />
         <ColorInput
+          dataCy="color"
           name="color"
           initialValue={initialValues?.color}
           onChange={getChangeHandler('color')}
@@ -95,6 +102,7 @@ export const TagsForm = function ({
           Save
         </Button>
         <Button
+          data-cy="cancel-btn"
           variant="icon"
           iconId="close"
           iconHeight={30}

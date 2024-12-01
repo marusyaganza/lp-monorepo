@@ -15,6 +15,7 @@ export interface TagSelectorProps {
   value?: string[];
   label?: string;
   showNoTagsTag?: boolean;
+  dataCy?: string;
   /**additional styling */
   className?: string;
 }
@@ -33,6 +34,7 @@ export const TagSelector = ({
   className,
   onChange,
   label,
+  dataCy,
   showNoTagsTag
 }: TagSelectorProps) => {
   const handleChange = (val: string) => {
@@ -89,12 +91,14 @@ export const TagSelector = ({
           return (
             <li key={id}>
               <Tag
+                dataCy="tag"
                 color={color}
                 text={text}
                 className={styles.tag}
                 iconId={tag.id === NO_TAGS_TAG.id ? 'void' : undefined}
               >
                 <Button
+                  data-cy="delete-tag-btn"
                   className={styles.button}
                   variant="icon"
                   iconId="close"
@@ -113,7 +117,7 @@ export const TagSelector = ({
   }
 
   return (
-    <div className={cn(className, styles.container)}>
+    <div data-cy={dataCy} className={cn(className, styles.container)}>
       <Select
         label={label}
         placement="center"

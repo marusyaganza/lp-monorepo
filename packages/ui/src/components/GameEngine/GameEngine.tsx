@@ -76,7 +76,13 @@ export const GameEngine = ({
     <div className={styles.container}>
       <header className={styles.progress}>
         <Progress value={state.progress} />
-        <Button variant="icon" iconId="close" iconHeight={30} onClick={onClose}>
+        <Button
+          variant="icon"
+          data-cy="exit-game"
+          iconId="close"
+          iconHeight={30}
+          onClick={onClose}
+        >
           Exit game
         </Button>
       </header>

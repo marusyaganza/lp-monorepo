@@ -70,7 +70,9 @@ export const PageLayout = ({
         {isLoading ? (
           <PageSpinner />
         ) : (
-          <main className={cn('main', className)}>{children}</main>
+          <main data-cy="page-content" className={cn('main', className)}>
+            {children}
+          </main>
         )}
         {userId && (
           <Footer links={footerLinks} mobileLinks={mobileFooterLinks} />

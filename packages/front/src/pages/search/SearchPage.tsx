@@ -119,7 +119,7 @@ const SearchPage = () => {
       return (
         <div className={styles.notFound}>
           <img src={notFound} className={styles.notFoundImage} alt="" />
-          <h3 className={styles.notFoundText}>
+          <h3 className={styles.notFoundText} data-cy="empty-search-result">
             {searchParams?.get('search') ?? 'word'} is not found
           </h3>
         </div>
@@ -188,7 +188,11 @@ const SearchPage = () => {
       <div className={styles.content}>
         <div className={styles.headingContainer}>
           <h1 className={styles.mainHeading}>Look up word</h1>
-          <Link variant="button" to={`/${routes.words}/new`}>
+          <Link
+            data-cy="add-word-link"
+            variant="button"
+            to={`/${routes.words}/new`}
+          >
             Add your own word
           </Link>
         </div>

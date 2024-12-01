@@ -45,6 +45,7 @@ export const SelectDefGame = ({
         </p>
         <div className={styles.answer}>
           <OptionBox
+            dataCy="gameAnswer"
             ref={inputRef}
             value={value}
             isDisabled={currentStage !== 'initial'}

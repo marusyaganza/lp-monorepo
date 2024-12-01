@@ -15,7 +15,7 @@ export const Modal = forwardRef<
   PropsWithChildren<ModalProps>
 >(({ className, children, onClose }, ref) => {
   return (
-    <dialog ref={ref} className={cn(className, styles.modal)}>
+    <dialog data-cy="modal" ref={ref} className={cn(className, styles.modal)}>
       <Button
         className={styles.closeButton}
         onClick={onClose}

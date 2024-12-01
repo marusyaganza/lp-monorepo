@@ -104,6 +104,7 @@ export const NewWordForm = ({
               errorText={errors?.name}
             />
             <TagSelector
+              dataCy="formField-tags"
               className={styles.tagSelector}
               onChange={getChangeHandler('tags')}
               tags={tags}
@@ -120,6 +121,7 @@ export const NewWordForm = ({
               errorText={errors?.shortDef}
             />
             <DefinitionInput
+              dataCy="formField-defs"
               errorText={errors?.defs}
               withTranslation={language === Language.Spanish}
               onChange={getChangeHandler('defs')}
@@ -184,12 +186,14 @@ export const NewWordForm = ({
               initialValue={initialValues.transcription}
               label="transcription"
             />
-            <Checkbox
-              name="isOffensive"
-              variant="isOffensive"
-              onChange={getChangeHandler('isOffensive')}
-              label="offensive"
-            />
+            <div data-cy="formField-isOffensive">
+              <Checkbox
+                name="isOffensive"
+                variant="isOffensive"
+                onChange={getChangeHandler('isOffensive')}
+                label="offensive"
+              />
+            </div>
           </fieldset>
         </div>
       </form>

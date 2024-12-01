@@ -48,5 +48,17 @@ export const games = [
     timesToLearn: 5,
     orderNum: 3,
     languages: [Language.English, Language.Spanish]
+  },
+  {
+    name: 'Conjugation',
+    desc: 'Conjugate verbs!',
+    id: 'conjugate',
+    type: Game.Conjugation,
+    wordsPerGame: 2,
+    minWords: 1,
+    optionsPerGame: 0,
+    timesToLearn: 5,
+    orderNum: 4,
+    languages: [Language.Spanish]
   }
 ];

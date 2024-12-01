@@ -102,7 +102,9 @@ const SignUpPage = () => {
 
   return (
     <AuthPageLayout>
-      <h2 className={styles.formHeading}>Sign up</h2>
+      <h2 data-cy="sign-up-heading" className={styles.formHeading}>
+        Sign up
+      </h2>
       <Form
         id="signUp"
         isLoading={loading}

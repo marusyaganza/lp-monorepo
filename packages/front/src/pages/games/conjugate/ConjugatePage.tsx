@@ -65,6 +65,7 @@ const ConjugatePage = () => {
         <img width={300} height={266} src={logo} alt="" />
         <p>Please select tense</p>
         <Select
+          dataCy="tense-selector"
           className={styles.select}
           variant="withIcon"
           renderValue={renderSelectValue}
@@ -72,7 +73,9 @@ const ConjugatePage = () => {
         >
           {renderOptions()}
         </Select>
-        <Button onClick={handleButtonClick}>Continue</Button>
+        <Button data-cy="conjugate-btn" onClick={handleButtonClick}>
+          Continue
+        </Button>
       </article>
     </PageLayout>
   );

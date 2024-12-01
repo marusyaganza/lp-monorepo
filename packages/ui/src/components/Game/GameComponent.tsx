@@ -88,13 +88,23 @@ export const GameComponent = ({
   const renderButton = () => {
     if (currentStage === GameStage.Initial) {
       return (
-        <Button disabled={!value} type="submit" variant="secondary">
+        <Button
+          data-cy="check-button"
+          disabled={!value}
+          type="submit"
+          variant="secondary"
+        >
           Check
         </Button>
       );
     }
     return (
-      <Button ref={buttonRef} autoFocus onClick={handleNext}>
+      <Button
+        ref={buttonRef}
+        autoFocus
+        onClick={handleNext}
+        data-cy="continue-button"
+      >
         Continue
       </Button>
     );

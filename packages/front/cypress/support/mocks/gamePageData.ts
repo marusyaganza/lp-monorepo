@@ -1,5 +1,7 @@
+import { GameStage } from '../constants';
+
 export const gameFooterMessages = {
-  success: [
+  [GameStage.Success]: [
     'Great job! Language skills shining!',
     'Impressive work! Mastering language!',
     "You've got it! Keep learning!",
@@ -11,7 +13,7 @@ export const gameFooterMessages = {
     'Outstanding! Unmatched aptitude!',
     'Acing it! Commendable dedication!'
   ],
-  error: [
+  [GameStage.Error]: [
     "Keep going, you're making progress!",
     "Mistakes are stepping stones to success. Don't give up!",
     "You've got this! Keep practicing!",
@@ -23,5 +25,5 @@ export const gameFooterMessages = {
     'Progress comes from perseverance!',
     "Stay positive! You've got this!"
   ],
-  initial: ["Let's get started"]
+  [GameStage.Initial]: ["Let's get started"]
 };

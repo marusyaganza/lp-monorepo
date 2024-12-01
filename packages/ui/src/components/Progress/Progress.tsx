@@ -13,6 +13,7 @@ export interface ProgressProps {
 export const Progress = ({ value, className }: ProgressProps) => {
   return (
     <progress
+      data-cy="game-progress"
       className={cn(className, styles.progress)}
       max="100"
       value={value}

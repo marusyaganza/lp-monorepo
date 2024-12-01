@@ -15,7 +15,7 @@ export async function mockFetchWord(
 ): Promise<unknown> {
   let result = [];
   const suggestions = mockSuggestions[language];
-  if (!query) {
+  if (!query || query === 'notFound') {
     return [];
   }
 

@@ -7,7 +7,7 @@ import { DefExample, DefsInput, WordDefinition } from '../generated/graphql';
  * @returns a string with trailing spaces and all line breaks removed
  */
 export function formatString(str: string): string {
-  return str.trim().replace(/\r?\n|\r/gi, '');
+  return str?.trim()?.replace(/\r?\n|\r/gi, '');
 }
 
 export function formatArrayOfStrings(data: unknown): string[] {
@@ -22,7 +22,10 @@ export function formatExamples(data: unknown): DefExample[] | undefined {
     return;
   }
   return data
-    .map(ex => ({ text: ex?.text, translation: ex?.translation }))
+    .map(ex => ({
+      text: formatString(ex?.text),
+      translation: formatString(ex?.translation)
+    }))
     .filter(isExample);
 }
 
@@ -30,7 +33,7 @@ export function cleanDefs(defs: WordDefinition[]): DefsInput[] {
   return defs
     .map(item => {
       return {
-        def: item?.def,
+        def: formatString(item?.def),
         examples: formatExamples(item?.examples)
       };
     })
