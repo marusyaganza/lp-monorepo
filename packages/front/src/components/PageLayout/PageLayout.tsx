@@ -39,7 +39,7 @@ export const PageLayout = ({
   const location = useLocation();
   useEffect(() => {
     if (!userId && !noRedirect) {
-      storeData<'previousLocation'>('previousLocation', location.pathname);
+      storeData('previousLocation', location.pathname);
       navigate('/sign-in');
     }
   }, [userId, navigate, noRedirect, location.pathname]);
@@ -70,7 +70,9 @@ export const PageLayout = ({
         {isLoading ? (
           <PageSpinner />
         ) : (
-          <main className={cn('main', className)}>{children}</main>
+          <main data-cy="page-content" className={cn('main', className)}>
+            {children}
+          </main>
         )}
         {userId && (
           <Footer links={footerLinks} mobileLinks={mobileFooterLinks} />

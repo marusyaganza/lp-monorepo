@@ -16,14 +16,14 @@ export interface StoredData {
   sortGamesBy: SortBy;
   wordsSortOrder: boolean;
   sortWordsBy: SortWordsBy;
-  tags?: TagDataType;
-  gameTags?: TagDataType;
+  tags?: Partial<TagDataType>;
+  gameTags?: Partial<TagDataType>;
 }
 
 type PropName = keyof StoredData & string;
 
 export function getStoredData<T extends PropName>(
-  propName: PropName
+  propName: T
 ): StoredData[T] | undefined {
   const storedData = localStorage.getItem(propName);
   if (!storedData) {
@@ -33,7 +33,7 @@ export function getStoredData<T extends PropName>(
 }
 
 export function storeData<T extends PropName>(
-  propName: PropName,
+  propName: T,
   data: StoredData[T]
 ) {
   if (!data || !propName) {

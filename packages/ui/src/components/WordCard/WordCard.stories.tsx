@@ -9,7 +9,7 @@ import {
 import '../../assets/styles/common-styles.css';
 
 export default {
-  title: 'WordCard',
+  title: 'general/WordCard',
   component: WordCard
 };
 

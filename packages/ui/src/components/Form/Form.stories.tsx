@@ -5,7 +5,7 @@ import { styledPreviewDecorator } from '../../storybook-decorators';
 import type { Meta } from '@storybook/react';
 
 const meta: Meta<typeof Form> = {
-  title: 'Form',
+  title: 'forms/Form',
   component: Form,
   decorators: [styledPreviewDecorator()]
 };

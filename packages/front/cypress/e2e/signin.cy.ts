@@ -1,29 +1,36 @@
 /* eslint-disable jest/expect-expect */
 /// <reference types="Cypress" />
 
+import { HEADER_TEXTS, TEXTS_BY_PAGE, USER_CREDS } from '../support/constants';
+
 describe('sign in page', () => {
   beforeEach(() => {
     cy.task('prepareDB');
     cy.clock();
     cy.visit('/');
+    cy.get('input[name="password"]').as('password');
+    cy.get('input[name="email"]').as('email');
   });
 
   afterEach(() => {
     cy.task('disconnectFromDb');
   });
-  it('all elements are visible', () => {
+
+  it('all elements should be visible', () => {
     cy.get('input').should('have.length', 2);
     cy.get('img').should('be.visible').should('have.attr', 'alt');
-    cy.get('a').should('have.text', 'Sign up');
-    cy.get('button[type="submit"]').should('have.text', 'Sign in');
-    cy.get('a').click();
-    cy.get('h2').should('have.text', 'Sign up');
+    cy.get('button[type="submit"]').should(
+      'have.text',
+      TEXTS_BY_PAGE.signIn.mainHeading
+    );
+    cy.get('a').contains(TEXTS_BY_PAGE.signIn.signUpLink).click();
+    cy.get('h2').should('have.text', TEXTS_BY_PAGE.signUp.mainHeading);
     cy.get('input').should('have.length', 6);
   });
 
   it('should validate the form', () => {
     cy.get('form').submit();
-    cy.get('[data-cy="inputError"]')
+    cy.getByCy('inputError')
       .as('error')
       .first()
       .should('have.text', 'email is required')
@@ -36,92 +43,88 @@ describe('sign in page', () => {
   });
 
   it('should login with correct password', () => {
-    cy.get('input[name="password"]').type('123Password!');
-    cy.get('input[name="email"]').type('test@test.com');
+    cy.get('@password').type(USER_CREDS.password);
+    cy.get('@email').type(USER_CREDS.email);
     cy.get('button').contains('Sign in').click();
-    cy.get('h1').should('have.text', 'The Power of Learning Languages');
+    cy.get('h1').should('have.text', TEXTS_BY_PAGE.home.mainHeading);
     cy.get('header').should('exist');
     cy.get('footer').should('exist');
   });
 
-  // TODO figure out why error notifications do not work
-  it.skip('should not login with incorrect password', () => {
+  it('should not login with incorrect password', () => {
     cy.visit('/');
-    cy.get('input[name="password"]').type('12Password4!');
-    cy.get('input[name="email"]').type('test@test.com');
+    cy.get('@password').type('12Password4!');
+    cy.get('@email').type(USER_CREDS.email);
     cy.get('button').contains('Sign in').click();
-    cy.get('[data-cy="notification-error"]')
-      .should('be.visible')
+    cy.getByCy('notification-error')
+      .as('notificationError')
       .find('h3')
       .should('have.text', 'Error');
 
-    cy.get('[data-cy="notification-error"]').contains(
-      'email or password is incorrect'
-    );
-    cy.get('h2').should('have.text', 'Sign in');
+    cy.get('@notificationError').contains('email or password is incorrect');
+    cy.get('h2').should('have.text', TEXTS_BY_PAGE.signIn.mainHeading);
+    cy.checkPathName('/sign-in');
   });
 
-  // TODO figure out why error notifications do not work
-  it.skip('should not login with incorrect email', () => {
+  it('should not login with incorrect email', () => {
     cy.visit('/');
-    cy.get('input[name="password"]').type('123Password4!');
-    cy.get('input[name="email"]').type('test2@test.com');
+    cy.get('@password').type(USER_CREDS.password);
+    cy.get('@email').type('test2@test.com');
     cy.get('button').contains('Sign in').click();
-    cy.get('[data-cy="notification-error"]')
-      .should('be.visible')
+    cy.getByCy('notification-error')
+      .as('notificationError')
       .find('h3')
       .should('have.text', 'Error');
 
-    cy.get('[data-cy="notification-error"]').contains(
-      'email or password is incorrect'
-    );
-    cy.get('h2').should('have.text', 'Sign in');
+    cy.get('@notificationError').contains('email or password is incorrect');
+    cy.get('h2').should('have.text', TEXTS_BY_PAGE.signIn.mainHeading);
+    cy.checkPathName('/sign-in');
   });
 
   it('should redirect the user the correct page after login', () => {
     cy.visit('/words');
-    cy.location().should('have.a.property', 'pathname', '/sign-in');
-    cy.get('input[name="password"]').type('123Password!');
-    cy.get('input[name="email"]').type('test@test.com{Enter}');
-    cy.location().should('have.a.property', 'pathname', '/words');
+    cy.checkPathName('/sign-in');
+    cy.get('@password').type(USER_CREDS.password);
+    cy.get('@email').type(`${USER_CREDS.email}{Enter}`);
+    cy.checkPathName('/words');
   });
 
-  it('should logout user automatically after 2 days and should not lose parameters', () => {
+  // TODO check if selected tags were saved
+  it('should logout user automatically after 7 days and should not lose parameters', () => {
     cy.login();
-    cy.get('[data-cy="headerNav"] a').contains('Vocabulary').click();
-    cy.get('h1').should('have.text', 'Vocabulary');
+    cy.getByCy('headerNav').contains(HEADER_TEXTS.vocabulary).click();
+    cy.get('h1').should('have.text', TEXTS_BY_PAGE.vocabulary.mainHeading);
 
-    cy.get('[data-cy="sortControls"]').as('sortControls');
-    cy.get('@sortControls').find('[data-cy="select"]').as('select');
-    cy.get('[data-cy="spinner"]').should('not.exist');
-    cy.get('@select').find('button').focus().click({ force: true });
-    cy.get('[data-cy="selectOption"]').contains('Alphabetically').click();
-    cy.get('@sortControls').find('[data-cy="checkbox"]').click();
-    cy.get('[data-cy="headerNav"] a').contains('Practice').click();
+    cy.getByCy('sortControls').as('sortControls');
+    cy.findByCy('select', '@sortControls').as('select');
+    cy.getByCy('spinner').should('not.exist');
+    cy.selectOption('@select', 'Alphabetically');
 
-    cy.get('[data-cy="sortControls"]').as('sortControls');
-    cy.get('@sortControls').find('[data-cy="select"]').as('select');
-    cy.get('[data-cy="spinner"]').should('not.exist');
-    cy.get('@select').find('button').focus().click({ force: true });
-    cy.get('[data-cy="selectOption"]').contains('Errors').click();
-    cy.get('@sortControls').find('[data-cy="checkbox"]').click();
+    cy.findByCy('checkbox-label', '@sortControls').as('orderCheckbox').click();
+    cy.getByCy('headerNav').contains(HEADER_TEXTS.practice).click();
+    cy.getByCy('sortControls').as('gameSortControls');
+    cy.findByCy('select', '@gameSortControls').as('gameSelect');
+    cy.getByCy('spinner').should('not.exist');
+    cy.selectOption('@gameSelect', 'Errors');
+    cy.findByCy('checkbox-label', '@sortControls').click();
 
     cy.tick(1000 * 60 * 60 * 24 * 7);
-    cy.location().should('have.a.property', 'pathname', '/sign-in');
-    cy.get('h2').should('have.text', 'Sign in');
-    cy.get('input[name="email"]').type('test@test.com');
-    cy.get('input[name="password"]').type('123Password!{Enter}');
+    cy.checkPathName('/sign-in');
+    cy.get('h2').should('have.text', TEXTS_BY_PAGE.signIn.mainHeading);
+    cy.get('@email').type(USER_CREDS.email);
+    cy.get('@password').type(`${USER_CREDS.password}{Enter}`);
+    cy.getByCy('spinner').should('not.exist');
 
-    cy.get('@select').find('button').should('have.text', 'Errors');
-    cy.get('@sortControls')
-      .find('[data-cy="checkbox"]')
+    cy.findByCy('select-btn', '@select').should('have.text', 'Errors');
+    cy.findByCy('checkbox-label', '@sortControls')
       .find('svg')
       .should('have.attr', 'aria-label', 'asc');
 
-    cy.get('[data-cy="headerNav"] a').contains('Vocabulary').click();
-    cy.get('@select').find('button').should('have.text', 'Alphabetically');
-    cy.get('@sortControls')
-      .find('[data-cy="checkbox"]')
+    cy.getByCy('headerNav').contains(HEADER_TEXTS.vocabulary).click();
+    cy.getByCy('spinner').should('not.exist');
+
+    cy.findByCy('select-btn', '@select').should('have.text', 'Alphabetically');
+    cy.findByCy('checkbox-label', '@sortControls')
       .find('svg')
       .should('have.attr', 'aria-label', 'asc');
   });

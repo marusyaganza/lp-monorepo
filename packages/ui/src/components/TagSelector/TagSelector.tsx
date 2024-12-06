@@ -6,25 +6,27 @@ import { WordTag } from '../../generated/graphql';
 import { useSelect } from '../Select/useSelect';
 import { Tag } from '../Tag/Tag';
 import { Button } from '../Button/Button';
+import { TagType } from '../../types/types';
 
 export interface TagSelectorProps {
   /**TagSelector prop */
-  tags?: WordTag[];
+  tags?: TagType[];
   onChange: (val: string[]) => void;
   value?: string[];
   label?: string;
   showNoTagsTag?: boolean;
+  dataCy?: string;
   /**additional styling */
   className?: string;
 }
 
-// @ts-ignore
-const NO_TAGS_TAG: WordTag = {
+const NO_TAGS_TAG: TagType = {
   color: '#F7F7F7',
   text: 'without tags',
   id: '000000000000000000000000',
   desc: 'select words that have no tags'
 };
+
 /**Component description goes here */
 export const TagSelector = ({
   tags: initialTags = [],
@@ -32,6 +34,7 @@ export const TagSelector = ({
   className,
   onChange,
   label,
+  dataCy,
   showNoTagsTag
 }: TagSelectorProps) => {
   const handleChange = (val: string) => {
@@ -58,7 +61,7 @@ export const TagSelector = ({
     };
   };
 
-  const renderOption = (tag: WordTag) => {
+  const renderOption = (tag: TagType) => {
     return (
       <Option key={tag.id} value={tag.id} className={styles.option}>
         <span>{tag.text}</span>
@@ -88,12 +91,14 @@ export const TagSelector = ({
           return (
             <li key={id}>
               <Tag
+                dataCy="tag"
                 color={color}
                 text={text}
                 className={styles.tag}
                 iconId={tag.id === NO_TAGS_TAG.id ? 'void' : undefined}
               >
                 <Button
+                  data-cy="delete-tag-btn"
                   className={styles.button}
                   variant="icon"
                   iconId="close"
@@ -112,7 +117,7 @@ export const TagSelector = ({
   }
 
   return (
-    <div className={cn(className, styles.container)}>
+    <div data-cy={dataCy} className={cn(className, styles.container)}>
       <Select
         label={label}
         placement="center"

@@ -3,7 +3,7 @@ import { GameFooter, GameFooterVariant } from './GameFooter';
 import type { Meta } from '@storybook/react';
 
 const meta: Meta<typeof GameFooter> = {
-  title: 'GameFooter',
+  title: 'game/GameFooter',
   component: GameFooter
 };
 

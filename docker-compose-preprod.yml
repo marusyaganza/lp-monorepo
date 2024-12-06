@@ -1,12 +1,12 @@
 version: "3.8"
 services:
- lp-db:
-    image: "mongo"
+  lp-db:
+    image: "mongo:4"
     volumes:
-      - data:/data/db
-    networks:
-      lp-network:
- lp-server:
+      - /data/db
+    ports:
+      - "27017:27017"
+  lp-server:
     build:
       context: .
       dockerfile: docker/Dockerfile-server-prod
@@ -16,19 +16,17 @@ services:
       - ./packages/server/.env.preprod
     depends_on:
       - lp-db
-    networks:
-      lp-network:
- lp-front:
+    environment:
+      - MONGO_CONNECTION=mongodb://lp-db:27017
+  lp-front:
     build:
       context: .
-      dockerfile: docker/Dockerfile-front-prod
+      dockerfile: docker/Dockerfile-front
+      args:
+        GQL_URL: "http://localhost:4000/"
+        TOKEN_TTL: 7
+        NODE_ENV: "test"
     ports:
-      - '8080:80'
-    env_file:
-      - ./packages/front/.env
+      - "8080:80"
     stdin_open: true
     tty: true
-volumes:
-  data:
-networks:
-  lp-network:

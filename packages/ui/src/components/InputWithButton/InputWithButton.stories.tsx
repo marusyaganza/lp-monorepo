@@ -3,7 +3,7 @@ import { styledPreviewDecorator } from '../../storybook-decorators';
 import type { Meta } from '@storybook/react';
 
 const meta: Meta<typeof InputWithButton> = {
-  title: 'InputWithButton',
+  title: 'inputs/InputWithButton',
   component: InputWithButton,
   decorators: [styledPreviewDecorator()]
 };

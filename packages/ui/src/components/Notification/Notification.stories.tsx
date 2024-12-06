@@ -3,7 +3,7 @@ import { styledPreviewDecorator } from '../../storybook-decorators';
 import type { Meta } from '@storybook/react';
 
 const meta: Meta<typeof Notification> = {
-  title: 'Notification',
+  title: 'general/Notification',
   component: Notification,
   decorators: [styledPreviewDecorator()]
 };

@@ -1,4 +1,4 @@
-import { Language } from '../../generated/graphql';
+import { Language, Level } from '../../generated/graphql';
 
 export const testData = {
   createUserInput: {
@@ -44,8 +44,8 @@ export const testData = {
       }
     ],
     particle: 'noun',
-    language: 'ENGLISH',
-    level: 'C1',
+    language: Language.English,
+    level: Level.C1,
     stems: ['egalitarian', 'egalitarianism', 'egalitarians'],
     audioUrl: 'mock.mp3',
     transcription: 'iˌɡælɪˈteəriən',
@@ -54,9 +54,9 @@ export const testData = {
   },
   createWordInput2: {
     particle: 'noun',
-    language: 'ENGLISH',
+    language: Language.English,
     name: 'rubber',
-    level: 'B2',
+    level: Level.B2,
     shortDef: [
       'a thin, flexible loop that is made of rubber and used to hold things together \u2014called also (US) elastic, elastic band'
     ],
@@ -77,7 +77,7 @@ export const testData = {
   updateWordInput: {
     additionalInfo: 'very useful information',
     audioUrl: 'mock.mp3',
-    level: 'B2',
+    level: Level.B2,
     defs: [
       {
         def: '{bc} a strong substance that stretches and that is made out of chemicals or from the juice of a tropical tree',
@@ -92,7 +92,7 @@ export const testData = {
   updateWordInput2: {
     additionalInfo: 'very important information',
     audioUrl: 'mock.mp3',
-    level: 'B2',
+    level: Level.B2,
     name: 'rubber1',
     uuid: 'invaliduuid'
   },

@@ -11,11 +11,13 @@ services:
   lp-front:
     build:
       context: .
-      dockerfile: docker/Dockerfile-front-prod
+      dockerfile: docker/Dockerfile-front
+      args:
+        - GQL_URL=/data/graphql
+        - TOKEN_TTL=7
+        - NODE_ENV=production
     ports:
       - '8080:80'
-    env_file:
-      - ./packages/front/.env
     stdin_open: true
     tty: true
     depends_on:

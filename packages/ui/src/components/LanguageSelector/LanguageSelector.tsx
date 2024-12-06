@@ -54,16 +54,24 @@ export const LanguageSelector = ({
       return;
     }
     return (
-      <img
-        alt={`${lang} flag`}
-        className={styles.image}
-        src={languages[lang]?.imgSrc}
-      />
+      <>
+        <span data-cy="current-language" className={styles.hidden}>
+          {lang}
+        </span>
+        <img
+          alt={`${lang} flag`}
+          className={styles.image}
+          src={languages[lang]?.imgSrc}
+        />
+      </>
     );
   };
 
   return (
-    <div className={cn(className, styles.container)}>
+    <div
+      className={cn(className, styles.container)}
+      data-cy="language-selector"
+    >
       <Select value={value} renderValue={renderCurrentValue} placement="right">
         {renderOption(Language.English)}
         {renderOption(Language.Spanish)}

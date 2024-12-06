@@ -1,5 +1,5 @@
 module.exports = {
-  setupFiles: ['<rootDir>/jestsetup.js'],
+  setupFiles: ['<rootDir>/src/tests/jestsetup.js'],
   coveragePathIgnorePatterns: [
     '<rootDir>/dist/',
     '<rootDir>/node_modules/',

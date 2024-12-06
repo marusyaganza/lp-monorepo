@@ -5,12 +5,3 @@
     margin: 24px;
   }
 }
-
-.mainHeading {
-  font-size: var(--font-size-l);
-  margin: 0;
-
-  @media (width <= 800px) {
-    text-align: center;
-  }
-}

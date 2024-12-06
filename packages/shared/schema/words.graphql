@@ -1,0 +1,230 @@
+enum Level {
+  A1
+  A2
+  B1
+  B2
+  C1
+  C2
+}
+
+enum SortWordsBy {
+  name
+  particle
+  level
+  updatedAt
+}
+
+enum Language {
+  ENGLISH
+  SPANISH
+}
+
+enum SortBy {
+  lastTimePracticed
+  practicedTimes
+  errorCount
+  successRate
+  memoryRefresher
+}
+
+enum Tense {
+  pind
+  pprf
+  impf
+  pret
+  # futr
+  # cond
+  # psub
+  # pisb1
+  # pisb2
+  # fsub
+  # ppci
+  # ppsi
+  # pant
+  # fpin
+  # cpef
+  # ppfs
+  # ppss1
+  # ppss2
+  # fpsb
+}
+
+type WordDefinition {
+  def: String!
+  examples: [DefExample]
+}
+
+type WordStatisticsField {
+  lastTimePracticed: Int
+  practicedTimes: Int
+  errorCount: Int
+  successRate: Int
+}
+
+type WordStatistics {
+  AUDIO: WordStatisticsField
+  TYPE_WORD: WordStatisticsField
+  SELECT_WORD: WordStatisticsField
+  SELECT_DEF: WordStatisticsField
+  CONJUGATION: WordStatisticsField
+}
+
+type Word {
+  id: ID!
+  uuid: ID
+  name: String!
+  createdAt: String!
+  updatedAt: Int
+  defs: [WordDefinition!]!
+  particle: String!
+  imgUrl: String
+  imgDesc: String
+  audioUrl: String
+  additionalInfo: String
+  transcription: String
+  user: ID!
+  isOffensive: Boolean
+  stems: [String!]
+  tags: [WordTag!]
+  level: Level
+  shortDef: [String!]!
+  language: Language!
+  isLearned: Boolean
+  statistics: WordStatistics
+  alternativeSpelling: [String!]
+  conjugation: [Conjugation!]
+}
+
+type PaginatedWords {
+  words: [Word!]!
+  hasNext: Boolean!
+  page: Int!
+  limit: Int!
+  wordsCount: Int!
+}
+
+type DictionaryWord {
+  uuid: ID!
+  name: String!
+  defs: [WordDefinition]!
+  particle: String!
+  imgUrl: String
+  imgDesc: String
+  audioUrl: String
+  additionalInfo: String
+  transcription: String
+  isOffensive: Boolean
+  stems: [String!]
+  shortDef: [String!]!
+  language: Language!
+  conjugation: [Conjugation!]
+}
+
+type Suggestions {
+  suggestions: [String!]
+}
+
+union SearchResult = DictionaryWord | Suggestions
+
+type Conjugation {
+  cjid: String!
+  cjfs: [String!]
+}
+
+type DefExample {
+  text: String!
+  translation: String
+}
+
+input DefExampleInput {
+  text: String!
+  translation: String
+}
+
+input DefsInput {
+  def: String!
+  examples: [DefExampleInput!]
+}
+
+input WordTagInput {
+  color: String!
+  text: String!
+}
+
+input ConjugationInput {
+  cjid: String!
+  cjfs: [String!]
+}
+
+input NewWordInput {
+  uuid: ID
+  name: String!
+  defs: [DefsInput!]!
+  particle: String!
+  imgUrl: String
+  imgDesc: String
+  audioUrl: String
+  additionalInfo: String
+  transcription: String
+  isOffensive: Boolean
+  stems: [String!]
+  level: Level
+  tags: [String!]
+  language: Language!
+  shortDef: [String!]!
+  isLearned: Boolean
+  alternativeSpelling: [String!]
+  conjugation: [ConjugationInput!]
+}
+
+input UpdateWordInput {
+  id: ID!
+  defs: [DefsInput!]
+  particle: String
+  imgUrl: String
+  imgDesc: String
+  audioUrl: String
+  additionalInfo: String
+  transcription: String
+  isOffensive: Boolean
+  stems: [String!]
+  level: Level
+  tags: [String!]
+  shortDef: [String!]
+  isLearned: Boolean
+  alternativeSpelling: [String!]
+}
+
+input WordSearchInput {
+  search: String!
+  language: Language!
+}
+
+input UpdateStatisticsInput {
+  id: ID!
+  hasError: Boolean!
+  gameType: Game!
+}
+
+input WordsPerPageInput {
+  language: Language
+  sortBy: SortWordsBy
+  isReverseOrder: Boolean
+  tags: [String!]
+  limit: Int
+  page: Int
+  searchQuery: String
+}
+
+type Query {
+  word(id: ID!): Word!
+  wordsPerPage(input: WordsPerPageInput): PaginatedWords!
+  searchWord(input: WordSearchInput!): [SearchResult!]!
+}
+
+type Mutation {
+  saveWord(input: NewWordInput!): Word!
+  updateWord(input: UpdateWordInput!): Word!
+  saveGameResult(input: [UpdateStatisticsInput!]!): String!
+  deleteWord(id: ID!): String!
+}

@@ -15,6 +15,7 @@ export interface OptionBoxProps {
   variant?: 'initial' | 'success' | 'error';
   correctOption?: string;
   incorrectOption?: string;
+  dataCy?: string;
 }
 /**Option box is a component based on HTML radio input */
 export const OptionBox = forwardRef<HTMLInputElement, OptionBoxProps>(
@@ -27,7 +28,8 @@ export const OptionBox = forwardRef<HTMLInputElement, OptionBoxProps>(
       isDisabled,
       variant = 'initial',
       correctOption,
-      incorrectOption
+      incorrectOption,
+      dataCy
     },
     ref
   ) => {
@@ -40,7 +42,10 @@ export const OptionBox = forwardRef<HTMLInputElement, OptionBoxProps>(
     );
 
     return (
-      <div data-cy="optionBox" className={cn(className, styles.container)}>
+      <div
+        data-cy={dataCy || 'optionBox'}
+        className={cn(className, styles.container)}
+      >
         {options.map((option, i) => {
           let style;
           if (correctOption === option) {
@@ -53,6 +58,7 @@ export const OptionBox = forwardRef<HTMLInputElement, OptionBoxProps>(
             // eslint-disable-next-line jsx-a11y/label-has-associated-control
             <label key={option} className={styles.optionContainer}>
               <input
+                data-cy={style === 'success' ? 'correctAnswer' : undefined}
                 className={styles.hidden}
                 disabled={isDisabled}
                 onChange={handleChange}

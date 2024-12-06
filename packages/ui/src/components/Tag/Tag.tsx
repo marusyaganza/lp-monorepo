@@ -11,6 +11,7 @@ export interface TagProps {
   color?: string;
   /**additional styling */
   className?: string;
+  dataCy?: string;
 
   iconId?: IconIdType;
 }
@@ -20,10 +21,12 @@ export const Tag = ({
   color,
   className,
   children,
+  dataCy,
   iconId
 }: PropsWithChildren<TagProps>) => {
   return (
     <span
+      data-cy={dataCy || 'tag'}
       style={{ backgroundColor: color }}
       className={cn(className, styles.tag)}
     >

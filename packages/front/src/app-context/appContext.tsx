@@ -36,7 +36,7 @@ export const AppProvider = ({ children }: PropsWithChildren<unknown>) => {
   >();
 
   useEffect(() => {
-    const storedLanguage = getStoredData<'language'>('language');
+    const storedLanguage = getStoredData('language');
     const lang: Language = storedLanguage || Language.English;
     if (lang) {
       setLanguage(lang);

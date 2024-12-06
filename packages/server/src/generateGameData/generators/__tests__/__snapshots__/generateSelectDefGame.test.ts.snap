@@ -1,0 +1,336 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`generateSelectDefGame generate data with minimal ENGLISH words 1`] = `
+{
+  "additionalInfo": {
+    "audioUrl": "https://example.com/audio/apple.mp3",
+    "examples": [],
+    "imgUrl": "https://example.com/images/apple.jpg",
+  },
+  "answer": "Round fruit with red or green skin.",
+  "options": [
+    "Unexpected good fortune.",
+    "delightful feeling of anticipation and excitement that arises before embarking on a new adventure or journey.",
+    "to engage in a playful and creative activity that sparks joy and imagination. It involves letting go of inhibitions and embracing a carefree spirit to explore new ideas and possibilities",
+    "a gentle, soothing sensation experienced when a cool breeze rustles through leaves on a warm summer day",
+    "a whimsical, fleeting moment when sunlight catches water droplets in the air, creating a shimmering and enchanting effect",
+    "Round fruit with red or green skin.",
+  ],
+  "question": [
+    "apple",
+  ],
+  "wordId": Any<String>,
+}
+`;
+
+exports[`generateSelectDefGame generate data with minimal SPANISH words 1`] = `
+{
+  "additionalInfo": {
+    "audioUrl": "https://example.com/audio/manzana.mp3",
+    "examples": [
+      {
+        "text": "Ella comió una manzana roja para el desayuno.",
+        "translation": "She ate a red apple for breakfast.",
+      },
+    ],
+    "imgUrl": "https://example.com/images/manzana.jpg",
+  },
+  "answer": "Round fruit with red or green skin.",
+  "options": [
+    "to take a leisurely stroll through a park or natural setting, breathing deeply to refresh your spirit.",
+    "a term for a person who has an extraordinary love and knowledge of fruits, often seeking out rare and exotic varieties",
+    "to a smile shared between strangers that brings a moment of warmth and connection, akin to a serendipitous encounter",
+    "the unique scent that lingers in the air after a lively dance session, evoking memories of joy and movement",
+    "the feeling of wanderlust and longing for adventure that takes root deep within, inspiring dreams of far-off places",
+    "Round fruit with red or green skin.",
+  ],
+  "question": [
+    "manzana",
+  ],
+  "wordId": Any<String>,
+}
+`;
+
+exports[`generateSelectDefGame should return the correct number of questions when data has enough ENGLISH words 1`] = `
+[
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/apple.mp3",
+      "examples": [],
+      "imgUrl": "https://example.com/images/apple.jpg",
+    },
+    "answer": "Round fruit with red or green skin.",
+    "options": [
+      "Unexpected good fortune.",
+      "Short-lived.",
+      "Found everywhere.",
+      "Idealistic but impractical.",
+      "State of being alone.",
+      "Round fruit with red or green skin.",
+    ],
+    "question": [
+      "apple",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/orange.mp3",
+      "examples": [],
+      "imgUrl": "https://example.com/images/orange.jpg",
+    },
+    "answer": "Citrus fruit with [...] rind.",
+    "options": [
+      "Unexpected good fortune.",
+      "Short-lived.",
+      "Found everywhere.",
+      "Idealistic but impractical.",
+      "State of being alone.",
+      "Citrus fruit with [...] rind.",
+    ],
+    "question": [
+      "orange",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/banana.mp3",
+      "examples": [],
+      "imgUrl": "https://example.com/images/banana.jpg",
+    },
+    "answer": "Curved fruit with yellow skin.",
+    "options": [
+      "Unexpected good fortune.",
+      "Short-lived.",
+      "Found everywhere.",
+      "Idealistic but impractical.",
+      "State of being alone.",
+      "Curved fruit with yellow skin.",
+    ],
+    "question": [
+      "banana",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/strawberry.mp3",
+      "examples": [],
+      "imgUrl": "https://example.com/images/strawberry.jpg",
+    },
+    "answer": "Soft red fruit with seeds.",
+    "options": [
+      "Unexpected good fortune.",
+      "Short-lived.",
+      "Found everywhere.",
+      "Idealistic but impractical.",
+      "State of being alone.",
+      "Soft red fruit with seeds.",
+    ],
+    "question": [
+      "strawberry",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/pineapple.mp3",
+      "examples": [],
+      "imgUrl": "https://example.com/images/pineapple.jpg",
+    },
+    "answer": "Tropical fruit with spiky rind.",
+    "options": [
+      "Unexpected good fortune.",
+      "Short-lived.",
+      "Found everywhere.",
+      "Idealistic but impractical.",
+      "State of being alone.",
+      "Tropical fruit with spiky rind.",
+    ],
+    "question": [
+      "pineapple",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/grape.mp3",
+      "examples": [],
+      "imgUrl": "https://example.com/images/grape.jpg",
+    },
+    "answer": "Small juicy fruit with smooth skin.",
+    "options": [
+      "Unexpected good fortune.",
+      "Short-lived.",
+      "Found everywhere.",
+      "Idealistic but impractical.",
+      "State of being alone.",
+      "Small juicy fruit with smooth skin.",
+    ],
+    "question": [
+      "grape",
+    ],
+    "wordId": Any<String>,
+  },
+]
+`;
+
+exports[`generateSelectDefGame should return the correct number of questions when data has enough SPANISH words 1`] = `
+[
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/manzana.mp3",
+      "examples": [
+        {
+          "text": "Ella comió una manzana roja para el desayuno.",
+          "translation": "She ate a red apple for breakfast.",
+        },
+      ],
+      "imgUrl": "https://example.com/images/manzana.jpg",
+    },
+    "answer": "Round fruit with red or green skin.",
+    "options": [
+      "Happiness.",
+      "Quickly.",
+      "Big, large.",
+      "To think.",
+      "Beauty.",
+      "Round fruit with red or green skin.",
+    ],
+    "question": [
+      "manzana",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/naranja.mp3",
+      "examples": [
+        {
+          "text": "Ella bebió jugo de naranja fresco esta mañana.",
+          "translation": "She drank fresh orange juice this morning.",
+        },
+        {
+          "text": "Llamaban la naranja “fruta del sol” por su color.",
+          "translation": "They called the orange "sun fruit" because of its color.",
+        },
+      ],
+      "imgUrl": "https://example.com/images/naranja.jpg",
+    },
+    "answer": "Citrus fruit with orange rind.",
+    "options": [
+      "To run.",
+      "Happiness.",
+      "Quickly.",
+      "Big, large.",
+      "To think.",
+      "Citrus fruit with orange rind.",
+    ],
+    "question": [
+      "naranja",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/platano.mp3",
+      "examples": [
+        {
+          "text": "Él peló un plátano y se lo comió.",
+          "translation": "He peeled a banana and ate it.",
+        },
+      ],
+      "imgUrl": "https://example.com/images/platano.jpg",
+    },
+    "answer": "Curved fruit with yellow skin.",
+    "options": [
+      "To run.",
+      "Happiness.",
+      "Quickly.",
+      "Big, large.",
+      "To think.",
+      "Curved fruit with yellow skin.",
+    ],
+    "question": [
+      "plátano",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/fresa.mp3",
+      "examples": [
+        {
+          "text": "Ella recogió una fresa madura del jardín.",
+          "translation": "She picked a ripe strawberry from the garden.",
+        },
+      ],
+      "imgUrl": "https://example.com/images/fresa.jpg",
+    },
+    "answer": "Soft red fruit with seeds.",
+    "options": [
+      "To run.",
+      "Happiness.",
+      "Quickly.",
+      "Big, large.",
+      "To think.",
+      "Soft red fruit with seeds.",
+    ],
+    "question": [
+      "fresa",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/pina.mp3",
+      "examples": [
+        {
+          "text": "Hicieron un batido de piña.",
+          "translation": "They made a pineapple smoothie.",
+        },
+      ],
+      "imgUrl": "https://example.com/images/pina.jpg",
+    },
+    "answer": "Tropical fruit with spiky rind.",
+    "options": [
+      "To run.",
+      "Happiness.",
+      "Quickly.",
+      "Big, large.",
+      "To think.",
+      "Tropical fruit with spiky rind.",
+    ],
+    "question": [
+      "piña",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/uva.mp3",
+      "examples": [
+        {
+          "text": "Él me ofreció un racimo de uvas.",
+          "translation": "He offered me a bunch of grapes.",
+        },
+      ],
+      "imgUrl": "https://example.com/images/uva.jpg",
+    },
+    "answer": "Small juicy fruit with smooth skin.",
+    "options": [
+      "To run.",
+      "Happiness.",
+      "Quickly.",
+      "Big, large.",
+      "To think.",
+      "Small juicy fruit with smooth skin.",
+    ],
+    "question": [
+      "uva",
+    ],
+    "wordId": Any<String>,
+  },
+]
+`;

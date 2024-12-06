@@ -4,7 +4,7 @@ import { games } from '../../mocks/games';
 import { routerDecorator } from '../../storybook-decorators';
 
 export default {
-  title: 'GameCard',
+  title: 'game/GameCard',
   component: GameCard,
   decorators: [routerDecorator]
 };

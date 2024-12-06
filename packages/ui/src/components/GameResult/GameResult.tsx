@@ -55,7 +55,12 @@ export const GameResult = ({
           </p>
         </div>
       </article>
-      <Button autoFocus variant="success" onClick={buttonClickHandler}>
+      <Button
+        data-cy="finish-game"
+        autoFocus
+        variant="success"
+        onClick={buttonClickHandler}
+      >
         Finish
       </Button>
     </div>

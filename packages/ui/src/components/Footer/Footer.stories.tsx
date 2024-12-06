@@ -6,7 +6,7 @@ import {
 import type { Meta } from '@storybook/react';
 
 const meta: Meta<typeof Footer> = {
-  title: 'Footer',
+  title: 'general/Footer',
   component: Footer,
   decorators: [styledPreviewDecorator('footer'), routerDecorator]
 };

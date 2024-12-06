@@ -53,7 +53,7 @@ export const useAuth = () => {
   }, [automaticLogout]);
 
   useEffect(() => {
-    const storedData = getStoredData<'userData'>('userData');
+    const storedData = getStoredData('userData');
     if (storedData && new Date(storedData.expiration) > new Date()) {
       login(
         storedData.userId,

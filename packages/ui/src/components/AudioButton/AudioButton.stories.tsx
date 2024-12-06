@@ -3,7 +3,7 @@ import { styledPreviewDecorator } from '../../storybook-decorators';
 import type { Meta } from '@storybook/react';
 
 const meta: Meta<typeof AudioButton> = {
-  title: 'AudioButton',
+  title: 'buttons/AudioButton',
   component: AudioButton,
   decorators: [styledPreviewDecorator()],
   parameters: {

@@ -1,0 +1,32 @@
+type WordTag {
+  id: ID!
+  user: ID
+  language: Language
+  color: String!
+  text: String!
+  desc: String
+}
+
+input WordTagInput {
+  color: String!
+  text: String!
+  language: Language!
+  desc: String
+}
+
+input UpdateWordTagInput {
+  id: ID!
+  color: String!
+  text: String!
+  desc: String
+}
+
+type Query {
+  tags(language: Language): [WordTag!]!
+}
+
+type Mutation {
+  createTag(input: WordTagInput!): String!
+  updateTag(input: UpdateWordTagInput!): String!
+  deleteTag(id: ID!): WordTag!
+}

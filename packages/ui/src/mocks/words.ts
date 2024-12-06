@@ -15,6 +15,9 @@ export const words: Word[] = [
         examples: [{ text: 'He described himself as ‘an <i>egalitarian</i>’.' }]
       },
       {
+        def: 'aiming for equality'
+      },
+      {
         def: 'aiming for equal wealth, status, etc., for all people',
         examples: [
           { text: 'He is a committed <i>egalitarian</i>' },

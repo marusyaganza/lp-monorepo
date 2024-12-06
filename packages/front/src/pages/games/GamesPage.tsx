@@ -1,23 +1,13 @@
-import React, {
-  useContext,
-  useEffect,
-  useCallback,
-  useMemo,
-  useState
-} from 'react';
+import React, { useContext, useEffect, useCallback, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { SortBy, GamesQuery, TagsQuery, Game } from '../../generated/graphql';
 import { GameCard, Spinner, TagSelector } from '@lp/ui';
 import { routes } from '../../constants/routes';
 import { PageLayout } from '../../components/PageLayout/PageLayout';
 import { AppContext } from '../../app-context/appContext';
-import {
-  TagDataType,
-  getStoredData,
-  storeData
-} from '../../util/localStorageUtils';
+import { getStoredData, storeData } from '../../util/localStorageUtils';
 import { SortControls } from '../../components/SortControls/SortControls';
-import { GAMES, TAGS_QUERY } from '../../gql/queries';
+import { GAMES_QUERY, TAGS_QUERY } from '../../gql/queries';
 
 import styles from './GamesPage.module.css';
 import { useQuery } from '@apollo/client';
@@ -36,21 +26,16 @@ const GamesPage = () => {
   const [tags, setTags] = useState<string[] | undefined>();
   const [isReverseOrder, setIsReverseOrder] = useState(false);
 
-  const { error, loading, data } = useQuery<GamesQuery>(GAMES, {
+  const { error, loading, data } = useQuery<GamesQuery>(GAMES_QUERY, {
     variables: { language }
   });
   const tagsResult = useQuery<TagsQuery>(TAGS_QUERY, {
     variables: { language }
   });
 
-  const searchStr = useMemo(() => {
-    const sort = sortBy ? `&sortBy=${sortBy}` : '';
-    return `?isReverseOrder=${isReverseOrder}${sort}`;
-  }, [sortBy, isReverseOrder]);
-
   const handleSortingParamChange = useCallback((val: string) => {
     setSortBy(val);
-    storeData('sortGamesBy', val);
+    storeData('sortGamesBy', val as SortBy);
   }, []);
 
   const handleOrderChange = useCallback((value: boolean) => {
@@ -61,8 +46,7 @@ const GamesPage = () => {
   const handleTagsChange = useCallback(
     (val: string[]) => {
       setTags(val);
-      const storedTags =
-        getStoredData<'gameTags'>('gameTags') || ({} as TagDataType);
+      const storedTags = getStoredData('gameTags') || {};
       storedTags[language] = val;
       storeData('gameTags', storedTags);
     },
@@ -80,10 +64,9 @@ const GamesPage = () => {
   }, [error]);
 
   useEffect(() => {
-    const storedSortBy = getStoredData<'sortGamesBy'>('sortGamesBy');
-    const storedIsReverseOrder =
-      getStoredData<'gamesSortOrder'>('gamesSortOrder');
-    const storedTags = getStoredData<'gameTags'>('gameTags')?.[language];
+    const storedSortBy = getStoredData('sortGamesBy');
+    const storedIsReverseOrder = getStoredData('gamesSortOrder');
+    const storedTags = getStoredData('gameTags')?.[language];
 
     if (storedSortBy) {
       setSortBy(storedSortBy);
@@ -111,8 +94,8 @@ const GamesPage = () => {
             blankOption="none"
           />
           <TagSelector
+            dataCy="tag-selector"
             showNoTagsTag
-            // @ts-ignore
             tags={tagsResult?.data?.tags}
             value={tags}
             label="tags"
@@ -135,7 +118,16 @@ const GamesPage = () => {
                   : `${routes.games}/${game.type?.toLocaleLowerCase()}`;
               return (
                 <li key={game.id}>
-                  <GameCard game={game} linkUrl={`/${gameLink}${searchStr}`} />
+                  <GameCard
+                    game={game}
+                    state={{
+                      sortBy,
+                      isReverseOrder,
+                      gameType: game.type,
+                      tags
+                    }}
+                    linkUrl={`/${gameLink}`}
+                  />
                 </li>
               );
             })}

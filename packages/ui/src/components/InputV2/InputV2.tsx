@@ -59,7 +59,12 @@ export const InputV2 = ({
         </div>
       </label>
       {!ignoreErrors && (
-        <p aria-hidden={isInValid} role="status" className={styles.errorText}>
+        <p
+          aria-hidden={isInValid}
+          data-cy="input-error"
+          role="status"
+          className={styles.errorText}
+        >
           {errorText}
         </p>
       )}

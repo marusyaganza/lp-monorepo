@@ -1,0 +1,56 @@
+enum Game {
+  AUDIO
+  TYPE_WORD
+  SELECT_WORD
+  SELECT_DEF
+  CONJUGATION
+}
+
+type GameConfig {
+  name: String!
+  desc: String!
+  id: String!
+  type: Game!
+  wordsPerGame: Int!
+  optionsPerGame: Int!
+  minWords: Int!
+  timesToLearn: Int!
+  orderNum: Int!
+}
+
+type GameQuestionAdditionalInfo {
+  audioUrl: String
+  examples: [DefExample]
+  imgUrl: String
+  shortDef: String
+}
+
+type GameQuestion {
+  question: [String!]
+  options: [String!]
+  answer: String!
+  wordId: ID!
+  additionalInfo: GameQuestionAdditionalInfo
+  alternativeSpelling: [String!]
+}
+
+type GameData {
+  type: Game!
+  task: String!
+  tense: Tense
+  questions: [GameQuestion!]
+}
+
+input GameDataInput {
+  gameType: Game!
+  sortBy: SortBy
+  isReverseOrder: Boolean
+  tags: [String]
+  language: Language
+  tense: Tense
+}
+
+type Query {
+  games(language: Language): [GameConfig]!
+  game(input: GameDataInput!): GameData!
+}

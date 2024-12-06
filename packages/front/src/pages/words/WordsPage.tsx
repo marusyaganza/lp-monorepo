@@ -14,7 +14,7 @@ import {
   WordsPerPageQuery
 } from '../../generated/graphql';
 import { TAGS_QUERY, WORDS_PER_PAGE_QUERY } from '../../gql/queries';
-import { DELETE_WORD } from '../../gql/mutations';
+import { DELETE_WORD_MUTATION } from '../../gql/mutations';
 
 import {
   WordCard,
@@ -29,17 +29,13 @@ import {
 import { PageLayout } from '../../components/PageLayout/PageLayout';
 import { AppContext } from '../../app-context/appContext';
 import {
-  SortControls,
-  SortByType
+  SortByType,
+  SortControls
 } from '../../components/SortControls/SortControls';
 
 import styles from './WordsPage.module.css';
 import { routes } from '../../constants/routes';
-import {
-  getStoredData,
-  storeData,
-  TagDataType
-} from '../../util/localStorageUtils';
+import { getStoredData, storeData } from '../../util/localStorageUtils';
 import { useLazyQuery, useMutation, useQuery } from '@apollo/client';
 
 const OPTIONS = {
@@ -71,7 +67,7 @@ const WordsPage = () => {
   });
 
   const [deleteWordFunc, deleteWordData] = useMutation<DeleteWordMutation>(
-    DELETE_WORD,
+    DELETE_WORD_MUTATION,
     {
       update(cache) {
         cache.evict({ fieldName: 'game' });
@@ -82,13 +78,13 @@ const WordsPage = () => {
 
   const handleSortingParamChange = useCallback((val: SortByType) => {
     setSortBy(val as SortWordsBy);
-    storeData('sortWordsBy', val);
+    storeData('sortWordsBy', val as SortWordsBy);
   }, []);
 
   const handleTagsChange = useCallback(
     (val: string[]) => {
       setTags(val);
-      const storedTags = getStoredData<'tags'>('tags') || ({} as TagDataType);
+      const storedTags = getStoredData('tags') || {};
       storedTags[language] = val;
       storeData('tags', storedTags);
     },
@@ -195,10 +191,9 @@ const WordsPage = () => {
   }, [deleteWordData.data]);
 
   useEffect(() => {
-    const storedSortBy = getStoredData<'sortWordsBy'>('sortWordsBy');
-    const storedIsReverseOrder =
-      getStoredData<'wordsSortOrder'>('wordsSortOrder');
-    const storedTags = getStoredData<'tags'>('tags')?.[language];
+    const storedSortBy = getStoredData('sortWordsBy');
+    const storedIsReverseOrder = getStoredData('wordsSortOrder');
+    const storedTags = getStoredData('tags')?.[language];
     if (storedSortBy) {
       setSortBy(storedSortBy);
     }
@@ -254,15 +249,21 @@ const WordsPage = () => {
       return;
     }
     return (
-      <div className={styles.pagination}>
+      <div className={styles.pagination} data-cy="pagination">
         <Button
+          data-cy="prev-btn"
           onClick={handlePrevious}
           disabled={pageNum === 1}
           variant="tertiary"
         >
           Previous
         </Button>
-        <Button disabled={!hasNext} onClick={handleNext} variant="tertiary">
+        <Button
+          data-cy="next-btn"
+          disabled={!hasNext}
+          onClick={handleNext}
+          variant="tertiary"
+        >
           Next
         </Button>
       </div>
@@ -274,9 +275,13 @@ const WordsPage = () => {
       <h1 className={styles.heading}>Vocabulary</h1>
       {!loading && (
         <div className={styles.topSection}>
-          <p data-cy="wordsCount" className={styles.wordsInfo}>
+          <p data-cy="words-count" className={styles.wordsInfo}>
             {`You have ${data?.wordsPerPage?.wordsCount || 0} words.`}{' '}
-            <Link className={styles.link} to={`/${routes.words}/new`}>
+            <Link
+              data-cy="add-word-link"
+              className={styles.link}
+              to={`/${routes.words}/new`}
+            >
               Add new
             </Link>
           </p>
@@ -288,8 +293,8 @@ const WordsPage = () => {
           />
           <div className={styles.wordSelection}>
             <TagSelector
+              dataCy="tag-selector"
               showNoTagsTag
-              // @ts-ignore
               tags={tagsResult?.data?.tags}
               value={tags}
               label="tags"

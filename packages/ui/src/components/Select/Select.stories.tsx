@@ -5,7 +5,7 @@ import { styledPreviewDecorator } from '../../storybook-decorators';
 import type { Meta } from '@storybook/react';
 
 const meta: Meta<typeof Select> = {
-  title: 'Select',
+  title: 'inputs/Select',
   component: Select,
   decorators: [styledPreviewDecorator()]
 };

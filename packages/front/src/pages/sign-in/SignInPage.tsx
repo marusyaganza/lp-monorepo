@@ -9,7 +9,7 @@ import { routes } from '../../constants/routes';
 import llustration from '../../assets/img/login.svg';
 import styles from './SignInPage.module.css';
 import { useMutation } from '@apollo/client';
-import { LOGIN } from '../../gql/mutations';
+import { LOGIN_MUTATION } from '../../gql/mutations';
 
 const SignInPage = () => {
   const fields: FormField[] = [
@@ -34,11 +34,11 @@ const SignInPage = () => {
   ];
 
   const [authFunc, { data, loading, error }] =
-    useMutation<LoginMutation>(LOGIN);
+    useMutation<LoginMutation>(LOGIN_MUTATION);
   const { login, setNotification, isDevEnv } = useContext(AppContext);
 
   const submitHandler = (values: LoginInput) => {
-    authFunc({ variables: { input: values } });
+    authFunc({ variables: { input: values }, errorPolicy: 'all' });
   };
 
   useEffect(() => {
@@ -62,7 +62,9 @@ const SignInPage = () => {
     <AuthPageLayout>
       <div className={styles.mainContent}>
         <div className={styles.formContainer}>
-          <h2 className={styles.heading}>Sign in</h2>
+          <h2 data-cy="login-heading" className={styles.heading}>
+            Sign in
+          </h2>
           <Form
             data-cy="loginForm"
             id="loginForm"

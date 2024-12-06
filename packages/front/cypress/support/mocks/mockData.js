@@ -37,17 +37,19 @@ export const mockNewWord = {
     {
       def: 'a machine that is designed to do a particular thing in the home, such as preparing food, heating or cleaning',
       examples: [
-        'electrical/household appliances',
-        'modern heating appliances of all types'
+        { text: 'electrical/household appliances' },
+        { text: 'modern heating appliances of all types' }
       ]
     },
     {
       def: 'information appliance',
       examples: [
-        'A growing number of companies are coming up with ways [in 2000] to turn ordinary phones into Internet appliances</i>.'
-      ],
-      examples2: [
-        'A growing number of companies are coming up with ways [in 2000] to turn ordinary phones into Internet appliances.'
+        {
+          text: 'A growing number of companies are coming up with ways [in 2000] to turn ordinary phones into Internet appliances.'
+        },
+        {
+          text: 'They sell a wide range of domestic appliances—washing machines, dishwashers and so on.'
+        }
       ]
     },
     {
@@ -64,7 +66,6 @@ export const mockNewWord = {
   transcription: 'ə-ˈplī-ən(t)s',
   isOffensive: false,
   stems: ['appliance', 'appliances'],
-  level: 'B2',
   shortDef: [
     'a machine that is designed to do a particular thing in the home, such as preparing food, heating or cleaning',
     'a piece of equipment for adapting a tool or machine to a special purpose : attachment',
@@ -78,7 +79,7 @@ export const minNewWord = {
   defs: [
     {
       def: 'to fail to reach the standard that you expected or need',
-      examples: ["Taylor's solution falls short of the mark."]
+      examples: [{ text: "Taylor's solution falls short of the mark." }]
     }
   ],
   shortDef: ['to fail to meet expectations']

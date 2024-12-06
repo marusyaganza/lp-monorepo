@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`game queries games query 1`] = `
+{
+  "games": [
+    {
+      "desc": "Listen, Type, Master. Sharpen language skills through auditory engagement.",
+      "id": "mockId",
+      "name": "WordEcho",
+      "type": "AUDIO",
+    },
+    {
+      "desc": "Define & Conquer.Match words with their meanings intuitively.",
+      "id": "mockId",
+      "name": "LexiSense",
+      "type": "SELECT_DEF",
+    },
+    {
+      "desc": "Associate definitions with the right words. A captivating word puzzle adventure!",
+      "id": "mockId",
+      "name": "Definify: Match & Learn",
+      "type": "SELECT_WORD",
+    },
+    {
+      "desc": "Type words matching given definitions. Boost vocabulary in engaging rounds!",
+      "id": "mockId",
+      "name": "WordRecall: Define & Type",
+      "type": "TYPE_WORD",
+    },
+    {
+      "desc": "Conjugate verbs!",
+      "id": "mockId",
+      "name": "Conjugation",
+      "type": "CONJUGATION",
+    },
+  ],
+}
+`;

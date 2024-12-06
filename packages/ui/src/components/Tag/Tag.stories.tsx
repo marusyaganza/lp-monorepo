@@ -3,7 +3,7 @@ import { styledPreviewDecorator } from '../../storybook-decorators';
 import type { Meta } from '@storybook/react';
 
 const meta: Meta<typeof Tag> = {
-  title: 'Tag',
+  title: 'general/Tag',
   component: Tag,
   decorators: [styledPreviewDecorator()]
 };

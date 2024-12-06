@@ -1,0 +1,336 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`generateSelectWordGame generate data with minimal ENGLISH words 1`] = `
+{
+  "additionalInfo": {
+    "audioUrl": "https://example.com/audio/apple.mp3",
+    "examples": [],
+    "imgUrl": "https://example.com/images/apple.jpg",
+  },
+  "answer": "apple",
+  "options": [
+    "serendipity",
+    "quix",
+    "flibberfazzle",
+    "zephral",
+    "glitzephyr",
+    "apple",
+  ],
+  "question": [
+    "Round fruit with red or green skin.",
+  ],
+  "wordId": Any<String>,
+}
+`;
+
+exports[`generateSelectWordGame generate data with minimal SPANISH words 1`] = `
+{
+  "additionalInfo": {
+    "audioUrl": "https://example.com/audio/manzana.mp3",
+    "examples": [
+      {
+        "text": "Ella comió una manzana roja para el desayuno.",
+        "translation": "She ate a red apple for breakfast.",
+      },
+    ],
+    "imgUrl": "https://example.com/images/manzana.jpg",
+  },
+  "answer": "manzana",
+  "options": [
+    "espirelar",
+    "trutamor",
+    "sonrisanto",
+    "danzaroma",
+    "aventuraíz",
+    "manzana",
+  ],
+  "question": [
+    "Round fruit with red or green skin.",
+  ],
+  "wordId": Any<String>,
+}
+`;
+
+exports[`generateSelectWordGame should return the correct number of questions when data has enough ENGLISH words 1`] = `
+[
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/apple.mp3",
+      "examples": [],
+      "imgUrl": "https://example.com/images/apple.jpg",
+    },
+    "answer": "apple",
+    "options": [
+      "serendipity",
+      "ephemeral",
+      "ubiquitous",
+      "quixotic",
+      "solitude",
+      "apple",
+    ],
+    "question": [
+      "Round fruit with red or green skin.",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/orange.mp3",
+      "examples": [],
+      "imgUrl": "https://example.com/images/orange.jpg",
+    },
+    "answer": "orange",
+    "options": [
+      "serendipity",
+      "ephemeral",
+      "ubiquitous",
+      "quixotic",
+      "solitude",
+      "orange",
+    ],
+    "question": [
+      "Citrus fruit with [...] rind.",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/banana.mp3",
+      "examples": [],
+      "imgUrl": "https://example.com/images/banana.jpg",
+    },
+    "answer": "banana",
+    "options": [
+      "serendipity",
+      "ephemeral",
+      "ubiquitous",
+      "quixotic",
+      "solitude",
+      "banana",
+    ],
+    "question": [
+      "Curved fruit with yellow skin.",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/strawberry.mp3",
+      "examples": [],
+      "imgUrl": "https://example.com/images/strawberry.jpg",
+    },
+    "answer": "strawberry",
+    "options": [
+      "serendipity",
+      "ephemeral",
+      "ubiquitous",
+      "quixotic",
+      "solitude",
+      "strawberry",
+    ],
+    "question": [
+      "Soft red fruit with seeds.",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/pineapple.mp3",
+      "examples": [],
+      "imgUrl": "https://example.com/images/pineapple.jpg",
+    },
+    "answer": "pineapple",
+    "options": [
+      "serendipity",
+      "ephemeral",
+      "ubiquitous",
+      "quixotic",
+      "solitude",
+      "pineapple",
+    ],
+    "question": [
+      "Tropical fruit with spiky rind.",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/grape.mp3",
+      "examples": [],
+      "imgUrl": "https://example.com/images/grape.jpg",
+    },
+    "answer": "grape",
+    "options": [
+      "serendipity",
+      "ephemeral",
+      "ubiquitous",
+      "quixotic",
+      "solitude",
+      "grape",
+    ],
+    "question": [
+      "Small juicy fruit with smooth skin.",
+    ],
+    "wordId": Any<String>,
+  },
+]
+`;
+
+exports[`generateSelectWordGame should return the correct number of questions when data has enough SPANISH words 1`] = `
+[
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/manzana.mp3",
+      "examples": [
+        {
+          "text": "Ella comió una manzana roja para el desayuno.",
+          "translation": "She ate a red apple for breakfast.",
+        },
+      ],
+      "imgUrl": "https://example.com/images/manzana.jpg",
+    },
+    "answer": "manzana",
+    "options": [
+      "felicidad",
+      "rápidamente",
+      "grande",
+      "pensar",
+      "hermosura",
+      "manzana",
+    ],
+    "question": [
+      "Round fruit with red or green skin.",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/naranja.mp3",
+      "examples": [
+        {
+          "text": "Ella bebió jugo de naranja fresco esta mañana.",
+          "translation": "She drank fresh orange juice this morning.",
+        },
+        {
+          "text": "Llamaban la naranja “fruta del sol” por su color.",
+          "translation": "They called the orange "sun fruit" because of its color.",
+        },
+      ],
+      "imgUrl": "https://example.com/images/naranja.jpg",
+    },
+    "answer": "naranja",
+    "options": [
+      "correr",
+      "felicidad",
+      "rápidamente",
+      "grande",
+      "pensar",
+      "naranja",
+    ],
+    "question": [
+      "Citrus fruit with orange rind.",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/platano.mp3",
+      "examples": [
+        {
+          "text": "Él peló un plátano y se lo comió.",
+          "translation": "He peeled a banana and ate it.",
+        },
+      ],
+      "imgUrl": "https://example.com/images/platano.jpg",
+    },
+    "answer": "plátano",
+    "options": [
+      "correr",
+      "felicidad",
+      "rápidamente",
+      "grande",
+      "pensar",
+      "plátano",
+    ],
+    "question": [
+      "Curved fruit with yellow skin.",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/fresa.mp3",
+      "examples": [
+        {
+          "text": "Ella recogió una fresa madura del jardín.",
+          "translation": "She picked a ripe strawberry from the garden.",
+        },
+      ],
+      "imgUrl": "https://example.com/images/fresa.jpg",
+    },
+    "answer": "fresa",
+    "options": [
+      "correr",
+      "felicidad",
+      "rápidamente",
+      "grande",
+      "pensar",
+      "fresa",
+    ],
+    "question": [
+      "Soft red fruit with seeds.",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/pina.mp3",
+      "examples": [
+        {
+          "text": "Hicieron un batido de piña.",
+          "translation": "They made a pineapple smoothie.",
+        },
+      ],
+      "imgUrl": "https://example.com/images/pina.jpg",
+    },
+    "answer": "piña",
+    "options": [
+      "correr",
+      "felicidad",
+      "rápidamente",
+      "grande",
+      "pensar",
+      "piña",
+    ],
+    "question": [
+      "Tropical fruit with spiky rind.",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/uva.mp3",
+      "examples": [
+        {
+          "text": "Él me ofreció un racimo de uvas.",
+          "translation": "He offered me a bunch of grapes.",
+        },
+      ],
+      "imgUrl": "https://example.com/images/uva.jpg",
+    },
+    "answer": "uva",
+    "options": [
+      "correr",
+      "felicidad",
+      "rápidamente",
+      "grande",
+      "pensar",
+      "uva",
+    ],
+    "question": [
+      "Small juicy fruit with smooth skin.",
+    ],
+    "wordId": Any<String>,
+  },
+]
+`;

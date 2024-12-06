@@ -3,7 +3,7 @@ import { Header, HeaderProps } from './Header';
 import { routerDecorator } from '../../storybook-decorators';
 
 export default {
-  title: 'Header',
+  title: 'general/Header',
   component: Header,
   decorators: [routerDecorator]
 };

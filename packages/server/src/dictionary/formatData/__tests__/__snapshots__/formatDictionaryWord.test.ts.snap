@@ -1,0 +1,441 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`formatDictionaryWord should return correct result minimal English word 1`] = `
+{
+  "audioUrl": "mock_audio_endpoint/en/us/mp3/m/murthe01.mp3",
+  "conjugation": null,
+  "defs": [
+    {
+      "def": "chiefly dialectal variant of <i>murder</i>",
+    },
+  ],
+  "imgDesc": null,
+  "imgUrl": undefined,
+  "isOffensive": false,
+  "language": "ENGLISH",
+  "name": "murther",
+  "particle": "noun",
+  "shortDef": [
+    "chiefly dialectal variant of <i>murder</i>",
+  ],
+  "stems": [
+    "murder",
+    "murther",
+    "murthered",
+    "murthering",
+    "murthers",
+  ],
+  "transcription": "ˈmər-t͟hər",
+  "uuid": "87f2219c-6fcb-4390-9e2a-427384ef13a3",
+}
+`;
+
+exports[`formatDictionaryWord should return correct result with Spanish noun 1`] = `
+{
+  "audioUrl": "mock_audio_endpoint/es/me/mp3/i/idiom01sp.mp3",
+  "conjugation": null,
+  "defs": [
+    {
+      "def": "language",
+      "examples": [
+        {
+          "text": "el idioma inglés",
+          "translation": "the English language",
+        },
+      ],
+    },
+  ],
+  "imgDesc": null,
+  "imgUrl": undefined,
+  "isOffensive": false,
+  "language": "SPANISH",
+  "name": "idioma",
+  "particle": "masculine noun",
+  "shortDef": [
+    "language",
+  ],
+  "stems": [
+    "idioma",
+  ],
+  "transcription": "idioma",
+  "uuid": "63882a81-032e-4dc1-9c22-bb683cb1bad9",
+}
+`;
+
+exports[`formatDictionaryWord should return correct result with Spanish verb 1`] = `
+{
+  "audioUrl": "mock_audio_endpoint/es/me/mp3/c/caer001sp.mp3",
+  "conjugation": [
+    {
+      "cjfs": [
+        "cayendo",
+        "caído",
+      ],
+      "cjid": "gppt",
+    },
+    {
+      "cjfs": [
+        "caigo",
+        "caes",
+        "cae",
+        "caemos",
+        "caéis",
+        "caen",
+      ],
+      "cjid": "pind",
+    },
+    {
+      "cjfs": [
+        "caía",
+        "caías",
+        "caía",
+        "caíamos",
+        "caíais",
+        "caían",
+      ],
+      "cjid": "pret",
+    },
+    {
+      "cjfs": [
+        "caí",
+        "caíste",
+        "cayó",
+        "caímos",
+        "caísteis",
+        "cayeron",
+      ],
+      "cjid": "pprf",
+    },
+    {
+      "cjfs": [
+        "caeré",
+        "caerás",
+        "caerá",
+        "caeremos",
+        "caeréis",
+        "caerán",
+      ],
+      "cjid": "futr",
+    },
+    {
+      "cjfs": [
+        "caería",
+        "caerías",
+        "caería",
+        "caeríamos",
+        "caeríais",
+        "caerían",
+      ],
+      "cjid": "cond",
+    },
+    {
+      "cjfs": [
+        "caiga",
+        "caigas",
+        "caiga",
+        "caigamos",
+        "caigáis",
+        "caigan",
+      ],
+      "cjid": "psub",
+    },
+    {
+      "cjfs": [
+        "cayera",
+        "cayeras",
+        "cayera",
+        "cayéramos",
+        "cayerais",
+        "cayeran",
+      ],
+      "cjid": "pisb1",
+    },
+    {
+      "cjfs": [
+        "cayese",
+        "cayeses",
+        "cayese",
+        "cayésemos",
+        "cayeseis",
+        "cayesen",
+      ],
+      "cjid": "pisb2",
+    },
+    {
+      "cjfs": [
+        "cayere",
+        "cayeres",
+        "cayere",
+        "cayéremos",
+        "cayereis",
+        "cayeren",
+      ],
+      "cjid": "fsub",
+    },
+    {
+      "cjfs": [
+        "he caído",
+        "has caído",
+        "ha caído",
+        "hemos caído",
+        "habéis caído",
+        "han caído",
+      ],
+      "cjid": "ppci",
+    },
+    {
+      "cjfs": [
+        "había caído",
+        "habías caído",
+        "había caído",
+        "habíamos caído",
+        "habíais caído",
+        "habían caído",
+      ],
+      "cjid": "ppsi",
+    },
+    {
+      "cjfs": [
+        "hube caído",
+        "hubiste caído",
+        "hubo caído",
+        "hubimos caído",
+        "hubisteis caído",
+        "hubieron caído",
+      ],
+      "cjid": "pant",
+    },
+    {
+      "cjfs": [
+        "habré caído",
+        "habrás caído",
+        "habrá caído",
+        "habremos caído",
+        "habréis caído",
+        "habrán caído",
+      ],
+      "cjid": "fpin",
+    },
+    {
+      "cjfs": [
+        "habría caído",
+        "habrías caído",
+        "habría caído",
+        "habríamos caído",
+        "habríais caído",
+        "habrían caído",
+      ],
+      "cjid": "cpef",
+    },
+    {
+      "cjfs": [
+        "haya caído",
+        "hayas caído",
+        "haya caído",
+        "hayamos caído",
+        "hayáis caído",
+        "hayan caído",
+      ],
+      "cjid": "ppfs",
+    },
+    {
+      "cjfs": [
+        "hubiera caído",
+        "hubieras caído",
+        "hubiera caído",
+        "hubiéramos caído",
+        "hubierais caído",
+        "hubieran caído",
+      ],
+      "cjid": "ppss1",
+    },
+    {
+      "cjfs": [
+        "hubiese caído",
+        "hubieses caído",
+        "hubiese caído",
+        "hubiésemos caído",
+        "hubieseis caído",
+        "hubiesen caído",
+      ],
+      "cjid": "ppss2",
+    },
+    {
+      "cjfs": [
+        "hubiere caído",
+        "hubieres caído",
+        "hubiere caído",
+        "hubiéremos caído",
+        "hubiereis caído",
+        "hubieren caído",
+      ],
+      "cjid": "fpsb",
+    },
+    {
+      "cjfs": [
+        "-",
+        "cae",
+        "caiga",
+        "caigamos",
+        "caed",
+        "caigan",
+      ],
+      "cjid": "impf",
+    },
+  ],
+  "defs": [
+    {
+      "def": "to fall",
+      "examples": [
+        {
+          "text": "cayó al suelo",
+          "translation": "he fell on the floor/ground",
+        },
+        {
+          "text": "lo dejó caer",
+          "translation": "she dropped it",
+        },
+      ],
+    },
+    {
+      "def": "to drop away, to slope",
+    },
+    {
+      "def": "to fall (of night)",
+    },
+    {
+      "def": "to collapse, to fall",
+    },
+    {
+      "def": "to hang (down)",
+    },
+    {
+      "def": "to realize, to understand",
+      "examples": [
+        {
+          "text": "caer (en) que …",
+          "translation": "to realize that …",
+        },
+      ],
+    },
+    {
+      "def": "to fall into (a trap, etc.)",
+      "examples": [
+        {
+          "text": "caer en el error de",
+          "translation": "to make the mistake of",
+        },
+        {
+          "text": "caer en manos de",
+          "translation": "to fall into the hands of",
+        },
+        {
+          "text": "caer en la tentación",
+          "translation": "to give in to temptation",
+        },
+      ],
+    },
+    {
+      "def": "to fall out of favor",
+    },
+    {
+      "def": "to fall ill",
+    },
+    {
+      "def": "to sit well/poorly with someone",
+      "examples": [
+        {
+          "text": "me caes bien",
+          "translation": "I like you",
+        },
+      ],
+    },
+  ],
+  "imgDesc": null,
+  "imgUrl": undefined,
+  "isOffensive": false,
+  "language": "SPANISH",
+  "name": "caer",
+  "particle": "intransitive verb",
+  "shortDef": [
+    "to fall",
+    "to drop away, to slope",
+    "to fall (of night)",
+  ],
+  "stems": [
+    "caer",
+    "caer en",
+    "caer en desgracia",
+    "caer enfermo",
+    "caerle bien/mal a alguien",
+    "caerle bien a alguien",
+    "caerle mal a alguien",
+    "caerse",
+  ],
+  "transcription": "caer",
+  "uuid": "aac40ca2-64b3-4515-8a3d-91f11127a5b1",
+}
+`;
+
+exports[`formatDictionaryWord should return correct result with complex English word 1`] = `
+{
+  "audioUrl": "mock_audio_endpoint/en/us/mp3/h/heart001.mp3",
+  "conjugation": null,
+  "defs": [
+    {
+      "def": "something resembling a heart in shape",
+    },
+    {
+      "def": "a game in which the object is to avoid taking tricks see trick containing hearts",
+    },
+    {
+      "def": "intellect",
+    },
+    {
+      "def": "see also take heart",
+      "examples": [
+        {
+          "text": "never lost <i>heart</i>",
+          "translation": undefined,
+        },
+      ],
+    },
+    {
+      "def": "one's innermost character, feelings, or inclinations",
+      "examples": [
+        {
+          "text": "knew it in his <i>heart</i>",
+          "translation": undefined,
+        },
+        {
+          "text": "a man after my own <i>heart</i>",
+          "translation": undefined,
+        },
+      ],
+    },
+    {
+      "def": "the younger central compact part of a leafy rosette (such as a head of lettuce or stalk of celery)",
+    },
+  ],
+  "imgDesc": "heart 1a: <i>1</i> aorta, <i>2</i> pulmonary artery, <i>3</i> left atrium, <i>4</i> left ventricle, <i>5</i> right ventricle, <i>6</i> right atrium",
+  "imgUrl": "mock_img_endpoint/heart.gif",
+  "isOffensive": false,
+  "language": "ENGLISH",
+  "name": "heart",
+  "particle": "noun",
+  "shortDef": [
+    "a hollow muscular organ of vertebrate animals that by its rhythmic contraction acts as a force pump maintaining the circulation of the blood",
+    "a structure in an invertebrate animal functionally analogous to the vertebrate heart",
+    "breast, bosom",
+  ],
+  "stems": [
+    "at heart",
+    "by heart",
+    "heart",
+    "hearts",
+    "to heart",
+  ],
+  "transcription": "ˈhärt",
+  "uuid": "f0b7bdb0-3194-4621-8410-992ac81192f1",
+}
+`;

@@ -4,12 +4,15 @@ import {
   dropDb,
   seedDb,
   disconnectFromDb,
-  getErrorMessageFromGQL
+  getErrorMessageFromGQL,
+  getDataFromGQL
 } from '../helpers';
+import bcrypt from 'bcryptjs';
+
 import { models } from '../../db/models';
 import { testData } from '../mocks/dbTestData';
 import { wordsQuery, userQuery, wordByIdQuery } from '../mocks/gqlQueries';
-import { generateGameData } from '../../utils/generateGameData';
+import { generateGameData } from '../../generateGameData';
 import { mutations } from '../mocks/gqlMutations';
 import {
   createToken,
@@ -17,6 +20,7 @@ import {
   hashPassword,
   validatePassword
 } from '../../auth';
+import { ERROR_MESSAGES } from '../../constants/errorMessages';
 
 const userCreateInput = {
   email: 'test2@test.com',
@@ -24,14 +28,6 @@ const userCreateInput = {
   firstName: 'User',
   lastName: 'Test'
 };
-
-jest.mock('bcryptjs', () => {
-  return {
-    hash: jest.fn(str => str),
-    compare: jest.fn((sample1, sample2) => sample1 === sample2),
-    genSalt: jest.fn(() => 10)
-  };
-});
 
 jest.mock('jsonwebtoken', () => {
   return {
@@ -52,6 +48,10 @@ const serverContext = {
 const { mutate } = createTestServer(serverContext);
 const mockUser = { id: '6480560e8cad1841ed6b4011', role: 'MEMBER' };
 
+const snapshotConfig = {
+  id: expect.any(String)
+};
+
 /**
  * User can sign up
  * review his/her account infromation
@@ -65,7 +65,6 @@ const mockUser = { id: '6480560e8cad1841ed6b4011', role: 'MEMBER' };
 //TODO add test to check if unauthenticated user cannot perform auth operations
 describe('User', () => {
   let addedWordId;
-  let addedUserId;
   let createdUser;
 
   beforeAll(async () => {
@@ -86,13 +85,14 @@ describe('User', () => {
         input: userCreateInput
       }
     });
-    const { id, role } = res.body.singleResult.data.signUp;
+    const { id, role } = getDataFromGQL(res).signUp;
     createdUser = { id, role };
-    res.body.singleResult.data.signUp.id = 'mock_id';
-    expect(res).toMatchSnapshot();
+    expect(getErrorMessageFromGQL(res)).toEqual(undefined);
+    expect(getDataFromGQL(res).signUp).toMatchSnapshot(snapshotConfig);
   });
 
   test('can login with correct password', async () => {
+    bcrypt.compare.mockReturnValueOnce(true);
     const res = await mutate({
       mutation: mutations.loginMutation,
       variables: {
@@ -102,7 +102,8 @@ describe('User', () => {
         }
       }
     });
-    expect(res).toMatchSnapshot();
+    expect(getErrorMessageFromGQL(res)).toEqual(undefined);
+    expect(getDataFromGQL(res).login).toMatchSnapshot();
   });
 
   test('cannot login with incorrect password', async () => {
@@ -110,9 +111,7 @@ describe('User', () => {
       mutation: mutations.loginMutation,
       variables: { input: { email: 'test@test.com', password: 'password!' } }
     });
-    expect(getErrorMessageFromGQL(res)).toEqual(
-      'email or password is incorrect'
-    );
+    expect(getErrorMessageFromGQL(res)).toEqual(ERROR_MESSAGES.INCORRECT_CREDS);
   });
 
   test('cannot login with invalid email', async () => {
@@ -120,32 +119,32 @@ describe('User', () => {
       mutation: mutations.loginMutation,
       variables: { input: { email: 'test2test.com', password: 'password' } }
     });
-    expect(getErrorMessageFromGQL(res)).toEqual(
-      'email or password is incorrect'
-    );
+    expect(getErrorMessageFromGQL(res)).toEqual(ERROR_MESSAGES.INCORRECT_CREDS);
   });
 
   test('cannot get the words list if user record in DB does not exist', async () => {
     const { query } = createTestServer({ ...serverContext, user: mockUser });
     const res = await query({ query: wordsQuery });
     expect(getErrorMessageFromGQL(res)).toEqual(
-      'Login to perform this operation'
+      ERROR_MESSAGES.NOT_AUTHENTICATED
     );
   });
 
   test('can get the words list', async () => {
     const { query } = createTestServer({ ...serverContext, user: createdUser });
     const res = await query({ query: wordsQuery });
-    expect(res).toMatchSnapshot();
+    expect(getErrorMessageFromGQL(res)).toEqual(undefined);
+    expect(getDataFromGQL(res).wordsPerPage).toMatchSnapshot();
   });
 
   test('can get see the information about his/her account', async () => {
     const { query } = createTestServer({
       ...serverContext,
-      user: { id: addedUserId, role: 'MEMBER' }
+      user: createdUser
     });
     const res = await query({ query: userQuery });
-    expect(res).toMatchSnapshot();
+    expect(getErrorMessageFromGQL(res)).toEqual(undefined);
+    expect(getDataFromGQL(res)).toMatchSnapshot();
   });
 
   test('can save a word', async () => {
@@ -157,11 +156,8 @@ describe('User', () => {
       mutation: mutations.saveWordMutation,
       variables: { input: testData.createWordInput }
     });
-    addedWordId = res.body.singleResult.data.saveWord.id;
-    // TODO: find a way to avoid this
-    res.body.singleResult.data.saveWord.id = 'mockId';
-    res.body.singleResult.data.saveWord.user = 'mockUser';
-    expect(res).toMatchSnapshot();
+    addedWordId = getDataFromGQL(res).saveWord.id;
+    expect(getDataFromGQL(res).saveWord).toMatchSnapshot(snapshotConfig);
   });
 
   test('nonexistent user cannot save a word', async () => {
@@ -173,9 +169,7 @@ describe('User', () => {
       mutation: mutations.saveWordMutation,
       variables: { input: testData.createWordInput }
     });
-    expect(getErrorMessageFromGQL(res)).toEqual(
-      'You do not have permission to perform this operation'
-    );
+    expect(getErrorMessageFromGQL(res)).toEqual(ERROR_MESSAGES.NOT_AUTHORIZED);
   });
 
   test('can save more words and view all of them', async () => {
@@ -188,7 +182,14 @@ describe('User', () => {
       variables: { input: testData.createWordInput2 }
     });
     const res = await query({ query: wordsQuery });
-    expect(res).toMatchSnapshot();
+    const result = getDataFromGQL(res).wordsPerPage;
+    expect(result.words.length).toBe(2);
+    expect(getErrorMessageFromGQL(res)).toEqual(undefined);
+    expect(result.hasNext).toEqual(false);
+    expect(result.wordsCount).toBe(2);
+    const words = result.words;
+    const firstWordIndex = words.findIndex(w => w.id === addedWordId);
+    expect(firstWordIndex).toBe(1);
   });
 
   test('can save more words and view all of them in reverse order', async () => {
@@ -204,7 +205,10 @@ describe('User', () => {
       query: wordsQuery,
       variables: { input: { isReverseOrder: true } }
     });
-    expect(res).toMatchSnapshot();
+    expect(getDataFromGQL(res).wordsPerPage.words.length).toBe(2);
+    const words = getDataFromGQL(res).wordsPerPage.words;
+    const firstWordIndex = words.findIndex(w => w.id === addedWordId);
+    expect(firstWordIndex).toBe(0);
   });
 
   test('cannot save a word with the same uuid', async () => {
@@ -230,8 +234,8 @@ describe('User', () => {
       mutation: mutations.updateWordMutation,
       variables: { input: { ...testData.updateWordInput, id: addedWordId } }
     });
-    res.body.singleResult.data.updateWord.user = 'mockUser';
-    expect(res).toMatchSnapshot();
+    expect(getErrorMessageFromGQL(res)).toEqual(undefined);
+    expect(getDataFromGQL(res)).toMatchSnapshot();
   });
 
   test('cannot update immutable properties of a word', async () => {
@@ -243,7 +247,7 @@ describe('User', () => {
       mutation: mutations.updateWordMutation,
       variables: { input: { ...testData.updateWordInput2, id: addedWordId } }
     });
-    expect(res.body.singleResult.errors).toBeDefined();
+    expect(getErrorMessageFromGQL(res)).toBeDefined();
   });
 
   test('can find a word by id', async () => {
@@ -255,12 +259,12 @@ describe('User', () => {
       query: wordByIdQuery,
       variables: { wordId: addedWordId }
     });
-    res.body.singleResult.data.word.user = 'mockUser';
-    expect(res).toMatchSnapshot();
+    expect(getErrorMessageFromGQL(res)).toEqual(undefined);
+    expect(getDataFromGQL(res).word).toMatchSnapshot(snapshotConfig);
   });
 
   test('can delete a word', async () => {
-    const { mutate } = createTestServer({
+    const { mutate, query } = createTestServer({
       ...serverContext,
       user: createdUser
     });
@@ -268,8 +272,14 @@ describe('User', () => {
       mutation: mutations.deleteWordMutation,
       variables: { deleteWordId: addedWordId }
     });
-    expect(res.body.singleResult.data.deleteWord).toBe(
+    expect(getErrorMessageFromGQL(res)).toEqual(undefined);
+    expect(getDataFromGQL(res).deleteWord).toBe(
       `word with id ${addedWordId} was deleted`
     );
+    const words = await query({
+      query: wordsQuery,
+      variables: { input: { isReverseOrder: true } }
+    });
+    expect(getDataFromGQL(words).wordsPerPage.words.length).toBe(1);
   });
 });

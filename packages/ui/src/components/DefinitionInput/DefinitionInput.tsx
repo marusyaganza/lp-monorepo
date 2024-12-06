@@ -15,6 +15,7 @@ export interface DefinitionInputProps {
   withTranslation?: boolean;
   /**additional styling */
   className?: string;
+  dataCy?: string;
 }
 
 /**DefinitionInput is an input for Word's 'defs' property */
@@ -23,7 +24,8 @@ export const DefinitionInput = ({
   className,
   onChange,
   errorText,
-  withTranslation
+  withTranslation,
+  dataCy
 }: DefinitionInputProps) => {
   const defaultExamples = withTranslation
     ? [{ text: '', translation: '' }]
@@ -53,8 +55,10 @@ export const DefinitionInput = ({
     const changeHandler = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
       const val = event.target.value;
       const newVals = [...values];
-      // @ts-ignore
-      newVals[defIndex].examples[parentIndex][prop]! = val;
+      const example = newVals?.[defIndex]?.examples?.[parentIndex];
+      if (typeof example?.[prop] === 'string') {
+        example[prop] = val;
+      }
       setValues([...newVals]);
       onChange([...newVals]);
     };
@@ -130,11 +134,11 @@ export const DefinitionInput = ({
   };
 
   return (
-    <div data-cy="formField-defs" className={cn(className, styles.template)}>
+    <div data-cy={dataCy} className={cn(className, styles.template)}>
       {values.map((value, i) => {
         const isLast = i === values.length - 1;
         return (
-          <div key={`definition ${i + 1}`}>
+          <div data-cy={`definition-${i + 1}`} key={`definition ${i + 1}`}>
             <InputWithButton
               dataCy="defInput"
               showAdditionalControls={values.length > 1}
@@ -147,13 +151,14 @@ export const DefinitionInput = ({
                 disabled: isLast
               }}
               value={value.def}
-              name="definition"
+              name={`definition-${i + 1}`}
               label={`definition ${i + 1}`}
               buttonIconId={isLast ? 'plus' : 'minus'}
               onButtonClick={
                 isLast ? addButtonClickHandler : getRemoveInputHandler(i)
               }
               errorText={i === 0 ? errorText : undefined}
+              buttonText="add definition"
               onChange={getDefinitionChangeHandler(i)}
             />
             {value?.examples?.map((example, j) => {
@@ -167,7 +172,7 @@ export const DefinitionInput = ({
                     fontStyle="secondary"
                     variant="dark"
                     value={example?.text || ''}
-                    name={`example ${j + 1} text`}
+                    name={`example-${j + 1}-text`}
                     label={`example ${j + 1}`}
                     className={styles.examples}
                     buttonIconId={isLastEx ? 'plus' : 'minus'}
@@ -177,14 +182,16 @@ export const DefinitionInput = ({
                         : getRemoveExampleInputHandler(i, j)
                     }
                     errorText={i === 0 ? errorText : undefined}
+                    buttonText="add example"
                     onChange={getExamplesChangeHandler(i, j, 'text')}
                   />
                   {withTranslation && (
                     <InputWithButton
                       ignoreErrors
+                      dataCy="translationInput"
                       className={styles.examples}
                       variant="withoutButton"
-                      name={`example ${j + 1} translation`}
+                      name={`example-${j + 1}-translation`}
                       label={`example ${j + 1} translation`}
                       onChange={getExamplesChangeHandler(i, j, 'translation')}
                       value={example?.translation || ''}

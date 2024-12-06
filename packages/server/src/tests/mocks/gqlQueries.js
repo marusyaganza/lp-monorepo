@@ -1,44 +1,60 @@
 export const wordsQuery = `
-query Words($input: WordsInput) {
-  words(input: $input) {
-    name
-    defs {
-      def
-    }
-    particle
-    audioUrl
-    transcription
-    isOffensive
-    level
-    shortDef
-    tags {
-      text
-      color
+query WordsPerPage($input: WordsPerPageInput) {
+    wordsPerPage(input: $input) {
+      hasNext
+      wordsCount
+      words {
+        id
+        name
+        defs {
+          def
+        }
+        particle
+        audioUrl
+        transcription
+        isOffensive
+        isLearned
+        level
+        shortDef
+        tags {
+          text
+          color
+          id
+        }
+      }
     }
   }
-}
 `;
 
 export const wordByIdQuery = `
-  query Query($wordId: ID!) {
+  query WordById($wordId: ID!) {
     word(id: $wordId) {
+      id
       name
       defs {
         def
         examples {
           text
+          translation
         }
       }
       particle
       imgUrl
+      imgDesc
       audioUrl
       additionalInfo
       transcription
-      shortDef
-      user
       isOffensive
+      isLearned
       stems
       level
+      shortDef
+      alternativeSpelling
+      tags {
+        text
+        color
+        id
+      }
     }
   }
 `;
@@ -79,33 +95,43 @@ export const searchQuery = `
         additionalInfo
         imgDesc
         shortDef
+        language
       }
     }
   }
 `;
 
-export const gamesQuery = `query Games {
-  games {
-    desc
-    name
-  }
-}`;
+export const gamesQuery = ` query Games($language: Language) {
+    games(language: $language) {
+      desc
+      name
+      id
+      type
+    }
+  }`;
 
 export const gameQuery = `query Game($input: GameDataInput!) {
-  game(input: $input) {
-    questions {
-      wordId
-      question
-      options
-      answer
-      additionalInfo {
-        audioUrl
+    game(input: $input) {
+      questions {
+        wordId
+        question
+        options
+        answer
+        alternativeSpelling
+        additionalInfo {
+          audioUrl
+          imgUrl
+          shortDef
+          examples {
+            text
+            translation
+          }
+        }
       }
+      task
+      type
     }
-    task
-    type
-  }
-}`;
+  }`;
 
 export const tagsQuery = `
   query Tags($language: Language!) {

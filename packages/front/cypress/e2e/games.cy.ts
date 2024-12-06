@@ -1,7 +1,11 @@
 /* eslint-disable jest/expect-expect */
 /// <reference types="Cypress" />
+import { Language } from '../../src/generated/graphql';
 import { games } from '../support/mocks/games';
-describe('Words Page', () => {
+
+const languages = Object.values(Language);
+
+describe('Games Page', () => {
   beforeEach(() => {
     cy.task('prepareDB');
     cy.login();
@@ -23,18 +27,31 @@ describe('Words Page', () => {
     cy.get('@gameCard').should('have.length', 4);
   });
 
-  games.forEach((game, i) => {
-    it(`${game.id} game card should be rendered correctly`, () => {
-      cy.get('@gameCard')
-        .eq(i)
-        .find('h2')
-        .first()
-        .should('have.text', game.name);
-      cy.get('@gameCard').eq(i).contains(game.desc);
-      cy.get('@gameCard')
-        .eq(i)
-        .find('a')
-        .should('have.attr', 'href', `/games/${game.id}?isReverseOrder=false`);
+  it('should handle language change correctly', () => {
+    cy.get('@gameCard').should('have.length', 4);
+    cy.changeLanguage(Language.Spanish);
+    cy.get('@gameCard').should('have.length', 5);
+    cy.changeLanguage(Language.English, Language.Spanish);
+    cy.get('@gameCard').should('have.length', 4);
+  });
+
+  languages.forEach(lang => {
+    const availableGames = games.filter(game => game.languages.includes(lang));
+    availableGames.forEach((game, i) => {
+      it(`${game.id} game card should be rendered correctly if ${lang} language is selected`, () => {
+        cy.changeLanguage(lang);
+
+        cy.get('@gameCard')
+          .eq(i)
+          .as('currentCard')
+          .find('h2')
+          .first()
+          .should('have.text', game.name);
+        cy.get('@currentCard').contains(game.desc);
+        cy.get('@currentCard')
+          .find('a')
+          .should('have.attr', 'href', `/games/${game.id}`);
+      });
     });
   });
 });

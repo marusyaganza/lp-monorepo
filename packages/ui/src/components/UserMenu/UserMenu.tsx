@@ -55,15 +55,17 @@ export const UserMenu = ({ className, menuItems }: UserMenuProps) => {
   return (
     <div ref={elementRef} className={cn(className, styles.container)}>
       <button
+        data-cy="user-menu"
         className={styles.avatar}
         onClick={() => {
           setIsOpen(curr => !curr);
         }}
       >
+        <span className={styles.hidden}>user menu</span>
         <img className={styles.avatarImage} src={avatar} alt="user avatar" />
       </button>
       {isOpen && (
-        <ul className={cn(styles.content)}>
+        <ul data-cy="user-menu-items" className={cn(styles.content)}>
           {menuItems.map(item => {
             const { url, text, icon, onClick } = item;
             return (

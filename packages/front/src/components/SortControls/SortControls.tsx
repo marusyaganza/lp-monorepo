@@ -35,8 +35,10 @@ export const SortControls = ({
   });
 
   const renderValue = (val?: string) => {
-    // @ts-ignore
-    return options?.[val] ? options[val] : blankValue || 'Select words by';
+    if (!val || !options?.[val]) {
+      return blankValue || 'Select words by';
+    }
+    return options[val];
   };
 
   useEffect(() => {

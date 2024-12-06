@@ -33,7 +33,7 @@ export const WORD_BY_ID_QUERY = gql`
   }
 `;
 
-export const SEARCH_WORDS = gql`
+export const SEARCH_WORDS_QUERY = gql`
   query SearchWords($input: WordSearchInput!) {
     searchWord(input: $input) {
       ... on Suggestions {
@@ -54,20 +54,20 @@ export const SEARCH_WORDS = gql`
           }
           def
         }
+        conjugation {
+          cjid
+          cjfs
+        }
         audioUrl
         additionalInfo
         imgDesc
         shortDef
         language
-        conjugation {
-          cjid
-          cjfs
-        }
       }
     }
   }
 `;
-export const USER = gql`
+export const USER_QUERY = gql`
   query User {
     user {
       createdAt
@@ -80,7 +80,7 @@ export const USER = gql`
   }
 `;
 
-export const GAMES = gql`
+export const GAMES_QUERY = gql`
   query Games($language: Language) {
     games(language: $language) {
       desc
@@ -91,7 +91,7 @@ export const GAMES = gql`
   }
 `;
 
-export const GAME = gql`
+export const GAME_QUERY = gql`
   query Game($input: GameDataInput!) {
     game(input: $input) {
       questions {
@@ -112,6 +112,7 @@ export const GAME = gql`
       }
       task
       type
+      tense
     }
   }
 `;
@@ -143,7 +144,6 @@ export const WORDS_PER_PAGE_QUERY = gql`
         transcription
         isOffensive
         isLearned
-        level
         shortDef
         tags {
           text

@@ -1,51 +1,24 @@
-import { Game, GameConfig } from '../generated/graphql';
-export const games: GameConfig[] = [
-  // {
-  //   name: 'flash cards',
-  //   desc: 'Check if you can recall your words',
-  //   imgUrl: 'flash_cards',
-  //   id: 'flash_cards'
-  // },
+import { Game } from '../generated/graphql';
+import { GameConfigType } from '../types/types';
+export const games: GameConfigType[] = [
   {
     name: 'audio',
     desc: 'Type the word that you hear',
-    imgUrl: 'audio',
-    id: 'audio',
-    type: Game.Audio,
-    wordsPerGame: 6,
-    optionsPerGame: 0
+    type: Game.Audio
   },
   {
     name: 'select definition',
     desc: 'Match the word and its definition',
-    imgUrl: 'select_definition',
-    id: 'select_definition',
-    type: Game.SelectDef,
-    wordsPerGame: 6,
-    optionsPerGame: 6
+    type: Game.SelectDef
   },
   {
     name: 'select word',
     desc: 'Match the definition and the word',
-    imgUrl: 'select_word',
-    id: 'select_word',
-    type: Game.SelectWord,
-    wordsPerGame: 6,
-    optionsPerGame: 6
+    type: Game.SelectWord
   },
   {
     name: 'type word',
     desc: 'Type the word that has the definition given',
-    imgUrl: 'type_word',
-    id: 'type_word',
-    type: Game.TypeWord,
-    wordsPerGame: 6,
-    optionsPerGame: 0
+    type: Game.TypeWord
   }
-  // {
-  //   name: 'find all definitions',
-  //   desc: 'Match the word and all its definitions',
-  //   imgUrl: 'find_defs',
-  //   id: 'select_defs'
-  // }
 ];

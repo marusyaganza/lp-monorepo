@@ -1,52 +1,70 @@
+/* eslint-disable @typescript-eslint/no-namespace */
 /// <reference types="cypress" />
-// ***********************************************
-// This example commands.ts shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-//
-// declare global {
-//   namespace Cypress {
-//     interface Chainable {
-//       login(email: string, password: string): Chainable<void>
-//       drag(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       dismiss(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       visit(originalFn: CommandOriginalFn, url: string, options: Partial<VisitOptions>): Chainable<Element>
-//     }
-//   }
-// }
 
-Cypress.Commands.add('login', () => {
-  cy.visit('http://localhost:8080/search');
-  cy.get('input[name="password"]').type('123Password!');
-  cy.get('input[name="email"]').type('test@test.com');
-  cy.get('button').contains('Sign in').click();
-  cy.get('[data-cy=loginForm]').should('not.exist');
-});
+import {
+  getByCy,
+  checkNotification,
+  checkPathName,
+  findByCy,
+  login,
+  changeLanguage,
+  checkReq,
+  selectOption
+} from './helpers/general';
+import {
+  checkInitialValues,
+  editWord,
+  fillArrayInput,
+  fillDefInput,
+  fillTextField,
+  fillWordForm
+} from './helpers/wordForm';
+
+import { checkWordCard } from './helpers/wordCard';
+import { addWord } from './helpers/word';
+// import { playGameOnce } from './helpers/game';
+
+declare global {
+  namespace Cypress {
+    interface Chainable {
+      login: typeof login;
+      fillTextField: typeof fillTextField;
+      fillDefInput: typeof fillDefInput;
+      fillArrayInput: typeof fillArrayInput;
+      fillWordForm: typeof fillWordForm;
+      getByCy: typeof getByCy;
+      checkNotification: typeof checkNotification;
+      checkPathName: typeof checkPathName;
+      checkWordCard: typeof checkWordCard;
+      findByCy: typeof findByCy;
+      changeLanguage: typeof changeLanguage;
+      addWord: typeof addWord;
+      checkWordForm: typeof checkInitialValues;
+      checkReq: typeof checkReq;
+      editWord: typeof editWord;
+      selectOption: typeof selectOption;
+    }
+  }
+}
+
+Cypress.Commands.add('login', login);
+Cypress.Commands.add('fillTextField', fillTextField);
+Cypress.Commands.add('fillDefInput', fillDefInput);
+Cypress.Commands.add('fillArrayInput', fillArrayInput);
+Cypress.Commands.add('fillWordForm', fillWordForm);
+Cypress.Commands.add('getByCy', getByCy);
+Cypress.Commands.add('checkNotification', checkNotification);
+Cypress.Commands.add('checkPathName', checkPathName);
+Cypress.Commands.add('checkWordCard', checkWordCard);
+Cypress.Commands.add('findByCy', findByCy);
+Cypress.Commands.add('changeLanguage', changeLanguage);
+Cypress.Commands.add('addWord', addWord);
+Cypress.Commands.add('checkWordForm', checkInitialValues);
+Cypress.Commands.add('checkReq', checkReq);
+Cypress.Commands.add('editWord', editWord);
+Cypress.Commands.add('selectOption', selectOption);
 
 Cypress.on('uncaught:exception', err => {
   console.error('err', err.message);
-  // if (err.message.includes('ApolloError')) {
   return false;
-  // }
 });

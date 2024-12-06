@@ -5,19 +5,23 @@ import {
   connectToDb,
   seedDb
 } from './cypress/support/helpers';
+import { WordTag } from './src/generated/graphql';
 
 export default defineConfig({
   e2e: {
     baseUrl: 'http://localhost:8080',
+    viewportWidth: 1300,
+    viewportHeight: 1000,
     setupNodeEvents(on, config) {
       on('task', {
-        async prepareDB() {
+        async prepareDB(input?: { tags?: Partial<WordTag>[] }) {
           await connectToDb();
-          dropDb();
-          seedDb();
+          await dropDb();
+          await seedDb(input);
           return null;
         },
         async disconnectFromDb() {
+          await dropDb();
           await disconnectFromDb();
           return null;
         }

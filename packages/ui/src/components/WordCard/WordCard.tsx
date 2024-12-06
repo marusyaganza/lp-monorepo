@@ -85,11 +85,11 @@ export const WordCard = ({
   };
 
   const renderExamples = (examples: WordDefinition['examples']) => (
-    <ul>
+    <ul data-cy="examples">
       {examples?.map(example => {
         if (example && example?.text) {
           return (
-            <p data-cy="example" key={example.text} className={styles.example}>
+            <p key={example.text} className={styles.example}>
               <DictionaryEntity text={example.text} />
               {example.translation && ` (${example.translation})`}
             </p>
@@ -119,7 +119,7 @@ export const WordCard = ({
 
   const renderDefinition = () => {
     return (
-      <ul data-cy="defsList">
+      <ul data-cy="defs">
         {defs.map(d => {
           if (d?.def) {
             return (
@@ -137,7 +137,7 @@ export const WordCard = ({
 
   const renderShortDefinition = () => {
     return (
-      <ul data-cy="defsList">
+      <ul data-cy="shortDef">
         {shortDef.map(d => {
           return <li key={d}>{renderDef(d)}</li>;
         })}
@@ -193,9 +193,11 @@ export const WordCard = ({
   );
 
   const renderHeader = () => (
-    <header className={styles.header}>
+    <header data-cy={`wordcard-${name}`} className={styles.header}>
       <div className={styles.mainInfo}>
-        <h3 className={styles.wordName}>{name}</h3>
+        <h3 data-cy="name" className={styles.wordName}>
+          {name}
+        </h3>
         <span data-cy="particle" className={styles.particle}>
           {particle}
         </span>
@@ -206,13 +208,13 @@ export const WordCard = ({
           </span>
         )}
         {isOffensive && (
-          <span data-cy="offensive" className={styles.offensive}>
+          <span data-cy="isOffensive" className={styles.offensive}>
             <Icon width={20} height={23} id="fire" />
             offensive
           </span>
         )}
         {isLearned && (
-          <span className={styles.learned}>
+          <span data-cy="isLearned" className={styles.learned}>
             <Icon width={16} height={16} id="check" />
             Learned
           </span>
@@ -227,7 +229,7 @@ export const WordCard = ({
       return;
     }
     return (
-      <ul className={styles.tags}>
+      <ul data-cy="tags" className={styles.tags}>
         {tags?.map(tag => {
           const { text, color, id } = tag as WordTag;
           if (!text || !color || !id) {
@@ -255,14 +257,16 @@ export const WordCard = ({
           {imgUrl && (
             <figure className={styles.illustration}>
               <img
-                data-cy="wordImg"
+                data-cy="imgUrl"
                 width={280}
                 className={styles.picture}
                 src={imgUrl}
                 alt={`${name} illustration`}
               />
               {imgDesc && (
-                <figcaption>{<DictionaryEntity text={imgDesc} />}</figcaption>
+                <figcaption data-cy="imgDesc">
+                  {<DictionaryEntity text={imgDesc} />}
+                </figcaption>
               )}
             </figure>
           )}
@@ -277,7 +281,7 @@ export const WordCard = ({
             </section>
           )}
           {!!alternativeSpelling?.length && (
-            <section>
+            <section data-cy="alternativeSpelling">
               <p className={styles.stems} data-cy="altSpelling">
                 <span className={styles.stemsHeading}>
                   Alternative spelling:{' '}

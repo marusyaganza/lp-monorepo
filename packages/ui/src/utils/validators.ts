@@ -1,3 +1,10 @@
+import {
+  isDef,
+  isNotEmptyString,
+  isString,
+  isTypedArray
+} from '../types/typeGuards';
+
 /** Validators that don't accept arguments */
 export enum Validator {
   /**the value can't be emply */
@@ -5,7 +12,9 @@ export enum Validator {
   /**the value is email */
   EMAIL = 'EMAIL',
   /**the value contains at least one capital letter, one special symbol and one mumber */
-  PASSWORD = 'PASSWORD'
+  PASSWORD = 'PASSWORD',
+  /**the color hex value, for example #c0c0c0 */
+  COLOR = 'COLOR'
 }
 
 /** Validators that accept arguments */
@@ -30,6 +39,7 @@ export const validators = {
   EMAIL: (): _validatorWithoutArgsType => ({ type: Validator.EMAIL }),
   PASSWORD: (): _validatorWithoutArgsType => ({ type: Validator.PASSWORD }),
   REQUIRE: () => ({ type: Validator.REQUIRE }),
+  COLOR: () => ({ type: Validator.COLOR }),
   MINLENGTH: (val: number) => ({
     type: ValidatorWithArgs.MINLENGTH,
     val
@@ -64,6 +74,61 @@ export function validate(value: string, validators: validatorType[]) {
       const regExp = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!?@#$%^&*]{6,26}$/;
       isValid = isValid && regExp.test(value);
     }
+    if (validator.type === Validator.COLOR) {
+      const regExp = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
+      isValid = isValid && regExp.test(value);
+    }
   });
   return isValid;
+}
+
+export type FormValidator = {
+  validate: (val?: any) => boolean;
+  errorText: string;
+};
+
+export function validateFormValues<T>(
+  validators: Partial<Record<keyof T, FormValidator>>,
+  values: T
+) {
+  let isValid = true;
+  const errors: Partial<Record<keyof T, string>> = {};
+  if (!validators) {
+    return { isValid, errors };
+  }
+  const fields = Object.keys(validators) as (keyof T)[];
+  fields.forEach(field => {
+    const validator = validators[field];
+    if (validator) {
+      const isFieldValid = validator.validate(values[field]);
+      isValid = isValid && isFieldValid;
+      if (!isFieldValid) {
+        errors[field] = validator.errorText;
+      }
+    }
+  });
+  return { isValid, errors };
+}
+
+export const defsValidator: FormValidator = {
+  validate: (data: unknown) => isTypedArray(data, isDef) && data.length > 0,
+  errorText: 'definition value cannot be empty'
+};
+
+export const stringArrayValidator: FormValidator = {
+  validate: (data: unknown) =>
+    isTypedArray(data, isNotEmptyString) && data.length > 0,
+  errorText: 'value cannot be empty'
+};
+
+export const colorValidator: FormValidator = {
+  validate: (val: string) => /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/.test(val),
+  errorText: 'color should be a valid hex color'
+};
+
+export function getStringValidator(name = ''): FormValidator {
+  return {
+    validate: (data: unknown) => isString(data) && data.length > 0,
+    errorText: `${name} value cannot be empty`.trim()
+  };
 }

@@ -3,7 +3,7 @@ import { styledPreviewDecorator } from '../../storybook-decorators';
 import type { Meta } from '@storybook/react';
 
 const meta: Meta<typeof Checkbox> = {
-  title: 'Checkbox',
+  title: 'inputs/Checkbox',
   component: Checkbox,
   decorators: [styledPreviewDecorator()]
 };

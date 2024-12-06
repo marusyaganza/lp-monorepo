@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`User createOne 1`] = `
+{
+  "_id": Any<Object>,
+  "createdAt": Any<String>,
+  "email": "test@test.com",
+  "firstName": "Test",
+  "id": Any<String>,
+  "lastName": "User1",
+  "password": "mock_hash_password1_salt_5",
+  "primaryLanguage": "English",
+  "role": "MEMBER",
+}
+`;
+
+exports[`User findOne 1`] = `
+{
+  "_id": Any<Object>,
+  "createdAt": Any<String>,
+  "email": "test@test.com",
+  "firstName": "Test",
+  "id": Any<String>,
+  "lastName": "User1",
+  "password": "mock_hash_password1_salt_5",
+  "primaryLanguage": "English",
+  "role": "MEMBER",
+}
+`;
