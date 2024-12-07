@@ -15,7 +15,6 @@ export interface VerbSelectorProps {
   className?: string;
 }
 /**Component for selection a verb to practice */
-// TODO move submit button and header here
 export const VerbSelector = ({
   options,
   dataCy,
