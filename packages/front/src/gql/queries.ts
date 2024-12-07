@@ -154,3 +154,12 @@ export const WORDS_PER_PAGE_QUERY = gql`
     }
   }
 `;
+
+export const VERBS_QUERY = gql`
+  query Verbs {
+    verbs {
+      id
+      name
+    }
+  }
+`;

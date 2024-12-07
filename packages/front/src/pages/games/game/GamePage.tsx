@@ -28,6 +28,7 @@ const GamePage = () => {
         sortBy: state.sortBy || undefined,
         isReverseOrder: state.isReverseOrder,
         tense: state.tense,
+        wordId: state.wordId,
         tags: state.tags
       }
     },

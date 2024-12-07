@@ -43,14 +43,24 @@ const correctConjAnswers = {
   [Tense.Pind]: 'soy, eres, es, somos, sois, son',
   [Tense.Impf]: '-, sé, sea, seamos, sed, sean',
   [Tense.Pret]: 'era, eras, era, éramos, erais, eran',
-  [Tense.Pprf]: 'fui, fuiste, fue, fuimos, fuisteis, fueron'
+  [Tense.Pprf]: 'fui, fuiste, fue, fuimos, fuisteis, fueron',
+  [Tense.Futr]:
+    'ser\u00e9, ser\u00e1s, ser\u00e1, seremos, ser\u00e9is, ser\u00e1n',
+  [Tense.Cond]:
+    'ser\u00eda, ser\u00edas, ser\u00eda, ser\u00edamos, ser\u00edais, ser\u00edan',
+  [Tense.Psub]: 'sea, seas, sea, seamos, se\u00e1is, sean'
 };
 
 const incorrectConjAnswers = {
   [Tense.Pind]: 'soy, eres, es, somais, sois, son',
   [Tense.Impf]: '-, se, sea, seamos, sed, sean',
   [Tense.Pret]: 'era, eras, era, eramos, erais, eran',
-  [Tense.Pprf]: 'fue, fuiste, fui, fuimos, fuisteis, fueron'
+  [Tense.Pprf]: 'fue, fuiste, fui, fuimos, fuisteis, fueron',
+  [Tense.Futr]:
+    'ser\u00e9, ser\u00e1s, ser\u00e1, sereamos, ser\u00e9is, ser\u00e1n',
+  [Tense.Cond]:
+    'ser\u00eda, ser\u00edas, ser\u00eda, sero\u00edamos, ser\u00edais, ser\u00edan',
+  [Tense.Psub]: 'sea, seas, sea, seamos, se\u00e1is, seans'
 };
 
 const serAudio =
@@ -102,7 +112,7 @@ describe('Game Page', () => {
     it(`should answer correctly and finish conjugation game with minimal words in ${tense} tense`, () => {
       const gameType = Game.Conjugation;
       startConjugationGame('ser', tense);
-      playConjugationGame(correctConjAnswers[tense], tense);
+      playConjugationGame(correctConjAnswers[tense]);
       checkGame(
         GameStage.Success,
         gameType,
@@ -133,7 +143,7 @@ describe('Game Page', () => {
     it(`should answer incorrectly and finish conjugation game with minimal words in ${tense} tense`, () => {
       const gameType = Game.Conjugation;
       startConjugationGame('ser', tense);
-      playConjugationGame(incorrectConjAnswers[tense], tense);
+      playConjugationGame(incorrectConjAnswers[tense]);
       checkGame(
         GameStage.Error,
         gameType,

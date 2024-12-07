@@ -24,7 +24,7 @@ export async function generateGameData(
   user: string
 ) {
   const language = parameters?.language || DEFAULT_LANGUAGE;
-  const { gameType } = parameters;
+  const { gameType, wordId } = parameters;
   const config = await GameModel.findOne({
     type: gameType,
     languages: language
@@ -34,14 +34,23 @@ export async function generateGameData(
     throw new OperationResolutionError(ERROR_MESSAGES.GAME_NOT_FOUND);
   }
 
-  const { minWords } = config;
+  let words;
 
-  const words = await WordModel.selectWordsForGame(parameters, config, user);
+  if (wordId) {
+    const word = await WordModel.findById(wordId, user);
+    if (!word) {
+      throw new OperationResolutionError(`Word is not found`);
+    }
+    words = [word];
+  } else {
+    const { minWords } = config;
+    words = await WordModel.selectWordsForGame(parameters, config, user);
 
-  if (!minWords || words.length < minWords) {
-    throw new OperationResolutionError(
-      `not enough words to start a game. You have ${words.length} word. Words requited for the game: ${minWords}`
-    );
+    if (!minWords || words.length < minWords) {
+      throw new OperationResolutionError(
+        `not enough words to start a game. You have ${words.length} word. Words requited for the game: ${minWords}`
+      );
+    }
   }
 
   const gameData = generators[gameType](words, parameters, config, user);
