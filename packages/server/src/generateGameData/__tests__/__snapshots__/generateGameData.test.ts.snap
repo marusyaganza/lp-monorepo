@@ -42,6 +42,36 @@ exports[`generateGameData with AUDIO game Spanish 1`] = `
 }
 `;
 
+exports[`generateGameData with CONJUGATION game cond tense 1`] = `
+{
+  "additionalInfo": {
+    "audioUrl": "https://example.com/audio/correr.mp3",
+    "imgUrl": "https://example.com/images/correr.jpg",
+    "shortDef": "<b>correr means</b> To run.",
+  },
+  "answer": "correría, correrías, correría, correríamos, correríais, correrían",
+  "question": [
+    "correr",
+  ],
+  "wordId": Any<String>,
+}
+`;
+
+exports[`generateGameData with CONJUGATION game futr tense 1`] = `
+{
+  "additionalInfo": {
+    "audioUrl": "https://example.com/audio/correr.mp3",
+    "imgUrl": "https://example.com/images/correr.jpg",
+    "shortDef": "<b>correr means</b> To run.",
+  },
+  "answer": "correré, correrás, correrá, correremos, correréis, correrán",
+  "question": [
+    "correr",
+  ],
+  "wordId": Any<String>,
+}
+`;
+
 exports[`generateGameData with CONJUGATION game impf tense 1`] = `
 {
   "additionalInfo": {
@@ -95,6 +125,21 @@ exports[`generateGameData with CONJUGATION game pret tense 1`] = `
     "shortDef": "<b>correr means</b> To run.",
   },
   "answer": "corrí, corriste, corrió, corrimos, corristeis, corrieron",
+  "question": [
+    "correr",
+  ],
+  "wordId": Any<String>,
+}
+`;
+
+exports[`generateGameData with CONJUGATION game psub tense 1`] = `
+{
+  "additionalInfo": {
+    "audioUrl": "https://example.com/audio/correr.mp3",
+    "imgUrl": "https://example.com/images/correr.jpg",
+    "shortDef": "<b>correr means</b> To run.",
+  },
+  "answer": "corra, corras, corra, corramos, corráis, corran",
   "question": [
     "correr",
   ],

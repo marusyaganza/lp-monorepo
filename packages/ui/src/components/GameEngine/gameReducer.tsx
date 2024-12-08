@@ -60,6 +60,7 @@ export function gameReducer(
       wordId,
       alternativeSpelling
     } = state.questions[state.currentIndex];
+    console.log('ans', answer, correctAnswer);
     const newState = { ...state };
     const formattedAnswer = answer.toLocaleLowerCase();
     if (

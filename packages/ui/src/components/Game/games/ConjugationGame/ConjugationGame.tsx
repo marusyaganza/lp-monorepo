@@ -5,6 +5,7 @@ import { ConjugationInput } from '../../../ConjugationInput/ConjugationInput';
 import { GameProps, GameStage } from '../../../../types/gameTypes';
 
 import styles from '../../Game.module.css';
+import { DictionaryEntity } from '../../../DictionaryEntity/DictionaryEntity';
 
 /**Component to display Conjugation game*/
 export const ConjugationGame = ({
@@ -16,7 +17,7 @@ export const ConjugationGame = ({
   currentResult,
   currentStage,
   inputRef,
-  value,
+  question,
   correctAnswer
 }: GameProps) => {
   const renderCorrectAnswer = () => {
@@ -53,12 +54,14 @@ export const ConjugationGame = ({
         <p data-cy="gameTask" className={styles.task}>
           {task} {renderAudioButton()}
         </p>
+        <p data-cy="gameQuestion" className={styles.question}>
+          {<DictionaryEntity text={question[0]} />}
+        </p>
         <div className={styles.answer}>
           <ConjugationInput
             dataCy="gameAnswer"
             ref={inputRef}
             tense={tense}
-            value={value}
             initialValue={correctAnswer}
             variant={currentStage}
             correctAnswer={correctAnswer}

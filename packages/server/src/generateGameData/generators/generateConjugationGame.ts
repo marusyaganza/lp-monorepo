@@ -17,29 +17,36 @@ export async function generateConjugationGame(
   const gameType = Game.Conjugation;
   const tense = parameters?.tense || DEFAULT_TENSE;
 
-  const questions: GameQuestion[] = words
-    .map(word => {
-      const { imgUrl, shortDef, audioUrl, name, id, conjugation } = word;
-      const verbForms = conjugation?.find(conj => conj?.cjid === tense)?.cjfs;
+  function isGameQuestion(data: unknown): data is GameQuestion {
+    return Boolean(data);
+  }
 
-      if (!verbForms) {
-        throw new OperationResolutionError(
-          ERROR_MESSAGES.GAME_GENERATION_FAILED
-        );
+  const questionsArray: (GameQuestion | undefined)[] = words.map(word => {
+    const { imgUrl, shortDef, audioUrl, name, id, conjugation } = word;
+    const verbForms = conjugation?.find(conj => conj?.cjid === tense)?.cjfs;
+
+    // if the word does not have a verb form or it does not have values
+    if (!verbForms || verbForms?.every(val => val === '-')) {
+      return undefined;
+    }
+
+    return {
+      question: [name],
+      answer: verbForms.join(', '),
+      wordId: id,
+      additionalInfo: {
+        imgUrl,
+        audioUrl,
+        shortDef: `<b>${name} means</b> ${shortDef[0]}`
       }
+    };
+  });
 
-      return {
-        question: [name],
-        answer: verbForms.join(', '),
-        wordId: id,
-        additionalInfo: {
-          imgUrl,
-          audioUrl,
-          shortDef: `<b>${name} means</b> ${shortDef[0]}`
-        }
-      };
-    })
-    .filter(Boolean);
+  const questions = questionsArray.filter(isGameQuestion);
+
+  if (!questions?.length) {
+    throw new OperationResolutionError(ERROR_MESSAGES.GAME_GENERATION_FAILED);
+  }
 
   const task = getGameTask(gameType, tense);
 

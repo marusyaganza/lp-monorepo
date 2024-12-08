@@ -5,10 +5,11 @@ export const TENSES: Record<Tense, string> = {
   pind: 'Presente indicativo',
   pprf: 'Pretérito perfecto simple',
   impf: 'Imperativo',
-  pret: 'Pretérito imperfecto'
-  //   futr: 'Futuro indicativo',
-  //   cond: 'Condicional',
-  //   psub: 'Presente subjentivo',
+  pret: 'Pretérito imperfecto',
+  futr: 'Futuro indicativo',
+  cond: 'Condicional',
+  psub: 'Presente subjentivo'
+  // gppt: 'Gerundio'
   //   pisb1: 'Pretérito imperfecto',
   //   pisb2: 'Pretérito imperfecto 2',
   //   fsub: 'Futuro',

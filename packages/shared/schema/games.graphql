@@ -48,6 +48,7 @@ input GameDataInput {
   tags: [String]
   language: Language
   tense: Tense
+  wordId: ID
 }
 
 type Query {

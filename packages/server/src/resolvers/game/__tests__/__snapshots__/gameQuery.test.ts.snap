@@ -1180,6 +1180,76 @@ exports[`game queries game query with TYPE_WORD and SPANISH 1`] = `
 ]
 `;
 
+exports[`game queries game query with valid user for Conjugation game and cond tense 1`] = `
+[
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/correr.mp3",
+      "examples": null,
+      "imgUrl": "https://example.com/images/correr.jpg",
+      "shortDef": "<b>correr means</b> To run.",
+    },
+    "alternativeSpelling": null,
+    "answer": "correría, correrías, correría, correríamos, correríais, correrían",
+    "options": null,
+    "question": [
+      "correr",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/pensar.mp3",
+      "examples": null,
+      "imgUrl": "https://example.com/images/pensar.jpg",
+      "shortDef": "<b>pensar means</b> To think.",
+    },
+    "alternativeSpelling": null,
+    "answer": "pensaría, pensarías, pensaría, pensaríamos, pensaríais, pensarían",
+    "options": null,
+    "question": [
+      "pensar",
+    ],
+    "wordId": Any<String>,
+  },
+]
+`;
+
+exports[`game queries game query with valid user for Conjugation game and futr tense 1`] = `
+[
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/correr.mp3",
+      "examples": null,
+      "imgUrl": "https://example.com/images/correr.jpg",
+      "shortDef": "<b>correr means</b> To run.",
+    },
+    "alternativeSpelling": null,
+    "answer": "correré, correrás, correrá, correremos, correréis, correrán",
+    "options": null,
+    "question": [
+      "correr",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/pensar.mp3",
+      "examples": null,
+      "imgUrl": "https://example.com/images/pensar.jpg",
+      "shortDef": "<b>pensar means</b> To think.",
+    },
+    "alternativeSpelling": null,
+    "answer": "pensaré, pensarás, pensará, pensaremos, pensaréis, pensarán",
+    "options": null,
+    "question": [
+      "pensar",
+    ],
+    "wordId": Any<String>,
+  },
+]
+`;
+
 exports[`game queries game query with valid user for Conjugation game and impf tense 1`] = `
 [
   {
@@ -1311,6 +1381,41 @@ exports[`game queries game query with valid user for Conjugation game and pret t
     },
     "alternativeSpelling": null,
     "answer": "pensé, pensaste, pensó, pensamos, pensasteis, pensaron",
+    "options": null,
+    "question": [
+      "pensar",
+    ],
+    "wordId": Any<String>,
+  },
+]
+`;
+
+exports[`game queries game query with valid user for Conjugation game and psub tense 1`] = `
+[
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/correr.mp3",
+      "examples": null,
+      "imgUrl": "https://example.com/images/correr.jpg",
+      "shortDef": "<b>correr means</b> To run.",
+    },
+    "alternativeSpelling": null,
+    "answer": "corra, corras, corra, corramos, corráis, corran",
+    "options": null,
+    "question": [
+      "correr",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/pensar.mp3",
+      "examples": null,
+      "imgUrl": "https://example.com/images/pensar.jpg",
+      "shortDef": "<b>pensar means</b> To think.",
+    },
+    "alternativeSpelling": null,
+    "answer": "piense, pienses, piense, pensemos, penséis, piensen",
     "options": null,
     "question": [
       "pensar",

@@ -1,6 +1,7 @@
 import { Word } from '../../schema/Word';
 import {
   calculatePaginationValues,
+  GAME_FILTERS,
   getGameFilters,
   getGameSortingFilter,
   getTagsFilter,
@@ -22,7 +23,8 @@ import {
   SortBy,
   Language,
   WordsPerPageInput,
-  SortWordsBy
+  SortWordsBy,
+  Verb
 } from '../../../generated/graphql';
 import { getWordsFilters, filterTags } from '../../helpers';
 import { UserInputError } from '../../../utils/apolloCustomErrors';
@@ -53,6 +55,7 @@ export interface WordModelType {
     filter: WordsPerPageInput | null | undefined,
     user: string
   ) => Promise<PaginatedWords>;
+  findVerbs: (user: string) => Promise<Verb[]>;
   createOne: (fields: NewWordInput, user: string) => Promise<WordType | null>;
   updateOne: (
     update: UpdateWordInput,
@@ -276,5 +279,19 @@ export const WordModel: WordModelType = {
       limit: config.optionsPerGame + DEFAULT_OPTIONS__SAMPLE_SIZE
     });
     return words;
+  },
+
+  async findVerbs(user) {
+    const verbs = (await Word.find(
+      {
+        user,
+        language: Language.Spanish,
+        ...GAME_FILTERS[GameType.Conjugation]
+      },
+      'name id'
+    )
+      .sort({ name: 1 })
+      .exec()) as Verb[];
+    return verbs;
   }
 };

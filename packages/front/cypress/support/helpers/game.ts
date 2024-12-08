@@ -42,12 +42,10 @@ export function playGameOnce(gameType: Game, answer: string) {
   }
 }
 
-export function playConjugationGame(answer: string, tense: Tense) {
+export function playConjugationGame(answer: string) {
   const answers = answer?.split(', ');
-  const IMPF_INDEXES = [1, 2];
-
   answers?.forEach((answer, i) => {
-    if (tense === Tense.Impf && !IMPF_INDEXES.includes(i)) {
+    if (answer === '-') {
       return;
     }
     cy.getByCy('gameAnswer').find('input').eq(i).type(answer);

@@ -58,8 +58,11 @@ export enum GameStage {
 }
 
 export const TENSES: Record<Tense, string> = {
-  pind: 'Presente indicativo',
-  pprf: 'Pretérito perfecto simple',
+  cond: 'Condicional',
+  futr: 'Futuro indicativo',
   impf: 'Imperativo',
-  pret: 'Pretérito imperfecto'
+  pind: 'Presente indicativo',
+  psub: 'Presente subjentivo',
+  pret: 'Pretérito imperfecto',
+  pprf: 'Pretérito perfecto simple'
 };

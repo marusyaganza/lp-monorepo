@@ -230,6 +230,36 @@ export const newWordInputs = {
         {
           cjid: Tense.Impf,
           cjfs: ['corre', 'corra', 'corramos', 'corred', 'corran']
+        },
+        {
+          cjid: 'futr',
+          cjfs: [
+            'correré',
+            'correrás',
+            'correrá',
+            'correremos',
+            'correréis',
+            'correrán'
+          ]
+        },
+        {
+          cjid: 'cond',
+          cjfs: [
+            'correría',
+            'correrías',
+            'correría',
+            'correríamos',
+            'correríais',
+            'correrían'
+          ]
+        },
+        {
+          cjid: 'psub',
+          cjfs: ['corra', 'corras', 'corra', 'corramos', 'corráis', 'corran']
+        },
+        {
+          cjid: 'gppt',
+          cjfs: ['corriendo', 'corrido']
         }
       ]
     },
@@ -380,6 +410,43 @@ export const newWordInputs = {
         {
           cjid: Tense.Impf,
           cjfs: ['piensa', 'piense', 'pensemos', 'pensad', 'piensen']
+        },
+        {
+          cjid: 'cond',
+          cjfs: [
+            'pensaría',
+            'pensarías',
+            'pensaría',
+            'pensaríamos',
+            'pensaríais',
+            'pensarían'
+          ]
+        },
+        {
+          cjid: 'psub',
+          cjfs: [
+            'piense',
+            'pienses',
+            'piense',
+            'pensemos',
+            'penséis',
+            'piensen'
+          ]
+        },
+        {
+          cjid: 'futr',
+          cjfs: [
+            'pensaré',
+            'pensarás',
+            'pensará',
+            'pensaremos',
+            'pensaréis',
+            'pensarán'
+          ]
+        },
+        {
+          cjid: 'gppt',
+          cjfs: ['pensando', 'pensado']
         }
       ]
     },

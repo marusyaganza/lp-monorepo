@@ -32,9 +32,10 @@ enum Tense {
   pprf
   impf
   pret
-  # futr
-  # cond
-  # psub
+  futr
+  cond
+  psub
+  # gppt
   # pisb1
   # pisb2
   # fsub
@@ -136,6 +137,11 @@ type DefExample {
   translation: String
 }
 
+type Verb {
+  id: ID!
+  name: String!
+}
+
 input DefExampleInput {
   text: String!
   translation: String
@@ -218,6 +224,7 @@ input WordsPerPageInput {
 
 type Query {
   word(id: ID!): Word!
+  verbs: [Verb!]
   wordsPerPage(input: WordsPerPageInput): PaginatedWords!
   searchWord(input: WordSearchInput!): [SearchResult!]!
 }
