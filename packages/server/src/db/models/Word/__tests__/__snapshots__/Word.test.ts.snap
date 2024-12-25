@@ -52,6 +52,12 @@ exports[`WordModel createOne 1`] = `
       "practicedTimes": 0,
       "successRate": 0,
     },
+    "GENDER": {
+      "errorCount": 0,
+      "lastTimePracticed": 0,
+      "practicedTimes": 0,
+      "successRate": 0,
+    },
     "SELECT_DEF": {
       "errorCount": 0,
       "lastTimePracticed": 0,
@@ -131,6 +137,12 @@ exports[`WordModel findById 1`] = `
       "successRate": 0,
     },
     "CONJUGATION": {
+      "errorCount": 0,
+      "lastTimePracticed": 0,
+      "practicedTimes": 0,
+      "successRate": 0,
+    },
+    "GENDER": {
       "errorCount": 0,
       "lastTimePracticed": 0,
       "practicedTimes": 0,
@@ -220,6 +232,12 @@ exports[`WordModel findOne 1`] = `
       "practicedTimes": 0,
       "successRate": 0,
     },
+    "GENDER": {
+      "errorCount": 0,
+      "lastTimePracticed": 0,
+      "practicedTimes": 0,
+      "successRate": 0,
+    },
     "SELECT_DEF": {
       "errorCount": 0,
       "lastTimePracticed": 0,
@@ -295,6 +313,12 @@ exports[`WordModel updateOne 1`] = `
       "successRate": 0,
     },
     "CONJUGATION": {
+      "errorCount": 0,
+      "lastTimePracticed": 0,
+      "practicedTimes": 0,
+      "successRate": 0,
+    },
+    "GENDER": {
       "errorCount": 0,
       "lastTimePracticed": 0,
       "practicedTimes": 0,

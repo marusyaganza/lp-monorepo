@@ -38,7 +38,7 @@ export async function generateSelectDefGame(
       language
     );
     const options = opts.map(opt => prepareDef(opt?.shortDef?.[0], name));
-    const answer = prepareDef(shortDef[0], name);
+    const answer = [prepareDef(shortDef[0], name)];
     const examples = getExamples(defs);
     return {
       answer,

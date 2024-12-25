@@ -68,6 +68,7 @@ type WordStatistics {
   SELECT_WORD: WordStatisticsField
   SELECT_DEF: WordStatisticsField
   CONJUGATION: WordStatisticsField
+  GENDER: WordStatisticsField
 }
 
 type Word {

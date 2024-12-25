@@ -33,6 +33,7 @@ export function getGameTask(gameType: Game, tenseInput?: Tense | null) {
     [Game.SelectDef]: 'Select a definition that means ',
     [Game.SelectWord]: 'Select a word that means ',
     [Game.TypeWord]: 'Type a word that means ',
+    [Game.Gender]: 'Pick the Correct Gender',
     [Game.Conjugation]: `Conjugate the verb in ${TENSES[tense]}`
   };
   return tasks[gameType];

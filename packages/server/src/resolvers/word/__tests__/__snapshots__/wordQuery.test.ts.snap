@@ -351,7 +351,6 @@ exports[`word queries word by id 1`] = `
 {
   "word": {
     "additionalInfo": null,
-    "alternativeSpelling": null,
     "audioUrl": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/e/ega/egali/egalitarian__gb_1.mp3",
     "defs": [
       {

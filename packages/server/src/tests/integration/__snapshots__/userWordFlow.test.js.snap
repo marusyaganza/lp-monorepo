@@ -3,7 +3,6 @@
 exports[`User can find a word by id 1`] = `
 {
   "additionalInfo": "very useful information",
-  "alternativeSpelling": [],
   "audioUrl": "mock.mp3",
   "defs": [
     {

@@ -1,17 +1,16 @@
-import React, { forwardRef, useMemo, useState } from 'react';
+import React, { forwardRef } from 'react';
 import { cn } from '../../utils/classnames';
 import { TextInput } from '../TextInput/TextInput';
 
 import styles from './ConjugationInput.module.css';
 
 export interface ConjugationInputProps {
-  onChange: (value: string) => void;
-  correctAnswer?: string;
+  onChange: (value: string[]) => void;
+  values: string[];
+  correctAnswer: string[];
   variant?: 'initial' | 'success' | 'error';
   isDisabled?: boolean;
   dataCy?: string;
-  tense?: string | null;
-  initialValue?: string;
   /**additional styling */
   className?: string;
 }
@@ -25,66 +24,34 @@ const PRONOUNS = [
   'ellos, ellas'
 ];
 
-const INITIAL_VALUES = Array(6).fill('');
-
 /**Conjugation game input */
 export const ConjugationInput = forwardRef<
   HTMLInputElement,
   ConjugationInputProps
 >(
   (
-    {
-      onChange,
-      className,
-      correctAnswer = '',
-      variant,
-      isDisabled,
-      dataCy,
-      initialValue
-    },
+    { onChange, className, correctAnswer, variant, isDisabled, dataCy, values },
     ref
   ) => {
-    const [values, setValues] = useState(() => {
-      const initVals = { ...INITIAL_VALUES };
-      if (initialValue?.length) {
-        initialValue.split(', ').forEach((value, index) => {
-          if (value === '-') {
-            initVals[index] = value;
-          }
-        });
-      }
-      return initVals;
-    });
-
-    const correctAnswers = useMemo(
-      () => correctAnswer.split(', '),
-      [correctAnswer]
-    );
-
     const getChangeHandler = (index: number) => {
       return function handleChange(val: string) {
-        const newValues = { ...values };
+        const newValues = [...values];
         newValues[index] = val;
-        setValues(newValues);
-        onChange(Object.values(newValues).join(', '));
+        onChange(newValues);
       };
     };
 
     const renderInputs = () => {
       return PRONOUNS.map((pronoun: string, index: number) => {
-        let currentValue = values[index];
+        const currentValue = values[index];
 
         const disableInput = values?.[index] === '-';
-
-        if (disableInput) {
-          currentValue = values?.[index];
-        }
 
         let currentVariant = variant;
 
         if (
           currentVariant === 'error' &&
-          currentValue === correctAnswers[index]
+          currentValue === correctAnswer[index]
         ) {
           currentVariant = 'success';
         }

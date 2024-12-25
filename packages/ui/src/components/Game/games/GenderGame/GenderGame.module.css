@@ -1,0 +1,61 @@
+.container {
+  display: flex;
+  gap: 40px;
+}
+
+.hidden {
+  position: absolute;
+  opacity: 0;
+  z-index: var(--z-index-1);
+}
+
+.inputContent {
+  display: flex;
+  height: 32px;
+  padding: 0 16px;
+  gap: 4px;
+  align-items: center;
+  border-radius: var(--secondary-border-radius);
+  font-family: var(--font-kalam);
+  text-transform: capitalize;
+  background: var(--background-neutral-100);
+}
+
+.feminine {
+  color: #d469ba;
+  border: 1px solid #d469ba;
+}
+
+.masculine {
+  color: #207367;
+  border: 1px solid #4296b7;
+}
+
+.hidden:checked + .inputContent {
+  border-width: 2px;
+}
+
+.label {
+  position: relative;
+}
+
+.correct.feminine {
+  box-shadow: 4px 4px 4px 4px #ffb8b8;
+}
+
+.correct.masculine {
+  box-shadow: 4px 4px 4px 4px #76be76;
+}
+
+.inputContent.incorrect {
+  text-decoration: line-through;
+  color: var(--neutral-800);
+  border: 1px solid var(--neutral-800);
+  box-shadow: var(--primary-box-shadow);
+}
+
+.inputContent.disabled {
+  color: var(--neutral-500);
+  background-color: var(--neutral-200);
+  border-color: var(--neutral-600);
+}

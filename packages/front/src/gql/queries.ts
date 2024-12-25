@@ -99,7 +99,6 @@ export const GAME_QUERY = gql`
         question
         options
         answer
-        alternativeSpelling
         additionalInfo {
           audioUrl
           imgUrl

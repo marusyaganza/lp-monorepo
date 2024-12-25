@@ -38,7 +38,7 @@ export async function generateSelectWordGame(
       language
     );
     const options: string[] = opts.map(opt => opt.name);
-    const answer = name;
+    const answer = [name];
     const examples = getExamples(defs);
     const question = shortDef.map(def => prepareDef(def, name));
 

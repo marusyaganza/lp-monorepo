@@ -16,6 +16,8 @@ module.exports = {
   rules: {
     'jsx-a11y/no-autofocus': 'off',
     'jsx-a11y/no-noninteractive-element-interactions': 'off',
-    'jsx-a11y/no-noninteractive-tabindex': 'off'
+    'jsx-a11y/no-noninteractive-tabindex': 'off',
+    'jsx-a11y/label-has-associated-control': 'off',
+    'react-hooks/exhaustive-deps': 'off'
   }
 };

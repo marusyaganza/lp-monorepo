@@ -23,7 +23,9 @@ import { generateGameData } from '../../../generateGameData';
 import { GAMES } from '../../../constants/games';
 import { ERROR_MESSAGES } from '../../../constants/errorMessages';
 
-const gameTypes = Object.values(Game).filter(g => g !== Game.Conjugation);
+const gameTypes = Object.values(Game).filter(
+  g => g !== Game.Conjugation && g !== Game.Gender
+);
 const languages = Object.values(Language);
 const tenses = Object.values(Tense);
 

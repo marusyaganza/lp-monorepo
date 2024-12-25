@@ -9,11 +9,11 @@ exports[`generateTypeWordGame should return the correct number of questions when
         "examples": [],
         "imgUrl": "https://example.com/images/apple.jpg",
       },
-      "alternativeSpelling": [
+      "answer": [
+        "apple",
         "appel",
         "aple",
       ],
-      "answer": "apple",
       "question": [
         "Round fruit with red or green skin.",
       ],
@@ -25,11 +25,11 @@ exports[`generateTypeWordGame should return the correct number of questions when
         "examples": [],
         "imgUrl": "https://example.com/images/orange.jpg",
       },
-      "alternativeSpelling": [
+      "answer": [
+        "orange",
         "oranj",
         "orenge",
       ],
-      "answer": "orange",
       "question": [
         "Citrus fruit with [...] rind.",
       ],
@@ -41,7 +41,9 @@ exports[`generateTypeWordGame should return the correct number of questions when
         "examples": [],
         "imgUrl": "https://example.com/images/banana.jpg",
       },
-      "answer": "banana",
+      "answer": [
+        "banana",
+      ],
       "question": [
         "Curved fruit with yellow skin.",
       ],
@@ -53,11 +55,11 @@ exports[`generateTypeWordGame should return the correct number of questions when
         "examples": [],
         "imgUrl": "https://example.com/images/strawberry.jpg",
       },
-      "alternativeSpelling": [
+      "answer": [
+        "strawberry",
         "strawbery",
         "straw-berry",
       ],
-      "answer": "strawberry",
       "question": [
         "Soft red fruit with seeds.",
       ],
@@ -69,7 +71,9 @@ exports[`generateTypeWordGame should return the correct number of questions when
         "examples": [],
         "imgUrl": "https://example.com/images/pineapple.jpg",
       },
-      "answer": "pineapple",
+      "answer": [
+        "pineapple",
+      ],
       "question": [
         "Tropical fruit with spiky rind.",
       ],
@@ -81,11 +85,11 @@ exports[`generateTypeWordGame should return the correct number of questions when
         "examples": [],
         "imgUrl": "https://example.com/images/grape.jpg",
       },
-      "alternativeSpelling": [
+      "answer": [
+        "grape",
         "grap",
         "greyp",
       ],
-      "answer": "grape",
       "question": [
         "Small juicy fruit with smooth skin.",
       ],
@@ -111,11 +115,11 @@ exports[`generateTypeWordGame should return the correct number of questions when
         ],
         "imgUrl": "https://example.com/images/manzana.jpg",
       },
-      "alternativeSpelling": [
+      "answer": [
+        "manzana",
         "manzana",
         "manzána",
       ],
-      "answer": "manzana",
       "question": [
         "Round fruit with red or green skin.",
       ],
@@ -136,11 +140,11 @@ exports[`generateTypeWordGame should return the correct number of questions when
         ],
         "imgUrl": "https://example.com/images/naranja.jpg",
       },
-      "alternativeSpelling": [
+      "answer": [
+        "naranja",
         "naranga",
         "naranj",
       ],
-      "answer": "naranja",
       "question": [
         "Citrus fruit with orange rind.",
       ],
@@ -157,11 +161,11 @@ exports[`generateTypeWordGame should return the correct number of questions when
         ],
         "imgUrl": "https://example.com/images/platano.jpg",
       },
-      "alternativeSpelling": [
+      "answer": [
+        "plátano",
         "platáno",
         "plátan",
       ],
-      "answer": "plátano",
       "question": [
         "Curved fruit with yellow skin.",
       ],
@@ -178,11 +182,11 @@ exports[`generateTypeWordGame should return the correct number of questions when
         ],
         "imgUrl": "https://example.com/images/fresa.jpg",
       },
-      "alternativeSpelling": [
+      "answer": [
+        "fresa",
         "freza",
         "fre-sá",
       ],
-      "answer": "fresa",
       "question": [
         "Soft red fruit with seeds.",
       ],
@@ -199,11 +203,11 @@ exports[`generateTypeWordGame should return the correct number of questions when
         ],
         "imgUrl": "https://example.com/images/pina.jpg",
       },
-      "alternativeSpelling": [
+      "answer": [
+        "piña",
         "pina",
         "pi-ñá",
       ],
-      "answer": "piña",
       "question": [
         "Tropical fruit with spiky rind.",
       ],
@@ -220,11 +224,11 @@ exports[`generateTypeWordGame should return the correct number of questions when
         ],
         "imgUrl": "https://example.com/images/uva.jpg",
       },
-      "alternativeSpelling": [
+      "answer": [
+        "uva",
         "uba",
         "uvá",
       ],
-      "answer": "uva",
       "question": [
         "Small juicy fruit with smooth skin.",
       ],
@@ -245,11 +249,11 @@ exports[`generateTypeWordGame should return the correct number of questions when
         "examples": [],
         "imgUrl": "https://example.com/images/apple.jpg",
       },
-      "alternativeSpelling": [
+      "answer": [
+        "apple",
         "appel",
         "aple",
       ],
-      "answer": "apple",
       "question": [
         "Round fruit with red or green skin.",
       ],
@@ -275,11 +279,11 @@ exports[`generateTypeWordGame should return the correct number of questions when
         ],
         "imgUrl": "https://example.com/images/manzana.jpg",
       },
-      "alternativeSpelling": [
+      "answer": [
+        "manzana",
         "manzana",
         "manzána",
       ],
-      "answer": "manzana",
       "question": [
         "Round fruit with red or green skin.",
       ],

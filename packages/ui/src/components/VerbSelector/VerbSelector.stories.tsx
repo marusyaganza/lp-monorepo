@@ -1,11 +1,9 @@
 import { VerbSelector } from './VerbSelector';
-import { styledPreviewDecorator } from '../../storybook-decorators';
 import type { Meta } from '@storybook/react';
 
 const meta: Meta<typeof VerbSelector> = {
   title: 'Inputs/VerbSelector',
   component: VerbSelector
-  // decorators: [styledPreviewDecorator()]
 };
 
 const options = [

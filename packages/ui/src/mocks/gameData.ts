@@ -10,6 +10,7 @@ export const gameData: Record<Game, Partial<GameProps>> = {
   },
   [Game.TypeWord]: {
     task: 'Type a word that means',
+    correctAnswer: ['wheel'],
     question: [
       'a circular frame of hard material that may be solid, partly solid, or spoked and that is capable of turning on an axle',
       'a contrivance or apparatus having as its principal part a wheel: such as',
@@ -20,6 +21,7 @@ export const gameData: Record<Game, Partial<GameProps>> = {
   },
   [Game.SelectWord]: {
     task: 'Select a word that means',
+    correctAnswer: ['wheel'],
     question: [
       'a circular frame of hard material that may be solid, partly solid, or spoked and that is capable of turning on an axle',
       'a contrivance or apparatus having as its principal part a wheel: such as',
@@ -32,6 +34,9 @@ export const gameData: Record<Game, Partial<GameProps>> = {
   [Game.SelectDef]: {
     task: 'Select a definition that means',
     question: ['wheel'],
+    correctAnswer: [
+      'a circular frame of hard material that may be solid, partly solid, or spoked and that is capable of turning on an axle'
+    ],
     options: [
       'a person or thing that is different from or in a position away from others in the group',
       'a small piece of rubber or other material that is used to erase something you have written or drawn —called also (British) rubber',
@@ -46,8 +51,14 @@ export const gameData: Record<Game, Partial<GameProps>> = {
   [Game.Conjugation]: {
     task: 'Conjugate the verb',
     question: ['caer'],
+    correctAnswer: ['caigo', 'caes', 'cae', 'caemos', 'ca\u00e9is', 'caen'],
     audioUrl:
       'https://media.merriam-webster.com/audio/prons/es/me/mp3/c/caer001sp.mp3'
+  },
+  [Game.Gender]: {
+    task: 'Pick the correct gender',
+    question: ['ecologista'],
+    correctAnswer: ['masculine', 'feminine']
   }
 };
 
@@ -60,8 +71,7 @@ export const gameEngineData: Record<Game, GameData> = {
           'https://media.merriam-webster.com/audio/prons/es/me/mp3/a/aprox01sp.mp3'
         ],
         options: null,
-        answer: 'aproximado',
-        alternativeSpelling: null,
+        answer: ['aproximado'],
         additionalInfo: {
           imgUrl: null,
           shortDef: '<b>aproximado means</b> approximate, estimated',
@@ -74,8 +84,7 @@ export const gameEngineData: Record<Game, GameData> = {
           'https://media.merriam-webster.com/audio/prons/es/me/mp3/t/tanto01sp.mp3'
         ],
         options: null,
-        answer: 'tanto',
-        alternativeSpelling: null,
+        answer: ['tanto'],
         additionalInfo: {
           imgUrl: null,
           shortDef: '<b>tanto means</b> so much',
@@ -109,8 +118,7 @@ export const gameEngineData: Record<Game, GameData> = {
           'https://media.merriam-webster.com/audio/prons/es/me/mp3/a/apena02sp.mp3'
         ],
         options: null,
-        answer: 'apenas',
-        alternativeSpelling: null,
+        answer: ['apenas'],
         additionalInfo: {
           imgUrl: '',
           shortDef: '<b>apenas means</b> hardly, scarcely',
@@ -139,8 +147,7 @@ export const gameEngineData: Record<Game, GameData> = {
           'such, such a, like that',
           'ocultar : to hide, to conceal'
         ],
-        answer: 'ocultar : to hide, to conceal',
-        alternativeSpelling: null,
+        answer: ['ocultar : to hide, to conceal'],
         additionalInfo: {
           audioUrl:
             'https://media.merriam-webster.com/audio/prons/es/me/mp3/e/escon01sp.mp3',
@@ -159,8 +166,7 @@ export const gameEngineData: Record<Game, GameData> = {
           'Poland',
           'Swedish'
         ],
-        answer: 'degree, qualification',
-        alternativeSpelling: null,
+        answer: ['degree, qualification'],
         additionalInfo: {
           audioUrl:
             'https://voice.reverso.net/RestPronunciation.svc/v1/output=json/GetVoiceStream/voiceName=Maria22k?voiceSpeed=80&inputText=dGl0dWxhY2nDs24=',
@@ -184,8 +190,7 @@ export const gameEngineData: Record<Game, GameData> = {
           'Iran',
           'directory, guidebook'
         ],
-        answer: 'holdup, robbery',
-        alternativeSpelling: null,
+        answer: ['holdup, robbery'],
         additionalInfo: {
           audioUrl:
             'https://media.merriam-webster.com/audio/prons/es/me/mp3/a/atrac02sp.mp3',
@@ -210,8 +215,7 @@ export const gameEngineData: Record<Game, GameData> = {
           'futbolista',
           'guía'
         ],
-        answer: 'suave',
-        alternativeSpelling: null,
+        answer: ['suave'],
         additionalInfo: {
           audioUrl: null,
           imgUrl: null,
@@ -229,8 +233,7 @@ export const gameEngineData: Record<Game, GameData> = {
           'británico',
           'alejado'
         ],
-        answer: 'alejado',
-        alternativeSpelling: null,
+        answer: ['alejado'],
         additionalInfo: {
           audioUrl:
             'https://media.merriam-webster.com/audio/prons/es/me/mp3/a/aleja01sp.mp3',
@@ -249,8 +252,7 @@ export const gameEngineData: Record<Game, GameData> = {
           'bélico',
           'arquitecto'
         ],
-        answer: 'bélico',
-        alternativeSpelling: null,
+        answer: ['bélico'],
         additionalInfo: {
           audioUrl:
             'https://media.merriam-webster.com/audio/prons/es/me/mp3/b/belic02sp.mp3',
@@ -273,8 +275,7 @@ export const gameEngineData: Record<Game, GameData> = {
         wordId: '6718db19d3ab9c18a61064e9',
         question: ['to fatten, to fatten up', 'to gain weight'],
         options: null,
-        answer: 'engordar',
-        alternativeSpelling: null,
+        answer: ['engordar'],
         additionalInfo: {
           audioUrl:
             'https://media.merriam-webster.com/audio/prons/es/me/mp3/e/engor01sp.mp3',
@@ -291,8 +292,7 @@ export const gameEngineData: Record<Game, GameData> = {
         wordId: '6718dcd7d3ab9c18a6106647',
         question: ['bone', 'pit, stone (of a fruit)'],
         options: null,
-        answer: 'hueso',
-        alternativeSpelling: null,
+        answer: ['hueso'],
         additionalInfo: {
           audioUrl:
             'https://media.merriam-webster.com/audio/prons/es/me/mp3/h/hueso01sp.mp3',
@@ -309,8 +309,7 @@ export const gameEngineData: Record<Game, GameData> = {
         wordId: '6718e18fd3ab9c18a61066f1',
         question: ['to reflect, to think'],
         options: null,
-        answer: 'reflexionar',
-        alternativeSpelling: null,
+        answer: ['reflexionar'],
         additionalInfo: {
           audioUrl:
             'https://media.merriam-webster.com/audio/prons/es/me/mp3/r/refle04sp.mp3',
@@ -328,8 +327,7 @@ export const gameEngineData: Record<Game, GameData> = {
         wordId: '66584d4f9147a842f6c018f2',
         question: ['espiar'],
         options: null,
-        answer: 'espío, espías, espía, espiamos, espiáis, espían',
-        alternativeSpelling: null,
+        answer: ['espío', 'espías', 'espía', 'espiamos', 'espiáis', 'espían'],
         additionalInfo: {
           audioUrl:
             'https://media.merriam-webster.com/audio/prons/es/me/mp3/e/espia01sp.mp3',
@@ -342,8 +340,14 @@ export const gameEngineData: Record<Game, GameData> = {
         wordId: '66584d279147a842f6c018d9',
         question: ['enfadar'],
         options: null,
-        answer: 'enfado, enfadas, enfada, enfadamos, enfadáis, enfadan',
-        alternativeSpelling: null,
+        answer: [
+          'enfado',
+          'enfadas',
+          'enfada',
+          'enfadamos',
+          'enfadáis',
+          'enfadan'
+        ],
         additionalInfo: {
           audioUrl:
             'https://media.merriam-webster.com/audio/prons/es/me/mp3/e/enfad01sp.mp3',
@@ -355,5 +359,61 @@ export const gameEngineData: Record<Game, GameData> = {
     ],
     task: 'Conjugate the verb in Presente indicativo',
     type: Game.Conjugation
+  },
+  [Game.Gender]: {
+    questions: [
+      {
+        wordId: '66584d4f9147a842f6c018f2',
+        question: ['ecologista'],
+        options: null,
+        answer: ['masculine', 'feminine'],
+        additionalInfo: {
+          audioUrl:
+            'https://voice.reverso.net/RestPronunciation.svc/v1/output=json/GetVoiceStream/voiceName=Maria22k?voiceSpeed=80&inputText=ZWNvbG9naXN0YQ==',
+          imgUrl: null,
+          shortDef: '<b>ecologista means</b> ecologist, environmentalist',
+          examples: null
+        }
+      },
+      {
+        wordId: '66584d279147a842f6c01889',
+        question: ['extensión'],
+        options: null,
+        answer: ['feminine'],
+        additionalInfo: {
+          audioUrl:
+            'https://voice.reverso.net/RestPronunciation.svc/v1/output=json/GetVoiceStream/voiceName=Maria22k?voiceSpeed=80&inputText=ZXh0ZW5zacOzbg==',
+          imgUrl: null,
+          shortDef: '<b>extensión means</b> length, duration',
+          examples: [
+            {
+              text: 'La extensión máxima será de 6000 palabras.',
+              translation: 'The maximum length will be 6000 words.'
+            }
+          ]
+        }
+      },
+      {
+        wordId: '66584d2791478842f6c01889',
+        question: ['sobre'],
+        options: null,
+        answer: ['masculine'],
+        additionalInfo: {
+          audioUrl:
+            'https://media.merriam-webster.com/audio/prons/es/me/mp3/s/sobre01sp.mp3',
+          imgUrl: null,
+          shortDef: '<b>sobre means</b> envelope',
+          examples: [
+            {
+              text: 'Los relatos se presentarán en un sobre cerrado en el local de la asociación.',
+              translation:
+                "The stories will be presented in a sealed envelope at the association's premises."
+            }
+          ]
+        }
+      }
+    ],
+    task: 'Conjugate the verb in Presente indicativo',
+    type: Game.Gender
   }
 };

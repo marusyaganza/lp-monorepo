@@ -3,11 +3,6 @@
 @import '../../assets/styles/fonts.css';
 @import '../../assets/styles/effects.css';
 
-@import '../../assets/styles/colors.css';
-@import '../../assets/styles/font-sizes.css';
-@import '../../assets/styles/fonts.css';
-@import '../../assets/styles/effects.css';
-
 .container {
   display: flex;
   flex-direction: column;

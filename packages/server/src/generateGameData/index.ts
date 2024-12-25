@@ -7,6 +7,7 @@ import { GameDataGeneratorFunc } from '../types/types';
 import { OperationResolutionError } from '../utils/apolloCustomErrors';
 import { generateAudioGame } from './generators/generateAudioGame';
 import { generateConjugationGame } from './generators/generateConjugationGame';
+import { generateGenderGame } from './generators/generateGenderGame';
 import { generateSelectDefGame } from './generators/generateSelectDefGame';
 import { generateSelectWordGame } from './generators/generateSelectWordGame';
 import { generateTypeWordGame } from './generators/generateTypeWordGame';
@@ -16,7 +17,8 @@ const generators: Record<Game, GameDataGeneratorFunc> = {
   [Game.TypeWord]: generateTypeWordGame,
   [Game.SelectWord]: generateSelectWordGame,
   [Game.SelectDef]: generateSelectDefGame,
-  [Game.Conjugation]: generateConjugationGame
+  [Game.Conjugation]: generateConjugationGame,
+  [Game.Gender]: generateGenderGame
 };
 
 export async function generateGameData(
@@ -45,7 +47,6 @@ export async function generateGameData(
   } else {
     const { minWords } = config;
     words = await WordModel.selectWordsForGame(parameters, config, user);
-
     if (!minWords || words.length < minWords) {
       throw new OperationResolutionError(
         `not enough words to start a game. You have ${words.length} word. Words requited for the game: ${minWords}`

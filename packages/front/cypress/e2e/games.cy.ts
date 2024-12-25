@@ -30,7 +30,7 @@ describe('Games Page', () => {
   it('should handle language change correctly', () => {
     cy.get('@gameCard').should('have.length', 4);
     cy.changeLanguage(Language.Spanish);
-    cy.get('@gameCard').should('have.length', 5);
+    cy.get('@gameCard').should('have.length', 6);
     cy.changeLanguage(Language.English, Language.Spanish);
     cy.get('@gameCard').should('have.length', 4);
   });

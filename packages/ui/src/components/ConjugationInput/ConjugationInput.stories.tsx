@@ -10,7 +10,7 @@ const meta: Meta<typeof ConjugationInput> = {
 
 export const ConjugationInputDefault = {
   args: {
-    prop: 'prop text'
+    values: Array(6).fill('')
   }
 };
 

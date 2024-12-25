@@ -174,7 +174,9 @@ describe('Game Page', () => {
   });
 
   languages.forEach(lang => {
-    const availableGames = games.filter(game => game.type !== Game.Conjugation);
+    const availableGames = games.filter(
+      game => game.type !== Game.Conjugation && game?.type !== Game.Gender
+    );
     availableGames.forEach((game, i) => {
       it(`should start ${game.id} game with minimal words in ${lang} language`, () => {
         const query = queries[lang];

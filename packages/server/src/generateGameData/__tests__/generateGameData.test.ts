@@ -17,7 +17,9 @@ const snapshotConfig = {
   wordId: expect.any(String)
 };
 
-const gameTypes = Object.values(Game).filter(g => g !== Game.Conjugation);
+const gameTypes = Object.values(Game).filter(
+  g => g !== Game.Conjugation && g !== Game.Gender
+);
 const tenses = Object.values(Tense);
 
 describe('generateGameData', () => {
@@ -118,6 +120,25 @@ describe('generateGameData', () => {
       await generateGameData(
         {
           gameType: Game.Conjugation,
+          language: Language.English
+        },
+        userId
+      );
+    } catch (err) {
+      error = err;
+    }
+    expect(error).toEqual(
+      new OperationResolutionError(ERROR_MESSAGES.GAME_NOT_FOUND)
+    );
+  });
+
+  test(`should throw error with ${Game.Gender} game ${Language.English}`, async () => {
+    const userId = data?.users?.[0];
+    let error;
+    try {
+      await generateGameData(
+        {
+          gameType: Game.Gender,
           language: Language.English
         },
         userId
