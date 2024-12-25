@@ -20,8 +20,8 @@ import { gameQueries } from '../../../tests/mocks/gqlQueries';
 import { newWordInputs } from '../../../tests/mocks/inputs/newWordInputs';
 import { usersTestData } from '../../../tests/mocks/inputs/newUserInput';
 import { generateGameData } from '../../../generateGameData';
-import { GAMES } from '../../../constants/games';
 import { ERROR_MESSAGES } from '../../../constants/errorMessages';
+import { DEFAULT_GAMES_SETTINGS } from '../../../constants/defultGameSettings';
 
 const gameTypes = Object.values(Game).filter(
   g => g !== Game.Conjugation && g !== Game.Gender
@@ -50,8 +50,8 @@ describe('game queries', () => {
   gameTypes.forEach(game => {
     languages.forEach(lang => {
       test(`game query with ${game} and ${lang}`, async () => {
-        const gameConfig = GAMES.find(g => g.type === game);
-        const wordsPerGame = gameConfig?.wordsPerGame as number;
+        const gameConfig = DEFAULT_GAMES_SETTINGS[game];
+        const wordsPerGame = gameConfig?.wordsPerGame;
         const userId = data?.users?.[0] as string;
 
         const { query } = createTestServer({
@@ -123,8 +123,8 @@ describe('game queries', () => {
 
   tenses.forEach(tense => {
     test(`game query with valid user for Conjugation game and ${tense} tense`, async () => {
-      const gameConfig = GAMES.find(g => g.type === Game.Conjugation);
-      const wordsPerGame = gameConfig?.wordsPerGame as number;
+      const gameConfig = DEFAULT_GAMES_SETTINGS[Game.Conjugation];
+      const wordsPerGame = gameConfig?.wordsPerGame;
       const userId = data?.users?.[0] as string;
 
       const input = {
@@ -177,7 +177,7 @@ describe('game queries', () => {
       });
 
       expect(getErrorMessageFromGQL(res)).toEqual(
-        ERROR_MESSAGES.GAME_NOT_FOUND
+        ERROR_MESSAGES.GAME_NOT_AVAILABLE
       );
     });
   });

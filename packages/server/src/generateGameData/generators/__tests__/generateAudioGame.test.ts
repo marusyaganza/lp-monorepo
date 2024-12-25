@@ -1,14 +1,14 @@
 import { testData } from '../../../tests/mocks/wordsForGames';
 import { generateAudioGame } from '../generateAudioGame';
-import { GAMES } from '../../../constants/games';
 import { Game, Language } from '../../../generated/graphql';
 import { OperationResolutionError } from '../../../utils/apolloCustomErrors';
 import { ERROR_MESSAGES } from '../../../constants/errorMessages';
+import { DEFAULT_GAMES_SETTINGS } from '../../../constants/defultGameSettings';
 
 const languages = Object.values(Language);
 const gameType = Game.Audio;
 
-const gameConfig = GAMES.find(game => game.type === gameType);
+const gameConfig = DEFAULT_GAMES_SETTINGS[gameType];
 describe('generateAudioGame', () => {
   beforeEach(() => {
     jest.clearAllMocks();

@@ -9,9 +9,9 @@ import {
 
 import { usersTestData } from '../../tests/mocks/inputs/newUserInput';
 import { newWordInputs } from '../../tests/mocks/inputs/newWordInputs';
-import { GAMES } from '../../constants/games';
 import { OperationResolutionError } from '../../utils/apolloCustomErrors';
 import { ERROR_MESSAGES } from '../../constants/errorMessages';
+import { DEFAULT_GAMES_SETTINGS } from '../../constants/defultGameSettings';
 
 const snapshotConfig = {
   wordId: expect.any(String)
@@ -41,8 +41,8 @@ describe('generateGameData', () => {
     await disconnectFromDb();
   });
   gameTypes.forEach(game => {
-    const gameConfig = GAMES.find(g => g.type === game);
-    const wordsPerGame = gameConfig?.wordsPerGame as number;
+    const gameConfig = DEFAULT_GAMES_SETTINGS[game];
+    const wordsPerGame = gameConfig?.wordsPerGame;
 
     test(`with ${game} game Spanish`, async () => {
       const userId = data?.users?.[0] as string;
@@ -96,8 +96,8 @@ describe('generateGameData', () => {
   tenses.forEach(tense => {
     test(`with ${Game.Conjugation} game ${tense} tense`, async () => {
       const userId = data?.users?.[0];
-      const gameConfig = GAMES.find(g => g.type === Game.Conjugation);
-      const wordsPerGame = gameConfig?.wordsPerGame as number;
+      const gameConfig = DEFAULT_GAMES_SETTINGS[Game.Conjugation];
+      const wordsPerGame = gameConfig?.wordsPerGame;
 
       const result = await generateGameData(
         {
@@ -128,7 +128,7 @@ describe('generateGameData', () => {
       error = err;
     }
     expect(error).toEqual(
-      new OperationResolutionError(ERROR_MESSAGES.GAME_NOT_FOUND)
+      new OperationResolutionError(ERROR_MESSAGES.GAME_NOT_AVAILABLE)
     );
   });
 
@@ -147,7 +147,7 @@ describe('generateGameData', () => {
       error = err;
     }
     expect(error).toEqual(
-      new OperationResolutionError(ERROR_MESSAGES.GAME_NOT_FOUND)
+      new OperationResolutionError(ERROR_MESSAGES.GAME_NOT_AVAILABLE)
     );
   });
 });

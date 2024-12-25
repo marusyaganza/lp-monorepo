@@ -1,7 +1,6 @@
 import { testData } from '../../../tests/mocks/wordsForGames';
 import { generateSelectDefGame } from '../generateSelectDefGame';
-import { GAMES } from '../../../constants/games';
-import { Game, GameConfig, Language, Word } from '../../../generated/graphql';
+import { Game, Language, Word } from '../../../generated/graphql';
 import {
   connectToDb,
   disconnectFromDb,
@@ -10,9 +9,10 @@ import {
 } from '../../../tests/helpers/testDBUtils';
 import { newWordInputs } from '../../../tests/mocks/inputs/newWordInputs';
 import { usersTestData } from '../../../tests/mocks//inputs/newUserInput';
+import { DEFAULT_GAMES_SETTINGS } from '../../../constants/defultGameSettings';
 
 const gameType = Game.SelectDef;
-const gameConfig = GAMES.find(game => game.type === gameType) as GameConfig;
+const gameConfig = DEFAULT_GAMES_SETTINGS[gameType];
 
 const languages = Object.values(Language);
 const task = 'Select a definition that means ';

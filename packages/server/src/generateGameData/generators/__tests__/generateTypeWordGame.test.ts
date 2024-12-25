@@ -1,12 +1,13 @@
 import { testData } from '../../../tests/mocks/wordsForGames';
 import { generateTypeWordGame } from '../generateTypeWordGame';
-import { GAMES } from '../../../constants/games';
 import { Game, Language } from '../../../generated/graphql';
+import { DEFAULT_GAMES_SETTINGS } from '../../../constants/defultGameSettings';
 
 const languages = Object.values(Language);
 const gameType = Game.TypeWord;
 
-const gameConfig = GAMES.find(game => game.type === gameType);
+const gameConfig = DEFAULT_GAMES_SETTINGS[gameType];
+
 describe('generateTypeWordGame', () => {
   beforeEach(() => {
     jest.clearAllMocks();

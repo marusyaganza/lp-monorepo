@@ -1,6 +1,6 @@
 import { DEFAULT_LANGUAGE } from '../constants/defaultValues';
+import { DEFAULT_GAMES_SETTINGS } from '../constants/defultGameSettings';
 import { ERROR_MESSAGES } from '../constants/errorMessages';
-import { GameModel } from '../db/models/Game/Game';
 import { WordModel } from '../db/models/Word/Word';
 import { Game, GameDataInput } from '../generated/graphql';
 import { GameDataGeneratorFunc } from '../types/types';
@@ -27,13 +27,9 @@ export async function generateGameData(
 ) {
   const language = parameters?.language || DEFAULT_LANGUAGE;
   const { gameType, wordId } = parameters;
-  const config = await GameModel.findOne({
-    type: gameType,
-    languages: language
-  });
-
-  if (!config) {
-    throw new OperationResolutionError(ERROR_MESSAGES.GAME_NOT_FOUND);
+  const config = DEFAULT_GAMES_SETTINGS[gameType];
+  if (!config.languages.includes(language)) {
+    throw new OperationResolutionError(ERROR_MESSAGES.GAME_NOT_AVAILABLE);
   }
 
   let words;
