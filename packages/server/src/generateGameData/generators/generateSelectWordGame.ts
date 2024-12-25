@@ -2,9 +2,9 @@ import { DEFAULT_LANGUAGE } from '../../constants/defaultValues';
 import { WordModel } from '../../db/models/Word/Word';
 import {
   Game,
-  GameConfig,
   GameData,
   GameDataInput,
+  GameSettings,
   Word
 } from '../../generated/graphql';
 import {
@@ -17,7 +17,7 @@ import {
 export async function generateSelectWordGame(
   words: Word[],
   parameters: GameDataInput,
-  config: GameConfig,
+  config: GameSettings,
   user: string
 ): Promise<GameData> {
   const gameType = Game.SelectWord;

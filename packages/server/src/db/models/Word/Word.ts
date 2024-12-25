@@ -19,12 +19,12 @@ import {
   PaginatedWords,
   UpdateWordInput,
   GameDataInput,
-  GameConfig,
   SortBy,
   Language,
   WordsPerPageInput,
   SortWordsBy,
-  Verb
+  Verb,
+  GameSettings
 } from '../../../generated/graphql';
 import { getWordsFilters, filterTags } from '../../helpers';
 import { UserInputError } from '../../../utils/apolloCustomErrors';
@@ -69,13 +69,13 @@ export interface WordModelType {
   ) => Promise<{ ok: boolean }>;
   selectWordsForGame: (
     filter: GameDataInput,
-    config: GameConfig,
+    config: GameSettings,
     user: string
   ) => Promise<WordType[]>;
   selectWordsForOptions: (
     gameType: GameType,
     language: Language,
-    config: GameConfig,
+    config: GameSettings,
     user: string
   ) => Promise<WordType[]>;
 }

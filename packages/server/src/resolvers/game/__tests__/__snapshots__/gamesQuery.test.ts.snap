@@ -5,39 +5,27 @@ exports[`game queries games query 1`] = `
   "games": [
     {
       "desc": "Listen, Type, Master. Sharpen language skills through auditory engagement.",
-      "id": "mockId",
+      "id": "audio",
       "name": "WordEcho",
       "type": "AUDIO",
     },
     {
       "desc": "Define & Conquer.Match words with their meanings intuitively.",
-      "id": "mockId",
+      "id": "select_definition",
       "name": "LexiSense",
       "type": "SELECT_DEF",
     },
     {
       "desc": "Associate definitions with the right words. A captivating word puzzle adventure!",
-      "id": "mockId",
+      "id": "select_word",
       "name": "Definify: Match & Learn",
       "type": "SELECT_WORD",
     },
     {
       "desc": "Type words matching given definitions. Boost vocabulary in engaging rounds!",
-      "id": "mockId",
+      "id": "type_word",
       "name": "WordRecall: Define & Type",
       "type": "TYPE_WORD",
-    },
-    {
-      "desc": "Master verb conjugations across tenses and languages in fast-paced, interactive challenges!",
-      "id": "mockId",
-      "name": "Conjugation Quest",
-      "type": "CONJUGATION",
-    },
-    {
-      "desc": "Choose nouns and match their gender. Test linguistic skills in thrilling rounds!",
-      "id": "mockId",
-      "name": "GenderWord Challenge",
-      "type": "GENDER",
     },
   ],
 }

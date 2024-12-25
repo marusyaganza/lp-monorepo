@@ -2,12 +2,12 @@ import { ModelsType } from '../db/models';
 
 import { createToken, validatePassword, hashPassword } from '../auth';
 import {
-  GameConfig,
   GameData,
   GameDataInput,
   Role,
   WordDefinition,
-  Word
+  Word,
+  GameSettings
 } from '../generated/graphql';
 import { SortOrder } from 'mongoose';
 import { generateGameData } from '../generateGameData/index';
@@ -42,7 +42,7 @@ export interface IMongooseSortingFilter {
 export type GameDataGeneratorFunc = (
   words: Word[],
   parameters: GameDataInput,
-  config: GameConfig,
+  config: GameSettings,
   user: string
 ) => Promise<GameData>;
 

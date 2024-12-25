@@ -12,11 +12,25 @@ type GameConfig {
   desc: String!
   id: String!
   type: Game!
+  orderNum: Int!
+  languages: [Language!]!
+}
+
+type GameSettings {
   wordsPerGame: Int!
   optionsPerGame: Int!
   minWords: Int!
   timesToLearn: Int!
-  orderNum: Int!
+  languages: [Language!]!
+}
+
+type SettingsByGame {
+  AUDIO: GameSettings!
+  TYPE_WORD: GameSettings!
+  SELECT_WORD: GameSettings!
+  SELECT_DEF: GameSettings!
+  CONJUGATION: GameSettings!
+  GENDER: GameSettings!
 }
 
 type GameQuestionAdditionalInfo {
@@ -54,4 +68,5 @@ input GameDataInput {
 type Query {
   games(language: Language): [GameConfig]!
   game(input: GameDataInput!): GameData!
+  gameSettings: SettingsByGame!
 }
