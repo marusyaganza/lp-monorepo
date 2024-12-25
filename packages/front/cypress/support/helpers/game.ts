@@ -58,7 +58,7 @@ export function startConjugationGame(query: string, tense: Tense) {
   cy.changeLanguage(Language.Spanish);
   cy.addWord(query);
   cy.getByCy('headerNav').contains(HEADER_TEXTS.practice).click();
-  cy.getByCy('gameCard').last().click();
+  cy.getByCy('gameCard').eq(4).click();
   cy.checkPathName('/games/conjugate');
   cy.getByCy('tense-selector').find('button').click();
   cy.getByCy('selectOptions').contains(TENSES[tense]).click();

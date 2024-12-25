@@ -11,13 +11,22 @@ export async function generateAudioGame(words: Word[]): Promise<GameData> {
     if (!isWordWithAudio(word)) {
       throw new OperationResolutionError(ERROR_MESSAGES.GAME_GENERATION_FAILED);
     }
-    const { name, audioUrl, id, defs, imgUrl, shortDef, alternativeSpelling } =
-      word;
+    const {
+      name,
+      audioUrl,
+      id,
+      defs,
+      imgUrl,
+      shortDef,
+      alternativeSpelling = []
+    } = word;
 
     const examples = getExamples(defs);
 
+    const answer = [name, ...alternativeSpelling];
+
     const result: GameQuestion = {
-      answer: name,
+      answer: answer,
       question: [audioUrl],
       wordId: id,
       additionalInfo: {
@@ -26,10 +35,6 @@ export async function generateAudioGame(words: Word[]): Promise<GameData> {
         shortDef: `<b>${name} means</b> ${shortDef[0]}`
       }
     };
-
-    if (alternativeSpelling?.length) {
-      result.alternativeSpelling = alternativeSpelling;
-    }
 
     return result;
   });

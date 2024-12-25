@@ -42,7 +42,8 @@ const DEFAULT_STATISTICS: Record<GameType, WordStatisticsField> = {
   [GameType.SelectDef]: STATISTICS_FIELD,
   [GameType.SelectWord]: STATISTICS_FIELD,
   [GameType.TypeWord]: STATISTICS_FIELD,
-  [GameType.Conjugation]: STATISTICS_FIELD
+  [GameType.Conjugation]: STATISTICS_FIELD,
+  [GameType.Gender]: STATISTICS_FIELD
 };
 
 export interface WordModelType {
@@ -196,7 +197,6 @@ export const WordModel: WordModelType = {
         }
 
         const { gameType, hasError = false } = entry;
-
         const currentStatistics = word?.statistics?.[gameType];
 
         if (!currentStatistics) {
@@ -222,7 +222,6 @@ export const WordModel: WordModelType = {
         if (currentStatistics?.practicedTimes) {
           newStatistics.practicedTimes += currentStatistics.practicedTimes;
         }
-
         word.statistics[gameType] = newStatistics;
         await word.save();
       } catch (err) {
@@ -269,7 +268,6 @@ export const WordModel: WordModelType = {
       .sort(sortingFilters)
       .limit(config.wordsPerGame)
       .exec();
-
     return words;
   },
 

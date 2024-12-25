@@ -11,5 +11,8 @@ module.exports = {
       jsx: true
     }
   },
-  plugins: ['react', 'jsx-a11y', 'react-hooks', 'cypress']
+  plugins: ['react', 'jsx-a11y', 'react-hooks', 'cypress'],
+  rules: {
+    'react-hooks/exhaustive-deps': 'off'
+  }
 };

@@ -4,6 +4,7 @@ enum Game {
   SELECT_WORD
   SELECT_DEF
   CONJUGATION
+  GENDER
 }
 
 type GameConfig {
@@ -28,10 +29,9 @@ type GameQuestionAdditionalInfo {
 type GameQuestion {
   question: [String!]
   options: [String!]
-  answer: String!
+  answer: [String!]!
   wordId: ID!
   additionalInfo: GameQuestionAdditionalInfo
-  alternativeSpelling: [String!]
 }
 
 type GameData {

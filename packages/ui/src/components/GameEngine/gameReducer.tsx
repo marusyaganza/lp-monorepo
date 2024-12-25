@@ -22,7 +22,7 @@ export const initialState: GameState = {
 type CheckAnswerAction = {
   type: GameAction.CHECK_ANSWER;
   payload: {
-    answer: string;
+    hasError: boolean;
     gameType: Game;
   };
 };
@@ -54,34 +54,15 @@ export function gameReducer(
   }
 
   if (type === GameAction.CHECK_ANSWER) {
-    const { gameType, answer } = action.payload;
-    const {
-      answer: correctAnswer,
-      wordId,
-      alternativeSpelling
-    } = state.questions[state.currentIndex];
-    console.log('ans', answer, correctAnswer);
+    const { gameType, hasError } = action.payload;
+    const { wordId } = state.questions[state.currentIndex];
     const newState = { ...state };
-    const formattedAnswer = answer.toLocaleLowerCase();
-    if (
-      formattedAnswer === correctAnswer.toLocaleLowerCase() ||
-      alternativeSpelling?.some(
-        word => word?.toLocaleLowerCase() === formattedAnswer
-      )
-    ) {
-      newState.currentResult = {
-        type: GameStage.Success,
-        correctAnswer
-      };
-      newState.resultData.push({ id: wordId, hasError: false, gameType });
-    } else {
-      newState.currentResult = {
-        type: GameStage.Error,
-        correctAnswer: correctAnswer,
-        incorrectAnswer: answer
-      };
+    newState.resultData.push({ id: wordId, hasError, gameType });
+    newState.currentResult = {
+      type: hasError ? GameStage.Error : GameStage.Success
+    };
+    if (hasError) {
       newState.result.errorCount++;
-      newState.resultData.push({ id: wordId, hasError: true, gameType });
     }
     return newState;
   }
@@ -98,7 +79,7 @@ export function gameReducer(
         ((state.currentIndex + 1) * 100) / (state.questions.length + 1);
       newState.currentQuestion = newState.questions[newState.currentIndex];
     }
-    newState.currentResult = {};
+    newState.currentResult = { type: GameStage.Initial };
     return newState;
   }
   return state;

@@ -21,7 +21,7 @@
     "build:server": "lerna run prod --scope '@lp/server'",
     "build:front": "yarn codegen --scope={'@lp/front','@lp/ui'} && lerna run prod --scope '@lp/front'",
     "eslint": "lerna run eslint",
-    "ready": "bash ./preprod.sh",
+    "ready": "lerna run ready --stream",
     "clean": "lerna run clean && rimraf node_modules",
     "test": "lerna run test",
     "codegen": "lerna run codegen --stream",

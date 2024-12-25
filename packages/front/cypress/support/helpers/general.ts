@@ -41,6 +41,7 @@ export function login(
 }
 
 export function selectOption(selector: string, option: string) {
+  cy.getByCy('spinner').should('not.exist');
   cy.findByCy('select-btn', selector).click({ force: true });
   cy.findByCy('selectOptions', selector).as('options').contains(option).click();
   cy.get('@options').should('not.exist');

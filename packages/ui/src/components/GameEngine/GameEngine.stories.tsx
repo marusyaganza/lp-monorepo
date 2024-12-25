@@ -35,4 +35,8 @@ export const Conjugation = (args: GameEngineProps) => {
   return <GameEngine {...args} gameData={gameEngineData[Game.Conjugation]} />;
 };
 
+export const Gender = (args: GameEngineProps) => {
+  return <GameEngine {...args} gameData={gameEngineData[Game.Gender]} />;
+};
+
 export default meta;

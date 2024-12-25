@@ -9,11 +9,11 @@ exports[`generateAudioGame should return the correct number of questions when da
         "imgUrl": "https://example.com/images/apple.jpg",
         "shortDef": "<b>apple means</b> Round fruit with red or green skin.",
       },
-      "alternativeSpelling": [
+      "answer": [
+        "apple",
         "appel",
         "aple",
       ],
-      "answer": "apple",
       "question": [
         "https://example.com/audio/apple.mp3",
       ],
@@ -25,11 +25,11 @@ exports[`generateAudioGame should return the correct number of questions when da
         "imgUrl": "https://example.com/images/orange.jpg",
         "shortDef": "<b>orange means</b> Citrus fruit with orange rind.",
       },
-      "alternativeSpelling": [
+      "answer": [
+        "orange",
         "oranj",
         "orenge",
       ],
-      "answer": "orange",
       "question": [
         "https://example.com/audio/orange.mp3",
       ],
@@ -41,7 +41,9 @@ exports[`generateAudioGame should return the correct number of questions when da
         "imgUrl": "https://example.com/images/banana.jpg",
         "shortDef": "<b>banana means</b> Curved fruit with yellow skin.",
       },
-      "answer": "banana",
+      "answer": [
+        "banana",
+      ],
       "question": [
         "https://example.com/audio/banana.mp3",
       ],
@@ -53,11 +55,11 @@ exports[`generateAudioGame should return the correct number of questions when da
         "imgUrl": "https://example.com/images/strawberry.jpg",
         "shortDef": "<b>strawberry means</b> Soft red fruit with seeds.",
       },
-      "alternativeSpelling": [
+      "answer": [
+        "strawberry",
         "strawbery",
         "straw-berry",
       ],
-      "answer": "strawberry",
       "question": [
         "https://example.com/audio/strawberry.mp3",
       ],
@@ -69,7 +71,9 @@ exports[`generateAudioGame should return the correct number of questions when da
         "imgUrl": "https://example.com/images/pineapple.jpg",
         "shortDef": "<b>pineapple means</b> Tropical fruit with spiky rind.",
       },
-      "answer": "pineapple",
+      "answer": [
+        "pineapple",
+      ],
       "question": [
         "https://example.com/audio/pineapple.mp3",
       ],
@@ -81,11 +85,11 @@ exports[`generateAudioGame should return the correct number of questions when da
         "imgUrl": "https://example.com/images/grape.jpg",
         "shortDef": "<b>grape means</b> Small juicy fruit with smooth skin.",
       },
-      "alternativeSpelling": [
+      "answer": [
+        "grape",
         "grap",
         "greyp",
       ],
-      "answer": "grape",
       "question": [
         "https://example.com/audio/grape.mp3",
       ],
@@ -111,11 +115,11 @@ exports[`generateAudioGame should return the correct number of questions when da
         "imgUrl": "https://example.com/images/manzana.jpg",
         "shortDef": "<b>manzana means</b> Round fruit with red or green skin.",
       },
-      "alternativeSpelling": [
+      "answer": [
+        "manzana",
         "manzana",
         "manzána",
       ],
-      "answer": "manzana",
       "question": [
         "https://example.com/audio/manzana.mp3",
       ],
@@ -136,11 +140,11 @@ exports[`generateAudioGame should return the correct number of questions when da
         "imgUrl": "https://example.com/images/naranja.jpg",
         "shortDef": "<b>naranja means</b> Citrus fruit with orange rind.",
       },
-      "alternativeSpelling": [
+      "answer": [
+        "naranja",
         "naranga",
         "naranj",
       ],
-      "answer": "naranja",
       "question": [
         "https://example.com/audio/naranja.mp3",
       ],
@@ -157,11 +161,11 @@ exports[`generateAudioGame should return the correct number of questions when da
         "imgUrl": "https://example.com/images/platano.jpg",
         "shortDef": "<b>plátano means</b> Curved fruit with yellow skin.",
       },
-      "alternativeSpelling": [
+      "answer": [
+        "plátano",
         "platáno",
         "plátan",
       ],
-      "answer": "plátano",
       "question": [
         "https://example.com/audio/platano.mp3",
       ],
@@ -178,11 +182,11 @@ exports[`generateAudioGame should return the correct number of questions when da
         "imgUrl": "https://example.com/images/fresa.jpg",
         "shortDef": "<b>fresa means</b> Soft red fruit with seeds.",
       },
-      "alternativeSpelling": [
+      "answer": [
+        "fresa",
         "freza",
         "fre-sá",
       ],
-      "answer": "fresa",
       "question": [
         "https://example.com/audio/fresa.mp3",
       ],
@@ -199,11 +203,11 @@ exports[`generateAudioGame should return the correct number of questions when da
         "imgUrl": "https://example.com/images/pina.jpg",
         "shortDef": "<b>piña means</b> Tropical fruit with spiky rind.",
       },
-      "alternativeSpelling": [
+      "answer": [
+        "piña",
         "pina",
         "pi-ñá",
       ],
-      "answer": "piña",
       "question": [
         "https://example.com/audio/pina.mp3",
       ],
@@ -220,11 +224,11 @@ exports[`generateAudioGame should return the correct number of questions when da
         "imgUrl": "https://example.com/images/uva.jpg",
         "shortDef": "<b>uva means</b> Small juicy fruit with smooth skin.",
       },
-      "alternativeSpelling": [
+      "answer": [
+        "uva",
         "uba",
         "uvá",
       ],
-      "answer": "uva",
       "question": [
         "https://example.com/audio/uva.mp3",
       ],
@@ -245,11 +249,11 @@ exports[`generateAudioGame should return the correct number of questions when wi
         "imgUrl": "https://example.com/images/apple.jpg",
         "shortDef": "<b>apple means</b> Round fruit with red or green skin.",
       },
-      "alternativeSpelling": [
+      "answer": [
+        "apple",
         "appel",
         "aple",
       ],
-      "answer": "apple",
       "question": [
         "https://example.com/audio/apple.mp3",
       ],
@@ -275,11 +279,11 @@ exports[`generateAudioGame should return the correct number of questions when wi
         "imgUrl": "https://example.com/images/manzana.jpg",
         "shortDef": "<b>manzana means</b> Round fruit with red or green skin.",
       },
-      "alternativeSpelling": [
+      "answer": [
+        "manzana",
         "manzana",
         "manzána",
       ],
-      "answer": "manzana",
       "question": [
         "https://example.com/audio/manzana.mp3",
       ],

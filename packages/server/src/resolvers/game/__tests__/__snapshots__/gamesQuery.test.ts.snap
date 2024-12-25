@@ -28,10 +28,16 @@ exports[`game queries games query 1`] = `
       "type": "TYPE_WORD",
     },
     {
-      "desc": "Conjugate verbs!",
+      "desc": "Master verb conjugations across tenses and languages in fast-paced, interactive challenges!",
       "id": "mockId",
-      "name": "Conjugation",
+      "name": "Conjugation Quest",
       "type": "CONJUGATION",
+    },
+    {
+      "desc": "Choose nouns and match their gender. Test linguistic skills in thrilling rounds!",
+      "id": "mockId",
+      "name": "GenderWord Challenge",
+      "type": "GENDER",
     },
   ],
 }

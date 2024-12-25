@@ -32,7 +32,7 @@ export async function generateConjugationGame(
 
     return {
       question: [name],
-      answer: verbForms.join(', '),
+      answer: verbForms,
       wordId: id,
       additionalInfo: {
         imgUrl,

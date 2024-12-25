@@ -5,12 +5,24 @@ export async function generateTypeWordGame(words: Word[]): Promise<GameData> {
   const gameType = Game.TypeWord;
 
   const questions = words.map(word => {
-    const { name, shortDef, id, audioUrl, imgUrl, defs, alternativeSpelling } =
-      word;
+    const {
+      name,
+      shortDef,
+      id,
+      audioUrl,
+      imgUrl,
+      defs,
+      alternativeSpelling = []
+    } = word;
+
     const examples = getExamples(defs);
     const question = shortDef.map(def => prepareDef(def, name));
+    const answer = alternativeSpelling?.length
+      ? [name, ...alternativeSpelling]
+      : [name];
+
     const result: GameQuestion = {
-      answer: name,
+      answer,
       wordId: id,
       question,
       additionalInfo: {
@@ -19,9 +31,7 @@ export async function generateTypeWordGame(words: Word[]): Promise<GameData> {
         examples
       }
     };
-    if (alternativeSpelling?.length) {
-      result.alternativeSpelling = alternativeSpelling;
-    }
+
     return result;
   });
 

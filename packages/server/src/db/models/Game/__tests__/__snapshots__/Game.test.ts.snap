@@ -22,18 +22,36 @@ exports[`Game findOne with AUDIO game, English 1`] = `
 exports[`Game findOne with CONJUGATION game, English 1`] = `
 {
   "_id": Any<Object>,
-  "desc": "Conjugate verbs!",
+  "desc": "Master verb conjugations across tenses and languages in fast-paced, interactive challenges!",
   "id": Any<String>,
   "languages": [
     "SPANISH",
   ],
   "minWords": 1,
-  "name": "Conjugation",
+  "name": "Conjugation Quest",
   "optionsPerGame": 0,
   "orderNum": 4,
   "timesToLearn": 5,
   "type": "CONJUGATION",
   "wordsPerGame": 2,
+}
+`;
+
+exports[`Game findOne with GENDER game, English 1`] = `
+{
+  "_id": Any<Object>,
+  "desc": "Choose nouns and match their gender. Test linguistic skills in thrilling rounds!",
+  "id": Any<String>,
+  "languages": [
+    "SPANISH",
+  ],
+  "minWords": 1,
+  "name": "GenderWord Challenge",
+  "optionsPerGame": 0,
+  "orderNum": 5,
+  "timesToLearn": 5,
+  "type": "GENDER",
+  "wordsPerGame": 5,
 }
 `;
 

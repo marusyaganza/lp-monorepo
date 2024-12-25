@@ -43,7 +43,8 @@ const wordStatisticsSchema = new Schema<WordStatistics>(
     [Game.SelectDef]: statisticsSchema,
     [Game.SelectWord]: statisticsSchema,
     [Game.TypeWord]: statisticsSchema,
-    [Game.Conjugation]: statisticsSchema
+    [Game.Conjugation]: statisticsSchema,
+    [Game.Gender]: statisticsSchema
   },
   { _id: false }
 );

@@ -32,15 +32,14 @@ export const GameEngine = ({
     }
   }, [gameData]);
 
-  const handlerSubmit = (val: string) => {
+  const handlerSubmit = (hasError: boolean) => {
     const questions = gameData?.questions;
     if (questions?.length) {
-      const answer = val;
       dispatch({
         type: GameAction.CHECK_ANSWER,
         payload: {
           gameType: gameData.type,
-          answer
+          hasError
         }
       });
     }
@@ -93,7 +92,6 @@ export const GameEngine = ({
           type={gameData.type}
           onSubmit={handlerSubmit}
           question={state?.currentQuestion.question}
-          tense={gameData?.tense}
           correctAnswer={state.currentQuestion.answer}
           options={state.currentQuestion?.options}
           task={gameData?.task}

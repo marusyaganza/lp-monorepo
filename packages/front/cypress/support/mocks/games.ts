@@ -50,8 +50,8 @@ export const games = [
     languages: [Language.English, Language.Spanish]
   },
   {
-    name: 'Conjugation',
-    desc: 'Conjugate verbs!',
+    name: 'Conjugation Quest',
+    desc: 'Master verb conjugations across tenses and languages in fast-paced, interactive challenges!',
     id: 'conjugate',
     type: Game.Conjugation,
     wordsPerGame: 2,
@@ -59,6 +59,18 @@ export const games = [
     optionsPerGame: 0,
     timesToLearn: 5,
     orderNum: 4,
+    languages: [Language.Spanish]
+  },
+  {
+    name: 'GenderWord Challenge',
+    desc: 'Choose nouns and match their gender. Test linguistic skills in thrilling rounds!',
+    id: 'gender',
+    type: Game.Gender,
+    wordsPerGame: 5,
+    minWords: 1,
+    optionsPerGame: 0,
+    timesToLearn: 5,
+    orderNum: 5,
     languages: [Language.Spanish]
   }
 ];

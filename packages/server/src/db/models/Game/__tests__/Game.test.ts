@@ -37,13 +37,14 @@ describe('Game findMany', () => {
       languages: Language.Spanish
     });
 
-    expect(result?.length).toBe(5);
+    expect(result?.length).toBe(6);
     expect(result?.map(item => item?.type)).toEqual([
       'AUDIO',
       'SELECT_DEF',
       'SELECT_WORD',
       'TYPE_WORD',
-      'CONJUGATION'
+      'CONJUGATION',
+      'GENDER'
     ]);
   });
 });
