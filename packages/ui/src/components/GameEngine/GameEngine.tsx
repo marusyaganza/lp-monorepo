@@ -8,6 +8,7 @@ import { GameResult } from '../GameResult/GameResult';
 import { GameComponent } from '../Game/GameComponent';
 import { Button } from '../Button/Button';
 import { Progress } from '../Progress/Progress';
+import { GameResultType as GameResultType } from '../../types/gameTypes';
 
 export interface GameEngineProps {
   gameData: GameData;
@@ -32,14 +33,14 @@ export const GameEngine = ({
     }
   }, [gameData]);
 
-  const handlerSubmit = (hasError: boolean) => {
+  const handlerSubmit = (result: GameResultType) => {
     const questions = gameData?.questions;
     if (questions?.length) {
       dispatch({
         type: GameAction.CHECK_ANSWER,
         payload: {
           gameType: gameData.type,
-          hasError
+          ...result
         }
       });
     }

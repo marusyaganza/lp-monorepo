@@ -3,6 +3,7 @@ import { DefsInput } from '../../../../../generated/graphql';
 import { REPLACEMENT_MAP } from '../../constants';
 import { formatArray, formatReplace } from '../general/general';
 import { formatComplexTag } from '../string/string';
+import { uniq } from 'lodash';
 
 /**
  * For performance reasons, formatting of dictionary entity will be done on the server side.
@@ -53,7 +54,7 @@ export function getDefs(def: DefEntity[] | null | undefined): DefsInput[] {
       result.push(rawResult);
     });
   });
-  return result;
+  return uniq(result);
 }
 
 export function getDefFromRef(cognateRef?: CognateEntity[]): DefsInput[] {

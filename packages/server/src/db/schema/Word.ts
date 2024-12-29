@@ -5,8 +5,29 @@ import {
   WordStatisticsField,
   WordStatistics,
   Game,
-  Conjugation
+  Conjugation,
+  Score,
+  Tense
 } from '../../generated/graphql';
+
+export interface SpacedRepetitionData {
+  isNewCard: boolean;
+  currentInterval: number;
+  nextReviewDate: Date;
+  reviewHistory: {
+    date: Date;
+    grade: Score;
+    interval: number;
+  }[];
+  learningSteps: number[];
+  currentStep: number;
+  ease: number;
+  lapses: number;
+}
+
+interface WordType extends WordCoreType {
+  spacedRepetition: Record<string, SpacedRepetitionData>;
+}
 
 const examplesSchema = new Schema(
   {
@@ -23,6 +44,48 @@ const defSchema = new Schema(
       required: true
     },
     examples: [examplesSchema]
+  },
+  { _id: false }
+);
+
+const spacedRepetitionSchema = {
+  isNewCard: { type: Boolean, default: true },
+  currentInterval: { type: Number, default: 1 },
+  nextReviewDate: { type: Date, default: Date.now },
+  reviewHistory: [
+    {
+      date: Date,
+      grade: { type: String, enum: Score },
+      interval: Number
+    }
+  ],
+  learningSteps: {
+    type: [Number],
+    default: [0.25, 1, 6]
+  },
+  currentStep: { type: Number, default: 0 },
+  ease: { type: Number, default: 2.5 },
+  lapses: { type: Number, default: 0 }
+};
+
+const conjugationRepetitionSchema = {
+  [Tense.Cond]: spacedRepetitionSchema,
+  [Tense.Futr]: spacedRepetitionSchema,
+  [Tense.Impf]: spacedRepetitionSchema,
+  [Tense.Pind]: spacedRepetitionSchema,
+  [Tense.Pprf]: spacedRepetitionSchema,
+  [Tense.Pret]: spacedRepetitionSchema,
+  [Tense.Psub]: spacedRepetitionSchema
+};
+
+const wordRepetitionSchema = new Schema<WordStatistics>(
+  {
+    [Game.Audio]: spacedRepetitionSchema,
+    [Game.SelectDef]: spacedRepetitionSchema,
+    [Game.SelectWord]: spacedRepetitionSchema,
+    [Game.TypeWord]: spacedRepetitionSchema,
+    [Game.Conjugation]: conjugationRepetitionSchema,
+    [Game.Gender]: spacedRepetitionSchema
   },
   { _id: false }
 );
@@ -54,7 +117,7 @@ const conjugationSchema = new Schema<Conjugation>({
   cjfs: { type: [String], required: true }
 });
 
-const wordSchema = new Schema<WordCoreType>(
+const wordSchema = new Schema<WordType>(
   {
     uuid: { type: String, immutable: true },
     name: { type: String, required: true, immutable: true },
@@ -77,7 +140,8 @@ const wordSchema = new Schema<WordCoreType>(
     isLearned: Boolean,
     statistics: wordStatisticsSchema,
     alternativeSpelling: [String],
-    conjugation: [conjugationSchema]
+    conjugation: [conjugationSchema],
+    spacedRepetition: wordRepetitionSchema
   },
   { toObject: { virtuals: true, getters: true, versionKey: false } }
 );
@@ -86,4 +150,4 @@ wordSchema.virtual('id').get(function () {
   return this._id.toHexString();
 });
 
-export const Word = model<WordCoreType>('Word', wordSchema);
+export const Word = model<WordType>('Word', wordSchema);

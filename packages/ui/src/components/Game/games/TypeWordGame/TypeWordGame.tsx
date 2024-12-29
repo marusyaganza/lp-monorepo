@@ -27,7 +27,7 @@ export const TypeWordGame = ({
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = e => {
     e.preventDefault();
-    onSubmit(!checkTextAnswer(value, correctAnswer));
+    onSubmit(checkTextAnswer(value, correctAnswer));
   };
 
   const handleNext = () => {

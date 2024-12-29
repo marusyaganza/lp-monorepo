@@ -1,4 +1,6 @@
 import { DictionaryWord, Language } from '../../../generated/graphql';
+import { uniq } from 'lodash';
+
 import {
   filterString,
   getAudioUrl,
@@ -48,7 +50,7 @@ export function formatDictionaryWord(
     imgUrl,
     imgDesc,
     audioUrl,
-    shortDef,
+    shortDef: uniq(shortDef),
     conjugation,
     language
   };

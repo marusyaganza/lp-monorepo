@@ -1,5 +1,5 @@
 import { GameStage, GameState } from '../../types/gameTypes';
-import { Game, GameQuestion } from '../../generated/graphql';
+import { Game, GameQuestion, Score } from '../../generated/graphql';
 
 export enum GameAction {
   CHECK_ANSWER = 'CHECK_ANSWER',
@@ -24,6 +24,7 @@ type CheckAnswerAction = {
   payload: {
     hasError: boolean;
     gameType: Game;
+    score: Score;
   };
 };
 
@@ -54,10 +55,10 @@ export function gameReducer(
   }
 
   if (type === GameAction.CHECK_ANSWER) {
-    const { gameType, hasError } = action.payload;
+    const { gameType, hasError, score } = action.payload;
     const { wordId } = state.questions[state.currentIndex];
     const newState = { ...state };
-    newState.resultData.push({ id: wordId, hasError, gameType });
+    newState.resultData.push({ id: wordId, hasError, gameType, score });
     newState.currentResult = {
       type: hasError ? GameStage.Error : GameStage.Success
     };
