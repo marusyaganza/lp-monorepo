@@ -1,4 +1,5 @@
-import { DictionaryWord, Role, Suggestions } from '../generated/graphql';
+import { ConjugationSpacedRepetitionData } from '../db/schema/Word';
+import { DictionaryWord, Role, Suggestions, Tense } from '../generated/graphql';
 import {
   IAutenticatedContext,
   IResolverContext,
@@ -69,4 +70,11 @@ export function isUserTokenInfo(data: any): data is IUserTokenInfo {
   const isValid =
     typeof data?.id === 'string' && Object.values(Role).includes(data?.role);
   return isValid;
+}
+
+export function isConjugationSpacedRepetitionData(
+  data: Record<any, any>
+): data is ConjugationSpacedRepetitionData {
+  const tenses = Object.values(Tense) as string[];
+  return Object.keys(data).every(item => tenses.includes(item));
 }

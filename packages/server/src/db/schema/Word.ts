@@ -25,8 +25,19 @@ export interface SpacedRepetitionData {
   lapses: number;
 }
 
+export type ConjugationSpacedRepetitionData = Record<
+  Tense,
+  SpacedRepetitionData
+>;
+
+export type SpacedRepetitionMap = {
+  [K in Game]: K extends Game.Conjugation
+    ? ConjugationSpacedRepetitionData
+    : SpacedRepetitionData;
+};
+
 interface WordType extends WordCoreType {
-  spacedRepetition: Record<string, SpacedRepetitionData>;
+  spacedRepetition: SpacedRepetitionMap;
 }
 
 const examplesSchema = new Schema(

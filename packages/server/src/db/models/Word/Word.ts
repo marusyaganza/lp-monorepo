@@ -1,4 +1,8 @@
-import { Word } from '../../schema/Word';
+import {
+  SpacedRepetitionData,
+  SpacedRepetitionMap,
+  Word
+} from '../../schema/Word';
 import {
   calculatePaginationValues,
   GAME_FILTERS,
@@ -37,6 +41,7 @@ import {
   initializeSpacedRepetitionFields,
   updateSpacedRepetitionFields
 } from '../../helpers/general/spacedRepetition';
+import { isConjugationSpacedRepetitionData } from '../../../types/typeGuards';
 
 const STATISTICS_FIELD: WordStatisticsField = {
   lastTimePracticed: 0,
@@ -66,7 +71,7 @@ const CONJUGATION_REPETITION = {
   [Tense.Psub]: repetitionData
 };
 
-const DEFAULT_REPETITION_DATA = {
+const DEFAULT_REPETITION_DATA: SpacedRepetitionMap = {
   [GameType.Audio]: repetitionData,
   [GameType.SelectDef]: repetitionData,
   [GameType.SelectWord]: repetitionData,
@@ -261,28 +266,25 @@ export const WordModel: WordModelType = {
         word.statistics[gameType] = newStatistics;
 
         if (!word?.spacedRepetition) {
-          // @ts-ignore
           word.spacedRepetition = DEFAULT_REPETITION_DATA;
         }
 
-        let spacedRepetition = word.spacedRepetition[gameType];
+        const spacedRepetition = word.spacedRepetition[gameType];
 
-        if (tense && gameType === Game.Conjugation) {
-          // @ts-ignore
-          spacedRepetition = spacedRepetition[tense];
-        }
+        const spacedRepetitionData =
+          tense && isConjugationSpacedRepetitionData(spacedRepetition)
+            ? spacedRepetition[tense]
+            : (spacedRepetition as SpacedRepetitionData);
 
         const updatedSpacedepetition = updateSpacedRepetitionFields(
-          {
-            ...spacedRepetition
-          },
+          spacedRepetitionData,
           score || Score.Hard
         );
 
         if (tense && gameType === Game.Conjugation) {
-          // @ts-ignore
           word.spacedRepetition[gameType][tense] = updatedSpacedepetition;
         } else {
+          // @ts-expect-error: figure out how to  define type dynamically here
           word.spacedRepetition[gameType] = updatedSpacedepetition;
         }
         await word.save();
@@ -354,27 +356,27 @@ export const WordModel: WordModelType = {
       .exec()) as Verb[];
     return verbs;
   },
+
   async getWordsForPractice(filter, config, user) {
     const { gameType, tense, language, tags } = filter;
     const now = new Date();
-    let dateFilter = `spacedRepetition.${gameType}`;
+    let spacedRepetitionField = `spacedRepetition.${gameType}`;
 
     if (tense && gameType === Game.Conjugation) {
-      dateFilter = `${dateFilter}.${tense}`;
+      spacedRepetitionField = `${spacedRepetitionField}.${tense}`;
     }
-    dateFilter = `${dateFilter}.nextReviewDate`;
+    const dateField = `${spacedRepetitionField}.nextReviewDate`;
 
     const tagsFilters = getTagsFilter(tags);
     const gameFilters = GAME_FILTERS?.[gameType] || {};
     const tenseFilter = getTenseFilter(gameType, tense);
 
-    // Get words due today or overdue, respecting daily limits
     const words = await Word.find(
       {
         user,
         language,
         $or: [
-          { [dateFilter]: { $lte: now } },
+          { [dateField]: { $lte: now } },
           { spacedRepetition: { $exists: false } }
         ],
         ...tagsFilters,
@@ -382,9 +384,9 @@ export const WordModel: WordModelType = {
         ...tenseFilter
       },
       PROJECTIONS[gameType]
-      // TODO: add options priotitize overdue or new cards
     )
-      .sort({ dateFilter: 1 })
+      // priotitize new cards
+      .sort({ [dateField]: -1 })
       .limit(config.wordsPerGame)
       .exec();
     return words;

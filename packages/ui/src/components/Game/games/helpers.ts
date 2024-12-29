@@ -14,7 +14,6 @@ export function checkTextAnswer(
     .includes(formatString(val))
     ? 0
     : countSpellingMistakes(val, corrrectAnswer[0]);
-  console.log('errorCount', errorCount);
   return { score: calculateScore(errorCount), hasError: errorCount !== 0 };
 }
 
