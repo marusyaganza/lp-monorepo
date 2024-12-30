@@ -25,6 +25,7 @@ enum SortBy {
   errorCount
   successRate
   memoryRefresher
+  spacedRepetition
 }
 
 enum Tense {
@@ -48,6 +49,13 @@ enum Tense {
   # ppss1
   # ppss2
   # fpsb
+}
+
+enum Score {
+  AGAIN
+  GOOD
+  HARD
+  EASY
 }
 
 type WordDefinition {
@@ -211,6 +219,8 @@ input UpdateStatisticsInput {
   id: ID!
   hasError: Boolean!
   gameType: Game!
+  tense: Tense
+  score: Score
 }
 
 input WordsPerPageInput {

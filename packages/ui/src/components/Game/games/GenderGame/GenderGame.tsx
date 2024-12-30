@@ -54,7 +54,7 @@ export const GenderGame = ({
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = e => {
     e.preventDefault();
-    onSubmit(!checkMultipleAnswers(values.sort(), correctAnswer));
+    onSubmit(checkMultipleAnswers(values.sort(), correctAnswer));
   };
 
   const getStyle = (gender: GENDERS) => {

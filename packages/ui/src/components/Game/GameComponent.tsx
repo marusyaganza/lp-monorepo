@@ -8,7 +8,7 @@ import { DictionaryEntity } from '../DictionaryEntity/DictionaryEntity';
 import { Icon } from '../Icon/icon';
 import { useModal } from '../Modal/useModal';
 import { games } from './games';
-import { GameStage, GameState } from '../../types/gameTypes';
+import { GameResultType, GameStage, GameState } from '../../types/gameTypes';
 
 import styles from './Game.module.css';
 
@@ -19,7 +19,7 @@ export interface GameComponentProps {
   type: GameType;
   correctAnswer: string[];
   additionalInfo?: GameQuestionAdditionalInfo | null;
-  onSubmit: (value: boolean) => void;
+  onSubmit: (value: GameResultType) => void;
   /**additional styling */
   className?: string;
   currentResult?: GameState['currentResult'];

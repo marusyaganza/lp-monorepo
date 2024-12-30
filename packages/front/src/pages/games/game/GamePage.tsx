@@ -63,7 +63,9 @@ const GamePage = () => {
 
   const handleFinish = (input: UpdateStatisticsInput[]) => {
     saveResultFunc({
-      variables: { input },
+      variables: {
+        input: input.map(item => ({ ...item, tense: state.tense }))
+      },
       onCompleted: () => {
         navigate(`/${routes.games}`);
       },

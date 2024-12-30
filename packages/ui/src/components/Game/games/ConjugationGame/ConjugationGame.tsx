@@ -1,4 +1,4 @@
-import React, { FormEventHandler, useState } from 'react';
+import React, { FormEventHandler, useEffect, useState } from 'react';
 import { cn } from '../../../../utils/classnames';
 import { AudioButton } from '../../../AudioButton/AudioButton';
 import { ConjugationInput } from '../../../ConjugationInput/ConjugationInput';
@@ -28,14 +28,22 @@ export const ConjugationGame = ({
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = e => {
     e.preventDefault();
-    onSubmit(!checkMultipleAnswers(values, correctAnswer));
+    onSubmit(checkMultipleAnswers(values, correctAnswer));
   };
 
   const handleNext = () => {
-    const initialValues = correctAnswer.map(answ => (answ === '-' ? answ : ''));
-    setValues(initialValues);
+    setValues([]);
     onNext();
   };
+
+  useEffect(() => {
+    if (!values.length) {
+      const initialValues = correctAnswer.map(answ =>
+        answ === '-' ? answ : ''
+      );
+      setValues(initialValues);
+    }
+  }, [correctAnswer]);
 
   const renderButton = () => {
     const isDisabled = values.every(val => !val || val === '-');

@@ -17,7 +17,8 @@ const OPTIONS = {
   [SortBy.LastTimePracticed]: 'Last Practice Date',
   [SortBy.PracticedTimes]: 'Practiced Times',
   [SortBy.SuccessRate]: 'Success Rate',
-  [SortBy.MemoryRefresher]: 'Memory Refresher'
+  [SortBy.MemoryRefresher]: 'Memory Refresher',
+  [SortBy.SpacedRepetition]: 'Spaced Repetition'
 };
 
 const GamesPage = () => {

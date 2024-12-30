@@ -1,5 +1,9 @@
 import { RefObject } from 'react';
-import { GameQuestion, UpdateStatisticsInput } from '../generated/graphql';
+import {
+  GameQuestion,
+  Score,
+  UpdateStatisticsInput
+} from '../generated/graphql';
 
 export interface GameState {
   currentIndex: number;
@@ -16,12 +20,17 @@ export interface GameState {
   progress: number;
 }
 
+export interface GameResultType {
+  hasError: boolean;
+  score: Score;
+}
+
 export interface GameProps {
   task: string;
   audioUrl?: string | null;
   options?: string[] | null;
   question: string[];
-  onSubmit: (value: boolean) => void;
+  onSubmit: (value: GameResultType) => void;
   inputRef: RefObject<HTMLInputElement>;
   className?: string;
   onNext: () => void;
