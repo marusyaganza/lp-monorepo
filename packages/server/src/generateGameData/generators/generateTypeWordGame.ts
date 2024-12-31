@@ -1,5 +1,6 @@
 import { Game, GameData, GameQuestion, Word } from '../../generated/graphql';
 import { getExamples, getGameTask, prepareDef } from '../helpers';
+import { uniq } from 'lodash';
 
 export async function generateTypeWordGame(words: Word[]): Promise<GameData> {
   const gameType = Game.TypeWord;
@@ -16,7 +17,7 @@ export async function generateTypeWordGame(words: Word[]): Promise<GameData> {
     } = word;
 
     const examples = getExamples(defs);
-    const question = shortDef.map(def => prepareDef(def, name));
+    const question = uniq(shortDef.map(def => prepareDef(def, name)));
     const answer = alternativeSpelling?.length
       ? [name, ...alternativeSpelling]
       : [name];

@@ -58,6 +58,7 @@ export interface Sense {
 }
 export interface Entity {
   t: string;
+  tr?: string;
 }
 export interface UrosEntity {
   ure: string;

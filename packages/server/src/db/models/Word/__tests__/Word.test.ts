@@ -12,6 +12,7 @@ import { SortWordsBy } from '../../../../generated/graphql';
 const snapshotConfig = {
   createdAt: expect.any(String),
   updatedAt: expect.any(Number),
+  spacedRepetition: expect.any(Object),
   ...baseSnapshotConfig
 };
 

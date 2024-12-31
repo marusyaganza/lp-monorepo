@@ -7,7 +7,7 @@ import { DefExample, DefsInput, WordDefinition } from '../generated/graphql';
  * @returns a string with trailing spaces and all line breaks removed
  */
 export function formatString(str: string): string {
-  return str?.trim()?.replace(/\r?\n|\r/gi, '');
+  return str?.replace(/\r?\n|\r/gi, ' ')?.trim();
 }
 
 export function formatArrayOfStrings(data: unknown): string[] {

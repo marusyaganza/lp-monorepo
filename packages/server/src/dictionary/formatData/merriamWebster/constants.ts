@@ -11,6 +11,7 @@ export type ComplexTagType = {
 export const REPLACEMENT_MAP: TagType[] = [
   { tag: '{b}', replacement: '<b>' },
   { tag: '{/b}', replacement: '</b>' },
+  { tag: '{rsquo}', replacement: '\u201C' },
   { tag: '{ldquo}', replacement: '\u201C' },
   { tag: '{rdquo}', replacement: '\u201D' },
   { tag: '{it}', replacement: '<i>' },

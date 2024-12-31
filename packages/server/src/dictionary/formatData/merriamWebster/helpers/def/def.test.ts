@@ -1,11 +1,22 @@
-import { formatDictionaryEntity, getDefs, getDefFromRef } from './def';
 import {
+  formatDictionaryEntity,
+  getDefs,
+  getDefFromRef,
+  extractDef,
+  extractExamples
+} from './def';
+import {
+  complexDt,
   dictionaryEntities,
+  dtWithComplexExample,
+  dtWithComplexExampleOutput,
+  dtWithoutText,
   inputEnglish,
   inputEnglishWithExamples,
   inputEnglishWithoutDefs,
   inputSpanisWithExamples,
   inputSpanish,
+  multipleExamplesOutput,
   outputEnglish,
   outputEnglishWithExamples,
   outputEnglishWithoutDefs,
@@ -53,11 +64,6 @@ const testData = [
         arguments: [],
         result: []
       }
-      //   {
-      //     desc: 'with data without def',
-      //     arguments: [undefined, inputEnglishWithoutDefs[0].cxs],
-      //     result: [{ def: 'chiefly dialectal variant of <i>murder</i>' }]
-      //   }
     ]
   },
   {
@@ -78,6 +84,63 @@ const testData = [
         desc: 'with data without def',
         arguments: inputEnglishWithoutDefs,
         result: outputEnglishWithoutDefs
+      }
+    ]
+  },
+  {
+    name: 'extractDef',
+    module: extractDef,
+    tests: [
+      {
+        desc: 'with empty arguments',
+        arguments: undefined,
+        result: undefined
+      },
+      {
+        desc: 'with empty array',
+        arguments: [],
+        result: ''
+      },
+      {
+        desc: 'with data without def',
+        arguments: dtWithoutText,
+        result: ''
+      },
+      {
+        desc: 'with complex tags',
+        arguments: complexDt,
+        result: 'directions instrucciones, modo, de empleo'
+      }
+    ]
+  },
+  {
+    name: 'extractExamples',
+    module: extractExamples,
+    tests: [
+      {
+        desc: 'with empty arguments',
+        arguments: undefined,
+        result: []
+      },
+      {
+        desc: 'with empty array',
+        arguments: [],
+        result: []
+      },
+      {
+        desc: 'with data without examples',
+        arguments: dtWithoutText,
+        result: []
+      },
+      {
+        desc: 'with multiple examples',
+        arguments: complexDt,
+        result: multipleExamplesOutput
+      },
+      {
+        desc: 'with complex tags',
+        arguments: dtWithComplexExample,
+        result: dtWithComplexExampleOutput
       }
     ]
   }
