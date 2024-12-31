@@ -8,7 +8,7 @@ exports[`word queries searchWord english lang, mocks enabled 1`] = `
       "audioUrl": "mock_audio_endpoint/en/us/mp3/r/rubber01.mp3",
       "defs": [
         {
-          "def": "see also foam rubber",
+          "def": "a strong substance that stretches and that is made out of chemicals or from the juice of a tropical tree, see also foam rubber",
           "examples": [
             {
               "text": "tires made of <i>rubber</i>",
@@ -122,7 +122,7 @@ exports[`word queries searchWord english lang, mocks enabled 1`] = `
       "audioUrl": "mock_audio_endpoint/en/us/mp3/e/eraser01.mp3",
       "defs": [
         {
-          "def": "see picture at office",
+          "def": "a small piece of rubber or other material that is used to erase something you have written or drawn, see picture at office",
           "examples": null,
         },
       ],
@@ -148,7 +148,7 @@ exports[`word queries searchWord english lang, mocks enabled 1`] = `
       "audioUrl": null,
       "defs": [
         {
-          "def": "see picture at office",
+          "def": "a thin, flexible loop that is made of rubber and used to hold things together, see picture at office",
           "examples": null,
         },
       ],

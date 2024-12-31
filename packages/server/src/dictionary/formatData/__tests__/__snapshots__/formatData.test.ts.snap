@@ -470,7 +470,7 @@ exports[`formatData should return correct result with complex English words 1`] 
         "def": "intellect",
       },
       {
-        "def": "see also take heart",
+        "def": "courage or enthusiasm especially when maintained during a difficult situation, see also take heart",
         "examples": [
           {
             "text": "never lost <i>heart</i>",

@@ -168,7 +168,7 @@ const SearchPage = () => {
       <ul className={styles.list} data-cy="searchResult">
         {words.map(word => {
           return (
-            <li className={styles.listItem} key={word?.id}>
+            <li className={styles.listItem} key={word.uuid}>
               <WordCard
                 addButton={{
                   callback: getAddWordHandler(word),

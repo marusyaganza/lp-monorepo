@@ -1,3 +1,4 @@
+import { uniq } from 'lodash';
 import { DEFAULT_LANGUAGE } from '../../constants/defaultValues';
 import { WordModel } from '../../db/models/Word/Word';
 import {
@@ -40,7 +41,9 @@ export async function generateSelectWordGame(
     const options: string[] = opts.map(opt => opt.name);
     const answer = [name];
     const examples = getExamples(defs);
-    const question = shortDef.map(def => prepareDef(def, name));
+    const question = uniq(
+      shortDef.slice(0, 3).map(def => prepareDef(def, name))
+    );
 
     return {
       answer,

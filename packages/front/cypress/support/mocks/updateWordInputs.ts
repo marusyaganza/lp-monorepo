@@ -17,7 +17,7 @@ export const fullInitialWord: Record<Language, Partial<NewWordInput>> = {
             text: '… drivers are expected to keep their hands on the <i>wheel</i> and remain attentive …'
           }
         ],
-        def: 'see also behind the wheel'
+        def: 'steering wheel, see also behind the wheel'
       },
       {
         def: 'a recurring course, development, or action cycle'

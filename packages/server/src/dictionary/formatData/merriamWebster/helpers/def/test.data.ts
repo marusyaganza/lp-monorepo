@@ -281,6 +281,58 @@ export const inputEnglishWithoutDefs = [
   }
 ];
 
+export const dtWithoutText = [
+  ['gl', 'feminine plural'],
+  ['gl', 'masculine']
+];
+
+export const complexDt = [
+  ['text', '{sx|directions||} {bc}instrucciones '],
+  ['gl', 'feminine plural'],
+  ['text', ', {a_link|modo} '],
+  ['gl', 'masculine'],
+  ['text', ' de empleo'],
+  [
+    'vis',
+    [
+      {
+        t: 'cay\u00f3 al suelo',
+        tr: 'he fell on the floor/ground'
+      },
+      {
+        t: 'lo dej\u00f3 caer',
+        tr: 'she dropped it'
+      }
+    ]
+  ]
+];
+
+export const dtWithComplexExample = [
+  [
+    'vis',
+    [
+      {
+        t: '{ldquo}Man, you got to get yourself some new {wi}wheels{/wi}. When I get to college, I\u0027m gonna get me a white Nissan Sentra \u2026{rdquo}',
+        aq: {
+          auth: 'Darcy Frey'
+        }
+      }
+    ]
+  ]
+];
+
+export const dtWithComplexExampleOutput = [
+  {
+    text: "“Man, you got to get yourself some new <i>wheels</i>. When I get to college, I'm gonna get me a white Nissan Sentra …”",
+    translation: undefined
+  }
+];
+
+export const multipleExamplesOutput = [
+  { text: 'cayó al suelo', translation: 'he fell on the floor/ground' },
+  { text: 'lo dejó caer', translation: 'she dropped it' }
+];
+
 export const outputEnglishWithoutDefs = [
   {
     def: 'chiefly dialectal variant of <i>murder</i>'

@@ -32,4 +32,5 @@
   align-items: center;
   justify-content: center;
   gap: 40px;
+  max-height: calc(100% - 240px);
 }
