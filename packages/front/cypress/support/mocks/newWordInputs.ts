@@ -188,4 +188,81 @@ export const minNewWord: Record<Language, Partial<NewWordInput>> = {
     shortDef: ['Happiness.']
   }
 };
-// 'It was the fat kid. “Those hamburgers,” he\nsaid. “They were just icky."'
+// : Record<
+//   Language,
+//   Omit<NewWordInput, 'language'>
+// >
+export const wordWithAltSpelling = {
+  [Language.English]: {
+    name: 'long haul',
+    defs: [
+      {
+        def: 'a long\ndistance',
+        examples: [
+          {
+            text: 'The\nvast majority of\nnew companies fail over the long haul.'
+          }
+        ]
+      }
+    ],
+    particle: 'noun',
+    audioUrl:
+      'https://media.merriam-webster.com/audio/prons/en/us/mp3/w/wheel001.mp3',
+    transcription: 'long haul',
+    imgUrl: 'https://cdn.langeek.co/photo/49478/original/airplane?type=jpeg',
+    isOffensive: false,
+    stems: ['long haul'],
+    shortDef: ['a long distance'],
+    alternativeSpelling: ['long-haul']
+  },
+  [Language.Spanish]: {
+    name: 'cacahuate',
+    audioUrl:
+      'https://media.merriam-webster.com/audio/prons/es/me/mp3/i/idiom01sp.mp3',
+    defs: [
+      {
+        def: 'a low-branching widely\ncultivated annual herb (Arachis hypogaea) of\nthe legume family with showy yellow flowers having a peduncle which elongates and bends into the soil where the ovary ripens into a pod containing one to three oily edible seeds',
+        examples: [
+          {
+            text: 'Los\nmás comunes son la soja,\nmaíz, canola y cacahuate.',
+            translation:
+              'The most common are soybeans, corn, canola and peanut.'
+          }
+        ]
+      }
+    ],
+    particle: 'noun',
+    imgUrl: 'https://cdn.langeek.co/photo/14641/original/peanut?type=jpeg',
+    shortDef: ['Peanut.'],
+    alternativeSpelling: ['cacahuete']
+  }
+};
+
+export const correctDefs = {
+  [Language.English]: {
+    defs: [
+      {
+        def: 'a long distance',
+        examples: [
+          {
+            text: 'The vast majority of new companies fail over the long haul.'
+          }
+        ]
+      }
+    ]
+  },
+  [Language.Spanish]: {
+    defs: [
+      {
+        def: 'a low-branching widely cultivated annual herb (Arachis hypogaea) of the legume family with showy yellow flowers having a peduncle which elongates and bends into the soil where the ovary ripens into a pod containing one to three oily edible seeds',
+        examples: [
+          {
+            text: 'Los más comunes son la soja, maíz, canola y cacahuate.',
+            translation:
+              'The most common are soybeans, corn, canola and peanut.'
+          }
+        ]
+      }
+    ]
+  }
+};

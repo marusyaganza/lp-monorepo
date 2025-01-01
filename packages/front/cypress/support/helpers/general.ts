@@ -40,6 +40,12 @@ export function login(
   cy.get('[data-cy=loginForm]').should('not.exist');
 }
 
+export function presetLanguage(lang: Language) {
+  cy.window().then(win => {
+    win.localStorage.setItem('language', JSON.stringify(lang));
+  });
+}
+
 export function selectOption(selector: string, option: string) {
   cy.getByCy('spinner').should('not.exist');
   cy.findByCy('select-btn', selector).click({ force: true });

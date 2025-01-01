@@ -154,17 +154,15 @@ exports[`generateAudioGame should return the correct number of questions when da
       "additionalInfo": {
         "examples": [
           {
-            "text": "Él peló un plátano y se lo comió.",
-            "translation": "He peeled a banana and ate it.",
+            "text": "Para evitar que se pegue, es mejor engrasar la sartén antes de freír.",
+            "translation": "To prevent sticking, it's best to powder the pan before frying.",
           },
         ],
-        "imgUrl": "https://example.com/images/platano.jpg",
-        "shortDef": "<b>plátano means</b> Curved fruit with yellow skin.",
+        "imgUrl": "https://example.com/images/skillet.jpg",
+        "shortDef": "<b>sartén means</b> skillet",
       },
       "answer": [
-        "plátano",
-        "platáno",
-        "plátan",
+        "sartén",
       ],
       "question": [
         "https://example.com/audio/platano.mp3",
@@ -217,20 +215,18 @@ exports[`generateAudioGame should return the correct number of questions when da
       "additionalInfo": {
         "examples": [
           {
-            "text": "Él me ofreció un racimo de uvas.",
-            "translation": "He offered me a bunch of grapes.",
+            "text": "Aproveche el servicio de translado de la más alta calidad.",
+            "translation": "ake advantage of the highest quality transfer service.",
           },
         ],
-        "imgUrl": "https://example.com/images/uva.jpg",
-        "shortDef": "<b>uva means</b> Small juicy fruit with smooth skin.",
+        "imgUrl": "https://example.com/images/translado.jpg",
+        "shortDef": "<b>translado means</b> transfer.",
       },
       "answer": [
-        "uva",
-        "uba",
-        "uvá",
+        "translado",
       ],
       "question": [
-        "https://example.com/audio/uva.mp3",
+        "https://example.com/audio/translado.mp3",
       ],
       "wordId": "6",
     },

@@ -12,6 +12,9 @@ export const TEXTS_BY_PAGE = {
   newWord: {
     mainHeading: 'Add new word'
   },
+  editWord: {
+    mainHeading: 'Edit word'
+  },
   words: {
     addWordLink: 'Add new'
   },
@@ -48,7 +51,8 @@ export const tasks = {
   [Game.Audio]: "Type the word that you've heard",
   [Game.SelectDef]: 'Select a definition that means ',
   [Game.SelectWord]: 'Select a word that means ',
-  [Game.TypeWord]: 'Type a word that means '
+  [Game.TypeWord]: 'Type a word that means ',
+  [Game.Gender]: 'Pick the Correct Gender'
 };
 
 export enum GameStage {

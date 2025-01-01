@@ -36,6 +36,21 @@ export const GenderGame = ({
   const [values, setValues] = useState<string[]>([]);
   const isCompleted = currentStage !== GameStage.Initial;
 
+  const renderCorrectAnswer = () => {
+    const answeredCorrectly = currentStage !== GameStage.Error;
+    return (
+      <span
+        data-cy="correctAnswer"
+        className={cn(
+          commoStyles.correctAnswer,
+          answeredCorrectly ? styles.hidden : ''
+        )}
+      >
+        {!answeredCorrectly && correctAnswer.join(', or ')}
+      </span>
+    );
+  };
+
   const handleChange: ChangeEventHandler<HTMLInputElement> = e => {
     const { value, checked } = e.target;
     let newValues = [...values];
@@ -114,6 +129,7 @@ export const GenderGame = ({
       onSubmit={handleSubmit}
     >
       <div className={commoStyles.gameContainer}>
+        {renderCorrectAnswer()}
         <article className={cn(commoStyles.container, className)}>
           <p data-cy="gameTask" className={commoStyles.task}>
             {task} {renderAudioButton()}
@@ -122,7 +138,10 @@ export const GenderGame = ({
             {<DictionaryEntity text={question[0]} />}
           </p>
           <div className={commoStyles.answer}>
-            <div className={cn(className, styles.container)}>
+            <div
+              data-cy="gameAnswer"
+              className={cn(className, styles.container)}
+            >
               {Object.values(GENDERS).map(gender => {
                 return (
                   <label key={gender} className={styles.label}>

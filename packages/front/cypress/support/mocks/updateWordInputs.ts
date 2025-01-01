@@ -1,4 +1,4 @@
-import { Language, NewWordInput, Word } from '../../../src/generated/graphql';
+import { Language, NewWordInput } from '../../../src/generated/graphql';
 
 export const fullInitialWord: Record<Language, Partial<NewWordInput>> = {
   [Language.English]: {

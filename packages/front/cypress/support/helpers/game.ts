@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-import { Game, Language, Tense } from '../../../src/generated/graphql';
+import { Game, Tense } from '../../../src/generated/graphql';
 import { gameFooterMessages } from '../mocks/gamePageData';
 import { GameStage, HEADER_TEXTS, TENSES, tasks } from '../constants';
 
@@ -10,7 +10,9 @@ const defs = {
   wheel:
     'a circular frame of hard material that may be solid, partly solid, or spoked and that is capable of turning on an axle',
   espirelar:
-    'to take a leisurely stroll through a park or natural setting, breathing deeply to refresh your spirit.'
+    'to take a leisurely stroll through a park or natural setting, breathing deeply to refresh your spirit.',
+  'long haul': 'a long distance',
+  cacahuate: 'Peanut.'
 };
 
 const examples = {
@@ -42,6 +44,13 @@ export function playGameOnce(gameType: Game, answer: string) {
   }
 }
 
+export function playGameWithMultipleAnswers(answers: string[]) {
+  answers.forEach(answer => {
+    cy.getByCy('gameAnswer').find('label').contains(answer).click();
+  });
+  cy.getByCy('check-button').click();
+}
+
 export function playConjugationGame(answer: string) {
   const answers = answer?.split(', ');
   answers?.forEach((answer, i) => {
@@ -55,7 +64,6 @@ export function playConjugationGame(answer: string) {
 }
 
 export function startConjugationGame(query: string, tense: Tense) {
-  cy.changeLanguage(Language.Spanish);
   cy.addWord(query);
   cy.getByCy('headerNav').contains(HEADER_TEXTS.practice).click();
   cy.getByCy('gameCard').eq(4).click();
@@ -70,9 +78,9 @@ export function startConjugationGame(query: string, tense: Tense) {
 export function checkGame(
   stage: GameStage,
   gameType: Game,
-  audioReq: string,
   wordName: string,
-  imgUrl?: string,
+  audioReq?: string,
+  imgUrl?: string | null,
   tense = Tense.Pind,
   correctAnswer = wordName
 ) {
@@ -93,7 +101,11 @@ export function checkGame(
   }
 
   if (stage === GameStage.Initial) {
-    if (gameType !== Game.TypeWord && gameType !== Game.SelectWord) {
+    if (
+      gameType !== Game.TypeWord &&
+      gameType !== Game.SelectWord &&
+      audioReq
+    ) {
       cy.checkReq(audioReq);
     }
     cy.getByCy('game-progress').should('have.value', 0);
@@ -101,7 +113,10 @@ export function checkGame(
     cy.getByCy('gameAnswer').should('be.visible');
     cy.getByCy('check-button').should('be.disabled');
   } else {
-    if (gameType === Game.TypeWord || gameType === Game.SelectWord) {
+    if (
+      (gameType === Game.TypeWord || gameType === Game.SelectWord) &&
+      audioReq
+    ) {
       cy.checkReq(audioReq);
     }
     cy.getByCy('check-button').should('not.exist');

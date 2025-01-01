@@ -4,10 +4,18 @@ import {
   connectToDb,
   disconnectFromDb,
   dropDb,
+  seedDb,
   baseSnapshotConfig
 } from '../../../../tests/helpers';
 import { testData } from '../../../../tests/mocks/dbTestData';
-import { SortWordsBy } from '../../../../generated/graphql';
+import {
+  Game,
+  Language,
+  Score,
+  SortWordsBy
+} from '../../../../generated/graphql';
+import { newWordInputs } from '../../../../tests/mocks/inputs/newWordInputs';
+import { usersTestData } from '../../../../tests/mocks/inputs/newUserInput';
 
 const snapshotConfig = {
   createdAt: expect.any(String),
@@ -264,5 +272,38 @@ describe('WordModel', () => {
     // @ts-expect-error: testing empty args case
     const resultForUnknowUser = await WordModel.deleteOne(word.id);
     expect(resultForUnknowUser).toEqual({ ok: false });
+  });
+
+  test('findVerbs', async () => {
+    const data = await seedDb({
+      words: [...newWordInputs[Language.Spanish]],
+      users: usersTestData
+    });
+    // @ts-expect-error: args can be empty
+    const result = await WordModel.findVerbs(data.users[0]);
+    const verbs = ['correr', 'pensar'];
+    verbs.forEach((verb, i) => {
+      expect(result[i].name).toEqual(verb);
+    });
+    // @ts-expect-error: testing empty args case
+    const resultForUnknowUser = await WordModel.findVerbs();
+    expect(resultForUnknowUser).toEqual([]);
+  });
+
+  test('updateStatistics', async () => {
+    const data = await seedDb({
+      words: [...newWordInputs[Language.Spanish]],
+      users: usersTestData
+    });
+    // @ts-expect-error: args can be empty
+    const statistics = data.words.map((word, i) => ({
+      id: word,
+      hasError: i % 2 === 0,
+      score: Score.Hard,
+      gameType: Game.Audio
+    }));
+    // @ts-expect-error: args can be empty
+    const result = await WordModel.updateStatistics(statistics, data.users[0]);
+    expect(result).toEqual({ ok: true });
   });
 });

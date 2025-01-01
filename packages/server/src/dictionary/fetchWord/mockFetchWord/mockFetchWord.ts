@@ -5,7 +5,7 @@ export const mockSuggestions = {
     'Mocks are enabled. You can query words from the list: egalitarian, rubber, pussy, heart, wheel, voluminous, fowl, murther, or notFound to receive an empty array as a result, or suggestions for an array with words'
   ],
   [Language.Spanish]: [
-    'Mocks are enabled. You can query words from the list: idioma, hola, caerse, asi, tener, ser, llover, ecologista, bully, instruction, empezar'
+    'Mocks are enabled. You can query words from the list: idioma, hola, caerse, asi, tener, ser, llover, ecologista, bully, instruction, empezar, ballena'
   ]
 };
 
