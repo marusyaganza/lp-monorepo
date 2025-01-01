@@ -210,7 +210,7 @@ exports[`generateSelectDefGame should return the correct number of questions whe
     ],
     "options": [
       "Happiness.",
-      "Quickly.",
+      "Journalist",
       "Big, large.",
       "To think.",
       "Beauty.",
@@ -242,7 +242,7 @@ exports[`generateSelectDefGame should return the correct number of questions whe
     "options": [
       "To run.",
       "Happiness.",
-      "Quickly.",
+      "Journalist",
       "Big, large.",
       "To think.",
       "Citrus fruit with orange rind.",
@@ -257,25 +257,25 @@ exports[`generateSelectDefGame should return the correct number of questions whe
       "audioUrl": "https://example.com/audio/platano.mp3",
       "examples": [
         {
-          "text": "Él peló un plátano y se lo comió.",
-          "translation": "He peeled a banana and ate it.",
+          "text": "Para evitar que se pegue, es mejor engrasar la sartén antes de freír.",
+          "translation": "To prevent sticking, it's best to powder the pan before frying.",
         },
       ],
-      "imgUrl": "https://example.com/images/platano.jpg",
+      "imgUrl": "https://example.com/images/skillet.jpg",
     },
     "answer": [
-      "Curved fruit with yellow skin.",
+      "skillet",
     ],
     "options": [
       "To run.",
       "Happiness.",
-      "Quickly.",
+      "Journalist",
       "Big, large.",
       "To think.",
-      "Curved fruit with yellow skin.",
+      "skillet",
     ],
     "question": [
-      "plátano",
+      "sartén",
     ],
     "wordId": Any<String>,
   },
@@ -296,7 +296,7 @@ exports[`generateSelectDefGame should return the correct number of questions whe
     "options": [
       "To run.",
       "Happiness.",
-      "Quickly.",
+      "Journalist",
       "Big, large.",
       "To think.",
       "Soft red fruit with seeds.",
@@ -323,7 +323,7 @@ exports[`generateSelectDefGame should return the correct number of questions whe
     "options": [
       "To run.",
       "Happiness.",
-      "Quickly.",
+      "Journalist",
       "Big, large.",
       "To think.",
       "Tropical fruit with spiky rind.",
@@ -335,28 +335,28 @@ exports[`generateSelectDefGame should return the correct number of questions whe
   },
   {
     "additionalInfo": {
-      "audioUrl": "https://example.com/audio/uva.mp3",
+      "audioUrl": "https://example.com/audio/translado.mp3",
       "examples": [
         {
-          "text": "Él me ofreció un racimo de uvas.",
-          "translation": "He offered me a bunch of grapes.",
+          "text": "Aproveche el servicio de translado de la más alta calidad.",
+          "translation": "ake advantage of the highest quality transfer service.",
         },
       ],
-      "imgUrl": "https://example.com/images/uva.jpg",
+      "imgUrl": "https://example.com/images/translado.jpg",
     },
     "answer": [
-      "Small juicy fruit with smooth skin.",
+      "transfer.",
     ],
     "options": [
       "To run.",
       "Happiness.",
-      "Quickly.",
+      "Journalist",
       "Big, large.",
       "To think.",
-      "Small juicy fruit with smooth skin.",
+      "transfer.",
     ],
     "question": [
-      "uva",
+      "translado",
     ],
     "wordId": Any<String>,
   },

@@ -23,9 +23,6 @@ import { generateGameData } from '../../../generateGameData';
 import { ERROR_MESSAGES } from '../../../constants/errorMessages';
 import { DEFAULT_GAMES_SETTINGS } from '../../../constants/defultGameSettings';
 
-const gameTypes = Object.values(Game).filter(
-  g => g !== Game.Conjugation && g !== Game.Gender
-);
 const languages = Object.values(Language);
 const tenses = Object.values(Tense);
 
@@ -47,8 +44,13 @@ describe('game queries', () => {
     await dropDb();
     await disconnectFromDb();
   });
-  gameTypes.forEach(game => {
-    languages.forEach(lang => {
+  languages.forEach(lang => {
+    const gameTypes = Object.values(Game).filter(
+      g =>
+        g !== Game.Conjugation &&
+        DEFAULT_GAMES_SETTINGS[g].languages.includes(lang)
+    );
+    gameTypes.forEach(game => {
       test(`game query with ${game} and ${lang}`, async () => {
         const gameConfig = DEFAULT_GAMES_SETTINGS[game];
         const wordsPerGame = gameConfig?.wordsPerGame;

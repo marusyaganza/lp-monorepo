@@ -9,6 +9,7 @@ import { getGameTask } from '../helpers';
 import { OperationResolutionError } from '../../utils/apolloCustomErrors';
 import { DEFAULT_TENSE } from '../../constants/defaultValues';
 import { ERROR_MESSAGES } from '../../constants/errorMessages';
+import { isGameQuestion } from '../../types/typeGuards';
 
 export async function generateConjugationGame(
   words: Word[],
@@ -16,10 +17,6 @@ export async function generateConjugationGame(
 ): Promise<GameData> {
   const gameType = Game.Conjugation;
   const tense = parameters?.tense || DEFAULT_TENSE;
-
-  function isGameQuestion(data: unknown): data is GameQuestion {
-    return Boolean(data);
-  }
 
   const questionsArray: (GameQuestion | undefined)[] = words.map(word => {
     const { imgUrl, shortDef, audioUrl, name, id, conjugation } = word;

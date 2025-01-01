@@ -1,0 +1,164 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`generateGenderGame should return the correct number of questions when data has enough SPANISH words 1`] = `
+{
+  "questions": [
+    {
+      "additionalInfo": {
+        "audioUrl": "https://example.com/audio/manzana.mp3",
+        "examples": [
+          {
+            "text": "Ella comió una manzana roja para el desayuno.",
+            "translation": "She ate a red apple for breakfast.",
+          },
+        ],
+        "imgUrl": "https://example.com/images/manzana.jpg",
+        "shortDef": "<b>manzana means</b> Round fruit with red or green skin.",
+      },
+      "answer": [
+        "feminine",
+      ],
+      "question": [
+        "manzana",
+      ],
+      "wordId": "1",
+    },
+    {
+      "additionalInfo": {
+        "audioUrl": "https://example.com/audio/naranja.mp3",
+        "examples": [
+          {
+            "text": "Ella bebió jugo de naranja fresco esta mañana.",
+            "translation": "She drank fresh orange juice this morning.",
+          },
+          {
+            "text": "Llamaban la naranja “fruta del sol” por su color.",
+            "translation": "They called the orange "sun fruit" because of its color.",
+          },
+        ],
+        "imgUrl": "https://example.com/images/naranja.jpg",
+        "shortDef": "<b>naranja means</b> Citrus fruit with orange rind.",
+      },
+      "answer": [
+        "feminine",
+      ],
+      "question": [
+        "naranja",
+      ],
+      "wordId": "2",
+    },
+    {
+      "additionalInfo": {
+        "audioUrl": "https://example.com/audio/platano.mp3",
+        "examples": [
+          {
+            "text": "Para evitar que se pegue, es mejor engrasar la sartén antes de freír.",
+            "translation": "To prevent sticking, it's best to powder the pan before frying.",
+          },
+        ],
+        "imgUrl": "https://example.com/images/skillet.jpg",
+        "shortDef": "<b>sartén means</b> skillet",
+      },
+      "answer": [
+        "feminine",
+        "masculine",
+      ],
+      "question": [
+        "sartén",
+      ],
+      "wordId": "3",
+    },
+    {
+      "additionalInfo": {
+        "audioUrl": "https://example.com/audio/fresa.mp3",
+        "examples": [
+          {
+            "text": "Ella recogió una fresa madura del jardín.",
+            "translation": "She picked a ripe strawberry from the garden.",
+          },
+        ],
+        "imgUrl": "https://example.com/images/fresa.jpg",
+        "shortDef": "<b>fresa means</b> Soft red fruit with seeds.",
+      },
+      "answer": [
+        "feminine",
+      ],
+      "question": [
+        "fresa",
+      ],
+      "wordId": "4",
+    },
+    {
+      "additionalInfo": {
+        "audioUrl": "https://example.com/audio/pina.mp3",
+        "examples": [
+          {
+            "text": "Hicieron un batido de piña.",
+            "translation": "They made a pineapple smoothie.",
+          },
+        ],
+        "imgUrl": "https://example.com/images/pina.jpg",
+        "shortDef": "<b>piña means</b> Tropical fruit with spiky rind.",
+      },
+      "answer": [
+        "feminine",
+      ],
+      "question": [
+        "piña",
+      ],
+      "wordId": "5",
+    },
+    {
+      "additionalInfo": {
+        "audioUrl": "https://example.com/audio/translado.mp3",
+        "examples": [
+          {
+            "text": "Aproveche el servicio de translado de la más alta calidad.",
+            "translation": "ake advantage of the highest quality transfer service.",
+          },
+        ],
+        "imgUrl": "https://example.com/images/translado.jpg",
+        "shortDef": "<b>translado means</b> transfer.",
+      },
+      "answer": [
+        "masculine",
+      ],
+      "question": [
+        "translado",
+      ],
+      "wordId": "6",
+    },
+  ],
+  "task": "Pick the Correct Gender",
+  "type": "GENDER",
+}
+`;
+
+exports[`generateGenderGame should return the correct number of questions when with minimal SPANISH words 1`] = `
+{
+  "questions": [
+    {
+      "additionalInfo": {
+        "audioUrl": "https://example.com/audio/manzana.mp3",
+        "examples": [
+          {
+            "text": "Ella comió una manzana roja para el desayuno.",
+            "translation": "She ate a red apple for breakfast.",
+          },
+        ],
+        "imgUrl": "https://example.com/images/manzana.jpg",
+        "shortDef": "<b>manzana means</b> Round fruit with red or green skin.",
+      },
+      "answer": [
+        "feminine",
+      ],
+      "question": [
+        "manzana",
+      ],
+      "wordId": "1",
+    },
+  ],
+  "task": "Pick the Correct Gender",
+  "type": "GENDER",
+}
+`;

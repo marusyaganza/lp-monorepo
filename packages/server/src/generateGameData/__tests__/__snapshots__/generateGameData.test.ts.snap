@@ -243,7 +243,7 @@ exports[`generateGameData with SELECT_DEF game Spanish 1`] = `
   ],
   "options": [
     "Happiness.",
-    "Quickly.",
+    "Journalist",
     "Big, large.",
     "To think.",
     "Beauty.",
@@ -302,7 +302,7 @@ exports[`generateGameData with SELECT_WORD game Spanish 1`] = `
   ],
   "options": [
     "felicidad",
-    "rápidamente",
+    "periodista",
     "grande",
     "pensar",
     "hermosura",

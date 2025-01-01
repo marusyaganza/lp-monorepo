@@ -9,7 +9,8 @@ import {
   login,
   changeLanguage,
   checkReq,
-  selectOption
+  selectOption,
+  presetLanguage
 } from './helpers/general';
 import {
   checkInitialValues,
@@ -43,6 +44,7 @@ declare global {
       checkReq: typeof checkReq;
       editWord: typeof editWord;
       selectOption: typeof selectOption;
+      presetLanguage: typeof presetLanguage;
     }
   }
 }
@@ -63,6 +65,7 @@ Cypress.Commands.add('checkWordForm', checkInitialValues);
 Cypress.Commands.add('checkReq', checkReq);
 Cypress.Commands.add('editWord', editWord);
 Cypress.Commands.add('selectOption', selectOption);
+Cypress.Commands.add('presetLanguage', presetLanguage);
 
 Cypress.on('uncaught:exception', err => {
   console.error('err', err.message);

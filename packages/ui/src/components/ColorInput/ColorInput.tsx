@@ -67,7 +67,12 @@ export const ColorInput = ({
         </div>
       </label>
       {!ignoreErrors && (
-        <p aria-hidden={isInValid} role="status" className={styles.errorText}>
+        <p
+          data-cy="input-error"
+          aria-hidden={isInValid}
+          role="status"
+          className={styles.errorText}
+        >
           {errorText}
         </p>
       )}

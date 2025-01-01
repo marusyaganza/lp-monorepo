@@ -182,20 +182,20 @@ exports[`game queries game query with AUDIO and SPANISH 1`] = `
       "audioUrl": null,
       "examples": [
         {
-          "text": "Ella terminó su trabajo rápidamente.",
-          "translation": "She finished her work quickly.",
+          "text": "El/La periodista escribió un artículo fascinante.",
+          "translation": "The journalist wrote a fascinating article.",
         },
       ],
-      "imgUrl": "https://example.com/images/rapidamente.jpg",
-      "shortDef": "<b>rápidamente means</b> Quickly.",
+      "imgUrl": "https://example.com/images/periodista.jpg",
+      "shortDef": "<b>periodista means</b> Journalist",
     },
     "answer": [
-      "rápidamente",
-      "rapidamiente",
+      "periodista",
+      "periodísta",
     ],
     "options": null,
     "question": [
-      "https://example.com/audio/rapidamente.mp3",
+      "https://example.com/audio/periodista.mp3",
     ],
     "wordId": Any<String>,
   },
@@ -259,6 +259,143 @@ exports[`game queries game query with AUDIO and SPANISH 1`] = `
     "options": null,
     "question": [
       "https://example.com/audio/hermosura.mp3",
+    ],
+    "wordId": Any<String>,
+  },
+]
+`;
+
+exports[`game queries game query with GENDER and SPANISH 1`] = `
+[
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/felicidad.mp3",
+      "examples": [
+        {
+          "text": "Su felicidad es contagiosa.",
+          "translation": "Her happiness is contagious.",
+        },
+      ],
+      "imgUrl": "https://example.com/images/felicidad.jpg",
+      "shortDef": "<b>felicidad means</b> Happiness.",
+    },
+    "answer": [
+      "feminine",
+    ],
+    "options": null,
+    "question": [
+      "felicidad",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/periodista.mp3",
+      "examples": [
+        {
+          "text": "El/La periodista escribió un artículo fascinante.",
+          "translation": "The journalist wrote a fascinating article.",
+        },
+      ],
+      "imgUrl": "https://example.com/images/periodista.jpg",
+      "shortDef": "<b>periodista means</b> Journalist",
+    },
+    "answer": [
+      "feminine",
+      "masculine",
+    ],
+    "options": null,
+    "question": [
+      "periodista",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/hermosura.mp3",
+      "examples": [
+        {
+          "text": "Su hermosura es indescriptible.",
+          "translation": "Her beauty is indescribable.",
+        },
+      ],
+      "imgUrl": "https://example.com/images/hermosura.jpg",
+      "shortDef": "<b>hermosura means</b> Beauty.",
+    },
+    "answer": [
+      "feminine",
+    ],
+    "options": null,
+    "question": [
+      "hermosura",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/sombrero.mp3",
+      "examples": [
+        {
+          "text": "El vaquero llevaba un sombrero de ala ancha.",
+          "translation": "The cowboy wore a wide-brimmed hat.",
+        },
+        {
+          "text": "Se puso el sombrero para protegerse del sol.",
+          "translation": "He put on the hat to protect himself from the sun.",
+        },
+      ],
+      "imgUrl": "https://example.com/images/sombrero.jpg",
+      "shortDef": "<b>sombrero means</b> Hat",
+    },
+    "answer": [
+      "masculine",
+    ],
+    "options": null,
+    "question": [
+      "sombrero",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/platano.mp3",
+      "examples": [
+        {
+          "text": "Para evitar que se pegue, es mejor engrasar la sartén antes de freír.",
+          "translation": "To prevent sticking, it's best to powder the pan before frying.",
+        },
+      ],
+      "imgUrl": "https://example.com/images/skillet.jpg",
+      "shortDef": "<b>sartén means</b> skillet",
+    },
+    "answer": [
+      "feminine",
+      "masculine",
+    ],
+    "options": null,
+    "question": [
+      "sartén",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/fresa.mp3",
+      "examples": [
+        {
+          "text": "Ella recogió una fresa madura del jardín.",
+          "translation": "She picked a ripe strawberry from the garden.",
+        },
+      ],
+      "imgUrl": "https://example.com/images/fresa.jpg",
+      "shortDef": "<b>fresa means</b> Soft red fruit with seeds.",
+    },
+    "answer": [
+      "feminine",
+    ],
+    "options": null,
+    "question": [
+      "fresa",
     ],
     "wordId": Any<String>,
   },
@@ -457,7 +594,7 @@ exports[`game queries game query with SELECT_DEF and SPANISH 1`] = `
     ],
     "options": [
       "Happiness.",
-      "Quickly.",
+      "Journalist",
       "Big, large.",
       "To think.",
       "Beauty.",
@@ -485,7 +622,7 @@ exports[`game queries game query with SELECT_DEF and SPANISH 1`] = `
     ],
     "options": [
       "To run.",
-      "Quickly.",
+      "Journalist",
       "Big, large.",
       "To think.",
       "Beauty.",
@@ -498,18 +635,18 @@ exports[`game queries game query with SELECT_DEF and SPANISH 1`] = `
   },
   {
     "additionalInfo": {
-      "audioUrl": "https://example.com/audio/rapidamente.mp3",
+      "audioUrl": "https://example.com/audio/periodista.mp3",
       "examples": [
         {
-          "text": "Ella terminó su trabajo rápidamente.",
-          "translation": "She finished her work quickly.",
+          "text": "El/La periodista escribió un artículo fascinante.",
+          "translation": "The journalist wrote a fascinating article.",
         },
       ],
-      "imgUrl": "https://example.com/images/rapidamente.jpg",
+      "imgUrl": "https://example.com/images/periodista.jpg",
       "shortDef": null,
     },
     "answer": [
-      "Quickly.",
+      "Journalist",
     ],
     "options": [
       "To run.",
@@ -517,10 +654,10 @@ exports[`game queries game query with SELECT_DEF and SPANISH 1`] = `
       "Big, large.",
       "To think.",
       "Beauty.",
-      "Quickly.",
+      "Journalist",
     ],
     "question": [
-      "rápidamente",
+      "periodista",
     ],
     "wordId": Any<String>,
   },
@@ -542,7 +679,7 @@ exports[`game queries game query with SELECT_DEF and SPANISH 1`] = `
     "options": [
       "To run.",
       "Happiness.",
-      "Quickly.",
+      "Journalist",
       "To think.",
       "Beauty.",
       "Big, large.",
@@ -570,7 +707,7 @@ exports[`game queries game query with SELECT_DEF and SPANISH 1`] = `
     "options": [
       "To run.",
       "Happiness.",
-      "Quickly.",
+      "Journalist",
       "Big, large.",
       "Beauty.",
       "To think.",
@@ -598,7 +735,7 @@ exports[`game queries game query with SELECT_DEF and SPANISH 1`] = `
     "options": [
       "To run.",
       "Happiness.",
-      "Quickly.",
+      "Journalist",
       "Big, large.",
       "To think.",
       "Beauty.",
@@ -803,7 +940,7 @@ exports[`game queries game query with SELECT_WORD and SPANISH 1`] = `
     ],
     "options": [
       "felicidad",
-      "rápidamente",
+      "periodista",
       "grande",
       "pensar",
       "hermosura",
@@ -831,7 +968,7 @@ exports[`game queries game query with SELECT_WORD and SPANISH 1`] = `
     ],
     "options": [
       "correr",
-      "rápidamente",
+      "periodista",
       "grande",
       "pensar",
       "hermosura",
@@ -844,18 +981,18 @@ exports[`game queries game query with SELECT_WORD and SPANISH 1`] = `
   },
   {
     "additionalInfo": {
-      "audioUrl": "https://example.com/audio/rapidamente.mp3",
+      "audioUrl": "https://example.com/audio/periodista.mp3",
       "examples": [
         {
-          "text": "Ella terminó su trabajo rápidamente.",
-          "translation": "She finished her work quickly.",
+          "text": "El/La periodista escribió un artículo fascinante.",
+          "translation": "The journalist wrote a fascinating article.",
         },
       ],
-      "imgUrl": "https://example.com/images/rapidamente.jpg",
+      "imgUrl": "https://example.com/images/periodista.jpg",
       "shortDef": null,
     },
     "answer": [
-      "rápidamente",
+      "periodista",
     ],
     "options": [
       "correr",
@@ -863,10 +1000,10 @@ exports[`game queries game query with SELECT_WORD and SPANISH 1`] = `
       "grande",
       "pensar",
       "hermosura",
-      "rápidamente",
+      "periodista",
     ],
     "question": [
-      "Quickly.",
+      "Journalist",
     ],
     "wordId": Any<String>,
   },
@@ -888,7 +1025,7 @@ exports[`game queries game query with SELECT_WORD and SPANISH 1`] = `
     "options": [
       "correr",
       "felicidad",
-      "rápidamente",
+      "periodista",
       "pensar",
       "hermosura",
       "grande",
@@ -916,7 +1053,7 @@ exports[`game queries game query with SELECT_WORD and SPANISH 1`] = `
     "options": [
       "correr",
       "felicidad",
-      "rápidamente",
+      "periodista",
       "grande",
       "hermosura",
       "pensar",
@@ -944,7 +1081,7 @@ exports[`game queries game query with SELECT_WORD and SPANISH 1`] = `
     "options": [
       "correr",
       "felicidad",
-      "rápidamente",
+      "periodista",
       "grande",
       "pensar",
       "hermosura",
@@ -1136,23 +1273,23 @@ exports[`game queries game query with TYPE_WORD and SPANISH 1`] = `
   },
   {
     "additionalInfo": {
-      "audioUrl": "https://example.com/audio/rapidamente.mp3",
+      "audioUrl": "https://example.com/audio/periodista.mp3",
       "examples": [
         {
-          "text": "Ella terminó su trabajo rápidamente.",
-          "translation": "She finished her work quickly.",
+          "text": "El/La periodista escribió un artículo fascinante.",
+          "translation": "The journalist wrote a fascinating article.",
         },
       ],
-      "imgUrl": "https://example.com/images/rapidamente.jpg",
+      "imgUrl": "https://example.com/images/periodista.jpg",
       "shortDef": null,
     },
     "answer": [
-      "rápidamente",
-      "rapidamiente",
+      "periodista",
+      "periodísta",
     ],
     "options": null,
     "question": [
-      "Quickly.",
+      "Journalist",
     ],
     "wordId": Any<String>,
   },

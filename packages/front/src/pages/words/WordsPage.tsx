@@ -200,9 +200,7 @@ const WordsPage = () => {
     if (storedIsReverseOrder) {
       setIsReverseOrder(storedIsReverseOrder);
     }
-    if (storedTags) {
-      setTags(storedTags);
-    }
+    setTags(storedTags);
   }, [language]);
 
   const getDeleteWordHandler = (id: string) => {

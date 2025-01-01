@@ -24,7 +24,7 @@ const newTag = {
   }
 };
 
-function checkTag(tag: Omit<WordTagInput, 'language'>) {
+function checkTag(tag: Omit<WordTagInput, 'language' | 'color'>) {
   const { text, desc } = tag;
   cy.getByCy(`tag-${text}`).as('currentTag');
   cy.findByCy('tag', '@currentTag').should('contain', `#${text}`);
@@ -83,6 +83,7 @@ describe('Tags Page', () => {
   });
 
   it('should render page correctly', () => {
+    const colorInput = '#FF0000';
     cy.get('h1').should('contain', TEXTS_BY_PAGE.tags.mainHeading);
 
     cy.getByCy('new-tag-btn')
@@ -105,15 +106,15 @@ describe('Tags Page', () => {
     cy.findByCy('color', '@newTagForm')
       .find('input[type="color"]')
       .should('be.empty');
+
     cy.findByCy('color', '@newTagForm')
       .find('input[type=color]')
-      .invoke('val', '#ff0000')
-      .trigger('change');
+      .invoke('val', colorInput)
+      .trigger('input');
 
-    // TODO: test color inputs interaction
-    // cy.findByCy('color', '@newTagForm')
-    //   .find('input[name="color"]')
-    //   .should('have.value', '#ff0000');
+    cy.findByCy('color', '@newTagForm')
+      .find('input[name="color"]')
+      .should('have.value', colorInput.toLowerCase());
 
     cy.get('@newTagForm')
       .find('button[type="submit"]')
@@ -125,7 +126,35 @@ describe('Tags Page', () => {
       .click();
 
     cy.get('@newTagForm').should('not.exist');
-    // TODO: test form validation
+  });
+
+  it('should validate the form', () => {
+    const colorInput = '#55B9A0';
+    const text = 'Minimalist';
+    cy.getByCy('new-tag-btn').click();
+    cy.getByCy('tags-form').as('newTagForm');
+    cy.get('@newTagForm').submit();
+    cy.findByCy('text', '@newTagForm').as('textField');
+    cy.findByCy('input-error', '@textField')
+      .should('be.visible')
+      .and('contain', 'tag text is required');
+
+    cy.findByCy('color', '@newTagForm').as('colorField');
+    cy.findByCy('input-error', '@colorField')
+      .should('be.visible')
+      .and('contain', 'color should be a valid hex color');
+
+    cy.get('@newTagForm').should('be.visible');
+    cy.get('@textField').find('textarea').type(text);
+
+    cy.get('@colorField')
+      .find('input[type=color]')
+      .invoke('val', colorInput)
+      .trigger('input');
+
+    cy.get('@newTagForm').find('button').contains('Save').click();
+    cy.get('@newTagForm').should('not.exist');
+    checkTag({ text });
   });
 
   languages.forEach(lang => {
@@ -196,7 +225,15 @@ describe('Tags Page', () => {
       cy.getByCy('formField-tags').as('tagField');
       cy.findByCy('select-btn', '@tagField').click();
       cy.getByCy('selectOptions').contains(tagInput.text);
-      // TODO: check edit word form's tag selector
+
+      const word = words[lang][0];
+      cy.addWord(word);
+      cy.get('@headerLink').contains(HEADER_TEXTS.vocabulary).click();
+      cy.getByCy(`wordcard-${word}`).click();
+      cy.getByCy('editButton').click();
+      cy.getByCy('formField-tags').as('tagField');
+      cy.findByCy('select-btn', '@tagField').click();
+      cy.getByCy('selectOptions').contains(tagInput.text);
     });
 
     it(`should delete tags correctly with ${lang} language`, () => {
@@ -239,8 +276,6 @@ describe('Tags Page', () => {
       cy.get('@headerLink').contains(HEADER_TEXTS.vocabulary).click();
       // make sure the tag was deleted from the word
       cy.findByCy('tags', '@wordCard').should('not.contain', tagToDelete);
-
-      //TODO: test deleting a tag and make sure it was removed correctly from a word that has multiple tags
     });
   });
 });

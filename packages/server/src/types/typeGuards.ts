@@ -1,5 +1,11 @@
 import { ConjugationSpacedRepetitionData } from '../db/schema/Word';
-import { DictionaryWord, Role, Suggestions, Tense } from '../generated/graphql';
+import {
+  DictionaryWord,
+  GameQuestion,
+  Role,
+  Suggestions,
+  Tense
+} from '../generated/graphql';
 import {
   IAutenticatedContext,
   IResolverContext,
@@ -77,4 +83,8 @@ export function isConjugationSpacedRepetitionData(
 ): data is ConjugationSpacedRepetitionData {
   const tenses = Object.values(Tense) as string[];
   return Object.keys(data).every(item => tenses.includes(item));
+}
+
+export function isGameQuestion(data: unknown): data is GameQuestion {
+  return Boolean(data);
 }
