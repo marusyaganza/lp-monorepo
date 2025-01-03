@@ -56,6 +56,7 @@ const DEFAULT_STATISTICS: Record<GameType, WordStatisticsField> = {
   [GameType.SelectWord]: STATISTICS_FIELD,
   [GameType.TypeWord]: STATISTICS_FIELD,
   [GameType.Conjugation]: STATISTICS_FIELD,
+  [GameType.Image]: STATISTICS_FIELD,
   [GameType.Gender]: STATISTICS_FIELD
 };
 
@@ -68,7 +69,8 @@ const CONJUGATION_REPETITION = {
   [Tense.Pind]: repetitionData,
   [Tense.Pprf]: repetitionData,
   [Tense.Pret]: repetitionData,
-  [Tense.Psub]: repetitionData
+  [Tense.Psub]: repetitionData,
+  [Tense.Ppci]: repetitionData
 };
 
 const DEFAULT_REPETITION_DATA: SpacedRepetitionMap = {
@@ -76,6 +78,7 @@ const DEFAULT_REPETITION_DATA: SpacedRepetitionMap = {
   [GameType.SelectDef]: repetitionData,
   [GameType.SelectWord]: repetitionData,
   [GameType.TypeWord]: repetitionData,
+  [GameType.Image]: repetitionData,
   [GameType.Conjugation]: CONJUGATION_REPETITION,
   [GameType.Gender]: repetitionData
 };

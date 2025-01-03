@@ -254,6 +254,17 @@ export const newWordInputs = {
           ]
         },
         {
+          cjid: 'ppci',
+          cjfs: [
+            'he corrido',
+            'has corrido',
+            'ha corrido',
+            'hemos corrido',
+            'habéis corrido',
+            'han corrido'
+          ]
+        },
+        {
           cjid: 'psub',
           cjfs: ['corra', 'corras', 'corra', 'corramos', 'corráis', 'corran']
         },
@@ -394,6 +405,17 @@ export const newWordInputs = {
             'pensamos',
             'pensasteis',
             'pensaron'
+          ]
+        },
+        {
+          cjid: 'ppci',
+          cjfs: [
+            'he pensado',
+            'has pensado',
+            'ha pensado',
+            'hemos pensado',
+            'habéis pensado',
+            'han pensado'
           ]
         },
         {

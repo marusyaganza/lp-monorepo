@@ -34,3 +34,7 @@
   gap: 40px;
   max-height: calc(100% - 240px);
 }
+
+.game.resultScreen {
+  max-height: 100%;
+}

@@ -261,8 +261,8 @@ export const WordCard = ({
           {imgUrl && (
             <figure className={styles.illustration}>
               <img
+                loading="lazy"
                 data-cy="imgUrl"
-                width={280}
                 className={styles.picture}
                 src={imgUrl}
                 alt={`${name} illustration`}

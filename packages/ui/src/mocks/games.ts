@@ -22,6 +22,11 @@ export const games: GameConfigType[] = [
     type: Game.TypeWord
   },
   {
+    name: 'PictureWord Blitz',
+    desc: 'Identify objects from pictures and type their names to enhance vocabulary skills!',
+    type: Game.Image
+  },
+  {
     name: 'Conjugation Quest',
     desc: 'Master verb conjugations across tenses and languages in fast-paced, interactive challenges!',
     type: Game.Conjugation

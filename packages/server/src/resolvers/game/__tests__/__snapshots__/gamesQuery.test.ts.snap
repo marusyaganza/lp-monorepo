@@ -27,6 +27,12 @@ exports[`game queries games query 1`] = `
       "name": "WordRecall: Define & Type",
       "type": "TYPE_WORD",
     },
+    {
+      "desc": "Identify objects from pictures and type their names to enhance vocabulary skills!",
+      "id": "image",
+      "name": "PictureWord Blitz",
+      "type": "IMAGE",
+    },
   ],
 }
 `;

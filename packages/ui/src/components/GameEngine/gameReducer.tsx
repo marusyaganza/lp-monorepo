@@ -77,7 +77,7 @@ export function gameReducer(
     } else {
       newState.currentIndex = state.currentIndex + 1;
       newState.progress =
-        ((state.currentIndex + 1) * 100) / (state.questions.length + 1);
+        ((state.currentIndex + 1) * 100) / state.questions.length;
       newState.currentQuestion = newState.questions[newState.currentIndex];
     }
     newState.currentResult = { type: GameStage.Initial };

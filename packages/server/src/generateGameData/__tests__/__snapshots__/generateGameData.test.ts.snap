@@ -131,6 +131,28 @@ exports[`generateGameData with CONJUGATION game pind tense 1`] = `
 }
 `;
 
+exports[`generateGameData with CONJUGATION game ppci tense 1`] = `
+{
+  "additionalInfo": {
+    "audioUrl": "https://example.com/audio/correr.mp3",
+    "imgUrl": "https://example.com/images/correr.jpg",
+    "shortDef": "<b>correr means</b> To run.",
+  },
+  "answer": [
+    "he corrido",
+    "has corrido",
+    "ha corrido",
+    "hemos corrido",
+    "habéis corrido",
+    "han corrido",
+  ],
+  "question": [
+    "correr",
+  ],
+  "wordId": Any<String>,
+}
+`;
+
 exports[`generateGameData with CONJUGATION game pprf tense 1`] = `
 {
   "additionalInfo": {
@@ -192,6 +214,50 @@ exports[`generateGameData with CONJUGATION game psub tense 1`] = `
   ],
   "question": [
     "correr",
+  ],
+  "wordId": Any<String>,
+}
+`;
+
+exports[`generateGameData with IMAGE game English 1`] = `
+{
+  "additionalInfo": {
+    "audioUrl": "https://example.com/audio/serendipity.mp3",
+    "examples": [
+      {
+        "text": "She found the perfect book by sheer serendipity.",
+      },
+    ],
+    "shortDef": "<b>serendipity means</b> Unexpected good fortune.",
+  },
+  "answer": [
+    "serendipity",
+  ],
+  "question": [
+    "https://example.com/images/serendipity.jpg",
+  ],
+  "wordId": Any<String>,
+}
+`;
+
+exports[`generateGameData with IMAGE game Spanish 1`] = `
+{
+  "additionalInfo": {
+    "audioUrl": "https://example.com/audio/correr.mp3",
+    "examples": [
+      {
+        "text": "Él puede correr muy rápido.",
+        "translation": "He can run very fast.",
+      },
+    ],
+    "shortDef": "<b>correr means</b> To run.",
+  },
+  "answer": [
+    "correr",
+    "korrer",
+  ],
+  "question": [
+    "https://example.com/images/correr.jpg",
   ],
   "wordId": Any<String>,
 }

@@ -8,6 +8,7 @@ import { OperationResolutionError } from '../utils/apolloCustomErrors';
 import { generateAudioGame } from './generators/generateAudioGame';
 import { generateConjugationGame } from './generators/generateConjugationGame';
 import { generateGenderGame } from './generators/generateGenderGame';
+import { generateImageGame } from './generators/generateImageGame';
 import { generateSelectDefGame } from './generators/generateSelectDefGame';
 import { generateSelectWordGame } from './generators/generateSelectWordGame';
 import { generateTypeWordGame } from './generators/generateTypeWordGame';
@@ -17,6 +18,7 @@ const generators: Record<Game, GameDataGeneratorFunc> = {
   [Game.TypeWord]: generateTypeWordGame,
   [Game.SelectWord]: generateSelectWordGame,
   [Game.SelectDef]: generateSelectDefGame,
+  [Game.Image]: generateImageGame,
   [Game.Conjugation]: generateConjugationGame,
   [Game.Gender]: generateGenderGame
 };

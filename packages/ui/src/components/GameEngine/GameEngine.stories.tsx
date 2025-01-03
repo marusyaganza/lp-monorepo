@@ -39,4 +39,8 @@ export const Gender = (args: GameEngineProps) => {
   return <GameEngine {...args} gameData={gameEngineData[Game.Gender]} />;
 };
 
+export const Image = (args: GameEngineProps) => {
+  return <GameEngine {...args} gameData={gameEngineData[Game.Image]} />;
+};
+
 export default meta;

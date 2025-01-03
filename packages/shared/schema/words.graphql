@@ -36,11 +36,11 @@ enum Tense {
   futr
   cond
   psub
+  ppci
   # gppt
   # pisb1
   # pisb2
   # fsub
-  # ppci
   # ppsi
   # pant
   # fpin
@@ -75,6 +75,7 @@ type WordStatistics {
   TYPE_WORD: WordStatisticsField
   SELECT_WORD: WordStatisticsField
   SELECT_DEF: WordStatisticsField
+  IMAGE: WordStatisticsField
   CONJUGATION: WordStatisticsField
   GENDER: WordStatisticsField
 }

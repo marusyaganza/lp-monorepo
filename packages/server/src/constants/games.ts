@@ -33,11 +33,19 @@ export const GAMES: GameConfig[] = [
     languages: [Language.English, Language.Spanish]
   },
   {
+    name: 'PictureWord Blitz',
+    desc: 'Identify objects from pictures and type their names to enhance vocabulary skills!',
+    id: 'image',
+    type: Game.Image,
+    orderNum: 4,
+    languages: [Language.English, Language.Spanish]
+  },
+  {
     name: 'Conjugation Quest',
     desc: 'Master verb conjugations across tenses and languages in fast-paced, interactive challenges!',
     id: 'conjugation',
     type: Game.Conjugation,
-    orderNum: 4,
+    orderNum: 5,
     languages: [Language.Spanish]
   },
   {
@@ -45,7 +53,7 @@ export const GAMES: GameConfig[] = [
     desc: 'Choose nouns and match their gender. Test linguistic skills in thrilling rounds!',
     id: 'gender',
     type: Game.Gender,
-    orderNum: 5,
+    orderNum: 6,
     languages: [Language.Spanish]
   }
 ];
