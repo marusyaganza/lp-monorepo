@@ -52,7 +52,8 @@ export const tasks = {
   [Game.SelectDef]: 'Select a definition that means ',
   [Game.SelectWord]: 'Select a word that means ',
   [Game.TypeWord]: 'Type a word that means ',
-  [Game.Gender]: 'Pick the Correct Gender'
+  [Game.Gender]: 'Pick the Correct Gender',
+  [Game.Image]: 'Type the name of the object shown in the picture.'
 };
 
 export enum GameStage {
@@ -68,5 +69,6 @@ export const TENSES: Record<Tense, string> = {
   pind: 'Presente indicativo',
   psub: 'Presente subjentivo',
   pret: 'Pretérito imperfecto',
-  pprf: 'Pretérito perfecto simple'
+  pprf: 'Pretérito indefinido',
+  ppci: 'Pretérito perfecto'
 };

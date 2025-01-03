@@ -5,6 +5,7 @@ enum Game {
   SELECT_DEF
   CONJUGATION
   GENDER
+  IMAGE
 }
 
 type GameConfig {
@@ -31,6 +32,7 @@ type SettingsByGame {
   SELECT_DEF: GameSettings!
   CONJUGATION: GameSettings!
   GENDER: GameSettings!
+  IMAGE: GameSettings!
 }
 
 type GameQuestionAdditionalInfo {

@@ -56,6 +56,16 @@ export interface IWordWithAudio {
   alternativeSpelling?: string[];
 }
 
+export interface IWordWithImage {
+  imgUrl: string;
+  name: string;
+  audioUrl?: string;
+  id: string;
+  defs: WordDefinition[];
+  shortDef: string[];
+  alternativeSpelling?: string[];
+}
+
 export interface IMinimalWord {
   id?: string;
   name: string;

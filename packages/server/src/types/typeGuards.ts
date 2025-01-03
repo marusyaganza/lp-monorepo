@@ -10,7 +10,8 @@ import {
   IAutenticatedContext,
   IResolverContext,
   IUserTokenInfo,
-  IWordWithAudio
+  IWordWithAudio,
+  IWordWithImage
 } from './types';
 
 export function isSuggestion(data: any): data is Suggestions {
@@ -48,6 +49,10 @@ export function isTypedArray<T>(
 
 export function isWordWithAudio(data: any): data is IWordWithAudio {
   return 'audioUrl' in data;
+}
+
+export function isWordWithImage(data: any): data is IWordWithImage {
+  return 'imgUrl' in data;
 }
 
 export function isDictionaryWord(data: any): data is DictionaryWord {

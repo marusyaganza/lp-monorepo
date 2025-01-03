@@ -8,6 +8,12 @@ export const gameData: Record<Game, Partial<GameProps>> = {
       'https://media.merriam-webster.com/audio/prons/en/us/mp3/w/wheel001.mp3'
     ]
   },
+  [Game.Image]: {
+    task: 'Type the name of the object shown in the picture.',
+    question: [
+      'https://media3.giphy.com/media/5B4Dl7V8cFaYo/giphy.webp?cid=ecf05e47gbztqmjhc66iptsoizhtguk4go6ivpanugxhx4pk&ep=v1_gifs_search&rid=giphy.webp&ct=g'
+    ]
+  },
   [Game.TypeWord]: {
     task: 'Type a word that means',
     correctAnswer: ['wheel'],
@@ -70,10 +76,8 @@ export const gameEngineData: Record<Game, GameData> = {
         question: [
           'https://media.merriam-webster.com/audio/prons/es/me/mp3/a/aprox01sp.mp3'
         ],
-        options: null,
         answer: ['aproximado'],
         additionalInfo: {
-          imgUrl: null,
           shortDef: '<b>aproximado means</b> approximate, estimated',
           examples: []
         }
@@ -83,10 +87,8 @@ export const gameEngineData: Record<Game, GameData> = {
         question: [
           'https://media.merriam-webster.com/audio/prons/es/me/mp3/t/tanto01sp.mp3'
         ],
-        options: null,
         answer: ['tanto'],
         additionalInfo: {
-          imgUrl: null,
           shortDef: '<b>tanto means</b> so much',
           examples: [
             {
@@ -117,7 +119,6 @@ export const gameEngineData: Record<Game, GameData> = {
         question: [
           'https://media.merriam-webster.com/audio/prons/es/me/mp3/a/apena02sp.mp3'
         ],
-        options: null,
         answer: ['apenas'],
         additionalInfo: {
           imgUrl: '',
@@ -133,6 +134,70 @@ export const gameEngineData: Record<Game, GameData> = {
     ],
     task: "Type the word that you've heard",
     type: Game.Audio
+  },
+  [Game.Image]: {
+    type: Game.Image,
+    questions: [
+      {
+        wordId: '67713d584c02babb818f8e0a',
+        question: [
+          'https://merriam-webster.com/assets/mw/static/art/dict/wheel.gif'
+        ],
+        answer: ['wheel'],
+        additionalInfo: {
+          audioUrl:
+            'https://media.merriam-webster.com/audio/prons/en/us/mp3/w/wheel001.mp3',
+          shortDef:
+            '<b>wheel means</b> a circular frame of hard material that may be solid, partly solid, or spoked and that is capable of turning on an axle',
+          examples: [
+            {
+              text: '… drivers are expected to keep their hands on the <i>wheel</i> and remain attentive …'
+            },
+            {
+              text: 'a big <i>wheel</i>'
+            }
+          ]
+        }
+      },
+      {
+        wordId: '67713d674c02babb818f8e15',
+        question: [
+          'https://merriam-webster.com/assets/mw/static/art/dict/heart.gif'
+        ],
+        answer: ['heart'],
+        additionalInfo: {
+          audioUrl:
+            'https://media.merriam-webster.com/audio/prons/en/us/mp3/h/heart001.mp3',
+          shortDef:
+            '<b>heart means</b> a hollow muscular organ of vertebrate animals that by its rhythmic contraction acts as a force pump maintaining the circulation of the blood',
+          examples: [
+            {
+              text: 'never lost <i>heart</i>'
+            },
+            {
+              text: 'knew it in his <i>heart</i>'
+            },
+            {
+              text: 'a man after my own <i>heart</i>'
+            }
+          ]
+        }
+      },
+      {
+        wordId: '67713de74c02babb818f8e3e',
+        question: [
+          'https://merriam-webster.com/assets/mw/static/art/dict/guineafo.gif'
+        ],
+        answer: ['guinea fowl'],
+        additionalInfo: {
+          audioUrl: '',
+          shortDef:
+            '<b>guinea fowl means</b> an African bird (Numida meleagris) related to the pheasants, raised for food in many parts of the world, and marked by a bare neck and head and slaty plumage speckled with white; broadly : any of several related birds',
+          examples: []
+        }
+      }
+    ],
+    task: "Type the word that you've heard"
   },
   [Game.SelectDef]: {
     questions: [
@@ -151,7 +216,6 @@ export const gameEngineData: Record<Game, GameData> = {
         additionalInfo: {
           audioUrl:
             'https://media.merriam-webster.com/audio/prons/es/me/mp3/e/escon01sp.mp3',
-          imgUrl: null,
           examples: []
         }
       },
@@ -194,7 +258,6 @@ export const gameEngineData: Record<Game, GameData> = {
         additionalInfo: {
           audioUrl:
             'https://media.merriam-webster.com/audio/prons/es/me/mp3/a/atrac02sp.mp3',
-          imgUrl: null,
           examples: []
         }
       }
@@ -218,7 +281,6 @@ export const gameEngineData: Record<Game, GameData> = {
         answer: ['suave'],
         additionalInfo: {
           audioUrl: null,
-          imgUrl: null,
           examples: []
         }
       },
@@ -237,7 +299,6 @@ export const gameEngineData: Record<Game, GameData> = {
         additionalInfo: {
           audioUrl:
             'https://media.merriam-webster.com/audio/prons/es/me/mp3/a/aleja01sp.mp3',
-          imgUrl: null,
           examples: []
         }
       },
@@ -256,7 +317,6 @@ export const gameEngineData: Record<Game, GameData> = {
         additionalInfo: {
           audioUrl:
             'https://media.merriam-webster.com/audio/prons/es/me/mp3/b/belic02sp.mp3',
-          imgUrl: null,
           examples: [
             {
               text: 'conflicto bélico',
@@ -274,7 +334,6 @@ export const gameEngineData: Record<Game, GameData> = {
       {
         wordId: '6718db19d3ab9c18a61064e9',
         question: ['to fatten, to fatten up', 'to gain weight'],
-        options: null,
         answer: ['engordar'],
         additionalInfo: {
           audioUrl:
@@ -291,7 +350,6 @@ export const gameEngineData: Record<Game, GameData> = {
       {
         wordId: '6718dcd7d3ab9c18a6106647',
         question: ['bone', 'pit, stone (of a fruit)'],
-        options: null,
         answer: ['hueso'],
         additionalInfo: {
           audioUrl:
@@ -308,12 +366,10 @@ export const gameEngineData: Record<Game, GameData> = {
       {
         wordId: '6718e18fd3ab9c18a61066f1',
         question: ['to reflect, to think'],
-        options: null,
         answer: ['reflexionar'],
         additionalInfo: {
           audioUrl:
             'https://media.merriam-webster.com/audio/prons/es/me/mp3/r/refle04sp.mp3',
-          imgUrl: null,
           examples: []
         }
       }
@@ -326,12 +382,10 @@ export const gameEngineData: Record<Game, GameData> = {
       {
         wordId: '66584d4f9147a842f6c018f2',
         question: ['espiar'],
-        options: null,
         answer: ['espío', 'espías', 'espía', 'espiamos', 'espiáis', 'espían'],
         additionalInfo: {
           audioUrl:
             'https://media.merriam-webster.com/audio/prons/es/me/mp3/e/espia01sp.mp3',
-          imgUrl: null,
           shortDef: '<b>espiar means</b> to spy on, to observe',
           examples: null
         }
@@ -339,7 +393,6 @@ export const gameEngineData: Record<Game, GameData> = {
       {
         wordId: '66584d279147a842f6c018d9',
         question: ['enfadar'],
-        options: null,
         answer: [
           'enfado',
           'enfadas',
@@ -351,7 +404,6 @@ export const gameEngineData: Record<Game, GameData> = {
         additionalInfo: {
           audioUrl:
             'https://media.merriam-webster.com/audio/prons/es/me/mp3/e/enfad01sp.mp3',
-          imgUrl: null,
           shortDef: '<b>enfadar means</b> to annoy, to make angry',
           examples: null
         }
@@ -365,12 +417,10 @@ export const gameEngineData: Record<Game, GameData> = {
       {
         wordId: '66584d4f9147a842f6c018f2',
         question: ['ecologista'],
-        options: null,
         answer: ['masculine', 'feminine'],
         additionalInfo: {
           audioUrl:
             'https://voice.reverso.net/RestPronunciation.svc/v1/output=json/GetVoiceStream/voiceName=Maria22k?voiceSpeed=80&inputText=ZWNvbG9naXN0YQ==',
-          imgUrl: null,
           shortDef: '<b>ecologista means</b> ecologist, environmentalist',
           examples: null
         }
@@ -378,12 +428,10 @@ export const gameEngineData: Record<Game, GameData> = {
       {
         wordId: '66584d279147a842f6c01889',
         question: ['extensión'],
-        options: null,
         answer: ['feminine'],
         additionalInfo: {
           audioUrl:
             'https://voice.reverso.net/RestPronunciation.svc/v1/output=json/GetVoiceStream/voiceName=Maria22k?voiceSpeed=80&inputText=ZXh0ZW5zacOzbg==',
-          imgUrl: null,
           shortDef: '<b>extensión means</b> length, duration',
           examples: [
             {
@@ -396,12 +444,10 @@ export const gameEngineData: Record<Game, GameData> = {
       {
         wordId: '66584d2791478842f6c01889',
         question: ['sobre'],
-        options: null,
         answer: ['masculine'],
         additionalInfo: {
           audioUrl:
             'https://media.merriam-webster.com/audio/prons/es/me/mp3/s/sobre01sp.mp3',
-          imgUrl: null,
           shortDef: '<b>sobre means</b> envelope',
           examples: [
             {

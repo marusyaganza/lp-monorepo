@@ -86,7 +86,8 @@ const conjugationRepetitionSchema = {
   [Tense.Pind]: spacedRepetitionSchema,
   [Tense.Pprf]: spacedRepetitionSchema,
   [Tense.Pret]: spacedRepetitionSchema,
-  [Tense.Psub]: spacedRepetitionSchema
+  [Tense.Psub]: spacedRepetitionSchema,
+  [Tense.Ppci]: spacedRepetitionSchema
 };
 
 const wordRepetitionSchema = new Schema<WordStatistics>(
@@ -95,6 +96,7 @@ const wordRepetitionSchema = new Schema<WordStatistics>(
     [Game.SelectDef]: spacedRepetitionSchema,
     [Game.SelectWord]: spacedRepetitionSchema,
     [Game.TypeWord]: spacedRepetitionSchema,
+    [Game.Image]: spacedRepetitionSchema,
     [Game.Conjugation]: conjugationRepetitionSchema,
     [Game.Gender]: spacedRepetitionSchema
   },
@@ -117,6 +119,7 @@ const wordStatisticsSchema = new Schema<WordStatistics>(
     [Game.SelectDef]: statisticsSchema,
     [Game.SelectWord]: statisticsSchema,
     [Game.TypeWord]: statisticsSchema,
+    [Game.Image]: statisticsSchema,
     [Game.Conjugation]: statisticsSchema,
     [Game.Gender]: statisticsSchema
   },

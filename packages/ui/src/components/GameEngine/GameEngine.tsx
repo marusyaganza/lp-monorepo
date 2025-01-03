@@ -9,6 +9,7 @@ import { GameComponent } from '../Game/GameComponent';
 import { Button } from '../Button/Button';
 import { Progress } from '../Progress/Progress';
 import { GameResultType as GameResultType } from '../../types/gameTypes';
+import { cn } from '../../utils/classnames';
 
 export interface GameEngineProps {
   gameData: GameData;
@@ -57,7 +58,7 @@ export const GameEngine = ({
   if (state?.isCompleted) {
     return (
       <div className={styles.container}>
-        <main className={styles.game}>
+        <main className={cn(styles.game, styles.resultScreen)}>
           <GameResult
             wordCount={state.questions.length}
             erroCount={state.result.errorCount}

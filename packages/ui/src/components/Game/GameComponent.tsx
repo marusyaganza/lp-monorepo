@@ -103,6 +103,7 @@ export const GameComponent = ({
       <section data-cy="additionalInfo" className={styles.additionalInfo}>
         {additionalInfo?.imgUrl && (
           <img
+            loading="lazy"
             className={styles.wordImage}
             src={additionalInfo?.imgUrl}
             alt=""

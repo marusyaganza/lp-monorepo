@@ -402,6 +402,271 @@ exports[`game queries game query with GENDER and SPANISH 1`] = `
 ]
 `;
 
+exports[`game queries game query with IMAGE and ENGLISH 1`] = `
+[
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/serendipity.mp3",
+      "examples": [
+        {
+          "text": "She found the perfect book by sheer serendipity.",
+          "translation": null,
+        },
+      ],
+      "imgUrl": null,
+      "shortDef": "<b>serendipity means</b> Unexpected good fortune.",
+    },
+    "answer": [
+      "serendipity",
+    ],
+    "options": null,
+    "question": [
+      "https://example.com/images/serendipity.jpg",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/ephemeral.mp3",
+      "examples": [
+        {
+          "text": "The beauty of the cherry blossoms is ephemeral.",
+          "translation": null,
+        },
+      ],
+      "imgUrl": null,
+      "shortDef": "<b>ephemeral means</b> Short-lived.",
+    },
+    "answer": [
+      "ephemeral",
+    ],
+    "options": null,
+    "question": [
+      "https://example.com/images/ephemeral.jpg",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/ubiquitous.mp3",
+      "examples": [
+        {
+          "text": "Smartphones have become ubiquitous in modern life.",
+          "translation": null,
+        },
+      ],
+      "imgUrl": null,
+      "shortDef": "<b>ubiquitous means</b> Found everywhere.",
+    },
+    "answer": [
+      "ubiquitous",
+    ],
+    "options": null,
+    "question": [
+      "https://example.com/images/ubiquitous.jpg",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/quixotic.mp3",
+      "examples": [
+        {
+          "text": "His quixotic quest for world peace amused his friends.",
+          "translation": null,
+        },
+      ],
+      "imgUrl": null,
+      "shortDef": "<b>quixotic means</b> Idealistic but impractical.",
+    },
+    "answer": [
+      "quixotic",
+    ],
+    "options": null,
+    "question": [
+      "https://example.com/images/quixotic.jpg",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/solitude.mp3",
+      "examples": [
+        {
+          "text": "She enjoyed the peace and quiet of her mountain solitude.",
+          "translation": null,
+        },
+      ],
+      "imgUrl": null,
+      "shortDef": "<b>solitude means</b> State of being alone.",
+    },
+    "answer": [
+      "solitude",
+    ],
+    "options": null,
+    "question": [
+      "https://example.com/images/solitude.jpg",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/luminous.mp3",
+      "examples": [
+        {
+          "text": "The luminous moon lit up the night sky.",
+          "translation": null,
+        },
+      ],
+      "imgUrl": null,
+      "shortDef": "<b>luminous means</b> Glowing or bright.",
+    },
+    "answer": [
+      "luminous",
+    ],
+    "options": null,
+    "question": [
+      "https://example.com/images/luminous.jpg",
+    ],
+    "wordId": Any<String>,
+  },
+]
+`;
+
+exports[`game queries game query with IMAGE and SPANISH 1`] = `
+[
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/correr.mp3",
+      "examples": [
+        {
+          "text": "Él puede correr muy rápido.",
+          "translation": "He can run very fast.",
+        },
+      ],
+      "imgUrl": null,
+      "shortDef": "<b>correr means</b> To run.",
+    },
+    "answer": [
+      "correr",
+      "korrer",
+    ],
+    "options": null,
+    "question": [
+      "https://example.com/images/correr.jpg",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/felicidad.mp3",
+      "examples": [
+        {
+          "text": "Su felicidad es contagiosa.",
+          "translation": "Her happiness is contagious.",
+        },
+      ],
+      "imgUrl": null,
+      "shortDef": "<b>felicidad means</b> Happiness.",
+    },
+    "answer": [
+      "felicidad",
+      "felisidad",
+    ],
+    "options": null,
+    "question": [
+      "https://example.com/images/felicidad.jpg",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/periodista.mp3",
+      "examples": [
+        {
+          "text": "El/La periodista escribió un artículo fascinante.",
+          "translation": "The journalist wrote a fascinating article.",
+        },
+      ],
+      "imgUrl": null,
+      "shortDef": "<b>periodista means</b> Journalist",
+    },
+    "answer": [
+      "periodista",
+      "periodísta",
+    ],
+    "options": null,
+    "question": [
+      "https://example.com/images/periodista.jpg",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/grande.mp3",
+      "examples": [
+        {
+          "text": "La casa es muy grande.",
+          "translation": "The house is very big.",
+        },
+      ],
+      "imgUrl": null,
+      "shortDef": "<b>grande means</b> Big, large.",
+    },
+    "answer": [
+      "grande",
+    ],
+    "options": null,
+    "question": [
+      "https://example.com/images/grande.jpg",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/pensar.mp3",
+      "examples": [
+        {
+          "text": "Pienso en ti todos los días.",
+          "translation": "I think about you every day.",
+        },
+      ],
+      "imgUrl": null,
+      "shortDef": "<b>pensar means</b> To think.",
+    },
+    "answer": [
+      "pensar",
+    ],
+    "options": null,
+    "question": [
+      "https://example.com/images/pensar.jpg",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/hermosura.mp3",
+      "examples": [
+        {
+          "text": "Su hermosura es indescriptible.",
+          "translation": "Her beauty is indescribable.",
+        },
+      ],
+      "imgUrl": null,
+      "shortDef": "<b>hermosura means</b> Beauty.",
+    },
+    "answer": [
+      "hermosura",
+    ],
+    "options": null,
+    "question": [
+      "https://example.com/images/hermosura.jpg",
+    ],
+    "wordId": Any<String>,
+  },
+]
+`;
+
 exports[`game queries game query with SELECT_DEF and ENGLISH 1`] = `
 [
   {
@@ -1535,6 +1800,53 @@ exports[`game queries game query with valid user for Conjugation game and pind t
       "pensamos",
       "pensáis",
       "piensan",
+    ],
+    "options": null,
+    "question": [
+      "pensar",
+    ],
+    "wordId": Any<String>,
+  },
+]
+`;
+
+exports[`game queries game query with valid user for Conjugation game and ppci tense 1`] = `
+[
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/correr.mp3",
+      "examples": null,
+      "imgUrl": "https://example.com/images/correr.jpg",
+      "shortDef": "<b>correr means</b> To run.",
+    },
+    "answer": [
+      "he corrido",
+      "has corrido",
+      "ha corrido",
+      "hemos corrido",
+      "habéis corrido",
+      "han corrido",
+    ],
+    "options": null,
+    "question": [
+      "correr",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/pensar.mp3",
+      "examples": null,
+      "imgUrl": "https://example.com/images/pensar.jpg",
+      "shortDef": "<b>pensar means</b> To think.",
+    },
+    "answer": [
+      "he pensado",
+      "has pensado",
+      "ha pensado",
+      "hemos pensado",
+      "habéis pensado",
+      "han pensado",
     ],
     "options": null,
     "question": [

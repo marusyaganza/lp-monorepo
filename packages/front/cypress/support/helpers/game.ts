@@ -31,7 +31,11 @@ const additionalInfo = {
 };
 
 export function playGameOnce(gameType: Game, answer: string) {
-  if (gameType === Game.TypeWord || gameType === Game.Audio) {
+  if (
+    gameType === Game.TypeWord ||
+    gameType === Game.Audio ||
+    gameType === Game.Image
+  ) {
     cy.getByCy('gameAnswer').find('input').type(`${answer}{Enter}`);
   }
   if (gameType === Game.SelectWord) {
@@ -66,7 +70,7 @@ export function playConjugationGame(answer: string) {
 export function startConjugationGame(query: string, tense: Tense) {
   cy.addWord(query);
   cy.getByCy('headerNav').contains(HEADER_TEXTS.practice).click();
-  cy.getByCy('gameCard').eq(4).click();
+  cy.getByCy('gameCard').eq(5).click();
   cy.checkPathName('/games/conjugate');
   cy.getByCy('tense-selector').find('button').click();
   cy.getByCy('selectOptions').contains(TENSES[tense]).click();
@@ -104,6 +108,7 @@ export function checkGame(
     if (
       gameType !== Game.TypeWord &&
       gameType !== Game.SelectWord &&
+      gameType !== Game.Image &&
       audioReq
     ) {
       cy.checkReq(audioReq);
@@ -135,7 +140,7 @@ export function checkGame(
       });
     }
 
-    if (imgUrl) {
+    if (imgUrl && gameType !== Game.Image) {
       cy.getByCy('additionalInfo')
         .find('img')
         .should('be.visible')

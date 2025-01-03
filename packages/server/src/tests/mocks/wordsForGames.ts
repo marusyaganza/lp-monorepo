@@ -285,6 +285,17 @@ export const wordsWithConjugation = [
         ]
       },
       {
+        cjid: 'ppci',
+        cjfs: [
+          'he pensado',
+          'has pensado',
+          'ha pensado',
+          'hemos pensado',
+          'habéis pensado',
+          'han pensado'
+        ]
+      },
+      {
         cjid: 'gppt',
         cjfs: ['pensando', 'pensado']
       }
@@ -359,6 +370,17 @@ export const wordsWithConjugation = [
           'correríamos',
           'correríais',
           'correrían'
+        ]
+      },
+      {
+        cjid: 'ppci',
+        cjfs: [
+          'he corrido',
+          'has corrido',
+          'ha corrido',
+          'hemos corrido',
+          'habéis corrido',
+          'han corrido'
         ]
       },
       {

@@ -50,6 +50,18 @@ export const games = [
     languages: [Language.English, Language.Spanish]
   },
   {
+    name: 'PictureWord Blitz',
+    desc: 'Identify objects from pictures and type their names to enhance vocabulary skills!',
+    id: 'image',
+    type: Game.Image,
+    wordsPerGame: 6,
+    minWords: 1,
+    optionsPerGame: 0,
+    timesToLearn: 5,
+    orderNum: 4,
+    languages: [Language.English, Language.Spanish]
+  },
+  {
     name: 'Conjugation Quest',
     desc: 'Master verb conjugations across tenses and languages in fast-paced, interactive challenges!',
     id: 'conjugate',
@@ -58,7 +70,7 @@ export const games = [
     minWords: 1,
     optionsPerGame: 0,
     timesToLearn: 5,
-    orderNum: 4,
+    orderNum: 5,
     languages: [Language.Spanish]
   },
   {
@@ -70,7 +82,7 @@ export const games = [
     minWords: 1,
     optionsPerGame: 0,
     timesToLearn: 5,
-    orderNum: 5,
+    orderNum: 6,
     languages: [Language.Spanish]
   }
 ];

@@ -30,7 +30,9 @@ const correctConjAnswers = {
     'ser\u00e9, ser\u00e1s, ser\u00e1, seremos, ser\u00e9is, ser\u00e1n',
   [Tense.Cond]:
     'ser\u00eda, ser\u00edas, ser\u00eda, ser\u00edamos, ser\u00edais, ser\u00edan',
-  [Tense.Psub]: 'sea, seas, sea, seamos, se\u00e1is, sean'
+  [Tense.Psub]: 'sea, seas, sea, seamos, se\u00e1is, sean',
+  [Tense.Ppci]:
+    'he sido, has sido, ha sido, hemos sido, hab\u00e9is sido, han sido'
 };
 
 const incorrectConjAnswers = {
@@ -42,7 +44,9 @@ const incorrectConjAnswers = {
     'ser\u00e9, ser\u00e1s, ser\u00e1, sereamos, ser\u00e9is, ser\u00e1n',
   [Tense.Cond]:
     'ser\u00eda, ser\u00edas, ser\u00eda, sero\u00edamos, ser\u00edais, ser\u00edan',
-  [Tense.Psub]: 'sea, seas, sea, seamos, se\u00e1is, seans'
+  [Tense.Psub]: 'sea, seas, sea, seamos, se\u00e1is, seans',
+  [Tense.Ppci]:
+    'he sido, ha sido, has sido, hemos sido, hab\u00e9is sido, han sido'
 };
 
 const serAudio =

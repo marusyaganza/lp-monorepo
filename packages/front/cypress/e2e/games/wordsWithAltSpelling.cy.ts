@@ -10,6 +10,10 @@ import {
   checkResultScreen,
   playGameOnce
 } from '../../support/helpers/game';
+import {
+  correctDefs,
+  wordWithAltSpelling
+} from '../../support/mocks/newWordInputs';
 
 const audioUrls = {
   [Language.Spanish]:
@@ -18,18 +22,7 @@ const audioUrls = {
     'https://media.merriam-webster.com/audio/prons/en/us/mp3/w/wheel001.mp3'
 };
 
-const imgUrls = {
-  wheel: 'https://merriam-webster.com/assets/mw/static/art/dict/wheel.gif',
-  idioma:
-    'https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Rosetta_Stone.JPG/800px-Rosetta_Stone.JPG'
-};
-
 const languages = Object.values(Language);
-
-const queries = {
-  [Language.English]: 'wheel',
-  [Language.Spanish]: 'idioma'
-};
 
 const incorrectAnswers = {
   [Language.English]: 'quix',
@@ -71,48 +64,43 @@ describe('Game Page', () => {
       game => game.type !== Game.Conjugation && game.type !== Game.Gender
     );
     availableGames.forEach(game => {
-      it(`should start a game with minimal words in ${lang} language`, () => {
-        const query = queries[lang];
+      it(`should answer incorrectly a game with alt. spelling in ${lang} language`, () => {
         cy.changeLanguage(lang);
-        cy.addWord(query);
-        if (lang === Language.Spanish) {
-          cy.get('@headerLink').contains(HEADER_TEXTS.vocabulary).click();
-          cy.getByCy('wordCard').click();
-          cy.getByCy('editButton').click();
-          cy.editWord({ imgUrl: imgUrls.idioma });
-          cy.getByCy('wordForm').find('button[type="submit"]').click();
-          cy.getByCy('spinner').should('not.exist');
-        }
-        cy.get('@headerLink').contains(HEADER_TEXTS.practice).click();
-        cy.getByCy('gameCard').eq(game.orderNum).click();
-        cy.checkPathName(`/games/${game.id}`);
-        checkGame(GameStage.Initial, game.type, query);
-        cy.getByCy('exit-game').click();
-        cy.checkPathName('/games');
-      });
+        const wordInput = wordWithAltSpelling[lang];
+        cy.visit('/words/new');
+        cy.fillWordForm(wordInput);
+        cy.getByCy('wordForm').find('button[type="submit"]').click();
+        cy.checkNotification(
+          'Word added',
+          `${wordInput.name} is added successfully`,
+          true
+        );
 
-      it(`should answer incorrectly and finish a game in ${lang} language`, () => {
-        cy.changeLanguage(lang);
-        const query = queries[lang];
-        cy.addWord(query, query);
-        if (lang === Language.Spanish) {
-          cy.get('@headerLink').contains(HEADER_TEXTS.vocabulary).click();
-          cy.getByCy('wordCard').click();
-          cy.getByCy('editButton').click();
-          cy.editWord({ imgUrl: imgUrls.idioma });
-          cy.getByCy('wordForm').find('button[type="submit"]').click();
-          cy.getByCy('spinner').should('not.exist');
-        }
+        cy.getByCy('spinner').should('not.exist');
+        cy.getByCy('wordCard').first().as('wordCard').click();
+        cy.checkWordCard(
+          { ...wordInput, ...correctDefs[lang] },
+          '@wordCard',
+          'full'
+        );
+
         cy.get('@headerLink').contains(HEADER_TEXTS.practice).click();
+
         cy.getByCy('gameCard').eq(game.orderNum).click();
         cy.checkPathName(`/games/${game.id}`);
         playGameOnce(game.type, incorrectAnswers[lang]);
+        const correctAnswer =
+          game.type === Game.Audio || game.type === Game.TypeWord
+            ? wordInput.alternativeSpelling?.join(', or')
+            : undefined;
         checkGame(
           GameStage.Error,
           game.type,
-          query,
+          wordInput.name,
           `@audioReq-${lang}`,
-          imgUrls[query]
+          wordInput.imgUrl,
+          undefined,
+          correctAnswer
         );
         cy.getByCy('continue-button').click();
         checkResultScreen(0, 1, 0);
@@ -132,30 +120,32 @@ describe('Game Page', () => {
           });
       });
 
-      it(`should answer correctly and finish a game in ${lang} language`, () => {
+      it(`should answer correctly a game with main spelling in ${lang} language`, () => {
         cy.changeLanguage(lang);
-        cy.addWord(queries[lang], queries[lang]);
-        if (lang === Language.Spanish) {
-          cy.get('@headerLink').contains(HEADER_TEXTS.vocabulary).click();
-          cy.getByCy('wordCard').click();
-          cy.getByCy('editButton').click();
-          cy.editWord({ imgUrl: imgUrls.idioma });
-          cy.getByCy('wordForm').find('button[type="submit"]').click();
-          cy.getByCy('spinner').should('not.exist');
-        }
+        const wordInput = wordWithAltSpelling[lang];
+        cy.visit('/words/new');
+        cy.fillWordForm(wordInput);
+        cy.getByCy('wordForm').find('button[type="submit"]').click();
+        cy.checkNotification(
+          'Word added',
+          `${wordInput.name} is added successfully`,
+          true
+        );
+
         cy.get('@headerLink').contains(HEADER_TEXTS.practice).click();
         cy.getByCy('gameCard').eq(game.orderNum).click();
         cy.checkPathName(`/games/${game.id}`);
-        playGameOnce(game.type, queries[lang]);
+        playGameOnce(game.type, wordInput.name);
+
         checkGame(
           GameStage.Success,
           game.type,
-          queries[lang],
-          `@audioReq-${lang}`
+          wordInput.name,
+          `@audioReq-${lang}`,
+          wordInput.imgUrl
         );
         cy.getByCy('continue-button').click();
         checkResultScreen(100, 1, 1);
-
         cy.intercept('POST', 'http://localhost:4000/graphql').as(
           'saveGameResult'
         );

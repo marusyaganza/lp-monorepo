@@ -33,12 +33,20 @@ export const DEFAULT_GAMES_SETTINGS = {
     orderNum: 3,
     languages: [Language.English, Language.Spanish]
   },
+  [Game.Image]: {
+    wordsPerGame: 6,
+    minWords: 1,
+    optionsPerGame: 0,
+    timesToLearn: 5,
+    orderNum: 4,
+    languages: [Language.English, Language.Spanish]
+  },
   [Game.Conjugation]: {
     wordsPerGame: 2,
     minWords: 1,
     optionsPerGame: 0,
     timesToLearn: 5,
-    orderNum: 4,
+    orderNum: 5,
     languages: [Language.Spanish]
   },
   [Game.Gender]: {
@@ -46,7 +54,7 @@ export const DEFAULT_GAMES_SETTINGS = {
     minWords: 1,
     optionsPerGame: 0,
     timesToLearn: 5,
-    orderNum: 5,
+    orderNum: 6,
     languages: [Language.Spanish]
   }
 };

@@ -18,12 +18,12 @@ export const TENSES: Record<Tense, string> = {
   pind: 'Presente indicativo',
   psub: 'Presente subjentivo',
   pret: 'Pretérito imperfecto',
-  pprf: 'Pretérito perfecto simple'
+  pprf: 'Pretérito indefinido',
+  ppci: 'Pretérito perfecto'
   // gppt: 'Gerundio'
   //   pisb1: 'Pretérito imperfecto',
   //   pisb2: 'Pretérito imperfecto 2',
   //   fsub: 'Futuro',
-  //   ppci: 'Pretérito perfecto compuesto',
   //   ppsi: 'Pretérito pluscuamperfecto',
   //   pant: 'Pretérito anterior',
   //   fpin: 'Futuro perfecto',
