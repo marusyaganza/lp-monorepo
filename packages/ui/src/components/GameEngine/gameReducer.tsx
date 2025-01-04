@@ -34,7 +34,7 @@ type NextAction = {
 
 type StartAction = {
   type: GameAction.START;
-  payload: { questions: GameQuestion[] };
+  payload: { questions: GameQuestion[]; gameType: Game };
 };
 
 export function gameReducer(
@@ -44,13 +44,15 @@ export function gameReducer(
   const { type } = action;
 
   if (type === GameAction.START) {
-    const { questions } = action.payload;
+    const { questions, gameType } = action.payload;
     return {
       ...initialState,
       result: { errorCount: 0 },
       resultData: [],
       questions,
-      currentQuestion: questions[0]
+      currentQuestion: questions[0],
+      nextQuestion:
+        gameType === Game.Image ? questions?.[1]?.question?.[0] : undefined
     };
   }
 
@@ -64,6 +66,13 @@ export function gameReducer(
     };
     if (hasError) {
       newState.result.errorCount++;
+    }
+    if (
+      gameType === Game.Image &&
+      state.currentIndex < state.questions.length
+    ) {
+      newState.nextQuestion =
+        state.questions[state.currentIndex + 1]?.question?.[0];
     }
     return newState;
   }

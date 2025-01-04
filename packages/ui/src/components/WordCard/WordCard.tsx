@@ -260,13 +260,15 @@ export const WordCard = ({
           <div className={styles.word}>{renderDefinition()}</div>
           {imgUrl && (
             <figure className={styles.illustration}>
-              <img
-                loading="lazy"
-                data-cy="imgUrl"
-                className={styles.picture}
-                src={imgUrl}
-                alt={`${name} illustration`}
-              />
+              <div className={styles.pictureContainer}>
+                <img
+                  loading="lazy"
+                  data-cy="imgUrl"
+                  className={styles.picture}
+                  src={imgUrl}
+                  alt={`${name} illustration`}
+                />
+              </div>
               {imgDesc && (
                 <figcaption data-cy="imgDesc">
                   {<DictionaryEntity text={imgDesc} />}
