@@ -1,4 +1,4 @@
-import React, { FormEventHandler, useState } from 'react';
+import React, { FormEventHandler, useEffect, useState } from 'react';
 import { cn } from '../../../../utils/classnames';
 import { TextInput } from '../../../TextInput/TextInput';
 import styles from '../../Game.module.css';
@@ -6,8 +6,9 @@ import { GameProps, GameStage } from '../../../../types/gameTypes';
 import { Button } from '../../../Button/Button';
 import { checkTextAnswer } from '../helpers';
 import { AudioButton } from '../../../AudioButton/AudioButton';
+import { Spinner } from '../../../Spinner/Spinner';
 
-/**Component to display Audio game*/
+/**Component to display Image game*/
 export const ImageGame = ({
   task,
   question,
@@ -17,10 +18,20 @@ export const ImageGame = ({
   inputRef,
   buttonRef,
   correctAnswer,
+  nextQuestion,
   audioUrl,
+  shortDef,
   onNext
 }: GameProps) => {
   const [value, setValue] = useState('');
+  const [currentImage, setCurrentImage] = useState(question[0]);
+
+  useEffect(() => {
+    if (nextQuestion?.[0]) {
+      const img = new Image();
+      img.src = nextQuestion;
+    }
+  }, [nextQuestion]);
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = e => {
     e.preventDefault();
@@ -28,6 +39,7 @@ export const ImageGame = ({
   };
 
   const handleNext = () => {
+    setCurrentImage(nextQuestion || '');
     setValue('');
     onNext();
   };
@@ -92,12 +104,17 @@ export const ImageGame = ({
             {task} {renderAudioButton()}
           </p>
           <div className={styles.questionContainer}>
-            <img
-              loading="lazy"
-              className={styles.imageQuestion}
-              src={question[0]}
-              alt=""
-            />
+            <div className={styles.imageContainer}>
+              {currentImage ? (
+                <img
+                  className={styles.imageQuestion}
+                  src={currentImage}
+                  alt={shortDef || ''}
+                />
+              ) : (
+                <Spinner />
+              )}
+            </div>
           </div>
           <div className={styles.answer}>
             <TextInput
@@ -107,7 +124,7 @@ export const ImageGame = ({
               variant={currentStage}
               name="word"
               onChange={setValue}
-              isDisabled={currentStage !== 'initial'}
+              isDisabled={currentStage !== 'initial' || !currentImage}
             />
           </div>
         </article>

@@ -29,7 +29,7 @@ export const GameEngine = ({
     if (questions?.length) {
       dispatch({
         type: GameAction.START,
-        payload: { questions }
+        payload: { questions, gameType: gameData.type }
       });
     }
   }, [gameData]);
@@ -94,6 +94,7 @@ export const GameEngine = ({
           type={gameData.type}
           onSubmit={handlerSubmit}
           question={state?.currentQuestion.question}
+          nextQuestion={state?.nextQuestion}
           correctAnswer={state.currentQuestion.answer}
           options={state.currentQuestion?.options}
           task={gameData?.task}

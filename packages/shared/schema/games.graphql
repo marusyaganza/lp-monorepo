@@ -43,7 +43,7 @@ type GameQuestionAdditionalInfo {
 }
 
 type GameQuestion {
-  question: [String!]
+  question: [String!]!
   options: [String!]
   answer: [String!]!
   wordId: ID!

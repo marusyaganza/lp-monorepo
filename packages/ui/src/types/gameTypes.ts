@@ -17,6 +17,7 @@ export interface GameState {
   };
   questions: GameQuestion[];
   currentQuestion?: GameQuestion;
+  nextQuestion?: string;
   progress: number;
 }
 
@@ -28,8 +29,10 @@ export interface GameResultType {
 export interface GameProps {
   task: string;
   audioUrl?: string | null;
+  shortDef?: string | null;
   options?: string[] | null;
   question: string[];
+  nextQuestion?: string;
   onSubmit: (value: GameResultType) => void;
   inputRef: RefObject<HTMLInputElement>;
   className?: string;
