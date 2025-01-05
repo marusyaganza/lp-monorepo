@@ -1,0 +1,16 @@
+version: "3.8"
+services:
+  lp-server:
+    image: "mganza/language-power:server-prod"
+    ports:
+      - "4000:4000"
+    env_file:
+      - ./.env
+  lp-front:
+    image: "mganza/language-power:front-prod"
+    ports:
+      - '8080:80'
+    stdin_open: true
+    tty: true
+    depends_on:
+      - lp-server

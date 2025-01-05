@@ -1,6 +1,6 @@
 export const mockUser = {
   email: 'test@test.com',
-  password: '$2a$10$QZlF7aBJxZQJaGczkWcXA.HIDQ0DtEFrjbcgf1a.iXEcwaaTolPY6',
+  password: '$2a$10$BWXVWTiZqETNfnD.VmA4BeQkCEICXsl8hXLVBKq0.fxANC.ARWLt6',
   firstName: 'Test',
   lastName: 'User1',
   role: 'MEMBER',
