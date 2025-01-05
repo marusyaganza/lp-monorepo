@@ -1,31 +1,35 @@
-## Required software
+# Project README
 
-- volta
-- docker
+## Required Software
 
-## How to start a project
+- **Volta**: A JavaScript tool manager that ensures consistent project tooling.
+- **Docker**: A platform for developing, shipping, and running applications in containers.
 
-run `yarn codegen` to generate types from graphql schema for entire project
-run `docker-compose up` to start a project
-open `localhost:8080` in your browser
+## How to Start the Project
 
-## Production and deploy
+### Locally
 
-run `docker compose -p lp-prod -f docker-compose-prod.yml up -d`
-to start the server on port `4000` and the frontend on `8080`in detached mode.
+1. Run `yarn dev` to start the project with the development database.
+2. Open `http://localhost:8080` in your browser to access the application.
+3. Open `http://localhost:4000` to work with the Apollo GraphQL playground.
 
-run `docker compose down` to stop containers.
+### For Testing
 
-run `yarn build:front` to build frontend. It generates files in `packages/front/public`.
+Run `yarn dev:test` to start the project with a test database (it will be deleted when the script is finished).
 
-## Develop deploy
+## Deploy Process
 
-run `docker compose -p lp-dev -f docker-compose-dev.yml up -d`
-to start the server on port `4001` and the frontend on `8081`in detached mode.
+### Production
 
-run `docker compose down` to stop containers.
+1. Run `yarn prod:docker` to build Docker images and upload them to Docker Hub.
+2. Use the `build-prod.sh` script to deploy it on the server.
 
-## Pre-production deploy
+### Development
 
-run `docker compose -f docker-compose-preprod.yml up -d`
-to start front on port `8080`. For this case, the server and DB should be run locally.
+1. Run `yarn dev:docker` to build Docker images and upload them to Docker Hub.
+2. Use the `build-dev.sh` script to deploy it on the server.
+
+## Pre-production Testing
+
+1. Run `docker compose -f docker-compose-test.yml up -d` to start the client on port `8080`. This simulates the production environment but runs with a local database.
+2. Run `yarn test:preprod` for linting, Jest tests, and Cypress tests.
