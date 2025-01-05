@@ -77,6 +77,7 @@ export const testData = {
   [Language.Spanish]: [
     {
       name: 'manzana',
+      particle: 'feminine noun',
       audioUrl: 'https://example.com/audio/manzana.mp3',
       id: '1',
       defs: [
@@ -98,6 +99,7 @@ export const testData = {
       name: 'naranja',
       audioUrl: 'https://example.com/audio/naranja.mp3',
       id: '2',
+      particle: 'feminine noun',
       defs: [
         {
           def: 'A citrus fruit with a tough bright orange rind and juicy sweet flesh.',
@@ -124,26 +126,28 @@ export const testData = {
       alternativeSpelling: ['naranga', 'naranj']
     },
     {
-      name: 'plátano',
+      name: 'sartén',
+      particle: 'masculine or feminine noun',
       audioUrl: 'https://example.com/audio/platano.mp3',
       id: '3',
       defs: [
         {
-          def: 'A long curved fruit that grows in clusters and has soft pulpy flesh and yellow skin when ripe.',
+          def: 'frying pan',
           examples: [
             {
-              text: 'Él peló un plátano y se lo comió.',
-              translation: 'He peeled a banana and ate it.'
+              text: 'Para evitar que se pegue, es mejor engrasar la sartén antes de freír.',
+              translation:
+                "To prevent sticking, it's best to powder the pan before frying."
             }
           ]
         }
       ],
-      shortDef: ['Curved fruit with yellow skin.'],
-      imgUrl: 'https://example.com/images/platano.jpg',
-      alternativeSpelling: ['platáno', 'plátan']
+      shortDef: ['skillet'],
+      imgUrl: 'https://example.com/images/skillet.jpg'
     },
     {
       name: 'fresa',
+      particle: 'feminine noun',
       audioUrl: 'https://example.com/audio/fresa.mp3',
       id: '4',
       defs: [
@@ -163,6 +167,7 @@ export const testData = {
     },
     {
       name: 'piña',
+      particle: 'feminine noun',
       audioUrl: 'https://example.com/audio/pina.mp3',
       id: '5',
       defs: [
@@ -181,23 +186,24 @@ export const testData = {
       alternativeSpelling: ['pina', 'pi-ñá']
     },
     {
-      name: 'uva',
-      audioUrl: 'https://example.com/audio/uva.mp3',
+      name: 'translado',
+      particle: 'masculine noun',
+      audioUrl: 'https://example.com/audio/translado.mp3',
       id: '6',
       defs: [
         {
-          def: 'A small juicy fruit with a smooth skin and a sweet taste.',
+          def: 'transfer, move',
           examples: [
             {
-              text: 'Él me ofreció un racimo de uvas.',
-              translation: 'He offered me a bunch of grapes.'
+              text: 'Aproveche el servicio de translado de la más alta calidad.',
+              translation:
+                'ake advantage of the highest quality transfer service.'
             }
           ]
         }
       ],
-      shortDef: ['Small juicy fruit with smooth skin.'],
-      imgUrl: 'https://example.com/images/uva.jpg',
-      alternativeSpelling: ['uba', 'uvá']
+      shortDef: ['transfer.'],
+      imgUrl: 'https://example.com/images/translado.jpg'
     }
   ]
 } as Record<Language, Word[]>;
@@ -251,6 +257,47 @@ export const wordsWithConjugation = [
       {
         cjid: Tense.Impf,
         cjfs: ['piensa', 'piense', 'pensemos', 'pensad', 'piensen']
+      },
+      {
+        cjid: 'cond',
+        cjfs: [
+          'pensaría',
+          'pensarías',
+          'pensaría',
+          'pensaríamos',
+          'pensaríais',
+          'pensarían'
+        ]
+      },
+      {
+        cjid: 'psub',
+        cjfs: ['piense', 'pienses', 'piense', 'pensemos', 'penséis', 'piensen']
+      },
+      {
+        cjid: 'futr',
+        cjfs: [
+          'pensaré',
+          'pensarás',
+          'pensará',
+          'pensaremos',
+          'pensaréis',
+          'pensarán'
+        ]
+      },
+      {
+        cjid: 'ppci',
+        cjfs: [
+          'he pensado',
+          'has pensado',
+          'ha pensado',
+          'hemos pensado',
+          'habéis pensado',
+          'han pensado'
+        ]
+      },
+      {
+        cjid: 'gppt',
+        cjfs: ['pensando', 'pensado']
       }
     ]
   },
@@ -302,6 +349,47 @@ export const wordsWithConjugation = [
       {
         cjid: Tense.Impf,
         cjfs: ['corre', 'corra', 'corramos', 'corred', 'corran']
+      },
+      {
+        cjid: 'futr',
+        cjfs: [
+          'correré',
+          'correrás',
+          'correrá',
+          'correremos',
+          'correréis',
+          'correrán'
+        ]
+      },
+      {
+        cjid: 'cond',
+        cjfs: [
+          'correría',
+          'correrías',
+          'correría',
+          'correríamos',
+          'correríais',
+          'correrían'
+        ]
+      },
+      {
+        cjid: 'ppci',
+        cjfs: [
+          'he corrido',
+          'has corrido',
+          'ha corrido',
+          'hemos corrido',
+          'habéis corrido',
+          'han corrido'
+        ]
+      },
+      {
+        cjid: 'psub',
+        cjfs: ['corra', 'corras', 'corra', 'corramos', 'corráis', 'corran']
+      },
+      {
+        cjid: 'gppt',
+        cjfs: ['corriendo', 'corrido']
       }
     ]
   }

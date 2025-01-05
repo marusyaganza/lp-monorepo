@@ -21,5 +21,10 @@ export const wordQueryResolvers: QueryResolvers<IResolverContext> = {
   searchWord: authenticated(async (_, { input }, { searchWord }) => {
     const searchResult = await searchWord(input?.search, input.language);
     return searchResult;
+  }),
+
+  verbs: authenticated(async (_, __, { models, user }) => {
+    const verbs = await models.Word.findVerbs(user.id);
+    return verbs;
   })
 };

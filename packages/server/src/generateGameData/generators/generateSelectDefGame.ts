@@ -2,9 +2,9 @@ import { DEFAULT_LANGUAGE } from '../../constants/defaultValues';
 import { WordModel } from '../../db/models/Word/Word';
 import {
   Game,
-  GameConfig,
   GameData,
   GameDataInput,
+  GameSettings,
   Word
 } from '../../generated/graphql';
 import {
@@ -17,7 +17,7 @@ import {
 export async function generateSelectDefGame(
   words: Word[],
   parameters: GameDataInput,
-  config: GameConfig,
+  config: GameSettings,
   user: string
 ): Promise<GameData> {
   const gameType = Game.SelectDef;
@@ -38,7 +38,7 @@ export async function generateSelectDefGame(
       language
     );
     const options = opts.map(opt => prepareDef(opt?.shortDef?.[0], name));
-    const answer = prepareDef(shortDef[0], name);
+    const answer = [prepareDef(shortDef[0], name)];
     const examples = getExamples(defs);
     return {
       answer,

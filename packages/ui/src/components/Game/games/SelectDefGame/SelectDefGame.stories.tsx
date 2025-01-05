@@ -19,29 +19,11 @@ export const GameDefault = (args: GameProps) => (
 );
 
 export const GameSuccess = (args: GameProps) => {
-  return (
-    <SelectDefGame
-      {...args}
-      {...game}
-      value="wheel"
-      currentStage={GameStage.Success}
-      currentResult={{ type: GameStage.Success, correctAnswer: 'wheel' }}
-    />
-  );
+  return <SelectDefGame {...args} {...game} currentStage={GameStage.Success} />;
 };
 
 export const GameError = (args: GameProps) => (
-  <SelectDefGame
-    {...args}
-    {...game}
-    value="flower"
-    currentStage={GameStage.Error}
-    currentResult={{
-      type: 'error',
-      correctAnswer: 'wheel',
-      incorrectAnswer: 'flower'
-    }}
-  />
+  <SelectDefGame {...args} {...game} currentStage={GameStage.Error} />
 );
 
 export default meta;

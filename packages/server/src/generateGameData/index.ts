@@ -1,12 +1,14 @@
 import { DEFAULT_LANGUAGE } from '../constants/defaultValues';
+import { DEFAULT_GAMES_SETTINGS } from '../constants/defultGameSettings';
 import { ERROR_MESSAGES } from '../constants/errorMessages';
-import { GameModel } from '../db/models/Game/Game';
 import { WordModel } from '../db/models/Word/Word';
-import { Game, GameDataInput } from '../generated/graphql';
+import { Game, GameDataInput, SortBy } from '../generated/graphql';
 import { GameDataGeneratorFunc } from '../types/types';
 import { OperationResolutionError } from '../utils/apolloCustomErrors';
 import { generateAudioGame } from './generators/generateAudioGame';
 import { generateConjugationGame } from './generators/generateConjugationGame';
+import { generateGenderGame } from './generators/generateGenderGame';
+import { generateImageGame } from './generators/generateImageGame';
 import { generateSelectDefGame } from './generators/generateSelectDefGame';
 import { generateSelectWordGame } from './generators/generateSelectWordGame';
 import { generateTypeWordGame } from './generators/generateTypeWordGame';
@@ -16,7 +18,9 @@ const generators: Record<Game, GameDataGeneratorFunc> = {
   [Game.TypeWord]: generateTypeWordGame,
   [Game.SelectWord]: generateSelectWordGame,
   [Game.SelectDef]: generateSelectDefGame,
-  [Game.Conjugation]: generateConjugationGame
+  [Game.Image]: generateImageGame,
+  [Game.Conjugation]: generateConjugationGame,
+  [Game.Gender]: generateGenderGame
 };
 
 export async function generateGameData(
@@ -24,24 +28,32 @@ export async function generateGameData(
   user: string
 ) {
   const language = parameters?.language || DEFAULT_LANGUAGE;
-  const { gameType } = parameters;
-  const config = await GameModel.findOne({
-    type: gameType,
-    languages: language
-  });
-
-  if (!config) {
-    throw new OperationResolutionError(ERROR_MESSAGES.GAME_NOT_FOUND);
+  const { gameType, wordId } = parameters;
+  const config = DEFAULT_GAMES_SETTINGS[gameType];
+  if (!config.languages.includes(language)) {
+    throw new OperationResolutionError(ERROR_MESSAGES.GAME_NOT_AVAILABLE);
   }
 
-  const { minWords } = config;
+  let words;
 
-  const words = await WordModel.selectWordsForGame(parameters, config, user);
-
-  if (!minWords || words.length < minWords) {
-    throw new OperationResolutionError(
-      `not enough words to start a game. You have ${words.length} word. Words requited for the game: ${minWords}`
-    );
+  if (wordId) {
+    const word = await WordModel.findById(wordId, user);
+    if (!word) {
+      throw new OperationResolutionError(`Word is not found`);
+    }
+    words = [word];
+  } else {
+    if (parameters.sortBy === SortBy.SpacedRepetition) {
+      words = await WordModel.getWordsForPractice(parameters, config, user);
+    } else {
+      words = await WordModel.selectWordsForGame(parameters, config, user);
+    }
+    const { minWords } = config;
+    if (!minWords || words.length < minWords) {
+      throw new OperationResolutionError(
+        `not enough words to start a game. You have ${words.length} word. Words requited for the game: ${minWords}`
+      );
+    }
   }
 
   const gameData = generators[gameType](words, parameters, config, user);

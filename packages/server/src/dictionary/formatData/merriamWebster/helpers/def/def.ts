@@ -1,8 +1,35 @@
-import { DefEntity, CognateEntity } from '../../types/types';
-import { DefsInput } from '../../../../../generated/graphql';
+import { DefEntity, CognateEntity, Entity } from '../../types/types';
+import { DefExample, DefsInput } from '../../../../../generated/graphql';
 import { REPLACEMENT_MAP } from '../../constants';
 import { formatArray, formatReplace } from '../general/general';
 import { formatComplexTag } from '../string/string';
+import { uniq } from 'lodash';
+
+export function extractDef(arr: [string, string][]): string {
+  const defs = arr
+    ?.filter(el => el[0] === 'text')
+    ?.map(el => {
+      const text: string = Object.fromEntries([el])?.text?.trim();
+      return formatDictionaryEntity(text);
+    })
+    .filter(Boolean);
+  return defs?.join(', ');
+}
+
+export function extractExamples(arr: [string, Entity[]][]): DefExample[] {
+  let examples: DefExample[] = [];
+  arr
+    ?.filter(el => el[0] === 'vis')
+    ?.forEach(el => {
+      const vis = Object.fromEntries([el])?.vis;
+      const exampleArr = vis?.map((ex: Entity) => ({
+        text: formatDictionaryEntity(ex.t),
+        translation: ex?.tr
+      }));
+      examples = [...examples, ...exampleArr];
+    });
+  return examples;
+}
 
 /**
  * For performance reasons, formatting of dictionary entity will be done on the server side.
@@ -12,7 +39,11 @@ import { formatComplexTag } from '../string/string';
  * @returns html string
  */
 export function formatDictionaryEntity(str: string) {
-  const result = formatReplace(str, REPLACEMENT_MAP);
+  let input = str;
+  if (str.startsWith(',') || str.startsWith(';')) {
+    input = input.slice(1).trim();
+  }
+  const result = formatReplace(input, REPLACEMENT_MAP);
   return formatComplexTag(result);
 }
 
@@ -29,31 +60,26 @@ export function getDefs(def: DefEntity[] | null | undefined): DefsInput[] {
         return;
       }
       const dt = formatArray(s)?.sense?.dt;
+      const def = extractDef(dt);
 
-      const text = formatArray(dt)?.text;
-
-      if (!text) {
+      if (!def) {
         return;
       }
 
-      const def = formatDictionaryEntity(text);
+      const examples = extractExamples(dt);
 
       const rawResult: DefsInput = {
         def
       };
 
-      const vis = formatArray(dt)?.vis;
-
-      if (Array.isArray(vis) && vis.length) {
-        rawResult.examples = vis.map(ex => ({
-          text: formatDictionaryEntity(ex.t),
-          translation: ex.tr
-        }));
+      if (examples.length) {
+        rawResult.examples = examples;
       }
+
       result.push(rawResult);
     });
   });
-  return result;
+  return uniq(result);
 }
 
 export function getDefFromRef(cognateRef?: CognateEntity[]): DefsInput[] {

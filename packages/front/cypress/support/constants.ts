@@ -12,6 +12,9 @@ export const TEXTS_BY_PAGE = {
   newWord: {
     mainHeading: 'Add new word'
   },
+  editWord: {
+    mainHeading: 'Edit word'
+  },
   words: {
     addWordLink: 'Add new'
   },
@@ -48,7 +51,9 @@ export const tasks = {
   [Game.Audio]: "Type the word that you've heard",
   [Game.SelectDef]: 'Select a definition that means ',
   [Game.SelectWord]: 'Select a word that means ',
-  [Game.TypeWord]: 'Type a word that means '
+  [Game.TypeWord]: 'Type a word that means ',
+  [Game.Gender]: 'Pick the Correct Gender',
+  [Game.Image]: 'Type the name of the object shown in the picture.'
 };
 
 export enum GameStage {
@@ -58,8 +63,12 @@ export enum GameStage {
 }
 
 export const TENSES: Record<Tense, string> = {
-  pind: 'Presente indicativo',
-  pprf: 'Pretérito perfecto simple',
+  cond: 'Condicional',
+  futr: 'Futuro indicativo',
   impf: 'Imperativo',
-  pret: 'Pretérito imperfecto'
+  pind: 'Presente indicativo',
+  psub: 'Presente subjentivo',
+  pret: 'Pretérito imperfecto',
+  pprf: 'Pretérito indefinido',
+  ppci: 'Pretérito perfecto'
 };

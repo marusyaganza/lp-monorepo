@@ -1,11 +1,15 @@
 /* eslint-disable jest/expect-expect */
 /// <reference types="Cypress" />
 
+import { Language } from '../../src/generated/graphql';
 import { HEADER_TEXTS, TEXTS_BY_PAGE, USER_CREDS } from '../support/constants';
+import { tags } from '../support/mocks/tags';
 
 describe('sign in page', () => {
   beforeEach(() => {
-    cy.task('prepareDB');
+    cy.task('prepareDB', {
+      tags: [...tags[Language.English], ...tags[Language.Spanish]]
+    });
     cy.clock();
     cy.visit('/');
     cy.get('input[name="password"]').as('password');
@@ -89,7 +93,6 @@ describe('sign in page', () => {
     cy.checkPathName('/words');
   });
 
-  // TODO check if selected tags were saved
   it('should logout user automatically after 7 days and should not lose parameters', () => {
     cy.login();
     cy.getByCy('headerNav').contains(HEADER_TEXTS.vocabulary).click();
@@ -100,6 +103,10 @@ describe('sign in page', () => {
     cy.getByCy('spinner').should('not.exist');
     cy.selectOption('@select', 'Alphabetically');
 
+    cy.getByCy('tag-selector').as('tagSelector');
+    cy.selectOption('@tagSelector', 'Tag2');
+    cy.selectOption('@tagSelector', 'Tag3');
+
     cy.findByCy('checkbox-label', '@sortControls').as('orderCheckbox').click();
     cy.getByCy('headerNav').contains(HEADER_TEXTS.practice).click();
     cy.getByCy('sortControls').as('gameSortControls');
@@ -107,6 +114,8 @@ describe('sign in page', () => {
     cy.getByCy('spinner').should('not.exist');
     cy.selectOption('@gameSelect', 'Errors');
     cy.findByCy('checkbox-label', '@sortControls').click();
+
+    cy.selectOption('@tagSelector', 'Tag1');
 
     cy.tick(1000 * 60 * 60 * 24 * 7);
     cy.checkPathName('/sign-in');
@@ -120,6 +129,8 @@ describe('sign in page', () => {
       .find('svg')
       .should('have.attr', 'aria-label', 'asc');
 
+    cy.findByCy('tag', '@tagSelector').should('contain', 'Tag1');
+
     cy.getByCy('headerNav').contains(HEADER_TEXTS.vocabulary).click();
     cy.getByCy('spinner').should('not.exist');
 
@@ -127,5 +138,8 @@ describe('sign in page', () => {
     cy.findByCy('checkbox-label', '@sortControls')
       .find('svg')
       .should('have.attr', 'aria-label', 'asc');
+    cy.findByCy('tag', '@tagSelector').as('vocabTags');
+    cy.get('@vocabTags').contains('Tag2');
+    cy.get('@vocabTags').contains('Tag3');
   });
 });

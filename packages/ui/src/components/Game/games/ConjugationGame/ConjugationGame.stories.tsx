@@ -20,26 +20,12 @@ export const GameDefault = (args: GameProps) => (
 
 export const GameSuccess = (args: GameProps) => {
   return (
-    <ConjugationGame
-      {...args}
-      {...game}
-      value="wheel"
-      currentStage={GameStage.Success}
-      currentResult={{ type: GameStage.Success, correctAnswer: 'wheel' }}
-    />
+    <ConjugationGame {...args} {...game} currentStage={GameStage.Success} />
   );
 };
 
 export const GameError = (args: GameProps) => (
-  <ConjugationGame
-    {...args}
-    {...game}
-    currentStage={GameStage.Error}
-    currentResult={{
-      type: 'error',
-      correctAnswer: 'caigo caes cae caemos caéis caen'
-    }}
-  />
+  <ConjugationGame {...args} {...game} currentStage={GameStage.Error} />
 );
 
 export default meta;

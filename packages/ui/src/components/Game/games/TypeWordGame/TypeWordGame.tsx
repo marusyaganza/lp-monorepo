@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FormEventHandler, useState } from 'react';
 import { cn } from '../../../../utils/classnames';
 import { TextInput } from '../../../TextInput/TextInput';
 import { DictionaryEntity } from '../../../DictionaryEntity/DictionaryEntity';
@@ -7,6 +7,8 @@ import { AudioButton } from '../../../AudioButton/AudioButton';
 import { GameProps, GameStage } from '../../../../types/gameTypes';
 
 import styles from '../../Game.module.css';
+import { Button } from '../../../Button/Button';
+import { checkTextAnswer } from '../helpers';
 
 /**Component to display Type Word game*/
 export const TypeWordGame = ({
@@ -15,11 +17,49 @@ export const TypeWordGame = ({
   audioUrl,
   className,
   inputRef,
-  value,
-  onChange,
-  currentResult,
+  onNext,
+  buttonRef,
+  onSubmit,
+  correctAnswer,
   currentStage
 }: GameProps) => {
+  const [value, setValue] = useState('');
+
+  const handleSubmit: FormEventHandler<HTMLFormElement> = e => {
+    e.preventDefault();
+    onSubmit(checkTextAnswer(value, correctAnswer));
+  };
+
+  const handleNext = () => {
+    setValue('');
+    onNext();
+  };
+
+  const renderButton = () => {
+    if (currentStage === GameStage.Initial) {
+      return (
+        <Button
+          data-cy="check-button"
+          disabled={!value?.length}
+          type="submit"
+          variant="secondary"
+        >
+          Check
+        </Button>
+      );
+    }
+    return (
+      <Button
+        ref={buttonRef}
+        autoFocus
+        onClick={handleNext}
+        data-cy="continue-button"
+      >
+        Continue
+      </Button>
+    );
+  };
+
   const renderQuestion = () => {
     if (question.length === 1) {
       return (
@@ -48,8 +88,7 @@ export const TypeWordGame = ({
   };
 
   const renderCorrectAnswer = () => {
-    const answeredCorrectly =
-      !currentResult?.incorrectAnswer || currentStage === GameStage.Initial;
+    const answeredCorrectly = currentStage !== GameStage.Error;
     return (
       <span
         data-cy="correctAnswer"
@@ -58,7 +97,7 @@ export const TypeWordGame = ({
           answeredCorrectly ? styles.hidden : ''
         )}
       >
-        {!answeredCorrectly && currentResult?.correctAnswer}
+        {!answeredCorrectly && correctAnswer.join(', or ')}
       </span>
     );
   };
@@ -75,25 +114,28 @@ export const TypeWordGame = ({
   };
 
   return (
-    <div className={styles.gameContainer}>
-      {renderCorrectAnswer()}
-      <article className={cn(styles.container, className)}>
-        <p data-cy="gameTask" className={styles.task}>
-          {task} {renderAudioButton()}
-        </p>
-        {renderQuestion()}
-        <div className={styles.answer}>
-          <TextInput
-            dataCy="gameAnswer"
-            ref={inputRef}
-            value={value}
-            variant={currentStage}
-            name="word"
-            onChange={onChange}
-            isDisabled={currentStage !== GameStage.Initial}
-          />
-        </div>
-      </article>
-    </div>
+    <form data-cy="gameForm" className={styles.answer} onSubmit={handleSubmit}>
+      <div className={styles.gameContainer}>
+        {renderCorrectAnswer()}
+        <article className={cn(styles.container, className)}>
+          <p data-cy="gameTask" className={styles.task}>
+            {task} {renderAudioButton()}
+          </p>
+          {renderQuestion()}
+          <div className={styles.answer}>
+            <TextInput
+              dataCy="gameAnswer"
+              ref={inputRef}
+              value={value}
+              variant={currentStage}
+              name="word"
+              onChange={setValue}
+              isDisabled={currentStage !== GameStage.Initial}
+            />
+          </div>
+        </article>
+      </div>
+      {renderButton()}
+    </form>
   );
 };

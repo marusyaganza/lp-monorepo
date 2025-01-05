@@ -27,17 +27,17 @@ export const DefinitionInput = ({
   withTranslation,
   dataCy
 }: DefinitionInputProps) => {
-  const defaultExamples = withTranslation
-    ? [{ text: '', translation: '' }]
-    : [{ text: '' }];
+  const getDefaultExamples = () => {
+    return withTranslation ? [{ text: '', translation: '' }] : [{ text: '' }];
+  };
 
-  const defaultInitialValues = [{ def: '', examples: [...defaultExamples] }];
+  const defaultInitialValues = [{ def: '', examples: getDefaultExamples() }];
 
   const initialValues = useMemo(() => {
     if (Array.isArray(initialValue)) {
       return initialValue.map(val => {
         if (!val?.examples?.length) {
-          return { ...val, examples: [{ text: '' }] };
+          return { ...val, examples: getDefaultExamples() };
         }
         return val;
       });
@@ -109,7 +109,7 @@ export const DefinitionInput = ({
       const newVals = [...values];
       const def = values[defIndex];
       if (Array.isArray(def.examples)) {
-        def.examples = [...def.examples, defaultExamples[0]];
+        def.examples = [...def.examples, ...getDefaultExamples()];
       }
       setValues(newVals);
     };

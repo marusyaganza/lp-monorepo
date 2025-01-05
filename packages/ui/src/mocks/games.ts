@@ -20,5 +20,20 @@ export const games: GameConfigType[] = [
     name: 'type word',
     desc: 'Type the word that has the definition given',
     type: Game.TypeWord
+  },
+  {
+    name: 'PictureWord Blitz',
+    desc: 'Identify objects from pictures and type their names to enhance vocabulary skills!',
+    type: Game.Image
+  },
+  {
+    name: 'Conjugation Quest',
+    desc: 'Master verb conjugations across tenses and languages in fast-paced, interactive challenges!',
+    type: Game.Conjugation
+  },
+  {
+    name: 'GenderWord Challenge',
+    desc: 'Choose nouns and match their gender. Test linguistic skills in thrilling rounds!',
+    type: Game.Gender
   }
 ];

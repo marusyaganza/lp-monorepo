@@ -1,36 +1,84 @@
-import React from 'react';
+import React, { FormEventHandler, useEffect, useState } from 'react';
 import { cn } from '../../../../utils/classnames';
 import { AudioButton } from '../../../AudioButton/AudioButton';
 import { ConjugationInput } from '../../../ConjugationInput/ConjugationInput';
 import { GameProps, GameStage } from '../../../../types/gameTypes';
 
 import styles from '../../Game.module.css';
+import { DictionaryEntity } from '../../../DictionaryEntity/DictionaryEntity';
+import { Button } from '../../../Button/Button';
+import { checkMultipleAnswers } from '../helpers';
 
 /**Component to display Conjugation game*/
 export const ConjugationGame = ({
   task,
-  onChange,
-  tense,
+  onSubmit,
+  buttonRef,
+  onNext,
   audioUrl,
   className,
-  currentResult,
   currentStage,
   inputRef,
-  value,
+  question,
   correctAnswer
 }: GameProps) => {
+  const [values, setValues] = useState<string[]>(() => {
+    return correctAnswer.map(answ => (answ === '-' ? answ : ''));
+  });
+
+  const handleSubmit: FormEventHandler<HTMLFormElement> = e => {
+    e.preventDefault();
+    onSubmit(checkMultipleAnswers(values, correctAnswer));
+  };
+
+  const handleNext = () => {
+    setValues([]);
+    onNext();
+  };
+
+  useEffect(() => {
+    if (!values.length) {
+      const initialValues = correctAnswer.map(answ =>
+        answ === '-' ? answ : ''
+      );
+      setValues(initialValues);
+    }
+  }, [correctAnswer]);
+
+  const renderButton = () => {
+    const isDisabled = values.every(val => !val || val === '-');
+    if (currentStage === GameStage.Initial) {
+      return (
+        <Button
+          data-cy="check-button"
+          disabled={isDisabled}
+          type="submit"
+          variant="secondary"
+        >
+          Check
+        </Button>
+      );
+    }
+    return (
+      <Button
+        ref={buttonRef}
+        autoFocus
+        onClick={handleNext}
+        data-cy="continue-button"
+      >
+        Continue
+      </Button>
+    );
+  };
+
   const renderCorrectAnswer = () => {
-    const answeredCorrectly =
-      !currentResult?.incorrectAnswer || currentStage === GameStage.Initial;
+    const hasError = currentStage === GameStage.Error;
     return (
       <span
         data-cy="correctAnswer"
-        className={cn(
-          styles.correctAnswer,
-          answeredCorrectly ? styles.hidden : ''
-        )}
+        className={cn(styles.correctAnswer, hasError ? '' : styles.hidden)}
       >
-        {!answeredCorrectly && currentResult?.correctAnswer}
+        {hasError && correctAnswer.join(', ')}
       </span>
     );
   };
@@ -47,26 +95,30 @@ export const ConjugationGame = ({
   };
 
   return (
-    <div className={styles.gameContainer}>
-      {renderCorrectAnswer()}
-      <article className={cn(styles.container, className)}>
-        <p data-cy="gameTask" className={styles.task}>
-          {task} {renderAudioButton()}
-        </p>
-        <div className={styles.answer}>
-          <ConjugationInput
-            dataCy="gameAnswer"
-            ref={inputRef}
-            tense={tense}
-            value={value}
-            initialValue={correctAnswer}
-            variant={currentStage}
-            correctAnswer={correctAnswer}
-            onChange={onChange}
-            isDisabled={currentStage !== GameStage.Initial}
-          />
-        </div>
-      </article>
-    </div>
+    <form data-cy="gameForm" className={styles.answer} onSubmit={handleSubmit}>
+      <div className={styles.gameContainer}>
+        {renderCorrectAnswer()}
+        <article className={cn(styles.container, className)}>
+          <p data-cy="gameTask" className={styles.task}>
+            {task} {renderAudioButton()}
+          </p>
+          <p data-cy="gameQuestion" className={styles.question}>
+            {<DictionaryEntity text={question[0]} />}
+          </p>
+          <div className={styles.answer}>
+            <ConjugationInput
+              dataCy="gameAnswer"
+              ref={inputRef}
+              variant={currentStage}
+              values={values}
+              correctAnswer={correctAnswer}
+              onChange={setValues}
+              isDisabled={currentStage !== GameStage.Initial}
+            />
+          </div>
+        </article>
+      </div>
+      {renderButton()}
+    </form>
   );
 };

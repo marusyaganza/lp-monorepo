@@ -7,7 +7,9 @@ exports[`generateSelectWordGame generate data with minimal ENGLISH words 1`] = `
     "examples": [],
     "imgUrl": "https://example.com/images/apple.jpg",
   },
-  "answer": "apple",
+  "answer": [
+    "apple",
+  ],
   "options": [
     "serendipity",
     "quix",
@@ -35,7 +37,9 @@ exports[`generateSelectWordGame generate data with minimal SPANISH words 1`] = `
     ],
     "imgUrl": "https://example.com/images/manzana.jpg",
   },
-  "answer": "manzana",
+  "answer": [
+    "manzana",
+  ],
   "options": [
     "espirelar",
     "trutamor",
@@ -59,7 +63,9 @@ exports[`generateSelectWordGame should return the correct number of questions wh
       "examples": [],
       "imgUrl": "https://example.com/images/apple.jpg",
     },
-    "answer": "apple",
+    "answer": [
+      "apple",
+    ],
     "options": [
       "serendipity",
       "ephemeral",
@@ -79,7 +85,9 @@ exports[`generateSelectWordGame should return the correct number of questions wh
       "examples": [],
       "imgUrl": "https://example.com/images/orange.jpg",
     },
-    "answer": "orange",
+    "answer": [
+      "orange",
+    ],
     "options": [
       "serendipity",
       "ephemeral",
@@ -99,7 +107,9 @@ exports[`generateSelectWordGame should return the correct number of questions wh
       "examples": [],
       "imgUrl": "https://example.com/images/banana.jpg",
     },
-    "answer": "banana",
+    "answer": [
+      "banana",
+    ],
     "options": [
       "serendipity",
       "ephemeral",
@@ -119,7 +129,9 @@ exports[`generateSelectWordGame should return the correct number of questions wh
       "examples": [],
       "imgUrl": "https://example.com/images/strawberry.jpg",
     },
-    "answer": "strawberry",
+    "answer": [
+      "strawberry",
+    ],
     "options": [
       "serendipity",
       "ephemeral",
@@ -139,7 +151,9 @@ exports[`generateSelectWordGame should return the correct number of questions wh
       "examples": [],
       "imgUrl": "https://example.com/images/pineapple.jpg",
     },
-    "answer": "pineapple",
+    "answer": [
+      "pineapple",
+    ],
     "options": [
       "serendipity",
       "ephemeral",
@@ -159,7 +173,9 @@ exports[`generateSelectWordGame should return the correct number of questions wh
       "examples": [],
       "imgUrl": "https://example.com/images/grape.jpg",
     },
-    "answer": "grape",
+    "answer": [
+      "grape",
+    ],
     "options": [
       "serendipity",
       "ephemeral",
@@ -189,10 +205,12 @@ exports[`generateSelectWordGame should return the correct number of questions wh
       ],
       "imgUrl": "https://example.com/images/manzana.jpg",
     },
-    "answer": "manzana",
+    "answer": [
+      "manzana",
+    ],
     "options": [
       "felicidad",
-      "rápidamente",
+      "periodista",
       "grande",
       "pensar",
       "hermosura",
@@ -218,11 +236,13 @@ exports[`generateSelectWordGame should return the correct number of questions wh
       ],
       "imgUrl": "https://example.com/images/naranja.jpg",
     },
-    "answer": "naranja",
+    "answer": [
+      "naranja",
+    ],
     "options": [
       "correr",
       "felicidad",
-      "rápidamente",
+      "periodista",
       "grande",
       "pensar",
       "naranja",
@@ -237,23 +257,25 @@ exports[`generateSelectWordGame should return the correct number of questions wh
       "audioUrl": "https://example.com/audio/platano.mp3",
       "examples": [
         {
-          "text": "Él peló un plátano y se lo comió.",
-          "translation": "He peeled a banana and ate it.",
+          "text": "Para evitar que se pegue, es mejor engrasar la sartén antes de freír.",
+          "translation": "To prevent sticking, it's best to powder the pan before frying.",
         },
       ],
-      "imgUrl": "https://example.com/images/platano.jpg",
+      "imgUrl": "https://example.com/images/skillet.jpg",
     },
-    "answer": "plátano",
+    "answer": [
+      "sartén",
+    ],
     "options": [
       "correr",
       "felicidad",
-      "rápidamente",
+      "periodista",
       "grande",
       "pensar",
-      "plátano",
+      "sartén",
     ],
     "question": [
-      "Curved fruit with yellow skin.",
+      "skillet",
     ],
     "wordId": Any<String>,
   },
@@ -268,11 +290,13 @@ exports[`generateSelectWordGame should return the correct number of questions wh
       ],
       "imgUrl": "https://example.com/images/fresa.jpg",
     },
-    "answer": "fresa",
+    "answer": [
+      "fresa",
+    ],
     "options": [
       "correr",
       "felicidad",
-      "rápidamente",
+      "periodista",
       "grande",
       "pensar",
       "fresa",
@@ -293,11 +317,13 @@ exports[`generateSelectWordGame should return the correct number of questions wh
       ],
       "imgUrl": "https://example.com/images/pina.jpg",
     },
-    "answer": "piña",
+    "answer": [
+      "piña",
+    ],
     "options": [
       "correr",
       "felicidad",
-      "rápidamente",
+      "periodista",
       "grande",
       "pensar",
       "piña",
@@ -309,26 +335,28 @@ exports[`generateSelectWordGame should return the correct number of questions wh
   },
   {
     "additionalInfo": {
-      "audioUrl": "https://example.com/audio/uva.mp3",
+      "audioUrl": "https://example.com/audio/translado.mp3",
       "examples": [
         {
-          "text": "Él me ofreció un racimo de uvas.",
-          "translation": "He offered me a bunch of grapes.",
+          "text": "Aproveche el servicio de translado de la más alta calidad.",
+          "translation": "ake advantage of the highest quality transfer service.",
         },
       ],
-      "imgUrl": "https://example.com/images/uva.jpg",
+      "imgUrl": "https://example.com/images/translado.jpg",
     },
-    "answer": "uva",
+    "answer": [
+      "translado",
+    ],
     "options": [
       "correr",
       "felicidad",
-      "rápidamente",
+      "periodista",
       "grande",
       "pensar",
-      "uva",
+      "translado",
     ],
     "question": [
-      "Small juicy fruit with smooth skin.",
+      "transfer.",
     ],
     "wordId": Any<String>,
   },

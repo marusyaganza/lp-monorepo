@@ -1,40 +1,29 @@
-import React, {
-  FormEventHandler,
-  useState,
-  useMemo,
-  useRef,
-  useEffect
-} from 'react';
+import React, { useMemo, useRef, useEffect } from 'react';
 import {
   GameQuestionAdditionalInfo,
-  Game as GameType,
-  Tense
+  Game as GameType
 } from '../../generated/graphql';
 import { Button } from '../Button/Button';
 import { DictionaryEntity } from '../DictionaryEntity/DictionaryEntity';
 import { Icon } from '../Icon/icon';
 import { useModal } from '../Modal/useModal';
 import { games } from './games';
-import { GameStage } from '../../types/gameTypes';
+import { GameResultType, GameStage, GameState } from '../../types/gameTypes';
 
 import styles from './Game.module.css';
 
 export interface GameComponentProps {
   task: string;
   question: string[];
+  nextQuestion?: string;
   options?: string[] | null;
   type: GameType;
-  tense?: Tense | null;
-  correctAnswer?: string;
+  correctAnswer: string[];
   additionalInfo?: GameQuestionAdditionalInfo | null;
-  onSubmit: (value: string) => void;
+  onSubmit: (value: GameResultType) => void;
   /**additional styling */
   className?: string;
-  currentResult?: {
-    type?: GameStage;
-    correctAnswer?: string;
-    incorrectAnswer?: string;
-  };
+  currentResult?: GameState['currentResult'];
   onNext: () => void;
 }
 /**Component to display game*/
@@ -46,7 +35,6 @@ export const GameComponent = ({
   onNext,
   ...props
 }: GameComponentProps) => {
-  const [value, setValue] = useState('');
   const currentStage = useMemo(
     () => currentResult?.type || GameStage.Initial,
     [currentResult?.type]
@@ -69,46 +57,6 @@ export const GameComponent = ({
       inputRef.current.focus();
     }
   }, [currentStage]);
-
-  const handleChange = (val: string) => {
-    setValue(val);
-  };
-
-  const handleSubmit: FormEventHandler<HTMLFormElement> = e => {
-    e.preventDefault();
-    onSubmit(value.trim());
-  };
-
-  // Clean the state once the question is answered
-  const handleNext = () => {
-    setValue('');
-    onNext();
-  };
-
-  const renderButton = () => {
-    if (currentStage === GameStage.Initial) {
-      return (
-        <Button
-          data-cy="check-button"
-          disabled={!value}
-          type="submit"
-          variant="secondary"
-        >
-          Check
-        </Button>
-      );
-    }
-    return (
-      <Button
-        ref={buttonRef}
-        autoFocus
-        onClick={handleNext}
-        data-cy="continue-button"
-      >
-        Continue
-      </Button>
-    );
-  };
 
   const renderExamples = () => {
     const examples = additionalInfo?.examples;
@@ -185,22 +133,15 @@ export const GameComponent = ({
   return (
     <div className={styles.gameContainer}>
       {renderAdditionalInfo()}
-      <form
-        data-cy="gameForm"
-        className={styles.answer}
-        onSubmit={handleSubmit}
-      >
-        <CurrentGame
-          onChange={handleChange}
-          currentStage={currentStage}
-          currentResult={currentResult}
-          inputRef={inputRef}
-          value={value}
-          audioUrl={additionalInfo?.audioUrl}
-          {...props}
-        />
-        {renderButton()}
-      </form>
+      <CurrentGame
+        onSubmit={onSubmit}
+        currentStage={currentStage}
+        onNext={onNext}
+        inputRef={inputRef}
+        buttonRef={buttonRef}
+        audioUrl={additionalInfo?.audioUrl}
+        {...props}
+      />
       <section data-cy="examples" className={styles.examplesContainer}>
         {renderExamples()}
       </section>

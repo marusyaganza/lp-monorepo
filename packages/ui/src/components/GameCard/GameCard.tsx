@@ -19,6 +19,8 @@ import select_definition from '../../assets/img/gameLogos/select_definition.svg'
 import select_word from '../../assets/img/gameLogos/select_word.svg';
 import type_word from '../../assets/img/gameLogos/type_word.svg';
 import conjugation from '../../assets/img/gameLogos/conjugation.svg';
+import gender from '../../assets/img/gameLogos/gender.svg';
+import image from '../../assets/img/gameLogos/image.svg';
 
 import { Game } from '../../generated/graphql';
 import { GameConfigType } from '../../types/types';
@@ -27,7 +29,9 @@ const images = {
   [Game.Audio]: audio,
   [Game.SelectWord]: select_word,
   [Game.TypeWord]: type_word,
-  [Game.Conjugation]: conjugation
+  [Game.Image]: image,
+  [Game.Conjugation]: conjugation,
+  [Game.Gender]: gender
 };
 /**Game card that displays game's main info */
 export const GameCard = ({

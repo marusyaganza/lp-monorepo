@@ -2,16 +2,14 @@
 /* eslint-disable jest/expect-expect */
 /// <reference types="Cypress" />
 
-import { Game, Language, Tense } from '../../src/generated/graphql';
-import { GameStage, HEADER_TEXTS } from '../support/constants';
-import { games } from '../support/mocks/games';
+import { Game, Language } from '../../../src/generated/graphql';
+import { GameStage, HEADER_TEXTS } from '../../support/constants';
+import { games } from '../../support/mocks/games';
 import {
   checkGame,
   checkResultScreen,
-  playConjugationGame,
-  playGameOnce,
-  startConjugationGame
-} from '../support/helpers/game';
+  playGameOnce
+} from '../../support/helpers/game';
 
 const audioUrls = {
   [Language.Spanish]:
@@ -27,7 +25,6 @@ const imgUrls = {
 };
 
 const languages = Object.values(Language);
-const tenses = Object.values(Tense);
 
 const queries = {
   [Language.English]: 'wheel',
@@ -37,20 +34,6 @@ const queries = {
 const incorrectAnswers = {
   [Language.English]: 'quix',
   [Language.Spanish]: 'espirelar'
-};
-
-const correctConjAnswers = {
-  [Tense.Pind]: 'soy, eres, es, somos, sois, son',
-  [Tense.Impf]: '-, sé, sea, seamos, sed, sean',
-  [Tense.Pret]: 'era, eras, era, éramos, erais, eran',
-  [Tense.Pprf]: 'fui, fuiste, fue, fuimos, fuisteis, fueron'
-};
-
-const incorrectConjAnswers = {
-  [Tense.Pind]: 'soy, eres, es, somais, sois, son',
-  [Tense.Impf]: '-, se, sea, seamos, sed, sean',
-  [Tense.Pret]: 'era, eras, era, eramos, erais, eran',
-  [Tense.Pprf]: 'fue, fuiste, fui, fuimos, fuisteis, fueron'
 };
 
 const serAudio =
@@ -83,102 +66,32 @@ describe('Game Page', () => {
     cy.task('disconnectFromDb');
   });
 
-  tenses.forEach(tense => {
-    it(`start conjugation game with minimal words in ${tense} tense`, () => {
-      const gameType = Game.Conjugation;
-      startConjugationGame('ser', tense);
-      checkGame(
-        GameStage.Initial,
-        gameType,
-        `@audioReq-ser`,
-        'ser',
-        undefined,
-        tense
-      );
-      cy.getByCy('exit-game').click();
-      cy.checkPathName('/games');
-    });
-
-    it(`should answer correctly and finish conjugation game with minimal words in ${tense} tense`, () => {
-      const gameType = Game.Conjugation;
-      startConjugationGame('ser', tense);
-      playConjugationGame(correctConjAnswers[tense], tense);
-      checkGame(
-        GameStage.Success,
-        gameType,
-        `@audioReq-ser`,
-        'ser',
-        undefined,
-        tense
-      );
-      cy.getByCy('continue-button').click();
-      checkResultScreen(100, 1, 1);
-
-      cy.intercept('POST', 'http://localhost:4000/graphql').as(
-        'saveGameResult'
-      );
-
-      cy.getByCy('finish-game').click();
-      cy.wait('@saveGameResult')
-        .its('request.body')
-        .should(body => {
-          expect(body.operationName).to.equal('SaveGameResult');
-          expect(body.variables.input[0]).to.include({
-            hasError: false,
-            gameType
-          });
-        });
-    });
-
-    it(`should answer incorrectly and finish conjugation game with minimal words in ${tense} tense`, () => {
-      const gameType = Game.Conjugation;
-      startConjugationGame('ser', tense);
-      playConjugationGame(incorrectConjAnswers[tense], tense);
-      checkGame(
-        GameStage.Error,
-        gameType,
-        `@audioReq-ser`,
-        'ser',
-        undefined,
-        tense,
-        correctConjAnswers[tense]
-      );
-      cy.getByCy('continue-button').click();
-      checkResultScreen(0, 1, 0);
-
-      cy.intercept('POST', 'http://localhost:4000/graphql').as(
-        'saveGameResult'
-      );
-
-      cy.getByCy('finish-game').click();
-      cy.wait('@saveGameResult')
-        .its('request.body')
-        .should(body => {
-          expect(body.operationName).to.equal('SaveGameResult');
-          expect(body.variables.input[0]).to.include({
-            hasError: true,
-            gameType
-          });
-        });
-    });
-  });
-
   languages.forEach(lang => {
-    const availableGames = games.filter(game => game.type !== Game.Conjugation);
-    availableGames.forEach((game, i) => {
-      it(`should start ${game.id} game with minimal words in ${lang} language`, () => {
+    const availableGames = games.filter(
+      game => game.type !== Game.Conjugation && game.type !== Game.Gender
+    );
+    availableGames.forEach(game => {
+      it(`should start a game with minimal words in ${lang} language`, () => {
         const query = queries[lang];
         cy.changeLanguage(lang);
         cy.addWord(query);
+        if (lang === Language.Spanish) {
+          cy.get('@headerLink').contains(HEADER_TEXTS.vocabulary).click();
+          cy.getByCy('wordCard').click();
+          cy.getByCy('editButton').click();
+          cy.editWord({ imgUrl: imgUrls.idioma });
+          cy.getByCy('wordForm').find('button[type="submit"]').click();
+          cy.getByCy('spinner').should('not.exist');
+        }
         cy.get('@headerLink').contains(HEADER_TEXTS.practice).click();
-        cy.getByCy('gameCard').eq(i).click();
+        cy.getByCy('gameCard').eq(game.orderNum).click();
         cy.checkPathName(`/games/${game.id}`);
-        checkGame(GameStage.Initial, game.type, `@audioReq-${lang}`, query);
+        checkGame(GameStage.Initial, game.type, query);
         cy.getByCy('exit-game').click();
         cy.checkPathName('/games');
       });
 
-      it(`should answer incorrectly and finish ${game.id} game in ${lang} language`, () => {
+      it(`should answer incorrectly and finish a game in ${lang} language`, () => {
         cy.changeLanguage(lang);
         const query = queries[lang];
         cy.addWord(query, query);
@@ -191,14 +104,14 @@ describe('Game Page', () => {
           cy.getByCy('spinner').should('not.exist');
         }
         cy.get('@headerLink').contains(HEADER_TEXTS.practice).click();
-        cy.getByCy('gameCard').eq(i).click();
+        cy.getByCy('gameCard').eq(game.orderNum).click();
         cy.checkPathName(`/games/${game.id}`);
         playGameOnce(game.type, incorrectAnswers[lang]);
         checkGame(
           GameStage.Error,
           game.type,
-          `@audioReq-${lang}`,
           query,
+          `@audioReq-${lang}`,
           imgUrls[query]
         );
         cy.getByCy('continue-button').click();
@@ -219,18 +132,26 @@ describe('Game Page', () => {
           });
       });
 
-      it(`should answer correctly and finish ${game.id} game in ${lang} language`, () => {
+      it(`should answer correctly and finish a game in ${lang} language`, () => {
         cy.changeLanguage(lang);
         cy.addWord(queries[lang], queries[lang]);
+        if (lang === Language.Spanish) {
+          cy.get('@headerLink').contains(HEADER_TEXTS.vocabulary).click();
+          cy.getByCy('wordCard').click();
+          cy.getByCy('editButton').click();
+          cy.editWord({ imgUrl: imgUrls.idioma });
+          cy.getByCy('wordForm').find('button[type="submit"]').click();
+          cy.getByCy('spinner').should('not.exist');
+        }
         cy.get('@headerLink').contains(HEADER_TEXTS.practice).click();
-        cy.getByCy('gameCard').eq(i).click();
+        cy.getByCy('gameCard').eq(game.orderNum).click();
         cy.checkPathName(`/games/${game.id}`);
         playGameOnce(game.type, queries[lang]);
         checkGame(
           GameStage.Success,
           game.type,
-          `@audioReq-${lang}`,
-          queries[lang]
+          queries[lang],
+          `@audioReq-${lang}`
         );
         cy.getByCy('continue-button').click();
         checkResultScreen(100, 1, 1);

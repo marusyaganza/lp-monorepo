@@ -230,6 +230,47 @@ export const newWordInputs = {
         {
           cjid: Tense.Impf,
           cjfs: ['corre', 'corra', 'corramos', 'corred', 'corran']
+        },
+        {
+          cjid: 'futr',
+          cjfs: [
+            'correré',
+            'correrás',
+            'correrá',
+            'correremos',
+            'correréis',
+            'correrán'
+          ]
+        },
+        {
+          cjid: 'cond',
+          cjfs: [
+            'correría',
+            'correrías',
+            'correría',
+            'correríamos',
+            'correríais',
+            'correrían'
+          ]
+        },
+        {
+          cjid: 'ppci',
+          cjfs: [
+            'he corrido',
+            'has corrido',
+            'ha corrido',
+            'hemos corrido',
+            'habéis corrido',
+            'han corrido'
+          ]
+        },
+        {
+          cjid: 'psub',
+          cjfs: ['corra', 'corras', 'corra', 'corramos', 'corráis', 'corran']
+        },
+        {
+          cjid: 'gppt',
+          cjfs: ['corriendo', 'corrido']
         }
       ]
     },
@@ -247,7 +288,7 @@ export const newWordInputs = {
           ]
         }
       ],
-      particle: 'noun',
+      particle: 'feminine noun',
       imgUrl: 'https://example.com/images/felicidad.jpg',
       imgDesc: 'A person smiling happily.',
       audioUrl: 'https://example.com/audio/felicidad.mp3',
@@ -263,30 +304,30 @@ export const newWordInputs = {
     },
     {
       uuid: '003',
-      name: 'rápidamente',
+      name: 'periodista',
       defs: [
         {
-          def: 'In a fast or quick manner.',
+          def: 'A person who collects, writes, and distributes news and other information.',
           examples: [
             {
-              text: 'Ella terminó su trabajo rápidamente.',
-              translation: 'She finished her work quickly.'
+              text: 'El/La periodista escribió un artículo fascinante.',
+              translation: 'The journalist wrote a fascinating article.'
             }
           ]
         }
       ],
-      particle: 'adverb',
-      imgUrl: 'https://example.com/images/rapidamente.jpg',
-      imgDesc: 'A person finishing a task swiftly.',
-      audioUrl: 'https://example.com/audio/rapidamente.mp3',
-      additionalInfo: 'The adverb modifies the verb "fast".',
-      transcription: '[ra.pi.daˈmen.te]',
+      particle: 'masculine or feminine noun',
+      imgUrl: 'https://example.com/images/periodista.jpg',
+      imgDesc: 'A person interviewing someone with a microphone.',
+      audioUrl: 'https://example.com/audio/periodista.mp3',
+      additionalInfo:
+        "The term 'periodista' is used for both male and female journalists in Spanish.",
+      transcription: '[pe.ɾjoˈðis.ta]',
       isOffensive: false,
-      stems: ['rápido'],
-      level: Level.A2,
+      stems: ['periodistas', 'periodismo'],
       language: Language.Spanish,
-      shortDef: ['Quickly.'],
-      alternativeSpelling: ['rapidamiente'],
+      shortDef: ['Journalist'],
+      alternativeSpelling: ['periodísta'],
       conjugation: null
     },
     {
@@ -367,6 +408,17 @@ export const newWordInputs = {
           ]
         },
         {
+          cjid: 'ppci',
+          cjfs: [
+            'he pensado',
+            'has pensado',
+            'ha pensado',
+            'hemos pensado',
+            'habéis pensado',
+            'han pensado'
+          ]
+        },
+        {
           cjid: Tense.Pprf,
           cjfs: [
             'he pensado',
@@ -380,6 +432,43 @@ export const newWordInputs = {
         {
           cjid: Tense.Impf,
           cjfs: ['piensa', 'piense', 'pensemos', 'pensad', 'piensen']
+        },
+        {
+          cjid: 'cond',
+          cjfs: [
+            'pensaría',
+            'pensarías',
+            'pensaría',
+            'pensaríamos',
+            'pensaríais',
+            'pensarían'
+          ]
+        },
+        {
+          cjid: 'psub',
+          cjfs: [
+            'piense',
+            'pienses',
+            'piense',
+            'pensemos',
+            'penséis',
+            'piensen'
+          ]
+        },
+        {
+          cjid: 'futr',
+          cjfs: [
+            'pensaré',
+            'pensarás',
+            'pensará',
+            'pensaremos',
+            'pensaréis',
+            'pensarán'
+          ]
+        },
+        {
+          cjid: 'gppt',
+          cjfs: ['pensando', 'pensado']
         }
       ]
     },
@@ -397,7 +486,7 @@ export const newWordInputs = {
           ]
         }
       ],
-      particle: 'noun',
+      particle: 'feminine noun',
       imgUrl: 'https://example.com/images/hermosura.jpg',
       imgDesc: 'A beautiful landscape.',
       audioUrl: 'https://example.com/audio/hermosura.mp3',
@@ -439,6 +528,86 @@ export const newWordInputs = {
       shortDef: ['Slowly.'],
       alternativeSpelling: [],
       conjugation: null
+    },
+    {
+      uuid: '008',
+      name: 'sombrero',
+      defs: [
+        {
+          def: 'A head covering with a shaped crown and brim.',
+          examples: [
+            {
+              text: 'El vaquero llevaba un sombrero de ala ancha.',
+              translation: 'The cowboy wore a wide-brimmed hat.'
+            }
+          ]
+        },
+        {
+          def: 'Any head covering, especially one with a brim.',
+          examples: [
+            {
+              text: 'Se puso el sombrero para protegerse del sol.',
+              translation: 'He put on the hat to protect himself from the sun.'
+            }
+          ]
+        }
+      ],
+      particle: 'masculine noun',
+      imgUrl: 'https://example.com/images/sombrero.jpg',
+      imgDesc:
+        'A traditional Mexican sombrero with a wide brim and high crown.',
+      audioUrl: 'https://example.com/audio/sombrero.mp3',
+      additionalInfo:
+        'The word "sombrero" comes from "sombra," meaning shade or shadow.',
+      transcription: '[somˈbɾeɾo]',
+      isOffensive: false,
+      stems: ['sombreros', 'sombrerito'],
+      language: Language.Spanish,
+      shortDef: ['Hat'],
+      alternativeSpelling: [],
+      conjugation: null
+    },
+    {
+      name: 'sartén',
+      particle: 'masculine or feminine noun',
+      audioUrl: 'https://example.com/audio/platano.mp3',
+      id: '3',
+      defs: [
+        {
+          def: 'frying pan',
+          examples: [
+            {
+              text: 'Para evitar que se pegue, es mejor engrasar la sartén antes de freír.',
+              translation:
+                "To prevent sticking, it's best to powder the pan before frying."
+            }
+          ]
+        }
+      ],
+      language: Language.Spanish,
+      shortDef: ['skillet'],
+      imgUrl: 'https://example.com/images/skillet.jpg'
+    },
+    {
+      name: 'fresa',
+      particle: 'feminine noun',
+      audioUrl: 'https://example.com/audio/fresa.mp3',
+      id: '4',
+      defs: [
+        {
+          def: 'A sweet soft red fruit with a seed-studded surface.',
+          examples: [
+            {
+              text: 'Ella recogió una fresa madura del jardín.',
+              translation: 'She picked a ripe strawberry from the garden.'
+            }
+          ]
+        }
+      ],
+      shortDef: ['Soft red fruit with seeds.'],
+      language: Language.Spanish,
+      imgUrl: 'https://example.com/images/fresa.jpg',
+      alternativeSpelling: ['freza', 'fre-sá']
     }
   ]
 };

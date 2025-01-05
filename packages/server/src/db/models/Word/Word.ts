@@ -1,9 +1,15 @@
-import { Word } from '../../schema/Word';
+import {
+  SpacedRepetitionData,
+  SpacedRepetitionMap,
+  Word
+} from '../../schema/Word';
 import {
   calculatePaginationValues,
+  GAME_FILTERS,
   getGameFilters,
   getGameSortingFilter,
   getTagsFilter,
+  getTenseFilter,
   getWordSortingFilters,
   OPTIONS_PROJECTIONS,
   PROJECTIONS
@@ -18,15 +24,24 @@ import {
   PaginatedWords,
   UpdateWordInput,
   GameDataInput,
-  GameConfig,
   SortBy,
   Language,
   WordsPerPageInput,
-  SortWordsBy
+  SortWordsBy,
+  Verb,
+  GameSettings,
+  Score,
+  Game,
+  Tense
 } from '../../../generated/graphql';
 import { getWordsFilters, filterTags } from '../../helpers';
 import { UserInputError } from '../../../utils/apolloCustomErrors';
 import { DEFAULT_OPTIONS__SAMPLE_SIZE } from '../../../constants/defaultValues';
+import {
+  initializeSpacedRepetitionFields,
+  updateSpacedRepetitionFields
+} from '../../helpers/general/spacedRepetition';
+import { isConjugationSpacedRepetitionData } from '../../../types/typeGuards';
 
 const STATISTICS_FIELD: WordStatisticsField = {
   lastTimePracticed: 0,
@@ -40,7 +55,32 @@ const DEFAULT_STATISTICS: Record<GameType, WordStatisticsField> = {
   [GameType.SelectDef]: STATISTICS_FIELD,
   [GameType.SelectWord]: STATISTICS_FIELD,
   [GameType.TypeWord]: STATISTICS_FIELD,
-  [GameType.Conjugation]: STATISTICS_FIELD
+  [GameType.Conjugation]: STATISTICS_FIELD,
+  [GameType.Image]: STATISTICS_FIELD,
+  [GameType.Gender]: STATISTICS_FIELD
+};
+
+const repetitionData = initializeSpacedRepetitionFields();
+
+const CONJUGATION_REPETITION = {
+  [Tense.Cond]: repetitionData,
+  [Tense.Futr]: repetitionData,
+  [Tense.Impf]: repetitionData,
+  [Tense.Pind]: repetitionData,
+  [Tense.Pprf]: repetitionData,
+  [Tense.Pret]: repetitionData,
+  [Tense.Psub]: repetitionData,
+  [Tense.Ppci]: repetitionData
+};
+
+const DEFAULT_REPETITION_DATA: SpacedRepetitionMap = {
+  [GameType.Audio]: repetitionData,
+  [GameType.SelectDef]: repetitionData,
+  [GameType.SelectWord]: repetitionData,
+  [GameType.TypeWord]: repetitionData,
+  [GameType.Image]: repetitionData,
+  [GameType.Conjugation]: CONJUGATION_REPETITION,
+  [GameType.Gender]: repetitionData
 };
 
 export interface WordModelType {
@@ -53,6 +93,7 @@ export interface WordModelType {
     filter: WordsPerPageInput | null | undefined,
     user: string
   ) => Promise<PaginatedWords>;
+  findVerbs: (user: string) => Promise<Verb[]>;
   createOne: (fields: NewWordInput, user: string) => Promise<WordType | null>;
   updateOne: (
     update: UpdateWordInput,
@@ -65,13 +106,18 @@ export interface WordModelType {
   ) => Promise<{ ok: boolean }>;
   selectWordsForGame: (
     filter: GameDataInput,
-    config: GameConfig,
+    config: GameSettings,
     user: string
   ) => Promise<WordType[]>;
   selectWordsForOptions: (
     gameType: GameType,
     language: Language,
-    config: GameConfig,
+    config: GameSettings,
+    user: string
+  ) => Promise<WordType[]>;
+  getWordsForPractice: (
+    filter: GameDataInput,
+    config: GameSettings,
     user: string
   ) => Promise<WordType[]>;
 }
@@ -149,6 +195,7 @@ export const WordModel: WordModelType = {
       language: fields.language,
       user
     });
+    const spacedRepetition = DEFAULT_REPETITION_DATA;
     const word = await Word.create({
       ...fields,
       user,
@@ -158,7 +205,8 @@ export const WordModel: WordModelType = {
       isOffensive,
       transcription,
       statistics: DEFAULT_STATISTICS,
-      tags: tagsField
+      tags: tagsField,
+      spacedRepetition
     });
     return word.toObject();
   },
@@ -192,8 +240,7 @@ export const WordModel: WordModelType = {
           word.statistics = DEFAULT_STATISTICS;
         }
 
-        const { gameType, hasError = false } = entry;
-
+        const { gameType, tense, score, hasError = false } = entry;
         const currentStatistics = word?.statistics?.[gameType];
 
         if (!currentStatistics) {
@@ -219,8 +266,30 @@ export const WordModel: WordModelType = {
         if (currentStatistics?.practicedTimes) {
           newStatistics.practicedTimes += currentStatistics.practicedTimes;
         }
-
         word.statistics[gameType] = newStatistics;
+
+        if (!word?.spacedRepetition) {
+          word.spacedRepetition = DEFAULT_REPETITION_DATA;
+        }
+
+        const spacedRepetition = word.spacedRepetition[gameType];
+
+        const spacedRepetitionData =
+          tense && isConjugationSpacedRepetitionData(spacedRepetition)
+            ? spacedRepetition[tense]
+            : (spacedRepetition as SpacedRepetitionData);
+
+        const updatedSpacedepetition = updateSpacedRepetitionFields(
+          spacedRepetitionData,
+          score || Score.Hard
+        );
+
+        if (tense && gameType === Game.Conjugation) {
+          word.spacedRepetition[gameType][tense] = updatedSpacedepetition;
+        } else {
+          // @ts-expect-error: figure out how to  define type dynamically here
+          word.spacedRepetition[gameType] = updatedSpacedepetition;
+        }
         await word.save();
       } catch (err) {
         console.error('saving statisticks failed', err);
@@ -266,7 +335,6 @@ export const WordModel: WordModelType = {
       .sort(sortingFilters)
       .limit(config.wordsPerGame)
       .exec();
-
     return words;
   },
 
@@ -275,6 +343,55 @@ export const WordModel: WordModelType = {
     const words = Word.find({ language, user }, optionProjections, {
       limit: config.optionsPerGame + DEFAULT_OPTIONS__SAMPLE_SIZE
     });
+    return words;
+  },
+
+  async findVerbs(user) {
+    const verbs = (await Word.find(
+      {
+        user,
+        language: Language.Spanish,
+        ...GAME_FILTERS[GameType.Conjugation]
+      },
+      'name id'
+    )
+      .sort({ name: 1 })
+      .exec()) as Verb[];
+    return verbs;
+  },
+
+  async getWordsForPractice(filter, config, user) {
+    const { gameType, tense, language, tags } = filter;
+    const now = new Date();
+    let spacedRepetitionField = `spacedRepetition.${gameType}`;
+
+    if (tense && gameType === Game.Conjugation) {
+      spacedRepetitionField = `${spacedRepetitionField}.${tense}`;
+    }
+    const dateField = `${spacedRepetitionField}.nextReviewDate`;
+
+    const tagsFilters = getTagsFilter(tags);
+    const gameFilters = GAME_FILTERS?.[gameType] || {};
+    const tenseFilter = getTenseFilter(gameType, tense);
+
+    const words = await Word.find(
+      {
+        user,
+        language,
+        $or: [
+          { [dateField]: { $lte: now } },
+          { spacedRepetition: { $exists: false } }
+        ],
+        ...tagsFilters,
+        ...gameFilters,
+        ...tenseFilter
+      },
+      PROJECTIONS[gameType]
+    )
+      // priotitize new cards
+      .sort({ [dateField]: -1 })
+      .limit(config.wordsPerGame)
+      .exec();
     return words;
   }
 };

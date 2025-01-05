@@ -15,7 +15,8 @@ jest.mock('bcryptjs', () => {
 
 jest.mock('lodash', () => ({
   shuffle: jest.fn(arr => arr),
-  take: jest.fn((arr, count) => arr?.slice(0, count))
+  take: jest.fn((arr, count) => arr?.slice(0, count)),
+  uniq: jest.fn(arr => arr)
 }));
 
 let index = 0;

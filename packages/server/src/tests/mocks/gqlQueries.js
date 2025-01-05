@@ -49,7 +49,6 @@ export const wordByIdQuery = `
       stems
       level
       shortDef
-      alternativeSpelling
       tags {
         text
         color
@@ -117,7 +116,6 @@ export const gameQuery = `query Game($input: GameDataInput!) {
         question
         options
         answer
-        alternativeSpelling
         additionalInfo {
           audioUrl
           imgUrl

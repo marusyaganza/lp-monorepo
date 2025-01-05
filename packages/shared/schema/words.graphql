@@ -25,6 +25,7 @@ enum SortBy {
   errorCount
   successRate
   memoryRefresher
+  spacedRepetition
 }
 
 enum Tense {
@@ -32,13 +33,14 @@ enum Tense {
   pprf
   impf
   pret
-  # futr
-  # cond
-  # psub
+  futr
+  cond
+  psub
+  ppci
+  # gppt
   # pisb1
   # pisb2
   # fsub
-  # ppci
   # ppsi
   # pant
   # fpin
@@ -47,6 +49,13 @@ enum Tense {
   # ppss1
   # ppss2
   # fpsb
+}
+
+enum Score {
+  AGAIN
+  GOOD
+  HARD
+  EASY
 }
 
 type WordDefinition {
@@ -66,7 +75,9 @@ type WordStatistics {
   TYPE_WORD: WordStatisticsField
   SELECT_WORD: WordStatisticsField
   SELECT_DEF: WordStatisticsField
+  IMAGE: WordStatisticsField
   CONJUGATION: WordStatisticsField
+  GENDER: WordStatisticsField
 }
 
 type Word {
@@ -134,6 +145,11 @@ type Conjugation {
 type DefExample {
   text: String!
   translation: String
+}
+
+type Verb {
+  id: ID!
+  name: String!
 }
 
 input DefExampleInput {
@@ -204,6 +220,8 @@ input UpdateStatisticsInput {
   id: ID!
   hasError: Boolean!
   gameType: Game!
+  tense: Tense
+  score: Score
 }
 
 input WordsPerPageInput {
@@ -218,6 +236,7 @@ input WordsPerPageInput {
 
 type Query {
   word(id: ID!): Word!
+  verbs: [Verb!]
   wordsPerPage(input: WordsPerPageInput): PaginatedWords!
   searchWord(input: WordSearchInput!): [SearchResult!]!
 }

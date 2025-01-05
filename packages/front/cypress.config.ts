@@ -12,7 +12,7 @@ export default defineConfig({
     baseUrl: 'http://localhost:8080',
     viewportWidth: 1300,
     viewportHeight: 1000,
-    setupNodeEvents(on, config) {
+    setupNodeEvents(on) {
       on('task', {
         async prepareDB(input?: { tags?: Partial<WordTag>[] }) {
           await connectToDb();

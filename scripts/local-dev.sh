@@ -1,5 +1,15 @@
 #!/bin/bash
 
+# Function to clean up Docker container on exit
+cleanup() {
+    echo "Stopping MongoDB container..."
+    docker stop dev-db
+    echo "All tasks completed."
+}
+
+# Set trap to call cleanup function on EXIT, INT (Ctrl+C), TERM (termination), and HUP (hang-up signal when terminal closes)
+trap cleanup EXIT INT TERM HUP
+
 # Step 1: Start the Docker DB in detached mode
 echo "Starting MongoDB..."
 

@@ -1,10 +1,11 @@
+import { uniq } from 'lodash';
 import { DEFAULT_LANGUAGE } from '../../constants/defaultValues';
 import { WordModel } from '../../db/models/Word/Word';
 import {
   Game,
-  GameConfig,
   GameData,
   GameDataInput,
+  GameSettings,
   Word
 } from '../../generated/graphql';
 import {
@@ -17,7 +18,7 @@ import {
 export async function generateSelectWordGame(
   words: Word[],
   parameters: GameDataInput,
-  config: GameConfig,
+  config: GameSettings,
   user: string
 ): Promise<GameData> {
   const gameType = Game.SelectWord;
@@ -38,9 +39,11 @@ export async function generateSelectWordGame(
       language
     );
     const options: string[] = opts.map(opt => opt.name);
-    const answer = name;
+    const answer = [name];
     const examples = getExamples(defs);
-    const question = shortDef.map(def => prepareDef(def, name));
+    const question = uniq(
+      shortDef.slice(0, 3).map(def => prepareDef(def, name))
+    );
 
     return {
       answer,

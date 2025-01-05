@@ -1,5 +1,5 @@
 import { GameStage, GameState } from '../../types/gameTypes';
-import { Game, GameQuestion } from '../../generated/graphql';
+import { Game, GameQuestion, Score } from '../../generated/graphql';
 
 export enum GameAction {
   CHECK_ANSWER = 'CHECK_ANSWER',
@@ -22,8 +22,9 @@ export const initialState: GameState = {
 type CheckAnswerAction = {
   type: GameAction.CHECK_ANSWER;
   payload: {
-    answer: string;
+    hasError: boolean;
     gameType: Game;
+    score: Score;
   };
 };
 
@@ -33,7 +34,7 @@ type NextAction = {
 
 type StartAction = {
   type: GameAction.START;
-  payload: { questions: GameQuestion[] };
+  payload: { questions: GameQuestion[]; gameType: Game };
 };
 
 export function gameReducer(
@@ -43,44 +44,35 @@ export function gameReducer(
   const { type } = action;
 
   if (type === GameAction.START) {
-    const { questions } = action.payload;
+    const { questions, gameType } = action.payload;
     return {
       ...initialState,
       result: { errorCount: 0 },
       resultData: [],
       questions,
-      currentQuestion: questions[0]
+      currentQuestion: questions[0],
+      nextQuestion:
+        gameType === Game.Image ? questions?.[1]?.question?.[0] : undefined
     };
   }
 
   if (type === GameAction.CHECK_ANSWER) {
-    const { gameType, answer } = action.payload;
-    const {
-      answer: correctAnswer,
-      wordId,
-      alternativeSpelling
-    } = state.questions[state.currentIndex];
+    const { gameType, hasError, score } = action.payload;
+    const { wordId } = state.questions[state.currentIndex];
     const newState = { ...state };
-    const formattedAnswer = answer.toLocaleLowerCase();
-    if (
-      formattedAnswer === correctAnswer.toLocaleLowerCase() ||
-      alternativeSpelling?.some(
-        word => word?.toLocaleLowerCase() === formattedAnswer
-      )
-    ) {
-      newState.currentResult = {
-        type: GameStage.Success,
-        correctAnswer
-      };
-      newState.resultData.push({ id: wordId, hasError: false, gameType });
-    } else {
-      newState.currentResult = {
-        type: GameStage.Error,
-        correctAnswer: correctAnswer,
-        incorrectAnswer: answer
-      };
+    newState.resultData.push({ id: wordId, hasError, gameType, score });
+    newState.currentResult = {
+      type: hasError ? GameStage.Error : GameStage.Success
+    };
+    if (hasError) {
       newState.result.errorCount++;
-      newState.resultData.push({ id: wordId, hasError: true, gameType });
+    }
+    if (
+      gameType === Game.Image &&
+      state.currentIndex < state.questions.length
+    ) {
+      newState.nextQuestion =
+        state.questions[state.currentIndex + 1]?.question?.[0];
     }
     return newState;
   }
@@ -94,10 +86,10 @@ export function gameReducer(
     } else {
       newState.currentIndex = state.currentIndex + 1;
       newState.progress =
-        ((state.currentIndex + 1) * 100) / (state.questions.length + 1);
+        ((state.currentIndex + 1) * 100) / state.questions.length;
       newState.currentQuestion = newState.questions[newState.currentIndex];
     }
-    newState.currentResult = {};
+    newState.currentResult = { type: GameStage.Initial };
     return newState;
   }
   return state;

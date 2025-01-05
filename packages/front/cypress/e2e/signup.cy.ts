@@ -134,7 +134,6 @@ describe('sign up page', () => {
     cy.checkPathName('/');
   });
 
-  // TODO select tags in this test
   it('should clear all the data when user logs out', () => {
     cy.visit('/sign-up');
     const fields = Object.keys(newUserInput);
@@ -155,6 +154,9 @@ describe('sign up page', () => {
     cy.findByCy('select', '@sortControls').as('select');
     cy.getByCy('spinner').should('not.exist');
     cy.selectOption('@select', 'Particle');
+
+    cy.getByCy('tag-selector').as('tagSelector');
+    cy.selectOption('@tagSelector', 'without tags');
 
     cy.findByCy('checkbox-label', '@sortControls').as('orderCheckbox').click();
 
@@ -177,6 +179,7 @@ describe('sign up page', () => {
     cy.getByCy('spinner').should('not.exist');
     cy.getByCy('wordCard').should('not.exist');
 
+    cy.findByCy('tag', '@tagSelector').should('not.exist');
     cy.findByCy('select-btn', '@select').should('have.text', 'Date');
     cy.findByCy('checkbox-label', '@sortControls')
       .find('svg')

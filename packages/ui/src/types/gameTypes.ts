@@ -1,42 +1,15 @@
 import { RefObject } from 'react';
 import {
   GameQuestion,
-  Tense,
+  Score,
   UpdateStatisticsInput
 } from '../generated/graphql';
-
-export interface GameProps {
-  task: string;
-  audioUrl?: string | null;
-  options?: string[] | null;
-  question: string[];
-  tense?: Tense | null;
-  onChange: (value: string) => void;
-  inputRef: RefObject<HTMLInputElement>;
-  className?: string;
-  value: string;
-  currentStage: GameStage;
-  correctAnswer?: string;
-  currentResult?: {
-    type?: 'initial' | 'success' | 'error';
-    correctAnswer?: string;
-    incorrectAnswer?: string;
-  };
-}
-
-export enum GameStage {
-  Initial = 'initial',
-  Success = 'success',
-  Error = 'error'
-}
 
 export interface GameState {
   currentIndex: number;
   isCompleted: boolean;
   currentResult: {
     type?: GameStage;
-    correctAnswer?: string;
-    incorrectAnswer?: string;
   };
   resultData: UpdateStatisticsInput[];
   result: {
@@ -44,5 +17,33 @@ export interface GameState {
   };
   questions: GameQuestion[];
   currentQuestion?: GameQuestion;
+  nextQuestion?: string;
   progress: number;
+}
+
+export interface GameResultType {
+  hasError: boolean;
+  score: Score;
+}
+
+export interface GameProps {
+  task: string;
+  audioUrl?: string | null;
+  shortDef?: string | null;
+  options?: string[] | null;
+  question: string[];
+  nextQuestion?: string;
+  onSubmit: (value: GameResultType) => void;
+  inputRef: RefObject<HTMLInputElement>;
+  className?: string;
+  onNext: () => void;
+  buttonRef: RefObject<HTMLButtonElement>;
+  currentStage: GameStage;
+  correctAnswer: string[];
+}
+
+export enum GameStage {
+  Initial = 'initial',
+  Success = 'success',
+  Error = 'error'
 }

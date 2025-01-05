@@ -1,25 +1,29 @@
-import React, { useState } from 'react';
-import { Tense, Game } from '../../../generated/graphql';
+import React, { useContext, useEffect, useState } from 'react';
+import { Tense, Game, VerbsQuery } from '../../../generated/graphql';
 import logo from '../../../assets/img/conjugate-logo.svg';
 import { PageLayout } from '../../../components/PageLayout/PageLayout';
-import { useSelect, Button } from '@lp/ui';
+import { useSelect, Button, VerbSelector } from '@lp/ui';
 import styles from './ConjugatePage.module.css';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { routes } from '../../../constants/routes';
+import { useQuery } from '@apollo/client';
+import { VERBS_QUERY } from '../../../gql/queries';
+import { AppContext } from '../../../app-context/appContext';
 
 // Uncomment more tenses as needed
 export const TENSES: Record<Tense, string> = {
-  pind: 'Presente indicativo',
-  pprf: 'Pretérito perfecto simple',
+  cond: 'Condicional',
+  futr: 'Futuro indicativo',
   impf: 'Imperativo',
-  pret: 'Pretérito imperfecto'
-  //   futr: 'Futuro indicativo',
-  //   cond: 'Condicional',
-  //   psub: 'Presente subjentivo',
+  pind: 'Presente indicativo',
+  psub: 'Presente subjentivo',
+  pret: 'Pretérito imperfecto',
+  pprf: 'Pretérito indefinido',
+  ppci: 'Pretérito perfecto'
+  // gppt: 'Gerundio'
   //   pisb1: 'Pretérito imperfecto',
   //   pisb2: 'Pretérito imperfecto 2',
   //   fsub: 'Futuro',
-  //   ppci: 'Pretérito perfecto compuesto',
   //   ppsi: 'Pretérito pluscuamperfecto',
   //   pant: 'Pretérito anterior',
   //   fpin: 'Futuro perfecto',
@@ -32,6 +36,11 @@ export const TENSES: Record<Tense, string> = {
 
 const ConjugatePage = () => {
   const [tense, setTense] = useState<Tense>(Tense.Pind);
+  const [wordId, setWordId] = useState<string>();
+  const [wordSelectionOpen, setWordSelectionOpen] = useState(false);
+  const { data, loading, error } = useQuery<VerbsQuery>(VERBS_QUERY);
+  const { setNotification } = useContext(AppContext);
+
   const navigate = useNavigate();
   const handleChange = (val: Tense) => {
     setTense(val);
@@ -50,19 +59,60 @@ const ConjugatePage = () => {
       );
     });
   };
+
+  useEffect(() => {
+    if (error) {
+      setNotification({
+        variant: 'error',
+        text: 'Error',
+        subText: error?.message || 'something went wrong'
+      });
+    }
+  }, [error]);
+
   const renderSelectValue = () => {
     return TENSES[tense];
   };
+
   const handleButtonClick = () => {
     navigate(`/${routes.games}/${Game.Conjugation.toLocaleLowerCase()}`, {
-      state: { ...state, tense }
+      state: { ...state, tense, wordId }
     });
   };
+
+  const handleVerbSubmit = (val: string) => {
+    setWordId(val);
+    setWordSelectionOpen(false);
+  };
+
+  if (wordSelectionOpen && data?.verbs?.length) {
+    const { verbs } = data;
+
+    return (
+      <PageLayout className={styles.verbSelectorContainer} isLoading={loading}>
+        <VerbSelector
+          options={verbs}
+          onSubmit={handleVerbSubmit}
+          onCancel={() => {
+            setWordSelectionOpen(false);
+          }}
+        />
+      </PageLayout>
+    );
+  }
   return (
     <PageLayout>
       <article className={styles.content}>
         <h1 className={styles.heading}>Welcome to conjugation training!</h1>
-        <img width={300} height={266} src={logo} alt="" />
+        <img width={225} height={200} src={logo} alt="" />
+        <Button
+          variant="tertiary"
+          onClick={() => {
+            setWordSelectionOpen(true);
+          }}
+        >
+          Pick a word to practice
+        </Button>
         <p>Please select tense</p>
         <Select
           dataCy="tense-selector"

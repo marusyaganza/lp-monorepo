@@ -64,5 +64,6 @@ export * from './components/TagsForm/TagsForm';
 export * from './components/ColorInput/ColorInput';
 export * from './components/EditWordForm/EditWordForm';
 export * from './components/NewWordForm/NewWordForm';
+export * from './components/VerbSelector/VerbSelector';
 export * from './types/gameTypes';
 export * from './types/typeGuards';

@@ -1,6 +1,5 @@
 import { connect, connection } from 'mongoose';
 import { mockUser } from './mocks/mockData';
-import { games } from './mocks/games';
 import { WordTag } from '../../src/generated/graphql';
 
 export async function connectToDb() {
@@ -32,9 +31,6 @@ export async function dropDb() {
 export async function seedDb(input?: { tags?: Partial<WordTag>[] }) {
   const tags = input?.tags;
   try {
-    const gamesCollection = await connection.db.createCollection('games');
-    await gamesCollection.insertMany(games);
-
     const usersCollection = await connection.db.createCollection('users');
     const user = await usersCollection.insertOne(mockUser);
     const userId = user.insertedId.toString();

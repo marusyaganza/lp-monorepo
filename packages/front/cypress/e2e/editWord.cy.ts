@@ -3,7 +3,7 @@
 
 import { Language } from '../../src/generated/graphql';
 import { tags } from '../support/mocks/tags';
-import { HEADER_TEXTS } from '../support/constants';
+import { HEADER_TEXTS, TEXTS_BY_PAGE } from '../support/constants';
 import {
   fullInitialWord,
   fullWordUpdate,
@@ -14,8 +14,7 @@ import {
 } from '../support/mocks/updateWordInputs';
 import { editWord } from '../support/helpers/wordForm';
 
-// TODO test form validation
-const requiredFields = ['name', 'particle', 'shortDef', 'defs'];
+const requiredFields = ['particle', 'shortDef', 'defs'];
 const languages = Object.values(Language);
 const queries = {
   [Language.English]: 'wheel',
@@ -59,6 +58,25 @@ describe('Edit Word Page', () => {
       cy.checkWordForm(word);
       cy.get('@submitBtn').should('be.enabled');
       cy.getByCy('backLink').should('have.attr', 'href', '/words');
+    });
+
+    it(`should validate the form, ${lang}`, () => {
+      cy.changeLanguage(lang);
+      const word = minInitialWord[lang];
+      cy.addWord(minWordQueries[lang], word.name);
+      cy.get('@headerLink').contains(HEADER_TEXTS.vocabulary).click();
+      cy.getByCy('wordCard').click();
+      cy.getByCy('editButton').click();
+      requiredFields.forEach(field => {
+        cy.getByCy(`formField-${field}`).find('textarea').first().clear();
+      });
+      cy.get('@submitBtn').click();
+      requiredFields.forEach(key => {
+        cy.getByCy(`formField-${key}`)
+          .find('[data-cy="input-error"]')
+          .should('be.visible');
+      });
+      cy.get('h1').should('have.text', TEXTS_BY_PAGE.editWord.mainHeading);
     });
 
     it(`should be able to edit and save a word in ${lang}`, () => {

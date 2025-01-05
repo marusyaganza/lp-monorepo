@@ -28,6 +28,7 @@ const GamePage = () => {
         sortBy: state.sortBy || undefined,
         isReverseOrder: state.isReverseOrder,
         tense: state.tense,
+        wordId: state.wordId,
         tags: state.tags
       }
     },
@@ -62,7 +63,9 @@ const GamePage = () => {
 
   const handleFinish = (input: UpdateStatisticsInput[]) => {
     saveResultFunc({
-      variables: { input },
+      variables: {
+        input: input.map(item => ({ ...item, tense: state.tense }))
+      },
       onCompleted: () => {
         navigate(`/${routes.games}`);
       },

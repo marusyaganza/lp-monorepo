@@ -14,8 +14,9 @@ exports[`game queries game query with AUDIO and ENGLISH 1`] = `
       "imgUrl": "https://example.com/images/serendipity.jpg",
       "shortDef": "<b>serendipity means</b> Unexpected good fortune.",
     },
-    "alternativeSpelling": null,
-    "answer": "serendipity",
+    "answer": [
+      "serendipity",
+    ],
     "options": null,
     "question": [
       "https://example.com/audio/serendipity.mp3",
@@ -34,8 +35,9 @@ exports[`game queries game query with AUDIO and ENGLISH 1`] = `
       "imgUrl": "https://example.com/images/ephemeral.jpg",
       "shortDef": "<b>ephemeral means</b> Short-lived.",
     },
-    "alternativeSpelling": null,
-    "answer": "ephemeral",
+    "answer": [
+      "ephemeral",
+    ],
     "options": null,
     "question": [
       "https://example.com/audio/ephemeral.mp3",
@@ -54,8 +56,9 @@ exports[`game queries game query with AUDIO and ENGLISH 1`] = `
       "imgUrl": "https://example.com/images/ubiquitous.jpg",
       "shortDef": "<b>ubiquitous means</b> Found everywhere.",
     },
-    "alternativeSpelling": null,
-    "answer": "ubiquitous",
+    "answer": [
+      "ubiquitous",
+    ],
     "options": null,
     "question": [
       "https://example.com/audio/ubiquitous.mp3",
@@ -74,8 +77,9 @@ exports[`game queries game query with AUDIO and ENGLISH 1`] = `
       "imgUrl": "https://example.com/images/quixotic.jpg",
       "shortDef": "<b>quixotic means</b> Idealistic but impractical.",
     },
-    "alternativeSpelling": null,
-    "answer": "quixotic",
+    "answer": [
+      "quixotic",
+    ],
     "options": null,
     "question": [
       "https://example.com/audio/quixotic.mp3",
@@ -94,8 +98,9 @@ exports[`game queries game query with AUDIO and ENGLISH 1`] = `
       "imgUrl": "https://example.com/images/solitude.jpg",
       "shortDef": "<b>solitude means</b> State of being alone.",
     },
-    "alternativeSpelling": null,
-    "answer": "solitude",
+    "answer": [
+      "solitude",
+    ],
     "options": null,
     "question": [
       "https://example.com/audio/solitude.mp3",
@@ -114,8 +119,9 @@ exports[`game queries game query with AUDIO and ENGLISH 1`] = `
       "imgUrl": "https://example.com/images/luminous.jpg",
       "shortDef": "<b>luminous means</b> Glowing or bright.",
     },
-    "alternativeSpelling": null,
-    "answer": "luminous",
+    "answer": [
+      "luminous",
+    ],
     "options": null,
     "question": [
       "https://example.com/audio/luminous.mp3",
@@ -139,10 +145,10 @@ exports[`game queries game query with AUDIO and SPANISH 1`] = `
       "imgUrl": "https://example.com/images/correr.jpg",
       "shortDef": "<b>correr means</b> To run.",
     },
-    "alternativeSpelling": [
+    "answer": [
+      "correr",
       "korrer",
     ],
-    "answer": "correr",
     "options": null,
     "question": [
       "https://example.com/audio/correr.mp3",
@@ -161,10 +167,10 @@ exports[`game queries game query with AUDIO and SPANISH 1`] = `
       "imgUrl": "https://example.com/images/felicidad.jpg",
       "shortDef": "<b>felicidad means</b> Happiness.",
     },
-    "alternativeSpelling": [
+    "answer": [
+      "felicidad",
       "felisidad",
     ],
-    "answer": "felicidad",
     "options": null,
     "question": [
       "https://example.com/audio/felicidad.mp3",
@@ -176,20 +182,20 @@ exports[`game queries game query with AUDIO and SPANISH 1`] = `
       "audioUrl": null,
       "examples": [
         {
-          "text": "Ella terminó su trabajo rápidamente.",
-          "translation": "She finished her work quickly.",
+          "text": "El/La periodista escribió un artículo fascinante.",
+          "translation": "The journalist wrote a fascinating article.",
         },
       ],
-      "imgUrl": "https://example.com/images/rapidamente.jpg",
-      "shortDef": "<b>rápidamente means</b> Quickly.",
+      "imgUrl": "https://example.com/images/periodista.jpg",
+      "shortDef": "<b>periodista means</b> Journalist",
     },
-    "alternativeSpelling": [
-      "rapidamiente",
+    "answer": [
+      "periodista",
+      "periodísta",
     ],
-    "answer": "rápidamente",
     "options": null,
     "question": [
-      "https://example.com/audio/rapidamente.mp3",
+      "https://example.com/audio/periodista.mp3",
     ],
     "wordId": Any<String>,
   },
@@ -205,8 +211,9 @@ exports[`game queries game query with AUDIO and SPANISH 1`] = `
       "imgUrl": "https://example.com/images/grande.jpg",
       "shortDef": "<b>grande means</b> Big, large.",
     },
-    "alternativeSpelling": null,
-    "answer": "grande",
+    "answer": [
+      "grande",
+    ],
     "options": null,
     "question": [
       "https://example.com/audio/grande.mp3",
@@ -225,8 +232,9 @@ exports[`game queries game query with AUDIO and SPANISH 1`] = `
       "imgUrl": "https://example.com/images/pensar.jpg",
       "shortDef": "<b>pensar means</b> To think.",
     },
-    "alternativeSpelling": null,
-    "answer": "pensar",
+    "answer": [
+      "pensar",
+    ],
     "options": null,
     "question": [
       "https://example.com/audio/pensar.mp3",
@@ -245,11 +253,414 @@ exports[`game queries game query with AUDIO and SPANISH 1`] = `
       "imgUrl": "https://example.com/images/hermosura.jpg",
       "shortDef": "<b>hermosura means</b> Beauty.",
     },
-    "alternativeSpelling": null,
-    "answer": "hermosura",
+    "answer": [
+      "hermosura",
+    ],
     "options": null,
     "question": [
       "https://example.com/audio/hermosura.mp3",
+    ],
+    "wordId": Any<String>,
+  },
+]
+`;
+
+exports[`game queries game query with GENDER and SPANISH 1`] = `
+[
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/felicidad.mp3",
+      "examples": [
+        {
+          "text": "Su felicidad es contagiosa.",
+          "translation": "Her happiness is contagious.",
+        },
+      ],
+      "imgUrl": "https://example.com/images/felicidad.jpg",
+      "shortDef": "<b>felicidad means</b> Happiness.",
+    },
+    "answer": [
+      "feminine",
+    ],
+    "options": null,
+    "question": [
+      "felicidad",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/periodista.mp3",
+      "examples": [
+        {
+          "text": "El/La periodista escribió un artículo fascinante.",
+          "translation": "The journalist wrote a fascinating article.",
+        },
+      ],
+      "imgUrl": "https://example.com/images/periodista.jpg",
+      "shortDef": "<b>periodista means</b> Journalist",
+    },
+    "answer": [
+      "feminine",
+      "masculine",
+    ],
+    "options": null,
+    "question": [
+      "periodista",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/hermosura.mp3",
+      "examples": [
+        {
+          "text": "Su hermosura es indescriptible.",
+          "translation": "Her beauty is indescribable.",
+        },
+      ],
+      "imgUrl": "https://example.com/images/hermosura.jpg",
+      "shortDef": "<b>hermosura means</b> Beauty.",
+    },
+    "answer": [
+      "feminine",
+    ],
+    "options": null,
+    "question": [
+      "hermosura",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/sombrero.mp3",
+      "examples": [
+        {
+          "text": "El vaquero llevaba un sombrero de ala ancha.",
+          "translation": "The cowboy wore a wide-brimmed hat.",
+        },
+        {
+          "text": "Se puso el sombrero para protegerse del sol.",
+          "translation": "He put on the hat to protect himself from the sun.",
+        },
+      ],
+      "imgUrl": "https://example.com/images/sombrero.jpg",
+      "shortDef": "<b>sombrero means</b> Hat",
+    },
+    "answer": [
+      "masculine",
+    ],
+    "options": null,
+    "question": [
+      "sombrero",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/platano.mp3",
+      "examples": [
+        {
+          "text": "Para evitar que se pegue, es mejor engrasar la sartén antes de freír.",
+          "translation": "To prevent sticking, it's best to powder the pan before frying.",
+        },
+      ],
+      "imgUrl": "https://example.com/images/skillet.jpg",
+      "shortDef": "<b>sartén means</b> skillet",
+    },
+    "answer": [
+      "feminine",
+      "masculine",
+    ],
+    "options": null,
+    "question": [
+      "sartén",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/fresa.mp3",
+      "examples": [
+        {
+          "text": "Ella recogió una fresa madura del jardín.",
+          "translation": "She picked a ripe strawberry from the garden.",
+        },
+      ],
+      "imgUrl": "https://example.com/images/fresa.jpg",
+      "shortDef": "<b>fresa means</b> Soft red fruit with seeds.",
+    },
+    "answer": [
+      "feminine",
+    ],
+    "options": null,
+    "question": [
+      "fresa",
+    ],
+    "wordId": Any<String>,
+  },
+]
+`;
+
+exports[`game queries game query with IMAGE and ENGLISH 1`] = `
+[
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/serendipity.mp3",
+      "examples": [
+        {
+          "text": "She found the perfect book by sheer serendipity.",
+          "translation": null,
+        },
+      ],
+      "imgUrl": null,
+      "shortDef": "<b>serendipity means</b> Unexpected good fortune.",
+    },
+    "answer": [
+      "serendipity",
+    ],
+    "options": null,
+    "question": [
+      "https://example.com/images/serendipity.jpg",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/ephemeral.mp3",
+      "examples": [
+        {
+          "text": "The beauty of the cherry blossoms is ephemeral.",
+          "translation": null,
+        },
+      ],
+      "imgUrl": null,
+      "shortDef": "<b>ephemeral means</b> Short-lived.",
+    },
+    "answer": [
+      "ephemeral",
+    ],
+    "options": null,
+    "question": [
+      "https://example.com/images/ephemeral.jpg",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/ubiquitous.mp3",
+      "examples": [
+        {
+          "text": "Smartphones have become ubiquitous in modern life.",
+          "translation": null,
+        },
+      ],
+      "imgUrl": null,
+      "shortDef": "<b>ubiquitous means</b> Found everywhere.",
+    },
+    "answer": [
+      "ubiquitous",
+    ],
+    "options": null,
+    "question": [
+      "https://example.com/images/ubiquitous.jpg",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/quixotic.mp3",
+      "examples": [
+        {
+          "text": "His quixotic quest for world peace amused his friends.",
+          "translation": null,
+        },
+      ],
+      "imgUrl": null,
+      "shortDef": "<b>quixotic means</b> Idealistic but impractical.",
+    },
+    "answer": [
+      "quixotic",
+    ],
+    "options": null,
+    "question": [
+      "https://example.com/images/quixotic.jpg",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/solitude.mp3",
+      "examples": [
+        {
+          "text": "She enjoyed the peace and quiet of her mountain solitude.",
+          "translation": null,
+        },
+      ],
+      "imgUrl": null,
+      "shortDef": "<b>solitude means</b> State of being alone.",
+    },
+    "answer": [
+      "solitude",
+    ],
+    "options": null,
+    "question": [
+      "https://example.com/images/solitude.jpg",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/luminous.mp3",
+      "examples": [
+        {
+          "text": "The luminous moon lit up the night sky.",
+          "translation": null,
+        },
+      ],
+      "imgUrl": null,
+      "shortDef": "<b>luminous means</b> Glowing or bright.",
+    },
+    "answer": [
+      "luminous",
+    ],
+    "options": null,
+    "question": [
+      "https://example.com/images/luminous.jpg",
+    ],
+    "wordId": Any<String>,
+  },
+]
+`;
+
+exports[`game queries game query with IMAGE and SPANISH 1`] = `
+[
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/correr.mp3",
+      "examples": [
+        {
+          "text": "Él puede correr muy rápido.",
+          "translation": "He can run very fast.",
+        },
+      ],
+      "imgUrl": null,
+      "shortDef": "<b>correr means</b> To run.",
+    },
+    "answer": [
+      "correr",
+      "korrer",
+    ],
+    "options": null,
+    "question": [
+      "https://example.com/images/correr.jpg",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/felicidad.mp3",
+      "examples": [
+        {
+          "text": "Su felicidad es contagiosa.",
+          "translation": "Her happiness is contagious.",
+        },
+      ],
+      "imgUrl": null,
+      "shortDef": "<b>felicidad means</b> Happiness.",
+    },
+    "answer": [
+      "felicidad",
+      "felisidad",
+    ],
+    "options": null,
+    "question": [
+      "https://example.com/images/felicidad.jpg",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/periodista.mp3",
+      "examples": [
+        {
+          "text": "El/La periodista escribió un artículo fascinante.",
+          "translation": "The journalist wrote a fascinating article.",
+        },
+      ],
+      "imgUrl": null,
+      "shortDef": "<b>periodista means</b> Journalist",
+    },
+    "answer": [
+      "periodista",
+      "periodísta",
+    ],
+    "options": null,
+    "question": [
+      "https://example.com/images/periodista.jpg",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/grande.mp3",
+      "examples": [
+        {
+          "text": "La casa es muy grande.",
+          "translation": "The house is very big.",
+        },
+      ],
+      "imgUrl": null,
+      "shortDef": "<b>grande means</b> Big, large.",
+    },
+    "answer": [
+      "grande",
+    ],
+    "options": null,
+    "question": [
+      "https://example.com/images/grande.jpg",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/pensar.mp3",
+      "examples": [
+        {
+          "text": "Pienso en ti todos los días.",
+          "translation": "I think about you every day.",
+        },
+      ],
+      "imgUrl": null,
+      "shortDef": "<b>pensar means</b> To think.",
+    },
+    "answer": [
+      "pensar",
+    ],
+    "options": null,
+    "question": [
+      "https://example.com/images/pensar.jpg",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/hermosura.mp3",
+      "examples": [
+        {
+          "text": "Su hermosura es indescriptible.",
+          "translation": "Her beauty is indescribable.",
+        },
+      ],
+      "imgUrl": null,
+      "shortDef": "<b>hermosura means</b> Beauty.",
+    },
+    "answer": [
+      "hermosura",
+    ],
+    "options": null,
+    "question": [
+      "https://example.com/images/hermosura.jpg",
     ],
     "wordId": Any<String>,
   },
@@ -270,8 +681,9 @@ exports[`game queries game query with SELECT_DEF and ENGLISH 1`] = `
       "imgUrl": "https://example.com/images/serendipity.jpg",
       "shortDef": null,
     },
-    "alternativeSpelling": null,
-    "answer": "Unexpected good fortune.",
+    "answer": [
+      "Unexpected good fortune.",
+    ],
     "options": [
       "Short-lived.",
       "Found everywhere.",
@@ -297,8 +709,9 @@ exports[`game queries game query with SELECT_DEF and ENGLISH 1`] = `
       "imgUrl": "https://example.com/images/ephemeral.jpg",
       "shortDef": null,
     },
-    "alternativeSpelling": null,
-    "answer": "Short-lived.",
+    "answer": [
+      "Short-lived.",
+    ],
     "options": [
       "Unexpected good fortune.",
       "Found everywhere.",
@@ -324,8 +737,9 @@ exports[`game queries game query with SELECT_DEF and ENGLISH 1`] = `
       "imgUrl": "https://example.com/images/ubiquitous.jpg",
       "shortDef": null,
     },
-    "alternativeSpelling": null,
-    "answer": "Found everywhere.",
+    "answer": [
+      "Found everywhere.",
+    ],
     "options": [
       "Unexpected good fortune.",
       "Short-lived.",
@@ -351,8 +765,9 @@ exports[`game queries game query with SELECT_DEF and ENGLISH 1`] = `
       "imgUrl": "https://example.com/images/quixotic.jpg",
       "shortDef": null,
     },
-    "alternativeSpelling": null,
-    "answer": "Idealistic but impractical.",
+    "answer": [
+      "Idealistic but impractical.",
+    ],
     "options": [
       "Unexpected good fortune.",
       "Short-lived.",
@@ -378,8 +793,9 @@ exports[`game queries game query with SELECT_DEF and ENGLISH 1`] = `
       "imgUrl": "https://example.com/images/solitude.jpg",
       "shortDef": null,
     },
-    "alternativeSpelling": null,
-    "answer": "State of being alone.",
+    "answer": [
+      "State of being alone.",
+    ],
     "options": [
       "Unexpected good fortune.",
       "Short-lived.",
@@ -405,8 +821,9 @@ exports[`game queries game query with SELECT_DEF and ENGLISH 1`] = `
       "imgUrl": "https://example.com/images/luminous.jpg",
       "shortDef": null,
     },
-    "alternativeSpelling": null,
-    "answer": "Glowing or bright.",
+    "answer": [
+      "Glowing or bright.",
+    ],
     "options": [
       "Unexpected good fortune.",
       "Short-lived.",
@@ -437,11 +854,12 @@ exports[`game queries game query with SELECT_DEF and SPANISH 1`] = `
       "imgUrl": "https://example.com/images/correr.jpg",
       "shortDef": null,
     },
-    "alternativeSpelling": null,
-    "answer": "To run.",
+    "answer": [
+      "To run.",
+    ],
     "options": [
       "Happiness.",
-      "Quickly.",
+      "Journalist",
       "Big, large.",
       "To think.",
       "Beauty.",
@@ -464,11 +882,12 @@ exports[`game queries game query with SELECT_DEF and SPANISH 1`] = `
       "imgUrl": "https://example.com/images/felicidad.jpg",
       "shortDef": null,
     },
-    "alternativeSpelling": null,
-    "answer": "Happiness.",
+    "answer": [
+      "Happiness.",
+    ],
     "options": [
       "To run.",
-      "Quickly.",
+      "Journalist",
       "Big, large.",
       "To think.",
       "Beauty.",
@@ -481,28 +900,29 @@ exports[`game queries game query with SELECT_DEF and SPANISH 1`] = `
   },
   {
     "additionalInfo": {
-      "audioUrl": "https://example.com/audio/rapidamente.mp3",
+      "audioUrl": "https://example.com/audio/periodista.mp3",
       "examples": [
         {
-          "text": "Ella terminó su trabajo rápidamente.",
-          "translation": "She finished her work quickly.",
+          "text": "El/La periodista escribió un artículo fascinante.",
+          "translation": "The journalist wrote a fascinating article.",
         },
       ],
-      "imgUrl": "https://example.com/images/rapidamente.jpg",
+      "imgUrl": "https://example.com/images/periodista.jpg",
       "shortDef": null,
     },
-    "alternativeSpelling": null,
-    "answer": "Quickly.",
+    "answer": [
+      "Journalist",
+    ],
     "options": [
       "To run.",
       "Happiness.",
       "Big, large.",
       "To think.",
       "Beauty.",
-      "Quickly.",
+      "Journalist",
     ],
     "question": [
-      "rápidamente",
+      "periodista",
     ],
     "wordId": Any<String>,
   },
@@ -518,12 +938,13 @@ exports[`game queries game query with SELECT_DEF and SPANISH 1`] = `
       "imgUrl": "https://example.com/images/grande.jpg",
       "shortDef": null,
     },
-    "alternativeSpelling": null,
-    "answer": "Big, large.",
+    "answer": [
+      "Big, large.",
+    ],
     "options": [
       "To run.",
       "Happiness.",
-      "Quickly.",
+      "Journalist",
       "To think.",
       "Beauty.",
       "Big, large.",
@@ -545,12 +966,13 @@ exports[`game queries game query with SELECT_DEF and SPANISH 1`] = `
       "imgUrl": "https://example.com/images/pensar.jpg",
       "shortDef": null,
     },
-    "alternativeSpelling": null,
-    "answer": "To think.",
+    "answer": [
+      "To think.",
+    ],
     "options": [
       "To run.",
       "Happiness.",
-      "Quickly.",
+      "Journalist",
       "Big, large.",
       "Beauty.",
       "To think.",
@@ -572,12 +994,13 @@ exports[`game queries game query with SELECT_DEF and SPANISH 1`] = `
       "imgUrl": "https://example.com/images/hermosura.jpg",
       "shortDef": null,
     },
-    "alternativeSpelling": null,
-    "answer": "Beauty.",
+    "answer": [
+      "Beauty.",
+    ],
     "options": [
       "To run.",
       "Happiness.",
-      "Quickly.",
+      "Journalist",
       "Big, large.",
       "To think.",
       "Beauty.",
@@ -604,8 +1027,9 @@ exports[`game queries game query with SELECT_WORD and ENGLISH 1`] = `
       "imgUrl": "https://example.com/images/serendipity.jpg",
       "shortDef": null,
     },
-    "alternativeSpelling": null,
-    "answer": "serendipity",
+    "answer": [
+      "serendipity",
+    ],
     "options": [
       "ephemeral",
       "ubiquitous",
@@ -631,8 +1055,9 @@ exports[`game queries game query with SELECT_WORD and ENGLISH 1`] = `
       "imgUrl": "https://example.com/images/ephemeral.jpg",
       "shortDef": null,
     },
-    "alternativeSpelling": null,
-    "answer": "ephemeral",
+    "answer": [
+      "ephemeral",
+    ],
     "options": [
       "serendipity",
       "ubiquitous",
@@ -658,8 +1083,9 @@ exports[`game queries game query with SELECT_WORD and ENGLISH 1`] = `
       "imgUrl": "https://example.com/images/ubiquitous.jpg",
       "shortDef": null,
     },
-    "alternativeSpelling": null,
-    "answer": "ubiquitous",
+    "answer": [
+      "ubiquitous",
+    ],
     "options": [
       "serendipity",
       "ephemeral",
@@ -685,8 +1111,9 @@ exports[`game queries game query with SELECT_WORD and ENGLISH 1`] = `
       "imgUrl": "https://example.com/images/quixotic.jpg",
       "shortDef": null,
     },
-    "alternativeSpelling": null,
-    "answer": "quixotic",
+    "answer": [
+      "quixotic",
+    ],
     "options": [
       "serendipity",
       "ephemeral",
@@ -712,8 +1139,9 @@ exports[`game queries game query with SELECT_WORD and ENGLISH 1`] = `
       "imgUrl": "https://example.com/images/solitude.jpg",
       "shortDef": null,
     },
-    "alternativeSpelling": null,
-    "answer": "solitude",
+    "answer": [
+      "solitude",
+    ],
     "options": [
       "serendipity",
       "ephemeral",
@@ -739,8 +1167,9 @@ exports[`game queries game query with SELECT_WORD and ENGLISH 1`] = `
       "imgUrl": "https://example.com/images/luminous.jpg",
       "shortDef": null,
     },
-    "alternativeSpelling": null,
-    "answer": "luminous",
+    "answer": [
+      "luminous",
+    ],
     "options": [
       "serendipity",
       "ephemeral",
@@ -771,11 +1200,12 @@ exports[`game queries game query with SELECT_WORD and SPANISH 1`] = `
       "imgUrl": "https://example.com/images/correr.jpg",
       "shortDef": null,
     },
-    "alternativeSpelling": null,
-    "answer": "correr",
+    "answer": [
+      "correr",
+    ],
     "options": [
       "felicidad",
-      "rápidamente",
+      "periodista",
       "grande",
       "pensar",
       "hermosura",
@@ -798,11 +1228,12 @@ exports[`game queries game query with SELECT_WORD and SPANISH 1`] = `
       "imgUrl": "https://example.com/images/felicidad.jpg",
       "shortDef": null,
     },
-    "alternativeSpelling": null,
-    "answer": "felicidad",
+    "answer": [
+      "felicidad",
+    ],
     "options": [
       "correr",
-      "rápidamente",
+      "periodista",
       "grande",
       "pensar",
       "hermosura",
@@ -815,28 +1246,29 @@ exports[`game queries game query with SELECT_WORD and SPANISH 1`] = `
   },
   {
     "additionalInfo": {
-      "audioUrl": "https://example.com/audio/rapidamente.mp3",
+      "audioUrl": "https://example.com/audio/periodista.mp3",
       "examples": [
         {
-          "text": "Ella terminó su trabajo rápidamente.",
-          "translation": "She finished her work quickly.",
+          "text": "El/La periodista escribió un artículo fascinante.",
+          "translation": "The journalist wrote a fascinating article.",
         },
       ],
-      "imgUrl": "https://example.com/images/rapidamente.jpg",
+      "imgUrl": "https://example.com/images/periodista.jpg",
       "shortDef": null,
     },
-    "alternativeSpelling": null,
-    "answer": "rápidamente",
+    "answer": [
+      "periodista",
+    ],
     "options": [
       "correr",
       "felicidad",
       "grande",
       "pensar",
       "hermosura",
-      "rápidamente",
+      "periodista",
     ],
     "question": [
-      "Quickly.",
+      "Journalist",
     ],
     "wordId": Any<String>,
   },
@@ -852,12 +1284,13 @@ exports[`game queries game query with SELECT_WORD and SPANISH 1`] = `
       "imgUrl": "https://example.com/images/grande.jpg",
       "shortDef": null,
     },
-    "alternativeSpelling": null,
-    "answer": "grande",
+    "answer": [
+      "grande",
+    ],
     "options": [
       "correr",
       "felicidad",
-      "rápidamente",
+      "periodista",
       "pensar",
       "hermosura",
       "grande",
@@ -879,12 +1312,13 @@ exports[`game queries game query with SELECT_WORD and SPANISH 1`] = `
       "imgUrl": "https://example.com/images/pensar.jpg",
       "shortDef": null,
     },
-    "alternativeSpelling": null,
-    "answer": "pensar",
+    "answer": [
+      "pensar",
+    ],
     "options": [
       "correr",
       "felicidad",
-      "rápidamente",
+      "periodista",
       "grande",
       "hermosura",
       "pensar",
@@ -906,12 +1340,13 @@ exports[`game queries game query with SELECT_WORD and SPANISH 1`] = `
       "imgUrl": "https://example.com/images/hermosura.jpg",
       "shortDef": null,
     },
-    "alternativeSpelling": null,
-    "answer": "hermosura",
+    "answer": [
+      "hermosura",
+    ],
     "options": [
       "correr",
       "felicidad",
-      "rápidamente",
+      "periodista",
       "grande",
       "pensar",
       "hermosura",
@@ -938,8 +1373,9 @@ exports[`game queries game query with TYPE_WORD and ENGLISH 1`] = `
       "imgUrl": "https://example.com/images/serendipity.jpg",
       "shortDef": null,
     },
-    "alternativeSpelling": null,
-    "answer": "serendipity",
+    "answer": [
+      "serendipity",
+    ],
     "options": null,
     "question": [
       "Unexpected good fortune.",
@@ -958,8 +1394,9 @@ exports[`game queries game query with TYPE_WORD and ENGLISH 1`] = `
       "imgUrl": "https://example.com/images/ephemeral.jpg",
       "shortDef": null,
     },
-    "alternativeSpelling": null,
-    "answer": "ephemeral",
+    "answer": [
+      "ephemeral",
+    ],
     "options": null,
     "question": [
       "Short-lived.",
@@ -978,8 +1415,9 @@ exports[`game queries game query with TYPE_WORD and ENGLISH 1`] = `
       "imgUrl": "https://example.com/images/ubiquitous.jpg",
       "shortDef": null,
     },
-    "alternativeSpelling": null,
-    "answer": "ubiquitous",
+    "answer": [
+      "ubiquitous",
+    ],
     "options": null,
     "question": [
       "Found everywhere.",
@@ -998,8 +1436,9 @@ exports[`game queries game query with TYPE_WORD and ENGLISH 1`] = `
       "imgUrl": "https://example.com/images/quixotic.jpg",
       "shortDef": null,
     },
-    "alternativeSpelling": null,
-    "answer": "quixotic",
+    "answer": [
+      "quixotic",
+    ],
     "options": null,
     "question": [
       "Idealistic but impractical.",
@@ -1018,8 +1457,9 @@ exports[`game queries game query with TYPE_WORD and ENGLISH 1`] = `
       "imgUrl": "https://example.com/images/solitude.jpg",
       "shortDef": null,
     },
-    "alternativeSpelling": null,
-    "answer": "solitude",
+    "answer": [
+      "solitude",
+    ],
     "options": null,
     "question": [
       "State of being alone.",
@@ -1038,8 +1478,9 @@ exports[`game queries game query with TYPE_WORD and ENGLISH 1`] = `
       "imgUrl": "https://example.com/images/luminous.jpg",
       "shortDef": null,
     },
-    "alternativeSpelling": null,
-    "answer": "luminous",
+    "answer": [
+      "luminous",
+    ],
     "options": null,
     "question": [
       "Glowing or bright.",
@@ -1063,10 +1504,10 @@ exports[`game queries game query with TYPE_WORD and SPANISH 1`] = `
       "imgUrl": "https://example.com/images/correr.jpg",
       "shortDef": null,
     },
-    "alternativeSpelling": [
+    "answer": [
+      "correr",
       "korrer",
     ],
-    "answer": "correr",
     "options": null,
     "question": [
       "To run.",
@@ -1085,10 +1526,10 @@ exports[`game queries game query with TYPE_WORD and SPANISH 1`] = `
       "imgUrl": "https://example.com/images/felicidad.jpg",
       "shortDef": null,
     },
-    "alternativeSpelling": [
+    "answer": [
+      "felicidad",
       "felisidad",
     ],
-    "answer": "felicidad",
     "options": null,
     "question": [
       "Happiness.",
@@ -1097,23 +1538,23 @@ exports[`game queries game query with TYPE_WORD and SPANISH 1`] = `
   },
   {
     "additionalInfo": {
-      "audioUrl": "https://example.com/audio/rapidamente.mp3",
+      "audioUrl": "https://example.com/audio/periodista.mp3",
       "examples": [
         {
-          "text": "Ella terminó su trabajo rápidamente.",
-          "translation": "She finished her work quickly.",
+          "text": "El/La periodista escribió un artículo fascinante.",
+          "translation": "The journalist wrote a fascinating article.",
         },
       ],
-      "imgUrl": "https://example.com/images/rapidamente.jpg",
+      "imgUrl": "https://example.com/images/periodista.jpg",
       "shortDef": null,
     },
-    "alternativeSpelling": [
-      "rapidamiente",
+    "answer": [
+      "periodista",
+      "periodísta",
     ],
-    "answer": "rápidamente",
     "options": null,
     "question": [
-      "Quickly.",
+      "Journalist",
     ],
     "wordId": Any<String>,
   },
@@ -1129,8 +1570,9 @@ exports[`game queries game query with TYPE_WORD and SPANISH 1`] = `
       "imgUrl": "https://example.com/images/grande.jpg",
       "shortDef": null,
     },
-    "alternativeSpelling": null,
-    "answer": "grande",
+    "answer": [
+      "grande",
+    ],
     "options": null,
     "question": [
       "Big, large.",
@@ -1149,8 +1591,9 @@ exports[`game queries game query with TYPE_WORD and SPANISH 1`] = `
       "imgUrl": "https://example.com/images/pensar.jpg",
       "shortDef": null,
     },
-    "alternativeSpelling": null,
-    "answer": "pensar",
+    "answer": [
+      "pensar",
+    ],
     "options": null,
     "question": [
       "To think.",
@@ -1169,11 +1612,106 @@ exports[`game queries game query with TYPE_WORD and SPANISH 1`] = `
       "imgUrl": "https://example.com/images/hermosura.jpg",
       "shortDef": null,
     },
-    "alternativeSpelling": null,
-    "answer": "hermosura",
+    "answer": [
+      "hermosura",
+    ],
     "options": null,
     "question": [
       "Beauty.",
+    ],
+    "wordId": Any<String>,
+  },
+]
+`;
+
+exports[`game queries game query with valid user for Conjugation game and cond tense 1`] = `
+[
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/correr.mp3",
+      "examples": null,
+      "imgUrl": "https://example.com/images/correr.jpg",
+      "shortDef": "<b>correr means</b> To run.",
+    },
+    "answer": [
+      "correría",
+      "correrías",
+      "correría",
+      "correríamos",
+      "correríais",
+      "correrían",
+    ],
+    "options": null,
+    "question": [
+      "correr",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/pensar.mp3",
+      "examples": null,
+      "imgUrl": "https://example.com/images/pensar.jpg",
+      "shortDef": "<b>pensar means</b> To think.",
+    },
+    "answer": [
+      "pensaría",
+      "pensarías",
+      "pensaría",
+      "pensaríamos",
+      "pensaríais",
+      "pensarían",
+    ],
+    "options": null,
+    "question": [
+      "pensar",
+    ],
+    "wordId": Any<String>,
+  },
+]
+`;
+
+exports[`game queries game query with valid user for Conjugation game and futr tense 1`] = `
+[
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/correr.mp3",
+      "examples": null,
+      "imgUrl": "https://example.com/images/correr.jpg",
+      "shortDef": "<b>correr means</b> To run.",
+    },
+    "answer": [
+      "correré",
+      "correrás",
+      "correrá",
+      "correremos",
+      "correréis",
+      "correrán",
+    ],
+    "options": null,
+    "question": [
+      "correr",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/pensar.mp3",
+      "examples": null,
+      "imgUrl": "https://example.com/images/pensar.jpg",
+      "shortDef": "<b>pensar means</b> To think.",
+    },
+    "answer": [
+      "pensaré",
+      "pensarás",
+      "pensará",
+      "pensaremos",
+      "pensaréis",
+      "pensarán",
+    ],
+    "options": null,
+    "question": [
+      "pensar",
     ],
     "wordId": Any<String>,
   },
@@ -1189,8 +1727,13 @@ exports[`game queries game query with valid user for Conjugation game and impf t
       "imgUrl": "https://example.com/images/correr.jpg",
       "shortDef": "<b>correr means</b> To run.",
     },
-    "alternativeSpelling": null,
-    "answer": "corre, corra, corramos, corred, corran",
+    "answer": [
+      "corre",
+      "corra",
+      "corramos",
+      "corred",
+      "corran",
+    ],
     "options": null,
     "question": [
       "correr",
@@ -1204,8 +1747,13 @@ exports[`game queries game query with valid user for Conjugation game and impf t
       "imgUrl": "https://example.com/images/pensar.jpg",
       "shortDef": "<b>pensar means</b> To think.",
     },
-    "alternativeSpelling": null,
-    "answer": "piensa, piense, pensemos, pensad, piensen",
+    "answer": [
+      "piensa",
+      "piense",
+      "pensemos",
+      "pensad",
+      "piensen",
+    ],
     "options": null,
     "question": [
       "pensar",
@@ -1224,8 +1772,14 @@ exports[`game queries game query with valid user for Conjugation game and pind t
       "imgUrl": "https://example.com/images/correr.jpg",
       "shortDef": "<b>correr means</b> To run.",
     },
-    "alternativeSpelling": null,
-    "answer": "corro, corres, corre, corremos, corréis, corren",
+    "answer": [
+      "corro",
+      "corres",
+      "corre",
+      "corremos",
+      "corréis",
+      "corren",
+    ],
     "options": null,
     "question": [
       "correr",
@@ -1239,8 +1793,61 @@ exports[`game queries game query with valid user for Conjugation game and pind t
       "imgUrl": "https://example.com/images/pensar.jpg",
       "shortDef": "<b>pensar means</b> To think.",
     },
-    "alternativeSpelling": null,
-    "answer": "pienso, piensas, piensa, pensamos, pensáis, piensan",
+    "answer": [
+      "pienso",
+      "piensas",
+      "piensa",
+      "pensamos",
+      "pensáis",
+      "piensan",
+    ],
+    "options": null,
+    "question": [
+      "pensar",
+    ],
+    "wordId": Any<String>,
+  },
+]
+`;
+
+exports[`game queries game query with valid user for Conjugation game and ppci tense 1`] = `
+[
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/correr.mp3",
+      "examples": null,
+      "imgUrl": "https://example.com/images/correr.jpg",
+      "shortDef": "<b>correr means</b> To run.",
+    },
+    "answer": [
+      "he corrido",
+      "has corrido",
+      "ha corrido",
+      "hemos corrido",
+      "habéis corrido",
+      "han corrido",
+    ],
+    "options": null,
+    "question": [
+      "correr",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/pensar.mp3",
+      "examples": null,
+      "imgUrl": "https://example.com/images/pensar.jpg",
+      "shortDef": "<b>pensar means</b> To think.",
+    },
+    "answer": [
+      "he pensado",
+      "has pensado",
+      "ha pensado",
+      "hemos pensado",
+      "habéis pensado",
+      "han pensado",
+    ],
     "options": null,
     "question": [
       "pensar",
@@ -1259,8 +1866,14 @@ exports[`game queries game query with valid user for Conjugation game and pprf t
       "imgUrl": "https://example.com/images/correr.jpg",
       "shortDef": "<b>correr means</b> To run.",
     },
-    "alternativeSpelling": null,
-    "answer": "he corrido, has corrido, ha corrido, hemos corrido, habéis corrido, han corrido",
+    "answer": [
+      "he corrido",
+      "has corrido",
+      "ha corrido",
+      "hemos corrido",
+      "habéis corrido",
+      "han corrido",
+    ],
     "options": null,
     "question": [
       "correr",
@@ -1274,8 +1887,14 @@ exports[`game queries game query with valid user for Conjugation game and pprf t
       "imgUrl": "https://example.com/images/pensar.jpg",
       "shortDef": "<b>pensar means</b> To think.",
     },
-    "alternativeSpelling": null,
-    "answer": "he pensado, has pensado, ha pensado, hemos pensado, habéis pensado, han pensado",
+    "answer": [
+      "he pensado",
+      "has pensado",
+      "ha pensado",
+      "hemos pensado",
+      "habéis pensado",
+      "han pensado",
+    ],
     "options": null,
     "question": [
       "pensar",
@@ -1294,8 +1913,14 @@ exports[`game queries game query with valid user for Conjugation game and pret t
       "imgUrl": "https://example.com/images/correr.jpg",
       "shortDef": "<b>correr means</b> To run.",
     },
-    "alternativeSpelling": null,
-    "answer": "corrí, corriste, corrió, corrimos, corristeis, corrieron",
+    "answer": [
+      "corrí",
+      "corriste",
+      "corrió",
+      "corrimos",
+      "corristeis",
+      "corrieron",
+    ],
     "options": null,
     "question": [
       "correr",
@@ -1309,8 +1934,61 @@ exports[`game queries game query with valid user for Conjugation game and pret t
       "imgUrl": "https://example.com/images/pensar.jpg",
       "shortDef": "<b>pensar means</b> To think.",
     },
-    "alternativeSpelling": null,
-    "answer": "pensé, pensaste, pensó, pensamos, pensasteis, pensaron",
+    "answer": [
+      "pensé",
+      "pensaste",
+      "pensó",
+      "pensamos",
+      "pensasteis",
+      "pensaron",
+    ],
+    "options": null,
+    "question": [
+      "pensar",
+    ],
+    "wordId": Any<String>,
+  },
+]
+`;
+
+exports[`game queries game query with valid user for Conjugation game and psub tense 1`] = `
+[
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/correr.mp3",
+      "examples": null,
+      "imgUrl": "https://example.com/images/correr.jpg",
+      "shortDef": "<b>correr means</b> To run.",
+    },
+    "answer": [
+      "corra",
+      "corras",
+      "corra",
+      "corramos",
+      "corráis",
+      "corran",
+    ],
+    "options": null,
+    "question": [
+      "correr",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/pensar.mp3",
+      "examples": null,
+      "imgUrl": "https://example.com/images/pensar.jpg",
+      "shortDef": "<b>pensar means</b> To think.",
+    },
+    "answer": [
+      "piense",
+      "pienses",
+      "piense",
+      "pensemos",
+      "penséis",
+      "piensen",
+    ],
     "options": null,
     "question": [
       "pensar",

@@ -26,6 +26,7 @@ const SearchPage = () => {
       update(cache) {
         cache.evict({ fieldName: 'game' });
         cache.evict({ fieldName: 'wordsPerPage' });
+        cache.evict({ fieldName: 'verbs' });
       }
     }
   );
@@ -167,7 +168,7 @@ const SearchPage = () => {
       <ul className={styles.list} data-cy="searchResult">
         {words.map(word => {
           return (
-            <li className={styles.listItem} key={word?.id}>
+            <li className={styles.listItem} key={word.uuid}>
               <WordCard
                 addButton={{
                   callback: getAddWordHandler(word),

@@ -27,13 +27,10 @@ export function isNumber(sample: string): boolean {
 }
 
 export function formatReplace(str: string, tags: TagType[]) {
-  // if (!str || !tags?.length) {
-  //   return;
-  // }
   let result: string = str;
   tags.forEach(tag => {
     if (result?.includes(tag.tag)) {
-      result = result?.replaceAll(tag.tag, tag.replacement);
+      result = result?.replaceAll(tag.tag, tag.replacement).trim();
     }
   });
   return result;

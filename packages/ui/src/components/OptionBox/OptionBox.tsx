@@ -48,7 +48,7 @@ export const OptionBox = forwardRef<HTMLInputElement, OptionBoxProps>(
       >
         {options.map((option, i) => {
           let style;
-          if (correctOption === option) {
+          if (correctOption === option && variant !== 'initial') {
             style = 'success';
           }
           if (variant === 'error' && incorrectOption === option) {

@@ -4,6 +4,8 @@ enum Game {
   SELECT_WORD
   SELECT_DEF
   CONJUGATION
+  GENDER
+  IMAGE
 }
 
 type GameConfig {
@@ -11,11 +13,26 @@ type GameConfig {
   desc: String!
   id: String!
   type: Game!
+  orderNum: Int!
+  languages: [Language!]!
+}
+
+type GameSettings {
   wordsPerGame: Int!
   optionsPerGame: Int!
   minWords: Int!
   timesToLearn: Int!
-  orderNum: Int!
+  languages: [Language!]!
+}
+
+type SettingsByGame {
+  AUDIO: GameSettings!
+  TYPE_WORD: GameSettings!
+  SELECT_WORD: GameSettings!
+  SELECT_DEF: GameSettings!
+  CONJUGATION: GameSettings!
+  GENDER: GameSettings!
+  IMAGE: GameSettings!
 }
 
 type GameQuestionAdditionalInfo {
@@ -26,12 +43,11 @@ type GameQuestionAdditionalInfo {
 }
 
 type GameQuestion {
-  question: [String!]
+  question: [String!]!
   options: [String!]
-  answer: String!
+  answer: [String!]!
   wordId: ID!
   additionalInfo: GameQuestionAdditionalInfo
-  alternativeSpelling: [String!]
 }
 
 type GameData {
@@ -48,9 +64,11 @@ input GameDataInput {
   tags: [String]
   language: Language
   tense: Tense
+  wordId: ID
 }
 
 type Query {
   games(language: Language): [GameConfig]!
   game(input: GameDataInput!): GameData!
+  gameSettings: SettingsByGame!
 }

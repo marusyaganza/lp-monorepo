@@ -9,7 +9,6 @@
   flex-direction: column;
   align-items: center;
   margin: 0 24px;
-  max-width: 600px;
 
   @media (width >= 800px) {
     gap: 24px;
@@ -32,7 +31,6 @@
 
 .question {
   font-size: var(--font-size-s);
-  max-width: 600px;
   display: flex;
   gap: 12px;
   margin: 0;
@@ -44,6 +42,7 @@
   flex-direction: column;
   align-items: center;
   gap: 24px;
+  margin-bottom: 24px;
 
   @media (width >= 800px) {
     gap: 40px;
@@ -140,12 +139,13 @@
     right: 0;
     margin: 30px;
     max-width: 250px;
-    top: 150px;
+    top: 250px;
   }
 }
 
 .wordImage {
-  width: 200px;
+  max-width: 200px;
+  max-height: 600px;
   margin-bottom: 16px;
 
   @media (width <= 1200px) {
@@ -183,4 +183,17 @@
 
 .checkboxBlock {
   height: 32px;
+}
+
+.imageQuestion {
+  max-height: 300px;
+  max-width: 400px;
+}
+
+.imageContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  width: 400px;
 }

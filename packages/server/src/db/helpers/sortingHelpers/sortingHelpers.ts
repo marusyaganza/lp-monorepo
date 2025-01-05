@@ -17,17 +17,28 @@ import { IMongooseSortingFilter } from '../../../types/types';
 
 export const NO_TAGS_ID = '000000000000000000000000';
 
+const particles = [
+  'masculine noun',
+  'masculine or feminine noun',
+  'feminine noun'
+];
+
 export const GAME_FILTERS: Partial<Record<Game, FilterQuery<Word>>> = {
   [Game.Audio]: { audioUrl: { $nin: ['', null] } },
-  [Game.Conjugation]: { conjugation: { $ne: null } }
+  [Game.Image]: { imgUrl: { $nin: ['', null] } },
+  [Game.Conjugation]: { conjugation: { $ne: null } },
+  [Game.Gender]: { particle: { $in: particles } }
 };
 
 export const PROJECTIONS: Record<Game, string> = {
   [Game.Audio]: 'name audioUrl id defs imgUrl shortDef alternativeSpelling',
+  [Game.Image]: 'name audioUrl id defs imgUrl shortDef alternativeSpelling',
   [Game.SelectDef]: 'name audioUrl id defs imgUrl shortDef language',
   [Game.SelectWord]: 'name audioUrl id defs imgUrl shortDef language',
   [Game.TypeWord]: 'name audioUrl id defs imgUrl shortDef alternativeSpelling',
-  [Game.Conjugation]: 'name audioUrl id defs imgUrl shortDef conjugation'
+  [Game.Conjugation]: 'name audioUrl id defs imgUrl shortDef conjugation',
+  [Game.Gender]:
+    'name audioUrl id defs imgUrl shortDef alternativeSpelling particle'
 };
 
 export const OPTIONS_PROJECTIONS: Partial<Record<Game, string>> = {

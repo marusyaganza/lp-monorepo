@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FormEventHandler, useState } from 'react';
 import { cn } from '../../../../utils/classnames';
 import { DictionaryEntity } from '../../../DictionaryEntity/DictionaryEntity';
 import { AudioButton } from '../../../AudioButton/AudioButton';
@@ -6,6 +6,8 @@ import { OptionBox } from '../../../OptionBox/OptionBox';
 import { Icon } from '../../../Icon/icon';
 import { GameProps, GameStage } from '../../../../types/gameTypes';
 import styles from '../../Game.module.css';
+import { Button } from '../../../Button/Button';
+import { checkTextAnswer } from '../helpers';
 
 /**Component to display Select word game*/
 export const SelectWordGame = ({
@@ -13,13 +15,50 @@ export const SelectWordGame = ({
   question,
   audioUrl,
   className,
-  currentResult,
   options,
-  onChange,
-  value,
+  onSubmit,
+  buttonRef,
+  onNext,
   inputRef,
+  correctAnswer,
   currentStage
 }: GameProps) => {
+  const [value, setValue] = useState('');
+
+  const handleSubmit: FormEventHandler<HTMLFormElement> = e => {
+    e.preventDefault();
+    onSubmit(checkTextAnswer(value, correctAnswer));
+  };
+
+  const handleNext = () => {
+    setValue('');
+    onNext();
+  };
+
+  const renderButton = () => {
+    if (currentStage === GameStage.Initial) {
+      return (
+        <Button
+          data-cy="check-button"
+          disabled={!value?.length}
+          type="submit"
+          variant="secondary"
+        >
+          Check
+        </Button>
+      );
+    }
+    return (
+      <Button
+        ref={buttonRef}
+        autoFocus
+        onClick={handleNext}
+        data-cy="continue-button"
+      >
+        Continue
+      </Button>
+    );
+  };
   const renderQuestion = () => {
     if (question.length === 1) {
       return (
@@ -63,26 +102,29 @@ export const SelectWordGame = ({
   }
 
   return (
-    <div className={styles.gameContainer}>
-      <article className={cn(styles.container, className)}>
-        <p data-cy="gameTask" className={styles.task}>
-          {task} {renderAudioButton()}
-        </p>
-        {renderQuestion()}
-        <div className={styles.answer}>
-          <OptionBox
-            dataCy="gameAnswer"
-            ref={inputRef}
-            value={value}
-            isDisabled={currentStage !== 'initial'}
-            variant={currentStage}
-            correctOption={currentResult?.correctAnswer}
-            incorrectOption={currentResult?.incorrectAnswer}
-            options={options}
-            onChange={onChange}
-          />
-        </div>
-      </article>
-    </div>
+    <form data-cy="gameForm" className={styles.answer} onSubmit={handleSubmit}>
+      <div className={styles.gameContainer}>
+        <article className={cn(styles.container, className)}>
+          <p data-cy="gameTask" className={styles.task}>
+            {task} {renderAudioButton()}
+          </p>
+          {renderQuestion()}
+          <div className={styles.answer}>
+            <OptionBox
+              dataCy="gameAnswer"
+              ref={inputRef}
+              value={value}
+              isDisabled={currentStage !== 'initial'}
+              variant={currentStage}
+              correctOption={correctAnswer[0]}
+              incorrectOption={value}
+              options={options}
+              onChange={setValue}
+            />
+          </div>
+        </article>
+      </div>
+      {renderButton()}
+    </form>
   );
 };

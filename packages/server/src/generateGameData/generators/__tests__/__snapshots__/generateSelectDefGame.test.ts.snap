@@ -7,7 +7,9 @@ exports[`generateSelectDefGame generate data with minimal ENGLISH words 1`] = `
     "examples": [],
     "imgUrl": "https://example.com/images/apple.jpg",
   },
-  "answer": "Round fruit with red or green skin.",
+  "answer": [
+    "Round fruit with red or green skin.",
+  ],
   "options": [
     "Unexpected good fortune.",
     "delightful feeling of anticipation and excitement that arises before embarking on a new adventure or journey.",
@@ -35,7 +37,9 @@ exports[`generateSelectDefGame generate data with minimal SPANISH words 1`] = `
     ],
     "imgUrl": "https://example.com/images/manzana.jpg",
   },
-  "answer": "Round fruit with red or green skin.",
+  "answer": [
+    "Round fruit with red or green skin.",
+  ],
   "options": [
     "to take a leisurely stroll through a park or natural setting, breathing deeply to refresh your spirit.",
     "a term for a person who has an extraordinary love and knowledge of fruits, often seeking out rare and exotic varieties",
@@ -59,7 +63,9 @@ exports[`generateSelectDefGame should return the correct number of questions whe
       "examples": [],
       "imgUrl": "https://example.com/images/apple.jpg",
     },
-    "answer": "Round fruit with red or green skin.",
+    "answer": [
+      "Round fruit with red or green skin.",
+    ],
     "options": [
       "Unexpected good fortune.",
       "Short-lived.",
@@ -79,7 +85,9 @@ exports[`generateSelectDefGame should return the correct number of questions whe
       "examples": [],
       "imgUrl": "https://example.com/images/orange.jpg",
     },
-    "answer": "Citrus fruit with [...] rind.",
+    "answer": [
+      "Citrus fruit with [...] rind.",
+    ],
     "options": [
       "Unexpected good fortune.",
       "Short-lived.",
@@ -99,7 +107,9 @@ exports[`generateSelectDefGame should return the correct number of questions whe
       "examples": [],
       "imgUrl": "https://example.com/images/banana.jpg",
     },
-    "answer": "Curved fruit with yellow skin.",
+    "answer": [
+      "Curved fruit with yellow skin.",
+    ],
     "options": [
       "Unexpected good fortune.",
       "Short-lived.",
@@ -119,7 +129,9 @@ exports[`generateSelectDefGame should return the correct number of questions whe
       "examples": [],
       "imgUrl": "https://example.com/images/strawberry.jpg",
     },
-    "answer": "Soft red fruit with seeds.",
+    "answer": [
+      "Soft red fruit with seeds.",
+    ],
     "options": [
       "Unexpected good fortune.",
       "Short-lived.",
@@ -139,7 +151,9 @@ exports[`generateSelectDefGame should return the correct number of questions whe
       "examples": [],
       "imgUrl": "https://example.com/images/pineapple.jpg",
     },
-    "answer": "Tropical fruit with spiky rind.",
+    "answer": [
+      "Tropical fruit with spiky rind.",
+    ],
     "options": [
       "Unexpected good fortune.",
       "Short-lived.",
@@ -159,7 +173,9 @@ exports[`generateSelectDefGame should return the correct number of questions whe
       "examples": [],
       "imgUrl": "https://example.com/images/grape.jpg",
     },
-    "answer": "Small juicy fruit with smooth skin.",
+    "answer": [
+      "Small juicy fruit with smooth skin.",
+    ],
     "options": [
       "Unexpected good fortune.",
       "Short-lived.",
@@ -189,10 +205,12 @@ exports[`generateSelectDefGame should return the correct number of questions whe
       ],
       "imgUrl": "https://example.com/images/manzana.jpg",
     },
-    "answer": "Round fruit with red or green skin.",
+    "answer": [
+      "Round fruit with red or green skin.",
+    ],
     "options": [
       "Happiness.",
-      "Quickly.",
+      "Journalist",
       "Big, large.",
       "To think.",
       "Beauty.",
@@ -218,11 +236,13 @@ exports[`generateSelectDefGame should return the correct number of questions whe
       ],
       "imgUrl": "https://example.com/images/naranja.jpg",
     },
-    "answer": "Citrus fruit with orange rind.",
+    "answer": [
+      "Citrus fruit with orange rind.",
+    ],
     "options": [
       "To run.",
       "Happiness.",
-      "Quickly.",
+      "Journalist",
       "Big, large.",
       "To think.",
       "Citrus fruit with orange rind.",
@@ -237,23 +257,25 @@ exports[`generateSelectDefGame should return the correct number of questions whe
       "audioUrl": "https://example.com/audio/platano.mp3",
       "examples": [
         {
-          "text": "Él peló un plátano y se lo comió.",
-          "translation": "He peeled a banana and ate it.",
+          "text": "Para evitar que se pegue, es mejor engrasar la sartén antes de freír.",
+          "translation": "To prevent sticking, it's best to powder the pan before frying.",
         },
       ],
-      "imgUrl": "https://example.com/images/platano.jpg",
+      "imgUrl": "https://example.com/images/skillet.jpg",
     },
-    "answer": "Curved fruit with yellow skin.",
+    "answer": [
+      "skillet",
+    ],
     "options": [
       "To run.",
       "Happiness.",
-      "Quickly.",
+      "Journalist",
       "Big, large.",
       "To think.",
-      "Curved fruit with yellow skin.",
+      "skillet",
     ],
     "question": [
-      "plátano",
+      "sartén",
     ],
     "wordId": Any<String>,
   },
@@ -268,11 +290,13 @@ exports[`generateSelectDefGame should return the correct number of questions whe
       ],
       "imgUrl": "https://example.com/images/fresa.jpg",
     },
-    "answer": "Soft red fruit with seeds.",
+    "answer": [
+      "Soft red fruit with seeds.",
+    ],
     "options": [
       "To run.",
       "Happiness.",
-      "Quickly.",
+      "Journalist",
       "Big, large.",
       "To think.",
       "Soft red fruit with seeds.",
@@ -293,11 +317,13 @@ exports[`generateSelectDefGame should return the correct number of questions whe
       ],
       "imgUrl": "https://example.com/images/pina.jpg",
     },
-    "answer": "Tropical fruit with spiky rind.",
+    "answer": [
+      "Tropical fruit with spiky rind.",
+    ],
     "options": [
       "To run.",
       "Happiness.",
-      "Quickly.",
+      "Journalist",
       "Big, large.",
       "To think.",
       "Tropical fruit with spiky rind.",
@@ -309,26 +335,28 @@ exports[`generateSelectDefGame should return the correct number of questions whe
   },
   {
     "additionalInfo": {
-      "audioUrl": "https://example.com/audio/uva.mp3",
+      "audioUrl": "https://example.com/audio/translado.mp3",
       "examples": [
         {
-          "text": "Él me ofreció un racimo de uvas.",
-          "translation": "He offered me a bunch of grapes.",
+          "text": "Aproveche el servicio de translado de la más alta calidad.",
+          "translation": "ake advantage of the highest quality transfer service.",
         },
       ],
-      "imgUrl": "https://example.com/images/uva.jpg",
+      "imgUrl": "https://example.com/images/translado.jpg",
     },
-    "answer": "Small juicy fruit with smooth skin.",
+    "answer": [
+      "transfer.",
+    ],
     "options": [
       "To run.",
       "Happiness.",
-      "Quickly.",
+      "Journalist",
       "Big, large.",
       "To think.",
-      "Small juicy fruit with smooth skin.",
+      "transfer.",
     ],
     "question": [
-      "uva",
+      "translado",
     ],
     "wordId": Any<String>,
   },

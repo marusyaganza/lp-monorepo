@@ -99,7 +99,6 @@ export const GAME_QUERY = gql`
         question
         options
         answer
-        alternativeSpelling
         additionalInfo {
           audioUrl
           imgUrl
@@ -151,6 +150,15 @@ export const WORDS_PER_PAGE_QUERY = gql`
           id
         }
       }
+    }
+  }
+`;
+
+export const VERBS_QUERY = gql`
+  query Verbs {
+    verbs {
+      id
+      name
     }
   }
 `;

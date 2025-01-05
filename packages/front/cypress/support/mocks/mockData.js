@@ -1,6 +1,6 @@
 export const mockUser = {
   email: 'test@test.com',
-  password: '$2a$10$QZlF7aBJxZQJaGczkWcXA.HIDQ0DtEFrjbcgf1a.iXEcwaaTolPY6',
+  password: '$2a$10$BWXVWTiZqETNfnD.VmA4BeQkCEICXsl8hXLVBKq0.fxANC.ARWLt6',
   firstName: 'Test',
   lastName: 'User1',
   role: 'MEMBER',
@@ -140,24 +140,4 @@ export const existingWord = {
   language: 'ENGLISH',
   imgDesc: 'new image description',
   imgUrl: 'mockImgUrl'
-};
-
-export const wordWithAltSpelling = {
-  id: '659226238b5f8247cc5c51e7',
-  name: 'long haul',
-  defs: [
-    {
-      def: 'a long distance',
-      examples: []
-    }
-  ],
-  particle: 'noun',
-  audioUrl:
-    'https://www.oxfordlearnersdictionaries.com/media/english/us_pron/l/lon/long_/long_haul_1_us_4.mp3',
-  transcription: 'long haul',
-  user: '6592087e6f03005fa31d194c',
-  isOffensive: false,
-  stems: ['long haul'],
-  shortDef: ['a long distance'],
-  alternativeSpelling: ['long-haul']
 };

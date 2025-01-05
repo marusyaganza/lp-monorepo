@@ -2,7 +2,6 @@ import {
   createTestServer,
   connectToDb,
   dropDb,
-  seedDb,
   disconnectFromDb,
   getErrorMessageFromGQL,
   getDataFromGQL
@@ -70,7 +69,6 @@ describe('User', () => {
   beforeAll(async () => {
     await connectToDb();
     await dropDb();
-    await seedDb();
   });
 
   afterAll(async () => {

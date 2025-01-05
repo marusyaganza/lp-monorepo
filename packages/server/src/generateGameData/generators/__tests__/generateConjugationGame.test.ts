@@ -3,14 +3,14 @@ import {
   testData
 } from '../../../tests/mocks/wordsForGames';
 import { generateConjugationGame } from '../generateConjugationGame';
-import { GAMES } from '../../../constants/games';
-import { Game, GameConfig, Language, Tense } from '../../../generated/graphql';
+import { Game, Language, Tense } from '../../../generated/graphql';
 import { TENSES } from '../../../constants/tenses';
 import { OperationResolutionError } from '../../../utils/apolloCustomErrors';
 import { ERROR_MESSAGES } from '../../../constants/errorMessages';
+import { DEFAULT_GAMES_SETTINGS } from '../../../constants/defultGameSettings';
 
 const gameType = Game.Conjugation;
-const gameConfig = GAMES.find(game => game.type === gameType) as GameConfig;
+const gameConfig = DEFAULT_GAMES_SETTINGS[gameType];
 
 const language = Language.Spanish;
 const tenses = Object.values(Tense);

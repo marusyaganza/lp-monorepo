@@ -14,3 +14,9 @@
 .select {
   width: 230px;
 }
+
+.verbSelectorContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

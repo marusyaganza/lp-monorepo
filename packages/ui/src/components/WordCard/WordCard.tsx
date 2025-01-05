@@ -1,4 +1,4 @@
-import React, { MouseEventHandler } from 'react';
+import React, { MouseEventHandler, useMemo } from 'react';
 import { cn } from '../../utils/classnames';
 import { AudioButton } from '../AudioButton/AudioButton';
 import { Icon } from '../Icon/icon';
@@ -57,6 +57,10 @@ export const WordCard = ({
   } = word;
 
   const isFull = variant === 'full';
+  const uniqueKeys = useMemo(
+    () => defs.map(() => crypto.randomUUID()),
+    [shortDef]
+  );
 
   const getOnClickHandler: (
     handler: () => void
@@ -120,10 +124,10 @@ export const WordCard = ({
   const renderDefinition = () => {
     return (
       <ul data-cy="defs">
-        {defs.map(d => {
+        {defs.map((d, i) => {
           if (d?.def) {
             return (
-              <li key={d.def}>
+              <li key={uniqueKeys[i]}>
                 {renderDef(d.def)}
                 {renderExamples(d.examples)}
               </li>
@@ -256,13 +260,15 @@ export const WordCard = ({
           <div className={styles.word}>{renderDefinition()}</div>
           {imgUrl && (
             <figure className={styles.illustration}>
-              <img
-                data-cy="imgUrl"
-                width={280}
-                className={styles.picture}
-                src={imgUrl}
-                alt={`${name} illustration`}
-              />
+              <div className={styles.pictureContainer}>
+                <img
+                  loading="lazy"
+                  data-cy="imgUrl"
+                  className={styles.picture}
+                  src={imgUrl}
+                  alt={`${name} illustration`}
+                />
+              </div>
               {imgDesc && (
                 <figcaption data-cy="imgDesc">
                   {<DictionaryEntity text={imgDesc} />}

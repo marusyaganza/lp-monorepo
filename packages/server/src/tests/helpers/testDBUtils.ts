@@ -1,4 +1,3 @@
-import { GAMES } from '../../constants/games';
 import { connect, connection } from 'mongoose';
 import { NewWordInput, User, WordTag } from '../../generated/graphql';
 
@@ -27,9 +26,6 @@ interface MockModels {
 export async function seedDb(input?: MockModels) {
   const data: { words?: string[]; users?: string[]; tags?: string[] } = {};
   try {
-    const gamesCollection = await connection.db.createCollection('games');
-    await gamesCollection.insertMany(GAMES);
-
     // default user - first in the user's input
     let userId;
 

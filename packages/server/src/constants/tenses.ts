@@ -3,12 +3,14 @@ import { Tense } from '../generated/graphql';
 // Uncomment more tenses as needed
 export const TENSES: Record<Tense, string> = {
   pind: 'Presente indicativo',
-  pprf: 'Pretérito perfecto simple',
+  pprf: 'Pretérito indefinido',
   impf: 'Imperativo',
-  pret: 'Pretérito imperfecto'
-  //   futr: 'Futuro indicativo',
-  //   cond: 'Condicional',
-  //   psub: 'Presente subjentivo',
+  pret: 'Pretérito imperfecto',
+  futr: 'Futuro indicativo',
+  cond: 'Condicional',
+  psub: 'Presente subjentivo',
+  ppci: 'Pretérito perfecto'
+  // gppt: 'Gerundio'
   //   pisb1: 'Pretérito imperfecto',
   //   pisb2: 'Pretérito imperfecto 2',
   //   fsub: 'Futuro',

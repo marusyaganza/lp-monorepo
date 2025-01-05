@@ -23,9 +23,8 @@ export const GameSuccess = (args: GameProps) => {
     <AudioGame
       {...args}
       {...game}
-      value="wheel"
+      correctAnswer={['wheel']}
       currentStage={GameStage.Success}
-      currentResult={{ type: GameStage.Success, correctAnswer: 'wheel' }}
     />
   );
 };
@@ -34,13 +33,8 @@ export const GameError = (args: GameProps) => (
   <AudioGame
     {...args}
     {...game}
-    value="flower"
+    correctAnswer={['wheel']}
     currentStage={GameStage.Error}
-    currentResult={{
-      type: 'error',
-      correctAnswer: 'wheel',
-      incorrectAnswer: 'flower'
-    }}
   />
 );
 

@@ -1,9 +1,17 @@
-import { DictionaryWord, Role, Suggestions } from '../generated/graphql';
+import { ConjugationSpacedRepetitionData } from '../db/schema/Word';
+import {
+  DictionaryWord,
+  GameQuestion,
+  Role,
+  Suggestions,
+  Tense
+} from '../generated/graphql';
 import {
   IAutenticatedContext,
   IResolverContext,
   IUserTokenInfo,
-  IWordWithAudio
+  IWordWithAudio,
+  IWordWithImage
 } from './types';
 
 export function isSuggestion(data: any): data is Suggestions {
@@ -43,6 +51,10 @@ export function isWordWithAudio(data: any): data is IWordWithAudio {
   return 'audioUrl' in data;
 }
 
+export function isWordWithImage(data: any): data is IWordWithImage {
+  return 'imgUrl' in data;
+}
+
 export function isDictionaryWord(data: any): data is DictionaryWord {
   return (
     typeof data?.uuid === 'string' &&
@@ -69,4 +81,15 @@ export function isUserTokenInfo(data: any): data is IUserTokenInfo {
   const isValid =
     typeof data?.id === 'string' && Object.values(Role).includes(data?.role);
   return isValid;
+}
+
+export function isConjugationSpacedRepetitionData(
+  data: Record<any, any>
+): data is ConjugationSpacedRepetitionData {
+  const tenses = Object.values(Tense) as string[];
+  return Object.keys(data).every(item => tenses.includes(item));
+}
+
+export function isGameQuestion(data: unknown): data is GameQuestion {
+  return Boolean(data);
 }
