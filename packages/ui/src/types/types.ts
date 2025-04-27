@@ -9,3 +9,5 @@ export interface GameConfigType {
   desc: string;
   type: Game;
 }
+
+export type FocusableHTMLElement = HTMLInputElement & HTMLButtonElement;

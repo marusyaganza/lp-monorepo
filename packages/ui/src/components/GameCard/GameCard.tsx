@@ -21,6 +21,7 @@ import type_word from '../../assets/img/gameLogos/type_word.svg';
 import conjugation from '../../assets/img/gameLogos/conjugation.svg';
 import gender from '../../assets/img/gameLogos/gender.svg';
 import image from '../../assets/img/gameLogos/image.svg';
+import speaking from '../../assets/img/gameLogos/speaking.svg';
 
 import { Game } from '../../generated/graphql';
 import { GameConfigType } from '../../types/types';
@@ -31,7 +32,8 @@ const images = {
   [Game.TypeWord]: type_word,
   [Game.Image]: image,
   [Game.Conjugation]: conjugation,
-  [Game.Gender]: gender
+  [Game.Gender]: gender,
+  [Game.Speaking]: speaking
 };
 /**Game card that displays game's main info */
 export const GameCard = ({

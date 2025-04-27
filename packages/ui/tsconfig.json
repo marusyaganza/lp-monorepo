@@ -1,12 +1,12 @@
 {
   "extends": "../shared/tsconfig.settings.json",
   "compilerOptions": {
-      "outDir": "./dist/",
-      "jsx": "react",
-      "typeRoots": ["./src/@types", "./node_modules/@types"],
-      "rootDir": "src",
-      "composite": true
-    },
-    "include": ["src"]
-  }
-  
+    "outDir": "./dist/",
+    "jsx": "react",
+    "typeRoots": ["./src/@types", "./node_modules/@types"],
+    "rootDir": "src",
+    "types": ["@types/dom-speech-recognition"],
+    "composite": true
+  },
+  "include": ["src"]
+}

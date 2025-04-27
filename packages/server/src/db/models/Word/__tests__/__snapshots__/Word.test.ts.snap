@@ -77,6 +77,12 @@ exports[`WordModel createOne 1`] = `
       "practicedTimes": 0,
       "successRate": 0,
     },
+    "SPEAKING": {
+      "errorCount": 0,
+      "lastTimePracticed": 0,
+      "practicedTimes": 0,
+      "successRate": 0,
+    },
     "TYPE_WORD": {
       "errorCount": 0,
       "lastTimePracticed": 0,
@@ -169,6 +175,12 @@ exports[`WordModel findById 1`] = `
       "successRate": 0,
     },
     "SELECT_WORD": {
+      "errorCount": 0,
+      "lastTimePracticed": 0,
+      "practicedTimes": 0,
+      "successRate": 0,
+    },
+    "SPEAKING": {
       "errorCount": 0,
       "lastTimePracticed": 0,
       "practicedTimes": 0,
@@ -271,6 +283,12 @@ exports[`WordModel findOne 1`] = `
       "practicedTimes": 0,
       "successRate": 0,
     },
+    "SPEAKING": {
+      "errorCount": 0,
+      "lastTimePracticed": 0,
+      "practicedTimes": 0,
+      "successRate": 0,
+    },
     "TYPE_WORD": {
       "errorCount": 0,
       "lastTimePracticed": 0,
@@ -359,6 +377,12 @@ exports[`WordModel updateOne 1`] = `
       "successRate": 0,
     },
     "SELECT_WORD": {
+      "errorCount": 0,
+      "lastTimePracticed": 0,
+      "practicedTimes": 0,
+      "successRate": 0,
+    },
+    "SPEAKING": {
       "errorCount": 0,
       "lastTimePracticed": 0,
       "practicedTimes": 0,

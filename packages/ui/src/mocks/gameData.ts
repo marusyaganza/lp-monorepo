@@ -25,6 +25,17 @@ export const gameData: Record<Game, Partial<GameProps>> = {
     audioUrl:
       'https://media.merriam-webster.com/audio/prons/en/us/mp3/w/wheel001.mp3'
   },
+  [Game.Speaking]: {
+    task: 'Click the microphone and say the word matching the description.',
+    correctAnswer: ['wheel'],
+    question: [
+      'a circular frame of hard material that may be solid, partly solid, or spoked and that is capable of turning on an axle',
+      'a contrivance or apparatus having as its principal part a wheel: such as',
+      'a chiefly medieval instrument of torture designed for mutilating a victim (as by stretching or disjointing)'
+    ],
+    audioUrl:
+      'https://media.merriam-webster.com/audio/prons/en/us/mp3/w/wheel001.mp3'
+  },
   [Game.SelectWord]: {
     task: 'Select a word that means',
     correctAnswer: ['wheel'],
@@ -461,5 +472,69 @@ export const gameEngineData: Record<Game, GameData> = {
     ],
     task: 'Conjugate the verb in Presente indicativo',
     type: Game.Gender
+  },
+  [Game.Speaking]: {
+    type: Game.Speaking,
+    questions: [
+      {
+        wordId: '67713d584c02babb818f8e0a',
+        question: [
+          'a circular frame of hard material that may be solid, partly solid, or spoked and that is capable of turning on an axle'
+        ],
+        answer: ['wheel'],
+        additionalInfo: {
+          audioUrl:
+            'https://media.merriam-webster.com/audio/prons/en/us/mp3/w/wheel001.mp3',
+          imgUrl:
+            'https://merriam-webster.com/assets/mw/static/art/dict/wheel.gif',
+          examples: [
+            {
+              text: '… drivers are expected to keep their hands on the <i>wheel</i> and remain attentive …'
+            },
+            {
+              text: 'a big <i>wheel</i>'
+            }
+          ]
+        }
+      },
+      {
+        wordId: '67713d674c02babb818f8e15',
+        question: [
+          'a hollow muscular organ of vertebrate animals that by its rhythmic contraction acts as a force pump maintaining the circulation of the blood'
+        ],
+        answer: ['heart'],
+        additionalInfo: {
+          audioUrl:
+            'https://media.merriam-webster.com/audio/prons/en/us/mp3/h/heart001.mp3',
+          imgUrl:
+            'https://merriam-webster.com/assets/mw/static/art/dict/heart.gif',
+          examples: [
+            {
+              text: 'never lost <i>heart</i>'
+            },
+            {
+              text: 'knew it in his <i>heart</i>'
+            },
+            {
+              text: 'a man after my own <i>heart</i>'
+            }
+          ]
+        }
+      },
+      {
+        wordId: '67713de74c02babb818f8e3e',
+        question: [
+          'an African bird (Numida meleagris) related to the pheasants, raised for food in many parts of the world, and marked by a bare neck and head and slaty plumage speckled with white; broadly : any of several related birds'
+        ],
+        answer: ['guinea fowl'],
+        additionalInfo: {
+          audioUrl: '',
+          imgUrl:
+            'https://merriam-webster.com/assets/mw/static/art/dict/guineafo.gif',
+          examples: []
+        }
+      }
+    ],
+    task: 'Click the microphone and say the word matching the description.'
   }
 };

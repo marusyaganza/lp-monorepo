@@ -1,0 +1,31 @@
+.incorrectAnswer {
+  color: var(--error-200);
+}
+
+.answers {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin: 0;
+}
+
+.currentValue {
+  display: flex;
+  gap: 8px;
+  margin: 0;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.answerContent {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.success {
+  color: var(--success-200);
+  font-weight: bold;
+}

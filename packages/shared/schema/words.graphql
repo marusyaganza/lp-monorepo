@@ -78,6 +78,7 @@ type WordStatistics {
   IMAGE: WordStatisticsField
   CONJUGATION: WordStatisticsField
   GENDER: WordStatisticsField
+  SPEAKING: WordStatisticsField
 }
 
 type Word {

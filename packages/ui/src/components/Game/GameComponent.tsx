@@ -1,7 +1,8 @@
 import React, { useMemo, useRef, useEffect } from 'react';
 import {
   GameQuestionAdditionalInfo,
-  Game as GameType
+  Game as GameType,
+  Language
 } from '../../generated/graphql';
 import { Button } from '../Button/Button';
 import { DictionaryEntity } from '../DictionaryEntity/DictionaryEntity';
@@ -11,6 +12,7 @@ import { games } from './games';
 import { GameResultType, GameStage, GameState } from '../../types/gameTypes';
 
 import styles from './Game.module.css';
+import { FocusableHTMLElement } from '../../types/types';
 
 export interface GameComponentProps {
   task: string;
@@ -25,6 +27,7 @@ export interface GameComponentProps {
   className?: string;
   currentResult?: GameState['currentResult'];
   onNext: () => void;
+  language?: Language;
 }
 /**Component to display game*/
 export const GameComponent = ({
@@ -43,8 +46,8 @@ export const GameComponent = ({
     () => currentStage === 'error' || currentStage === 'success',
     [currentStage]
   );
-  const buttonRef = useRef<HTMLButtonElement>(null);
-  const inputRef = useRef<HTMLInputElement>(null);
+  const buttonRef = useRef<FocusableHTMLElement>(null);
+  const inputRef = useRef<FocusableHTMLElement>(null);
   const { Modal, openModal } = useModal();
 
   useEffect(() => {

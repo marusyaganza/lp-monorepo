@@ -15,6 +15,13 @@ export const DEFAULT_GAMES_SETTINGS: SettingsByGame = {
     timesToLearn: 5,
     languages: [Language.English, Language.Spanish]
   },
+  [Game.Speaking]: {
+    wordsPerGame: 6,
+    minWords: 1,
+    optionsPerGame: 0,
+    timesToLearn: 5,
+    languages: [Language.English, Language.Spanish]
+  },
   [Game.TypeWord]: {
     wordsPerGame: 6,
     minWords: 1,

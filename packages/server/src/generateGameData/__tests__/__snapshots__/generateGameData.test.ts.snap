@@ -381,6 +381,50 @@ exports[`generateGameData with SELECT_WORD game Spanish 1`] = `
 }
 `;
 
+exports[`generateGameData with SPEAKING game English 1`] = `
+{
+  "additionalInfo": {
+    "audioUrl": "https://example.com/audio/serendipity.mp3",
+    "examples": [
+      {
+        "text": "She found the perfect book by sheer serendipity.",
+      },
+    ],
+    "imgUrl": "https://example.com/images/serendipity.jpg",
+  },
+  "answer": [
+    "serendipity",
+  ],
+  "question": [
+    "Unexpected good fortune.",
+  ],
+  "wordId": Any<String>,
+}
+`;
+
+exports[`generateGameData with SPEAKING game Spanish 1`] = `
+{
+  "additionalInfo": {
+    "audioUrl": "https://example.com/audio/correr.mp3",
+    "examples": [
+      {
+        "text": "Él puede correr muy rápido.",
+        "translation": "He can run very fast.",
+      },
+    ],
+    "imgUrl": "https://example.com/images/correr.jpg",
+  },
+  "answer": [
+    "correr",
+    "korrer",
+  ],
+  "question": [
+    "To run.",
+  ],
+  "wordId": Any<String>,
+}
+`;
+
 exports[`generateGameData with TYPE_WORD game English 1`] = `
 {
   "additionalInfo": {

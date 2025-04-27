@@ -11,6 +11,7 @@ import { generateGenderGame } from './generators/generateGenderGame';
 import { generateImageGame } from './generators/generateImageGame';
 import { generateSelectDefGame } from './generators/generateSelectDefGame';
 import { generateSelectWordGame } from './generators/generateSelectWordGame';
+import { generateSpeakingGame } from './generators/generateSpeakingGame';
 import { generateTypeWordGame } from './generators/generateTypeWordGame';
 
 const generators: Record<Game, GameDataGeneratorFunc> = {
@@ -20,7 +21,8 @@ const generators: Record<Game, GameDataGeneratorFunc> = {
   [Game.SelectDef]: generateSelectDefGame,
   [Game.Image]: generateImageGame,
   [Game.Conjugation]: generateConjugationGame,
-  [Game.Gender]: generateGenderGame
+  [Game.Gender]: generateGenderGame,
+  [Game.Speaking]: generateSpeakingGame
 };
 
 export async function generateGameData(

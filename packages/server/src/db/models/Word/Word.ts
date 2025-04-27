@@ -57,7 +57,8 @@ const DEFAULT_STATISTICS: Record<GameType, WordStatisticsField> = {
   [GameType.TypeWord]: STATISTICS_FIELD,
   [GameType.Conjugation]: STATISTICS_FIELD,
   [GameType.Image]: STATISTICS_FIELD,
-  [GameType.Gender]: STATISTICS_FIELD
+  [GameType.Gender]: STATISTICS_FIELD,
+  [GameType.Speaking]: STATISTICS_FIELD
 };
 
 const repetitionData = initializeSpacedRepetitionFields();
@@ -80,7 +81,8 @@ const DEFAULT_REPETITION_DATA: SpacedRepetitionMap = {
   [GameType.TypeWord]: repetitionData,
   [GameType.Image]: repetitionData,
   [GameType.Conjugation]: CONJUGATION_REPETITION,
-  [GameType.Gender]: repetitionData
+  [GameType.Gender]: repetitionData,
+  [GameType.Speaking]: repetitionData
 };
 
 export interface WordModelType {

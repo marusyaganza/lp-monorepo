@@ -5,6 +5,7 @@ import { GenderGame } from './GenderGame/GenderGame';
 import { ImageGame } from './ImageGame/ImageGame';
 import { SelectDefGame } from './SelectDefGame/SelectDefGame';
 import { SelectWordGame } from './SelectWordGame/SelectWordGame';
+import { SpeakingGame } from './SpeakingGame/SpeakingGame';
 import { TypeWordGame } from './TypeWordGame/TypeWordGame';
 
 export const games = {
@@ -14,5 +15,6 @@ export const games = {
   [Game.SelectDef]: SelectDefGame,
   [Game.SelectWord]: SelectWordGame,
   [Game.Conjugation]: ConjugationGame,
-  [Game.Gender]: GenderGame
+  [Game.Gender]: GenderGame,
+  [Game.Speaking]: SpeakingGame
 };

@@ -90,6 +90,7 @@ const GamePage = () => {
     <>
       {data && (
         <GameEngine
+          language={language}
           gameData={data?.game}
           onFinish={handleFinish}
           onClose={handleClose}

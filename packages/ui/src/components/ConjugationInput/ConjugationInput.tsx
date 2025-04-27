@@ -3,6 +3,7 @@ import { cn } from '../../utils/classnames';
 import { TextInput } from '../TextInput/TextInput';
 
 import styles from './ConjugationInput.module.css';
+import { FocusableHTMLElement } from '../../types/types';
 
 export interface ConjugationInputProps {
   onChange: (value: string[]) => void;
@@ -26,7 +27,7 @@ const PRONOUNS = [
 
 /**Conjugation game input */
 export const ConjugationInput = forwardRef<
-  HTMLInputElement,
+  FocusableHTMLElement,
   ConjugationInputProps
 >(
   (
