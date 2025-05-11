@@ -43,4 +43,8 @@ export const Image = (args: GameEngineProps) => {
   return <GameEngine {...args} gameData={gameEngineData[Game.Image]} />;
 };
 
+export const Speaking = (args: GameEngineProps) => {
+  return <GameEngine {...args} gameData={gameEngineData[Game.Speaking]} />;
+};
+
 export default meta;

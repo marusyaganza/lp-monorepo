@@ -1,7 +1,11 @@
 import React, { useEffect, useReducer } from 'react';
 
 import styles from './GameEngine.module.css';
-import { GameData, UpdateStatisticsInput } from '../../generated/graphql';
+import {
+  GameData,
+  Language,
+  UpdateStatisticsInput
+} from '../../generated/graphql';
 import { GameAction, gameReducer, initialState } from './gameReducer';
 import { GameFooter } from '../GameFooter/GameFooter';
 import { GameResult } from '../GameResult/GameResult';
@@ -13,6 +17,7 @@ import { cn } from '../../utils/classnames';
 
 export interface GameEngineProps {
   gameData: GameData;
+  language?: Language;
   onClose: () => void;
   onFinish: (val: UpdateStatisticsInput[]) => void;
 }
@@ -20,6 +25,7 @@ export interface GameEngineProps {
 export const GameEngine = ({
   gameData,
   onClose,
+  language,
   onFinish
 }: GameEngineProps) => {
   const [state, dispatch] = useReducer(gameReducer, initialState);
@@ -99,6 +105,7 @@ export const GameEngine = ({
           options={state.currentQuestion?.options}
           task={gameData?.task}
           onNext={handleNext}
+          language={language}
         />
       </main>
       <GameFooter variant={state.currentResult.type || 'inProgress'} />

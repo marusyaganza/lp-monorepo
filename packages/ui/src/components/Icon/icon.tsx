@@ -36,7 +36,9 @@ export type IconIdType =
   | 'bars'
   | 'check'
   | 'tag'
-  | 'void';
+  | 'void'
+  | 'mic'
+  | 'notEqual';
 
 export type IconProps = {
   width?: number;
@@ -82,7 +84,9 @@ export const _iconIds: IconIdType[] = [
   'bars',
   'check',
   'tag',
-  'void'
+  'void',
+  'mic',
+  'notEqual'
 ];
 
 export const Icon = ({ width, height, id, tooltip, className }: IconProps) => {

@@ -71,7 +71,7 @@ describe('Game Page', () => {
       game => game.type !== Game.Conjugation && game.type !== Game.Gender
     );
     availableGames.forEach(game => {
-      it(`should start a game with minimal words in ${lang} language`, () => {
+      it(`should start a ${game.type} game with minimal words in ${lang} language`, () => {
         const query = queries[lang];
         cy.changeLanguage(lang);
         cy.addWord(query);
@@ -91,7 +91,7 @@ describe('Game Page', () => {
         cy.checkPathName('/games');
       });
 
-      it(`should answer incorrectly and finish a game in ${lang} language`, () => {
+      it(`should answer incorrectly and finish a ${game.type} game in ${lang} language`, () => {
         cy.changeLanguage(lang);
         const query = queries[lang];
         cy.addWord(query, query);
@@ -132,7 +132,7 @@ describe('Game Page', () => {
           });
       });
 
-      it(`should answer correctly and finish a game in ${lang} language`, () => {
+      it(`should answer correctly and finish a ${game.type} game in ${lang} language`, () => {
         cy.changeLanguage(lang);
         cy.addWord(queries[lang], queries[lang]);
         if (lang === Language.Spanish) {

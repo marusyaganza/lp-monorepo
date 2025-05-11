@@ -35,5 +35,10 @@ export const games: GameConfigType[] = [
     name: 'GenderWord Challenge',
     desc: 'Choose nouns and match their gender. Test linguistic skills in thrilling rounds!',
     type: Game.Gender
+  },
+  {
+    name: 'VoiceWord Challenge',
+    desc: 'Speak words from clues and images. Sharpen your vocabulary and speaking skills fast!',
+    type: Game.Speaking
   }
 ];

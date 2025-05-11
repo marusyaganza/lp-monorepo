@@ -42,7 +42,6 @@
   flex-direction: column;
   align-items: center;
   gap: 24px;
-  margin-bottom: 24px;
 
   @media (width >= 800px) {
     gap: 40px;

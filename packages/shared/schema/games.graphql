@@ -6,6 +6,7 @@ enum Game {
   CONJUGATION
   GENDER
   IMAGE
+  SPEAKING
 }
 
 type GameConfig {
@@ -33,6 +34,7 @@ type SettingsByGame {
   CONJUGATION: GameSettings!
   GENDER: GameSettings!
   IMAGE: GameSettings!
+  SPEAKING: GameSettings!
 }
 
 type GameQuestionAdditionalInfo {

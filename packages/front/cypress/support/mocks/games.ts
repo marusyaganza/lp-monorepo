@@ -62,6 +62,14 @@ export const games = [
     languages: [Language.English, Language.Spanish]
   },
   {
+    name: 'VoiceWord Challenge',
+    desc: 'Speak words from clues and images. Sharpen your vocabulary and speaking skills fast!',
+    id: 'speaking',
+    type: Game.Speaking,
+    orderNum: 5,
+    languages: [Language.English, Language.Spanish]
+  },
+  {
     name: 'Conjugation Quest',
     desc: 'Master verb conjugations across tenses and languages in fast-paced, interactive challenges!',
     id: 'conjugate',

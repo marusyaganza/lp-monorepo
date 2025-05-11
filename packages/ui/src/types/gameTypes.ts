@@ -1,9 +1,11 @@
 import { RefObject } from 'react';
 import {
   GameQuestion,
+  Language,
   Score,
   UpdateStatisticsInput
 } from '../generated/graphql';
+import { FocusableHTMLElement } from './types';
 
 export interface GameState {
   currentIndex: number;
@@ -31,13 +33,14 @@ export interface GameProps {
   audioUrl?: string | null;
   shortDef?: string | null;
   options?: string[] | null;
+  language?: Language;
   question: string[];
   nextQuestion?: string;
   onSubmit: (value: GameResultType) => void;
-  inputRef: RefObject<HTMLInputElement>;
+  inputRef: RefObject<FocusableHTMLElement>;
   className?: string;
   onNext: () => void;
-  buttonRef: RefObject<HTMLButtonElement>;
+  buttonRef: RefObject<FocusableHTMLElement>;
   currentStage: GameStage;
   correctAnswer: string[];
 }

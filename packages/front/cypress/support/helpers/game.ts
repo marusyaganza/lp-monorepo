@@ -3,6 +3,7 @@
 import { Game, Tense } from '../../../src/generated/graphql';
 import { gameFooterMessages } from '../mocks/gamePageData';
 import { GameStage, HEADER_TEXTS, TENSES, tasks } from '../constants';
+import { DEFAULT_GAMES_SETTINGS } from '../mocks/gamesSettings';
 
 const defs = {
   idioma: 'language',
@@ -68,9 +69,10 @@ export function playConjugationGame(answer: string) {
 }
 
 export function startConjugationGame(query: string, tense: Tense) {
+  const index = DEFAULT_GAMES_SETTINGS[Game.Conjugation].orderNum;
   cy.addWord(query);
   cy.getByCy('headerNav').contains(HEADER_TEXTS.practice).click();
-  cy.getByCy('gameCard').eq(5).click();
+  cy.getByCy('gameCard').eq(index).click();
   cy.checkPathName('/games/conjugate');
   cy.getByCy('tense-selector').find('button').click();
   cy.getByCy('selectOptions').contains(TENSES[tense]).click();

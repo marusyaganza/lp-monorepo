@@ -24,15 +24,15 @@ describe('Games Page', () => {
   it('should render all the elements correctly', () => {
     cy.get('h1').should('have.text', 'Select a training');
     cy.get('@select').contains('Select words by');
-    cy.get('@gameCard').should('have.length', 5);
+    cy.get('@gameCard').should('have.length', 6);
   });
 
   it('should handle language change correctly', () => {
-    cy.get('@gameCard').should('have.length', 5);
+    cy.get('@gameCard').should('have.length', 6);
     cy.changeLanguage(Language.Spanish);
-    cy.get('@gameCard').should('have.length', 7);
+    cy.get('@gameCard').should('have.length', 8);
     cy.changeLanguage(Language.English, Language.Spanish);
-    cy.get('@gameCard').should('have.length', 5);
+    cy.get('@gameCard').should('have.length', 6);
   });
 
   languages.forEach(lang => {

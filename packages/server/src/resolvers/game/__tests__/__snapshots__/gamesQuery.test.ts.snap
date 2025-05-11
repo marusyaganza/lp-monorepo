@@ -33,6 +33,12 @@ exports[`game queries games query 1`] = `
       "name": "PictureWord Blitz",
       "type": "IMAGE",
     },
+    {
+      "desc": "Speak words from clues and images. Sharpen your vocabulary and speaking skills fast!",
+      "id": "speaking",
+      "name": "VoiceWord Challenge",
+      "type": "SPEAKING",
+    },
   ],
 }
 `;

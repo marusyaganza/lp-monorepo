@@ -1359,6 +1359,271 @@ exports[`game queries game query with SELECT_WORD and SPANISH 1`] = `
 ]
 `;
 
+exports[`game queries game query with SPEAKING and ENGLISH 1`] = `
+[
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/serendipity.mp3",
+      "examples": [
+        {
+          "text": "She found the perfect book by sheer serendipity.",
+          "translation": null,
+        },
+      ],
+      "imgUrl": "https://example.com/images/serendipity.jpg",
+      "shortDef": null,
+    },
+    "answer": [
+      "serendipity",
+    ],
+    "options": null,
+    "question": [
+      "Unexpected good fortune.",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/ephemeral.mp3",
+      "examples": [
+        {
+          "text": "The beauty of the cherry blossoms is ephemeral.",
+          "translation": null,
+        },
+      ],
+      "imgUrl": "https://example.com/images/ephemeral.jpg",
+      "shortDef": null,
+    },
+    "answer": [
+      "ephemeral",
+    ],
+    "options": null,
+    "question": [
+      "Short-lived.",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/ubiquitous.mp3",
+      "examples": [
+        {
+          "text": "Smartphones have become ubiquitous in modern life.",
+          "translation": null,
+        },
+      ],
+      "imgUrl": "https://example.com/images/ubiquitous.jpg",
+      "shortDef": null,
+    },
+    "answer": [
+      "ubiquitous",
+    ],
+    "options": null,
+    "question": [
+      "Found everywhere.",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/quixotic.mp3",
+      "examples": [
+        {
+          "text": "His quixotic quest for world peace amused his friends.",
+          "translation": null,
+        },
+      ],
+      "imgUrl": "https://example.com/images/quixotic.jpg",
+      "shortDef": null,
+    },
+    "answer": [
+      "quixotic",
+    ],
+    "options": null,
+    "question": [
+      "Idealistic but impractical.",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/solitude.mp3",
+      "examples": [
+        {
+          "text": "She enjoyed the peace and quiet of her mountain solitude.",
+          "translation": null,
+        },
+      ],
+      "imgUrl": "https://example.com/images/solitude.jpg",
+      "shortDef": null,
+    },
+    "answer": [
+      "solitude",
+    ],
+    "options": null,
+    "question": [
+      "State of being alone.",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/luminous.mp3",
+      "examples": [
+        {
+          "text": "The luminous moon lit up the night sky.",
+          "translation": null,
+        },
+      ],
+      "imgUrl": "https://example.com/images/luminous.jpg",
+      "shortDef": null,
+    },
+    "answer": [
+      "luminous",
+    ],
+    "options": null,
+    "question": [
+      "Glowing or bright.",
+    ],
+    "wordId": Any<String>,
+  },
+]
+`;
+
+exports[`game queries game query with SPEAKING and SPANISH 1`] = `
+[
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/correr.mp3",
+      "examples": [
+        {
+          "text": "Él puede correr muy rápido.",
+          "translation": "He can run very fast.",
+        },
+      ],
+      "imgUrl": "https://example.com/images/correr.jpg",
+      "shortDef": null,
+    },
+    "answer": [
+      "correr",
+      "korrer",
+    ],
+    "options": null,
+    "question": [
+      "To run.",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/felicidad.mp3",
+      "examples": [
+        {
+          "text": "Su felicidad es contagiosa.",
+          "translation": "Her happiness is contagious.",
+        },
+      ],
+      "imgUrl": "https://example.com/images/felicidad.jpg",
+      "shortDef": null,
+    },
+    "answer": [
+      "felicidad",
+      "felisidad",
+    ],
+    "options": null,
+    "question": [
+      "Happiness.",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/periodista.mp3",
+      "examples": [
+        {
+          "text": "El/La periodista escribió un artículo fascinante.",
+          "translation": "The journalist wrote a fascinating article.",
+        },
+      ],
+      "imgUrl": "https://example.com/images/periodista.jpg",
+      "shortDef": null,
+    },
+    "answer": [
+      "periodista",
+      "periodísta",
+    ],
+    "options": null,
+    "question": [
+      "Journalist",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/grande.mp3",
+      "examples": [
+        {
+          "text": "La casa es muy grande.",
+          "translation": "The house is very big.",
+        },
+      ],
+      "imgUrl": "https://example.com/images/grande.jpg",
+      "shortDef": null,
+    },
+    "answer": [
+      "grande",
+    ],
+    "options": null,
+    "question": [
+      "Big, large.",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/pensar.mp3",
+      "examples": [
+        {
+          "text": "Pienso en ti todos los días.",
+          "translation": "I think about you every day.",
+        },
+      ],
+      "imgUrl": "https://example.com/images/pensar.jpg",
+      "shortDef": null,
+    },
+    "answer": [
+      "pensar",
+    ],
+    "options": null,
+    "question": [
+      "To think.",
+    ],
+    "wordId": Any<String>,
+  },
+  {
+    "additionalInfo": {
+      "audioUrl": "https://example.com/audio/hermosura.mp3",
+      "examples": [
+        {
+          "text": "Su hermosura es indescriptible.",
+          "translation": "Her beauty is indescribable.",
+        },
+      ],
+      "imgUrl": "https://example.com/images/hermosura.jpg",
+      "shortDef": null,
+    },
+    "answer": [
+      "hermosura",
+    ],
+    "options": null,
+    "question": [
+      "Beauty.",
+    ],
+    "wordId": Any<String>,
+  },
+]
+`;
+
 exports[`game queries game query with TYPE_WORD and ENGLISH 1`] = `
 [
   {

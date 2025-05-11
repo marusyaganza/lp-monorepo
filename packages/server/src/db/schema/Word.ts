@@ -98,7 +98,8 @@ const wordRepetitionSchema = new Schema<WordStatistics>(
     [Game.TypeWord]: spacedRepetitionSchema,
     [Game.Image]: spacedRepetitionSchema,
     [Game.Conjugation]: conjugationRepetitionSchema,
-    [Game.Gender]: spacedRepetitionSchema
+    [Game.Gender]: spacedRepetitionSchema,
+    [Game.Speaking]: spacedRepetitionSchema
   },
   { _id: false }
 );
@@ -121,7 +122,8 @@ const wordStatisticsSchema = new Schema<WordStatistics>(
     [Game.TypeWord]: statisticsSchema,
     [Game.Image]: statisticsSchema,
     [Game.Conjugation]: statisticsSchema,
-    [Game.Gender]: statisticsSchema
+    [Game.Gender]: statisticsSchema,
+    [Game.Speaking]: statisticsSchema
   },
   { _id: false }
 );

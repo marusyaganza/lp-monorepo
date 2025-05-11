@@ -3,6 +3,7 @@ import { cn } from '../../utils/classnames';
 import { Icon, IconIdType } from '../Icon/icon';
 import { Spinner } from '../Spinner/Spinner';
 import styles from './Button.module.css';
+import { FocusableHTMLElement } from '../../types/types';
 
 /**All supported variants of button */
 export type ButtonVariantType =
@@ -47,7 +48,7 @@ export interface ButtonProps {
  * Button component
  */
 export const Button = forwardRef<
-  HTMLButtonElement,
+  FocusableHTMLElement,
   PropsWithChildren<ButtonProps>
 >(
   (
