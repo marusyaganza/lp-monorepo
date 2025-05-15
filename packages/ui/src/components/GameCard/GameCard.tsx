@@ -43,9 +43,19 @@ export const GameCard = ({
   className
 }: GameCardProps) => {
   const { name, type, desc } = game;
+  const isDisabled = game.wordsToPractice === 0;
   return (
     <div data-cy="gameCard" className={styles.gameContainer}>
-      <Link to={linkUrl} state={state} className={cn(className, styles.link)}>
+      <p className={styles.wordsToPractice}>{game.wordsToPractice}</p>
+      <Link
+        to={linkUrl}
+        state={state}
+        className={cn(
+          className,
+          styles.link,
+          isDisabled ? styles.disabled : undefined
+        )}
+      >
         <div className={styles.content}>
           <div className={styles.imageContainer}>
             <img className={styles.image} src={images[type]} alt={desc} />
@@ -56,7 +66,14 @@ export const GameCard = ({
           </p>
         </div>
       </Link>
-      <h2 className={styles.gameTitle}>{name}</h2>
+      <h2
+        className={cn(
+          styles.gameTitle,
+          isDisabled ? styles.disabled : undefined
+        )}
+      >
+        {name}
+      </h2>
     </div>
   );
 };

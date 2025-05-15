@@ -122,6 +122,10 @@ export interface WordModelType {
     config: GameSettings,
     user: string
   ) => Promise<WordType[]>;
+  getWordsToPracticeCount: (
+    filter: GameDataInput,
+    user: string
+  ) => Promise<number>;
 }
 
 export const WordModel: WordModelType = {
@@ -274,6 +278,14 @@ export const WordModel: WordModelType = {
           word.spacedRepetition = DEFAULT_REPETITION_DATA;
         }
 
+        if (!word?.spacedRepetition?.[gameType]) {
+          if (gameType === Game.Conjugation) {
+            word.spacedRepetition[gameType] = CONJUGATION_REPETITION;
+          } else {
+            word.spacedRepetition[gameType] = repetitionData;
+          }
+        }
+
         const spacedRepetition = word.spacedRepetition[gameType];
 
         const spacedRepetitionData =
@@ -395,5 +407,32 @@ export const WordModel: WordModelType = {
       .limit(config.wordsPerGame)
       .exec();
     return words;
+  },
+  async getWordsToPracticeCount(filter, user) {
+    const { gameType, language, tags } = filter;
+    const now = new Date();
+    const spacedRepetitionField = `spacedRepetition.${gameType}`;
+
+    const dateField = `${spacedRepetitionField}.nextReviewDate`;
+    const spaceRepetitionFilter =
+      gameType !== Game.Conjugation
+        ? {
+            $or: [
+              { [dateField]: { $lte: now } },
+              { spacedRepetition: { $exists: false } }
+            ]
+          }
+        : {};
+    const tagsFilters = getTagsFilter(tags);
+    const gameFilters = GAME_FILTERS?.[gameType] || {};
+
+    const wordCount = await Word.countDocuments({
+      user,
+      language,
+      ...spaceRepetitionFilter,
+      ...tagsFilters,
+      ...gameFilters
+    });
+    return wordCount;
   }
 };

@@ -27,6 +27,8 @@ const SearchPage = () => {
         cache.evict({ fieldName: 'game' });
         cache.evict({ fieldName: 'wordsPerPage' });
         cache.evict({ fieldName: 'verbs' });
+        cache.evict({ fieldName: 'games' });
+        cache.evict({ fieldName: 'verbs' });
       }
     }
   );

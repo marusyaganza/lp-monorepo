@@ -81,12 +81,13 @@ export const USER_QUERY = gql`
 `;
 
 export const GAMES_QUERY = gql`
-  query Games($language: Language) {
-    games(language: $language) {
+  query Games($input: GamesInput) {
+    games(input: $input) {
       desc
       name
       id
       type
+      wordsToPractice
     }
   }
 `;

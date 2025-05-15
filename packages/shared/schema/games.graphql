@@ -15,6 +15,7 @@ type GameConfig {
   id: String!
   type: Game!
   orderNum: Int!
+  wordsToPractice: Int!
   languages: [Language!]!
 }
 
@@ -69,8 +70,13 @@ input GameDataInput {
   wordId: ID
 }
 
+input GamesInput {
+  language: Language
+  tags: [String]
+}
+
 type Query {
-  games(language: Language): [GameConfig]!
+  games(input: GamesInput): [GameConfig]!
   game(input: GameDataInput!): GameData!
   gameSettings: SettingsByGame!
 }

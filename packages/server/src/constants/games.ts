@@ -6,7 +6,8 @@ export const GAMES: GameConfig[] = [
     desc: 'Listen, Type, Master. Sharpen language skills through auditory engagement.',
     type: Game.Audio,
     orderNum: 0,
-    languages: [Language.English, Language.Spanish]
+    languages: [Language.English, Language.Spanish],
+    wordsToPractice: 0
   },
   {
     name: 'LexiSense',
@@ -14,7 +15,8 @@ export const GAMES: GameConfig[] = [
     id: 'select_definition',
     type: Game.SelectDef,
     orderNum: 1,
-    languages: [Language.English, Language.Spanish]
+    languages: [Language.English, Language.Spanish],
+    wordsToPractice: 0
   },
   {
     name: 'Definify: Match & Learn',
@@ -22,7 +24,8 @@ export const GAMES: GameConfig[] = [
     id: 'select_word',
     type: Game.SelectWord,
     orderNum: 2,
-    languages: [Language.English, Language.Spanish]
+    languages: [Language.English, Language.Spanish],
+    wordsToPractice: 0
   },
   {
     name: 'WordRecall: Define & Type',
@@ -30,7 +33,8 @@ export const GAMES: GameConfig[] = [
     id: 'type_word',
     type: Game.TypeWord,
     orderNum: 3,
-    languages: [Language.English, Language.Spanish]
+    languages: [Language.English, Language.Spanish],
+    wordsToPractice: 0
   },
   {
     name: 'PictureWord Blitz',
@@ -38,7 +42,8 @@ export const GAMES: GameConfig[] = [
     id: 'image',
     type: Game.Image,
     orderNum: 4,
-    languages: [Language.English, Language.Spanish]
+    languages: [Language.English, Language.Spanish],
+    wordsToPractice: 0
   },
   {
     name: 'VoiceWord Challenge',
@@ -46,7 +51,8 @@ export const GAMES: GameConfig[] = [
     id: 'speaking',
     type: Game.Speaking,
     orderNum: 5,
-    languages: [Language.English, Language.Spanish]
+    languages: [Language.English, Language.Spanish],
+    wordsToPractice: 0
   },
   {
     name: 'Conjugation Quest',
@@ -54,7 +60,8 @@ export const GAMES: GameConfig[] = [
     id: 'conjugation',
     type: Game.Conjugation,
     orderNum: 6,
-    languages: [Language.Spanish]
+    languages: [Language.Spanish],
+    wordsToPractice: 0
   },
   {
     name: 'GenderWord Challenge',
@@ -62,6 +69,7 @@ export const GAMES: GameConfig[] = [
     id: 'gender',
     type: Game.Gender,
     orderNum: 7,
-    languages: [Language.Spanish]
+    languages: [Language.Spanish],
+    wordsToPractice: 0
   }
 ];

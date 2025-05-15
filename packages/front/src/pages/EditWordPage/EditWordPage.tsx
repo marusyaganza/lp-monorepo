@@ -21,6 +21,7 @@ const EditWordPage = () => {
     update(cache) {
       cache.evict({ fieldName: 'game' });
       cache.evict({ fieldName: 'wordsPerPage' });
+      cache.evict({ fieldName: 'games' });
     }
   });
   const [fetchWord, { loading, error, data }] =
@@ -79,6 +80,7 @@ const EditWordPage = () => {
       update(cache) {
         cache.evict({ fieldName: 'game' });
         cache.evict({ fieldName: 'wordsPerPage' });
+        cache.evict({ fieldName: 'games' });
       }
     });
   };

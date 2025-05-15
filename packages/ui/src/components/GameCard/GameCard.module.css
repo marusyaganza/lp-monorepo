@@ -13,6 +13,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 
   @media (width <= 800px) {
     border-radius: 20px;
@@ -69,6 +70,11 @@
   }
 }
 
+.gameTitle.disabled {
+  color: var(--neutral-600);
+  background-color: var(--text-inverted);
+}
+
 .gameTitleMobile {
   font-size: var(--font-size-m);
   font-family: var(--font-kalam);
@@ -105,4 +111,21 @@
   @media (width >= 800px) {
     opacity: 1;
   }
+}
+
+.disabled {
+  background-color: var(--neutral-200);
+}
+
+.wordsToPractice {
+  position: absolute;
+  top: -16px;
+  right: -8px;
+  margin: 0;
+  padding: 10px 14px;
+  border: 1px solid var(--neutral-400);
+  box-shadow: var(--secondary-box-shadow);
+  background-color: var(--text-inverted);
+  z-index: var(--z-index-2);
+  border-radius: 50%;
 }

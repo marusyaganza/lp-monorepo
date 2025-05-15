@@ -35,6 +35,9 @@
   gap: 12px;
   margin: 0;
   padding: 0 16px;
+  @media (width >= 800px) {
+    padding: 0 84px;
+  }
 }
 
 .answer {
