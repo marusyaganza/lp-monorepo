@@ -82,13 +82,11 @@ jobs:
         with:
           path: ~/.cache/Cypress
           key: cypress-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: Install Cypress binary (if missing)
-        run: cd packages/front && yarn cypress install
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
           working-directory: .
-          install-command: yarn install --frozen-lockfile
+          install-command: yarn install --frozen-lockfile && npx cypress install
           start: yarn start
           wait-on: 'http://localhost:8080'
           project: ./packages/client
