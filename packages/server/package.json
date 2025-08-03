@@ -19,7 +19,7 @@
     "codegen": "graphql-codegen --config codegen.ts",
     "codegen:watch": "graphql-codegen --config codegen.ts --watch",
     "start": "lerna run dev,ts --scope '@lp/server'",
-    "start:test": "yarn build && node dist/server.js"
+    "start:test": "yarn prod && node dist/app.js"
   },
   "author": "Marusya Ganza",
   "license": "MIT",
