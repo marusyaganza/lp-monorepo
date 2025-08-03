@@ -100,12 +100,13 @@ export const searchQuery = `
   }
 `;
 
-export const gamesQuery = ` query Games($language: Language) {
-    games(language: $language) {
+export const gamesQuery = ` query Games($input: GamesInput) {
+    games(input: $input) {
       desc
       name
       id
       type
+      wordsToPractice
     }
   }`;
 

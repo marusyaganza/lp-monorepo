@@ -28,7 +28,13 @@ const GamesPage = () => {
   const [isReverseOrder, setIsReverseOrder] = useState(false);
 
   const { error, loading, data } = useQuery<GamesQuery>(GAMES_QUERY, {
-    variables: { language }
+    variables: {
+      input: {
+        language,
+        tags
+      }
+    },
+    fetchPolicy: 'network-only'
   });
   const tagsResult = useQuery<TagsQuery>(TAGS_QUERY, {
     variables: { language }

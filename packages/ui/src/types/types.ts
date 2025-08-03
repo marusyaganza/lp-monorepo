@@ -8,6 +8,7 @@ export interface GameConfigType {
   name: string;
   desc: string;
   type: Game;
+  wordsToPractice: number;
 }
 
 export type FocusableHTMLElement = HTMLInputElement & HTMLButtonElement;
