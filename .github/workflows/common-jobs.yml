@@ -75,6 +75,8 @@ jobs:
       - uses: ./.github/actions/setup-mongodb
         with:
           mongodb-version: '4.0'
+      - name: Install Cypress binary (if missing)
+        run: yarn cypress install
       - name: Generate code
         run: yarn codegen
       - name: Cypress run
