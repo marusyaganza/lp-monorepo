@@ -87,7 +87,7 @@ jobs:
         with:
           working-directory: .
           install-command: npx cypress install
-          start: yarn start
+          start: yarn start:test
           wait-on: 'http://localhost:8080'
           project: ./packages/client
       - name: Upload Cypress screenshots

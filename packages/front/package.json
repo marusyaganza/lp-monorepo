@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --env mode=development",
+    "start:test": "yarn dev",
     "codegen": "graphql-codegen --config codegen.ts",
     "prod": "webpack --env mode=production",
     "cypress": "npx cypress open",
