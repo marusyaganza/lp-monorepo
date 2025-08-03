@@ -82,6 +82,8 @@ jobs:
         with:
           path: ~/.cache/Cypress
           key: cypress-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+      - name: Install Cypress binary (if missing)
+        run: cd packages/front && yarn cypress install
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
