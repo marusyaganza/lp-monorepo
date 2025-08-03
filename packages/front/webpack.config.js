@@ -6,7 +6,7 @@ const modeConfig = env => require(`./build-utils/webpack.${env}`);
 
 module.exports = ({ mode = 'production', stats, envFile }) => {
   const plugins = [
-    new Dotenv({ path: envFile || '.env' }),
+    new Dotenv({ path: envFile || '.env', systemvars: true }),
     new HtmlWebpackPlugin({ template: './index.html' })
   ];
   if (stats) {
