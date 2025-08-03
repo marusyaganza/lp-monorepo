@@ -64,7 +64,7 @@ jobs:
       IMG_ENDPOINT: ${{ secrets.IMG_ENDPOINT }}
       AUDIO_ENDPOINT: ${{ secrets.AUDIO_ENDPOINT }}
       USE_MOCKS: true
-      NODE_ENV: testing
+      NODE_ENV: development
       MONGO_CONNECTION: 'mongodb://localhost:27017/test'
     runs-on: ubuntu-22.04
     steps:
