@@ -77,6 +77,11 @@ jobs:
           mongodb-version: '4.0'
       - name: Generate code
         run: yarn codegen
+      - name: Cache Cypress binary
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/Cypress
+          key: cypress-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:

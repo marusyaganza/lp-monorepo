@@ -8,7 +8,7 @@
     "codegen": "graphql-codegen --config codegen.ts",
     "prod": "webpack --env mode=production",
     "cypress": "npx cypress open",
-    "cypress:run": "yarn cypress install && npx cypress run --browser chrome",
+    "cypress:run": "npx cypress run --browser chrome",
     "stylelint": "stylelint src",
     "lint": "eslint src",
     "ready": "yarn codegen && yarn eslint --fix && yarn stylelint --fix",
@@ -51,7 +51,7 @@
     "webpack-merge": "^5.10.0"
   },
   "devDependencies": {
-    "cypress": "^13.6.1",
+    "cypress": "^13.17.0",
     "eslint-plugin-cypress": "^2.15.1",
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-react": "^7.33.2",
