@@ -10,7 +10,7 @@
     "cypress": "npx cypress open",
     "cypress:run": "npx cypress run --browser chrome",
     "stylelint": "stylelint src",
-    "eslint": "eslint src",
+    "lint": "eslint src",
     "ready": "yarn codegen && yarn eslint --fix && yarn stylelint --fix",
     "serve": "http-server",
     "clean": "rimraf dist src/generated *.tsbuildinfo public node_modules",

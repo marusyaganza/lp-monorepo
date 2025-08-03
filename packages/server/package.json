@@ -9,7 +9,7 @@
     "dev": "yarn build && nodemon app.js",
     "copy": "cp -r ../shared/schema.graphql dist",
     "clean": "rimraf dist src/generated *.tsbuildinfo node_modules",
-    "eslint": "eslint src",
+    "lint": "eslint src",
     "ts": "tsc --watch --preserveWatchOutput",
     "test": "jest --detectOpenHandles --runInBand",
     "coverage": "jest --runInBand --coverage",

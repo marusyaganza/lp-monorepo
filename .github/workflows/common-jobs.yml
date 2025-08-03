@@ -63,6 +63,7 @@ jobs:
   #     FE_URL: http://localhost:8080
   #     IMG_ENDPOINT: ${{ secrets.IMG_ENDPOINT }}
   #     AUDIO_ENDPOINT: ${{ secrets.AUDIO_ENDPOINT }}
+  #     USE_MOCKS: true
   #   runs-on: ubuntu-22.04
   #   steps:
   #     - uses: actions/checkout@v4

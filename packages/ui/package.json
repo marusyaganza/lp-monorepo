@@ -10,7 +10,7 @@
   "scripts": {
     "dev": "storybook dev -p 6006 --no-open",
     "stylelint": "stylelint src",
-    "eslint": "eslint src",
+    "lint": "eslint src",
     "ready": "yarn eslint --fix && yarn stylelint --fix",
     "build-storybook": "storybook build",
     "clean": "rimraf dist generated *.tsbuildinfo node_modules",
