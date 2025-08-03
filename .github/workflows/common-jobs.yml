@@ -54,47 +54,48 @@ jobs:
       - run: yarn codegen
       - run: yarn test
 
-  # cypress:
-  #   needs: lint
-  #   permissions:
-  #     contents: read
-  #   env:
-  #     GQL_URL: http://localhost:4000/graphql
-  #     FE_URL: http://localhost:8080
-  #     IMG_ENDPOINT: ${{ secrets.IMG_ENDPOINT }}
-  #     AUDIO_ENDPOINT: ${{ secrets.AUDIO_ENDPOINT }}
-  #     USE_MOCKS: true
-  #   runs-on: ubuntu-22.04
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #     - uses: actions/setup-node@v4
-  #       with:
-  #         node-version: '18.17.0'
-  #     - uses: ./.github/actions/setup-yarn
-  #     - uses: ./.github/actions/setup-mongodb
-  #       with:
-  #         mongodb-version: '4.0'
-  #     - name: Cache Cypress binary
-  #       uses: actions/cache@v3
-  #       with:
-  #         path: ~/.cache/Cypress
-  #         key: cypress-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-  #     - name: Generate code
-  #       run: yarn codegen
-  #     - name: Cypress run
-  #       uses: cypress-io/github-action@v6
-  #       with:
-  #         working-directory: .
-  #         install-command: yarn install --frozen-lockfile
-  #         start: yarn start:test
-  #         wait-on: 'http://localhost:8080'
-  #         project: ./packages/client
-  #     - name: Upload Cypress screenshots
-  #       uses: actions/upload-artifact@v4
-  #       if: failure()
-  #       with:
-  #         name: cypress-screenshots
-  #         path: packages/front/cypress/screenshots
+  cypress:
+    needs: lint
+    permissions:
+      contents: read
+    env:
+      GQL_URL: http://localhost:4000/graphql
+      FE_URL: http://localhost:8080
+      IMG_ENDPOINT: ${{ secrets.IMG_ENDPOINT }}
+      AUDIO_ENDPOINT: ${{ secrets.AUDIO_ENDPOINT }}
+      USE_MOCKS: true
+      MONGO_CONNECTION: 'mongodb://localhost:27017/test'
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18.17.0'
+      - uses: ./.github/actions/setup-yarn
+      - uses: ./.github/actions/setup-mongodb
+        with:
+          mongodb-version: '4.0'
+      - name: Cache Cypress binary
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/Cypress
+          key: cypress-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+      - name: Generate code
+        run: yarn codegen
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
+        with:
+          working-directory: .
+          install-command: yarn install --frozen-lockfile
+          start: yarn start
+          wait-on: 'http://localhost:8080'
+          project: ./packages/client
+      - name: Upload Cypress screenshots
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: packages/front/cypress/screenshots
 
   # notify:
   #   needs: [lint, test, cypress]
