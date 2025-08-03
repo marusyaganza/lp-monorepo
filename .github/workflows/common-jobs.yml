@@ -75,11 +75,6 @@ jobs:
       - uses: ./.github/actions/setup-mongodb
         with:
           mongodb-version: '4.0'
-      - name: Cache Cypress binary
-        uses: actions/cache@v3
-        with:
-          path: ~/.cache/Cypress
-          key: cypress-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
       - name: Generate code
         run: yarn codegen
       - name: Cypress run
