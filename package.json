@@ -12,7 +12,7 @@
   ],
   "scripts": {
     "start": "lerna run start --stream",
-    "start:test": "lerna run start:test",
+    "start:test": "lerna run start:test --stream",
     "dev": "bash ./scripts/local-dev.sh",
     "prod:docker": "bash ./scripts/deploy/prod.sh",
     "dev:docker": "bash ./scripts/deploy/dev.sh",
