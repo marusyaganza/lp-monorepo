@@ -10,5 +10,6 @@ export const mockEnv = {
   MONGO_CONNECTION: 'mock_mongo_connection',
   USE_MOCKS: 'true',
   NODE_ENV: 'test',
-  TOKEN_TTL: 4
+  TOKEN_TTL: 4,
+  DEMO_VERSION: false
 };

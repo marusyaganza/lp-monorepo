@@ -3,9 +3,11 @@ import { NewWordInput, User, WordTag } from '../../generated/graphql';
 
 export async function connectToDb() {
   try {
-    await connect('mongodb://localhost:27017/server-test');
+    await connect('mongodb://localhost:27017/server-test', {
+      directConnection: true
+    });
   } catch (err) {
-    console.error('mongoose err, make sure you run the DB', err);
+    console.error('mongoose connection error, ensure MongoDB is running', err);
   }
 }
 
@@ -25,12 +27,11 @@ interface MockModels {
 
 export async function seedDb(input?: MockModels) {
   const data: { words?: string[]; users?: string[]; tags?: string[] } = {};
-  try {
-    // default user - first in the user's input
-    let userId;
 
+  try {
+    let userId;
     if (input?.users?.length) {
-      const usersCollection = await connection.db.createCollection('users');
+      const usersCollection = connection.db.collection('users');
       const createdUsers = await usersCollection.insertMany(input.users);
       const users = Object.values(createdUsers.insertedIds).map(u =>
         u.toString()
@@ -41,15 +42,13 @@ export async function seedDb(input?: MockModels) {
 
     if (input?.words?.length) {
       let wordsInput = input.words;
-      // if users are seeded, all the words belong to the first user
       if (userId) {
         wordsInput = input.words.map(w => ({
           ...w,
           user: userId
         }));
       }
-
-      const wordsCollection = await connection.db.createCollection('words');
+      const wordsCollection = connection.db.collection('words');
       const createdWords = await wordsCollection.insertMany(wordsInput);
       data.words = Object.values(createdWords.insertedIds).map(w =>
         w.toString()
@@ -58,20 +57,20 @@ export async function seedDb(input?: MockModels) {
 
     if (input?.tags?.length) {
       let tagsInput = input.tags;
-      // if users are seeded, all the tags belong to the first user
       if (userId) {
         tagsInput = input.tags.map(t => ({
           ...t,
           user: userId
         }));
       }
-      const tagsCollection = await connection.db.createCollection('wordtags');
+      const tagsCollection = connection.db.collection('wordtags');
       const createdTags = await tagsCollection.insertMany(tagsInput);
       data.tags = Object.values(createdTags.insertedIds).map(t => t.toString());
     }
   } catch (err) {
     console.error('mongoose seed db error', err);
   }
+
   return data;
 }
 

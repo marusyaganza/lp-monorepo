@@ -9,7 +9,7 @@
     "codegen": "graphql-codegen --config codegen.ts",
     "prod": "webpack --env mode=production",
     "cypress": "npx cypress open",
-    "cypress:run": "npx cypress run --browser chrome --spec cypress/e2e/editWord.cy.ts",
+    "cypress:run": "npx cypress run --browser chrome",
     "stylelint": "stylelint src",
     "lint": "eslint src",
     "ready": "yarn codegen && yarn eslint --fix && yarn stylelint --fix",
