@@ -9,6 +9,7 @@ import {
   Score,
   Tense
 } from '../../generated/graphql';
+import { DEMO_DB_TTL } from '../../constants/defaultValues';
 
 export interface SpacedRepetitionData {
   isNewCard: boolean;
@@ -165,5 +166,10 @@ const wordSchema = new Schema<WordType>(
 wordSchema.virtual('id').get(function () {
   return this._id.toHexString();
 });
+
+// clean up words data every hour in demo mode
+if (process.env.DEMO_VERSION === 'true') {
+  wordSchema.index({ createdAt: 1 }, { expireAfterSeconds: DEMO_DB_TTL });
+}
 
 export const Word = model<WordType>('Word', wordSchema);

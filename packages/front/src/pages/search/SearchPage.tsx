@@ -86,13 +86,11 @@ const SearchPage = () => {
     }
   }, [language, fetchSearchResult, searchParams]);
 
-  const handleSearch = (search?: string) => {
-    if (search) {
-      setSearchParams({ search });
-      fetchSearchResult({
-        variables: { input: { search, language } }
-      });
-    }
+  const handleSearch = (search = '') => {
+    setSearchParams({ search });
+    fetchSearchResult({
+      variables: { input: { search, language } }
+    });
   };
 
   const getSuggestionClickHandler = (suggestion?: string | null) => {

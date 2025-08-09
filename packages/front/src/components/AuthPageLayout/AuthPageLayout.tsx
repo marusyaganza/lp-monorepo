@@ -10,11 +10,15 @@ import { getStoredData } from '../../util/localStorageUtils';
 export const AuthPageLayout = ({ children }: PropsWithChildren<unknown>) => {
   const navigate = useNavigate();
   const { userId } = useContext(AppContext);
-
+  const { isDemo } = useContext(AppContext);
   useEffect(() => {
     if (userId) {
-      const previousLocation = getStoredData('previousLocation') || '/';
-      localStorage.removeItem('previousLocation');
+      let previousLocation = '/';
+      const storedLocation = getStoredData('previousLocation');
+      if (!isDemo && storedLocation) {
+        previousLocation = storedLocation;
+        localStorage.removeItem('previousLocation');
+      }
       navigate(previousLocation);
     }
   }, [userId, navigate]);

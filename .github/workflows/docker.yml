@@ -1,0 +1,101 @@
+name: Build and Push Docker Images
+
+# on:
+#   push:
+#     branches:
+#       - develop
+#       - master
+on:
+  # push:
+  #   branches: [ts-monorepo-ci, develop]
+  pull_request:
+    branches: [master, develop]
+
+jobs:
+  common-jobs:
+    uses: ./.github/workflows/common-jobs.yml
+    secrets:
+      SLACK_CHANNEL_ID: ${{ secrets.SLACK_CHANNEL_ID }}
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+  build-and-push:
+    needs: common-jobs
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Get client version
+        id: client-version
+        run: echo "CLIENT_VERSION=$(node -p "require('./packages/front/package.json').version")" >> $GITHUB_OUTPUT
+
+      - name: Get server version
+        id: server-version
+        run: echo "SERVER_VERSION=$(node -p "require('./packages/server/package.json').version")" >> $GITHUB_OUTPUT
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and push server image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: docker/Dockerfile-server
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/language-power:server-${{ steps.server-version.outputs.SERVER_VERSION }}
+
+      - name: Build and push client image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: docker/Dockerfile-front
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/language-power:client-${{ steps.client-version.outputs.CLIENT_VERSION }}
+      - name: Set output
+        run: |
+          echo "SERVER_VERSION=${{ steps.server-version.outputs.SERVER_VERSION }}" >> $GITHUB_OUTPUT
+          echo "CLIENT_VERSION=${{ steps.client-version.outputs.CLIENT_VERSION }}" >> $GITHUB_OUTPUT
+        id: version_output
+
+  notify-success:
+    needs: build-and-push
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Send Slack notification
+        uses: slackapi/slack-github-action@v1.24.0
+        with:
+          channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
+          payload: |
+            {
+              "text": "New Docker images uploaded successfully!",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*New Docker images uploaded* :white_check_mark:\nRepository: ${{ github.repository }}\nBranch: ${{ github.ref }}"
+                  }
+                },
+                {
+                  "type": "actions",
+                  "elements": [
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "View Workflow Run"
+                      },
+                      "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                    }
+                  ]
+                }
+              ]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK

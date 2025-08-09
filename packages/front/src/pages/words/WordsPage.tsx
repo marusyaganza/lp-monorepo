@@ -40,8 +40,7 @@ import { useLazyQuery, useMutation, useQuery } from '@apollo/client';
 
 const OPTIONS = {
   [SortWordsBy.Name]: 'Alphabetically',
-  [SortWordsBy.Particle]: 'Particle',
-  [SortWordsBy.Level]: 'Level'
+  [SortWordsBy.Particle]: 'Word Category'
 };
 
 const WordsPage = () => {
@@ -80,6 +79,10 @@ const WordsPage = () => {
 
   const handleSortingParamChange = useCallback((val: SortByType) => {
     setSortBy(val as SortWordsBy);
+    if (!val) {
+      localStorage.removeItem('sortWordsBy');
+      return;
+    }
     storeData('sortWordsBy', val as SortWordsBy);
   }, []);
 
@@ -94,6 +97,7 @@ const WordsPage = () => {
   );
 
   const handleOrderChange = useCallback((value: boolean) => {
+    console.log('value', value);
     setIsReverseOrder(value);
     storeData('wordsSortOrder', value);
   }, []);
@@ -292,15 +296,17 @@ const WordsPage = () => {
             allowEmptySearch
           />
           <div className={styles.wordSelection}>
-            <TagSelector
-              dataCy="tag-selector"
-              showNoTagsTag
-              tags={tagsResult?.data?.tags}
-              value={tags}
-              label="tags"
-              onChange={handleTagsChange}
-              className={styles.tagsSelector}
-            />
+            {!!tags?.length && (
+              <TagSelector
+                dataCy="tag-selector"
+                showNoTagsTag
+                tags={tagsResult?.data?.tags}
+                value={tags}
+                label="tags"
+                onChange={handleTagsChange}
+                className={styles.tagsSelector}
+              />
+            )}
             <SortControls
               blankOption="Date"
               blankValue="Date"

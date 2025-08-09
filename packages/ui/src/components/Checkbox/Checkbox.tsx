@@ -45,7 +45,7 @@ export const Checkbox = ({
     return label;
   };
   const handleChange: ChangeEventHandler<HTMLInputElement> = e => {
-    const val = e.target.checked;
+    const val = !!e.target.checked;
     setIsChecked(val);
     onChange(val);
   };

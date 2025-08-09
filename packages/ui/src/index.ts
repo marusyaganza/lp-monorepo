@@ -6,7 +6,7 @@
  * <h3>Design system for Language Power project</h3>
  *
  * `@lp/ui` is a package containing common ui component and utilities
- * for LP app. This a relaunch of language learning app
+ * for LP app. This is a relaunch of language learning app
  * <b>Language Power</b> which you can learn more about by visiting
  * <a href="https://github.com/marusyaganza/language-power" target="_blank">
  *  the repo on GitHub
@@ -38,7 +38,6 @@ export * from './components/Notification/Notification';
 export * from './components/CardWrapper/CardWrapper';
 export * from './components/Select/useSelect';
 export * from './components/LanguageSelector/LanguageSelector';
-export * from './components/HeaderV2/HeaderV2';
 export * from './components/UserMenu/UserMenu';
 export * from './components/SearchField/SearchField';
 export * from './components/ArrayInput/ArrayInput';

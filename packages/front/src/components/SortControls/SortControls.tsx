@@ -6,11 +6,10 @@ import { SortBy, SortWordsBy } from '../../generated/graphql';
 export type SortByType = (SortWordsBy & SortBy) | string;
 
 export interface SortControlsProps {
-  blankOption: string;
+  blankOption?: string;
   blankValue?: string;
   sortBy: SortByType;
   label?: string;
-  initialSortValue?: string;
   initialOrderValue: boolean;
   onSortChange: (value: SortByType) => void;
   onOrderChange: (value: boolean) => void;
@@ -42,9 +41,7 @@ export const SortControls = ({
   };
 
   useEffect(() => {
-    if (sortBy) {
-      setValue(sortBy);
-    }
+    setValue(sortBy);
   }, [sortBy, setValue]);
 
   const optValues = Object.keys(options);

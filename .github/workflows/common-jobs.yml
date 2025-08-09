@@ -9,10 +9,10 @@ on:
         required: true
       IMG_ENDPOINT:
         required: true
-      # SLACK_CHANNEL_ID:
-      #   required: true
-      # SLACK_WEBHOOK_URL:
-      #   required: true
+      SLACK_CHANNEL_ID:
+        required: true
+      SLACK_WEBHOOK_URL:
+        required: true
 
 jobs:
   lint:
@@ -99,43 +99,43 @@ jobs:
           name: cypress-screenshots
           path: packages/front/cypress/screenshots
 
-  # notify:
-  #   needs: [lint, test, cypress]
-  #   if: failure()
-  #   permissions:
-  #     contents: read
-  #   runs-on: ubuntu-22.04
-  #   steps:
-  #     - name: Send Slack notification
-  #       uses: slackapi/slack-github-action@v1.24.0
-  #       with:
-  #         channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
-  #         payload: |
-  #           {
-  #             "text": "Workflow Failed!",
-  #             "blocks": [
-  #               {
-  #                 "type": "section",
-  #                 "text": {
-  #                   "type": "mrkdwn",
-  #                   "text": "*Workflow Failed* :x:\n Repository: ${{ github.repository }}\n Branch: ${{ github.ref }}"
-  #                 }
-  #               },
-  #               {
-  #                 "type": "actions",
-  #                 "elements": [
-  #                   {
-  #                     "type": "button",
-  #                     "text": {
-  #                       "type": "plain_text",
-  #                       "text": "View Failed Action"
-  #                     },
-  #                     "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-  #                   }
-  #                 ]
-  #               }
-  #             ]
-  #           }
-  #       env:
-  #         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-  #         SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+  notify:
+    needs: [lint, test, cypress]
+    if: failure()
+    permissions:
+      contents: read
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Send Slack notification
+        uses: slackapi/slack-github-action@v1.24.0
+        with:
+          channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
+          payload: |
+            {
+              "text": "Workflow Failed!",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*Workflow Failed* :x:\n Repository: ${{ github.repository }}\n Branch: ${{ github.ref }}"
+                  }
+                },
+                {
+                  "type": "actions",
+                  "elements": [
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "View Failed Action"
+                      },
+                      "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                    }
+                  ]
+                }
+              ]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK

@@ -85,7 +85,6 @@ export function checkGame(
   stage: GameStage,
   gameType: Game,
   wordName: string,
-  audioReq?: string,
   imgUrl?: string | null,
   tense = Tense.Pind,
   correctAnswer = wordName
@@ -107,25 +106,11 @@ export function checkGame(
   }
 
   if (stage === GameStage.Initial) {
-    if (
-      gameType !== Game.TypeWord &&
-      gameType !== Game.SelectWord &&
-      gameType !== Game.Image &&
-      audioReq
-    ) {
-      cy.checkReq(audioReq);
-    }
     cy.getByCy('game-progress').should('have.value', 0);
     cy.getByCy('exit-game').should('be.enabled').should('contain', 'Exit game');
     cy.getByCy('gameAnswer').should('be.visible');
     cy.getByCy('check-button').should('be.disabled');
   } else {
-    if (
-      (gameType === Game.TypeWord || gameType === Game.SelectWord) &&
-      audioReq
-    ) {
-      cy.checkReq(audioReq);
-    }
     cy.getByCy('check-button').should('not.exist');
     cy.getByCy('continue-button').should('be.enabled').and('be.focused');
     cy.getByCy('gameAnswer')

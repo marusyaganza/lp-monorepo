@@ -1,0 +1,46 @@
+.picture {
+  position: relative;
+  max-width: 500px;
+  @media (width <= 800px) {
+    max-width: 100%;
+  }
+}
+
+.heading {
+  text-align: center;
+  @media (width <= 800px) {
+    font-size: var(--font-size-l);
+    margin: 20px;
+  }
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  padding: 20px 40px;
+  flex-direction: column-reverse;
+  gap: 40px;
+  @media (width >= 800px) {
+    gap: 80px;
+    flex-direction: row;
+  }
+}
+
+.mainContent {
+  max-width: 800px;
+  font-size: var(--font-size-m);
+}
+
+.cta {
+  font-size: var(--font-size-m);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+  gap: 20px;
+  @media (width >= 800px) {
+    gap: 40px;
+  }
+}

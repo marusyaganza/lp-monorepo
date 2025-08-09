@@ -1,5 +1,6 @@
 import { Schema, model } from 'mongoose';
 import { User as UserCoreType } from '../../generated/graphql';
+import { DEMO_DB_TTL } from '../../constants/defaultValues';
 
 export interface UserType extends UserCoreType {
   password: string;
@@ -21,5 +22,10 @@ const userSchema = new Schema<UserType>(
 userSchema.virtual('id').get(function () {
   return this._id.toHexString();
 });
+
+// clean up user data every hour in demo mode
+if (process.env.DEMO_VERSION === 'true') {
+  userSchema.index({ createdAt: 1 }, { expireAfterSeconds: DEMO_DB_TTL });
+}
 
 export const User = model<UserType>('User', userSchema);

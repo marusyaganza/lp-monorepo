@@ -6,7 +6,6 @@ import { FocusableHTMLElement } from '../../types/types';
 
 export interface SpeechInputProps {
   onChange: (value: string) => void;
-  value?: string;
   isDisabled?: boolean;
   variant?: 'initial' | 'success' | 'error';
   dataCy?: string;
@@ -41,7 +40,7 @@ type SpeechRecognitionObj = {
 type SpeechRecognition = new () => SpeechRecognitionObj;
 
 export const SpeechInput = forwardRef<FocusableHTMLElement, SpeechInputProps>(
-  ({ onChange, className, language, isDisabled }, ref) => {
+  ({ onChange, className, language, isDisabled, dataCy }, ref) => {
     const [error, setError] = useState('');
     const [accuracy, setAccuracy] = useState('');
     const [isListening, setIsListening] = useState(false);
@@ -126,6 +125,7 @@ export const SpeechInput = forwardRef<FocusableHTMLElement, SpeechInputProps>(
           disabled={isListening || isDisabled}
           className={className}
           aria-label="Start speaking"
+          data-cy={dataCy}
         >
           Microphone
         </Button>

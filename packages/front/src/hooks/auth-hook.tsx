@@ -1,7 +1,6 @@
 import { useState, useCallback, useEffect } from 'react';
 import { getStoredData, storeData } from '../util/localStorageUtils';
-import { createAuthLink } from '../app';
-import { client } from '../app';
+import { client, createAuthLink } from '../app';
 export type loginFuncType = (
   id: string,
   tokenString: string,
@@ -14,8 +13,11 @@ let logoutTimer: NodeJS.Timeout | undefined;
 
 const tokenTTL = Number.parseInt(process.env.TOKEN_TTL || '7');
 
-const TOKEN_EXPIRATION_PERIOD =
-  new Date().getTime() + 1000 * 60 * 60 * 24 * tokenTTL;
+const isDemo = process.env.DEMO_VERSION === 'true';
+
+const TOKEN_EXPIRATION_PERIOD = isDemo
+  ? 3600 * 1000
+  : 1000 * 60 * 60 * 24 * tokenTTL;
 
 export const useAuth = () => {
   const [userId, setUserId] = useState<string | null>();
@@ -27,7 +29,8 @@ export const useAuth = () => {
       setUserId(id);
       setToken(tokenString);
       const tokenExpirationDate =
-        expirationDate || new Date(TOKEN_EXPIRATION_PERIOD);
+        expirationDate ||
+        new Date(TOKEN_EXPIRATION_PERIOD + new Date().getTime());
       setTokenExpDate(tokenExpirationDate);
       storeData('userData', {
         userId: id,
@@ -66,12 +69,12 @@ export const useAuth = () => {
   useEffect(() => {
     if (token && tokenExpDate) {
       const remainingTime = tokenExpDate.getTime() - new Date().getTime();
-      logoutTimer = setTimeout(automaticLogout, remainingTime);
-    } else {
-      if (logoutTimer) {
-        clearTimeout(logoutTimer);
-      }
+      logoutTimer = setTimeout(
+        isDemo ? logout : automaticLogout,
+        remainingTime
+      );
     }
+    return () => clearTimeout(logoutTimer);
   }, [token, tokenExpDate, logout, automaticLogout]);
 
   return { userId, token, login, logout };

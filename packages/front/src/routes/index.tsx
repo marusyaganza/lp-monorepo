@@ -1,5 +1,6 @@
 import React, { lazy } from 'react';
 import {
+  Navigate,
   Route,
   createBrowserRouter,
   createRoutesFromElements
@@ -19,12 +20,15 @@ const GamePage = lazy(() => import('../pages/games/game/GamePage'));
 const NotFoundPage = lazy(() => import('../pages/notFound/NotFoundPage'));
 const SignInPage = lazy(() => import('../pages/sign-in/SignInPage'));
 const SignUpPage = lazy(() => import('../pages/sign-up/SignUpPage'));
+const DemoPage = lazy(() => import('../pages/demo/DemoPage'));
 const ProfilePage = lazy(() => import('../pages/profile/ProfilePage'));
 const ErrorPage = lazy(() => import('../pages/error/ErrorPage'));
 const TagsPage = lazy(() => import('../pages/TagsPage/TagsPage'));
 const ConjugatePage = lazy(
   () => import('../pages/games/conjugate/ConjugatePage')
 );
+
+const isDemo = process?.env?.DEMO_VERSION === 'true';
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -42,8 +46,36 @@ export const router = createBrowserRouter(
         <Route path={routes.conjugate} element={withSuspense(ConjugatePage)} />
         <Route path=":gameId" element={withSuspense(GamePage)} />
       </Route>
-      <Route path={routes.signIn} element={withSuspense(SignInPage)} />
-      <Route path={routes.signUp} element={withSuspense(SignUpPage)} />
+      <Route
+        path={routes.signIn}
+        element={
+          isDemo ? (
+            <Navigate to={`/${routes.demo}`} replace />
+          ) : (
+            withSuspense(SignInPage)
+          )
+        }
+      />
+      <Route
+        path={routes.signUp}
+        element={
+          isDemo ? (
+            <Navigate to={`/${routes.demo}`} replace />
+          ) : (
+            withSuspense(SignUpPage)
+          )
+        }
+      />
+      <Route
+        path={routes.demo}
+        element={
+          !isDemo ? (
+            <Navigate to={`/${routes.signIn}`} replace />
+          ) : (
+            withSuspense(DemoPage)
+          )
+        }
+      />
       <Route path={routes.profile} element={withSuspense(ProfilePage)} />
       <Route path={routes.tags} element={withSuspense(TagsPage)} />
       <Route path="*" element={withSuspense(NotFoundPage)} />

@@ -13,5 +13,5 @@ jobs:
       JWT_SECTET: ${{ secrets.JWT_SECTET }}
       AUDIO_ENDPOINT: ${{ secrets.AUDIO_ENDPOINT }}
       IMG_ENDPOINT: ${{ secrets.IMG_ENDPOINT }}
-      # SLACK_CHANNEL_ID: ${{ secrets.SLACK_CHANNEL_ID }}
-      # SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      SLACK_CHANNEL_ID: ${{ secrets.SLACK_CHANNEL_ID }}
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}

@@ -1,9 +1,9 @@
 import React from 'react';
-import { IconIdType } from '../Icon/icon';
+import { IconIdType, Icon } from '../Icon/icon';
 import { Link, NavLink } from 'react-router-dom';
-import { Icon } from '../Icon/icon';
 import styles from './Footer.module.css';
 import logo from '../../assets/img/LogoV2.svg';
+import mvLogo from '../../assets/img/mw-logo.png';
 import { cn } from '../../utils/classnames';
 
 export type LinkType = {
@@ -81,6 +81,17 @@ export const Footer = ({ links, mobileLinks }: FooterProps) => {
               marusyaganza
             </a>
           </div>
+          <p className={styles.mw}>
+            <img
+              alt="Merriam-Webster Dictionary logo"
+              src={mvLogo}
+              width={30}
+              height={30}
+            />
+            <span className={styles.disclamer}>
+              Merriam-Webster® data used under non-commercial terms.
+            </span>
+          </p>
         </div>
       </div>
     </footer>
