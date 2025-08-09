@@ -50,7 +50,7 @@ jobs:
       - uses: ./.github/actions/setup-yarn
       - uses: ./.github/actions/setup-mongodb
         with:
-          mongodb-version: '4.0'
+          mongodb-version: '6.0'
       - run: yarn codegen
       - run: yarn test
 
@@ -76,7 +76,7 @@ jobs:
       - uses: ./.github/actions/setup-yarn
       - uses: ./.github/actions/setup-mongodb
         with:
-          mongodb-version: '4.0'
+          mongodb-version: '6.0'
       - name: Generate code
         run: yarn codegen
       - name: Cache Cypress binary
