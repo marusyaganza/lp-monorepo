@@ -1,0 +1,51 @@
+name: Release Monorepo
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_type:
+        description: 'Release type (patch, minor, major, auto)'
+        required: false
+        default: auto
+
+  push:
+    branches:
+      - main
+
+jobs:
+  linting-and-testing:
+    uses: ./.github/workflows/common-jobs.yml
+    secrets:
+      JWT_SECTET: ${{ secrets.JWT_SECTET }}
+      AUDIO_ENDPOINT: ${{ secrets.AUDIO_ENDPOINT }}
+      IMG_ENDPOINT: ${{ secrets.IMG_ENDPOINT }}
+      SLACK_CHANNEL_ID: ${{ secrets.SLACK_CHANNEL_ID }}
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+  cypress:
+    uses: ./.github/workflows/cypress.yml
+    secrets:
+      JWT_SECTET: ${{ secrets.JWT_SECTET }}
+      AUDIO_ENDPOINT: ${{ secrets.AUDIO_ENDPOINT }}
+      IMG_ENDPOINT: ${{ secrets.IMG_ENDPOINT }}
+      SLACK_CHANNEL_ID: ${{ secrets.SLACK_CHANNEL_ID }}
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+  release:
+    runs-on: ubuntu-22.04
+    needs: [cypress, linting-and-testing]
+    steps:
+      - name: Bootstrap Lerna
+        run: npx lerna bootstrap
+      - name: Version & Changelog
+        if: github.event.inputs.release_type != 'auto'
+        run: |
+          npx lerna version ${{ github.event.inputs.release_type }} --conventional-commits --yes --create-release github
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Version & Changelog (auto)
+        if: github.event.inputs.release_type == 'auto'
+        run: |
+          npx lerna version --conventional-commits --yes --create-release github
+           env:
+            GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  docker:
+    uses: ./.github/workflows/docker.yml

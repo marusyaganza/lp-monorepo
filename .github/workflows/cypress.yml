@@ -15,33 +15,19 @@ on:
         required: true
 
 jobs:
-  lint:
-    runs-on: ubuntu-22.04
+  cypress:
     permissions:
       contents: read
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '18.17.0'
-      - name: Configure yarn
-        run: yarn set version 1.22.19
-      - name: Cache node_modules
-        id: cache-nodemodules
-        uses: actions/cache@v3
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
-      - name: Install dependencies
-        if: steps.cache-nodemodules.outputs.cache-hit != 'true'
-        run: yarn install --frozen-lockfile
-      - run: yarn lint
-
-  test:
+    env:
+      GQL_URL: http://localhost:4000/graphql
+      FE_URL: http://localhost:8080
+      IMG_ENDPOINT: ${{ secrets.IMG_ENDPOINT }}
+      AUDIO_ENDPOINT: ${{ secrets.AUDIO_ENDPOINT }}
+      JWT_SECTET: ${{ secrets.JWT_SECTET }}
+      USE_MOCKS: true
+      NODE_ENV: development
+      MONGO_CONNECTION: 'mongodb://localhost:27017/test'
     runs-on: ubuntu-22.04
-    needs: lint
-    permissions:
-      contents: read
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -51,10 +37,31 @@ jobs:
       - uses: ./.github/actions/setup-mongodb
         with:
           mongodb-version: '4.2'
-      - run: yarn codegen
-      - run: yarn test
+      - name: Generate code
+        run: yarn codegen
+      - name: Cache Cypress binary
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/Cypress
+          key: cypress-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
+        with:
+          working-directory: .
+          install-command: npx cypress install
+          start: yarn start:test
+          wait-on: 'http://localhost:8080'
+          project: ./packages/front
+          browser: chrome
+      - name: Upload Cypress screenshots
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: packages/front/cypress/screenshots
+
   notify:
-    needs: [lint, test]
+    needs: [cypress]
     if: failure()
     permissions:
       contents: read

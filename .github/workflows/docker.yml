@@ -1,15 +1,7 @@
 name: Build and Push Docker Images
 
-# on:
-#   push:
-#     branches:
-#       - develop
-#       - master
 on:
-  # push:
-  #   branches: [ts-monorepo-ci, develop]
-  pull_request:
-    branches: [master, develop]
+  workflow_call:
 
 jobs:
   build-and-push:
