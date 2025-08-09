@@ -73,6 +73,7 @@ describe('searchWord', () => {
 
   test('should fetch word using correct API in production with Spanish', async () => {
     process.env.NODE_ENV = 'production';
+    process.env.USE_MOCKS = 'false';
     mockFetch.mockImplementationOnce(() =>
       Promise.resolve({
         json: () => Promise.resolve(mockSpanishResponse)
@@ -87,6 +88,7 @@ describe('searchWord', () => {
 
   test('should fetch word using correct API in production with English', async () => {
     process.env.NODE_ENV = 'production';
+    process.env.USE_MOCKS = 'false';
     mockFetch.mockImplementationOnce(() =>
       Promise.resolve({
         json: () => Promise.resolve(mockEnglishResponse)

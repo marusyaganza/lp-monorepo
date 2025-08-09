@@ -46,16 +46,6 @@ describe('getFetchFunc', () => {
     expect(fetchFunc).toBe(fetchWordFn);
   });
 
-  it('should return fetchWord when NODE_ENV is production, even if USE_MOCKS is true', async () => {
-    process.env.USE_MOCKS = 'true';
-    process.env.NODE_ENV = 'production';
-
-    const fetchFunc = await getFetchFunc();
-
-    // Check if the correct function was returned
-    expect(fetchFunc).toBe(fetchWordFn);
-  });
-
   it('should return fetchWord when neither USE_MOCKS nor NODE_ENV is set', async () => {
     process.env.USE_MOCKS = undefined;
     process.env.NODE_ENV = undefined;

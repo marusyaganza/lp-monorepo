@@ -1,7 +1,6 @@
-
 ## To run test DB
 
-`docker run --name test-db --rm -d -v /data/test-db -p 27017:27017 mongo:4`
+`docker run --name test-db --rm -d -v /data/test-db -p 27017:27017 mongo:4.2`
 
 ## Read mongo logs
 
@@ -9,4 +8,4 @@
 
 ## Run DB for local development
 
-`docker run --name dev-db -d -v data:/data/dev-db -p 27017:27017 mongo:4`
+`docker run --name dev-db -d -v data:/data/dev-db -p 27017:27017 mongo:4.2`

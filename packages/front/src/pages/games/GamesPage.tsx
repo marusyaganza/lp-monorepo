@@ -91,7 +91,7 @@ const GamesPage = () => {
       <div className={styles.topContainer}>
         <h1 className={styles.pageTitle}>Select a training</h1>
         <section className={styles.topSection}>
-          {isDemo && (
+          {!isDemo && (
             <SortControls
               className={styles.sortControls}
               sortBy={sortBy}
