@@ -8,12 +8,7 @@ import {
   baseSnapshotConfig
 } from '../../../../tests/helpers';
 import { testData } from '../../../../tests/mocks/dbTestData';
-import {
-  Game,
-  Language,
-  Score,
-  SortWordsBy
-} from '../../../../generated/graphql';
+import { Language, SortWordsBy } from '../../../../generated/graphql';
 import { newWordInputs } from '../../../../tests/mocks/inputs/newWordInputs';
 import { usersTestData } from '../../../../tests/mocks/inputs/newUserInput';
 

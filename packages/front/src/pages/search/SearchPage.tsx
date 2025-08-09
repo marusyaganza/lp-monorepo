@@ -187,6 +187,25 @@ const SearchPage = () => {
     );
   };
 
+  const renderDisclaimer = () => {
+    if (data) {
+      return;
+    }
+    return (
+      <article>
+        <p>
+          This is a demo version of the search feature using mock data. You can
+          try searching for these example words:
+        </p>
+        <p>
+          egalitarian, rubber, pussy, heart, wheel, voluminous, fowl, murther
+        </p>
+
+        <p>Enjoy exploring the demo!</p>
+      </article>
+    );
+  };
+
   return (
     <PageLayout>
       <div className={styles.content}>
@@ -207,6 +226,7 @@ const SearchPage = () => {
           onSearch={handleSearch}
         />
         {loading && <Spinner />}
+        {renderDisclaimer()}
         {renderSuggestions()}
         {renderWords()}
       </div>
