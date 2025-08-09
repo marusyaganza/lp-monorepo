@@ -12,15 +12,7 @@ on:
     branches: [master, develop]
 
 jobs:
-  common-jobs:
-    uses: ./.github/workflows/common-jobs.yml
-    secrets:
-      SLACK_CHANNEL_ID: ${{ secrets.SLACK_CHANNEL_ID }}
-      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-      DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
   build-and-push:
-    needs: common-jobs
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4

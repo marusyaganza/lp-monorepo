@@ -7,6 +7,5 @@ module.exports = {
     '<rootDir>/src/mocks',
     '<rootDir>/src/generated',
     '<rootDir>/src/dictionary/mocks'
-  ],
-  globalTeardown: './src/tests/helpers/teardown.ts'
+  ]
 };

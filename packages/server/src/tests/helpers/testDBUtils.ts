@@ -76,7 +76,13 @@ export async function seedDb(input?: MockModels) {
 
 export async function dropDb() {
   try {
-    await connection.db.dropDatabase();
+    if (connection.readyState === 1 && connection.db) {
+      await connection.db.dropDatabase();
+    } else {
+      console.error(
+        'Mongoose connection is not open or DB object is unavailable'
+      );
+    }
   } catch (err) {
     console.error('mongoose drop db error', err);
   }

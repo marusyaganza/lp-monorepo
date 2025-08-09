@@ -1,12 +1,12 @@
-name: "Setup MongoDB"
-description: "Cache MongoDB binary and start MongoDB"
+name: 'Setup MongoDB'
+description: 'Cache MongoDB binary and start MongoDB'
 inputs:
   mongodb-version:
-    description: "Version of MongoDB to use"
+    description: 'Version of MongoDB to use'
     required: true
-    default: "4.0"
+    default: '4.4'
 runs:
-  using: "composite"
+  using: 'composite'
   steps:
     - name: Cache MongoDB binary
       uses: actions/cache@v3
