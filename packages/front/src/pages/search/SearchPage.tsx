@@ -136,6 +136,9 @@ const SearchPage = () => {
     return (
       <article>
         <div className={styles.suggestionsContainer}>
+          <p>{`Sorry, we didn’t find “${searchParams.get(
+            'search'
+          )}”. Try one of these instead:`}</p>
           <Icon
             className={styles.suggestionsIcon}
             id="pointer"

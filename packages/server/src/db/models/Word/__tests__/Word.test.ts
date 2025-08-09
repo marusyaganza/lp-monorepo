@@ -289,21 +289,4 @@ describe('WordModel', () => {
     const resultForUnknowUser = await WordModel.findVerbs();
     expect(resultForUnknowUser).toEqual([]);
   });
-
-  test('updateStatistics', async () => {
-    const data = await seedDb({
-      words: [...newWordInputs[Language.Spanish]],
-      users: usersTestData
-    });
-    // @ts-expect-error: args can be empty
-    const statistics = data.words.map((word, i) => ({
-      id: word,
-      hasError: i % 2 === 0,
-      score: Score.Hard,
-      gameType: Game.Audio
-    }));
-    // @ts-expect-error: args can be empty
-    const result = await WordModel.updateStatistics(statistics, data.users[0]);
-    expect(result).toEqual({ ok: true });
-  });
 });

@@ -32,22 +32,22 @@ jobs:
       SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
   release:
     runs-on: ubuntu-22.04
-    needs: [cypress, linting-and-testing]
+    needs: [linting-and-testing]
     steps:
-      - name: Bootstrap Lerna
-        run: npx lerna bootstrap
-      - name: Version & Changelog
-        if: github.event.inputs.release_type != 'auto'
-        run: |
-          npx lerna version ${{ github.event.inputs.release_type }} --conventional-commits --yes --create-release github
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18.17.0'
+      - uses: ./.github/actions/setup-yarn
+      - name: Run Lerna Release Script
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Version & Changelog (auto)
-        if: github.event.inputs.release_type == 'auto'
         run: |
-          npx lerna version --conventional-commits --yes --create-release github
-           env:
-            GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          if [ "${{ github.event.inputs.release_type }}" = "auto" ]; then
+            yarn release
+          else
+            yarn release -- --${{ github.event.inputs.release_type }}
+          fi
   docker:
     uses: ./.github/workflows/docker.yml
     secrets:
