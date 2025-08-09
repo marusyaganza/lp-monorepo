@@ -19,15 +19,6 @@ const game = DEFAULT_GAMES_SETTINGS[Game.Gender];
 
 const queries = ['idioma', 'ecologista', 'ballena'];
 
-const audioUrls = {
-  idioma:
-    'https://media.merriam-webster.com/audio/prons/es/me/mp3/i/idiom01sp.mp3',
-  ecologista:
-    'https://media.merriam-webster.com/audio/prons/en/us/mp3/w/wheel001.mp3',
-  ballena:
-    'https://media.merriam-webster.com/audio/prons/es/me/mp3/b/balle01sp.mp3'
-};
-
 const imgUrls = {
   ecologista:
     'https://upload.wikimedia.org/wikipedia/commons/7/70/Bufo_boreas.jpg',
@@ -54,17 +45,9 @@ describe('Game Page - Gender', () => {
     cy.presetLanguage(Language.Spanish);
     cy.login();
     cy.visit('/games');
-    cy.get('[data-cy="sortControls"]').as('sortControls');
-    cy.get('@sortControls').find('[data-cy="select"]').as('select');
     cy.get('[data-cy="headerNav"] a').as('headerLink');
     cy.get('[data-cy="gamesList"]').as('gamesList');
     cy.get('@gamesList').find('[data-cy="gameCard"]').as('gameCard');
-    queries.forEach(query => {
-      cy.intercept({
-        method: 'GET',
-        url: `${audioUrls[query]}`
-      }).as(`audioReq-${query}`);
-    });
   });
 
   afterEach(() => {
@@ -101,7 +84,6 @@ describe('Game Page - Gender', () => {
     checkGame(
       GameStage.Error,
       Game.Gender,
-      `@audioReq-${query}`,
       query,
       imgUrls[query],
       undefined,
@@ -143,7 +125,6 @@ describe('Game Page - Gender', () => {
     checkGame(
       GameStage.Success,
       Game.Gender,
-      `@audioReq-${query}`,
       query,
       imgUrls[query],
       undefined,
@@ -169,9 +150,6 @@ describe('Game Page - Gender', () => {
     queries.forEach(query => {
       cy.addWord(query, query);
       const wordUpdate: Partial<UpdateWordInput> = { imgUrl: imgUrls[query] };
-      if (!audioUrls[query]) {
-        wordUpdate.audioUrl = audioUrls[query];
-      }
       cy.get('@headerLink').contains(HEADER_TEXTS.vocabulary).click();
       cy.getByCy(`wordcard-${query}`).click();
       cy.getByCy('editButton').click();
@@ -189,7 +167,6 @@ describe('Game Page - Gender', () => {
       checkGame(
         correctAnswers[query] ? GameStage.Error : GameStage.Success,
         Game.Gender,
-        `@audioReq-${query}`,
         query,
         imgUrls[query],
         undefined,

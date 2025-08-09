@@ -296,7 +296,7 @@ const WordsPage = () => {
             allowEmptySearch
           />
           <div className={styles.wordSelection}>
-            {!!tags?.length && (
+            {!!tagsResult?.data?.tags?.length && (
               <TagSelector
                 dataCy="tag-selector"
                 showNoTagsTag

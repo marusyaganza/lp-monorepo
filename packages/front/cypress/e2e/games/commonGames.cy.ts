@@ -53,7 +53,8 @@ describe('Game Page', () => {
     availableGames.forEach(game => {
       it(`should start a ${game.type} game with minimal words in ${lang} language`, () => {
         const query = queries[lang];
-        cy.changeLanguage(lang);
+        cy.presetLanguage(lang);
+        cy.visit('/games');
         cy.addWord(query);
         if (lang === Language.Spanish) {
           cy.get('@headerLink').contains(HEADER_TEXTS.vocabulary).click();
@@ -72,7 +73,8 @@ describe('Game Page', () => {
       });
 
       it(`should answer incorrectly and finish a ${game.type} game in ${lang} language`, () => {
-        cy.changeLanguage(lang);
+        cy.presetLanguage(lang);
+        cy.visit('/games');
         const query = queries[lang];
         cy.addWord(query, query);
         if (lang === Language.Spanish) {
@@ -107,7 +109,8 @@ describe('Game Page', () => {
       });
 
       it(`should answer correctly and finish a ${game.type} game in ${lang} language`, () => {
-        cy.changeLanguage(lang);
+        cy.presetLanguage(lang);
+        cy.visit('/games');
         cy.addWord(queries[lang], queries[lang]);
         if (lang === Language.Spanish) {
           cy.get('@headerLink').contains(HEADER_TEXTS.vocabulary).click();

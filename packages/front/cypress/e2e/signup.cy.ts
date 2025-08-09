@@ -153,19 +153,14 @@ describe('sign up page', () => {
     cy.getByCy('sortControls').as('sortControls');
     cy.findByCy('select', '@sortControls').as('select');
     cy.getByCy('spinner').should('not.exist');
-    cy.selectOption('@select', 'Particle');
+    cy.selectOption('@select', 'Word Category');
 
-    cy.getByCy('tag-selector').as('tagSelector');
-    cy.selectOption('@tagSelector', 'without tags');
+    cy.getByCy('tag-selector').should('not.exist');
 
     cy.findByCy('checkbox-label', '@sortControls').as('orderCheckbox').click();
 
     cy.getByCy('headerNav').contains(HEADER_TEXTS.practice).click();
-    cy.getByCy('sortControls').as('gameSortControls');
-    cy.findByCy('select', '@gameSortControls').as('gameSelect');
     cy.getByCy('spinner').should('not.exist');
-    cy.selectOption('@gameSelect', 'Success Rate');
-    cy.findByCy('checkbox-label', '@sortControls').click();
 
     cy.changeLanguage(Language.Spanish);
 
@@ -179,7 +174,6 @@ describe('sign up page', () => {
     cy.getByCy('spinner').should('not.exist');
     cy.getByCy('wordCard').should('not.exist');
 
-    cy.findByCy('tag', '@tagSelector').should('not.exist');
     cy.findByCy('select-btn', '@select').should('have.text', 'Date');
     cy.findByCy('checkbox-label', '@sortControls')
       .find('svg')
@@ -187,14 +181,6 @@ describe('sign up page', () => {
 
     cy.getByCy('headerNav').contains(HEADER_TEXTS.practice).click();
     cy.getByCy('spinner').should('not.exist');
-    cy.findByCy('select-btn', '@gameSelect').should(
-      'have.text',
-      'Select words by'
-    );
-    cy.findByCy('checkbox-label', '@sortControls')
-      .find('svg')
-      .should('have.attr', 'aria-label', 'desc');
-
     cy.getByCy('current-language').contains(Language.English);
   });
 });

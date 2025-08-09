@@ -102,7 +102,7 @@ const GamesPage = () => {
               blankOption="none"
             />
           )}
-          {!!tags?.length && (
+          {!!tagsResult?.data?.tags?.length && (
             <TagSelector
               dataCy="tag-selector"
               showNoTagsTag
