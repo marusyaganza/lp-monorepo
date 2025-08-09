@@ -2,7 +2,15 @@ name: Build and Push Docker Images
 
 on:
   workflow_call:
-
+    secrets:
+      DOCKERHUB_USERNAME:
+        required: true
+      DOCKERHUB_TOKEN:
+        required: true
+      SLACK_CHANNEL_ID:
+        required: true
+      SLACK_WEBHOOK_URL:
+        required: true
 jobs:
   build-and-push:
     runs-on: ubuntu-22.04
