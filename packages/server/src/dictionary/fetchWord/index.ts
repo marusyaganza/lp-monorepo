@@ -1,9 +1,6 @@
 export async function getFetchFunc() {
   let fetchFunc;
-  if (
-    process.env.USE_MOCKS === 'true' &&
-    process.env.NODE_ENV !== 'production'
-  ) {
+  if (process.env.USE_MOCKS === 'true') {
     const mockFetchModule = await import('./mockFetchWord/mockFetchWord');
     fetchFunc = mockFetchModule.mockFetchWord;
   } else {

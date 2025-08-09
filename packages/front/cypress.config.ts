@@ -34,7 +34,6 @@ export default defineConfig({
 
         return launchOptions;
       });
-      // implement node event listeners here
     }
   }
 });
