@@ -40,7 +40,6 @@ export const users = [
     email: 'member@member.com',
     password: 'password',
     role: 'MEMBER',
-    createdAt: 1571213104370,
     id: '1',
     firstName: 'User',
     lastName: 'Test'
@@ -54,7 +53,6 @@ export const dbUsers = [
     email: 'member@member.com',
     password: 'password',
     role: 'MEMBER',
-    createdAt: 1571213104370,
     _id: '63fe782ee6b6423093c312d4',
     firstName: 'User',
     lastName: 'Test'
@@ -63,7 +61,6 @@ export const dbUsers = [
     email: 'admin@admin.com',
     password: 'password2',
     role: 'ADMIN',
-    createdAt: 1571213104371,
     _id: '63fe782ee6b6423093c312d5',
     firstName: 'User2',
     lastName: 'Test2'

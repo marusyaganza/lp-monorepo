@@ -8,7 +8,7 @@ import {
 
 const snapshotConfig = {
   ...baseSnapshotConfig,
-  createdAt: expect.any(String)
+  createdAt: expect.any(Date)
 };
 
 const createUserInput = {

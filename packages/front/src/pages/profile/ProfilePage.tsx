@@ -18,13 +18,12 @@ export const ProfilePage = () => {
       });
     }
   }, [error, setNotification]);
-  const date = new Date(Number.parseInt(data?.user?.createdAt || ''));
   return (
     <PageLayout isLoading={loading}>
       {data?.user && (
         <>
           <h1>{`Hello ${data.user.firstName} ${data.user.lastName}!`}</h1>
-          <p>{`Your role is ${data.user.role} sinse ${date}`}</p>
+          <p>{`Your role is ${data.user.role}`}</p>
         </>
       )}
     </PageLayout>

@@ -13,7 +13,7 @@ import { newWordInputs } from '../../../../tests/mocks/inputs/newWordInputs';
 import { usersTestData } from '../../../../tests/mocks/inputs/newUserInput';
 
 const snapshotConfig = {
-  createdAt: expect.any(String),
+  createdAt: expect.any(Date),
   updatedAt: expect.any(Number),
   spacedRepetition: expect.any(Object),
   ...baseSnapshotConfig

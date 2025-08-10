@@ -4,7 +4,6 @@ export const mockUser = {
   firstName: 'Test',
   lastName: 'User1',
   role: 'MEMBER',
-  createdAt: '1695718253064',
   primaryLanguage: ''
 };
 

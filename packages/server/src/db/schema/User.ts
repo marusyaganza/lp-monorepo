@@ -4,6 +4,7 @@ import { DEMO_DB_TTL } from '../../constants/defaultValues';
 
 export interface UserType extends UserCoreType {
   password: string;
+  createdAt: Date;
 }
 
 const userSchema = new Schema<UserType>(
@@ -11,7 +12,7 @@ const userSchema = new Schema<UserType>(
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
     email: { type: String, required: true, unique: true },
-    createdAt: { type: String, required: true },
+    createdAt: { type: Date, required: true, default: Date.now },
     role: { type: String, enum: ['ADMIN', 'GUEST', 'MEMBER'], required: true },
     password: { type: String, required: true },
     primaryLanguage: String

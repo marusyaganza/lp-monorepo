@@ -70,11 +70,9 @@ export const SEARCH_WORDS_QUERY = gql`
 export const USER_QUERY = gql`
   query User {
     user {
-      createdAt
       email
       firstName
       lastName
-      primaryLanguage
       role
     }
   }

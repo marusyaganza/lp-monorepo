@@ -77,7 +77,10 @@ export const router = createBrowserRouter(
         }
       />
       <Route path={routes.profile} element={withSuspense(ProfilePage)} />
-      <Route path={routes.tags} element={withSuspense(TagsPage)} />
+      <Route
+        path={routes.tags}
+        element={isDemo ? <Navigate to="/" replace /> : withSuspense(TagsPage)}
+      />
       <Route path="*" element={withSuspense(NotFoundPage)} />
     </Route>
   )

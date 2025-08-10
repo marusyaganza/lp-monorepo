@@ -85,3 +85,16 @@
 .notFoundImage {
   width: 200px;
 }
+
+.word {
+  font-weight: bold;
+}
+
+.disclaimer {
+  font-size: var(--font-size-s);
+  background-color: var(--neutral-100);
+  padding: 16px;
+  border: 1px dashed var(--neutral-500);
+  margin: 0 48px;
+  line-height: 1.5;
+}

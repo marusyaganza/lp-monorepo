@@ -4,9 +4,15 @@ on:
   workflow_dispatch:
     inputs:
       release_type:
-        description: 'Release type (patch, minor, major, auto)'
-        required: false
+        description: 'Release type to pass to Lerna (patch, minor, major) or auto for conventional commits'
+        required: true
         default: auto
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+          - auto
 
   push:
     branches:
@@ -44,9 +50,9 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           if [ "${{ github.event.inputs.release_type }}" = "auto" ]; then
-            yarn release
+            yarn release --yes
           else
-            yarn release -- --${{ github.event.inputs.release_type }}
+            yarn release -- --${{ github.event.inputs.release_type }} --yes
           fi
   docker:
     uses: ./.github/workflows/docker.yml

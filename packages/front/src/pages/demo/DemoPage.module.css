@@ -1,8 +1,10 @@
 .picture {
   position: relative;
   max-width: 500px;
-  @media (width <= 800px) {
-    max-width: 100%;
+  width: 50%;
+  box-sizing: border-box;
+  @media (width <= 1000px) {
+    width: 100%;
   }
 }
 
@@ -20,15 +22,19 @@
   padding: 20px 40px;
   flex-direction: column-reverse;
   gap: 40px;
-  @media (width >= 800px) {
+  @media (width >= 1000px) {
     gap: 80px;
     flex-direction: row;
   }
 }
 
 .mainContent {
-  max-width: 800px;
   font-size: var(--font-size-m);
+  flex-grow: 1;
+  width: 100%;
+  @media (width >= 1000px) {
+    width: 50%;
+  }
 }
 
 .cta {

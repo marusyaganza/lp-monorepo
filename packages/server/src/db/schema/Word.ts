@@ -39,6 +39,7 @@ export type SpacedRepetitionMap = {
 
 interface WordType extends WordCoreType {
   spacedRepetition: SpacedRepetitionMap;
+  createdAt: Date;
 }
 
 const examplesSchema = new Schema(
@@ -138,7 +139,7 @@ const wordSchema = new Schema<WordType>(
   {
     uuid: { type: String, immutable: true },
     name: { type: String, required: true, immutable: true },
-    createdAt: { type: String, required: true },
+    createdAt: { type: Date, required: true, default: Date.now },
     updatedAt: { type: Number },
     defs: { type: [defSchema], required: true },
     shortDef: { type: [String], required: true },

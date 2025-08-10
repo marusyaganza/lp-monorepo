@@ -37,10 +37,8 @@ export const UserModel: UserModelType = {
     if (!hashedPassword) {
       throw new OperationResolutionError(ERROR_MESSAGES.SIGN_UP_FAILED);
     }
-    const createdAt = Date.now();
     const user = await User.create({
       ...fields,
-      createdAt,
       role,
       password: hashedPassword
     });
@@ -56,9 +54,7 @@ export const UserModel: UserModelType = {
     if (!hashedPassword) {
       throw new OperationResolutionError(ERROR_MESSAGES.SIGN_UP_FAILED);
     }
-    const createdAt = Date.now();
     const user = await User.create({
-      createdAt,
       firstName,
       lastName,
       email,

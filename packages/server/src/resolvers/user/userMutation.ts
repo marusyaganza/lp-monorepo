@@ -65,7 +65,6 @@ export const userMutationResolvers: MutationResolvers<IResolverContext> = {
       token,
       firstName: user.firstName,
       lastName: user.lastName,
-      createdAt: user.createdAt,
       id: user.id,
       role: user.role,
       email: user.email

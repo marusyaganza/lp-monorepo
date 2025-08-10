@@ -15,7 +15,7 @@ const HomePage = () => {
   return (
     <PageLayout>
       <section className={styles.banner}>
-        <div className={styles.topContainer}>
+        <div>
           <h1 className={styles.mainHeading}>
             The Power of Learning Languages
           </h1>

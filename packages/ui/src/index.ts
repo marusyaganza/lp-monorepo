@@ -5,14 +5,14 @@
  *
  * <h3>Design system for Language Power project</h3>
  *
- * `@lp/ui` is a package containing common ui component and utilities
- * for LP app. This is a relaunch of language learning app
+ * `@lp/ui` is a package containing common ui components and utilities
+ * for LP app. This is a relaunch ofthe  language learning app
  * <b>Language Power</b> which you can learn more about by visiting
  * <a href="https://github.com/marusyaganza/language-power" target="_blank">
  *  the repo on GitHub
  * </a>
  *
- * This package is using storybook for live premiew. Learn more
+ * This package is using Storybook for live preview. Learn more
  * on <a href="" target="_blank">Preview link will be added soon</a>
  *
  *
