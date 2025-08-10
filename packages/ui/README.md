@@ -33,7 +33,7 @@ For a live, interactive preview and full documentation of all components, run:
 yarn storybook
 ```
 
-Or view the built Storybook [here]() to explore components with detailed usage, design references, and live controls.
+Or view the built Storybook [here](https://68988d171c534aee79aaf930-pymrrmmbvt.chromatic.com/?path=/docs/design-system-colors--docs) to explore components with detailed usage, design references, and live controls.
 
 ---
 

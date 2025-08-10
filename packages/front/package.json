@@ -1,6 +1,6 @@
 {
   "name": "@lp/front",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "frontend",
   "main": "index.js",
   "scripts": {

@@ -44,7 +44,6 @@ export const WordCard = ({
     particle,
     audioUrl,
     transcription,
-    level,
     isOffensive,
     isLearned,
     defs,
@@ -91,7 +90,7 @@ export const WordCard = ({
   const renderExamples = (examples: WordDefinition['examples']) => (
     <ul data-cy="examples">
       {examples?.map(example => {
-        if (example && example?.text) {
+        if (example?.text) {
           return (
             <p key={example.text} className={styles.example}>
               <DictionaryEntity text={example.text} />
@@ -99,26 +98,25 @@ export const WordCard = ({
             </p>
           );
         }
-        return;
       })}
     </ul>
   );
 
   const renderDef = (def: string | null) => {
-    if (def) {
-      return (
-        <p className={styles.definition}>
-          <Icon
-            className={styles.defIcon}
-            width={30}
-            height={20}
-            id="book"
-          ></Icon>
-          <DictionaryEntity className={styles.defText} text={def} />
-        </p>
-      );
+    if (!def) {
+      return;
     }
-    return;
+    return (
+      <p className={styles.definition}>
+        <Icon
+          className={styles.defIcon}
+          width={30}
+          height={20}
+          id="book"
+        ></Icon>
+        <DictionaryEntity className={styles.defText} text={def} />
+      </p>
+    );
   };
 
   const renderDefinition = () => {
@@ -133,7 +131,6 @@ export const WordCard = ({
               </li>
             );
           }
-          return;
         })}
       </ul>
     );
@@ -206,11 +203,6 @@ export const WordCard = ({
           {particle}
         </span>
         {renderAudio()}
-        {level && (
-          <span data-cy="level" className={styles.level}>
-            {level}
-          </span>
-        )}
         {isOffensive && (
           <span data-cy="isOffensive" className={styles.offensive}>
             <Icon width={20} height={23} id="fire" />

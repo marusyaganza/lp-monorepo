@@ -27,6 +27,18 @@ jobs:
       IMG_ENDPOINT: ${{ secrets.IMG_ENDPOINT }}
       SLACK_CHANNEL_ID: ${{ secrets.SLACK_CHANNEL_ID }}
       SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+  storybook:
+    runs-on: ubuntu-22.04
+    needs: linting-and-testing
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18.17.0'
+      - uses: ./.github/actions/setup-yarn
+      - uses: chromaui/action@latest
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
   cypress:
     uses: ./.github/workflows/cypress.yml
     needs: linting-and-testing
