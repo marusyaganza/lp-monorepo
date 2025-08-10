@@ -17,8 +17,4 @@ const defaultArgs: Partial<ArrayInputProps> = {
 
 export const ArrayInputDefault: Story = { args: defaultArgs };
 
-export const ArrayInputWithOrderControls: Story = {
-  args: { ...defaultArgs, showOrderButtons: true }
-};
-
 export default meta;

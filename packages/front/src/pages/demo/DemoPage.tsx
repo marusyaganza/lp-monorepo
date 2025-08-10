@@ -13,7 +13,7 @@ import styles from './DemoPage.module.css';
 const DemoPage = () => {
   const [createDemoUserFunc, { data, loading, error }] =
     useMutation<CreateDemoUserMutation>(CREATE_DEMO_USER_MUTATION);
-  const { login, setNotification } = useContext(AppContext);
+  const { login, logout, setNotification } = useContext(AppContext);
 
   const submitHandler = () => {
     createDemoUserFunc();
@@ -22,6 +22,7 @@ const DemoPage = () => {
   useEffect(() => {
     if (data) {
       const fetchedData = data.createDemoUser;
+      logout();
       login(fetchedData.id, fetchedData.token);
     }
   }, [data, login]);

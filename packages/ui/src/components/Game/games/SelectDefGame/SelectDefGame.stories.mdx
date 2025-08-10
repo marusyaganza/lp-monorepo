@@ -1,0 +1,80 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+
+<Meta title="games/SelectDefGame" />
+
+# SelectDefGame
+
+**SelectDefGame** invites learners to choose the correct definition for a given word from several options.  
+This interactive component is ideal for reinforcing vocabulary and checking semantic understanding in language-learning apps.
+
+---
+
+## How It Works
+
+- The game displays a **task prompt** (for example: “Pick the correct definition”).
+- The target **word** or phrase appears at the top, often with an **audio button** for pronunciation practice.
+- Below, several definitions are presented as **selectable options**.
+- The learner clicks to select the definition they think is correct.
+- Pressing **Check** submits the answer; learners immediately receive feedback:
+    - If the answer is correct, positive feedback and a **Continue** button appear.
+    - If incorrect, the correct definition is revealed for review.
+- Components are fully keyboard-accessible and visually styled for feedback and focus.
+
+---
+
+## Features
+
+- **Audio Support:** If available, an audio icon lets users hear the word before answering.
+- **Immediate Feedback:** Checks the user’s choice and displays encouragement or the correct answer.
+- **Simple Workflow:** Study prompt → select definition → check → continue.
+- **Reinforcement:** Supports vocabulary drills and repeated practice rounds.
+
+---
+
+## Typical User Flow
+
+1. Read the word or phrase to be defined.
+2. (Optional) Listen to audio pronunciation.
+3. Review the list of possible definitions.
+4. Click an option to select your answer.
+5. Press **Check** to submit.
+6. See feedback and the correct answer, then press **Continue** to proceed.
+
+---
+
+
+## Example Usage
+
+Try the SelectDefGame in action inside the full game environment: [Open GameEngine Interactive Story](?path=/story/game-gameengine--select-def)
+
+- `task`: The instruction prompt, e.g., “Pick the correct definition”.
+- `question`: The target word or phrase.
+- `audioUrl`: (Optional) Audio pronunciation.
+- `options`: An array of definition options for the learner to choose from.
+- `correctAnswer`: The correct definition(s).
+- `onSubmit`: Callback triggered after checking the answer.
+- `onNext`: Moves to the next question or resets the game.
+- `currentStage`: Controls which part of the workflow and feedback is visible.
+- `inputRef`, `buttonRef`: Refs for accessibility/testing.
+
+---
+
+## States
+
+- **Initial:** All options active, ready for selection.
+- **Checked/Success:** Correct option highlighted, Continue button available.
+- **Error:** Incorrect selection; correct answer is revealed and styling updated.
+
+---
+
+## Figma Reference
+
+[View SelectDefGame in Figma](https://www.figma.com/design/uLznHs3pU0bQqy7Wwn3xQx/Design-system?node-id=1866-3293&t=WCAmwHrchrH9VnTd-1)
+
+---
+
+**Tip:** SelectDefGame is great for rapid-fire vocab review and keeping practice sessions varied. Add audio for an even richer learning experience!
+
+<Canvas>
+  <Story id="games-selectdefgame--game-default" />
+</Canvas>

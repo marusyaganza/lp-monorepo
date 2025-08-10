@@ -1,3 +1,4 @@
+import React from 'react';
 import { EditWordForm } from './EditWordForm';
 import type { Meta } from '@storybook/react';
 import { words } from '../../mocks/words';
@@ -6,7 +7,12 @@ import { Language } from '../../generated/graphql';
 
 const meta: Meta<typeof EditWordForm> = {
   title: 'forms/EditWordForm',
-  component: EditWordForm
+  component: EditWordForm,
+  render: args => (
+    <div className="page">
+      <EditWordForm {...args} />
+    </div>
+  )
 };
 
 export const EditWordFormDefault = {

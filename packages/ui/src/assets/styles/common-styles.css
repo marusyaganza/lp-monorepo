@@ -35,7 +35,8 @@ ul {
 
 .page {
   padding: 60px;
-  width: 800px;
+  max-width: 1000px;
+  width: 100%;
 }
 
 .footer {
@@ -51,4 +52,18 @@ ul {
   align-items: center;
   width: 800px;
   margin-top: 40px;
+}
+
+.imagesList {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin: 40px;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }

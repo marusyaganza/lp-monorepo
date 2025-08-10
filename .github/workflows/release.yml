@@ -45,6 +45,10 @@ jobs:
         with:
           node-version: '18.17.0'
       - uses: ./.github/actions/setup-yarn
+      - name: Configure Git user
+        run: |
+          git config --global user.email "ci-bot@yourdomain.com"
+          git config --global user.name "CI Bot"
       - name: Run Lerna Release Script
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

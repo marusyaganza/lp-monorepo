@@ -1,0 +1,45 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+
+<Meta title="inputs/SpeechInput" />
+
+# SpeechInput
+
+The **SpeechInput** component lets users practice pronunciation in the Speaking game.  
+It uses the browser's Speech Recognition API to listen for spoken words, compare them to expected results, and provide instant feedback on accuracy and errors.
+
+---
+
+## Component Highlights
+
+- **Purpose:** Helps users improve their pronunciation by speaking words or phrases directly into the app.
+- **Interactive:** Users click the microphone button and say the word matching a description.
+- **Feedback:** Shows listening state, detects unsupported browsers, displays recognition errors, and indicates pronunciation accuracy as a percentage.
+- **Accessibility:** Can be triggered and controlled by keyboard, shows clear error messages and status updates.
+
+---
+
+## How It Works
+
+- Click the microphone to start listening.
+- Speak the word that matches the definition provided.  
+  _Example prompt (as in the image):_  
+  > "an official order given by a court that demands that something must or must not be done"
+
+- Recognition will:
+  - Capture your spoken word
+  - Show accuracy percentage after listening
+  - Give error feedback if not recognized or API is unsupported
+
+- The component is designed to be used in pronunciation practice games, quizzes, or learning modules.
+
+---
+
+## Example Usage
+Here is a typical usage pattern for the Speaking game:
+
+![Add/Edit word definitions with examples](/images/speech-input.png)
+
+
+<Canvas>
+  <Story id="inputs-speechinput--speech-input-default" />
+</Canvas>

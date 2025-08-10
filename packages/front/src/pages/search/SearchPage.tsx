@@ -199,7 +199,7 @@ const SearchPage = () => {
   };
 
   const renderDisclaimer = () => {
-    if (data || !isDemo) {
+    if (data || !isDemo || loading) {
       return;
     }
     return (

@@ -1,0 +1,42 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+
+<Meta title="inputs/ConjugationInput" />
+
+# ConjugationInput
+
+The **ConjugationInput** component is designed for Spanish verb conjugation practice. It's perfect for interactive language learning games.  
+Learners fill in verb forms for each pronoun. Smart validation supports feedback for correct, incorrect, and disabled states.
+
+---
+
+## Usage and Features
+
+- **Purpose:** Practice and check verb conjugations for all pronouns in Spanish.  
+- **Who uses it?** Language learners and anyone interested in mastering Spanish conjugation patterns.
+
+- **Interactive:** Each input box is paired with a pronoun (as shown on the left: yo, tú, él/ella, nosotros, vosotros, ellos/ellas).
+- **Feedback:** The input can show:
+  - Initial (default) state (plain)
+  - Error state (highlighted, when the answer is wrong)
+  - Success state (highlighted, when the answer is correct)
+  - Disabled state (input grayed out)
+- **Smart validation:** Correct answers turn green; errors turn red unless the individual value is correct.
+
+- **Layout:** Pronoun labels are fixed to the left of each input field.  
+- **Accessibility:** Fully keyboard-navigable and support for screen readers.
+
+---
+
+## Example UI
+Here’s how to use the component in a typical conjugation game:
+
+![Conjugation Inputs for "Tener" in Present](./images/conjugation-input.png)
+
+---
+
+## Example Usage
+<Canvas>
+  <Story id="inputs-conjugationinput--conjugation-input-default" />
+</Canvas>
+
+

@@ -58,47 +58,55 @@ export const ButtonsWithIcon = () => {
 };
 
 export const ActionButtons = (args: ButtonProps) => {
-  return _iconIds.map(id => (
-    <div key={id} className="presentationBox">
-      <Button
-        {...args}
-        className="presentationContentItem"
-        variant="primary"
-        isActionButton
-        iconId={id}
-      >
-        {id}
-      </Button>
-      <Button
-        {...args}
-        className="presentationContentItem"
-        variant="secondary"
-        isActionButton
-        iconId={id}
-      >
-        {id}
-      </Button>
-      <Button
-        {...args}
-        className="presentationContentItem"
-        variant="danger"
-        isActionButton
-        iconId={id}
-      >
-        {id}
-      </Button>
+  return (
+    <div className="imagesList">
+      {_iconIds.map(id => (
+        <div key={id}>
+          <Button
+            {...args}
+            className="presentationContentItem"
+            variant="primary"
+            isActionButton
+            iconId={id}
+          >
+            {id}
+          </Button>
+          <Button
+            {...args}
+            className="presentationContentItem"
+            variant="secondary"
+            isActionButton
+            iconId={id}
+          >
+            {id}
+          </Button>
+          <Button
+            {...args}
+            className="presentationContentItem"
+            variant="danger"
+            isActionButton
+            iconId={id}
+          >
+            {id}
+          </Button>
+        </div>
+      ))}
     </div>
-  ));
+  );
 };
 
 export const IconButtons = (args: ButtonProps) => {
-  return _iconIds.map(id => (
-    <div key={id} className="presentationBox">
-      <Button {...args} variant="icon" iconId={id}>
-        {id}
-      </Button>
+  return (
+    <div className="imagesList">
+      {_iconIds.map(id => (
+        <div key={id}>
+          <Button {...args} variant="icon" iconId={id}>
+            {id}
+          </Button>
+        </div>
+      ))}
     </div>
-  ));
+  );
 };
 
 IconButtons.args = {

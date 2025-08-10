@@ -42,14 +42,12 @@ export const words: Word[] = [
       }
     ],
     particle: 'noun',
-    level: Level.C1,
     stems: ['egalitarian', 'egalitarianism', 'egalitarians'],
     audioUrl:
       'https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/e/ega/egali/egalitarian__gb_1.mp3',
     transcription: 'iˌɡælɪˈteəriən',
     user: '0',
-    shortDef: ['aiming for equal wealth, status, etc., for all people'],
-    createdAt: '1571213104370'
+    shortDef: ['aiming for equal wealth, status, etc., for all people']
   },
   {
     uuid: '74046e79-e4c9-4b52-ac96-cb7ae98fb601',
@@ -63,11 +61,9 @@ export const words: Word[] = [
       }
     ],
     particle: 'noun',
-    level: Level.C1,
     stems: ['pussy', 'pussies'],
     transcription: '\u02c8p\u028asi',
     user: '0',
-    createdAt: '1571213104370',
     shortDef: [
       'a cat or kitten : pussycat\u2014used especially by children or when talking to children'
     ]
@@ -88,11 +84,9 @@ export const words: Word[] = [
       }
     ],
     particle: 'noun',
-    level: Level.A1,
     stems: ['pussy', 'pussies'],
     transcription: '\u02c8p\u028asi',
     user: '0',
-    createdAt: '1571213104370',
     shortDef: [
       'a circular frame of hard material that may be solid, partly solid, or spoked and that is capable of turning on an axle',
       'a contrivance or apparatus having as its principal part a wheel: such as',
@@ -121,8 +115,7 @@ export const spanishWords: Word[] = [
     shortDef: ['language'],
     uuid: 'mockUuid2',
     id: 'mockId',
-    user: '0',
-    createdAt: '1571213104370'
+    user: '0'
   }
 ];
 
@@ -542,11 +535,9 @@ export const wordWithAltSpelling: Word[] = [
     isOffensive: false,
     isLearned: null,
     stems: ['long haul'],
-    level: Level.B1,
     shortDef: ['a long distance'],
     alternativeSpelling: ['long-haul'],
     __typename: 'Word',
-    createdAt: '1571213104370',
     language: Language.English
   }
 ];

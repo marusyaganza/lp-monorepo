@@ -8,16 +8,14 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev": "storybook dev -p 6006 --no-open",
+    "storybook": "storybook dev -p 6006 --no-open",
     "stylelint": "stylelint src",
     "lint": "eslint src",
     "ready": "yarn eslint --fix && yarn stylelint --fix",
     "build-storybook": "storybook build",
     "clean": "rimraf dist generated *.tsbuildinfo node_modules",
     "new-component": "plop",
-    "codegen": "graphql-codegen --config codegen.ts",
-    "codegen:watch": "graphql-codegen --config codegen.yml",
-    "storybook": "lerna run dev,codegen:watch --scope '@lp/ui'"
+    "codegen": "graphql-codegen --config codegen.ts"
   },
   "dependencies": {
     "@graphql-codegen/cli": "5.0.0",

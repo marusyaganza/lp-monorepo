@@ -15,33 +15,9 @@ const meta: Meta<typeof TypeWordGame> = {
 const game = gameData[Game.TypeWord];
 
 export const GameDefault = (args: GameProps) => (
-  <TypeWordGame {...args} {...game} currentStage={GameStage.Initial} />
-);
-
-export const GameSuccess = (args: GameProps) => {
-  return (
-    <TypeWordGame
-      {...args}
-      {...game}
-      value="wheel"
-      currentStage={GameStage.Success}
-      currentResult={{ type: GameStage.Success, correctAnswer: 'wheel' }}
-    />
-  );
-};
-
-export const GameError = (args: GameProps) => (
-  <TypeWordGame
-    {...args}
-    {...game}
-    value="flower"
-    currentStage={GameStage.Error}
-    currentResult={{
-      type: 'error',
-      correctAnswer: 'wheel',
-      incorrectAnswer: 'flower'
-    }}
-  />
+  <div className="page" style={{ width: '150%' }}>
+    <TypeWordGame {...args} {...game} currentStage={GameStage.Initial} />
+  </div>
 );
 
 export default meta;

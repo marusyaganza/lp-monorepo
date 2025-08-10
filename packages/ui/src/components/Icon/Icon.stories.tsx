@@ -6,12 +6,15 @@ export default {
   component: Icon
 };
 
-export const Icons = () =>
-  _iconIds.map(id => {
-    return (
-      <div key={id} className="presentationBox">
-        <p>{id}</p>
-        <Icon id={id} width={50} height={50} />
-      </div>
-    );
-  });
+export const Icons = () => (
+  <div className="imagesList">
+    {_iconIds.map(id => {
+      return (
+        <div key={id} className="box">
+          <span>{id}</span>
+          <Icon id={id} width={30} height={30} />
+        </div>
+      );
+    })}
+  </div>
+);
