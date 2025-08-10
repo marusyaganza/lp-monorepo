@@ -1,4 +1,4 @@
-import { Word, Level, Language } from '../generated/graphql';
+import { Word, Language } from '../generated/graphql';
 import egalitarianImg from './egalitarian.svg';
 
 export const words: Word[] = [
