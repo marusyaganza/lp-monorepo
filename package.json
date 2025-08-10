@@ -19,6 +19,7 @@
     "dev:test": "bash ./scripts/dev-test.sh",
     "test:preprod": "bash ./scripts/test.sh",
     "storybook": "lerna run storybook --scope '@lp/ui' --stream",
+    "build-storybook": "lerna run build-storybook --scope '@lp/ui' --stream",
     "cypress": "lerna run cypress",
     "cypress:run": "lerna run cypress:run",
     "build:server": "lerna run prod --scope '@lp/server'",
