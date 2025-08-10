@@ -9,7 +9,7 @@
 
 ### Locally
 
-1. Run `yarn dev` to start the project with the development database.
+1. Run `yarn start` to start the project with the development database.
 2. Open `http://localhost:8080` in your browser to access the application.
 3. Open `http://localhost:4000` to work with the Apollo GraphQL playground.
 

@@ -38,9 +38,12 @@ jobs:
         with:
           node-version: '18.17.0'
       - uses: ./.github/actions/setup-yarn
+      - name: Build Storybook in ui package
+        run: yarn build-storybook
       - uses: chromaui/action@latest
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          storybookBuildDir: ./packages/ui/storybook-static
   cypress:
     uses: ./.github/workflows/cypress.yml
     needs: linting-and-testing

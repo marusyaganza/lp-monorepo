@@ -33,5 +33,3 @@ yarn codegen
 # Step 4: Start dev server
 echo "Starting dev servers..."
 yarn start
-
-# When the script ends, the trap will call `cleanup`, stopping the container

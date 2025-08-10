@@ -9,7 +9,7 @@ export default create({
 
   // UI colors
   appBg: '#f7f7f7', // neutral-100 (background)
-  appContentBg: '#f0f0f0', // neutral-200
+  appContentBg: '#a1a1a1', // neutral-500
   appBorderColor: '#c8c8c8', // neutral-400
   appBorderRadius: 6,
 
@@ -22,7 +22,7 @@ export default create({
   textInverseColor: 'rgba(255,255,255,0.9)',
 
   // Toolbar colors
-  barTextColor: '#a1a1a1', // neutral-500 for text on toolbar
+  barTextColor: '#242943', // neutral-800 for text on toolbar
   barSelectedColor: '#3914af', // primary-300 for selected tab
   barBg: '#fda50f', // secondary-100 for toolbar background
 
