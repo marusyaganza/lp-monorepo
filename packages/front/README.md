@@ -17,10 +17,10 @@ This iteration delivers improved UI, new learning games, and seamless design sys
 This app lives in the monorepo alongside:
 
 - `@lp/ui`: The shared UI component library and design system
-- Other backend and tooling packages, if present
+- `@lp/server`: Apollo server
 
 You can see the designs for major pages and flows in **Figma**:  
-[View project page designs in Figma](https://www.figma.com/file/fake-link/front-pages-design)
+[View project page designs in Figma](https://www.figma.com/design/uLznHs3pU0bQqy7Wwn3xQx/Design-system?node-id=2-228&t=cV9Um1WVsmJJoaFu-1)
 
 ---
 
@@ -67,8 +67,9 @@ The frontend will use the shared UI components from `@lp/ui` and fetch dictionar
 - **Learning Games:** Six interactive games for mastering your vocabulary
 - **Progress Tracking:** Words are marked “learned” after repeated successful training
 
-The full sitemap for these pages and flows is available in the project.  
-![Site map](/docs/site-map.png).
+The full sitemap for these pages and flows is available in the project.
+
+![Site map](docs/site-map.png)
 
 ---
 
@@ -90,12 +91,3 @@ You can find common development scripts in `package.json`:
 - `yarn codegen` — Generates TypeScript types from the project GraphQL schema
 
 For advanced usage, see `package.json` for details.
-
----
-
-## Previous Iteration & History
-
-For context, the previous version of Language Power (English-only, original UI) is available here:  
-[Legacy repo: marusyaganza/language-power](https://github.com/marusyaganza/language-power)
-
----
