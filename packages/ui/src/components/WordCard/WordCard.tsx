@@ -4,7 +4,7 @@ import { AudioButton } from '../AudioButton/AudioButton';
 import { Icon } from '../Icon/icon';
 import { DictionaryEntity } from '../DictionaryEntity/DictionaryEntity';
 import { Button } from '../Button/Button';
-import { Word, WordDefinition, WordTag } from '../../generated/graphql';
+import { Word, WordDefinition } from '../../generated/graphql';
 
 import styles from './WordCard.module.css';
 import { Tag } from '../Tag/Tag';
@@ -90,14 +90,15 @@ export const WordCard = ({
   const renderExamples = (examples: WordDefinition['examples']) => (
     <ul data-cy="examples">
       {examples?.map(example => {
-        if (example?.text) {
-          return (
-            <p key={example.text} className={styles.example}>
-              <DictionaryEntity text={example.text} />
-              {example.translation && ` (${example.translation})`}
-            </p>
-          );
+        if (!example?.text) {
+          return;
         }
+        return (
+          <p key={example.text} className={styles.example}>
+            <DictionaryEntity text={example.text} />
+            {example.translation && ` (${example.translation})`}
+          </p>
+        );
       })}
     </ul>
   );
@@ -123,14 +124,12 @@ export const WordCard = ({
     return (
       <ul data-cy="defs">
         {defs.map((d, i) => {
-          if (d?.def) {
-            return (
-              <li key={uniqueKeys[i]}>
-                {renderDef(d.def)}
-                {renderExamples(d.examples)}
-              </li>
-            );
-          }
+          return (
+            <li key={uniqueKeys[i]}>
+              {renderDef(d.def)}
+              {renderExamples(d.examples)}
+            </li>
+          );
         })}
       </ul>
     );
@@ -227,7 +226,7 @@ export const WordCard = ({
     return (
       <ul data-cy="tags" className={styles.tags}>
         {tags?.map(tag => {
-          const { text, color, id } = tag as WordTag;
+          const { text, color, id } = tag;
           if (!text || !color || !id) {
             return;
           }
