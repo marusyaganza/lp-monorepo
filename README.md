@@ -30,7 +30,6 @@ This repo uses Yarn workspaces and Lerna. Key packages:
 - `packages/ui` – **@lp/ui**: The UI library & design system (Storybook, CSS tokens, typography/colors, all shared React components)
 - `packages/front` – **@lp/front**: The React web app for learners, games, vocabulary, and progress tracking
 - `packages/server` – **@lp/server**: The Apollo GraphQL server (Express, CORS, rate-limiting, MongoDB, dictionary API integration)
-- (other shared packages as needed)
 
 All are managed with a single set of scripts, codegen, and dependency installs via workspaces.
 
