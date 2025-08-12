@@ -28,7 +28,7 @@ jobs:
       - uses: ./.github/actions/setup-yarn
       - name: Build Storybook
         working-directory: ./packages/ui
-        run: yarn build-storybook
+        run: yarn codegen && yarn build-storybook
       - name: Deploy Storybook to Netlify
         uses: netlify/actions/cli@master
         with:
