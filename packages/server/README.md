@@ -41,7 +41,7 @@ docker run --name test-db --rm -d -v /data/test-db -p 27017:27017 mongo:4.2
 - Critical variables include:
 - `MONGODB_URI`: Your MongoDB connection string.
 - `USE_MOCKS`: Set to `"true"` to enable dictionary API mocks.
-- Any other API keys or server params as needed.
+- Add your API keys to use the dictionary API. It's not required if mocks are enabled.
 
 ---
 
@@ -89,7 +89,7 @@ yarn coverage
 
 ## API Integration Details
 
-- We use the Merriam-Webster Dictionary API for dictionary data, such as definitions, audio pronunciations, and synonyms.
+- We use the Merriam-Webster Dictionary API for dictionary data, such as definitions, audio pronunciations, and images.
 - Mocks for dictionary API calls are available to speed up development and testing without external requests.
 - To enable mock data mode, set the environment variable:
 

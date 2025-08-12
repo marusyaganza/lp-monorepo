@@ -2,7 +2,7 @@
 
 Welcome to **@lp/ui**, the design system and UI component library for the Language Power app — a language learning platform designed to help learners improve their skills with interactive, engaging UI components.
 
-This package is a relaunch and evolution of the original Language Power project. Its components and utilities are crafted to ensure consistency, reusability, and excellent developer experience.
+This package is a relaunch and evolution of the original Language Power project.
 
 ---
 
@@ -23,7 +23,6 @@ This package is a relaunch and evolution of the original Language Power project.
 
 ```bash
 yarn install
-
 yarn codegen
 ```
 
@@ -33,7 +32,7 @@ For a live, interactive preview and full documentation of all components, run:
 yarn storybook
 ```
 
-Or view the built Storybook [here](https://68988d171c534aee79aaf930-tkgrilgmpn.chromatic.com/?path=/docs/design-system-colors--docs) to explore components with detailed usage, design references, and live controls.
+Or view the built Storybook [here](https://lp-design-system.netlify.app/?path=/docs/design-system-colors--docs) to explore components with detailed usage, design references, and live controls.
 
 ---
 
@@ -86,7 +85,3 @@ You will find Figma links in the Storybook docs next to most components for quic
 ## Contact & More Info
 
 Project repository: [Language Power GitHub](https://github.com/marusyaganza/lp-monorepo)
-
----
-
-### Happy Learning and Coding!

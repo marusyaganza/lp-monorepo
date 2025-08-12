@@ -56,7 +56,7 @@ yarn start
 ```
 
 This runs the app in development mode locally.  
-The frontend will use the shared UI components from `@lp/ui` and fetch dictionary/game data from configured APIs.
+The frontend will use the shared UI components from `@lp/ui` and fetch dictionary/game data from `@lp-server`.
 
 ---
 
@@ -67,7 +67,7 @@ The frontend will use the shared UI components from `@lp/ui` and fetch dictionar
 - **Learning Games:** Six interactive games for mastering your vocabulary
 - **Progress Tracking:** Words are marked “learned” after repeated successful training
 
-The full sitemap for these pages and flows is available in the project.
+The full sitemap for these pages and flows:.
 
 ![Site map](docs/site-map.png)
 
@@ -75,8 +75,7 @@ The full sitemap for these pages and flows is available in the project.
 
 ## Design System
 
-All pages and interface elements are designed with reusability and accessibility in mind via the `@lp/ui` component set.  
-Alignment with Figma ensures pixel-perfect UX and consistency.
+All pages and interface elements are designed with reusability and accessibility in mind via the `@lp/ui` component set.
 
 ---
 

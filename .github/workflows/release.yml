@@ -2,18 +2,6 @@ name: Release Monorepo
 
 on:
   workflow_dispatch:
-    inputs:
-      release_type:
-        description: 'Release type to pass to Lerna (patch, minor, major) or auto for conventional commits'
-        required: true
-        default: auto
-        type: choice
-        options:
-          - patch
-          - minor
-          - major
-          - auto
-
   push:
     branches:
       - main
@@ -38,12 +26,18 @@ jobs:
         with:
           node-version: '18.17.0'
       - uses: ./.github/actions/setup-yarn
-      - name: Build Storybook in ui package
+      - name: Build Storybook
+        working-directory: ./packages/ui
         run: yarn build-storybook
-      - uses: chromaui/action@latest
+      - name: Deploy Storybook to Netlify
+        uses: netlify/actions/cli@v2
         with:
-          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-          storybookBuildDir: ./packages/ui/storybook-static
+          args: deploy --dir=storybook-static --site=$NETLIFY_SITE_ID --auth=$NETLIFY_AUTH_TOKEN --prod
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+      - name: Output Netlify Preview URL
+        run: echo "Storybook deployed to Netlify! Visit https://app.netlify.com/sites/${{ secrets.NETLIFY_SITE_ID }}"
   cypress:
     uses: ./.github/workflows/cypress.yml
     needs: linting-and-testing
@@ -69,12 +63,7 @@ jobs:
       - name: Run Lerna Release Script
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          if [ "${{ github.event.inputs.release_type }}" = "auto" ]; then
-            yarn release --yes
-          else
-            yarn release -- --${{ github.event.inputs.release_type }} --yes
-          fi
+        run: yarn release --yes
   docker:
     uses: ./.github/workflows/docker.yml
     secrets:
