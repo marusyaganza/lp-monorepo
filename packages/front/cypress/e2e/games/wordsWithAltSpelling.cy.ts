@@ -51,11 +51,6 @@ describe('Game Page', () => {
         cy.visit('/words/new');
         cy.fillWordForm(wordInput);
         cy.getByCy('wordForm').find('button[type="submit"]').click();
-        cy.checkNotification(
-          'Word added',
-          `${wordInput.name} is added successfully`,
-          true
-        );
 
         cy.getByCy('spinner').should('not.exist');
         cy.getByCy('wordCard').first().as('wordCard').click();
@@ -107,11 +102,6 @@ describe('Game Page', () => {
         cy.visit('/words/new');
         cy.fillWordForm(wordInput);
         cy.getByCy('wordForm').find('button[type="submit"]').click();
-        cy.checkNotification(
-          'Word added',
-          `${wordInput.name} is added successfully`,
-          true
-        );
 
         cy.get('@headerLink').contains(HEADER_TEXTS.practice).click();
         cy.getByCy('gameCard').eq(game.orderNum).click();

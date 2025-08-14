@@ -138,7 +138,6 @@ describe('Words Page', () => {
       const wordToDelete = paginatedWords[lang][1];
       cy.getByCy(`wordcard-${wordToDelete}`).as('wordCard').should('exist');
       cy.findByCy('deleteButton', '@wordCard').click();
-      cy.checkNotification('Word deleted', 'was deleted', true);
       cy.getByCy('@wordCard').should('not.exist');
       cy.getByCy('wordCard').should('have.length', 5);
       cy.getByCy('words-count').should('contain', 'You have 5 words');

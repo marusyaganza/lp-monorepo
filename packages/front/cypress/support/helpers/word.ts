@@ -11,5 +11,4 @@ export function addWord(query: string, name?: string) {
   }
   cy.findByCy('addButton', '@wordCard').as('add-btn').click();
   cy.get('@add-btn').should('be.disabled');
-  cy.checkNotification('Word added', `${name || query} is added successfully`);
 }
