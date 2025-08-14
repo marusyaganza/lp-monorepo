@@ -12,24 +12,22 @@
   ],
   "scripts": {
     "start": "lerna run start --stream",
+    "start:test": "lerna run start:test --stream",
     "dev": "bash ./scripts/local-dev.sh",
-    "prod:docker": "bash ./scripts/deploy/prod.sh",
-    "dev:docker": "bash ./scripts/deploy/dev.sh",
-    "dev:test": "bash ./scripts/dev-test.sh",
-    "test:preprod": "bash ./scripts/test.sh",
+    "prod:docker": "bash ./scripts/build/docker-prod.sh",
+    "dev:docker": "bash ./scripts/build/docker-dev.sh",
     "storybook": "lerna run storybook --scope '@lp/ui' --stream",
+    "build-storybook": "lerna run build-storybook --scope '@lp/ui' --stream",
     "cypress": "lerna run cypress",
     "cypress:run": "lerna run cypress:run",
     "build:server": "lerna run prod --scope '@lp/server'",
     "build:front": "yarn codegen --scope={'@lp/front','@lp/ui'} && lerna run prod --scope '@lp/front'",
-    "eslint": "lerna run eslint",
+    "lint": "lerna run lint",
     "ready": "lerna run ready --stream",
     "clean": "lerna run clean && rimraf node_modules",
     "test": "lerna run test",
     "codegen": "lerna run codegen --stream",
-    "codegen:watch": "lerna run codegen:watch --stream",
-    "release": "yarn lerna version --conventional-commits",
-    "api-docs": "sh api-docs.sh"
+    "release": "yarn lerna version --conventional-commits"
   },
   "dependencies": {
     "lerna": "^8.0.1"
@@ -53,7 +51,7 @@
     "stylelint-prettier": "^5.0.0"
   },
   "volta": {
-    "node": "18.16.0",
+    "node": "18.17.0",
     "yarn": "1.22.19"
   }
 }

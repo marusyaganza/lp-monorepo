@@ -33,7 +33,7 @@ export function login(
   email = USER_CREDS.email,
   password = USER_CREDS.password
 ) {
-  cy.visit('/search');
+  cy.visit('/sign-in');
   cy.get('input[name="password"]').type(password);
   cy.get('input[name="email"]').type(email);
   cy.get('button').contains('Sign in').click();

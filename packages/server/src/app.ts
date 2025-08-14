@@ -1,26 +1,28 @@
-require('dotenv').config();
-import * as path from 'path';
-import { ApolloServer } from '@apollo/server';
-import { startStandaloneServer } from '@apollo/server/standalone';
-import { loadFilesSync } from '@graphql-tools/load-files';
-import { initDB } from './db/initDB';
-import { resolvers } from './resolvers';
-import { IResolverContext } from './types/types';
-import { context } from './context';
+import express, { Express } from 'express';
+import cors from 'cors';
+import rateLimit from 'express-rate-limit';
 
-const typeDefs = loadFilesSync(
-  path.join(__dirname, '../../shared/schema/*.graphql')
-);
+const FE_URL = process.env.FE_URL;
+const isDemo = process?.env?.DEMO_VERSION === 'true';
+const isProd = process?.env?.NODE_ENV === 'production';
+const app: Express = express();
 
-const server = new ApolloServer<IResolverContext>({
-  typeDefs,
-  resolvers
-});
+app.use(express.json());
+app.use(cors({ origin: FE_URL }));
 
-initDB(async () => {
-  const { url } = await startStandaloneServer(server, {
-    context,
-    listen: { port: 4000 }
+if (isDemo) {
+  app.get('/ping', (_, res) => {
+    res.status(200).send('OK');
   });
-  console.log(`🚀 Server ready at ${url}`);
-});
+}
+
+if (isProd) {
+  const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100,
+    message: 'Too many requests from this IP, please try again later.'
+  });
+  app.use(limiter);
+}
+
+export default app;

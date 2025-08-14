@@ -17,6 +17,7 @@ import notFound from '../../assets/img/not-found.svg';
 import { SEARCH_WORDS_QUERY } from '../../gql/queries';
 import { SAVE_WORD_MUTATION } from '../../gql/mutations';
 import { useMutation, useLazyQuery } from '@apollo/client';
+import { mockWordsList } from '../../constants/mockWordsList';
 
 const SearchPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -32,7 +33,7 @@ const SearchPage = () => {
       }
     }
   );
-  const { setNotification, language } = useContext(AppContext);
+  const { setNotification, language, isDemo } = useContext(AppContext);
   const [fetchSearchResult, { loading, error, data }] =
     useLazyQuery<SearchWordsQuery>(SEARCH_WORDS_QUERY);
   const [savedWords, setSavedWords] = useState<string[]>([]);
@@ -86,13 +87,11 @@ const SearchPage = () => {
     }
   }, [language, fetchSearchResult, searchParams]);
 
-  const handleSearch = (search?: string) => {
-    if (search) {
-      setSearchParams({ search });
-      fetchSearchResult({
-        variables: { input: { search, language } }
-      });
-    }
+  const handleSearch = (search = '') => {
+    setSearchParams({ search });
+    fetchSearchResult({
+      variables: { input: { search, language } }
+    });
   };
 
   const getSuggestionClickHandler = (suggestion?: string | null) => {
@@ -138,6 +137,9 @@ const SearchPage = () => {
     return (
       <article>
         <div className={styles.suggestionsContainer}>
+          <p>{`Sorry, we didn’t find “${searchParams.get(
+            'search'
+          )}”. Try one of these instead:`}</p>
           <Icon
             className={styles.suggestionsIcon}
             id="pointer"
@@ -186,6 +188,28 @@ const SearchPage = () => {
     );
   };
 
+  const renderMockWordsList = () => {
+    const wordsList = mockWordsList[language];
+    return wordsList.map((word, i) => (
+      <span key={word}>
+        <span className={styles.word}>{word}</span>
+        {i === wordsList.length - 1 ? '.' : ', '}
+      </span>
+    ));
+  };
+
+  const renderDisclaimer = () => {
+    if (data || !isDemo || loading) {
+      return;
+    }
+    return (
+      <article className={styles.disclaimer}>
+        This is a demo version of the search feature using mock data. You can
+        try searching for these example words: {renderMockWordsList()}
+      </article>
+    );
+  };
+
   return (
     <PageLayout>
       <div className={styles.content}>
@@ -206,6 +230,7 @@ const SearchPage = () => {
           onSearch={handleSearch}
         />
         {loading && <Spinner />}
+        {renderDisclaimer()}
         {renderSuggestions()}
         {renderWords()}
       </div>

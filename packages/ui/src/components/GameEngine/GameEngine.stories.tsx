@@ -9,12 +9,6 @@ const meta: Meta<typeof GameEngine> = {
   component: GameEngine
 };
 
-export const GameEngineDefault = {
-  args: {
-    gameData: gameEngineData[Game.Audio]
-  }
-};
-
 export const Audio = (args: GameEngineProps) => {
   return <GameEngine {...args} gameData={gameEngineData[Game.Audio]} />;
 };

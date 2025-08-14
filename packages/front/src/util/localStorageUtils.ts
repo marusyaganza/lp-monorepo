@@ -20,7 +20,7 @@ export interface StoredData {
   gameTags?: Partial<TagDataType>;
 }
 
-type PropName = keyof StoredData & string;
+type PropName = keyof StoredData;
 
 export function getStoredData<T extends PropName>(
   propName: T
@@ -36,7 +36,7 @@ export function storeData<T extends PropName>(
   propName: T,
   data: StoredData[T]
 ) {
-  if (!data || !propName) {
+  if (!propName) {
     return;
   }
   localStorage.setItem(propName, JSON.stringify(data));

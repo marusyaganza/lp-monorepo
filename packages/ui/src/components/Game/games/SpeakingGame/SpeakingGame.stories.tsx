@@ -15,7 +15,9 @@ const meta: Meta<typeof SpeakingGame> = {
 const game = gameData[Game.TypeWord];
 
 export const GameDefault = (args: GameProps) => (
-  <SpeakingGame {...args} {...game} currentStage={GameStage.Initial} />
+  <div className="page" style={{ width: '150%' }}>
+    <SpeakingGame {...args} {...game} currentStage={GameStage.Initial} />
+  </div>
 );
 
 export default meta;

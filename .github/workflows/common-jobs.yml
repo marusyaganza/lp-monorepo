@@ -1,0 +1,85 @@
+name: Common Jobs
+
+on:
+  workflow_call:
+    secrets:
+      JWT_SECTET:
+        required: true
+      AUDIO_ENDPOINT:
+        required: true
+      IMG_ENDPOINT:
+        required: true
+      SLACK_CHANNEL_ID:
+        required: true
+      SLACK_WEBHOOK_URL:
+        required: true
+
+jobs:
+  lint:
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18.17.0'
+      - uses: ./.github/actions/setup-yarn
+      - run: yarn lint
+
+  test:
+    runs-on: ubuntu-22.04
+    needs: lint
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18.17.0'
+      - uses: ./.github/actions/setup-yarn
+      - uses: ./.github/actions/setup-mongodb
+        with:
+          mongodb-version: '4.2'
+      - run: yarn codegen
+      - run: yarn test
+  notify:
+    needs: [lint, test]
+    if: failure()
+    permissions:
+      contents: read
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Send Slack notification
+        uses: slackapi/slack-github-action@v1.24.0
+        with:
+          channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
+          payload: |
+            {
+              "text": "Workflow Failed!",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*Workflow Failed* :x:\n Repository: ${{ github.repository }}\n Branch: ${{ github.ref }}"
+                  }
+                },
+                {
+                  "type": "actions",
+                  "elements": [
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "View Failed Action"
+                      },
+                      "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                    }
+                  ]
+                }
+              ]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK

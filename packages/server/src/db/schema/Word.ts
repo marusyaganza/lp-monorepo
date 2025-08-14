@@ -9,6 +9,7 @@ import {
   Score,
   Tense
 } from '../../generated/graphql';
+import { DEMO_DB_TTL } from '../../constants/defaultValues';
 
 export interface SpacedRepetitionData {
   isNewCard: boolean;
@@ -38,6 +39,7 @@ export type SpacedRepetitionMap = {
 
 interface WordType extends WordCoreType {
   spacedRepetition: SpacedRepetitionMap;
+  createdAt: Date;
 }
 
 const examplesSchema = new Schema(
@@ -137,7 +139,7 @@ const wordSchema = new Schema<WordType>(
   {
     uuid: { type: String, immutable: true },
     name: { type: String, required: true, immutable: true },
-    createdAt: { type: String, required: true },
+    createdAt: { type: Date, required: true, default: Date.now },
     updatedAt: { type: Number },
     defs: { type: [defSchema], required: true },
     shortDef: { type: [String], required: true },
@@ -165,5 +167,10 @@ const wordSchema = new Schema<WordType>(
 wordSchema.virtual('id').get(function () {
   return this._id.toHexString();
 });
+
+// clean up words data every hour in demo mode
+if (process.env.DEMO_VERSION === 'true') {
+  wordSchema.index({ createdAt: 1 }, { expireAfterSeconds: DEMO_DB_TTL });
+}
 
 export const Word = model<WordType>('Word', wordSchema);

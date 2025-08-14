@@ -1,0 +1,18 @@
+name: 'Setup Yarn'
+description: 'Configure Yarn, cache node_modules, and install dependencies'
+runs:
+  using: 'composite'
+  steps:
+    - name: Configure yarn
+      run: yarn set version 1.22.19
+      shell: bash
+    - name: Cache node_modules
+      id: cache-nodemodules
+      uses: actions/cache@v3
+      with:
+        path: '**/node_modules'
+        key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+    - name: Install dependencies
+      if: steps.cache-nodemodules.outputs.cache-hit != 'true'
+      run: yarn install --frozen-lockfile
+      shell: bash

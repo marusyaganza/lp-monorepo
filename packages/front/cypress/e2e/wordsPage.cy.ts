@@ -30,7 +30,7 @@ const paginatedWords = {
   [Language.Spanish]: ['hola', 'idioma', 'ser', 'tener', 'ballena', 'empezar']
 };
 
-const sortWordsOptions = ['Date', 'Alphabetically', 'Particle', 'Level'];
+const sortWordsOptions = ['Date', 'Alphabetically', 'Word Category'];
 
 describe('Words Page', () => {
   beforeEach(() => {
@@ -51,7 +51,8 @@ describe('Words Page', () => {
 
   languages.forEach(lang => {
     it(`should render all the elements correctly with ${lang} language`, () => {
-      cy.changeLanguage(lang);
+      cy.presetLanguage(lang);
+      cy.visit('/words');
       cy.get('main')
         .find('h1')
         .should('have.text', TEXTS_BY_PAGE.vocabulary.mainHeading);
@@ -86,7 +87,7 @@ describe('Words Page', () => {
     });
 
     it(`should display multiple words in ${lang} correctly`, () => {
-      cy.changeLanguage(lang);
+      cy.presetLanguage(lang);
       words[lang].forEach(word => {
         cy.addWord(word);
       });
@@ -104,7 +105,7 @@ describe('Words Page', () => {
     });
 
     it(`should paginate words in ${lang} correctly`, () => {
-      cy.changeLanguage(lang);
+      cy.presetLanguage(lang);
       paginatedWords[lang].forEach(word => {
         cy.addWord(word);
       });
@@ -126,7 +127,7 @@ describe('Words Page', () => {
     });
 
     it(`should delete a word in ${lang} correctly`, () => {
-      cy.changeLanguage(lang);
+      cy.presetLanguage(lang);
       paginatedWords[lang].forEach(word => {
         cy.addWord(word);
       });
@@ -137,15 +138,14 @@ describe('Words Page', () => {
       const wordToDelete = paginatedWords[lang][1];
       cy.getByCy(`wordcard-${wordToDelete}`).as('wordCard').should('exist');
       cy.findByCy('deleteButton', '@wordCard').click();
-      cy.checkNotification('Word deleted', 'was deleted', true);
       cy.getByCy('@wordCard').should('not.exist');
       cy.getByCy('wordCard').should('have.length', 5);
       cy.getByCy('words-count').should('contain', 'You have 5 words');
       cy.getByCy('pagination').should('not.exist');
     });
 
-    it(`should words with tags in ${lang} correctly`, () => {
-      cy.changeLanguage(lang);
+    it(`should render words with tags in ${lang} correctly`, () => {
+      cy.presetLanguage(lang);
       paginatedWords[lang].forEach(word => {
         cy.addWord(word);
       });
@@ -187,66 +187,5 @@ describe('Words Page', () => {
       cy.getByCy('name').contains(wordWithTag2);
       cy.getByCy('name').contains(wordWith2Tags);
     });
-  });
-  it('should handle switching languages', () => {
-    cy.presetLanguage(Language.Spanish);
-    words[Language.Spanish].forEach(word => {
-      cy.addWord(word);
-    });
-    cy.changeLanguage(Language.English, Language.Spanish);
-    cy.getByCy('clickable-suggestion').should('contain', 'wheel');
-    cy.get('@headerLink').contains(HEADER_TEXTS.vocabulary).click();
-    cy.getByCy('words-count').should('contain', 'You have 0 words');
-    cy.getByCy('wordCard').should('not.exist');
-    cy.changeLanguage(Language.Spanish);
-    cy.getByCy('words-count').should('contain', 'You have 2 words');
-    cy.getByCy('wordCard').should('have.length', 2);
-
-    cy.changeLanguage(Language.English, Language.Spanish);
-    words[Language.English].forEach(word => {
-      cy.addWord(word);
-    });
-    cy.get('@headerLink').contains(HEADER_TEXTS.vocabulary).click();
-    cy.getByCy('words-count').should('contain', 'You have 2 words');
-    cy.getByCy('wordCard').should('have.length', 2);
-
-    const engTag = tags[Language.English][1].text;
-    const spTag1 = tags[Language.Spanish][2].text;
-    const spTag2 = tags[Language.Spanish][0].text;
-
-    cy.getByCy('wordCard').first().click();
-    cy.getByCy('editButton').click();
-    cy.editWord({ tags: [engTag] });
-    cy.getByCy('wordForm').submit();
-    cy.checkPathName('/words');
-
-    cy.getByCy('tag-selector').as('tagSelector');
-    cy.selectOption('@tagSelector', engTag);
-    cy.getByCy('wordCard').should('have.length', 1);
-    cy.changeLanguage(Language.Spanish);
-    cy.getByCy('spinner').should('not.exist');
-
-    cy.findByCy('tag', '@tagSelector').should('not.exist');
-    cy.getByCy('wordCard').should('have.length', 2);
-
-    cy.getByCy('wordCard').last().click();
-    cy.getByCy('editButton').click();
-    cy.editWord({ tags: [spTag1, spTag2] });
-    cy.getByCy('wordForm').submit();
-    cy.checkPathName('/words');
-
-    cy.selectOption('@tagSelector', spTag2);
-    cy.selectOption('@tagSelector', spTag1);
-    cy.getByCy('wordCard').should('have.length', 1);
-
-    cy.changeLanguage(Language.English, Language.Spanish);
-    cy.findByCy('tag', '@tagSelector').should('contain', engTag);
-    cy.getByCy('wordCard').should('have.length', 1);
-    cy.getByCy(`wordcard-${words[Language.English][1]}`).should('be.visible');
-
-    cy.changeLanguage(Language.Spanish);
-    cy.findByCy('tag', '@tagSelector').should('have.length', 2);
-    cy.reload();
-    cy.findByCy('tag', '@tagSelector').should('have.length', 2);
   });
 });

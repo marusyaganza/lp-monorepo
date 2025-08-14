@@ -1,0 +1,87 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+
+<Meta title="Games/ConjugationGame" />
+
+# ConjugationGame
+
+The **ConjugationGame** component challenges users to fill in the conjugated forms of a verb for multiple pronouns.  
+It’s tailored for Spanish verb practice, offering instant feedback and an immersive way to master conjugations through active recall.
+
+---
+
+## How It Works
+
+- The game prompts the learner with a verb and a task, such as:  
+  _"Fill in the forms of ‘tener’ in the present indicative"_
+- Learners see a column of input fields, each labeled for a pronoun (yo, tú, él/ella, etc).
+- Pressing the audio button plays the target verb’s pronunciation.
+- After filling the answers, the user clicks **Check** to submit.
+    - If answers are incorrect, the correct forms are displayed for review (see image: incorrect values are highlighted).
+    - If all answers are correct, the user clicks **Continue** to proceed.
+- Empty, hyphen (“-”), or disabled fields handle special forms, impersonal verbs, or irregularities.
+
+---
+
+## Key Features
+
+- **Multiple Pronouns:** Presents inputs for all persons required by the verb.
+- **Feedback:** Shows immediate validation after checking—errors and correct answers highlighted.
+- **Audio Support:** Built-in audio playback helps reinforce the correct forms.
+- **Adaptive Inputs:** Supports verbs where some forms are missing (with a dash).
+- **Workflow:** Encourages try–check–correct–continue learning.
+
+---
+
+## Visual Example
+
+![Conjugation game input and feedback for all persons](/images/conj-game.png)
+
+---
+
+## Typical Usage
+Try the ConjugationGame in action inside the full game environment: [Open GameEngine Interactive Story](?path=/story/game-gameengine--conjugation
+)
+- `task`: Instructions for the current exercise.
+- `audioUrl`: Optional link to the verb’s audio/pronunciation.
+- `question`: The target verb or prompt.
+- `correctAnswer`: Array of correct conjugated forms in order.
+- `onSubmit`: Receives `true/false` after checking answers.
+- `onNext`: Moves to the next verb or repeats the game.
+- `currentStage`: Determines UI mode (initial, error, or success).
+
+---
+
+## Component States
+
+- **Initial:** Inputs ready for entry, “Check” button enabled.
+- **Error:** Any incorrect answers are highlighted; correct answer appears below.
+- **Success:** User sees positive feedback and can “Continue.”
+- **Audio:** Audio button is always available if a URL is provided.
+
+---
+
+## Live Demo
+
+<Canvas>
+  <Story id="games-conjugationgame--game-default" />
+</Canvas>
+
+---
+
+## For Designers & Developers
+
+- Designed for language-learning games and verb drills.
+- Handles regular, irregular, and impersonal verbs gracefully.
+- Extensible to other tenses, moods, or languages with minimal code changes.
+- Integrates with your design system styles for inputs, buttons, and audio.
+
+---
+
+## Figma Reference
+
+[View ConjugationGame designs in Figma](https://www.figma.com/design/uLznHs3pU0bQqy7Wwn3xQx/Design-system?node-id=1886-4264&t=hYO7neuLo3dLHwf0-1)
+
+---
+
+**Tip:** Pair this component with instant audio and feedback for highly engaging conjugation mastery and spaced repetition review.
+

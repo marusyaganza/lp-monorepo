@@ -102,23 +102,25 @@ const SignUpPage = () => {
 
   return (
     <AuthPageLayout>
-      <h2 data-cy="sign-up-heading" className={styles.formHeading}>
-        Sign up
-      </h2>
-      <Form
-        id="signUp"
-        isLoading={loading}
-        className={styles.form}
-        onFormSubmit={submitHandler}
-        fields={fields}
-        buttonText="Sign up"
-      />
-      <p className={styles.text}>
-        already have account?{' '}
-        <Link className={styles.link} to={`/${routes.signIn}`}>
-          Sign in
-        </Link>
-      </p>
+      <div className={styles.content}>
+        <h2 data-cy="sign-up-heading" className={styles.formHeading}>
+          Sign up
+        </h2>
+        <Form
+          id="signUp"
+          isLoading={loading}
+          className={styles.form}
+          onFormSubmit={submitHandler}
+          fields={fields}
+          buttonText="Sign up"
+        />
+        <p className={styles.text}>
+          already have account?{' '}
+          <Link className={styles.link} to={`/${routes.signIn}`}>
+            Sign in
+          </Link>
+        </p>
+      </div>
     </AuthPageLayout>
   );
 };

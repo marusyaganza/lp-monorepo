@@ -7,7 +7,7 @@ exports[`WordModel createOne 1`] = `
   "alternativeSpelling": [],
   "audioUrl": "mock.mp3",
   "conjugation": [],
-  "createdAt": Any<String>,
+  "createdAt": Any<Date>,
   "defs": [
     {
       "def": "a person who believes that everyone is equal and should have the same rights and opportunities",
@@ -110,7 +110,7 @@ exports[`WordModel findById 1`] = `
   "alternativeSpelling": [],
   "audioUrl": "mock.mp3",
   "conjugation": [],
-  "createdAt": Any<String>,
+  "createdAt": Any<Date>,
   "defs": [
     {
       "def": "a person who believes that everyone is equal and should have the same rights and opportunities",
@@ -213,7 +213,7 @@ exports[`WordModel findOne 1`] = `
   "alternativeSpelling": [],
   "audioUrl": "mock.mp3",
   "conjugation": [],
-  "createdAt": Any<String>,
+  "createdAt": Any<Date>,
   "defs": [
     {
       "def": "a person who believes that everyone is equal and should have the same rights and opportunities",
@@ -316,7 +316,7 @@ exports[`WordModel updateOne 1`] = `
   "alternativeSpelling": [],
   "audioUrl": "mock.mp3",
   "conjugation": [],
-  "createdAt": Any<String>,
+  "createdAt": Any<Date>,
   "defs": [
     {
       "def": "{bc} a strong substance that stretches and that is made out of chemicals or from the juice of a tropical tree",

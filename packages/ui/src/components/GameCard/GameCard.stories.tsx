@@ -11,12 +11,10 @@ export default {
 
 export const GameCardDefault = () => {
   return (
-    <>
+    <div className="imagesList">
       {games.map(game => (
-        <div key={game.name} className="presentationBox">
-          <GameCard game={game} linkUrl="#" />
-        </div>
+        <GameCard key={game.name} game={game} linkUrl="#" />
       ))}
-    </>
+    </div>
   );
 };

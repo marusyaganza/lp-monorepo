@@ -1,0 +1,81 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+
+<Meta title="Games/ImageGame" />
+
+# ImageGame
+
+**ImageGame** is an interactive language-learning component where learners view an image, then type a word or phrase matching the prompt.  
+It’s ideal for visual vocabulary training, quick recall, and associating words with real-life images.
+
+---
+
+## How It Works
+
+- The game shows an image and a prompt (for example: "Type the name of the object shown in the picture").
+- The learner studies the image, types their answer in the input box, and presses **Check**.
+    - If the answer is incorrect, the correct response is revealed.
+    - If correct, the interface advances to the next question with **Continue**.
+- Optional audio playback can support listening practice or pronunciation reinforcement.
+- The input and buttons adapt based on current state: initial, error (incorrect), or success (correct).
+
+---
+
+## Features
+
+- **Visual prompt:** A clear image helps learners directly associate meaning with vocabulary.
+- **Text input:** Immediate typing and checking for fast feedback.
+- **Correct answer reveal:** Instantly displays the right solution after an error.
+- **Audio button:** Play pronunciation or related sound when available.
+- **Smooth progression:** Easy next-question workflow for continuous practice.
+
+---
+
+## Typical User Flow
+
+1. Read the prompt and observe the picture.
+2. Type your answer.
+3. Press **Check**.
+4. Review feedback and correct answer (if wrong).
+5. Click **Continue** to move to the next image.
+
+---
+
+## Visual Example
+
+![ImageGame UI: picture prompt, text input, and feedback](/images/img-game.png)
+
+---
+
+## Example Usage
+
+Try the ImageGame in action inside the full game environment: [Open GameEngine Interactive Story](?path=/story/game-gameengine--image
+- `task`: Instruction displayed at the top.
+- `question`: Array containing image URL(s).
+- `correctAnswer`: Array of one or more acceptable answers.
+- `currentStage`: Controls feedback mode (“initial”, “error”, or “success”).
+- `inputRef`, `buttonRef`: Forwarded refs for accessibility and testing.
+- `audioUrl`: Optional audio for listening/speaking practice.
+- `onSubmit`: Callback for checking user input.
+- `onNext`: Advances to the next question or resets the game.
+
+---
+
+## States
+
+- **Initial:** Image, prompt, text input, and Check button.
+- **Error:** Incorrect answer; correct response shown for review.
+- **Success:** Positive feedback and Continue button.
+
+---
+
+## Figma Reference
+
+[View ImageGame in Figma](https://www.figma.com/design/uLznHs3pU0bQqy7Wwn3xQx/Design-system?node-id=2081-3031&t=hYO7neuLo3dLHwf0-1n)
+
+---
+
+**Tip:** Use ImageGame for vocabulary drills, flashcards, or in any part of your language-learning app where associating words with images builds strong connections and rapid recall.
+
+<Canvas>
+  <Story id="games-imagegame--game-default" />
+</Canvas>

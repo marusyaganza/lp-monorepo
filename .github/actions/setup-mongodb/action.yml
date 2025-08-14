@@ -1,0 +1,19 @@
+name: 'Setup MongoDB'
+description: 'Cache MongoDB binary and start MongoDB'
+inputs:
+  mongodb-version:
+    description: 'Version of MongoDB to use'
+    required: true
+    default: '4.4'
+runs:
+  using: 'composite'
+  steps:
+    - name: Cache MongoDB binary
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/mongodb-binaries
+        key: ${{ runner.os }}-mongodb-${{ inputs.mongodb-version }}
+    - name: Start MongoDB
+      uses: supercharge/mongodb-github-action@1.12.0
+      with:
+        mongodb-version: ${{ inputs.mongodb-version }}

@@ -23,7 +23,6 @@ import {
 
 import { checkWordCard } from './helpers/wordCard';
 import { addWord } from './helpers/word';
-// import { playGameOnce } from './helpers/game';
 
 declare global {
   namespace Cypress {

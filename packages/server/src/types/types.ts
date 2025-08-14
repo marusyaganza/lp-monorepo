@@ -18,7 +18,7 @@ export interface IUserTokenInfo {
   role: Role;
 }
 
-interface IContext {
+export interface IContext {
   models: ModelsType;
   createToken: typeof createToken;
   validatePassword: typeof validatePassword;

@@ -1,0 +1,77 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+
+<Meta title="game/GameEngine" />
+
+# GameEngine
+
+The **GameEngine** component serves as the **core runner** for all in-app games in Language Power.  
+It controls game flow, tracks progress, manages state between questions, and handles results display.  
+This is the wrapper that decides *when* to start, *how* to advance between questions, and *when* to finish.
+
+---
+
+## Purpose
+
+- Acts as the **game container** for features like ImageGame, GenderGame, ConjugationGame, and others.
+- Provides unified **state management** using the `gameReducer`.
+- Tracks current question, score, errors, and progress.
+- Displays completion status and sends statistics back to the parent for storage in the user’s learning history.
+- Integrates the **GameFooter**, **GameResult**, **Progress**, and the actual `GameComponent` representing the currently active game type.
+
+---
+
+## How It Works
+
+1. **Initialization**:  
+   When mounted, `GameEngine` receives `gameData` containing:
+   - The list of `questions` (GraphQL type: `GameQuestion[]`)
+   - The `gameType`
+2. Dispatches the `START` action in `gameReducer` to initialize the game state.
+3. **Gameplay Loop**:  
+   - Renders the active game component via `<GameComponent>` for the current question.
+   - Listens for answer submissions via `handlerSubmit`.
+   - On submit, dispatches `CHECK_ANSWER` to update results and error counts.
+4. **Progression**:  
+   - Clicking “Next” triggers the `NEXT` action, moving to the next question until all are answered.
+5. **Completion**:  
+   - On the last question, sets `isCompleted` and shows `<GameResult>`.
+   - Calls `onFinish` with collected statistics (`UpdateStatisticsInput[]`).
+
+---
+
+## Props
+
+- **gameData**: Data for the current game session (questions + type).
+- **language** *(optional)*: Language context for the game (GraphQL `Language` type).
+- **onClose**: Called to exit the game (e.g., back to dashboard).
+- **onFinish**: Called at the end with gameplay statistics.
+
+---
+
+## Example Usage
+1. Fetch `gameData` from the backend (GraphQL query returning `GameData`).
+2. Pass callbacks for `onClose` and `onFinish`.
+3. `gameData.type` determines which game variant is rendered inside the engine.
+
+---
+
+## Lifecycle & State Handling
+
+The reducer supports three main actions:
+
+- **START** – Sets up the initial state with the provided questions.
+- **CHECK_ANSWER** – Evaluates an answer, updates score and error count.
+- **NEXT** – Moves to the next question or marks the game complete.
+
+---
+
+## Live Stories Example
+
+<Canvas>
+  <Story id="game-gameengine--audio" />
+</Canvas>
+
+---
+
+**Tip:** Use `GameEngine` as the primary wrapper for any new game type in Language Power — it ensures consistent state flow, results reporting, and UI transitions across the entire learning experience.
+

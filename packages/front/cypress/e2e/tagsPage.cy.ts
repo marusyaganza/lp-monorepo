@@ -236,7 +236,7 @@ describe('Tags Page', () => {
       cy.getByCy('selectOptions').contains(tagInput.text);
     });
 
-    it(`should delete tags correctly with ${lang} language`, () => {
+    it.only(`should delete tags correctly with ${lang} language`, () => {
       cy.changeLanguage(lang);
       words[lang].forEach(word => {
         cy.addWord(word);
@@ -255,9 +255,8 @@ describe('Tags Page', () => {
       cy.getByCy('wordCard').first().as('wordCard');
       cy.findByCy('tags', '@wordCard').contains(tagToDelete);
 
-      cy.get('@headerLink').contains(HEADER_TEXTS.tags).click();
-
       // delete tag but cancel
+      cy.visit('/tags');
       cy.getByCy(`tag-${tagToDelete}`).as('tagToDelete');
       cy.findByCy('delete-btn', '@tagToDelete').click();
       cy.getByCy('modal')

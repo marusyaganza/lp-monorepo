@@ -18,6 +18,15 @@ export const SIGN_UP_MUTATION = gql`
   }
 `;
 
+export const CREATE_DEMO_USER_MUTATION = gql`
+  mutation CreateDemoUser {
+    createDemoUser {
+      token
+      id
+    }
+  }
+`;
+
 export const SAVE_WORD_MUTATION = gql`
   mutation SaveWord($input: NewWordInput!) {
     saveWord(input: $input) {

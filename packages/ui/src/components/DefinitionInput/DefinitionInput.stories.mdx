@@ -1,0 +1,48 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+
+<Meta title="inputs/DefinitionInput" />
+
+# DefinitionInput
+
+The **DefinitionInput** component enables users to add or edit any number of word definitions with examples and corresponding translations.  
+It's ideal for dictionary editing, flashcard creation, or any app where entries require detailed definitions with supporting examples.
+
+---
+
+## Component Overview
+
+- **Multi-definition support:** Add, remove, or reorder definitions. Each definition is clearly numbered.
+- **Examples:** For each definition, add any number of usage examples.
+- **Translations:** If the option is enabled, you can also add translations for each example—great for bilingual dictionary building or language-learning apps.
+- **Action buttons:** Use intuitive plus/minus icons to add or remove definitions and examples.
+- **Ordering:** Move definitions up or down for clarity or emphasis.
+- **Validation:** Show error states if the first definition is missing. Disabled state and error feedback are visual and clear.
+
+---
+
+## How it works
+
+- Start with an empty or pre-filled list of definitions:
+    - Each definition has its own input field.
+    - Under every definition, you can add example sentences or phrases.
+    - If translations are enabled, each example can receive a translation.
+- Add new definitions with the plus button.
+- Remove definitions or examples with the minus button.
+- Change the order of definitions using up/down arrows.
+- Fill out examples and, if needed, their translations.
+- The component automatically manages state and calls `onChange` whenever you update the content.
+
+---
+
+## Example UI
+
+![Add/Edit word definitions with examples](/images/word-form.png)
+
+---
+
+## Usage Example
+
+<Canvas>
+  <Story id="inputs-definitioninput--definition-input-default" />
+</Canvas>
+

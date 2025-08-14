@@ -11,6 +11,7 @@ import { ERROR_MESSAGES } from '../../../constants/errorMessages';
 export interface UserModelType {
   findOne: (filter: Partial<UserType>) => Promise<UserType | null | undefined>;
   createOne: (fields: SignUpInput) => Promise<UserType | null>;
+  createTempUser: () => Promise<UserType | null>;
 }
 
 export const UserModel: UserModelType = {
@@ -36,10 +37,27 @@ export const UserModel: UserModelType = {
     if (!hashedPassword) {
       throw new OperationResolutionError(ERROR_MESSAGES.SIGN_UP_FAILED);
     }
-    const createdAt = Date.now();
     const user = await User.create({
       ...fields,
-      createdAt,
+      role,
+      password: hashedPassword
+    });
+    return user.toObject();
+  },
+  async createTempUser() {
+    const role = DEFAULT_ROLE;
+    const timestamp = Date.now();
+    const firstName = 'Sam';
+    const lastName = 'Smith';
+    const email = `${firstName.toLowerCase()}.${lastName.toLowerCase()}.${timestamp}@example.com`;
+    const hashedPassword = await hashPassword(timestamp.toString());
+    if (!hashedPassword) {
+      throw new OperationResolutionError(ERROR_MESSAGES.SIGN_UP_FAILED);
+    }
+    const user = await User.create({
+      firstName,
+      lastName,
+      email,
       role,
       password: hashedPassword
     });

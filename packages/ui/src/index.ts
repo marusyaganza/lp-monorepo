@@ -5,14 +5,14 @@
  *
  * <h3>Design system for Language Power project</h3>
  *
- * `@lp/ui` is a package containing common ui component and utilities
- * for LP app. This a relaunch of language learning app
+ * `@lp/ui` is a package containing common ui components and utilities
+ * for LP app. This is a relaunch ofthe  language learning app
  * <b>Language Power</b> which you can learn more about by visiting
  * <a href="https://github.com/marusyaganza/language-power" target="_blank">
  *  the repo on GitHub
  * </a>
  *
- * This package is using storybook for live premiew. Learn more
+ * This package is using Storybook for live preview. Learn more
  * on <a href="" target="_blank">Preview link will be added soon</a>
  *
  *
@@ -38,7 +38,6 @@ export * from './components/Notification/Notification';
 export * from './components/CardWrapper/CardWrapper';
 export * from './components/Select/useSelect';
 export * from './components/LanguageSelector/LanguageSelector';
-export * from './components/HeaderV2/HeaderV2';
 export * from './components/UserMenu/UserMenu';
 export * from './components/SearchField/SearchField';
 export * from './components/ArrayInput/ArrayInput';
@@ -47,7 +46,6 @@ export * from './components/InputWithButton/InputWithButton';
 export * from './components/Link/Link';
 export * from './components/InputV2/InputV2';
 export * from './components/Checkbox/Checkbox';
-export * from './components/LevelSelector/LevelSelector';
 export * from './components/GameCard/GameCard';
 export * from './components/GameFooter/GameFooter';
 export * from './components/OptionBox/OptionBox';

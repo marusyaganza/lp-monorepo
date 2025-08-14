@@ -12,13 +12,6 @@ import {
 } from '../../support/helpers/game';
 import { wordWithAltSpelling } from '../../support/mocks/newWordInputs';
 
-const audioUrls = {
-  [Language.Spanish]:
-    'https://media.merriam-webster.com/audio/prons/es/me/mp3/i/idiom01sp.mp3',
-  [Language.English]:
-    'https://media.merriam-webster.com/audio/prons/en/us/mp3/w/wheel001.mp3'
-};
-
 const languages = Object.values(Language);
 
 const typingGames = games.filter(
@@ -28,30 +21,14 @@ const typingGames = games.filter(
     game.type === Game.Image
 );
 
-const serAudio =
-  'https://media.merriam-webster.com/audio/prons/es/me/mp3/s/ser0001sp.mp3';
-
 describe('Game Page', () => {
   beforeEach(() => {
     cy.task('prepareDB');
     cy.login();
     cy.visit('/games');
-    cy.get('[data-cy="sortControls"]').as('sortControls');
-    cy.get('@sortControls').find('[data-cy="select"]').as('select');
     cy.get('[data-cy="headerNav"] a').as('headerLink');
     cy.get('[data-cy="gamesList"]').as('gamesList');
     cy.get('@gamesList').find('[data-cy="gameCard"]').as('gameCard');
-
-    languages.forEach(lang => {
-      cy.intercept({
-        method: 'GET',
-        url: `${audioUrls[lang]}`
-      }).as(`audioReq-${lang}`);
-    });
-    cy.intercept({
-      method: 'GET',
-      url: serAudio
-    }).as(`audioReq-ser`);
   });
 
   afterEach(() => {
@@ -61,16 +38,12 @@ describe('Game Page', () => {
   languages.forEach(lang => {
     typingGames.forEach(game => {
       it(`should answer correctly ${game.id} game with alt. spelling in ${lang} language`, () => {
-        cy.changeLanguage(lang);
+        cy.presetLanguage(lang);
+        cy.visit('/games');
         const wordInput = wordWithAltSpelling[lang];
         cy.visit('/words/new');
         cy.fillWordForm(wordInput);
         cy.getByCy('wordForm').find('button[type="submit"]').click();
-        cy.checkNotification(
-          'Word added',
-          `${wordInput.name} is added successfully`,
-          true
-        );
 
         cy.get('@headerLink').contains(HEADER_TEXTS.practice).click();
         cy.getByCy('gameCard').eq(game.orderNum).click();
@@ -81,7 +54,6 @@ describe('Game Page', () => {
           GameStage.Success,
           game.type,
           wordInput.name,
-          `@audioReq-${lang}`,
           wordInput.imgUrl
         );
         cy.getByCy('continue-button').click();

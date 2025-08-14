@@ -14,7 +14,15 @@ const meta: Meta<typeof AudioButton> = {
 export const StandartButton = {
   args: {
     src: 'https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/e/ega/egali/egalitarian__gb_1.mp3',
-    buttonText: 'iˌɡælɪˈteəriən'
+    iconHeight: 50,
+    iconWidth: 50
+  }
+};
+
+export const WithTextButton = {
+  args: {
+    buttonText: 'iˌɡælɪˈteəriən',
+    src: 'https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/e/ega/egali/egalitarian__gb_1.mp3'
   }
 };
 

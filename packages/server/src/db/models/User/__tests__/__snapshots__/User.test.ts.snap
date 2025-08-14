@@ -3,7 +3,7 @@
 exports[`User createOne 1`] = `
 {
   "_id": Any<Object>,
-  "createdAt": Any<String>,
+  "createdAt": Any<Date>,
   "email": "test@test.com",
   "firstName": "Test",
   "id": Any<String>,
@@ -17,7 +17,7 @@ exports[`User createOne 1`] = `
 exports[`User findOne 1`] = `
 {
   "_id": Any<Object>,
-  "createdAt": Any<String>,
+  "createdAt": Any<Date>,
   "email": "test@test.com",
   "firstName": "Test",
   "id": Any<String>,

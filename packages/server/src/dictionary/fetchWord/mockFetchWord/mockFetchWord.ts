@@ -2,10 +2,28 @@ import { Language } from '../../../generated/graphql';
 
 export const mockSuggestions = {
   [Language.English]: [
-    'Mocks are enabled. You can query words from the list: egalitarian, rubber, pussy, heart, wheel, voluminous, fowl, murther, or notFound to receive an empty array as a result, or suggestions for an array with words'
+    'egalitarian',
+    'rubber',
+    'pussy',
+    'heart',
+    'wheel',
+    'voluminous',
+    'fowl',
+    'murther'
   ],
   [Language.Spanish]: [
-    'Mocks are enabled. You can query words from the list: idioma, hola, caerse, asi, tener, ser, llover, ecologista, bully, instruction, empezar, ballena'
+    'idioma',
+    'hola',
+    'caerse',
+    'asi',
+    'tener',
+    'ser',
+    'llover',
+    'ecologista',
+    'bully',
+    'instruction',
+    'empezar',
+    'ballena'
   ]
 };
 
@@ -17,6 +35,10 @@ export async function mockFetchWord(
   const suggestions = mockSuggestions[language];
   if (!query || query === 'notFound') {
     return [];
+  }
+
+  if (!mockSuggestions[language].includes(query)) {
+    return suggestions;
   }
 
   try {

@@ -12,7 +12,7 @@ import { GAMES_QUERY, TAGS_QUERY } from '../../gql/queries';
 import styles from './GamesPage.module.css';
 import { useQuery } from '@apollo/client';
 
-const OPTIONS = {
+const OPTIONS: Record<SortBy, string> = {
   [SortBy.ErrorCount]: 'Errors',
   [SortBy.LastTimePracticed]: 'Last Practice Date',
   [SortBy.PracticedTimes]: 'Practiced Times',
@@ -22,8 +22,8 @@ const OPTIONS = {
 };
 
 const GamesPage = () => {
-  const { setNotification, language } = useContext(AppContext);
-  const [sortBy, setSortBy] = useState('');
+  const { setNotification, language, isDemo } = useContext(AppContext);
+  const [sortBy, setSortBy] = useState(SortBy.SpacedRepetition);
   const [tags, setTags] = useState<string[] | undefined>();
   const [isReverseOrder, setIsReverseOrder] = useState(false);
 
@@ -41,7 +41,7 @@ const GamesPage = () => {
   });
 
   const handleSortingParamChange = useCallback((val: string) => {
-    setSortBy(val);
+    setSortBy(val as SortBy);
     storeData('sortGamesBy', val as SortBy);
   }, []);
 
@@ -91,24 +91,28 @@ const GamesPage = () => {
       <div className={styles.topContainer}>
         <h1 className={styles.pageTitle}>Select a training</h1>
         <section className={styles.topSection}>
-          <SortControls
-            className={styles.sortControls}
-            sortBy={sortBy}
-            initialOrderValue={isReverseOrder}
-            options={OPTIONS}
-            onOrderChange={handleOrderChange}
-            onSortChange={handleSortingParamChange}
-            blankOption="none"
-          />
-          <TagSelector
-            dataCy="tag-selector"
-            showNoTagsTag
-            tags={tagsResult?.data?.tags}
-            value={tags}
-            label="tags"
-            onChange={handleTagsChange}
-            className={styles.tagsSelector}
-          />
+          {!isDemo && (
+            <SortControls
+              className={styles.sortControls}
+              sortBy={sortBy}
+              initialOrderValue={isReverseOrder}
+              options={OPTIONS}
+              onOrderChange={handleOrderChange}
+              onSortChange={handleSortingParamChange}
+              blankOption="none"
+            />
+          )}
+          {!!tagsResult?.data?.tags?.length && (
+            <TagSelector
+              dataCy="tag-selector"
+              showNoTagsTag
+              tags={tagsResult?.data?.tags}
+              value={tags}
+              label="tags"
+              onChange={handleTagsChange}
+              className={styles.tagsSelector}
+            />
+          )}
         </section>
       </div>
       {loading && <Spinner />}

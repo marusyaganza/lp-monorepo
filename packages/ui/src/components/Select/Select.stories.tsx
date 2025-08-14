@@ -16,10 +16,12 @@ export const SelectDefault = () => {
   };
   const { Select, Option } = useSelect({ onChange });
   return (
-    <Select value="Option 1 value">
-      <Option value="Option 1 value">Option 1</Option>
-      <Option value="Option 2 value">Option 2</Option>
-    </Select>
+    <div>
+      <Select value="Option 1 selected value">
+        <Option value="Option 1 selected value">Option 1</Option>
+        <Option value="Option 2 selected value">Option 2</Option>
+      </Select>
+    </div>
   );
 };
 

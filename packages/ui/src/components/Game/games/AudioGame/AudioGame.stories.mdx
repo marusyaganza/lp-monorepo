@@ -1,0 +1,73 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+
+<Meta title="Games/AudioGame" />
+
+# AudioGame
+
+**AudioGame** is an interactive language-learning component where users listen to a word and type what they hear.  
+It enhances listening comprehension and spelling practice, making vocabulary learning engaging and effective.
+
+---
+
+## How It Works
+
+- The game presents an audio prompt:  
+  _"Type the word that you've heard"_
+- The user clicks the play button to listen to a word or phrase.
+- After listening, the user types their answer into the input field provided.
+- Pressing **Check** evaluates the answer and triggers instant feedback.
+    - If the answer is correct, the game transitions to allow the user to **Continue**.
+    - If incorrect, the correct answers are revealed for learning reinforcement.
+- The interface is clean, focused, and supports keyboard navigation for accessibility.
+
+---
+
+## Key Features
+
+- **Audio Playback:** Accessible play button lets users listen to the word as many times as needed.
+- **Input Validation:** Immediate feedback with the correct answer displayed after an incorrect attempt.
+- **Progression:** A simple workflow: listen → type → check answer → continue.
+- **Refined Feedback:** Highlights mistakes and celebrates correct answers to reinforce learning.
+- **Accessible:** Focusable inputs and buttons make the game usable for all learners.
+
+---
+
+## Typical User Flow
+
+1. Read the prompt and click the play button.
+2. Type the word you hear into the input box.
+3. Click **Check** to see if your answer is correct.
+4. If correct, proceed by clicking **Continue**; if not, review the displayed correct answer(s).
+
+---
+
+## Visual Example
+
+![AudioGame UI with prompt, play button, text field, and check button](/images/audio-game.png)
+
+---
+
+## Example Usage
+
+Try the AudioGame in action inside the full game environment: [Open GameEngine Interactive Story](?path=/story/game-gameengine--audio
+)
+- `task`: The instruction displayed above the controls.
+- `question`: Text representing the word or audio-related task.
+- `currentStage`: Controls the stage, e.g., Initial, Success, or Error.
+- `onSubmit`: Callback handling answer checking logic.
+- `correctAnswer`: Array of acceptable answers for validation and feedback.
+- `onNext`: Function to progress to the next question or round.
+
+---
+
+## Figma Design
+
+[View AudioGame designs in Figma](https://www.figma.com/design/uLznHs3pU0bQqy7Wwn3xQx/Design-system?node-id=1870-6819&t=hYO7neuLo3dLHwf0-1)
+
+---
+
+**Tip:** Use AudioGame in your language-learning app or website to boost listening skills, reinforce correct spelling, and provide interactive vocabulary drills. Customize the prompt and answers for different languages or levels!
+
+<Canvas>
+  <Story id="games-audiogame--game-default" />
+</Canvas>

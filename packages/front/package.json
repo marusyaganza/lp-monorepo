@@ -1,16 +1,17 @@
 {
   "name": "@lp/front",
-  "version": "1.2.0",
+  "version": "1.2.2",
   "description": "frontend",
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --env mode=development",
+    "start:test": "yarn dev",
     "codegen": "graphql-codegen --config codegen.ts",
     "prod": "webpack --env mode=production",
     "cypress": "npx cypress open",
     "cypress:run": "npx cypress run --browser chrome",
     "stylelint": "stylelint src",
-    "eslint": "eslint src",
+    "lint": "eslint src",
     "ready": "yarn codegen && yarn eslint --fix && yarn stylelint --fix",
     "serve": "http-server",
     "clean": "rimraf dist src/generated *.tsbuildinfo public node_modules",
@@ -27,7 +28,7 @@
     "@graphql-codegen/client-preset": "4.1.0",
     "@graphql-codegen/typescript": "^4.0.1",
     "@graphql-codegen/typescript-resolvers": "^4.0.1",
-    "@lp/ui": "^1.3.0",
+    "@lp/ui": "^1.3.2",
     "@types/node": "^20.10.5",
     "@types/react": "^18.2.45",
     "@types/react-dom": "^18.2.18",
@@ -51,7 +52,7 @@
     "webpack-merge": "^5.10.0"
   },
   "devDependencies": {
-    "cypress": "^13.6.1",
+    "cypress": "^13.17.0",
     "eslint-plugin-cypress": "^2.15.1",
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-react": "^7.33.2",

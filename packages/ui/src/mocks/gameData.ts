@@ -280,7 +280,7 @@ export const gameEngineData: Record<Game, GameData> = {
     questions: [
       {
         wordId: '66d060e0e7ad79ccfd31963a',
-        question: ['blando : soft', 'liso : smooth', 'gentle, mild'],
+        question: ['blando : soft'],
         options: [
           'comprobar',
           'suave',

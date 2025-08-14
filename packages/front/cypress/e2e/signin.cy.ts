@@ -109,12 +109,7 @@ describe('sign in page', () => {
 
     cy.findByCy('checkbox-label', '@sortControls').as('orderCheckbox').click();
     cy.getByCy('headerNav').contains(HEADER_TEXTS.practice).click();
-    cy.getByCy('sortControls').as('gameSortControls');
-    cy.findByCy('select', '@gameSortControls').as('gameSelect');
     cy.getByCy('spinner').should('not.exist');
-    cy.selectOption('@gameSelect', 'Errors');
-    cy.findByCy('checkbox-label', '@sortControls').click();
-
     cy.selectOption('@tagSelector', 'Tag1');
 
     cy.tick(1000 * 60 * 60 * 24 * 7);
@@ -123,11 +118,6 @@ describe('sign in page', () => {
     cy.get('@email').type(USER_CREDS.email);
     cy.get('@password').type(`${USER_CREDS.password}{Enter}`);
     cy.getByCy('spinner').should('not.exist');
-
-    cy.findByCy('select-btn', '@select').should('have.text', 'Errors');
-    cy.findByCy('checkbox-label', '@sortControls')
-      .find('svg')
-      .should('have.attr', 'aria-label', 'asc');
 
     cy.findByCy('tag', '@tagSelector').should('contain', 'Tag1');
 

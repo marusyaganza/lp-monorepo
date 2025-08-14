@@ -1,0 +1,37 @@
+name: Manual Deploy Both Render Services
+
+on:
+  workflow_dispatch:
+    inputs:
+      target:
+        description: 'Deploy client, server, or both?'
+        required: true
+        default: both
+        type: choice
+        options:
+          - both
+          - client
+          - server
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Deploy CLIENT
+        if: ${{ github.event.inputs.target == 'client' || github.event.inputs.target == 'both' }}
+        env:
+          DEPLOY_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL_CLIENT }}
+        run: |
+          echo "Triggering CLIENT deploy via $DEPLOY_URL"
+          curl -X POST "$DEPLOY_URL"
+
+      - name: Deploy SERVER
+        if: ${{ github.event.inputs.target == 'server' || github.event.inputs.target == 'both' }}
+        env:
+          DEPLOY_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL_SERVER }}
+        run: |
+          echo "Triggering SERVER deploy via $DEPLOY_URL"
+          curl -X POST "$DEPLOY_URL"

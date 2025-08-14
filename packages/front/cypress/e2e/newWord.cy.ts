@@ -16,7 +16,7 @@ const TEXTS = TEXTS_BY_PAGE.newWord;
 
 const labels = {
   name: 'name',
-  particle: 'particle',
+  particle: 'word category',
   shortDef: 'short definition 1',
   tags: 'tags',
   stems: 'word form 1',
@@ -54,12 +54,6 @@ describe('New Word Page', () => {
     cy.visit('/words/new');
     cy.get('[data-cy="headerNav"] a').as('headerLink');
     cy.getByCy('wordForm').find('button[type="submit"]').as('submitBtn');
-    languages.forEach(lang => {
-      cy.intercept({
-        method: 'GET',
-        url: `${fullWord[lang].audioUrl}`
-      }).as(`audioReq-${lang}`);
-    });
   });
 
   afterEach(() => {
@@ -178,10 +172,6 @@ describe('New Word Page', () => {
       cy.getByCy('wordCard').first().as('wordCard');
 
       cy.findByCy('audioButton', '@wordCard').click();
-
-      cy.wait(`@audioReq-${lang}`).then(interception => {
-        assert.isNotNull(interception?.response?.body, 'audioURL call');
-      });
 
       cy.checkWordCard(wordInput, '@wordCard');
 

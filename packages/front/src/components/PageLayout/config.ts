@@ -21,11 +21,6 @@ export const navLinks: HeaderLinkType[] = [
     url: `/${routes.games}`,
     text: 'Practice',
     icon: 'dice'
-  },
-  {
-    url: `/${routes.tags}`,
-    text: 'Tags',
-    icon: 'tag'
   }
 ];
 
@@ -49,11 +44,6 @@ export const mobileNavLinks: HeaderLinkType[] = [
     url: `/${routes.tags}`,
     text: 'Tags',
     icon: 'tag'
-  },
-  {
-    url: '/profile',
-    text: 'Profile',
-    icon: 'dragon'
   }
 ];
 

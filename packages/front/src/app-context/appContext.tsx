@@ -23,6 +23,7 @@ type Context = {
   setNotification: (notification?: NotificationProps) => void;
   language: Language;
   isDevEnv?: boolean;
+  isDemo?: boolean;
   saveLanguage: (lang: Language) => void;
 };
 
@@ -49,17 +50,22 @@ export const AppProvider = ({ children }: PropsWithChildren<unknown>) => {
   };
 
   const isDevEnv = useMemo(() => process?.env?.NODE_ENV !== 'production', []);
+  const isDemo = useMemo(() => process?.env?.DEMO_VERSION === 'true', []);
 
-  const value: Context = {
-    login,
-    logout,
-    userId,
-    token,
-    notification,
-    setNotification,
-    language,
-    saveLanguage,
-    isDevEnv
-  };
+  const value: Context = useMemo(
+    () => ({
+      login,
+      logout,
+      userId,
+      token,
+      notification,
+      setNotification,
+      language,
+      saveLanguage,
+      isDevEnv,
+      isDemo
+    }),
+    [token, language, userId, notification, isDevEnv, isDemo]
+  );
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };

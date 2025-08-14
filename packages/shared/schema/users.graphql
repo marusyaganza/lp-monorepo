@@ -8,7 +8,6 @@ type User {
   email: String!
   firstName: String!
   lastName: String!
-  createdAt: String!
   id: ID!
   role: Role!
   primaryLanguage: String
@@ -18,10 +17,14 @@ type AuthUser {
   email: String!
   firstName: String!
   lastName: String!
-  createdAt: String!
   id: ID!
   role: Role!
   token: String!
+}
+
+type DemoUser {
+  token: String!
+  id: ID!
 }
 
 input SignUpInput {
@@ -44,4 +47,5 @@ type Query {
 type Mutation {
   signUp(input: SignUpInput!): AuthUser!
   login(input: LoginInput!): AuthUser!
+  createDemoUser: DemoUser!
 }

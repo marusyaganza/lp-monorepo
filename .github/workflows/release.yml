@@ -1,0 +1,74 @@
+name: Release Monorepo
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  linting-and-testing:
+    uses: ./.github/workflows/common-jobs.yml
+    secrets:
+      JWT_SECTET: ${{ secrets.JWT_SECTET }}
+      AUDIO_ENDPOINT: ${{ secrets.AUDIO_ENDPOINT }}
+      IMG_ENDPOINT: ${{ secrets.IMG_ENDPOINT }}
+      SLACK_CHANNEL_ID: ${{ secrets.SLACK_CHANNEL_ID }}
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+  storybook:
+    runs-on: ubuntu-22.04
+    needs: linting-and-testing
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18.17.0'
+      - uses: ./.github/actions/setup-yarn
+      - name: Build Storybook
+        working-directory: ./packages/ui
+        run: yarn codegen && yarn build-storybook
+      - name: Deploy Storybook to Netlify
+        uses: netlify/actions/cli@master
+        with:
+          args: deploy --dir=storybook-static --site=$NETLIFY_SITE_ID --auth=$NETLIFY_AUTH_TOKEN --prod
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+      - name: Output Netlify Preview URL
+        run: echo "Storybook deployed to Netlify! Visit https://app.netlify.com/sites/${{ secrets.NETLIFY_SITE_ID }}"
+  cypress:
+    uses: ./.github/workflows/cypress.yml
+    needs: linting-and-testing
+    secrets:
+      JWT_SECTET: ${{ secrets.JWT_SECTET }}
+      AUDIO_ENDPOINT: ${{ secrets.AUDIO_ENDPOINT }}
+      IMG_ENDPOINT: ${{ secrets.IMG_ENDPOINT }}
+      SLACK_CHANNEL_ID: ${{ secrets.SLACK_CHANNEL_ID }}
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+  release:
+    runs-on: ubuntu-22.04
+    needs: [linting-and-testing]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18.17.0'
+      - uses: ./.github/actions/setup-yarn
+      - name: Configure Git user
+        run: |
+          git config --global user.email "ci-bot@yourdomain.com"
+          git config --global user.name "CI Bot"
+      - name: Run Lerna Release Script
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: yarn release --yes
+  docker:
+    uses: ./.github/workflows/docker.yml
+    secrets:
+      DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+      SLACK_CHANNEL_ID: ${{ secrets.SLACK_CHANNEL_ID }}
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+    needs: release

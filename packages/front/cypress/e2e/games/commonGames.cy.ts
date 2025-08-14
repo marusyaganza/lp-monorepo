@@ -11,13 +11,6 @@ import {
   playGameOnce
 } from '../../support/helpers/game';
 
-const audioUrls = {
-  [Language.Spanish]:
-    'https://media.merriam-webster.com/audio/prons/es/me/mp3/i/idiom01sp.mp3',
-  [Language.English]:
-    'https://media.merriam-webster.com/audio/prons/en/us/mp3/w/wheel001.mp3'
-};
-
 const imgUrls = {
   wheel: 'https://merriam-webster.com/assets/mw/static/art/dict/wheel.gif',
   idioma:
@@ -36,30 +29,14 @@ const incorrectAnswers = {
   [Language.Spanish]: 'espirelar'
 };
 
-const serAudio =
-  'https://media.merriam-webster.com/audio/prons/es/me/mp3/s/ser0001sp.mp3';
-
 describe('Game Page', () => {
   beforeEach(() => {
     cy.task('prepareDB');
     cy.login();
     cy.visit('/games');
-    cy.get('[data-cy="sortControls"]').as('sortControls');
-    cy.get('@sortControls').find('[data-cy="select"]').as('select');
     cy.get('[data-cy="headerNav"] a').as('headerLink');
     cy.get('[data-cy="gamesList"]').as('gamesList');
     cy.get('@gamesList').find('[data-cy="gameCard"]').as('gameCard');
-
-    languages.forEach(lang => {
-      cy.intercept({
-        method: 'GET',
-        url: `${audioUrls[lang]}`
-      }).as(`audioReq-${lang}`);
-    });
-    cy.intercept({
-      method: 'GET',
-      url: serAudio
-    }).as(`audioReq-ser`);
   });
 
   afterEach(() => {
@@ -68,12 +45,16 @@ describe('Game Page', () => {
 
   languages.forEach(lang => {
     const availableGames = games.filter(
-      game => game.type !== Game.Conjugation && game.type !== Game.Gender
+      game =>
+        game.type !== Game.Conjugation &&
+        game.type !== Game.Gender &&
+        game.type !== Game.Speaking
     );
     availableGames.forEach(game => {
       it(`should start a ${game.type} game with minimal words in ${lang} language`, () => {
         const query = queries[lang];
-        cy.changeLanguage(lang);
+        cy.presetLanguage(lang);
+        cy.visit('/games');
         cy.addWord(query);
         if (lang === Language.Spanish) {
           cy.get('@headerLink').contains(HEADER_TEXTS.vocabulary).click();
@@ -92,7 +73,8 @@ describe('Game Page', () => {
       });
 
       it(`should answer incorrectly and finish a ${game.type} game in ${lang} language`, () => {
-        cy.changeLanguage(lang);
+        cy.presetLanguage(lang);
+        cy.visit('/games');
         const query = queries[lang];
         cy.addWord(query, query);
         if (lang === Language.Spanish) {
@@ -107,13 +89,7 @@ describe('Game Page', () => {
         cy.getByCy('gameCard').eq(game.orderNum).click();
         cy.checkPathName(`/games/${game.id}`);
         playGameOnce(game.type, incorrectAnswers[lang]);
-        checkGame(
-          GameStage.Error,
-          game.type,
-          query,
-          `@audioReq-${lang}`,
-          imgUrls[query]
-        );
+        checkGame(GameStage.Error, game.type, query, imgUrls[query]);
         cy.getByCy('continue-button').click();
         checkResultScreen(0, 1, 0);
         cy.intercept('POST', 'http://localhost:4000/graphql').as(
@@ -133,7 +109,8 @@ describe('Game Page', () => {
       });
 
       it(`should answer correctly and finish a ${game.type} game in ${lang} language`, () => {
-        cy.changeLanguage(lang);
+        cy.presetLanguage(lang);
+        cy.visit('/games');
         cy.addWord(queries[lang], queries[lang]);
         if (lang === Language.Spanish) {
           cy.get('@headerLink').contains(HEADER_TEXTS.vocabulary).click();
@@ -147,12 +124,7 @@ describe('Game Page', () => {
         cy.getByCy('gameCard').eq(game.orderNum).click();
         cy.checkPathName(`/games/${game.id}`);
         playGameOnce(game.type, queries[lang]);
-        checkGame(
-          GameStage.Success,
-          game.type,
-          queries[lang],
-          `@audioReq-${lang}`
-        );
+        checkGame(GameStage.Success, game.type, queries[lang]);
         cy.getByCy('continue-button').click();
         checkResultScreen(100, 1, 1);
 

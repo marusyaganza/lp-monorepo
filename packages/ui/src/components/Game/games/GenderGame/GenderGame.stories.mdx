@@ -1,0 +1,71 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+
+<Meta title="Games/GenderGame" />
+
+# GenderGame
+
+**GenderGame** is an interactive language-learning component designed to practice the grammatical gender of nouns (masculine or feminine).  
+It’s ideal for learners developing their intuition and accuracy with gender assignment in Spanish vocabulary.
+
+---
+
+## How It Works
+
+- The game presents a word (sometimes with audio).
+- The user is prompted:  
+  *Pick the correct gender*
+- Two options—Feminine and Masculine—are shown as stylish buttons, each accompanied by an icon for quick visual recognition.
+- Clicking an option selects the gender(s) the learner believes are correct.
+- Press **Check** to submit and receive immediate feedback:
+    - Correct choices highlight, incorrect choices indicate mistakes.
+    - After an incorrect attempt, the correct answer is revealed.
+    - If correct, **Continue** advances to the next word.
+
+---
+
+## Features
+
+- **Audio Support:** If the word has pronunciation audio, a play button lets learners hear it before answering.
+- **Visual Feedback:** Buttons and icons change styles to indicate correct, incorrect, or disabled states after submission.
+- **Multiple Answers:** Support for words that can be both genders (where applicable).
+- **Clear Progression:** Simple workflow—select gender, check answer, continue.
+- **Accessible UI:** Focusable buttons and icon labels ensure usability for all learners.
+
+---
+
+## Typical User Flow
+
+1. View the word (with optional audio playback).
+2. Choose the correct gender(s) by clicking the Feminine or Masculine button.
+3. Click **Check**.
+4. See feedback and the correct answer if needed.
+5. Click **Continue** to move to the next word.
+
+---
+
+## Props
+- `task`: Instruction displayed to the learner.
+- `question`: The word to be classified by gender.
+- `audioUrl`: Optional audio pronunciation for the word.
+- `correctAnswer`: One or more correct gender options.
+- `onSubmit`: Callback handling answer checks.
+- `onNext`: Triggers the next round.
+- `currentStage`: Controls feedback display and workflow (`initial`, `error`, `success`).
+
+---
+
+## Component States
+
+- **Initial:** Gender buttons ready for selection, Check button active.
+- **Correct/Incorrect:** Selected gender(s) styled for feedback, correct answer shown if needed.
+- **Continue:** Button appears to proceed after completion.
+
+---
+
+**Tip:** Use GenderGame to master the grammatical gender of Spanish nouns. Fast feedback and clear visuals help reinforce correct associations—a crucial skill for reading, writing, and comprehension.
+
+<Canvas>
+  <Story id="games-gendergame--game-default" />
+</Canvas>
+
+

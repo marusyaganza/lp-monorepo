@@ -97,14 +97,16 @@ export const EditWordForm = ({
               dataCy="formField-name"
               isDisabled
             />
-            <TagSelector
-              className={styles.tagSelector}
-              dataCy="formField-tags"
-              onChange={getChangeHandler('tags')}
-              tags={tags}
-              value={values.tags || []}
-              label="tags"
-            />
+            {!!tags?.length && (
+              <TagSelector
+                className={styles.tagSelector}
+                dataCy="formField-tags"
+                onChange={getChangeHandler('tags')}
+                tags={tags}
+                value={values.tags || []}
+                label="tags"
+              />
+            )}
             <ArrayInput
               name="shortDef"
               dataCy="formField-shortDef"
@@ -129,7 +131,7 @@ export const EditWordForm = ({
               errorText={errors?.particle}
               onChange={getChangeHandler('particle')}
               initialValue={initialValues.particle}
-              label="particle"
+              label="word category"
             />
             <InputV2
               dataCy="formField-audioUrl"

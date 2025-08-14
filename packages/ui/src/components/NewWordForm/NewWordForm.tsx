@@ -103,14 +103,16 @@ export const NewWordForm = ({
               label="name"
               errorText={errors?.name}
             />
-            <TagSelector
-              dataCy="formField-tags"
-              className={styles.tagSelector}
-              onChange={getChangeHandler('tags')}
-              tags={tags}
-              value={values.tags || []}
-              label="tags"
-            />
+            {!!tags?.length && (
+              <TagSelector
+                dataCy="formField-tags"
+                className={styles.tagSelector}
+                onChange={getChangeHandler('tags')}
+                tags={tags}
+                value={values.tags || []}
+                label="tags"
+              />
+            )}
             <ArrayInput
               dataCy="formField-shortDef"
               name="shortDef"
@@ -142,7 +144,7 @@ export const NewWordForm = ({
               errorText={errors?.particle}
               onChange={getChangeHandler('particle')}
               initialValue={initialValues.particle}
-              label="particle"
+              label="word category"
             />
             <InputV2
               name="audioUrl"
