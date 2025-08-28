@@ -1,6 +1,6 @@
 import { authenticated } from '../../auth';
 import { DEFAULT_LANGUAGE } from '../../constants/defaultValues';
-import { DEFAULT_GAMES_SETTINGS } from '../../constants/defultGameSettings';
+import { DEFAULT_GAMES_SETTINGS } from '../../constants/defaultGameSettings';
 import { GAMES } from '../../constants/games';
 import { WordModel } from '../../db/models/Word/Word';
 import { QueryResolvers } from '../../generated/graphql';
