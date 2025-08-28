@@ -45,8 +45,8 @@ All are managed with a single set of scripts, codegen, and dependency installs v
 ### 2. Clone & Install
 
 ```bash
-git clone https://github.com/marusyaganza/language-power.git
-cd language-power
+git clone https://github.com/marusyaganza/lp-monorepo.git
+cd lp-monorepo
 yarn install
 ```
 
@@ -72,7 +72,7 @@ yarn codegen # Regenerate TypeScript types from GQL schema for all packages
 
 ### Env Setup
 
-- MongoDB: Required for server; configure `MONGODB_URI` in `.env` (use `.env.example`)
+- MongoDB: Required for server; configure `MONGO_CONNECTION` in `.env` (use `.env.example` in the `packages/server` folder)
 - API Keys: For dictionary API, add credentials if real data is required
 - Mocks: Set `USE_MOCKS=true` in env to use the provided dictionary API mocks
 
@@ -92,7 +92,6 @@ All scripts are run via Lerna/Yarn workspaces:
 - `start`, `dev`, `prod:docker`, `dev:docker` – combined app build/run (see details in package.json)
 - `ready`, `lint`, `stylelint`, `clean`, `test`, `test:preprod` – for code quality, hygiene, and CI
 - `storybook`, `build-storybook` – documentation for UI system (preview and build)
-- `api-docs` – Generates backend API documentation
 - `codegen`, `codegen:watch` – GQL type generation
 - `new-component` – Scaffolds new UI components
 
