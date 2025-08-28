@@ -9,7 +9,7 @@ import {
 } from '../../../tests/helpers/testDBUtils';
 import { newWordInputs } from '../../../tests/mocks/inputs/newWordInputs';
 import { usersTestData } from '../../../tests/mocks//inputs/newUserInput';
-import { DEFAULT_GAMES_SETTINGS } from '../../../constants/defultGameSettings';
+import { DEFAULT_GAMES_SETTINGS } from '../../../constants/defaultGameSettings';
 
 const gameType = Game.SelectDef;
 const gameConfig = DEFAULT_GAMES_SETTINGS[gameType];

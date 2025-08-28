@@ -3,7 +3,7 @@ import { generateAudioGame } from '../generateAudioGame';
 import { Game, Language } from '../../../generated/graphql';
 import { OperationResolutionError } from '../../../utils/apolloCustomErrors';
 import { ERROR_MESSAGES } from '../../../constants/errorMessages';
-import { DEFAULT_GAMES_SETTINGS } from '../../../constants/defultGameSettings';
+import { DEFAULT_GAMES_SETTINGS } from '../../../constants/defaultGameSettings';
 
 const languages = Object.values(Language);
 const gameType = Game.Audio;

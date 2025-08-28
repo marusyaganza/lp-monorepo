@@ -1,7 +1,7 @@
 import { testData } from '../../../tests/mocks/wordsForGames';
 import { generateTypeWordGame } from '../generateTypeWordGame';
 import { Game, Language } from '../../../generated/graphql';
-import { DEFAULT_GAMES_SETTINGS } from '../../../constants/defultGameSettings';
+import { DEFAULT_GAMES_SETTINGS } from '../../../constants/defaultGameSettings';
 
 const languages = Object.values(Language);
 const gameType = Game.TypeWord;

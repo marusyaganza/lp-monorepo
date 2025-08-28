@@ -21,7 +21,7 @@ import { newWordInputs } from '../../../tests/mocks/inputs/newWordInputs';
 import { usersTestData } from '../../../tests/mocks/inputs/newUserInput';
 import { generateGameData } from '../../../generateGameData';
 import { ERROR_MESSAGES } from '../../../constants/errorMessages';
-import { DEFAULT_GAMES_SETTINGS } from '../../../constants/defultGameSettings';
+import { DEFAULT_GAMES_SETTINGS } from '../../../constants/defaultGameSettings';
 
 const languages = Object.values(Language);
 const tenses = Object.values(Tense);
