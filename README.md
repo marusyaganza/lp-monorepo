@@ -56,7 +56,7 @@ All dependencies for every package will be installed.
 
 - **Backend**: Runs with Apollo Server, Express, MongoDB (local or cloud), uses [Merriam-Webster Dictionary API](https://dictionaryapi.com/), with built-in API mocks
 - **Frontend**: React app; imports shared UI from `@lp/ui`
-- **UI Library**: Develop, preview, and document UI via Storybook (Chromatic-hosted and locally)
+- **UI Library**: Develop, preview, and document UI via Storybook (Netlify-hosted and locally)
 
 #### Common commands from repo root:
 
@@ -95,6 +95,7 @@ All scripts are run via Lerna/Yarn workspaces:
 - `api-docs` – Generates backend API documentation
 - `codegen`, `codegen:watch` – GQL type generation
 - `new-component` – Scaffolds new UI components
+
 ---
 
 ## Project Demos
