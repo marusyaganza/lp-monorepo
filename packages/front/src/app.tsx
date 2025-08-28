@@ -7,7 +7,7 @@ import {
   createHttpLink
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import { AppProvider } from './app-context/appContext';
+import { AppProviders } from './app-context';
 import { getStoredData } from './util/localStorageUtils';
 import { router } from './routes';
 
@@ -37,10 +37,10 @@ export const client = new ApolloClient({
 
 export const App = () => {
   return (
-    <AppProvider>
+    <AppProviders>
       <ApolloProvider client={client}>
         <RouterProvider router={router} />
       </ApolloProvider>
-    </AppProvider>
+    </AppProviders>
   );
 };

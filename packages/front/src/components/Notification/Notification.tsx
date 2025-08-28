@@ -1,13 +1,13 @@
-import React, { useContext, useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { Notification as NotificationComponent } from '@lp/ui';
 import { useLocation } from 'react-router-dom';
 
-import { AppContext } from '../../app-context/appContext';
+import { useNotificationContext } from '../../app-context';
 
 import './Notification.css';
 
 export const Notification = () => {
-  const { notification, setNotification } = useContext(AppContext);
+  const { notification, setNotification } = useNotificationContext();
   const location = useLocation();
 
   const closeHandler = useCallback(() => {

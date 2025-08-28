@@ -1,17 +1,17 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect } from 'react';
 import { useLazyQuery } from '@apollo/client';
 import { useParams, useNavigate } from 'react-router-dom';
 import { WordCard, Icon, Link, Spinner } from '@lp/ui';
 import { routes } from '../../../constants/routes';
 import { PageLayout } from '../../../components/PageLayout/PageLayout';
 import { WORD_BY_ID_QUERY } from '../../../gql/queries';
-import { AppContext } from '../../../app-context/appContext';
+import { useNotificationContext } from '../../../app-context';
 
 import styles from './WordPage.module.css';
 
 const WordPage = () => {
   const { wordId } = useParams();
-  const { setNotification } = useContext(AppContext);
+  const { setNotification } = useNotificationContext();
   const [fetchWord, { loading, error, data }] = useLazyQuery(WORD_BY_ID_QUERY);
   const navigate = useNavigate();
 

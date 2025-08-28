@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import {
   SaveGameResultMutation,
@@ -6,7 +6,11 @@ import {
 } from '../../../generated/graphql';
 import { routes } from '../../../constants/routes';
 import { GameEngine } from '@lp/ui';
-import { AppContext } from '../../../app-context/appContext';
+import {
+  useNotificationContext,
+  useLanguageContext,
+  useAuthContext
+} from '../../../app-context';
 import { PageSpinner } from '../../../components/PageSpinner/PageSpinner';
 
 import { useMutation, useQuery } from '@apollo/client';
@@ -15,7 +19,9 @@ import { SAVE_GAME_RESULT_MUTATION } from '../../../gql/mutations';
 
 const GamePage = () => {
   const navigate = useNavigate();
-  const { setNotification, language, userId } = useContext(AppContext);
+  const { setNotification } = useNotificationContext();
+  const { language } = useLanguageContext();
+  const { userId } = useAuthContext();
 
   const location = useLocation();
   const { state } = location;

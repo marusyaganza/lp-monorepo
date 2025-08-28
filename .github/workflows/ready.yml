@@ -10,7 +10,7 @@ jobs:
   common-jobs:
     uses: ./.github/workflows/common-jobs.yml
     secrets:
-      JWT_SECTET: ${{ secrets.JWT_SECTET }}
+      JWT_SECRET: ${{ secrets.JWT_SECRET }}
       AUDIO_ENDPOINT: ${{ secrets.AUDIO_ENDPOINT }}
       IMG_ENDPOINT: ${{ secrets.IMG_ENDPOINT }}
       SLACK_CHANNEL_ID: ${{ secrets.SLACK_CHANNEL_ID }}

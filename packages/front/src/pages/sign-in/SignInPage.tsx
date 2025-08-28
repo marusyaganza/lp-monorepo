@@ -1,10 +1,14 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { validators } from '@lp/ui';
 import { AuthPageLayout } from '../../components/AuthPageLayout/AuthPageLayout';
 import { Form, FormField } from '@lp/ui';
 import { LoginMutation, LoginInput } from '../../generated/graphql';
-import { AppContext } from '../../app-context/appContext';
+import {
+  useAuthContext,
+  useNotificationContext,
+  useEnvironmentContext
+} from '../../app-context';
 import { routes } from '../../constants/routes';
 import llustration from '../../assets/img/login.svg';
 import styles from './SignInPage.module.css';
@@ -35,7 +39,9 @@ const SignInPage = () => {
 
   const [authFunc, { data, loading, error }] =
     useMutation<LoginMutation>(LOGIN_MUTATION);
-  const { login, setNotification, isDevEnv } = useContext(AppContext);
+  const { login } = useAuthContext();
+  const { setNotification } = useNotificationContext();
+  const { isDevEnv } = useEnvironmentContext();
 
   const submitHandler = (values: LoginInput) => {
     authFunc({ variables: { input: values }, errorPolicy: 'all' });

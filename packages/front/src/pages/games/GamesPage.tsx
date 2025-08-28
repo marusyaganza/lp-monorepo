@@ -1,10 +1,14 @@
-import React, { useContext, useEffect, useCallback, useState } from 'react';
+import React, { useEffect, useCallback, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { SortBy, GamesQuery, TagsQuery, Game } from '../../generated/graphql';
 import { GameCard, Spinner, TagSelector } from '@lp/ui';
 import { routes } from '../../constants/routes';
 import { PageLayout } from '../../components/PageLayout/PageLayout';
-import { AppContext } from '../../app-context/appContext';
+import {
+  useNotificationContext,
+  useLanguageContext,
+  useEnvironmentContext
+} from '../../app-context';
 import { getStoredData, storeData } from '../../util/localStorageUtils';
 import { SortControls } from '../../components/SortControls/SortControls';
 import { GAMES_QUERY, TAGS_QUERY } from '../../gql/queries';
@@ -22,7 +26,9 @@ const OPTIONS: Record<SortBy, string> = {
 };
 
 const GamesPage = () => {
-  const { setNotification, language, isDemo } = useContext(AppContext);
+  const { setNotification } = useNotificationContext();
+  const { language } = useLanguageContext();
+  const { isDemo } = useEnvironmentContext();
   const [sortBy, setSortBy] = useState(SortBy.SpacedRepetition);
   const [tags, setTags] = useState<string[] | undefined>();
   const [isReverseOrder, setIsReverseOrder] = useState(false);

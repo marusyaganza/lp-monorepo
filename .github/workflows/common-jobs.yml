@@ -3,7 +3,7 @@ name: Common Jobs
 on:
   workflow_call:
     secrets:
-      JWT_SECTET:
+      JWT_SECRET:
         required: true
       AUDIO_ENDPOINT:
         required: true

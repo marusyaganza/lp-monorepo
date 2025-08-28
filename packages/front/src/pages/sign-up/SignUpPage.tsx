@@ -1,11 +1,15 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { validators } from '@lp/ui';
 import { AuthPageLayout } from '../../components/AuthPageLayout/AuthPageLayout';
 import { Form, FormField } from '@lp/ui';
 import { SignUpMutation, SignUpInput } from '../../generated/graphql';
-import { AppContext } from '../../app-context/appContext';
+import {
+  useAuthContext,
+  useNotificationContext,
+  useEnvironmentContext
+} from '../../app-context';
 import { routes } from '../../constants/routes';
 
 import styles from './SignUpPage.module.css';
@@ -70,7 +74,9 @@ const SignUpPage = () => {
 
   const [authFunc, { data, loading, error }] =
     useMutation<SignUpMutation>(SIGN_UP_MUTATION);
-  const { login, setNotification, isDevEnv } = useContext(AppContext);
+  const { login } = useAuthContext();
+  const { setNotification } = useNotificationContext();
+  const { isDevEnv } = useEnvironmentContext();
   const navigate = useNavigate();
 
   const submitHandler = (values: SignUpInput) => {

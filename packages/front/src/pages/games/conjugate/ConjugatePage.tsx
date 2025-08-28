@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Tense, Game, VerbsQuery } from '../../../generated/graphql';
 import logo from '../../../assets/img/conjugate-logo.svg';
 import { PageLayout } from '../../../components/PageLayout/PageLayout';
@@ -8,7 +8,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { routes } from '../../../constants/routes';
 import { useQuery } from '@apollo/client';
 import { VERBS_QUERY } from '../../../gql/queries';
-import { AppContext } from '../../../app-context/appContext';
+import { useNotificationContext } from '../../../app-context';
 
 // Uncomment more tenses as needed
 export const TENSES: Record<Tense, string> = {
@@ -39,7 +39,7 @@ const ConjugatePage = () => {
   const [wordId, setWordId] = useState<string>();
   const [wordSelectionOpen, setWordSelectionOpen] = useState(false);
   const { data, loading, error } = useQuery<VerbsQuery>(VERBS_QUERY);
-  const { setNotification } = useContext(AppContext);
+  const { setNotification } = useNotificationContext();
 
   const navigate = useNavigate();
   const handleChange = (val: Tense) => {

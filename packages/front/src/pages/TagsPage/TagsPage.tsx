@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useMutation, useQuery } from '@apollo/client';
 import { TAGS_QUERY } from '../../gql/queries';
 import {
@@ -15,7 +15,7 @@ import {
 import { Button, Tag, TagsForm, TagsFormValues, useModal } from '@lp/ui';
 import { PageLayout } from '../../components/PageLayout/PageLayout';
 import { DeleteConfirnation } from '../../components/DeleteConfirnation/DeleteConfirnation';
-import { AppContext } from '../../app-context/appContext';
+import { useNotificationContext, useLanguageContext } from '../../app-context';
 import { removeTypenames } from '../../util/wordUtils';
 
 import styles from './TagsPage.module.css';
@@ -41,7 +41,8 @@ const cleanUpDeletedTags = (id: string, language: Language) => {
 };
 
 export const TagsPage = () => {
-  const { setNotification, language } = useContext(AppContext);
+  const { setNotification } = useNotificationContext();
+  const { language } = useLanguageContext();
 
   const [currentTag, setCurrentTag] = useState<
     UpdateWordTagInput | undefined

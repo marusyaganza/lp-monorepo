@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link, Icon, NewWordForm, Spinner } from '@lp/ui';
 import styles from './NewWordPage.module.css';
@@ -10,7 +10,7 @@ import {
   SaveWordMutation,
   TagsQuery
 } from '../../generated/graphql';
-import { AppContext } from '../../app-context/appContext';
+import { useNotificationContext, useLanguageContext } from '../../app-context';
 import { useMutation, useQuery } from '@apollo/client';
 import { SAVE_WORD_MUTATION } from '../../gql/mutations';
 import { TAGS_QUERY } from '../../gql/queries';
@@ -27,7 +27,8 @@ const NewWordPage = () => {
       }
     }
   );
-  const { setNotification, language } = useContext(AppContext);
+  const { setNotification } = useNotificationContext();
+  const { language } = useLanguageContext();
   const tagsData = useQuery<TagsQuery>(TAGS_QUERY, {
     variables: { language }
   });
