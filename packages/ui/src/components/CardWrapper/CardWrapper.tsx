@@ -16,9 +16,12 @@ export const CardWrapper = ({
   onClick
 }: PropsWithChildren<CardWrapperProps>) => {
   const keyPressHandler = (e: KeyboardEvent<HTMLDivElement>) => {
-    //TODO figure out real type of this value
-    const target: any = e.target;
-    if (e.key === 'Enter' && onClick && target?.role === 'navigation') {
+    const target = e.target as HTMLElement;
+    if (
+      e.key === 'Enter' &&
+      onClick &&
+      target?.getAttribute('role') === 'navigation'
+    ) {
       onClick();
     }
   };

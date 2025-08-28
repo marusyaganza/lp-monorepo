@@ -11,7 +11,7 @@ import { usersTestData } from '../../tests/mocks/inputs/newUserInput';
 import { newWordInputs } from '../../tests/mocks/inputs/newWordInputs';
 import { OperationResolutionError } from '../../utils/apolloCustomErrors';
 import { ERROR_MESSAGES } from '../../constants/errorMessages';
-import { DEFAULT_GAMES_SETTINGS } from '../../constants/defultGameSettings';
+import { DEFAULT_GAMES_SETTINGS } from '../../constants/defaultGameSettings';
 
 const snapshotConfig = {
   wordId: expect.any(String)

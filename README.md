@@ -81,7 +81,6 @@ yarn codegen # Regenerate TypeScript types from GQL schema for all packages
 ## Deploy/CI
 
 - **Dockerized workflow** for prod/dev deploys (see details in the scripts section and below)
-- **Chromatic Hosting**: Storybook is instantly deployed on every commit/merge ([see Chromatic docs](https://www.chromatic.com/))
 - **CI/CD ready** via GitHub Actions for build, lint, and deployment
 
 ---
@@ -96,7 +95,6 @@ All scripts are run via Lerna/Yarn workspaces:
 - `api-docs` – Generates backend API documentation
 - `codegen`, `codegen:watch` – GQL type generation
 - `new-component` – Scaffolds new UI components
-
 ---
 
 ## Project Demos

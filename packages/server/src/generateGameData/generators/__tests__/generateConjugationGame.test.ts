@@ -7,7 +7,7 @@ import { Game, Language, Tense } from '../../../generated/graphql';
 import { TENSES } from '../../../constants/tenses';
 import { OperationResolutionError } from '../../../utils/apolloCustomErrors';
 import { ERROR_MESSAGES } from '../../../constants/errorMessages';
-import { DEFAULT_GAMES_SETTINGS } from '../../../constants/defultGameSettings';
+import { DEFAULT_GAMES_SETTINGS } from '../../../constants/defaultGameSettings';
 
 const gameType = Game.Conjugation;
 const gameConfig = DEFAULT_GAMES_SETTINGS[gameType];

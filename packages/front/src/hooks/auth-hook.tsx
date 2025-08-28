@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 import { getStoredData, storeData } from '../util/localStorageUtils';
 import { client, createAuthLink } from '../app';
 export type loginFuncType = (
@@ -8,8 +8,6 @@ export type loginFuncType = (
 ) => void;
 
 export type logoutFuncType = () => void;
-
-let logoutTimer: NodeJS.Timeout | undefined;
 
 const tokenTTL = Number.parseInt(process.env.TOKEN_TTL || '7');
 
@@ -23,6 +21,7 @@ export const useAuth = () => {
   const [userId, setUserId] = useState<string | null>();
   const [token, setToken] = useState<string | null>();
   const [tokenExpDate, setTokenExpDate] = useState<Date | null>();
+  const logoutTimerRef = useRef<NodeJS.Timeout | undefined>();
 
   const login: loginFuncType = useCallback(
     (id, tokenString, expirationDate) => {
@@ -69,12 +68,17 @@ export const useAuth = () => {
   useEffect(() => {
     if (token && tokenExpDate) {
       const remainingTime = tokenExpDate.getTime() - new Date().getTime();
-      logoutTimer = setTimeout(
+      logoutTimerRef.current = setTimeout(
         isDemo ? logout : automaticLogout,
         remainingTime
       );
     }
-    return () => clearTimeout(logoutTimer);
+    return () => {
+      if (logoutTimerRef.current) {
+        clearTimeout(logoutTimerRef.current);
+        logoutTimerRef.current = undefined;
+      }
+    };
   }, [token, tokenExpDate, logout, automaticLogout]);
 
   return { userId, token, login, logout };

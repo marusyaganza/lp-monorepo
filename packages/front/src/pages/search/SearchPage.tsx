@@ -1,5 +1,9 @@
-import React, { useContext, useEffect, useMemo, useState } from 'react';
-import { AppContext } from '../../app-context/appContext';
+import React, { useEffect, useMemo, useState } from 'react';
+import {
+  useNotificationContext,
+  useLanguageContext,
+  useEnvironmentContext
+} from '../../app-context';
 import { useSearchParams } from 'react-router-dom';
 import { Icon, SearchField, Link } from '@lp/ui';
 import { PageLayout } from '../../components/PageLayout/PageLayout';
@@ -33,7 +37,9 @@ const SearchPage = () => {
       }
     }
   );
-  const { setNotification, language, isDemo } = useContext(AppContext);
+  const { setNotification } = useNotificationContext();
+  const { language } = useLanguageContext();
+  const { isDemo } = useEnvironmentContext();
   const [fetchSearchResult, { loading, error, data }] =
     useLazyQuery<SearchWordsQuery>(SEARCH_WORDS_QUERY);
   const [savedWords, setSavedWords] = useState<string[]>([]);

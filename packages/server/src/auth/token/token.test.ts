@@ -19,7 +19,7 @@ describe('getUserFromToken', () => {
   test('should return user data with valid token', () => {
     const token = 'token';
     const result = getUserFromToken(token);
-    expect(jwt.verify).toHaveBeenCalledWith('token', mockEnv.JWT_SECTET);
+    expect(jwt.verify).toHaveBeenCalledWith('token', mockEnv.JWT_SECRET);
     expect(result).toEqual(mockUser);
   });
 
@@ -35,14 +35,14 @@ describe('getUserFromToken', () => {
     const result = getUserFromToken(token);
     expect(result).toBe(undefined);
 
-    expect(jwt.verify).toHaveBeenCalledWith('token', mockEnv.JWT_SECTET);
+    expect(jwt.verify).toHaveBeenCalledWith('token', mockEnv.JWT_SECRET);
   });
 });
 
 describe('createToken', () => {
   test('should return token with valid data', () => {
     const result = createToken(mockUser);
-    expect(jwt.sign).toHaveBeenCalledWith(mockUser, mockEnv.JWT_SECTET, {
+    expect(jwt.sign).toHaveBeenCalledWith(mockUser, mockEnv.JWT_SECRET, {
       expiresIn: `${mockEnv.TOKEN_TTL}d`
     });
     expect(result).toEqual(

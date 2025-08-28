@@ -1,9 +1,9 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect } from 'react';
 
 import { Button } from '@lp/ui';
 import { AuthPageLayout } from '../../components/AuthPageLayout/AuthPageLayout';
 import { CreateDemoUserMutation } from '../../generated/graphql';
-import { AppContext } from '../../app-context/appContext';
+import { useAuthContext, useNotificationContext } from '../../app-context';
 
 import { useMutation } from '@apollo/client';
 import { CREATE_DEMO_USER_MUTATION } from '../../gql/mutations';
@@ -13,7 +13,8 @@ import styles from './DemoPage.module.css';
 const DemoPage = () => {
   const [createDemoUserFunc, { data, loading, error }] =
     useMutation<CreateDemoUserMutation>(CREATE_DEMO_USER_MUTATION);
-  const { login, logout, setNotification } = useContext(AppContext);
+  const { login, logout } = useAuthContext();
+  const { setNotification } = useNotificationContext();
 
   const submitHandler = () => {
     createDemoUserFunc();

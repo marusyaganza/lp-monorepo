@@ -1,13 +1,13 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { PageLayout } from '../../components/PageLayout/PageLayout';
 import { UserQuery } from '../../generated/graphql';
-import { AppContext } from '../../app-context/appContext';
+import { useNotificationContext } from '../../app-context';
 import { useQuery } from '@apollo/client';
 import { USER_QUERY } from '../../gql/queries';
 
 export const ProfilePage = () => {
   const { error, loading, data } = useQuery<UserQuery>(USER_QUERY);
-  const { setNotification } = useContext(AppContext);
+  const { setNotification } = useNotificationContext();
 
   useEffect(() => {
     if (error) {

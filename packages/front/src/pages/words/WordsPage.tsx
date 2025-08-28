@@ -1,10 +1,4 @@
-import React, {
-  useEffect,
-  useContext,
-  useState,
-  useCallback,
-  useMemo
-} from 'react';
+import React, { useEffect, useState, useCallback, useMemo } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import {
   Word,
@@ -27,7 +21,7 @@ import {
 } from '@lp/ui';
 
 import { PageLayout } from '../../components/PageLayout/PageLayout';
-import { AppContext } from '../../app-context/appContext';
+import { useNotificationContext, useLanguageContext } from '../../app-context';
 import {
   SortByType,
   SortControls
@@ -47,7 +41,8 @@ const WordsPage = () => {
   const navigate = useNavigate();
   const [fetchWords, { loading, error, data }] =
     useLazyQuery<WordsPerPageQuery>(WORDS_PER_PAGE_QUERY);
-  const { setNotification, language } = useContext(AppContext);
+  const { setNotification } = useNotificationContext();
+  const { language } = useLanguageContext();
   const [sortBy, setSortBy] = useState<SortWordsBy>();
   const [tags, setTags] = useState<string[] | undefined>();
   const [isReverseOrder, setIsReverseOrder] = useState(false);

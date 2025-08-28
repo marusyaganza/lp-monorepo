@@ -1,7 +1,7 @@
 import { testData } from '../../../tests/mocks/wordsForGames';
 import { generateGenderGame } from '../generateGenderGame';
 import { Game, Language } from '../../../generated/graphql';
-import { DEFAULT_GAMES_SETTINGS } from '../../../constants/defultGameSettings';
+import { DEFAULT_GAMES_SETTINGS } from '../../../constants/defaultGameSettings';
 
 const gameType = Game.Gender;
 const language = Language.Spanish;

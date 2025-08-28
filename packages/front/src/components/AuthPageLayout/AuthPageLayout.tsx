@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, PropsWithChildren } from 'react';
+import React, { useEffect, PropsWithChildren } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { AppContext } from '../../app-context/appContext';
+import { useAuthContext, useEnvironmentContext } from '../../app-context';
 import { Notification } from '../Notification/Notification';
 
 import './AuthPageLayout.css';
@@ -9,8 +9,8 @@ import { getStoredData } from '../../util/localStorageUtils';
 
 export const AuthPageLayout = ({ children }: PropsWithChildren<unknown>) => {
   const navigate = useNavigate();
-  const { userId } = useContext(AppContext);
-  const { isDemo } = useContext(AppContext);
+  const { userId } = useAuthContext();
+  const { isDemo } = useEnvironmentContext();
   useEffect(() => {
     if (userId) {
       let previousLocation = '/';

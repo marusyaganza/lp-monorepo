@@ -13,7 +13,7 @@ export async function hashPassword(
   try {
     hashedPassword = await bcrypt.hash(password, parseInt(salt));
   } catch (err) {
-    console.error('error');
+    console.error('hashing password error', err);
   }
   return hashedPassword;
 }
@@ -26,7 +26,7 @@ export async function validatePassword(
   try {
     isValidPassword = await bcrypt.compare(password, sample);
   } catch (err) {
-    console.error(err);
+    console.error('validating password error', err);
   }
   return isValidPassword;
 }

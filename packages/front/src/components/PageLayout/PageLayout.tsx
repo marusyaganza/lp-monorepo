@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, useContext, useEffect } from 'react';
+import React, { PropsWithChildren, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import {
   navLinks,
@@ -8,7 +8,12 @@ import {
 } from './config';
 import { PageSpinner } from '../PageSpinner/PageSpinner';
 import { Header, Footer, LinkType, cn } from '@lp/ui';
-import { AppContext } from '../../app-context/appContext';
+import {
+  useAuthContext,
+  useLanguageContext,
+  useNotificationContext,
+  useEnvironmentContext
+} from '../../app-context';
 import { Notification } from '../Notification/Notification';
 import { Language } from '../../generated/graphql';
 import { routes } from '../../constants/routes';
@@ -33,8 +38,10 @@ export const PageLayout = ({
   noRedirect,
   className
 }: PropsWithChildren<PageLayoutProps>) => {
-  const { userId, logout, language, saveLanguage, setNotification, isDemo } =
-    useContext(AppContext);
+  const { userId, logout } = useAuthContext();
+  const { language, saveLanguage } = useLanguageContext();
+  const { setNotification } = useNotificationContext();
+  const { isDemo } = useEnvironmentContext();
   const navigate = useNavigate();
   const location = useLocation();
   useEffect(() => {

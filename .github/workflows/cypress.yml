@@ -3,7 +3,7 @@ name: Common Jobs
 on:
   workflow_call:
     secrets:
-      JWT_SECTET:
+      JWT_SECRET:
         required: true
       AUDIO_ENDPOINT:
         required: true
@@ -23,7 +23,7 @@ jobs:
       FE_URL: http://localhost:8080
       IMG_ENDPOINT: ${{ secrets.IMG_ENDPOINT }}
       AUDIO_ENDPOINT: ${{ secrets.AUDIO_ENDPOINT }}
-      JWT_SECTET: ${{ secrets.JWT_SECTET }}
+      JWT_SECRET: ${{ secrets.JWT_SECRET }}
       USE_MOCKS: true
       NODE_ENV: development
       MONGO_CONNECTION: 'mongodb://localhost:27017/test'

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Link, Icon, EditWordForm, Spinner } from '@lp/ui';
 import { useLazyQuery, useMutation, useQuery } from '@apollo/client';
@@ -11,7 +11,7 @@ import {
   UpdateWordInput,
   WordByIdQuery
 } from '../../generated/graphql';
-import { AppContext } from '../../app-context/appContext';
+import { useNotificationContext, useLanguageContext } from '../../app-context';
 import { TAGS_QUERY, WORD_BY_ID_QUERY } from '../../gql/queries';
 import { UPDATE_WORD_MUTATION } from '../../gql/mutations';
 
@@ -26,7 +26,8 @@ const EditWordPage = () => {
   });
   const [fetchWord, { loading, error, data }] =
     useLazyQuery<WordByIdQuery>(WORD_BY_ID_QUERY);
-  const { setNotification, language } = useContext(AppContext);
+  const { setNotification } = useNotificationContext();
+  const { language } = useLanguageContext();
 
   const tagsData = useQuery<TagsQuery>(TAGS_QUERY, {
     variables: { language }

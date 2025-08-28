@@ -1,5 +1,5 @@
 import { DEFAULT_LANGUAGE } from '../constants/defaultValues';
-import { DEFAULT_GAMES_SETTINGS } from '../constants/defultGameSettings';
+import { DEFAULT_GAMES_SETTINGS } from '../constants/defaultGameSettings';
 import { ERROR_MESSAGES } from '../constants/errorMessages';
 import { WordModel } from '../db/models/Word/Word';
 import { Game, GameDataInput, SortBy } from '../generated/graphql';
