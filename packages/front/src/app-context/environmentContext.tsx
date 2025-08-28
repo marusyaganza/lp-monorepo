@@ -5,7 +5,7 @@ import React, {
   PropsWithChildren
 } from 'react';
 
-interface EnvironmentContextType {
+export interface EnvironmentContextType {
   isDevEnv: boolean;
   isDemo: boolean;
   isProduction: boolean;

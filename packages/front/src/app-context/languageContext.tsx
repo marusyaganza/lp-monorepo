@@ -8,7 +8,7 @@ import React, {
 import { Language } from '../generated/graphql';
 import { getStoredData, storeData } from '../util/localStorageUtils';
 
-interface LanguageContextType {
+export interface LanguageContextType {
   language: Language;
   saveLanguage: (lang: Language) => void;
 }

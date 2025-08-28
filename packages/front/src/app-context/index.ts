@@ -10,7 +10,6 @@ export { useAuthContext } from './authContext';
 export { useLanguageContext } from './languageContext';
 export { useNotificationContext } from './notificationContext';
 export { useEnvironmentContext } from './environmentContext';
-export { useAppContext } from './useAppContext';
 
 // Types
 export type { AuthContextType } from './authContext';

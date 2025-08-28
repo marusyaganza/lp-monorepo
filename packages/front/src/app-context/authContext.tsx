@@ -1,7 +1,7 @@
 import React, { createContext, useContext, PropsWithChildren } from 'react';
 import { useAuth, loginFuncType, logoutFuncType } from '../hooks/auth-hook';
 
-interface AuthContextType {
+export interface AuthContextType {
   login: loginFuncType;
   logout: logoutFuncType;
   userId?: string | null;

@@ -10,7 +10,7 @@ interface NotificationProps extends CoreNotificationProps {
   targetLocation?: string;
 }
 
-interface NotificationContextType {
+export interface NotificationContextType {
   notification?: NotificationProps;
   setNotification: (notification?: NotificationProps) => void;
   clearNotification: () => void;
