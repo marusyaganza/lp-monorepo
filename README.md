@@ -39,7 +39,7 @@ All are managed with a single set of scripts, codegen, and dependency installs v
 
 ### 1. Prerequisites
 
-- **Volta** – Enforces Node 18.17, Yarn 1.22 for everyone (see package.json volta field).
+- **Volta** – Enforces Node 18.17, Yarn 1.22.19 for everyone (see package.json volta field).
 - **Docker** – For reliable development and database provisioning.
 
 ### 2. Clone & Install
@@ -90,7 +90,7 @@ yarn codegen # Regenerate TypeScript types from GQL schema for all packages
 All scripts are run via Lerna/Yarn workspaces:
 
 - `start`, `dev`, `prod:docker`, `dev:docker` – combined app build/run (see details in package.json)
-- `ready`, `lint`, `stylelint`, `clean`, `test`, `test:preprod` – for code quality, hygiene, and CI
+- `ready`, `lint`, `stylelint`, `clean`, `test` – for code quality, hygiene, and CI
 - `storybook`, `build-storybook` – documentation for UI system (preview and build)
 - `codegen`, `codegen:watch` – GQL type generation
 - `new-component` – Scaffolds new UI components
