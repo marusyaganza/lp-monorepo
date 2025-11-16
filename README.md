@@ -98,8 +98,6 @@ All scripts are run via Lerna/Yarn workspaces:
 ---
 
 ## Project Demos
-
-- **Frontend app demo**: [link](https://lp-monorepo-1.onrender.com)
 - **Storybook live docs**: [link](https://lp-design-system.netlify.app/?path=/docs/design-system-colors--docs)
 
 ---
