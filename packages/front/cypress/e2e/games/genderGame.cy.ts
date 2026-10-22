@@ -23,7 +23,7 @@ const imgUrls = {
   ecologista:
     'https://upload.wikimedia.org/wikipedia/commons/7/70/Bufo_boreas.jpg',
   idioma:
-    'https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Rosetta_Stone.JPG/800px-Rosetta_Stone.JPG',
+    'https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Rosetta_Stone.JPG/500px-Rosetta_Stone.JPG',
   ballena: 'https://cdn.langeek.co/photo/28884/original/whale?type=jpeg'
 };
 

@@ -14,7 +14,7 @@ import {
 const imgUrls = {
   wheel: 'https://merriam-webster.com/assets/mw/static/art/dict/wheel.gif',
   idioma:
-    'https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Rosetta_Stone.JPG/800px-Rosetta_Stone.JPG'
+    'https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Rosetta_Stone.JPG/500px-Rosetta_Stone.JPG'
 };
 
 const languages = Object.values(Language);
