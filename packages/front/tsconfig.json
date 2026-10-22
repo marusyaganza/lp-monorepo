@@ -3,6 +3,7 @@
     "compilerOptions": {
     "outDir": "./dist/",
     "jsx": "react",
+    "skipLibCheck": true,
     "typeRoots": ["./src/@types", "./node_modules/@types"],
     "plugins": [{ "name": "typescript-plugin-css-modules" }]
   },

@@ -17,8 +17,7 @@
     "clean": "rimraf dist src/generated *.tsbuildinfo public node_modules",
     "ts": "tsc -b .",
     "codegen:watch": "graphql-codegen --config codegen.ts -w",
-    "start": "yarn dev",
-    "analyze": "yarn prod --env stats=server"
+    "start": "yarn dev"
   },
   "author": "",
   "license": "ISC",
@@ -59,6 +58,10 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "http-server": "^14.1.0",
     "mongoose": "^8.0.3",
+    "style-loader": "^3.3.1",
     "webpack-dev-server": "^4.9.0"
+  },
+  "volta": {
+    "extends": "../../package.json"
   }
 }

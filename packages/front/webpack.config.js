@@ -4,19 +4,11 @@ const Dotenv = require('dotenv-webpack');
 
 const modeConfig = env => require(`./build-utils/webpack.${env}`);
 
-module.exports = ({ mode = 'production', stats, envFile }) => {
+module.exports = ({ mode = 'production', envFile }) => {
   const plugins = [
     new Dotenv({ path: envFile || '.env', systemvars: true }),
     new HtmlWebpackPlugin({ template: './index.html' })
   ];
-  if (stats) {
-    const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-    plugins.push(
-      new BundleAnalyzerPlugin({
-        analyzerMode: stats || 'disabled'
-      })
-    );
-  }
   return merge(
     {
       entry: './index.tsx',
