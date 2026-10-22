@@ -7,7 +7,6 @@
     "build": "yarn codegen && tsc",
     "prod": "yarn codegen && tsc --noCheck",
     "dev": "yarn build && nodemon server.js",
-    "copy": "cp -r ../shared/schema.graphql dist",
     "clean": "rimraf dist src/generated *.tsbuildinfo node_modules",
     "lint": "eslint src",
     "ts": "tsc --watch --preserveWatchOutput",
@@ -20,7 +19,7 @@
     "start": "lerna run dev,ts --scope '@lp/server'",
     "start:test": "yarn build && node dist/server.js"
   },
-  "author": "Marusya Ganza",
+  "author": "Mariia Ganza",
   "license": "MIT",
   "dependencies": {
     "@apollo/server": "4.11.3",

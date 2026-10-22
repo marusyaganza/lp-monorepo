@@ -86,7 +86,7 @@ Some games only use suitable words: the listening and speaking games need words 
 
 Two features were started but never finished. Their code is still in the repository, but they are not part of the intended experience:
 
-- **Tags.** Words can be tagged, and the vocabulary and games can be filtered by tag. The feature works, but its design was never polished, so it was left out of the version presented as a portfolio project.
+- **Tags.** Words can be tagged, and the vocabulary and games can be filtered by tag. The feature works, but its design was never polished, so it was left out of the version presented as a portfolio project: the tags page is not linked from the navigation and is only reachable at `/tags`.
 - **Speaking game (VoiceWord Challenge).** Uses the browser's speech recognition, works only in Chrome and never ran reliably.
 
 ## Requirements

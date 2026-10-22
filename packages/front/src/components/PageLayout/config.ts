@@ -39,11 +39,6 @@ export const mobileNavLinks: HeaderLinkType[] = [
     url: `/${routes.games}`,
     text: 'Practice',
     icon: 'dice'
-  },
-  {
-    url: `/${routes.tags}`,
-    text: 'Tags',
-    icon: 'tag'
   }
 ];
 

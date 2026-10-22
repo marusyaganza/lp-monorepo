@@ -4,7 +4,7 @@
   "description": "Design system and UI components for Language Power v2",
   "main": "src/index.ts",
   "types": "src/index.ts",
-  "author": "Marusya Ganza",
+  "author": "Mariia Ganza",
   "license": "MIT",
   "private": true,
   "scripts": {

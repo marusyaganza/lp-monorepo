@@ -20,7 +20,7 @@
     "start": "yarn dev"
   },
   "author": "Mariia Ganza",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@apollo/client": "^3.8.8",
     "@graphql-codegen/cli": "^5.0.0",
