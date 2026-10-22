@@ -11,7 +11,7 @@ export async function hashPassword(
   const salt = await bcrypt.genSalt(parseInt(SALT_NUMBER || '10'));
   let hashedPassword;
   try {
-    hashedPassword = await bcrypt.hash(password, parseInt(salt));
+    hashedPassword = await bcrypt.hash(password, salt);
   } catch (err) {
     console.error('hashing password error', err);
   }

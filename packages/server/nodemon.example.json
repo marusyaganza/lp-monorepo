@@ -9,7 +9,7 @@
   "env": {
     "NODE_ENV": "development",
     "JWT_SECRET": "",
-    "SALT_NUMBER": 0,
+    "SALT_NUMBER": 10,
     "MONGO_CONNECTION": "mongodb://lp-db:27017",
     "DICTIONARY_API_KEY": "key",
     "DICTIONARY_API_URI": "url1",
