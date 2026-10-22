@@ -75,7 +75,7 @@ export const gameData: Record<Game, Partial<GameProps>> = {
   [Game.Gender]: {
     task: 'Pick the correct gender',
     question: ['ecologista'],
-    correctAnswer: ['masculine', 'feminine']
+    correctAnswer: ['feminine', 'masculine']
   }
 };
 
@@ -428,7 +428,7 @@ export const gameEngineData: Record<Game, GameData> = {
       {
         wordId: '66584d4f9147a842f6c018f2',
         question: ['ecologista'],
-        answer: ['masculine', 'feminine'],
+        answer: ['feminine', 'masculine'],
         additionalInfo: {
           audioUrl:
             'https://voice.reverso.net/RestPronunciation.svc/v1/output=json/GetVoiceStream/voiceName=Maria22k?voiceSpeed=80&inputText=ZWNvbG9naXN0YQ==',
