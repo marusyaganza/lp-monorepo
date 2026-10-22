@@ -41,7 +41,7 @@ const SignInPage = () => {
     useMutation<LoginMutation>(LOGIN_MUTATION);
   const { login } = useAuthContext();
   const { setNotification } = useNotificationContext();
-  const { isDevEnv } = useEnvironmentContext();
+  const { isSignUpEnabled } = useEnvironmentContext();
 
   const submitHandler = (values: LoginInput) => {
     authFunc({ variables: { input: values }, errorPolicy: 'all' });
@@ -80,7 +80,7 @@ const SignInPage = () => {
             fields={fields}
             buttonText="Sign in"
           />
-          {isDevEnv && (
+          {isSignUpEnabled && (
             <p className={styles.text}>
               No account?{' '}
               <Link className={styles.link} to={`/${routes.signUp}`}>

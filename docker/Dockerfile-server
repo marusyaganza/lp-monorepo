@@ -1,4 +1,4 @@
-FROM node:20-alpine
+FROM node:18-alpine3.17
 
 WORKDIR /app
 
@@ -20,4 +20,4 @@ USER node
 
 WORKDIR /app/packages/server
 
-CMD ["node", "dist/app.js"]
+CMD ["node", "dist/server.js"]

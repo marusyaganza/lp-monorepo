@@ -76,7 +76,7 @@ const SignUpPage = () => {
     useMutation<SignUpMutation>(SIGN_UP_MUTATION);
   const { login } = useAuthContext();
   const { setNotification } = useNotificationContext();
-  const { isDevEnv } = useEnvironmentContext();
+  const { isSignUpEnabled } = useEnvironmentContext();
   const navigate = useNavigate();
 
   const submitHandler = (values: SignUpInput) => {
@@ -101,10 +101,10 @@ const SignUpPage = () => {
   }, [error, setNotification]);
 
   useEffect(() => {
-    if (!isDevEnv) {
+    if (!isSignUpEnabled) {
       navigate('/sign-in');
     }
-  }, [isDevEnv, navigate]);
+  }, [isSignUpEnabled, navigate]);
 
   return (
     <AuthPageLayout>

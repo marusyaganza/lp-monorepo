@@ -34,9 +34,6 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Copy gitignore
-        run: cp  ./docker/.dockerignore ./.dockerignore
-
       - name: Build and push server image
         uses: docker/build-push-action@v5
         with:

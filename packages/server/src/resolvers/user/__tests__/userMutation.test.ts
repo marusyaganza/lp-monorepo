@@ -206,4 +206,29 @@ describe('user mutations', () => {
     expect(models.User.createOne).toHaveBeenCalledTimes(0);
     expect(mockHashPassword).toHaveBeenCalledTimes(0);
   });
+
+  test('signUp in production with ALLOW_SIGNUP', async () => {
+    const { mutate } = createTestServer({
+      createToken: mockCreateToken,
+      models
+    });
+
+    process.env.NODE_ENV = 'production';
+    process.env.ALLOW_SIGNUP = 'true';
+
+    const res = await mutate({
+      mutation: mutations.signUpMutation,
+      variables: {
+        input: {
+          ...signUpData
+        }
+      }
+    });
+    expect(getErrorMessageFromGQL(res)).toEqual(undefined);
+    expect(models.User.createOne).toHaveBeenCalledWith({
+      ...signUpData
+    });
+
+    delete process.env.ALLOW_SIGNUP;
+  });
 });

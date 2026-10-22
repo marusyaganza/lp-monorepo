@@ -13,8 +13,8 @@
     "MONGO_CONNECTION": "mongodb://lp-db:27017",
     "DICTIONARY_API_KEY": "key",
     "DICTIONARY_API_URI": "url1",
-    "AUDIO_ENDPOINT": "url2",
-    "IMG_ENDPOINT": "url3",
+    "AUDIO_ENDPOINT": "https://media.merriam-webster.com/audio/prons",
+    "IMG_ENDPOINT": "https://merriam-webster.com/assets/mw/static/art/dict",
     "USE_MOCKS": "true"
   }
 }

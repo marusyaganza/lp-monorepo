@@ -9,6 +9,7 @@ export interface EnvironmentContextType {
   isDevEnv: boolean;
   isDemo: boolean;
   isProduction: boolean;
+  isSignUpEnabled: boolean;
 }
 
 const EnvironmentContext = createContext<EnvironmentContextType | undefined>(
@@ -22,7 +23,10 @@ export const EnvironmentProvider = ({
     () => ({
       isDevEnv: process?.env?.NODE_ENV !== 'production',
       isDemo: process?.env?.DEMO_VERSION === 'true',
-      isProduction: process?.env?.NODE_ENV === 'production'
+      isProduction: process?.env?.NODE_ENV === 'production',
+      isSignUpEnabled:
+        process?.env?.NODE_ENV !== 'production' ||
+        process?.env?.ALLOW_SIGNUP === 'true'
     }),
     []
   );

@@ -1,0 +1,53 @@
+# Local MongoDB for development and tests:
+#   docker compose up -d
+#
+# Whole app (MongoDB + server + front) with the mock dictionary, no API keys needed:
+#   docker compose --profile app up --build
+#   docker compose --profile app down    # `down` without the profile skips server and front
+#
+# No volume is defined, so data is removed together with the containers.
+
+services:
+  mongo:
+    image: mongo:4.2
+    ports:
+      - '27017:27017'
+    healthcheck:
+      test: ['CMD', 'mongo', '--quiet', '--eval', "db.adminCommand('ping')"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  server:
+    profiles: [app]
+    build:
+      context: .
+      dockerfile: docker/Dockerfile-server
+    environment:
+      MONGO_CONNECTION: mongodb://mongo:27017/language-power
+      JWT_SECRET: local-only-secret
+      USE_MOCKS: 'true'
+      ALLOW_SIGNUP: 'true'
+      AUDIO_ENDPOINT: https://media.merriam-webster.com/audio/prons
+      IMG_ENDPOINT: https://merriam-webster.com/assets/mw/static/art/dict
+      FE_URL: http://localhost:8080
+    ports:
+      - '4000:4000'
+    depends_on:
+      mongo:
+        condition: service_healthy
+
+  front:
+    profiles: [app]
+    build:
+      context: .
+      dockerfile: docker/Dockerfile-front
+      args:
+        GQL_URL: http://localhost:4000/graphql
+        TOKEN_TTL: 7
+        NODE_ENV: production
+        ALLOW_SIGNUP: 'true'
+    ports:
+      - '8080:80'
+    depends_on:
+      - server

@@ -8,6 +8,8 @@ ARG TOKEN_TTL
 
 ARG NODE_ENV
 
+ARG ALLOW_SIGNUP
+
 COPY package.json yarn.lock /app/
 
 COPY lerna.json /app

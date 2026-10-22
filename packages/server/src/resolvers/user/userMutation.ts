@@ -10,7 +10,10 @@ const isDemo = process?.env?.DEMO_VERSION === 'true';
 
 export const userMutationResolvers: MutationResolvers<IResolverContext> = {
   signUp: async (_, { input }, { models, createToken }) => {
-    if (process?.env?.NODE_ENV === 'production' || isDemo) {
+    const isSignUpAllowed =
+      process?.env?.NODE_ENV !== 'production' ||
+      process?.env?.ALLOW_SIGNUP === 'true';
+    if (!isSignUpAllowed || isDemo) {
       throw new OperationResolutionError(ERROR_MESSAGES.SING_UP_UNAVAILABLE);
     }
     const user = await models.User.createOne(input);
