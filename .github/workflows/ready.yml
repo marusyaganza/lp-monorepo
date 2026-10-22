@@ -2,7 +2,7 @@ name: Ready
 
 on:
   push:
-    branches: [ts-monorepo-ci, develop]
+    branches: [main, ts-monorepo-ci, develop]
   pull_request:
     branches: [main, develop]
 

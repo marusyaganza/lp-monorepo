@@ -25,7 +25,7 @@ jobs:
         env:
           DEPLOY_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL_CLIENT }}
         run: |
-          echo "Triggering CLIENT deploy via $DEPLOY_URL"
+          echo "Triggering CLIENT deploy"
           curl -X POST "$DEPLOY_URL"
 
       - name: Deploy SERVER
@@ -33,5 +33,5 @@ jobs:
         env:
           DEPLOY_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL_SERVER }}
         run: |
-          echo "Triggering SERVER deploy via $DEPLOY_URL"
+          echo "Triggering SERVER deploy"
           curl -X POST "$DEPLOY_URL"
