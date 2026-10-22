@@ -6,7 +6,11 @@ import { Game } from '../../generated/graphql';
 
 const meta: Meta<typeof GameEngine> = {
   title: 'game/GameEngine',
-  component: GameEngine
+  component: GameEngine,
+  parameters: {
+    // each story passes fixed sample data, and language only affects speech recognition
+    controls: { exclude: ['gameData', 'language'] }
+  }
 };
 
 export const Audio = (args: GameEngineProps) => {

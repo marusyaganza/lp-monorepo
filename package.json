@@ -1,10 +1,10 @@
 {
   "name": "lp-monorepo",
   "version": "1.0.0",
-  "description": "monorepo",
+  "description": "Language Power v2: vocabulary trainer built as a TypeScript monorepo with a React client, a GraphQL server and a design system",
   "main": "index.js",
   "repository": "/",
-  "author": "marusyaganza",
+  "author": "Mariia Ganza",
   "license": "MIT",
   "private": true,
   "workspaces": [

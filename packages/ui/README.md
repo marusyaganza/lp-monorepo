@@ -1,87 +1,53 @@
-# @lp/ui — Design System for Language Power
+# @lp/ui
 
-Welcome to **@lp/ui**, the design system and UI component library for the Language Power app — a language learning platform designed to help learners improve their skills with interactive, engaging UI components.
+Design system and UI component library for the second version of Language Power. It contains the shared React components, the game interfaces and the design tokens, all documented in Storybook.
 
-This package is a relaunch and evolution of the original Language Power project.
+This package is part of the [lp-monorepo](../../README.md). Requirements, tool versions and the full local setup are described in the root README; this file covers what is specific to the design system.
 
----
+## Explore
 
-## Features
+- [Storybook](https://lp-design-system.netlify.app/?path=/docs/design-system-colors--docs), deployed to Netlify, is the public showcase of the project. The game stories are playable with predefined vocabulary data.
+- [Figma: design system and components](https://www.figma.com/design/uLznHs3pU0bQqy7Wwn3xQx/Design-system?node-id=2-123&t=i0lZuzBj152W7e0j-1)
 
-- A comprehensive set of reusable React UI components tailored for language learning apps.
-- Full Storybook integration providing interactive documentation, live previews, and UI testing.
-- Design system synchronization with Figma prototypes, including color schemes, typography, and component layouts.
-- Accessibility-minded components optimized for keyboard and screen reader support.
-- State management and interaction patterns designed for language learning modules, including games and quizzes.
-- Built with TypeScript and tested via Storybook’s addon ecosystem.
+Several Storybook pages link to the matching Figma frame.
 
----
+## Stack
 
-## Getting Started
+- React 18 and TypeScript, styled with CSS Modules and CSS custom properties
+- `react-spring` for animations
+- Storybook 7 (`react-webpack5`) with autodocs, MDX documentation pages and a custom theme
+- Types for game data and words generated from the shared GraphQL schema
+- Plop for scaffolding components
+- ESLint (with `jsx-a11y` rules) and Stylelint
 
-### Installation
+## How it is consumed
 
-```bash
-yarn install
-yarn codegen
-```
+There is no build step. `package.json` points `main` and `types` at `src/index.ts`, and `@lp/front` imports the TypeScript source through Yarn workspaces and compiles it with its own webpack configuration.
 
-For a live, interactive preview and full documentation of all components, run:
+## Contents
 
-```bash
-yarn storybook
-```
+- **Design foundations:** colour palette and typography pages in `src/docs`, built on CSS custom properties.
+- **Form components:** inputs, selects, checkboxes, array and definition inputs, and the word and tag forms used by the frontend, with the `useForm` hook for state and validation.
+- **Layout and feedback:** header, footer, user menu, modal, notification, spinner, progress, error display and error boundary.
+- **Vocabulary:** word cards, dictionary entries, the search field, and tag components for the experimental tags feature.
+- **Games:** `GameEngine` runs a game with a reducer (start, check answer, next question) and renders one of eight game components: audio, select definition, select word, type word, image, speaking, conjugation and gender. Answers are checked in the browser, and the results are passed back to the frontend, which saves them with the server's `saveGameResult` mutation.
+- **Speech and audio:** `AudioButton` plays pronunciations, optionally on load. `SpeechInput` uses the browser's Web Speech API (`webkitSpeechRecognition`). The speaking game built on it is experimental: it works only in Chrome and never ran reliably.
 
-Or view the built Storybook [here](https://lp-design-system.netlify.app/?path=/docs/design-system-colors--docs) to explore components with detailed usage, design references, and live controls.
+Images used in the documentation pages are in `static/images` and served by Storybook at `/images`.
 
----
+## Scripts
 
-## Design System Integration
+| Script                 | Description                                                              |
+| ---------------------- | ------------------------------------------------------------------------ |
+| `yarn storybook`       | Start Storybook on `http://localhost:6006`                               |
+| `yarn build-storybook` | Build the static Storybook site into `storybook-static/`                 |
+| `yarn codegen`         | Generate types from the shared schema into `src/generated`               |
+| `yarn new-component`   | Scaffold a component, its CSS module and its story from `plop-templates` |
+| `yarn lint`            | Run ESLint                                                               |
+| `yarn stylelint`       | Run Stylelint                                                            |
+| `yarn ready`           | Apply ESLint and Stylelint fixes                                         |
+| `yarn clean`           | Remove build output, generated files and `node_modules`                  |
 
-### Figma
+Run `yarn codegen` once before starting Storybook in a fresh checkout. The root `yarn storybook` does not generate types itself.
 
-Our design system is closely synced with Figma. For each component, confirm the specs, color scheme, typography, and layouts in Figma:
-
-- [Design System in Figma](https://www.figma.com/design/uLznHs3pU0bQqy7Wwn3xQx/Design-system?node-id=2-123&t=WCAmwHrchrH9VnTd-1)
-- Color palette, typography scale, and component layouts are maintained to ensure pixel-perfect implementation.
-
-You will find Figma links in the Storybook docs next to most components for quick access.
-
----
-
-## Component Highlights
-
-- **AudioButton:** Interactive audio playback with optional autoplay and text.
-- **ConjugationInput:** Spanish verb conjugation practice inputs with validation.
-- **SpeechInput:** Speech recognition component for pronunciation games.
-- **Game Components:** Including ImageGame, GenderGame, SelectDefGame, and others for immersive language learning experiences.
-
----
-
-## Folder Structure & Static Assets
-
-- Component code is located in `src/components`.
-- Images and design assets used in Storybook docs are stored in the `/public/images` directory and served via Storybook’s `staticDirs` configuration.
-
----
-
-## Developer Scripts
-
-- Use `yarn storybook` to start the local Storybook environment.
-- Use `yarn build-storybook` to generate static Storybook files for deployment.
-- Automated linting and style fixing available via `ready`.
-- `plop` is configured for quickly scaffolding new components.
-- GraphQL code generation is available to keep your queries and types in sync.
-
----
-
-## Customization and Theming
-
-- Storybook UI is customized to match the project’s branded color palette, providing a consistent and polished look.
-- Icons and components use CSS variables for colors based on your design tokens for easy maintenance and theming.
-
----
-
-## Contact & More Info
-
-Project repository: [Language Power GitHub](https://github.com/marusyaganza/lp-monorepo)
+The package has no unit tests. Components are documented and checked in Storybook, and covered indirectly by the Cypress tests in `@lp/front`.

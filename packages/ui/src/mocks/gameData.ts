@@ -208,7 +208,7 @@ export const gameEngineData: Record<Game, GameData> = {
         }
       }
     ],
-    task: "Type the word that you've heard"
+    task: 'Type the name of the object shown in the picture.'
   },
   [Game.SelectDef]: {
     questions: [
@@ -470,7 +470,7 @@ export const gameEngineData: Record<Game, GameData> = {
         }
       }
     ],
-    task: 'Conjugate the verb in Presente indicativo',
+    task: 'Pick the Correct Gender',
     type: Game.Gender
   },
   [Game.Speaking]: {
