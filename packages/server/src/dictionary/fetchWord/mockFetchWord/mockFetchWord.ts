@@ -4,7 +4,6 @@ export const mockSuggestions = {
   [Language.English]: [
     'egalitarian',
     'rubber',
-    'pussy',
     'heart',
     'wheel',
     'voluminous',

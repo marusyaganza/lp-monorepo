@@ -4,7 +4,6 @@ export const mockWordsList = {
   [Language.English]: [
     'egalitarian',
     'rubber',
-    'pussy',
     'heart',
     'wheel',
     'voluminous',

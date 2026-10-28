@@ -1,11 +1,6 @@
 import React from 'react';
 import { WordCard, WordCardProps } from './WordCard';
-import {
-  words,
-  wheel,
-  spanishWords,
-  wordWithAltSpelling
-} from '../../mocks/words';
+import { words, spanishWords, wordWithAltSpelling } from '../../mocks/words';
 import '../../assets/styles/common-styles.css';
 
 export default {
@@ -17,22 +12,6 @@ export const WordCardDefault = () => {
   return words.map(word => (
     <div key={word.name} className="page">
       <WordCard word={word} />
-    </div>
-  ));
-};
-
-export const WordCardShort = (args: WordCardProps) => {
-  return words.map(word => (
-    <div key={word.name} className="page">
-      <WordCard {...args} word={word} variant="short" />
-    </div>
-  ));
-};
-
-export const WordCardLong = (args: WordCardProps) => {
-  return wheel.map(word => (
-    <div key={word.name} className="page">
-      <WordCard {...args} word={word} variant="short" />
     </div>
   ));
 };
@@ -73,7 +52,7 @@ export const WordCardWithButtons = (args: WordCardProps) => {
       }
     }
   };
-  return wheel.map(word => (
+  return words.map(word => (
     <div key={word.name} className="page">
       <WordCard {...args} word={word} {...callBacks} variant="full" />
     </div>

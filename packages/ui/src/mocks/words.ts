@@ -52,21 +52,19 @@ export const words: Word[] = [
   {
     uuid: '74046e79-e4c9-4b52-ac96-cb7ae98fb601',
     id: 'mockid',
-    name: 'pussy',
+    name: 'grumblesnort',
     isOffensive: true,
     language: Language.English,
     defs: [
       {
-        def: '<i>informal + offensive</i> a woman\u0027s sex organs <i>also</i> sexual intercourse with a woman'
+        def: '<i>informal + offensive</i> a grumpy person who snorts at every new idea'
       }
     ],
     particle: 'noun',
-    stems: ['pussy', 'pussies'],
-    transcription: '\u02c8p\u028asi',
+    stems: ['grumblesnort', 'grumblesnorts'],
+    transcription: 'ˈɡrʌmbəlsnɔːrt',
     user: '0',
-    shortDef: [
-      'a cat or kitten : pussycat\u2014used especially by children or when talking to children'
-    ]
+    shortDef: ['a grumpy person who snorts at every new idea (made-up word)']
   },
   {
     uuid: 'mockUuid',
@@ -84,8 +82,8 @@ export const words: Word[] = [
       }
     ],
     particle: 'noun',
-    stems: ['pussy', 'pussies'],
-    transcription: '\u02c8p\u028asi',
+    stems: ['wheel', 'wheels'],
+    transcription: '\u02c8(h)w\u0113l',
     user: '0',
     shortDef: [
       'a circular frame of hard material that may be solid, partly solid, or spoked and that is capable of turning on an axle',
@@ -97,7 +95,8 @@ export const words: Word[] = [
 
 export const spanishWords: Word[] = [
   {
-    audioUrl: 'mock_audio_endpoint/es/me/mp3/i/idiom01sp.mp3',
+    audioUrl:
+      'https://media.merriam-webster.com/audio/prons/es/me/mp3/i/idiom01sp.mp3',
     defs: [
       {
         def: 'language',

@@ -22,7 +22,7 @@ const paginatedWords = {
   [Language.English]: [
     'voluminous',
     'wheel',
-    'pussy',
+    'rubber',
     'murther',
     'heart',
     'fowl'

@@ -34,7 +34,7 @@ So editing a file in `src/` triggers a recompile, and the new `dist/` output tri
 
 The `dev` script calls `nodemon server.js`, but there is no `server.js` in the package root. nodemon treats the missing file as an argument rather than the script, falls back to the `main` field of `package.json`, and runs `dist/server.js`.
 
-nodemon also reads an optional `nodemon.json` (see `nodemon.example.json`). Variables set in its `env` section take precedence over `.env`, because `dotenv` does not override variables that are already set.
+nodemon also reads an optional `nodemon.json` (see `nodemon.example.json`, which only sets what to watch). Keep environment variables in `.env`: anything in an `env` section of `nodemon.json` takes precedence over `.env`, because `dotenv` does not override variables that are already set. An old `nodemon.json` with its own `MONGO_CONNECTION` or an empty `JWT_SECRET` breaks `yarn start` while `yarn start:test` still works.
 
 ### One-off run
 
@@ -70,7 +70,7 @@ Variables are loaded from `.env` with `dotenv`. `.env.example` lists them with p
 
 With `USE_MOCKS=true`, `searchWord` returns saved Merriam-Webster responses from `src/dictionary/fetchWord/mockFetchWord/mocks` instead of calling the API. Only these queries return a full entry:
 
-- English: `egalitarian`, `fowl`, `heart`, `murther`, `pussy`, `rubber`, `voluminous`, `wheel`
+- English: `egalitarian`, `fowl`, `heart`, `murther`, `rubber`, `voluminous`, `wheel`
 - Spanish: `asi`, `ballena`, `bully`, `caerse`, `ecologista`, `empezar`, `hola`, `idioma`, `instruction`, `llover`, `ser`, `tener`
 
 Any other query returns this list as suggestions, the way the real API suggests spellings for unknown words.

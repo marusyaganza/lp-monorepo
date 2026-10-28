@@ -60,7 +60,7 @@ export const gameData: Record<Game, Partial<GameProps>> = {
       'to get information or a reaction from somebody, often with difficulty.',
       'a brief authoritative formula of religious belief',
       'a circular frame of hard material that may be solid, partly solid, or spoked and that is capable of turning on an axle',
-      'a cat or kitten : pussycat—used especially by children or when talking to children'
+      'a gentle, soothing sensation experienced when a cool breeze rustles through leaves on a warm summer day'
     ],
     audioUrl:
       'https://media.merriam-webster.com/audio/prons/en/us/mp3/w/wheel001.mp3'
