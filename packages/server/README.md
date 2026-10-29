@@ -2,7 +2,7 @@
 
 GraphQL backend for the second version of Language Power. It looks words up in the Merriam-Webster dictionaries, stores users and their vocabulary in MongoDB, and generates the data for the learning games.
 
-This package is part of the [lp-monorepo](../../README.md). Requirements, tool versions and the full local setup are described in the root README; this file covers what is specific to the server.
+This package is part of [language-power-v2](../../README.md). Requirements, tool versions and the full local setup are described in the root README; this file covers what is specific to the server.
 
 ## Stack
 

@@ -1,8 +1,8 @@
-# lp-monorepo
+# language-power-v2
 
 Second version of the Language Power application: a vocabulary trainer for English and Spanish, built as a TypeScript monorepo with a React client, a GraphQL server and a shared design system documented in Storybook. Users look up words in Merriam-Webster dictionaries or add their own, enrich them with examples, images and audio links, and practise them in learning games.
 
-This repository is preserved as a historical project. The application runs locally and the automated tests pass on the pinned toolchain, but dependencies are intentionally frozen and will not be upgraded. Current development focuses on a separate Python/FastAPI iteration.
+This repository is preserved as a historical project. The application runs locally and the automated tests pass on the pinned toolchain, but dependencies are intentionally frozen and will not be upgraded. The current version of the app, v3, is developed in separate repositories (see [Related projects](#related-projects)).
 
 ## Status
 
@@ -23,10 +23,15 @@ The Storybook game demos use predefined vocabulary data. Accounts, saved words a
 
 ## Related projects
 
-The first version was an English-only app with a REST API:
+The current version, v3:
 
-- [language-power](https://github.com/marusyaganza/language-power) — v1 React client
-- [language-power-backend](https://github.com/marusyaganza/language-power-backend) — v1 Express backend
+- [language-power-client](https://github.com/marusyaganza/language-power-client) — v3 client
+- [language-power-api](https://github.com/marusyaganza/language-power-api) — v3 Python/FastAPI backend
+
+The first version, an English-only app with a REST API:
+
+- [language-power-v1-client](https://github.com/marusyaganza/language-power-v1-client) — v1 React client
+- [language-power-v1-api](https://github.com/marusyaganza/language-power-v1-api) — v1 Express backend
 
 ## Stack
 
@@ -213,7 +218,7 @@ The UI package has no unit tests; its components are documented and checked in S
   - `release.yml`, started manually, runs lint, tests and Cypress, versions packages with Lerna, pushes Docker images to Docker Hub and deploys Storybook to Netlify
   - `deploy-render.yml`, started manually, triggered the Render deploy hooks for the client and server
 
-The application itself is no longer deployed. The state of the repository at the time of the last deployment is tagged [`v2-last-deployed`](https://github.com/marusyaganza/lp-monorepo/tree/v2-last-deployed).
+The application itself is no longer deployed. The state of the repository at the time of the last deployment is tagged [`v2-last-deployed`](https://github.com/marusyaganza/language-power-v2/tree/v2-last-deployed).
 
 ## Design
 

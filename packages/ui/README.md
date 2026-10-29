@@ -2,7 +2,7 @@
 
 Design system and UI component library for the second version of Language Power. It contains the shared React components, the game interfaces and the design tokens, all documented in Storybook.
 
-This package is part of the [lp-monorepo](../../README.md). Requirements, tool versions and the full local setup are described in the root README; this file covers what is specific to the design system.
+This package is part of [language-power-v2](../../README.md). Requirements, tool versions and the full local setup are described in the root README; this file covers what is specific to the design system.
 
 ## Explore
 

@@ -2,7 +2,7 @@
 
 React frontend for the second version of Language Power. It is the user-facing client: word search, the personal vocabulary and the learning games. Components come from the shared [`@lp/ui`](../ui/README.md) design system, and data comes from the GraphQL API in [`@lp/server`](../server/README.md).
 
-This package is part of the [lp-monorepo](../../README.md). Requirements, tool versions and the full local setup are described in the root README; this file covers what is specific to the frontend.
+This package is part of [language-power-v2](../../README.md). Requirements, tool versions and the full local setup are described in the root README; this file covers what is specific to the frontend.
 
 ## Stack
 
